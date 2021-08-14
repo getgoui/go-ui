@@ -8,16 +8,22 @@ assignees: ''
 ---
 
 **What is the pattern**
-Screenshot or link to existing pattern/design
+_Screenshot or link to existing pattern/design_
+
 
 **Purpose of this pattern**
-Why should we implement this in our design system?
+_Why should we implement this in our design system?_
+
 
 **Composition**
-What components should we use to create this pattern?
+_What components should we use to create this pattern?_
+
 
 **Responsiveness**
-Specify any behaviour change between Mobile -> Tablet -> Desktop
+_Specify any behaviour change between Mobile -> Tablet -> Desktop_
+
 
 **User interactions**
-What happens when user click/focus/hover/touch it? Any external state to be considered? (e.g. if the user is logged in)
+_What happens when user click/focus/hover/touch it? Any external state to be considered? (e.g. if the user is logged in)_
+
+
