@@ -29,9 +29,9 @@ TBC
 
 ## Tech stack
 
-Component engine - [Stencil](https://stenciljs.com/)
-Docs site - TBC
-Automated testing - [Puppeteer](https://pptr.dev/)
-A11y testing - [Pa11y](https://pa11y.org/)
+- Component engine - [Stencil](https://stenciljs.com/)
+- Docs site - TBC
+- Automated testing - [Puppeteer](https://pptr.dev/)
+- A11y testing - [Pa11y](https://pa11y.org/)
 
 
