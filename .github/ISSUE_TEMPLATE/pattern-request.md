@@ -25,5 +25,3 @@ _Specify any behaviour change between Mobile -> Tablet -> Desktop_
 
 **User interactions**
 _What happens when user click/focus/hover/touch it? Any external state to be considered? (e.g. if the user is logged in)_
-
-
