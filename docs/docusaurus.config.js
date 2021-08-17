@@ -106,6 +106,7 @@ module.exports = {
     ],
   ],
   plugins: [
+    'docusaurus-plugin-includes',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
