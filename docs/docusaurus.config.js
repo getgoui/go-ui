@@ -22,9 +22,9 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'intro',
+          docId: 'components/gov-button',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Components',
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
@@ -92,6 +92,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          remarkPlugins: [require('remark-code-import')],
         },
         blog: {
           showReadingTime: true,
@@ -114,5 +115,6 @@ module.exports = {
         indexPages: true,
       },
     ],
+    // '@docusaurus/theme-live-codeblock',
   ],
 };
