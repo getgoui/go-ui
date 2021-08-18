@@ -16,6 +16,7 @@ export const config: Config = {
     },
     {
       type: 'docs-readme',
+      footer: 'Built with ❤️',
     },
     {
       type: 'docs-json',
@@ -23,6 +24,8 @@ export const config: Config = {
     },
     {
       type: 'www',
+      dir: 'docs/static/demo-assets',
+      indexHtml: 'demo.html',
       serviceWorker: null, // disable service workers
     },
   ],

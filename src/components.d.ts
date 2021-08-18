@@ -7,6 +7,11 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface GovButton {
+        /**
+          * Button type
+          * @see https ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type
+         */
+        "type": 'button' | 'submit' | 'reset';
     }
 }
 declare global {
@@ -22,6 +27,11 @@ declare global {
 }
 declare namespace LocalJSX {
     interface GovButton {
+        /**
+          * Button type
+          * @see https ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type
+         */
+        "type"?: 'button' | 'submit' | 'reset';
     }
     interface IntrinsicElements {
         "gov-button": GovButton;

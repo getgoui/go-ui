@@ -1,10 +1,15 @@
-# gov-button
-
-hello world
+## API
 
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description | Type                              | Default |
+| -------- | --------- | ----------- | --------------------------------- | ------- |
+| `type`   | `type`    | Button type | `"button" \| "reset" \| "submit"` | `null`  |
+
+
 ----------------------------------------------
 
-*Built with [StencilJS](https://stenciljs.com/)*
+Built with ❤️

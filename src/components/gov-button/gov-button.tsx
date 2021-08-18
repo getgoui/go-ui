@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'gov-button',
@@ -6,10 +6,19 @@ import { Component, Host, h } from '@stencil/core';
   shadow: false,
 })
 export class GovButton {
+  /**
+   * Button type
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type
+   */
+  @Prop() type: 'button' | 'submit' | 'reset' = null;
+
   render() {
+    const { type } = this;
     return (
       <Host>
-        <slot></slot>
+        <button type={type}>
+          <slot></slot>
+        </button>
       </Host>
     );
   }
