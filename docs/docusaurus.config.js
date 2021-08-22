@@ -4,32 +4,38 @@ const path = require('path');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'Gov DS',
+  tagline: 'A pattern-first design system focused on a11y.',
+  url: 'https://gov.components.style',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'gov-components', // Usually your GitHub org/user name.
+  projectName: 'gov-components', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Gov DS',
       logo: {
-        alt: 'My Site Logo',
+        alt: '',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'doc',
-          docId: 'components/gov-button',
+          docId: 'patterns/intro',
+          position: 'left',
+          label: 'Patterns',
+        },
+        {
+          type: 'doc',
+          docId: 'components/intro',
           position: 'left',
           label: 'Components',
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/gov-components/gov-components',
           label: 'GitHub',
           position: 'right',
         },
@@ -51,16 +57,12 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discordapp.com/',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/gov-components',
             },
           ],
         },
@@ -73,12 +75,12 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/gov-components/gov-components',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      // copyright: `Copyright © ${new Date().getFullYear()}  Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -113,7 +115,7 @@ module.exports = {
       'docusaurus-plugin-module-alias',
       {
         alias: {
-          '@': path.resolve(__dirname, './src'),
+          '@/components': path.resolve(__dirname, './src/components'),
         },
       },
     ],
