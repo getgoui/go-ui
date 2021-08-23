@@ -5,8 +5,30 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ColorVariants } from "./types";
 export namespace Components {
     interface GovButton {
+        /**
+          * If set, the button will take up the full width of its parent
+         */
+        "block"?: boolean;
+        /**
+          * If this button is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `outlined` is true, the button will have a border based on selected variant
+          * @see  `variant` property
+         */
+        "outlined"?: boolean;
+        /**
+          * Html type of the button
+         */
+        "type": 'submit' | 'reset' | 'button';
+        /**
+          * Button variant
+         */
+        "variant"?: ColorVariants;
     }
 }
 declare global {
@@ -22,6 +44,27 @@ declare global {
 }
 declare namespace LocalJSX {
     interface GovButton {
+        /**
+          * If set, the button will take up the full width of its parent
+         */
+        "block"?: boolean;
+        /**
+          * If this button is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `outlined` is true, the button will have a border based on selected variant
+          * @see  `variant` property
+         */
+        "outlined"?: boolean;
+        /**
+          * Html type of the button
+         */
+        "type"?: 'submit' | 'reset' | 'button';
+        /**
+          * Button variant
+         */
+        "variant"?: ColorVariants;
     }
     interface IntrinsicElements {
         "gov-button": GovButton;

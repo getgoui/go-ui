@@ -1,18 +1,38 @@
-import Api from '!!raw-loader!../../../src/components/gov-button/readme.md';
-import Partial from './_partial.mdx';
+---
+title: Button
+hide_title: true
+---
+
+import Demo from '@/components/Demo';
+import demoSource from '!!raw-loader!../../../src/components/gov-button/demo/gov-button.html';
 
 # Button
 
-```js
-console.log('Every repo must come with a mascot.');
-```
+<!-- Description, a11y, when to use, caveats, etc -->
 
-```tsx file=../../../src/components/gov-button/gov-button.tsx
+A button is a simple way to call on the attention of the user.
 
-```
+## When to use
+
+Use a button when you want to:
+
+- Call on the user’s attention.
+- Provide a way to initiate a process or a navigation.
+- Provide a command that the user can execute, such as saving data or submitting a form.
+
+## Related patterns
+
+<!-- Patterns that uses this component -->
+
+- [Pattern 1](#pattern-1)
+- [Pattern 2](#pattern-2)
+
+<!-- Demos, tips, variations, use cases -->
+
+## Demo
+
+<Demo code={demoSource} />
+
+<!-- API -->
 
 {@include: ../../../src/components/gov-button/readme.md}
-
-<pre>{Api}</pre>
-
-<Partial />
