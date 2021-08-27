@@ -223,9 +223,18 @@ import demoSource from '!!raw-loader!../../../src/components/${tagname}/demo/${t
 
 <!-- Description -->
 
-A button is a simple way to call on the attention of the user.
+${title} is a component.
 
 ## When to use
+
+-
+-
+
+## A11y
+
+(Provide relevant a11y information here.)
+
+
 
 ## Related patterns
 
@@ -235,6 +244,7 @@ A button is a simple way to call on the attention of the user.
 - [Pattern 2](#pattern-2)
 
 <!-- Demos, tips, variations, use cases -->
+
 
 ## Demo
 
