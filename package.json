@@ -25,7 +25,8 @@
     "build.spec": "stencil build --docs-readme",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "stylelint": "stylelint \"./src/**/*.scss\""
   },
   "dependencies": {
     "@stencil/core": "^2.6.0"
@@ -44,9 +45,14 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.5",
+    "pa11y": "^6.0.1",
     "postcss-pxtorem": "^6.0.0",
     "prompts": "^2.4.1",
-    "puppeteer": "^5.5.0"
+    "puppeteer": "^5.5.0",
+    "stylelint": "^13.13.1",
+    "stylelint-a11y": "^1.2.3",
+    "stylelint-config-prettier": "^8.0.2",
+    "yargs": "^17.1.1"
   },
   "license": "MIT"
 }

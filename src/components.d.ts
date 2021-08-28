@@ -30,8 +30,6 @@ export namespace Components {
          */
         "variant"?: ColorVariants;
     }
-    interface GovHeader {
-    }
 }
 declare global {
     interface HTMLGovButtonElement extends Components.GovButton, HTMLStencilElement {
@@ -40,15 +38,8 @@ declare global {
         prototype: HTMLGovButtonElement;
         new (): HTMLGovButtonElement;
     };
-    interface HTMLGovHeaderElement extends Components.GovHeader, HTMLStencilElement {
-    }
-    var HTMLGovHeaderElement: {
-        prototype: HTMLGovHeaderElement;
-        new (): HTMLGovHeaderElement;
-    };
     interface HTMLElementTagNameMap {
         "gov-button": HTMLGovButtonElement;
-        "gov-header": HTMLGovHeaderElement;
     }
 }
 declare namespace LocalJSX {
@@ -75,11 +66,8 @@ declare namespace LocalJSX {
          */
         "variant"?: ColorVariants;
     }
-    interface GovHeader {
-    }
     interface IntrinsicElements {
         "gov-button": GovButton;
-        "gov-header": GovHeader;
     }
 }
 export { LocalJSX as JSX };
@@ -87,7 +75,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gov-button": LocalJSX.GovButton & JSXBase.HTMLAttributes<HTMLGovButtonElement>;
-            "gov-header": LocalJSX.GovHeader & JSXBase.HTMLAttributes<HTMLGovHeaderElement>;
         }
     }
 }
