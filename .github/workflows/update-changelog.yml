@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.4.0
         with: 
-          node-version: 12.x, 14.x
+          node-version: 14.x
 
       # Generate changelog
       - name: Generate changelog
