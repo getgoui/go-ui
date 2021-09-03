@@ -1,6 +1,4 @@
 import './Demo.scss';
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import CodeBlock from '@theme/CodeBlock';
 import React, { useState, useEffect, useRef } from 'react';
 import demoTemplate from '!!raw-loader!../../static/demo-assets/demo.html';
 
@@ -16,7 +14,7 @@ const DemoFrame = ({ code }) => {
       doc.close();
     }
   }, [code]);
-  return <iframe ref={demoFrame} />;
+  return <iframe title="demo frame" ref={demoFrame} />;
 };
 
 const Demo = ({ code }) => {

@@ -19,14 +19,10 @@ export const config: Config = {
       footer: 'Built with ❤️',
     },
     {
-      type: 'docs-json',
-      file: 'docs/gov-components.json',
-    },
-    {
       type: 'www',
       dir: 'docs/static/demo-assets',
-      indexHtml: 'demo.html',
       serviceWorker: null, // disable service workers
+      copy: [{ src: 'demo.html', dest: 'demo.html' }],
     },
   ],
   globalStyle: 'src/global/styles.scss',
@@ -43,4 +39,11 @@ export const config: Config = {
       ],
     }),
   ],
+  testing: {
+    /**
+     * Gitlab CI doesn't allow sandbox, therefor this parameters must be passed to your Headless Chrome
+     * before it can run your tests
+     */
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+  },
 };
