@@ -39,6 +39,8 @@
     "@axe-core/puppeteer": "^4.2.2",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
+    "@types/jest": "^26.0.21",
+    "@types/puppeteer": "^5.4.3",
     "autoprefixer": "^10.3.1",
     "axe-core": "^4.3.3",
     "chalk": "^4.1.2",

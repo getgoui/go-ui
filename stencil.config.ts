@@ -45,5 +45,6 @@ export const config: Config = {
      * before it can run your tests
      */
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+    setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
   },
 };
