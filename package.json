@@ -27,8 +27,6 @@
     "test.e2e": "stencil test --e2e",
     "test.e2e.watch": "stencil test --e2e --watchAll",
     "test.e2e.screenshot": "stencil test --e2e --screenshot",
-    "start-e2e-frame": "stencil build --dev --serve --watch",
-    "test": "jest --config=jest.e2e.config.js  --maxWorkers=8",
     "generate": "gg generate",
     "stylelint": "stylelint \"./src/**/*.scss\""
   },
