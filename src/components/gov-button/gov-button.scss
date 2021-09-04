@@ -3,7 +3,7 @@ gov-button {
   button {
     // reset button style
     background: white;
-    color: #efefef;
+    color: black;
     cursor: pointer;
     border: 1px solid blue;
     border-radius: 8px;
@@ -12,6 +12,7 @@ gov-button {
       background: blue;
       color: white;
     }
+    &:focus,
     &:focus-visible {
       outline: 2px solid black;
       outline-offset: 2px;
