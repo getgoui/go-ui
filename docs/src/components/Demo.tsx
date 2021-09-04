@@ -1,5 +1,8 @@
 import './Demo.scss';
 import React, { useState, useEffect, useRef } from 'react';
+// import BrowserOnly from '@docusaurus/BrowserOnly';
+import CodeBlock from '@theme/CodeBlock';
+
 import demoTemplate from '!!raw-loader!../../static/demo-assets/demo.html';
 
 const DemoFrame = ({ code }) => {
