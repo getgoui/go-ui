@@ -16,9 +16,10 @@ expect.extend({
     const results = await page.evaluate((axeConfig) => {
       return window.axe.run(axeConfig);
     }, axeConfig);
-
+    let message = '';
+    let resultDisplay = '';
     if (results.violations.length > 0) {
-      const printOut = results.violations
+      resultDisplay = results.violations
         .map(
           (violation) => `
 * ${violation.help}
@@ -39,16 +40,20 @@ expect.extend({
       `,
         )
         .join('\n');
-      console.log(`
+      message = `
 ****************************************************
 * A11y test failed, see below for more information *
 ****************************************************
 *
-* ${printOut}
+* ${resultDisplay}
 *
 ****************************************************
-`);
+`;
     }
-    expect(results.violations).toBe([]);
+
+    return {
+      message: () => message,
+      pass: results.violations.length === 0,
+    };
   },
 });
