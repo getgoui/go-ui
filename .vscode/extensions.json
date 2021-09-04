@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+      "vivaxy.vscode-conventional-commits",
+      "fdom.stencil-snippets",
+      "eamodio.gitlens",
+      "esbenp.prettier-vscode",
+      "stylelint.vscode-stylelint",
+      "deque-systems.vscode-axe-linter"
+    ]
+}

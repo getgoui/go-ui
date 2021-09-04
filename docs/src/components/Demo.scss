@@ -52,7 +52,8 @@
         border: none;
         background: var(--browser-window-bg);
         z-index: 8;
-        &:hover {
+        &:hover,
+        &:focus-visible {
           background: var(--browser-resize-handle-hover-bg);
         }
         &.x-axis {

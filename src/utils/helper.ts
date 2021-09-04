@@ -10,7 +10,6 @@ declare const requestAnimationFrame: any;
 export const inheritAttributes = (el: HTMLElement, excludes: string[] = [], remove: boolean = true) => {
   const attributes = el.attributes as NamedNodeMap;
   let attributeObject = {};
-  console.log(attributes.length);
   for (let i = 0; i < attributes.length; i++) {
     const { name, value } = attributes[i];
     // console.log(`${name} = ${value}`);
