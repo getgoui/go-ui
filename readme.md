@@ -30,15 +30,19 @@ Accessibility (a11y) is one of the most important criteria that enterprise web a
 
 ## Sponsors
 
-TBC
+Become a sponsor to: 
+- Support the high quality standard of this design system, hence the apps and websites that uses it.
+- Have your organisation's logo and link featured here and on our home page.
+- Gain high-priority issue support.
 
+Contact gov.components@gmail.com to get started, we look forward to hearing from you.
 
 
 ## Tech stack
 
 - Component engine - [Stencil](https://stenciljs.com/)
-- Docs site - TBC
-- Automated testing - [Puppeteer](https://pptr.dev/)
-- A11y testing - [Pa11y](https://pa11y.org/)
+- Documentation site - [Docusaurus](https://docusaurus.io/)
+- Documentation site hosting - [Netlify]()
+- A11y testing - [axe-core](https://github.com/dequelabs/axe-core)
 
 
