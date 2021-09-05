@@ -3,6 +3,7 @@ import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
+import cssnano from 'cssnano';
 
 export const config: Config = {
   namespace: 'gov-components',
@@ -27,7 +28,9 @@ export const config: Config = {
   ],
   globalStyle: 'src/global/styles.scss',
   plugins: [
-    sass(),
+    sass({
+      injectGlobalPaths: ['src/global/scss/utils.scss'], // adds @import 'src/global/scss/utils.scss' statement
+    }),
     postcss({
       plugins: [
         autoprefixer(),
@@ -35,6 +38,9 @@ export const config: Config = {
           propList: ['*'],
           selectorBlackList: [':root', 'html', 'body'],
           replace: false,
+        }),
+        cssnano({
+          preset: 'default',
         }),
       ],
     }),
