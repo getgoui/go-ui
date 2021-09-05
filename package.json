@@ -22,7 +22,7 @@
     "start": "concurrently --kill-others \"npm run dev\" \"npm run docs.start\"",
     "dev": "stencil build --dev --docs-readme --watch",
     "docs.start": "cd docs && npm run clear && npm start",
-    "docs.build": "cd docs && npm run build",
+    "docs.build": "npm run build && cd docs && npm run build",
     "test.spec": "stencil test --spec",
     "test.spec.watch": "stencil test --spec --watchAll",
     "test.e2e": "stencil test --e2e",
