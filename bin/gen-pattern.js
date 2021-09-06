@@ -1,8 +1,10 @@
-import { pascalCase, sentenseCase } from './utils';
 import prompts from 'prompts';
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
+import kebabCase from 'lodash.kebabcase';
+import { pascalCase, sentenseCase } from './utils';
+import { PATTERN_PREFIX } from './const.js';
 
 export default async function pattern(args) {
   const questions = [
@@ -24,6 +26,7 @@ export default async function pattern(args) {
       hint: '- Space to select. Return to submit',
       choices: [
         { title: 'Layout', value: 'Layout' },
+        { title: 'Navigation', value: 'Navigation' },
         { title: 'Form', value: 'Form' },
         { title: 'A11y', value: 'A11y' },
       ],
@@ -31,7 +34,7 @@ export default async function pattern(args) {
   ];
 
   const { patternName, createElement, tags } = await prompts(questions);
-  await writeBoilerplate(patternName, createElement, tags);
+  await writeBoilerplate(kebabCase(patternName), createElement, tags);
 }
 
 /**
@@ -40,7 +43,7 @@ export default async function pattern(args) {
  * @param {boolean} createElement  Whether to create a custom element to encapsulate this pattern.
  */
 function writeBoilerplate(patternName, createElement, tags) {
-  const tagName = patternName;
+  const tagName = getTagName(patternName);
   const dir = `./src/patterns/${patternName}/`;
   const docsDir = `./docs/docs/patterns/`;
   // Create the directory if it doesn't exist.
@@ -77,21 +80,21 @@ function writeBoilerplate(patternName, createElement, tags) {
     } catch (err) {
       console.error(chalk.red(err));
     }
-  }
 
-  // write the readme file
-  const readmeContent = getReadmeContent(tagName);
-  const readmePath = path.resolve(dir, `${tagName}.md`);
-  try {
-    fs.writeFileSync(readmePath, readmeContent);
-    console.log(chalk.green('√ README file generated'));
-  } catch (err) {
-    console.error(chalk.red(err));
+    // write the readme file
+    const readmeContent = getReadmeContent(patternName);
+    const readmePath = path.resolve(dir, `readme.md`);
+    try {
+      fs.writeFileSync(readmePath, readmeContent);
+      console.log(chalk.green('√ README file generated'));
+    } catch (err) {
+      console.error(chalk.red(err));
+    }
   }
 
   // write the e2e test file
-  const e2eTestContent = getE2eTestContent(tagName);
-  const e2eTestPath = path.resolve(`${dir}/test/`, `${tagName}.e2e.ts`);
+  const e2eTestContent = getE2eTestContent(patternName, createElement);
+  const e2eTestPath = path.resolve(`${dir}/test/`, `${patternName}.e2e.ts`);
   try {
     fs.writeFileSync(e2eTestPath, e2eTestContent);
     console.log(chalk.green('√ E2E test file generated'));
@@ -100,8 +103,8 @@ function writeBoilerplate(patternName, createElement, tags) {
   }
 
   // write the demo html file
-  const demoHtmlContent = getDemoHtmlContent(tagName);
-  const demoHtmlPath = path.resolve(`${dir}/demo/`, `${tagName}.html`);
+  const demoHtmlContent = getDemoHtmlContent(patternName, createElement);
+  const demoHtmlPath = path.resolve(`${dir}/demo/`, `${patternName}.html`);
   try {
     fs.writeFileSync(demoHtmlPath, demoHtmlContent);
     console.log(chalk.green('√ Demo html file generated'));
@@ -110,8 +113,8 @@ function writeBoilerplate(patternName, createElement, tags) {
   }
 
   // write the docs file
-  const docsContent = getDocsContent(tagName, tags);
-  const docsPath = path.resolve(docsDir, `${tagName}.mdx`);
+  const docsContent = getDocsContent(patternName, tags, createElement);
+  const docsPath = path.resolve(docsDir, `${patternName}.mdx`);
   try {
     fs.writeFileSync(docsPath, docsContent);
     console.log(chalk.green('√ Docs file generated'));
@@ -119,6 +122,15 @@ function writeBoilerplate(patternName, createElement, tags) {
     console.error(chalk.red(err));
   }
 }
+
+// get dash-case tag name from given pattern name
+// if pattern name doesn't start with gov-, prepend gov-
+const getTagName = (patternName) => {
+  if (!patternName.startsWith(PATTERN_PREFIX)) {
+    patternName = PATTERN_PREFIX + patternName;
+  }
+  return patternName;
+};
 
 /**
  * Get a component file boilerplate.
@@ -158,7 +170,7 @@ const getStyleContent = (tagname) =>
 /**
  * Get the boilerplate for an E2E test.
  */
-const getE2eTestContent = (name) =>
+const getE2eTestContent = (name, createElement) =>
   `import { newE2EPage } from '@stencil/core/testing';
 
 let html = '';
@@ -172,8 +184,8 @@ describe('${name}', () => {
 
   it('renders', async () => {
     const page = await newE2EPage({html});
-    const element = await page.find('${name}');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.find('${createElement ? name : '.random-target'}');
+    ${createElement ? 'expect(element).toHaveClass("hydrated");' : 'expect(element).toBeTruthy();'}
   });
 
 
@@ -184,9 +196,12 @@ describe('${name}', () => {
 });
 `;
 
-const getDemoHtmlContent = (name) => `
-<${name}></${name}>
-`;
+const getDemoHtmlContent = (name, createElement) => {
+  return createElement
+    ? `<${name}></${name}>`
+    : `<!-- Pattern html here -->
+<div class="random-target"></div>`;
+};
 
 const getReadmeContent = (tagname) => `## ${tagname} API
 
@@ -200,8 +215,8 @@ const getTagsFrontmatter = (tags) => {
   - ${tags.join('\n  - ')}`;
 };
 
-const getDocsContent = (tagname, tags) => {
-  const title = sentenseCase(tagname);
+const getDocsContent = (patternName, tags, createElement) => {
+  const title = sentenseCase(patternName);
   return `---
 title: ${title}
 hide_title: true
@@ -209,7 +224,7 @@ ${getTagsFrontmatter(tags)}
 ---
 
 import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!../../../src/patterns/${tagname}/demo/${tagname}.html';
+import demoSource from '!!raw-loader!../../../src/patterns/${patternName}/demo/${patternName}.html';
 
 # ${title}
 
@@ -237,9 +252,14 @@ ${title} is a pattern.
 ## Demo
 
 <Demo code={demoSource} />
-
+${
+  createElement
+    ? `
 <!-- API -->
 
-{@include: ../../../src/patterns/${tagname}/readme.md}
+{@include: ../../../src/patterns/${patternName}/readme.md}
+`
+    : ''
+}
 `;
 };
