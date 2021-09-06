@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 
-export default async function generate(args) {
+export default async function component(args) {
   const questions = [
     {
       type: 'text',
@@ -82,16 +82,6 @@ function writeBoilerplate(tagName, inheritAttrs) {
   try {
     fs.writeFileSync(specTestPath, specTestContent);
     console.log(chalk.green('√ Spec test file generated'));
-  } catch (err) {
-    console.error(chalk.red(err));
-  }
-
-  // write the e2e test file
-  const e2eTestContent = getE2eTestContent(tagName);
-  const e2eTestPath = path.resolve(`${dir}/test/`, `${tagName}.e2e.ts`);
-  try {
-    fs.writeFileSync(e2eTestPath, e2eTestContent);
-    console.log(chalk.green('√ E2E test file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -182,21 +172,6 @@ describe('${tagName}', () => {
        </mock:shadow-root>
      </${tagName}>
    \`);
- });
-});
-`;
-
-/**
- * Get the boilerplate for an E2E test.
- */
-const getE2eTestContent = (name) =>
-  `import { newE2EPage } from '@stencil/core/testing';
-describe('${name}', () => {
- it('renders', async () => {
-   const page = await newE2EPage();
-   await page.setContent('<${name}></${name}>');
-   const element = await page.find('${name}');
-   expect(element).toHaveClass('hydrated');
  });
 });
 `;
