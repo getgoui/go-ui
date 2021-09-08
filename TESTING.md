@@ -18,7 +18,7 @@ Patterns are what design and development teams are going to "grab and use". Simi
 
 ### Automated a11y testing
 
-Accessibility (A11y) is important to us, we ensure our patterns follow the a11y best practices and have them automatically tested against WCAG 2.0 (AA) and WCAG 2.1 (AA) tests. This does not guarantee the code is bulletproof though, so if you encounter any issues or have suggestion on how to improve a11y, please [submit an issue](https://github.com/gov-components/gov-components/issues/new?assignees=&labels=a11y%2C+bug&template=a11y-issue.md&title=%5BA11y+BUG%5D).
+Accessibility (A11y) is important to us, we ensure our patterns follow the a11y best practices and have them automatically tested against WCAG 2.0 (AA) and WCAG 2.1 (AA) tests. This does not guarantee the code is bulletproof though, so if you encounter any issues or have suggestion on how to improve a11y, please [submit an issue](https://github.com/go-components/go-components/issues/new?assignees=&labels=a11y%2C+bug&template=a11y-issue.md&title=%5BA11y+BUG%5D).
 
 You can do something like the following to check a11y.
 

@@ -10,7 +10,7 @@ export default async function component(args) {
       type: 'text',
       name: 'tagname',
       message: 'Component tag name (dash-case):',
-      initial: 'gov-',
+      initial: 'go-',
     },
     {
       type: 'confirm',

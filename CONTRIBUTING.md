@@ -27,9 +27,9 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
 
-## Report bugs using Github's [issues](https://github.com/gov-components/gov-components/issues/new/choose)
+## Report bugs using Github's [issues](https://github.com/go-components/go-components/issues/new/choose)
 
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/gov-components/gov-components/issues/new/choose); it's that easy!
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/go-components/go-components/issues/new/choose); it's that easy!
 
 
 **Great Bug Reports** tend to have:

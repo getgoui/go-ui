@@ -16,7 +16,7 @@ const FeatureList = [
     ),
   },
   {
-    title: 'A11y friendly',
+    title: 'A11y focused',
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
@@ -31,7 +31,7 @@ const FeatureList = [
     description: (
       <>
         Have multiple front-end stack in your organisation and need a consistent look and feel? <br />
-        Gov Components utilise modern browser features so that they can be used in your JS framework of choice.
+        Go Components utilise modern browser features so that they can be used in your JS framework of choice.
         <br />
         <a href="#">See framework integration</a>
       </>

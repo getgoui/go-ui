@@ -1,7 +1,7 @@
 {
-  "name": "gov-components",
+  "name": "go-components",
   "version": "0.0.2",
-  "description": "Stencil Component Starter",
+  "description": "Go Components",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -9,7 +9,7 @@
   "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/gov-components/gov-components.esm.js",
+  "unpkg": "dist/go-components/go-components.esm.js",
   "files": [
     "dist/",
     "loader/"

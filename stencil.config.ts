@@ -6,7 +6,7 @@ import pxtorem from 'postcss-pxtorem';
 import cssnano from 'cssnano';
 
 export const config: Config = {
-  namespace: 'gov-components',
+  namespace: 'go-components',
   outputTargets: [
     {
       type: 'dist',
