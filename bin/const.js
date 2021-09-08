@@ -1,4 +1,4 @@
 module.exports = {
-  COMPONENT_PREFIX: 'gov-',
-  PATTERN_PREFIX: 'gov-',
+  COMPONENT_PREFIX: 'go-',
+  PATTERN_PREFIX: 'go-',
 };

@@ -124,7 +124,7 @@ function writeBoilerplate(patternName, createElement, tags) {
 }
 
 // get dash-case tag name from given pattern name
-// if pattern name doesn't start with gov-, prepend gov-
+// if pattern name doesn't start with go-, prepend go-
 const getTagName = (patternName) => {
   if (!patternName.startsWith(PATTERN_PREFIX)) {
     patternName = PATTERN_PREFIX + patternName;

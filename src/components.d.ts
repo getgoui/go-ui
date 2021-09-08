@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorVariants } from "./types";
 export namespace Components {
-    interface GovButton {
+    interface GoButton {
         /**
           * If set, the button will take up the full width of its parent
          */
@@ -32,18 +32,18 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLGovButtonElement extends Components.GovButton, HTMLStencilElement {
+    interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
     }
-    var HTMLGovButtonElement: {
-        prototype: HTMLGovButtonElement;
-        new (): HTMLGovButtonElement;
+    var HTMLGoButtonElement: {
+        prototype: HTMLGoButtonElement;
+        new (): HTMLGoButtonElement;
     };
     interface HTMLElementTagNameMap {
-        "gov-button": HTMLGovButtonElement;
+        "go-button": HTMLGoButtonElement;
     }
 }
 declare namespace LocalJSX {
-    interface GovButton {
+    interface GoButton {
         /**
           * If set, the button will take up the full width of its parent
          */
@@ -67,14 +67,14 @@ declare namespace LocalJSX {
         "variant"?: ColorVariants;
     }
     interface IntrinsicElements {
-        "gov-button": GovButton;
+        "go-button": GoButton;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "gov-button": LocalJSX.GovButton & JSXBase.HTMLAttributes<HTMLGovButtonElement>;
+            "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
         }
     }
 }

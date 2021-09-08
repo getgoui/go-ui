@@ -2,8 +2,8 @@ import { Component, h, Prop, Element, Host } from '@stencil/core';
 import { ColorVariants } from '../../types';
 import { inheritAttributes } from '../../utils/helper';
 @Component({
-  tag: 'gov-button',
-  styleUrl: 'gov-button.scss',
+  tag: 'go-button',
+  styleUrl: 'go-button.scss',
   shadow: false,
 })
 export class GovButton {

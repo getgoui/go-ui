@@ -4,18 +4,18 @@ const path = require('path');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Gov DS',
-  tagline: 'A pattern-first design system focused on a11y.',
-  url: 'https://gov.components.style',
+  title: 'Go Components',
+  tagline: 'A pattern-first, framework-agnostic, a11y-focused, open source design system.',
+  url: 'https://go.components.style',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'gov-components', // Usually your GitHub org/user name.
-  projectName: 'gov-components', // Usually your repo name.
+  organizationName: 'go-components', // Usually your GitHub org/user name.
+  projectName: 'go-components', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Gov DS',
+      title: 'Go Components',
       logo: {
         alt: '',
         src: 'img/logo.svg',
@@ -35,7 +35,7 @@ module.exports = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/gov-components/gov-components',
+          href: 'https://github.com/go-components/go-components',
           label: 'GitHub',
           position: 'right',
         },
@@ -51,6 +51,23 @@ module.exports = {
               label: 'Patterns',
               to: '/docs/patterns/intro',
             },
+            {
+              label: 'Components',
+              to: '/docs/components/intro',
+            },
+            {
+              label: 'Patterns',
+              to: '/docs/patterns/intro',
+            },
+          ],
+        },
+        {
+          title: 'Contributing',
+          items: [
+            {
+              label: 'Development guide',
+              to: '/development-guide/intro',
+            },
           ],
         },
         {
@@ -62,7 +79,7 @@ module.exports = {
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/gov-components',
+              href: 'https://twitter.com/go-components',
             },
           ],
         },
@@ -75,7 +92,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/gov-components/gov-components',
+              href: 'https://github.com/go-components/go-components',
             },
           ],
         },
