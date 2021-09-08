@@ -4,38 +4,42 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Pattern first',
     Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common patterns and make them easy to use. Allowing both design and development
+        teams to focus on delivering the product.
+        <br />
+        <a href="#">See our patterns</a>
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'A11y friendly',
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        We make sure that our components are accessible and easy to use. We reference the best practice guidelines wherever possible. Our patterns and components go through
+        automated accessibility testing to ensure they meet the WCAG 2.0 AA and WCAG 2.1 AA standard.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Framework agnostic',
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Have multiple front-end stack in your organisation and need a consistent look and feel? <br />
+        Gov Components utilise modern browser features so that they can be used in your JS framework of choice.
+        <br />
+        <a href="#">See framework integration</a>
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">

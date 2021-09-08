@@ -4,8 +4,8 @@ const path = require('path');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Gov DS',
-  tagline: 'A pattern-first design system focused on a11y.',
+  title: 'Gov Components',
+  tagline: 'A pattern-first, framework-agnostic, a11y-focused, open source design system.',
   url: 'https://gov.components.style',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -15,7 +15,7 @@ module.exports = {
   projectName: 'gov-components', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Gov DS',
+      title: 'Gov Components',
       logo: {
         alt: '',
         src: 'img/logo.svg',
@@ -44,6 +44,23 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
+        {
+          title: 'Docs',
+          items: [
+            {
+              label: 'Patterns',
+              to: '/docs/patterns/intro',
+            },
+            {
+              label: 'Components',
+              to: '/docs/components/intro',
+            },
+            {
+              label: 'Patterns',
+              to: '/docs/patterns/intro',
+            },
+          ],
+        },
         {
           title: 'Docs',
           items: [
