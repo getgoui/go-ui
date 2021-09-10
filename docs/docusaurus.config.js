@@ -23,15 +23,27 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'patterns/intro',
+          docId: 'guides/getting-started',
+          position: 'left',
+          label: 'Guides',
+        },
+        {
+          type: 'doc',
+          docId: 'patterns/introduction',
           position: 'left',
           label: 'Patterns',
         },
         {
           type: 'doc',
-          docId: 'components/intro',
+          docId: 'components/introduction',
           position: 'left',
           label: 'Components',
+        },
+        {
+          type: 'doc',
+          docId: 'get-involved/introduction',
+          position: 'left',
+          label: 'Get involved',
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
@@ -49,15 +61,11 @@ module.exports = {
           items: [
             {
               label: 'Patterns',
-              to: '/docs/patterns/intro',
+              to: '/docs/patterns/introduction',
             },
             {
               label: 'Components',
-              to: '/docs/components/intro',
-            },
-            {
-              label: 'Patterns',
-              to: '/docs/patterns/intro',
+              to: '/docs/components/introduction',
             },
           ],
         },
@@ -111,13 +119,15 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/go-components/go-components/edit/main/docs/',
           remarkPlugins: [require('remark-code-import')],
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          editUrl: 'https://github.com/go-components/go-components/edit/main/docs/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
