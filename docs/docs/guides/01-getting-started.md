@@ -19,9 +19,9 @@ npm i go-components
 
 ## Framework setup
 
-You can use our patterns and components within your preferred JavaScript framework or *no framework at all*, [here's why](./02-framework-integration/01-web-components.md).
+You can use our patterns and components within your preferred JavaScript framework or *no framework at all*, [see how](./integration/web-components.md).
 
-- [Angular](./02-integration/02-angular.md)
-- [React](./02-integration/03-react.md)
-- [Vue](./02-integration/04-vue.md)
-- [No framework](./02-integration/05-no-framework.md)
+- [Angular](./integration/angular.md)
+- [React](./integration/react.md)
+- [Vue](./integration/vue.md)
+- [No framework](./integration/no-framework.md)

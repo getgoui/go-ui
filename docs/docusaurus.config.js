@@ -45,7 +45,6 @@ module.exports = {
           position: 'left',
           label: 'Get involved',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/go-components/go-components',
           label: 'GitHub',
@@ -70,11 +69,19 @@ module.exports = {
           ],
         },
         {
-          title: 'Contributing',
+          title: 'Get involved',
           items: [
             {
+              label: 'Bug report',
+              to: '/docs/get-involved/bug-report',
+            },
+            {
+              label: 'Feature request',
+              to: '/docs/get-involved/feature-request',
+            },
+            {
               label: 'Development guide',
-              to: '/development-guide/intro',
+              to: '/docs/get-involved/development-guide',
             },
           ],
         },
@@ -83,7 +90,7 @@ module.exports = {
           items: [
             {
               label: 'Discord',
-              href: 'https://discordapp.com/',
+              href: 'https://discord.gg/g7cuQAdPfS',
             },
             {
               label: 'Twitter',
