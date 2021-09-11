@@ -41,3 +41,6 @@ jobs:
       # Generate changelog
       - name: Generate changelog
         run: npm run release
+
+      - name: Push to main
+        run: git push --follow-tags origin main
