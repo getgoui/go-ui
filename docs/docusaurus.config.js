@@ -83,6 +83,23 @@ module.exports = {
               label: 'Development guide',
               to: '/docs/get-involved/development-guide',
             },
+            {
+              label: 'Components',
+              to: '/docs/components/intro',
+            },
+            {
+              label: 'Patterns',
+              to: '/docs/patterns/intro',
+            },
+          ],
+        },
+        {
+          title: 'Contributing',
+          items: [
+            {
+              label: 'Development guide',
+              to: '/development-guide/intro',
+            },
           ],
         },
         {
