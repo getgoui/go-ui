@@ -4,6 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import CodeBlock from '@theme/CodeBlock';
 
 import demoTemplate from '!!raw-loader!../../static/demo-assets/demo.html';
+// import icons svg from assets folder
+import PhoneIcon from '../assets/icons/phone.svg';
+import TabletIcon from '../assets/icons/tablet.svg';
+import LaptopIcon from '../assets/icons/laptop.svg';
 
 const DemoFrame = ({ code }) => {
   const demoFrame = useRef(null);
@@ -60,6 +64,11 @@ const Demo = ({ code }) => {
       document.removeEventListener('mousemove', onResizeY);
     });
   };
+
+  const resizeToDevice = (device) => {
+    let width = device === 'phone' ? '375px' : device === 'tablet' ? '768px' : device === 'laptop' ? '1024px' : '100%';
+    setContentWidth(width);
+  };
   return (
     <div className="demo-container">
       <div className="fake-browser">
@@ -69,7 +78,20 @@ const Demo = ({ code }) => {
             <div className="dot" />
             <div className="dot" />
           </div>
-          <div className="controls">...</div>
+          <div className="controls">
+            <div className="devices">
+              <span>Devices</span>
+              <button type="button" onClick={() => resizeToDevice('phone')}>
+                <PhoneIcon />
+              </button>
+              <button type="button" onClick={() => resizeToDevice('tablet')}>
+                <TabletIcon />
+              </button>
+              <button type="button" onClick={() => resizeToDevice('laptop')}>
+                <LaptopIcon />
+              </button>
+            </div>
+          </div>
         </div>
 
         <div

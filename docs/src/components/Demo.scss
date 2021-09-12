@@ -1,7 +1,7 @@
 .demo-container {
   /* mimic browser window */
   .fake-browser {
-    --browser-window-bg: rgb(241, 241, 241);
+    --browser-window-bg: var(--ifm-navbar-background-color);
     --browser-frame-width: 100%;
     --browser-resize-handle-hover-bg: rgb(222, 225, 230);
     --browser-resize-handle-size: 32px;
@@ -99,9 +99,34 @@
           min-height: var(--min-frame-height, 200px);
           position: relative;
           z-index: 9;
-          border: 1px solid #efefef;
+          // border: 1px solid #efefef;
         }
       }
+    }
+  }
+
+  .devices {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    button {
+      padding: 4px 6px;
+      border-radius: 4px;
+      margin: 0;
+      border: none;
+      background: none;
+      display: block;
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible {
+        background: #2e2e2e;
+        color: white;
+      }
+    }
+    svg {
+      width: auto;
+      height: auto;
     }
   }
 }
