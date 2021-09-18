@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "luka-bacic",
+      "name": "Luka",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25461013?v=4",
+      "profile": "https://github.com/luka-bacic",
+      "contributions": [
+        "infra",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "go-components",
+  "projectOwner": "go-components",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
