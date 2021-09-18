@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.4 (2021-09-18)
+
+
+### Features
+
+* grid ([#44](https://github.com/go-components/go-components/issues/44)) ([5d170ed](https://github.com/go-components/go-components/commit/5d170eded31afdd6e9af206638554088f1113c70))
+
 ### 0.0.3 (2021-09-11)
 
 
