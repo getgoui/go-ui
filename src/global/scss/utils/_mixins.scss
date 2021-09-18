@@ -1,1 +1,46 @@
 // Put scss mixins here
+
+// min-width media query
+@mixin min-query($device) {
+  @if (map-has-key($breakpoints, $device)) {
+    @media (min-width: map-get($breakpoints, $device)) {
+      @content;
+    }
+  } @else {
+    // device is not in our map, but it might be a width value
+    @media (min-width: $device) {
+      @content;
+    }
+  }
+}
+
+/*
+  Shorthand for tablet media query
+  e.g.
+    @include tablet {
+      font-size: 24px;
+    }
+*/
+@mixin tablet {
+  @include min-query(tablet) {
+    @content;
+  }
+}
+
+/*
+  Shorthand for desktop media query
+  e.g.
+    @include desktop {
+      font-size: 32px;
+    }
+*/
+@mixin desktop {
+  @include min-query(desktop) {
+    @content;
+  }
+}
+
+// shorthand for calculating multiples of base spacing
+@function spacing($multiplier) {
+  @return calc(var(--base-spacing) * #{$multiplier});
+}

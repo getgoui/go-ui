@@ -1,2 +1,35 @@
 // Put scss variables here
-$colors: ();
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
+
+// Grid breakpoints
+$breakpoints: (
+  tablet: 768px,
+  desktop: 1200px,
+) !default;
+// Grid containers
+$container-max-widths: (
+  tablet: 720px,
+  desktop: 1140px,
+) !default;
+
+// Grid columns
+$grid-columns: 12 !default;
+$gutters: $spacers !default;
+
+$colors: (
+  primary: #0070f3,
+  secondary: #ff4081,
+  tertiary: #f50057,
+  accent: #ff4081,
+  dark: #000,
+  light: #fff,
+);

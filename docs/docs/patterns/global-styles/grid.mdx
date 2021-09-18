@@ -1,0 +1,30 @@
+---
+title: Grid
+hide_title: true
+sidebar_position: 2
+tags:
+  - Layout
+---
+
+import Demo from '@/components/Demo';
+import demoSource from '!!raw-loader!../../../../src/patterns/grid/demo/grid.html';
+import offsetDemoSource from '!!raw-loader!../../../../src/patterns/grid/demo/grid-offset.html';
+
+# Grid
+
+<!-- Description -->
+
+Go Components provides a familar 12-column grid system, with a few key differences to simplify the usage:
+
+- There are less breakpoints, `mobile` by default, then `tablet` and `desktop`, this covers most of the usecases, while keeping your layouts flexible and performant. You can add more breakpoints by overriding the `$breakpoints` sass variable. [See how to override sass variables](../../guides/theming/sass#overriding-sass-variables).
+- The media query modifiers are based on the device names you have in the `$breakpoints` varialbe. (e.g. `col-tablet-6`, `col-desktop-4`)
+- There is no default gap between columns, you can add it by changing the `--go-grid-gap` css variable.
+- `--go-outer-gutter` is applied as paddings of the grid container.
+
+## Demo
+
+<Demo code={demoSource} />
+
+## Offset
+
+<Demo code={offsetDemoSource} />

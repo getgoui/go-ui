@@ -39,9 +39,9 @@ export const config: Config = {
           selectorBlackList: [':root', 'html', 'body'],
           replace: false,
         }),
-        cssnano({
-          preset: 'default',
-        }),
+        // cssnano({
+        //   preset: 'default',
+        // }),
       ],
     }),
   ],
