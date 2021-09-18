@@ -1,1 +1,7 @@
 // CSS Variables
+:root,
+html {
+  // Grid
+  --go-outer-gutter: 1rem; // Container gutter
+  --go-col-gap: 0; // Gap between columns
+}

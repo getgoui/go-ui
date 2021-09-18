@@ -1,0 +1,118 @@
+// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--go-gutter-y) * -1);
+  gap: var(--go-col-gap);
+}
+
+@mixin make-col-ready() {
+  // Add box sizing if only the grid is loaded
+  box-sizing: border-box;
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we set the width
+  // later on to override this initial width.
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+}
+
+@mixin make-col($size: false, $columns: 12) {
+  @if $size {
+    flex: 0 0 auto;
+    width: percentage($size / $columns);
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: $size / $columns;
+  margin-left: if($num == 0, 0, percentage($num));
+}
+
+// Row columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: divide(100%, $count);
+  }
+}
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+@mixin make-grid-columns($breakpoints: $breakpoints) {
+  $columns: 12;
+  .col {
+    flex: 1 0 0%;
+  }
+  .col-auto {
+    @include make-col-auto();
+  }
+  @if $columns > 0 {
+    @for $i from 1 through $columns {
+      .col-#{$i} {
+        @include make-col($i, $columns);
+      }
+    }
+
+    // `$columns - 1` because offsetting by the width of an entire row isn't possible
+    @for $i from 0 through ($columns - 1) {
+      @if not($i == 0) {
+        // Avoid emitting useless .offset-0
+        .offset-#{$i} {
+          @include make-col-offset($i, $columns);
+        }
+      }
+    }
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: #{-$breakpoint};
+
+    @include min-query($breakpoint) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$infix} {
+        flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      }
+
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        // `$columns - 1` because offsetting by the width of an entire row isn't possible
+        @for $i from 0 through ($columns - 1) {
+          @if not($infix == '' and $i == 0) {
+            // Avoid emitting useless .offset-0
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,20 +8,23 @@ tags:
 
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!../../../../src/patterns/grid/demo/grid.html';
+import offsetDemoSource from '!!raw-loader!../../../../src/patterns/grid/demo/grid-offset.html';
 
 # Grid
 
 <!-- Description -->
 
-Go Components provides a 12-column grid system, functionally similar to the popular Bootstrap grid system, but with a few key differences:
+Go Components provides a familar 12-column grid system, with a few key differences to simplify the usage:
 
-- Out of the box, there are less breakpoints (mobile, tablet, desktop), you can add more breakpoints by overriding the `$breakpoints` variable. [See customise breakpoints](./media-queries).
+- There are less breakpoints, `mobile` by default, then `tablet` and `desktop`, this covers most of the usecases, while keeping your layouts flexible and performant. You can add more breakpoints by overriding the `$breakpoints` sass variable. [See how to override sass variables](../../guides/theming/sass#overriding-sass-variables).
 - The media query modifiers are based on the device names you have in the `$breakpoints` varialbe. (e.g. `col-tablet-6`, `col-desktop-4`)
-- `.container` widths are based on the `$breakpoints` variable.
-- `.row` divs are not necessary.
+- There is no default gap between columns, you can add it by changing the `--go-grid-gap` css variable.
+- `--go-outer-gutter` is applied as paddings of the grid container.
 
-<!-- Demos, tips, variations, use cases -->
-
-## Example
+## Demo
 
 <Demo code={demoSource} />
+
+## Offset
+
+<Demo code={offsetDemoSource} />

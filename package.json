@@ -12,7 +12,8 @@
   "unpkg": "dist/go-components/go-components.esm.js",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "src/global/"
   ],
   "bin": {
     "gg": "./bin/index.js"

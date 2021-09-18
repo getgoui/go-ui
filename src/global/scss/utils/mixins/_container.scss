@@ -1,0 +1,9 @@
+// Container mixins
+
+@mixin make-container() {
+  width: 100%;
+  padding-right: var(--go-outer-gutter, 1rem);
+  padding-left: var(--go-outer-gutter, 1rem);
+  margin-right: auto;
+  margin-left: auto;
+}

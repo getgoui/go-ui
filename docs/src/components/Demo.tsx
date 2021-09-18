@@ -66,7 +66,7 @@ const Demo = ({ code }) => {
   };
 
   const resizeToDevice = (device) => {
-    let width = device === 'phone' ? '375px' : device === 'tablet' ? '768px' : device === 'laptop' ? '1024px' : '100%';
+    let width = device === 'phone' ? '375px' : device === 'tablet' ? '768px' : device === 'laptop' ? '1200px' : '100%';
     setContentWidth(width);
   };
   return (
