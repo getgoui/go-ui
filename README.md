@@ -1,6 +1,6 @@
 # Go Components
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 A design system that focuses on:
 - Patterns
@@ -60,6 +60,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/luka-bacic"><img src="https://avatars.githubusercontent.com/u/25461013?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luka</b></sub></a><br /><a href="#infra-luka-bacic" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/go-components/go-components/commits?author=luka-bacic" title="Code">💻</a></td>
+    <td align="center"><a href="http://seanwuapps.com"><img src="https://avatars.githubusercontent.com/u/10577684?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sean Wu</b></sub></a><br /><a href="#infra-seanwuapps" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/go-components/go-components/commits?author=seanwuapps" title="Code">💻</a> <a href="https://github.com/go-components/go-components/commits?author=seanwuapps" title="Documentation">📖</a> <a href="#example-seanwuapps" title="Examples">💡</a> <a href="https://github.com/go-components/go-components/commits?author=seanwuapps" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
