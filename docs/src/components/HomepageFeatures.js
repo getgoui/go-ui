@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
+import Link from '@docusaurus/Link';
 
 const FeatureList = [
   {
@@ -11,7 +12,7 @@ const FeatureList = [
         Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common patterns and make them easy to use. Allowing both design and development
         teams to focus on delivering the product.
         <br />
-        <a href="#">See our patterns</a>
+        <Link href="#">See our patterns</Link>
       </>
     ),
   },
@@ -33,7 +34,7 @@ const FeatureList = [
         Have multiple front-end stack in your organisation and need a consistent look and feel? <br />
         Go Components utilise modern browser features so that they can be used in your JS framework of choice.
         <br />
-        <a href="#">See framework integration</a>
+        <Link href="#">See framework integration</Link>
       </>
     ),
   },

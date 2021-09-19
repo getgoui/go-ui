@@ -1,5 +1,5 @@
 {
-  "name": "go-components",
+  "name": "@go-ui/core",
   "version": "0.0.5",
   "description": "Go Components",
   "main": "dist/index.cjs.js",
