@@ -137,7 +137,7 @@ module.exports = {
           editUrl: 'https://github.com/go-components/go-components/edit/main/docs/blog/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       },
     ],
