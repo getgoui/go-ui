@@ -1,15 +1,8 @@
 // Put scss variables here
 
-$spacer: 1rem !default;
-$spacers: (
-  0: 0,
-  1: $spacer * 0.25,
-  2: $spacer * 0.5,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
-) !default;
-
+//----------------------------------
+// Grid
+//----------------------------------
 // Grid breakpoints
 $breakpoints: (
   tablet: 768px,
@@ -20,11 +13,12 @@ $container-max-widths: (
   tablet: 720px,
   desktop: 1140px,
 ) !default;
-
 // Grid columns
 $grid-columns: 12 !default;
-$gutters: $spacers !default;
 
+//----------------------------------
+// Colours
+//----------------------------------
 $colors: (
   primary: #0070f3,
   secondary: #ff4081,
@@ -32,4 +26,87 @@ $colors: (
   accent: #ff4081,
   dark: #000,
   light: #fff,
+);
+
+//----------------------------------
+// Typography
+//----------------------------------
+// font family
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+
+$typography: (
+  h1: (
+    family: $font-family,
+    weight: 700,
+    size: 3.052rem,
+    line-height: 1.2,
+    letter-spacing: -0.02em,
+  ),
+  h2: (
+    family: $font-family,
+    weight: 700,
+    size: 2.441rem,
+    line-height: 1.2,
+    letter-spacing: -0.02em,
+  ),
+  h3: (
+    family: $font-family,
+    weight: 700,
+    size: 1.953rem,
+    line-height: 1.2,
+    letter-spacing: -0.02em,
+  ),
+  h4: (
+    family: $font-family,
+    weight: 700,
+    size: 1.563rem,
+    line-height: 1.2,
+    letter-spacing: -0.02em,
+  ),
+  h5: (
+    family: $font-family,
+    weight: 700,
+    size: 1.25rem,
+    line-height: 1.2,
+    letter-spacing: -0.02em,
+  ),
+  h6: (
+    family: $font-family,
+    weight: 700,
+    size: 1rem,
+    line-height: 1.2,
+    letter-spacing: -0.02em,
+  ),
+  body: (
+    family: $font-family,
+    weight: 400,
+    size: 1rem,
+    line-height: 1.5,
+    letter-spacing: 0,
+  ),
+  text: (
+    family: $font-family,
+    weight: 400,
+    size: 1rem,
+    line-height: 1.5,
+    letter-spacing: 0,
+  ),
+  button: (
+    family: $font-family,
+    weight: 700,
+    size: 1rem,
+    line-height: 1.5,
+    letter-spacing: 0,
+  ),
+  small: (
+    family: $font-family,
+    weight: 400,
+    size: 0.8rem,
+    line-height: 1.5,
+    letter-spacing: 0,
+  ),
+  code: (
+    family: $font-family,
+    weight: 400,
+    size: 0.8rem,
 );
