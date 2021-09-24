@@ -32,81 +32,64 @@ $colors: (
 // Typography
 //----------------------------------
 // font family
-$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+$primary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+$secondary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
 
 $typography: (
   h1: (
-    family: $font-family,
+    family: $primary-font,
     weight: 700,
     size: 3.052rem,
     line-height: 1.2,
     letter-spacing: -0.02em,
   ),
   h2: (
-    family: $font-family,
+    family: $primary-font,
     weight: 700,
     size: 2.441rem,
     line-height: 1.2,
     letter-spacing: -0.02em,
   ),
   h3: (
-    family: $font-family,
+    family: $primary-font,
     weight: 700,
     size: 1.953rem,
     line-height: 1.2,
     letter-spacing: -0.02em,
   ),
   h4: (
-    family: $font-family,
+    family: $primary-font,
     weight: 700,
     size: 1.563rem,
     line-height: 1.2,
     letter-spacing: -0.02em,
   ),
   h5: (
-    family: $font-family,
+    family: $primary-font,
     weight: 700,
     size: 1.25rem,
     line-height: 1.2,
     letter-spacing: -0.02em,
   ),
   h6: (
-    family: $font-family,
+    family: $primary-font,
     weight: 700,
     size: 1rem,
     line-height: 1.2,
     letter-spacing: -0.02em,
   ),
   body: (
-    family: $font-family,
+    family: $primary-font,
     weight: 400,
-    size: 1rem,
-    line-height: 1.5,
-    letter-spacing: 0,
-  ),
-  text: (
-    family: $font-family,
-    weight: 400,
-    size: 1rem,
-    line-height: 1.5,
-    letter-spacing: 0,
-  ),
-  button: (
-    family: $font-family,
-    weight: 700,
     size: 1rem,
     line-height: 1.5,
     letter-spacing: 0,
   ),
   small: (
-    family: $font-family,
+    family: $primary-font,
     weight: 400,
     size: 0.8rem,
     line-height: 1.5,
     letter-spacing: 0,
   ),
-  code: (
-    family: $font-family,
-    weight: 400,
-    size: 0.8rem,
 );
