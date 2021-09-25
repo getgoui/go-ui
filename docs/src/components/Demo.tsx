@@ -8,19 +8,36 @@ import demoTemplate from '!!raw-loader!../../static/demo-assets/demo.html';
 import PhoneIcon from '../assets/icons/phone.svg';
 import TabletIcon from '../assets/icons/tablet.svg';
 import LaptopIcon from '../assets/icons/laptop.svg';
+import ExternalIcon from '../assets/icons/external-link.svg';
 
-const DemoFrame = ({ code }) => {
+const setDemoContent = (window, code) => {
+  const doc = window.document;
+  const html = demoTemplate.replace('{🔥🔥🔥}', code);
+  doc.open();
+  doc.write(html);
+  doc.close();
+};
+
+const DemoFrame = ({ code, onLoad, onResize }) => {
   const demoFrame = useRef(null);
 
+  // onload content
   useEffect(() => {
     if (demoFrame.current) {
-      const doc = demoFrame.current.contentWindow.document;
-      const html = demoTemplate.replace('{🔥🔥🔥}', code);
-      doc.open();
-      doc.write(html);
-      doc.close();
+      const window = demoFrame.current.contentWindow;
+      setDemoContent(window, code);
+      const resizeHandler = (e) => {
+        onResize(e.target);
+      };
+      window.addEventListener('resize', resizeHandler);
+      onLoad(window);
+
+      return () => {
+        window.removeEventListener('resize', resizeHandler);
+      };
     }
   }, [code]);
+
   return <iframe title="demo frame" ref={demoFrame} />;
 };
 
@@ -29,6 +46,7 @@ const Demo = ({ code }) => {
   const [resizingY, setResizingY] = useState(false);
   const [contentWidth, setContentWidth] = useState('100%');
   const [contentHeight, setContentHeight] = useState('100%');
+  const [actualFrameHeight, setActualFrameHeight] = useState(0);
   const contentEl = useRef(null);
   const minFrameHeight = 200;
   const startResizeX = () => {
@@ -69,6 +87,10 @@ const Demo = ({ code }) => {
     let width = device === 'phone' ? '375px' : device === 'tablet' ? '768px' : device === 'laptop' ? '1200px' : '100%';
     setContentWidth(width);
   };
+  const openNewWindow = () => {
+    var win = window.open('', 'Demo', 'toolbar=yes,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,width=1200,height=800,top=0,left=0');
+    setDemoContent(win, code);
+  };
   return (
     <div className="demo-container">
       <div className="fake-browser">
@@ -80,14 +102,16 @@ const Demo = ({ code }) => {
           </div>
           <div className="controls">
             <div className="devices">
-              <span>Devices</span>
-              <button type="button" onClick={() => resizeToDevice('phone')}>
+              <button title="New window" type="button" onClick={openNewWindow}>
+                <ExternalIcon />
+              </button>
+              <button title="Mobile view" type="button" onClick={() => resizeToDevice('phone')}>
                 <PhoneIcon />
               </button>
-              <button type="button" onClick={() => resizeToDevice('tablet')}>
+              <button title="Tablet view" type="button" onClick={() => resizeToDevice('tablet')}>
                 <TabletIcon />
               </button>
-              <button type="button" onClick={() => resizeToDevice('laptop')}>
+              <button title="Desktop view" type="button" onClick={() => resizeToDevice('laptop')}>
                 <LaptopIcon />
               </button>
             </div>
@@ -104,12 +128,30 @@ const Demo = ({ code }) => {
           }}>
           <div className="frame-wrapper">
             {resizingX || resizingY ? <div className="resize-overlay"></div> : null}
-            <DemoFrame code={code} />
+            <DemoFrame
+              code={code}
+              onLoad={(frameWindow) => {
+                setActualFrameHeight(frameWindow.document.body.scrollHeight);
+              }}
+              onResize={(frameWindow) => {
+                setActualFrameHeight(frameWindow.document.body.scrollHeight);
+              }}
+            />
           </div>
-          <button type="button" onMouseDown={startResizeX} className="resize-handle x-axis">
+          <button
+            type="button"
+            onMouseDown={startResizeX}
+            onDoubleClick={() => setContentWidth('100%')}
+            className="resize-handle x-axis"
+            title="Drag to resize, double click to reset">
             <span>||</span>
           </button>
-          <button type="button" onMouseDown={startResizeY} className="resize-handle y-axis">
+          <button
+            type="button"
+            onMouseDown={startResizeY}
+            onDoubleClick={() => setContentHeight(`${actualFrameHeight + 80}px`)}
+            className="resize-handle y-axis"
+            title="Drag to resize, double click to show full content">
             <span>||</span>
           </button>
         </div>
