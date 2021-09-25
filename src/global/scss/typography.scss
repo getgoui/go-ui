@@ -1,5 +1,62 @@
+//----------------//
+// Headings
+//----------------//
+@function getTypeVarName($type-level, $key) {
+  @return --go-type-#{$type-level}-#{$key};
+}
+@mixin font-style($type-level, $details, $key, $prop-name: '') {
+  @if (map-has-key($details, $key)) {
+    $var-name: getTypeVarName($type-level, $key);
+    @if ($prop-name != '') {
+      #{$prop-name}: var($var-name);
+    } @else {
+      font-#{$key}: var($var-name);
+    }
+  }
+}
+
+@mixin font-vars() {
+  @each $type-level, $details in $typography {
+    @each $key, $value in $details {
+      $var-name: getTypeVarName($type-level, $key);
+
+      @if ($key == 'size') {
+        #{$var-name}: calc(#{map-get($details, 'size')} * var(--go-type-base-font-size));
+      } @else {
+        #{$var-name}: #{$value};
+      }
+    }
+  }
+}
+
+// Typography css variables
+:root {
+  --go-primary-font: #{$primary-font};
+  --go-secondary-font: #{$secondary-font};
+  --go-type-base-font-size: #{$base-font-size};
+  // responseive scale of font-size
+  @each $breakpoint, $scale in $font-responsive-scales {
+    @include min-query($breakpoint) {
+      --go-type-base-font-size: calc(#{$scale} * #{$base-font-size});
+    }
+  }
+  @include font-vars();
+}
+
+// Root font family
 html,
 body {
   font-family: $primary-font;
+  line-height: 1.5;
 }
-// utility classes
+
+@each $type-level, $details in $typography {
+  #{$type-level},
+  .#{$type-level} {
+    margin: 0;
+    @include font-style($type-level, $details, 'size');
+    @include font-style($type-level, $details, 'weight');
+    @include font-style($type-level, $details, 'line-height', 'line-height');
+    @include font-style($type-level, $details, 'letter-spacing', 'letter-spacing');
+  }
+}

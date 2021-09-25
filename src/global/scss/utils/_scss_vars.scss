@@ -35,61 +35,59 @@ $colors: (
 $primary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
 $secondary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
 
+$base-font-size: 1rem !default;
+
+$font-desktop-scale: 1.2 !default;
+
+$font-responsive-scales: (
+  tablet: 1,
+  desktop: $font-desktop-scale,
+) !default;
+
 $typography: (
   h1: (
-    family: $primary-font,
     weight: 700,
-    size: 3.052rem,
-    line-height: 1.2,
-    letter-spacing: -0.02em,
+    size: 4,
+    line-height: 1.3,
   ),
   h2: (
-    family: $primary-font,
     weight: 700,
-    size: 2.441rem,
-    line-height: 1.2,
-    letter-spacing: -0.02em,
+    size: 3.5,
+    line-height: 1.3,
   ),
   h3: (
-    family: $primary-font,
     weight: 700,
-    size: 1.953rem,
-    line-height: 1.2,
-    letter-spacing: -0.02em,
+    size: 3,
+    line-height: 1.5,
   ),
   h4: (
-    family: $primary-font,
     weight: 700,
-    size: 1.563rem,
-    line-height: 1.2,
-    letter-spacing: -0.02em,
+    size: 2,
+    line-height: 1.5,
   ),
   h5: (
-    family: $primary-font,
     weight: 700,
-    size: 1.25rem,
-    line-height: 1.2,
-    letter-spacing: -0.02em,
+    size: 1.5,
+    line-height: 1.5,
   ),
   h6: (
-    family: $primary-font,
     weight: 700,
-    size: 1rem,
-    line-height: 1.2,
-    letter-spacing: -0.02em,
+    size: 1,
+    line-height: 1.5,
+  ),
+  big: (
+    weight: 400,
+    size: 1.25,
+    line-height: 1.5,
   ),
   body: (
-    family: $primary-font,
     weight: 400,
-    size: 1rem,
-    line-height: 1.5,
-    letter-spacing: 0,
+    size: 1,
+    line-height: 1.4,
   ),
   small: (
-    family: $primary-font,
     weight: 400,
-    size: 0.8rem,
-    line-height: 1.5,
-    letter-spacing: 0,
+    size: 0.75,
+    line-height: 1.4,
   ),
-);
+) !default;
