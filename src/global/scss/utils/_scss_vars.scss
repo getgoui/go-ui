@@ -1,15 +1,8 @@
 // Put scss variables here
 
-$spacer: 1rem !default;
-$spacers: (
-  0: 0,
-  1: $spacer * 0.25,
-  2: $spacer * 0.5,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
-) !default;
-
+//----------------------------------
+// Grid
+//----------------------------------
 // Grid breakpoints
 $breakpoints: (
   tablet: 768px,
@@ -20,11 +13,12 @@ $container-max-widths: (
   tablet: 720px,
   desktop: 1140px,
 ) !default;
-
 // Grid columns
 $grid-columns: 12 !default;
-$gutters: $spacers !default;
 
+//----------------------------------
+// Colours
+//----------------------------------
 $colors: (
   primary: #0070f3,
   secondary: #ff4081,
@@ -33,3 +27,67 @@ $colors: (
   dark: #000,
   light: #fff,
 );
+
+//----------------------------------
+// Typography
+//----------------------------------
+// font family
+$primary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+$secondary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+
+$base-font-size: 1rem !default;
+
+$font-desktop-scale: 1.2 !default;
+
+$font-responsive-scales: (
+  tablet: 1,
+  desktop: $font-desktop-scale,
+) !default;
+
+$typography: (
+  h1: (
+    weight: 700,
+    size: 4,
+    line-height: 1.3,
+  ),
+  h2: (
+    weight: 700,
+    size: 3.5,
+    line-height: 1.3,
+  ),
+  h3: (
+    weight: 700,
+    size: 3,
+    line-height: 1.5,
+  ),
+  h4: (
+    weight: 700,
+    size: 2,
+    line-height: 1.5,
+  ),
+  h5: (
+    weight: 700,
+    size: 1.5,
+    line-height: 1.5,
+  ),
+  h6: (
+    weight: 700,
+    size: 1,
+    line-height: 1.5,
+  ),
+  big: (
+    weight: 400,
+    size: 1.25,
+    line-height: 1.5,
+  ),
+  body: (
+    weight: 400,
+    size: 1,
+    line-height: 1.4,
+  ),
+  small: (
+    weight: 400,
+    size: 0.75,
+    line-height: 1.4,
+  ),
+) !default;

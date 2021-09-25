@@ -1,4 +1,5 @@
 // Put scss mixins here
+@use "sass:map";
 
 // min-width media query
 @mixin min-query($device) {

@@ -14,6 +14,7 @@ module.exports = {
   organizationName: 'go-components', // Usually your GitHub org/user name.
   projectName: 'go-components', // Usually your repo name.
   themeConfig: {
+    hideableSidebar: true,
     navbar: {
       title: 'Go Components',
       logo: {
@@ -124,6 +125,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          sidebarCollapsed: false,
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/go-components/go-components/edit/main/docs/',

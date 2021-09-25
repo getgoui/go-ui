@@ -29,6 +29,8 @@ export default async function pattern(args) {
         { title: 'Navigation', value: 'Navigation' },
         { title: 'Form', value: 'Form' },
         { title: 'A11y', value: 'A11y' },
+        { title: 'Utility', value: 'Utility' },
+        { title: 'Global styles', value: 'Global styles' },
       ],
     },
   ];
