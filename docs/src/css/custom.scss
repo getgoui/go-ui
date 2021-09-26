@@ -7,13 +7,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #006ce0;
-  --ifm-color-primary-dark: #004c9d;
-  --ifm-color-primary-darker: #002b5a;
-  --ifm-color-primary-darkest: #000b16;
-  --ifm-color-primary-light: #248eff;
-  --ifm-color-primary-lighter: #67b0ff;
-  --ifm-color-primary-lightest: #abd3ff;
+  --ifm-color-primary: #4169e1;
+  --ifm-color-primary-dark: #224ed5;
+  --ifm-color-primary-darker: #1c41af;
+  --ifm-color-primary-darkest: #102564;
+  --ifm-color-primary-light: #6787e7;
+  --ifm-color-primary-lighter: #8ca4ed;
+  --ifm-color-primary-lightest: #d7e0f9;
   --ifm-code-font-size: 95%;
 }
 
@@ -43,7 +43,7 @@ html[data-theme='dark'] {
   }
 }
 *:focus-visible {
-  outline: 2px solid var(--ifm-link-color);
+  outline: 2px solid var(--ifm-color-success-light);
   outline-offset: 2px;
 }
 
@@ -82,11 +82,19 @@ html[data-theme='dark'] {
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300;400;700&display=swap');
 html,
 body {
-  --ifm-heading-font-family: 'Lato', sans-serif;
-  --ifm-font-family-base: 'Open Sans', sans-serif;
+  --ifm-heading-font-family: 'Open Sans', sans-serif;
+  --ifm-font-family-base: 'Lato', sans-serif;
   font-family: var(--ifm-font-family-base);
   button {
     font-family: var(--ifm-font-family-base);
     line-height: 1;
   }
+}
+
+.hero--primary {
+  --ifm-hero-background-color: var(--ifm-color-primary-darker);
+}
+
+.footer {
+  --ifm-footer-padding-vertical: 4rem;
 }
