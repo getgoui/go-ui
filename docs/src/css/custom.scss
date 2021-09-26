@@ -78,3 +78,15 @@ html[data-theme='dark'] {
     margin-top: 0.5rem;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300;400;700&display=swap');
+html,
+body {
+  --ifm-heading-font-family: 'Lato', sans-serif;
+  --ifm-font-family-base: 'Open Sans', sans-serif;
+  font-family: var(--ifm-font-family-base);
+  button {
+    font-family: var(--ifm-font-family-base);
+    line-height: 1;
+  }
+}

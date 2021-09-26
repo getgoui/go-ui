@@ -6,7 +6,6 @@ import Link from '@docusaurus/Link';
 const FeatureList = [
   {
     title: 'Pattern first',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common patterns and make them easy to use. Allowing both design and development
@@ -17,24 +16,22 @@ const FeatureList = [
     ),
   },
   {
-    title: 'A11y focused',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Framework agnostic',
     description: (
       <>
-        We make sure that our components are accessible and easy to use. We reference the best practice guidelines wherever possible. Our patterns and components go through
-        automated accessibility testing to ensure they meet the WCAG 2.0 AA and WCAG 2.1 AA standard.
+        Have multiple front-end stack in your organisation and need a consistent look and feel? Go Components utilise modern browser features such as web components and CSS custom
+        properties so that they can be used in your front-end tech stack.
+        <br />
+        <Link href="#">See framework integration</Link>
       </>
     ),
   },
   {
-    title: 'Framework agnostic',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: 'A11y focused',
     description: (
       <>
-        Have multiple front-end stack in your organisation and need a consistent look and feel? <br />
-        Go Components utilise modern browser features so that they can be used in your JS framework of choice.
-        <br />
-        <Link href="#">See framework integration</Link>
+        We make sure that our components are accessible and easy to use. We reference the best practice guidelines wherever possible. Our patterns and components go through
+        automated accessibility testing to ensure they meet the WCAG 2.0 AA and WCAG 2.1 AA standard.
       </>
     ),
   },
@@ -43,11 +40,8 @@ const FeatureList = [
 function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+      <div className="text--center padding-horiz--sm">
+        <h2>{title}</h2>
         <p>{description}</p>
       </div>
     </div>
