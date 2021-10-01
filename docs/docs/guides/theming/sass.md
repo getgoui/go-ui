@@ -11,13 +11,13 @@ This means if your project supports sass, you can utilise our built-in customisa
 ## Importing sass source into your project
 
 ```scss
-@import '~go-components/src/global/styles.scss';
+@import '~@go-ui/core/src/global/styles.scss';
 ```
 
 If you only need to utilise the variables and mixins, you can import the utils partial like this:
 
 ```scss
-@import '~go-components/src/global/scss/utils.scss';
+@import '~@go-ui/core/src/global/scss/utils.scss';
 ```
 
 
@@ -32,5 +32,5 @@ $breakpoints: (
   4k: 2560px
 );
 // This will generate classes such as `.container-phablet` and `.col-4k-1` to `.col-4k-12`
-@import '~go-components/src/global/styles.scss';
+@import '~@go-ui/core/src/global/styles.scss';
 ```
