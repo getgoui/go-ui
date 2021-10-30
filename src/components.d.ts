@@ -30,8 +30,6 @@ export namespace Components {
          */
         "variant"?: ColorVariants;
     }
-    interface GoColor {
-    }
 }
 declare global {
     interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
@@ -40,15 +38,8 @@ declare global {
         prototype: HTMLGoButtonElement;
         new (): HTMLGoButtonElement;
     };
-    interface HTMLGoColorElement extends Components.GoColor, HTMLStencilElement {
-    }
-    var HTMLGoColorElement: {
-        prototype: HTMLGoColorElement;
-        new (): HTMLGoColorElement;
-    };
     interface HTMLElementTagNameMap {
         "go-button": HTMLGoButtonElement;
-        "go-color": HTMLGoColorElement;
     }
 }
 declare namespace LocalJSX {
@@ -75,11 +66,8 @@ declare namespace LocalJSX {
          */
         "variant"?: ColorVariants;
     }
-    interface GoColor {
-    }
     interface IntrinsicElements {
         "go-button": GoButton;
-        "go-color": GoColor;
     }
 }
 export { LocalJSX as JSX };
@@ -87,7 +75,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
-            "go-color": LocalJSX.GoColor & JSXBase.HTMLAttributes<HTMLGoColorElement>;
         }
     }
 }

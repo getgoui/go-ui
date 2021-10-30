@@ -17,18 +17,6 @@ $container-max-widths: (
 $grid-columns: 12 !default;
 
 //----------------------------------
-// Colours
-//----------------------------------
-$colors: (
-  primary: #0070f3,
-  secondary: #ff4081,
-  tertiary: #f50057,
-  accent: #ff4081,
-  dark: #000,
-  light: #fff,
-);
-
-//----------------------------------
 // Typography
 //----------------------------------
 // font family
@@ -90,4 +78,55 @@ $typography: (
     size: 0.75,
     line-height: 1.4,
   ),
+) !default;
+
+//----------------------------------
+// Colors
+//----------------------------------
+// Sass variables are used to generate CSS variables.
+// Components and consumers should always use css variables to define colors.
+$color-tokens: (
+  // primary: rgb(66, 23, 166),
+  // secondary: rgb(24, 160, 142),
+  // success: rgb(90, 135, 92),
+  // error: rgb(209, 65, 46),
+  // neutral: rgb(102, 102, 102),
+  // darkest: rgb(0, 0, 0),
+  // lightest: rgb(255, 255, 255),
+  primary:
+    (
+      r: 66,
+      g: 23,
+      b: 166,
+    ),
+  secondary: (
+    r: 24,
+    g: 160,
+    b: 142,
+  ),
+  success: (
+    r: 90,
+    g: 135,
+    b: 92,
+  ),
+  error: (
+    r: 209,
+    g: 65,
+    b: 46,
+  ),
+  neutral: (
+    r: 102,
+    g: 102,
+    b: 102,
+  ),
+  darkest: (
+    r: 0,
+    g: 0,
+    b: 0,
+  ),
+  lightest: (
+    r: 255,
+    g: 255,
+    b: 255,
+  )
 ) !default;

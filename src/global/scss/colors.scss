@@ -1,11 +1,3 @@
 @import './themes/default.scss';
 @import './themes/light.scss';
 @import './themes/dark.scss';
-$color-bg: var(--color-bg, white);
-$color-text: var(--color-text, black);
-
-html,
-body {
-  background: $color-bg;
-  color: $color-text;
-}
