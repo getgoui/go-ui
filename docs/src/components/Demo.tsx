@@ -156,7 +156,7 @@ const Demo = ({ code }) => {
           </button>
         </div>
       </div>
-      <details>
+      <details className="source-code">
         <summary>Source code</summary>
         <CodeBlock className="language-jsx">{code}</CodeBlock>
       </details>

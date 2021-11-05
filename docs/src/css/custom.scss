@@ -98,3 +98,17 @@ body {
 .footer {
   --ifm-footer-padding-vertical: 4rem;
 }
+
+table {
+  display: table;
+  width: 100%;
+  border: 1px solid var(--ifm-table-border-color);
+  tr,
+  td,
+  th {
+    border: 0;
+  }
+  thead {
+    border-bottom: 2px solid var(--ifm-table-border-color);
+  }
+}

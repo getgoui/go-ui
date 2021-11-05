@@ -21,6 +21,7 @@
   "scripts": {
     "build": "stencil build --docs",
     "start": "concurrently --kill-others \"npm run dev\" \"npm run docs.start\"",
+    "serve": "stencil build --dev --watch --serve",
     "dev": "stencil build --dev --docs-readme --watch",
     "docs.start": "cd docs && npm run clear && npm start",
     "docs.build": "npm run build && cd docs && npm i && npm run build",

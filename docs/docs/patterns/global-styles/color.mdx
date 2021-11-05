@@ -6,6 +6,8 @@ tags:
   - Global styles
 ---
 
+import ColorGenerator from '@/components/color/ColorGenerator';
+import demoSource from '!!raw-loader!../../../../src/patterns/color/demo/color.html';
 import Demo from '@/components/Demo';
 
 # Color
@@ -15,15 +17,18 @@ We found that the most common colors used in the web can be categorised in these
 - Layout colors (e.g. background, text, border)
 - Interactive colors (e.g. primary & secondary)
 - Signal colors (e.g. success, error)
-- Neutral colors (e.g. grey, black, white)
+- Neutral colors (e.g. greys)
 - Lightest and darkest colors (e.g. white, black)
 
 ## Tokens
 
 Color tokens are used to define colors in the theme. We use CSS variables to define the colors in their rgb values so they can be customised easily by the consumer apps.
 
-@todo list color tokens here.
+<Demo code={demoSource} />
 
-## Theming
+### Color generator
 
-Go components use CSS variables to define their colors, each component has a set of variables that can be overridden.
+<details>
+  <summary>Color token generator</summary>
+  <ColorGenerator />
+</details>

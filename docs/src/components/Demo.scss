@@ -117,6 +117,7 @@
       background: none;
       display: block;
       cursor: pointer;
+      transition: all 0.3s ease;
 
       &:hover,
       &:focus-visible {
@@ -127,6 +128,27 @@
     svg {
       width: 1rem;
       height: auto;
+    }
+  }
+
+  details.source-code {
+    padding: 0.5em 0.5em 0;
+    summary {
+      border: 1px solid var(--ifm-color-primary-light);
+      background: var(--ifm-color-primary-contrast-background);
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 1rem 0.5rem;
+    }
+
+    &[open] {
+      padding: 0.5em;
+    }
+
+    &[open] summary {
+      border-bottom: 1px solid #aaa;
+      margin-bottom: 0.5em;
     }
   }
 }
