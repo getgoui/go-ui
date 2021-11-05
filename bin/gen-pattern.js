@@ -1,6 +1,6 @@
 import prompts from 'prompts';
 import fs from 'fs';
-import path from 'path';
+import path, { dirname } from 'path';
 import chalk from 'chalk';
 import kebabCase from 'lodash.kebabcase';
 import { pascalCase, sentenseCase } from './utils';
@@ -46,20 +46,33 @@ export default async function pattern(args) {
  */
 function writeBoilerplate(patternName, createElement, tags) {
   const tagName = getTagName(patternName);
-  const dir = `./src/patterns/${patternName}/`;
-  const docsDir = `./docs/docs/patterns/`;
+  const rootPath = path.resolve(__dirname, '../');
+  const dir = `${rootPath}/src/patterns/${patternName}/`;
+  const docsDir = `${rootPath}/docs/docs/patterns/`;
   // Create the directory if it doesn't exist.
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-    // Create the demo directory if it doesn't exist.
-    fs.mkdirSync(`${dir}demo/`);
-    // Create the test directory if it doesn't exist.
-    fs.mkdirSync(`${dir}test/`);
+    try {
+      fs.mkdirSync(dir);
+      // Create the demo directory if it doesn't exist.
+      fs.mkdirSync(`${dir}demo/`);
+      // Create the test directory if it doesn't exist.
+      fs.mkdirSync(`${dir}test/`);
+    } catch (e) {
+      console.log(chalk.red(`Could not create new directory ${dir}`));
+      console.error(e);
+      return;
+    }
   }
 
   // create docs directory if it doesn't exist
   if (!fs.existsSync(docsDir)) {
-    fs.mkdirSync(docsDir);
+    try {
+      fs.mkdirSync(docsDir);
+    } catch (e) {
+      console.log(chalk.red(`Could not create new directory ${docsDir}`));
+      console.error(e);
+      return;
+    }
   }
 
   if (createElement) {
