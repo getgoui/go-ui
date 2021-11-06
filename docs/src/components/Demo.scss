@@ -110,18 +110,18 @@
     gap: 1rem;
     align-items: center;
     button {
-      padding: 4px 6px;
-      border-radius: 4px;
       margin: 0;
       border: none;
       background: none;
       display: block;
       cursor: pointer;
       transition: all 0.3s ease;
-
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
       &:hover,
       &:focus-visible {
-        background: #2e2e2e;
+        background: #666;
         color: white;
       }
     }

@@ -18,25 +18,33 @@ const setDemoContent = (window, code) => {
   doc.close();
 };
 
-const DemoFrame = ({ code, onLoad, onResize }) => {
+const DemoFrame = ({ code, onLoad, onResize, colorScheme }) => {
   const demoFrame = useRef(null);
-
   // onload content
   useEffect(() => {
+    console.log(colorScheme);
+
     if (demoFrame.current) {
       const window = demoFrame.current.contentWindow;
       setDemoContent(window, code);
       const resizeHandler = (e) => {
         onResize(e.target);
       };
+
       window.addEventListener('resize', resizeHandler);
       onLoad(window);
+
+      const htmlElement = window.document.documentElement;
+      // set html color-scheme attribute to colorScheme
+      htmlElement.setAttribute('color-scheme', colorScheme);
+      // set html visibility style to visible
+      htmlElement.style.visibility = 'visible';
 
       return () => {
         window.removeEventListener('resize', resizeHandler);
       };
     }
-  }, [code]);
+  }, [code, colorScheme]);
 
   return <iframe title="demo frame" ref={demoFrame} />;
 };
@@ -47,6 +55,7 @@ const Demo = ({ code }) => {
   const [contentWidth, setContentWidth] = useState('100%');
   const [contentHeight, setContentHeight] = useState('100%');
   const [actualFrameHeight, setActualFrameHeight] = useState(0);
+  const [colorScheme, setColorScheme] = useState('light');
   const contentEl = useRef(null);
   const minFrameHeight = 200;
   const startResizeX = () => {
@@ -102,6 +111,9 @@ const Demo = ({ code }) => {
           </div>
           <div className="controls">
             <div className="devices">
+              <button title="Change color scheme" type="button" onClick={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}>
+                {colorScheme === 'light' ? '☀️' : '🌙'}
+              </button>
               <button title="New window" type="button" onClick={openNewWindow}>
                 <ExternalIcon />
               </button>
@@ -136,6 +148,7 @@ const Demo = ({ code }) => {
               onResize={(frameWindow) => {
                 setActualFrameHeight(frameWindow.document.body.scrollHeight);
               }}
+              colorScheme={colorScheme}
             />
           </div>
           <button
