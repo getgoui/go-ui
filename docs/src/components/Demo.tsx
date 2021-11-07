@@ -49,7 +49,7 @@ const DemoFrame = ({ code, onLoad, onResize, colorScheme }) => {
   return <iframe title="demo frame" ref={demoFrame} />;
 };
 
-const Demo = ({ code }) => {
+const Demo = ({ code, hideSource = false }) => {
   const [resizingX, setResizingX] = useState(false);
   const [resizingY, setResizingY] = useState(false);
   const [contentWidth, setContentWidth] = useState('100%');
@@ -169,10 +169,12 @@ const Demo = ({ code }) => {
           </button>
         </div>
       </div>
-      <details className="source-code">
-        <summary>Source code</summary>
-        <CodeBlock className="language-jsx">{code}</CodeBlock>
-      </details>
+      {!hideSource ? (
+        <details className="source-code">
+          <summary>Source code</summary>
+          <CodeBlock className="language-jsx">{code}</CodeBlock>
+        </details>
+      ) : null}
     </div>
   );
 };

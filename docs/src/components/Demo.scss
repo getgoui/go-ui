@@ -1,4 +1,7 @@
 .demo-container {
+  iframe {
+    background: #fff;
+  }
   /* mimic browser window */
   .fake-browser {
     --browser-window-bg: var(--ifm-navbar-background-color);

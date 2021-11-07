@@ -1,13 +1,5 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { useState } from 'react';
 import Color from 'color';
-import CodeBlock from '@theme/CodeBlock';
 import ColorLevelsObject from './color.type';
 import './ColorGenerator.scss';
 import ColorSwatch from './ColorSwatch';
@@ -45,18 +37,18 @@ function ColorGenerator() {
   });
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         {/* Normal colors */}
         {Object.entries(colorObjects).map(([key, levels]) => {
           return (
-            <div className="col col--12" key={key}>
+            <div className="col col--12 col-md-4 col-xl-4" key={key}>
               <ColorSwatch colorName={key} levels={levels} state={baseColors} setState={setBaseColors} />
             </div>
           );
         })}
         {/* Extreme colors */}
-        <div className="col col--12">
+        <div className="col col--12 col-md-4 col-xl-4">
           {Object.entries(extremeColors).map(([key, rgb]) => {
             const color = Color(rgb);
             return (
@@ -67,19 +59,6 @@ function ColorGenerator() {
           })}
         </div>
       </div>
-      <CodeBlock className="css">
-        {Object.entries(colorObjects).map(([key, levels]) => {
-          let code = `// ${key}\n`;
-          Object.entries(levels).forEach(([level, color]) => {
-            code += `--go-color-${key}-${level}: ${color
-              .rgb()
-              .array()
-              .map((val) => parseInt(val))
-              .join(', ')};\n`;
-          });
-          return code;
-        })}
-      </CodeBlock>
     </div>
   );
 }

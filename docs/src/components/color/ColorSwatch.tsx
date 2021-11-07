@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Color from 'color';
 import ColorLevelsObject from './color.type';
 import { centerShade } from './color.constants';
+import CodeBlock from '@theme/CodeBlock';
 
 interface ColorSwatchProps {
   colorName: string;
@@ -29,9 +30,24 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
   return (
     <div className="color-swatches">
       <h3>
-        <span className="color-category-name">{colorName}</span>
-        <code>{cssVarName}</code>
+        {colorName}
+        <code className="margin-left--sm">{cssVarName}</code>
       </h3>
+      <div className="color-box-wrapper">
+        {Object.entries(levels).map(([level, color]) => {
+          const textColor = color.isDark() ? '#fff' : '#000';
+          return (
+            <div className="color-box" key={level}>
+              <div className="preview" style={{ backgroundColor: color.rgb().string(), color: textColor }}>
+                <span>{level}</span>
+              </div>
+              <p>
+                <code>{color.hex()}</code>
+              </p>
+            </div>
+          );
+        })}
+      </div>
 
       <div className="row">
         <div className="col">
@@ -42,39 +58,28 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
           </div>
         </div>
       </div>
-      <table className="color-box-wrapper">
-        <thead>
-          <tr>
-            <th>CSS variable name</th>
-            <th>RGB</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(levels).map(([level, color]) => {
-            const textColor = color.isDark() ? '#fff' : '#000';
-            const cssColorName = `--go-color-${colorName}` + `${isExtremeColors ? '' : '-' + level}`;
 
-            return (
-              <tr className="color-box" style={{ backgroundColor: color.rgb().string(), color: textColor }} key={level}>
-                <td>
-                  <pre className="color-name" rows="1" readOnly>
-                    {cssColorName}
-                  </pre>
-                </td>
-                <td>
-                  {color
-                    .rgb()
-                    .array()
-                    .map((v) => Math.round(v))
-                    .join(', ')}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <p>Copy the code below and paste in your stylesheet to override the default color tokens.</p>
+
+      <CodeBlock className="css">{getCode(colorName, levels, isExtremeColors)}</CodeBlock>
     </div>
   );
+};
+
+const getCode = (colorName: string, levels: ColorLevelsObject, isExtremeColors: boolean): string => {
+  let code = `// ${colorName}\n`;
+  Object.entries(levels).forEach(([level, color]) => {
+    const cssColorName = `--go-color-${colorName}` + `${isExtremeColors ? '' : '-' + level}`;
+    const colorRGB = color
+      .rgb()
+      .array()
+      .map((v) => Math.round(v))
+      .join(', ');
+    console.log(level, colorRGB);
+    code += `${cssColorName}: ${colorRGB};\n`;
+  });
+
+  return code;
 };
 
 export default ColorSwatch;

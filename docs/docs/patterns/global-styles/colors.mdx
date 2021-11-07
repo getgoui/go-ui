@@ -6,11 +6,11 @@ tags:
   - Global styles
 ---
 
+import ColorDisplay from '@/components/color/ColorDisplay';
 import ColorGenerator from '@/components/color/ColorGenerator';
-import demoSource from '!!raw-loader!../../../../src/patterns/color/demo/color.html';
 import Demo from '@/components/Demo';
 
-# Color
+# Colors
 
 We found that the most common colors used in the web can be categorised in these groups:
 
@@ -24,11 +24,8 @@ We found that the most common colors used in the web can be categorised in these
 
 Color tokens are used to define colors in the theme. We use CSS variables to define the colors in their rgb values so they can be customised easily by the consumer apps.
 
-<Demo code={demoSource} />
+<ColorDisplay />
 
 ### Color generator
 
-<details>
-  <summary>Color token generator</summary>
-  <ColorGenerator />
-</details>
+<ColorGenerator />
