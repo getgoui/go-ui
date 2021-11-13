@@ -63,9 +63,10 @@
     "prompts": "^2.4.2",
     "puppeteer": "^5.5.0",
     "standard-version": "^9.3.2",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.0.1",
     "stylelint-a11y": "^1.2.3",
     "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard-scss": "^2.0.1",
     "yargs": "^17.2.1"
   },
   "license": "MIT"
