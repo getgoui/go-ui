@@ -12,11 +12,13 @@
   }
 }
 // theme overwrites
-[color-scheme='light'] {
+[color-scheme='light'],
+[data-theme='light'] {
   color-scheme: light;
   @include go-color-scheme-light;
 }
-[color-scheme='dark'] {
+[color-scheme='dark'],
+[data-theme='dark'] {
   color-scheme: dark;
   @include go-color-scheme-dark;
 }
