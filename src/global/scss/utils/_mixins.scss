@@ -55,6 +55,9 @@
       --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
     }
   }
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-darkest));
+  --go-color-lightest: rgb(var(--go-token-lightest));
 }
 
 // reverse tokens for dark theme
@@ -66,4 +69,7 @@
       --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
     }
   }
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-lightest));
+  --go-color-lightest: rgb(var(--go-token-darkest));
 }

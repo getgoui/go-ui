@@ -30,23 +30,27 @@ export default function ColorDisplay() {
   Object.keys(defaultColors).forEach((name) => {
     colorValues[name] = getKeysFromName(name).map((key) => getColorFromKey(key, rootStyle));
   });
-
   Object.keys(defaultExtremeColors).forEach((name) => {
     colorValues[name] = getKeysFromName(name, true).map((key) => getColorFromKey(key, rootStyle));
   });
+
+  const showColorUsage = (color: Color, name: string, index: number): void => {
+    console.log({ color, name, index });
+  };
 
   return (
     <div>
       <h3>Default colors</h3>
       <p>The following colours come out of the box.</p>
-      <p>
-        <em>(Click the color box to see usage guide.)</em>
-      </p>
       {Object.entries(colorValues).map(([name, colors]) => {
+        const isExtreme = ['lightest', 'darkest'].includes(name);
         return (
-          <div key={name}>
+          <div key={name} className="margin-bottom--md">
             <div>
               <strong style={{ textTransform: 'capitalize' }}>{name}</strong>
+            </div>
+            <div>
+              <code>{isExtreme ? `--go-color-${name}` : `--go-color-${name}-{level}`}</code>
             </div>
             <div className="color-box-wrapper" key={name}>
               {colors.map((color, index): JSX.Element => {
@@ -56,7 +60,13 @@ export default function ColorDisplay() {
                 const textColor = color.isDark() ? '#fff' : '#000';
                 return (
                   <div key={index} className="color-box">
-                    <ColorPreview text="" color={color} textColor={textColor} isCircle={index === 4} />
+                    <ColorPreview
+                      text={isExtreme ? '' : (index + 1) * 100}
+                      color={color}
+                      textColor={textColor}
+                      isSpecial={index === 4}
+                      onClick={() => showColorUsage(color, name, index)}
+                    />
                   </div>
                 );
               })}

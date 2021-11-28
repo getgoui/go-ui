@@ -11,12 +11,13 @@
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.2s ease-in-out;
+  font-size: 0.8em;
   &:hover,
   &:focus-visible {
     transform: scale(1.1);
     position: relative;
   }
-  &.special {
-    border-width: 4px;
-  }
+  // &.special {
+  //   border-width: 4px;
+  // }
 }

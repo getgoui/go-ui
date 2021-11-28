@@ -42,7 +42,7 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
           const textColor = color.isDark() ? '#fff' : '#000';
           return (
             <div className="color-box" key={level}>
-              <ColorPreview isCircle={level === 500} color={color} textColor={textColor} text={level} />
+              <ColorPreview color={color} textColor={textColor} text={level} />
             </div>
           );
         })}
