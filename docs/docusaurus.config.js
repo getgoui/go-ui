@@ -139,14 +139,14 @@ module.exports = {
           editUrl: 'https://github.com/go-components/go-components/edit/main/docs/blog/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.scss'),
+          customCss: [require.resolve('./static/demo-assets/build/go-components.css'), require.resolve('./src/css/custom.scss')],
         },
       },
     ],
   ],
   plugins: [
     'docusaurus-plugin-sass',
-    'docusaurus-plugin-includes',
+    // 'docusaurus-plugin-includes',
     [
       'docusaurus-plugin-module-alias',
       {
@@ -165,5 +165,6 @@ module.exports = {
       },
     ],
     // '@docusaurus/theme-live-codeblock',
+    './plugins/custom-hmr/custom-hmr.js',
   ],
 };

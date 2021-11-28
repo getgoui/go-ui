@@ -45,3 +45,25 @@
 @function spacing($multiplier) {
   @return calc(var(--base-spacing) * #{$multiplier});
 }
+
+// Generate colours from color tokens css variables
+@mixin go-color-scheme-light {
+  @each $color-category in $color-categories {
+    @for $i from 1 through $color-shades {
+      $level: $i * 100;
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
+    }
+  }
+}
+
+// reverse tokens for dark theme
+@mixin go-color-scheme-dark {
+  @each $color-category in $color-categories {
+    @for $i from $color-shades through 1 {
+      $level: $i * 100;
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
+    }
+  }
+}

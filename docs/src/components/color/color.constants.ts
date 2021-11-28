@@ -12,7 +12,7 @@ export const defaultExtremeColors = {
   darkest: rgb(0, 0, 0),
   lightest: rgb(255, 255, 255),
 };
-
+// get all color keys from combine default colors with extreme colors
 export const lightnessInterval = 0.15;
 export const totalShades = 9;
 export const centerShade = Math.ceil(totalShades / 2);

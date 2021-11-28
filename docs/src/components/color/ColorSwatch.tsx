@@ -3,6 +3,7 @@ import Color from 'color';
 import ColorLevelsObject from './color.type';
 import { centerShade } from './color.constants';
 import CodeBlock from '@theme/CodeBlock';
+import ColorPreview from './ColorPreview';
 
 interface ColorSwatchProps {
   colorName: string;
@@ -29,27 +30,25 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
 
   return (
     <div className="color-swatches">
-      <h3>
-        {colorName}
-        <code className="margin-left--sm">{cssVarName}</code>
-      </h3>
+      <h4 className="text-capitalize">{colorName}</h4>
+      <p>
+        <small>
+          <code>{cssVarName}</code>
+        </small>
+      </p>
+
       <div className="color-box-wrapper">
         {Object.entries(levels).map(([level, color]) => {
           const textColor = color.isDark() ? '#fff' : '#000';
           return (
             <div className="color-box" key={level}>
-              <div className="preview" style={{ backgroundColor: color.rgb().string(), color: textColor }}>
-                <span>{level}</span>
-              </div>
-              <p>
-                <code>{color.hex()}</code>
-              </p>
+              <ColorPreview isCircle={level === 500} color={color} textColor={textColor} text={level} />
             </div>
           );
         })}
       </div>
 
-      <div className="row">
+      <div className="row text--center">
         <div className="col">
           <label htmlFor={`${colorName}-input`}>{isExtremeColors ? `Adjust ${colorName}` : `Adjust the center shade level (${centerShade * 100})`}</label>
           <div className="color-input-group">
@@ -75,7 +74,6 @@ const getCode = (colorName: string, levels: ColorLevelsObject, isExtremeColors: 
       .array()
       .map((v) => Math.round(v))
       .join(', ');
-    console.log(level, colorRGB);
     code += `${cssColorName}: ${colorRGB};\n`;
   });
 

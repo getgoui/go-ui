@@ -4,6 +4,19 @@ import ColorLevelsObject from './color.type';
 import './ColorGenerator.scss';
 import ColorSwatch from './ColorSwatch';
 import { rgb, defaultColors, defaultExtremeColors, centerShade, lightnessInterval } from './color.constants';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Pagination } from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination]);
 
 function ColorGenerator() {
   const [baseColors, setBaseColors] = useState(defaultColors);
@@ -37,29 +50,25 @@ function ColorGenerator() {
   });
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        {/* Normal colors */}
-        {Object.entries(colorObjects).map(([key, levels]) => {
-          return (
-            <div className="col col--12 col-md-4 col-xl-4" key={key}>
-              <ColorSwatch colorName={key} levels={levels} state={baseColors} setState={setBaseColors} />
-            </div>
-          );
-        })}
-        {/* Extreme colors */}
-        <div className="col col--12 col-md-4 col-xl-4">
-          {Object.entries(extremeColors).map(([key, rgb]) => {
-            const color = Color(rgb);
-            return (
-              <div key={key}>
-                <ColorSwatch colorName={key} levels={{ '': color }} state={extremeColors} setState={setExtremeColors} />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    <Swiper slidesPerView={1} loop={true} pagination={true} navigation={true} className="color-generator-slider">
+      {/* Normal colors */}
+      {Object.entries(colorObjects).map(([key, levels]) => {
+        return (
+          <SwiperSlide key={key}>
+            <ColorSwatch colorName={key} levels={levels} state={baseColors} setState={setBaseColors} />
+          </SwiperSlide>
+        );
+      })}
+      {/* Extreme colors */}
+      {Object.entries(extremeColors).map(([key, rgb]) => {
+        const color = Color(rgb);
+        return (
+          <SwiperSlide key={key}>
+            <ColorSwatch colorName={key} levels={{ '': color }} state={extremeColors} setState={setExtremeColors} />
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
 }
 

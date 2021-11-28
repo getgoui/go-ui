@@ -23,7 +23,7 @@
     "start": "concurrently --kill-others \"npm run dev\" \"npm run docs.start\"",
     "serve": "stencil build --dev --watch --serve",
     "dev": "stencil build --dev --docs-readme --watch",
-    "docs.start": "cd docs && npm run clear && npm start",
+    "docs.start": "cd docs && npm start",
     "docs.build": "npm run build && cd docs && npm i && npm run build",
     "test.spec": "stencil test --spec",
     "test.spec.watch": "stencil test --spec --watchAll",
@@ -36,7 +36,7 @@
     "husky.install.hooks": "husky install"
   },
   "dependencies": {
-    "@stencil/core": "^2.10.0",
+    "@stencil/core": "^2.11.0",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
