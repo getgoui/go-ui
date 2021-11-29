@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Color from 'color';
 import ColorLevelsObject from './color.type';
 import { centerShade } from './color.constants';
@@ -13,6 +13,8 @@ interface ColorSwatchProps {
 }
 
 const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) => {
+  const colorInput = useRef(null);
+
   const targetColor = Color(state[colorName]);
   const isExtremeColors = Object.keys(levels).length === 1;
   const cssVarName = `--go-color-${colorName}${isExtremeColors ? '' : '-{level}'}`;
@@ -26,6 +28,12 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
       ...state,
       [colorName]: color.rgb().object(),
     });
+  };
+
+  const toggleColorInput = () => {
+    if (colorInput.current) {
+      colorInput.current.click();
+    }
   };
 
   return (
@@ -52,8 +60,10 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
         <div className="col">
           <label htmlFor={`${colorName}-input`}>{isExtremeColors ? `Adjust ${colorName}` : `Adjust the center shade level (${centerShade * 100})`}</label>
           <div className="color-input-group">
-            <input type="text" id={`${colorName}-input`} value={targetColor.hex()} onChange={handleColorChange} />
-            <input id={`${colorName}-input`} type="color" value={targetColor.hex()} onChange={handleColorChange} />
+            <button type="button" className="color-input-button" onClick={toggleColorInput}>
+              {targetColor.hex()}
+            </button>
+            <input ref={colorInput} id={`${colorName}-input`} type="color" value={targetColor.hex()} onChange={handleColorChange} />
           </div>
         </div>
       </div>

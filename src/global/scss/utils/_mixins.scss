@@ -65,8 +65,9 @@
   @each $color-category in $color-categories {
     @for $i from $color-shades through 1 {
       $level: $i * 100;
+      $tokenLevel: $color-shades * 100 - $level;
       // define css variable for this shade
-      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$tokenLevel}));
     }
   }
   // extreme colors
