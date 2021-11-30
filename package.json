@@ -1,6 +1,6 @@
 {
   "name": "@go-ui/core",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Go Components",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
