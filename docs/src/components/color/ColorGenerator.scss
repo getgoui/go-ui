@@ -1,0 +1,59 @@
+.color-generator-slider.swiper {
+  .swiper-slide {
+    padding: 2rem 8%;
+  }
+}
+
+.color-box-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.color-box {
+  display: block;
+  text-align: center;
+  flex: 1;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.color-swatches {
+  margin-bottom: 2rem;
+
+  code {
+    overflow: auto;
+    white-space: nowrap;
+  }
+  h4 {
+    margin-bottom: 0;
+  }
+  .color-category-name {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  .color-input-group {
+    display: inline-block;
+    margin: 1rem auto;
+    position: relative;
+    input[type='color'] {
+      -webkit-appearance: none;
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .color-input-button {
+      border-radius: 0.5rem;
+      padding: 0.5rem 2rem;
+      cursor: pointer;
+      background: var(--go-color-success-200);
+      border: none;
+      box-shadow: 0 0.25em 0.9em 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+}

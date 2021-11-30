@@ -1,9 +1,9 @@
 // Put scss mixins here
-@use "sass:map";
+@use 'sass:map';
 
 // min-width media query
 @mixin min-query($device) {
-  @if (map-has-key($breakpoints, $device)) {
+  @if map-has-key($breakpoints, $device) {
     @media (min-width: map-get($breakpoints, $device)) {
       @content;
     }
@@ -44,4 +44,33 @@
 // shorthand for calculating multiples of base spacing
 @function spacing($multiplier) {
   @return calc(var(--base-spacing) * #{$multiplier});
+}
+
+// Generate colours from color tokens css variables
+@mixin go-color-scheme-light {
+  @each $color-category in $color-categories {
+    @for $i from 1 through $color-shades {
+      $level: $i * 100;
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
+    }
+  }
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-darkest));
+  --go-color-lightest: rgb(var(--go-token-lightest));
+}
+
+// reverse tokens for dark theme
+@mixin go-color-scheme-dark {
+  @each $color-category in $color-categories {
+    @for $i from $color-shades through 1 {
+      $level: $i * 100;
+      $tokenLevel: $color-shades * 100 - $level;
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$tokenLevel}));
+    }
+  }
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-lightest));
+  --go-color-lightest: rgb(var(--go-token-darkest));
 }

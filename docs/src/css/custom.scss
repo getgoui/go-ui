@@ -7,13 +7,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #4169e1;
-  --ifm-color-primary-dark: #224ed5;
-  --ifm-color-primary-darker: #1c41af;
-  --ifm-color-primary-darkest: #102564;
-  --ifm-color-primary-light: #6787e7;
-  --ifm-color-primary-lighter: #8ca4ed;
-  --ifm-color-primary-lightest: #d7e0f9;
+  --ifm-color-primary-lightest: var(--go-color-primary-100);
+  --ifm-color-primary-lighter: var(--go-color-primary-300);
+  --ifm-color-primary-light: var(--go-color-primary-400);
+  --ifm-color-primary: var(--go-color-primary-500);
+  --ifm-color-primary-dark: var(--go-color-primary-600);
+  --ifm-color-primary-darker: var(--go-color-primary-700);
+  --ifm-color-primary-darkest: var(--go-color-primary-900);
   --ifm-code-font-size: 95%;
 }
 
@@ -91,10 +91,23 @@ body {
   }
 }
 
-.hero--primary {
-  --ifm-hero-background-color: var(--ifm-color-primary-darker);
-}
-
 .footer {
   --ifm-footer-padding-vertical: 4rem;
+}
+.footer__link-item {
+  --ifm-footer-link-hover-color: var(--go-color-success-400);
+}
+
+table {
+  display: table;
+  width: 100%;
+  border: 1px solid var(--ifm-table-border-color);
+  tr,
+  td,
+  th {
+    border: 0;
+  }
+  thead {
+    border-bottom: 2px solid var(--ifm-table-border-color);
+  }
 }

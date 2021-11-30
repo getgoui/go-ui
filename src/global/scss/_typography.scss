@@ -5,9 +5,9 @@
   @return --go-type-#{$type-level}-#{$key};
 }
 @mixin font-style($type-level, $details, $key, $prop-name: '') {
-  @if (map-has-key($details, $key)) {
+  @if map-has-key($details, $key) {
     $var-name: getTypeVarName($type-level, $key);
-    @if ($prop-name != '') {
+    @if $prop-name != '' {
       #{$prop-name}: var($var-name);
     } @else {
       font-#{$key}: var($var-name);
@@ -20,7 +20,7 @@
     @each $key, $value in $details {
       $var-name: getTypeVarName($type-level, $key);
 
-      @if ($key == 'size') {
+      @if $key == 'size' {
         #{$var-name}: calc(#{map-get($details, 'size')} * var(--go-type-base-font-size));
       } @else {
         #{$var-name}: #{$value};
@@ -34,13 +34,14 @@
   --go-primary-font: #{$primary-font};
   --go-secondary-font: #{$secondary-font};
   --go-type-base-font-size: #{$base-font-size};
+
   // responseive scale of font-size
   @each $breakpoint, $scale in $font-responsive-scales {
     @include min-query($breakpoint) {
       --go-type-base-font-size: calc(#{$scale} * #{$base-font-size});
     }
   }
-  @include font-vars();
+  @include font-vars;
 }
 
 // Root font family
@@ -59,4 +60,41 @@ body {
     @include font-style($type-level, $details, 'line-height', 'line-height');
     @include font-style($type-level, $details, 'letter-spacing', 'letter-spacing');
   }
+}
+
+// text positioning & utils
+.text-left {
+  text-align: left;
+}
+.text-start {
+  text-align: start;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-end {
+  text-align: end;
+}
+.text-justify {
+  text-align: justify;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
 }

@@ -1,4 +1,7 @@
 .demo-container {
+  iframe {
+    background: #fff;
+  }
   /* mimic browser window */
   .fake-browser {
     --browser-window-bg: var(--ifm-navbar-background-color);
@@ -110,23 +113,45 @@
     gap: 1rem;
     align-items: center;
     button {
-      padding: 4px 6px;
-      border-radius: 4px;
       margin: 0;
       border: none;
       background: none;
       display: block;
       cursor: pointer;
-
+      transition: all 0.3s ease;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
       &:hover,
       &:focus-visible {
-        background: #2e2e2e;
+        background: #666;
         color: white;
       }
     }
     svg {
       width: 1rem;
       height: auto;
+    }
+  }
+
+  details.source-code {
+    padding: 0.5em 0.5em 0;
+    summary {
+      border: 1px solid var(--ifm-color-primary-light);
+      background: var(--ifm-color-primary-contrast-background);
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 1rem 0.5rem;
+    }
+
+    &[open] {
+      padding: 0.5em;
+    }
+
+    &[open] summary {
+      border-bottom: 1px solid #aaa;
+      margin-bottom: 0.5em;
     }
   }
 }

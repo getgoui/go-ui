@@ -1,6 +1,7 @@
 // Grid system
 //
 // Generate semantic grid columns with these mixins.
+@use 'sass:math';
 
 @mixin make-row() {
   display: flex;
@@ -12,6 +13,7 @@
 @mixin make-col-ready() {
   // Add box sizing if only the grid is loaded
   box-sizing: border-box;
+
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we set the width
   // later on to override this initial width.
@@ -23,7 +25,7 @@
 @mixin make-col($size: false, $columns: 12) {
   @if $size {
     flex: 0 0 auto;
-    width: percentage($size / $columns);
+    width: percentage(math.div($size, $columns));
   } @else {
     flex: 1 1 0;
     max-width: 100%;
@@ -36,7 +38,8 @@
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
-  $num: $size / $columns;
+  $num: math.div($size, $columns);
+
   margin-left: if($num == 0, 0, percentage($num));
 }
 
@@ -63,7 +66,7 @@
     flex: 1 0 0%;
   }
   .col-auto {
-    @include make-col-auto();
+    @include make-col-auto;
   }
   @if $columns > 0 {
     @for $i from 1 through $columns {
@@ -93,7 +96,7 @@
       }
 
       .col#{$infix}-auto {
-        @include make-col-auto();
+        @include make-col-auto;
       }
 
       @if $columns > 0 {

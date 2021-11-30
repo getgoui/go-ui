@@ -8,7 +8,7 @@
 .container,
 // 100% wide container at all breakpoints
 .container-fluid {
-  @include make-container();
+  @include make-container;
   &.no-gutter {
     --go-outer-gutter: 0;
   }
@@ -29,14 +29,14 @@
     $extend-breakpoint: true;
 
     @each $name, $width in $breakpoints {
-      @if ($extend-breakpoint) {
+      @if  $extend-breakpoint {
         .container,
         .container#{-$name} {
           @extend %responsive-container-#{$breakpoint};
         }
 
         // Once the current breakpoint is reached, stop extending
-        @if ($breakpoint == $name) {
+        @if  $breakpoint == $name {
           $extend-breakpoint: false;
         }
       }
@@ -49,14 +49,15 @@
 // Rows contain your columns.
 
 .row {
-  @include make-row();
+  @include make-row;
 
   > * {
-    @include make-col-ready();
+    @include make-col-ready;
   }
 }
+
 // Columns
 //
 // Common styles for small and large grid columns
 
-@include make-grid-columns();
+@include make-grid-columns;
