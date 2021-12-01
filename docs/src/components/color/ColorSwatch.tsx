@@ -58,7 +58,11 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
 
       <div className="row text--center">
         <div className="col">
-          <label htmlFor={`${colorName}-input`}>{isExtremeColors ? `Adjust ${colorName}` : `Adjust the center shade level (${centerShade * 100})`}</label>
+          <label htmlFor={`${colorName}-input`} className="margin-top--md">
+            {isExtremeColors
+              ? `Click button below to choose a different color for ${colorName}`
+              : `Click button below to choose a different color for the center shade (${centerShade * 100})`}
+          </label>
           <div className="color-input-group">
             <button type="button" className="color-input-button" onClick={toggleColorInput}>
               {targetColor.hex()}
