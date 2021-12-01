@@ -34,7 +34,7 @@
     "stylelint": "stylelint \"./src/**/*.scss\"",
     "release": "standard-version",
     "husky.install.hooks": "husky install",
-    "semantic-release": "semantic-release --branches main"
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@stencil/core": "^2.11.0",
@@ -76,5 +76,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/go-components/go-components.git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   }
 }
