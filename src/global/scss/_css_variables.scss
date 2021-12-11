@@ -6,4 +6,12 @@ html {
   // Grid
   --go-outer-gutter: 1rem; // Container gutter
   --go-col-gap: 0; // Gap between columns
+
+  // Typography
+  --go-heading-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --go-body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+
+  --go-base-font-size: 1rem;
+  --go-font-tablet-scale: 1;
+  --go-font-desktop-scale: 1.1;
 }

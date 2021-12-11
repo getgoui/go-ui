@@ -9,22 +9,55 @@ tags:
 
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!../../../../src/patterns/typography/demo/typography.html';
+import headingDemo from '!!raw-loader!../../../../src/patterns/typography/demo/headings.html';
+import positionDemo from '!!raw-loader!../../../../src/patterns/typography/demo/positions.html';
 
 # Typography
 
-<!-- Description -->
+GO UI provides a simple and flexible typography system.
 
-Typography is a pattern.
+## Font families
 
-## Customisation
+You can use `--go-heading-font-family` and `--go-body-font-family` CSS variables to set the heading and body font families. e.g.
 
-There are 2 ways to customise typography:
+```css
+/* Assuming Open Sans and Roboto fonts are loaded */
+:root {
+  --go-heading-font-family: 'Open Sans', sans-serif;
+  --go-body-font-family: 'Roboto', sans-serif;
+}
+```
 
-- css variables
-- sass map
+### Responsiveness
+
+In order to achieve responsive typography, we can make use of the CSS variables `--go-font-tablet-scale` (default: `1`) and `--go-font-desktop-scale` (default: `1.1`).
+
+By design, for mobile devices, the typography is not scaled.
 
 <!-- Demos, tips, variations, use cases -->
 
 ## Demo
 
 <Demo code={demoSource} />
+
+## Utility classes
+
+Go is **_not_** an atomic CSS framework, meaning we don't want to reinvent the wheel. We only provide some basic utility classes help with 80% of the use cases. You can still use your preferred way of writing CSS alongside Go Components.
+
+Here are the basic utility classes that come with Go:
+
+### Headings
+
+You can use the following utility classes to style non-heading elements as headings:
+
+`.h1`, `.h2`, `.h3`, `.h4`, `.h5`, `.h6`
+
+<Demo code={headingDemo} />
+
+### Positioning
+
+Basic positioning utility classes:
+
+`.text-start`, `.text-center`, `.text-end`, `text-justify`
+
+<Demo code={positionDemo} />

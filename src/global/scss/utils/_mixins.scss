@@ -15,26 +15,22 @@
   }
 }
 
-/*
-  Shorthand for tablet media query
-  e.g.
-    @include tablet {
-      font-size: 24px;
-    }
-*/
+// Shorthand for tablet media query
+// e.g.
+//   @include tablet {
+//     font-size: 24px;
+//   }
 @mixin tablet {
   @include min-query(tablet) {
     @content;
   }
 }
 
-/*
-  Shorthand for desktop media query
-  e.g.
-    @include desktop {
-      font-size: 32px;
-    }
-*/
+// Shorthand for desktop media query
+// e.g.
+//   @include desktop {
+//     font-size: 32px;
+//   }
 @mixin desktop {
   @include min-query(desktop) {
     @content;

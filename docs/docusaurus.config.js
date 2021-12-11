@@ -17,10 +17,10 @@ module.exports = {
     hideableSidebar: true,
     navbar: {
       title: 'Go Components',
-      logo: {
-        alt: '',
-        src: 'img/logo.svg',
-      },
+      // logo: {
+      //   alt: '',
+      //   src: 'img/logo.svg',
+      // },
       items: [
         {
           type: 'doc',

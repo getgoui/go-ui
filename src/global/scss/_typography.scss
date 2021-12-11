@@ -21,7 +21,9 @@
       $var-name: getTypeVarName($type-level, $key);
 
       @if $key == 'size' {
-        #{$var-name}: calc(#{map-get($details, 'size')} * var(--go-type-base-font-size));
+        $scale-var-name: getTypeVarName($type-level, 'scale');
+        #{$scale-var-name}: map-get($details, 'size');
+        #{$var-name}: calc(var(#{$scale-var-name}) * var(--go-type-base-font-size));
       } @else {
         #{$var-name}: #{$value};
       }
@@ -31,8 +33,6 @@
 
 // Typography css variables
 :root {
-  --go-primary-font: #{$primary-font};
-  --go-secondary-font: #{$secondary-font};
   --go-type-base-font-size: #{$base-font-size};
 
   // responseive scale of font-size
@@ -47,47 +47,42 @@
 // Root font family
 html,
 body {
-  font-family: $primary-font;
-  line-height: 1.5;
+  font-family: var(--go-body-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif);
+  line-height: normal;
+}
+
+@mixin typo($type-level, $details) {
+  margin: 0;
+  @include font-style($type-level, $details, 'size');
+  @include font-style($type-level, $details, 'weight');
+  @include font-style($type-level, $details, 'line-height', 'line-height');
+  @include font-style($type-level, $details, 'letter-spacing', 'letter-spacing');
 }
 
 @each $type-level, $details in $typography {
-  #{$type-level},
-  .#{$type-level} {
-    margin: 0;
-    @include font-style($type-level, $details, 'size');
-    @include font-style($type-level, $details, 'weight');
-    @include font-style($type-level, $details, 'line-height', 'line-height');
-    @include font-style($type-level, $details, 'letter-spacing', 'letter-spacing');
+  @if map-get($details, 'tag') {
+    #{$type-level},
+    .#{$type-level} {
+      @include typo($type-level, $details);
+    }
+  } @else {
+    .text-#{$type-level} {
+      @include typo($type-level, $details);
+    }
   }
 }
 
-// text positioning & utils
-.text-left {
-  text-align: left;
-}
 .text-start {
   text-align: start;
 }
 .text-center {
   text-align: center;
 }
-.text-right {
-  text-align: right;
-}
 .text-end {
   text-align: end;
 }
 .text-justify {
   text-align: justify;
-}
-.text-nowrap {
-  white-space: nowrap;
-}
-.text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .text-lowercase {
   text-transform: lowercase;
