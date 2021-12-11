@@ -44,6 +44,7 @@
 
     .content {
       position: relative;
+      border-top: 1px solid var(--go-color-grey-100, #ccc);
       .resize-handle {
         position: absolute;
         display: flex;
@@ -121,6 +122,7 @@
       transition: all 0.3s ease;
       width: 2rem;
       height: 2rem;
+      font-size: 0.8rem;
       border-radius: 50%;
       &:hover,
       &:focus-visible {
