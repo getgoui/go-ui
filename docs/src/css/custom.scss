@@ -5,8 +5,11 @@
  * work well for content-centric websites.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
 /* You can override the default Infima variables here. */
 :root {
+  --go-heading-font-family: 'Open Sans', sans-serif;
+  --go-body-font-family: 'Roboto', sans-serif;
   --ifm-color-primary-lightest: var(--go-color-primary-100);
   --ifm-color-primary-lighter: var(--go-color-primary-300);
   --ifm-color-primary-light: var(--go-color-primary-400);
@@ -79,14 +82,9 @@ html[data-theme='dark'] {
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300;400;700&display=swap');
 html,
 body {
-  --ifm-heading-font-family: 'Open Sans', sans-serif;
-  --ifm-font-family-base: 'Lato', sans-serif;
-  font-family: var(--ifm-font-family-base);
   button {
-    font-family: var(--ifm-font-family-base);
     line-height: 1;
   }
 }
@@ -110,4 +108,11 @@ table {
   thead {
     border-bottom: 2px solid var(--ifm-table-border-color);
   }
+}
+.markdown h1:first-child {
+  margin-top: 0;
+}
+
+.toggleIcon_node_modules-\@docusaurus-theme-classic-lib-next-theme-Toggle-styles-module {
+  font-size: 16px;
 }

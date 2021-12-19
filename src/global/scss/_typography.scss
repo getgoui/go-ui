@@ -1,64 +1,36 @@
-//----------------//
-// Headings
-//----------------//
-@function getTypeVarName($type-level, $key) {
-  @return --go-type-#{$type-level}-#{$key};
-}
-@mixin font-style($type-level, $details, $key, $prop-name: '') {
-  @if map-has-key($details, $key) {
-    $var-name: getTypeVarName($type-level, $key);
-    @if $prop-name != '' {
-      #{$prop-name}: var($var-name);
-    } @else {
-      font-#{$key}: var($var-name);
-    }
-  }
-}
+/* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1440,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
 
-@mixin font-vars() {
-  @each $type-level, $details in $typography {
-    @each $key, $value in $details {
-      $var-name: getTypeVarName($type-level, $key);
-
-      @if $key == 'size' {
-        $scale-var-name: getTypeVarName($type-level, 'scale');
-        #{$scale-var-name}: map-get($details, 'size');
-        #{$var-name}: calc(var(#{$scale-var-name}) * var(--go-type-base-font-size));
-      } @else {
-        #{$var-name}: #{$value};
-      }
-    }
-  }
-}
-
-// Typography css variables
 :root {
-  --go-type-base-font-size: #{$base-font-size};
-
-  // responseive scale of font-size
-  @each $breakpoint, $scale in $font-responsive-scales {
-    @include min-query($breakpoint) {
-      --go-type-base-font-size: calc(#{$scale} * #{$base-font-size});
-    }
-  }
-  @include font-vars;
+  --go-text-size--1: clamp(0.8rem, 0.77rem + 0.14vw, 0.9rem);
+  --go-text-size-0: clamp(1rem, 0.96rem + 0.18vw, 1.13rem);
+  --go-text-size-1: clamp(1.25rem, 1.21rem + 0.22vw, 1.41rem);
+  --go-text-size-2: clamp(1.56rem, 1.51rem + 0.28vw, 1.76rem);
+  --go-text-size-3: clamp(1.95rem, 1.88rem + 0.35vw, 2.2rem);
+  --go-text-size-4: clamp(2.44rem, 2.35rem + 0.44vw, 2.75rem);
+  --go-text-size-5: clamp(3.05rem, 2.94rem + 0.54vw, 3.43rem);
+  --go-text-size-6: clamp(3.82rem, 3.68rem + 0.68vw, 4.29rem);
+  --go-text-size-7: clamp(4.77rem, 4.6rem + 0.85vw, 5.36rem);
 }
 
-// Root font family
-html,
-body {
-  font-family: var(--go-body-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif);
-  line-height: normal;
+@mixin text-size($scale) {
+  font-size: var(--go-text-size-#{$scale});
 }
-
 @mixin typo($type-level, $details) {
   margin: 0;
-  @include font-style($type-level, $details, 'size');
-  @include font-style($type-level, $details, 'weight');
-  @include font-style($type-level, $details, 'line-height', 'line-height');
-  @include font-style($type-level, $details, 'letter-spacing', 'letter-spacing');
+  @include text-size(map-get($details, 'size'));
+  font-weight: map-get($details, 'weight');
+  line-height: map-get($details, 'line-height');
+  letter-spacing: map-get($details, 'letter-spacing');
 }
 
+// utility classes for text sizes
+@for $i from -1 through 7 {
+  .text-size-#{$i} {
+    @include text-size($i);
+  }
+}
+
+// heading font-sizes
 @each $type-level, $details in $typography {
   @if map-get($details, 'tag') {
     #{$type-level},
@@ -72,6 +44,30 @@ body {
   }
 }
 
+// Root font family
+html,
+body {
+  font-family: var(--go-body-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif);
+  font-size: var(--go-text-size-0, 1rem);
+}
+
+//----------------------------------
+// Style native html elements
+//----------------------------------
+blockquote {
+  font-style: italic;
+  font-size: var(--go-text-size-0);
+  border-left: var(--go-border-width-thick) solid var(--go-color-neutral-100);
+  margin: 0;
+  padding-left: 2rem;
+}
+p {
+  line-height: 1.5;
+}
+code {
+  padding: 0 0.4em;
+}
+// text alignments
 .text-start {
   text-align: start;
 }
