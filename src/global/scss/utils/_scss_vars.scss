@@ -21,64 +21,66 @@ $grid-columns: 12 !default;
 //----------------------------------
 // Typography
 //----------------------------------
-$base-font-size: var(--go-base-font-size, 1rem) !default;
-
-// sets base font-size for different breakpoints
-$font-responsive-scales: (
-  tablet: var(--go-font-tablet-scale, 1),
-  desktop: var(--go-font-desktop-scale, 1.1),
-) !default;
-
 $typography: (
+  display-1: (
+    weight: 700,
+    size: 7,
+    line-height: 1.8,
+  ),
+  display-2: (
+    weight: 700,
+    size: 6,
+    line-height: 1.7,
+  ),
   h1: (
     weight: 700,
-    size: 2.8,
+    size: 5,
     line-height: 1.5,
     tag: true,
   ),
   h2: (
-    weight: 700,
-    size: 2.4,
-    line-height: 1.3,
+    weight: 500,
+    size: 4,
+    line-height: 1.4,
     tag: true,
   ),
   h3: (
-    weight: 700,
-    size: 2,
+    weight: 500,
+    size: 3,
     line-height: 1.5,
     tag: true,
   ),
   h4: (
-    weight: 700,
-    size: 1.8,
+    weight: 600,
+    size: 2,
     line-height: 1.5,
     tag: true,
   ),
   h5: (
     weight: 700,
-    size: 1.25,
+    size: 1,
     line-height: 1.5,
     tag: true,
   ),
   h6: (
     weight: 700,
-    size: 1,
+    size: 0,
     line-height: 1.5,
     tag: true,
   ),
   big: (
     weight: 400,
-    size: 1.25,
+    size: 1,
     line-height: 1.5,
   ),
   body: (
     weight: 400,
-    size: 1,
+    size: 0,
     line-height: 1.5,
   ),
   small: (
     weight: 400,
-    size: 0.75,
+    size: -1,
     line-height: 1.5,
   ),
 ) !default;
