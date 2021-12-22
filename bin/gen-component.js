@@ -192,7 +192,7 @@ hide_title: true
 ---
 
 import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!../../../src/components/${tagname}/demo/${tagname}.html';
+import demoSource from '!!raw-loader!@/go-ui/components/${tagname}/demo/${tagname}.html';
 
 # ${title}
 

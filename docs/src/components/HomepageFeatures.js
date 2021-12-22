@@ -8,8 +8,8 @@ const FeatureList = [
     title: 'Pattern first',
     description: (
       <>
-        Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common patterns and make them easy to use. Allowing both design and development
-        teams to focus on delivering the product.
+        Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use. Allowing both design and
+        development teams to focus on delivering the product.
         <br />
         <Link href="#">See our patterns</Link>
       </>

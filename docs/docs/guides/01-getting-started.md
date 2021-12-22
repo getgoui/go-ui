@@ -8,7 +8,7 @@ sidebar_position: 1
 ### NPM package
 
 ```bash
-npm i go-components
+npm i @go-ui/core
 ```
 
 ### CDN
