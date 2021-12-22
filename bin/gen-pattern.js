@@ -239,7 +239,7 @@ ${getTagsFrontmatter(tags)}
 ---
 
 import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!../../../src/patterns/${patternName}/demo/${patternName}.html';
+import demoSource from '!!raw-loader!@/go-ui/patterns/${patternName}/demo/${patternName}.html';
 
 # ${title}
 
