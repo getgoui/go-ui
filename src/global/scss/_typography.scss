@@ -1,15 +1,15 @@
-/* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1440,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+/* @link https://utopia.fyi/type/calculator?c=768,16,1.25,1400,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
 
 :root {
-  --go-text-size--1: clamp(0.8rem, 0.77rem + 0.14vw, 0.9rem);
-  --go-text-size-0: clamp(1rem, 0.96rem + 0.18vw, 1.13rem);
-  --go-text-size-1: clamp(1.25rem, 1.21rem + 0.22vw, 1.41rem);
-  --go-text-size-2: clamp(1.56rem, 1.51rem + 0.28vw, 1.76rem);
-  --go-text-size-3: clamp(1.95rem, 1.88rem + 0.35vw, 2.2rem);
-  --go-text-size-4: clamp(2.44rem, 2.35rem + 0.44vw, 2.75rem);
-  --go-text-size-5: clamp(3.05rem, 2.94rem + 0.54vw, 3.43rem);
-  --go-text-size-6: clamp(3.82rem, 3.68rem + 0.68vw, 4.29rem);
-  --go-text-size-7: clamp(4.77rem, 4.6rem + 0.85vw, 5.36rem);
+  --go-text-size--1: clamp(0.8rem, 0.68rem + 0.25vw, 0.9rem);
+  --go-text-size-0: clamp(1rem, 0.85rem + 0.32vw, 1.13rem);
+  --go-text-size-1: clamp(1.25rem, 1.06rem + 0.4vw, 1.41rem);
+  --go-text-size-2: clamp(1.56rem, 1.32rem + 0.5vw, 1.76rem);
+  --go-text-size-3: clamp(1.95rem, 1.66rem + 0.62vw, 2.2rem);
+  --go-text-size-4: clamp(2.44rem, 2.07rem + 0.77vw, 2.75rem);
+  --go-text-size-5: clamp(3.05rem, 2.59rem + 0.97vw, 3.43rem);
+  --go-text-size-6: clamp(3.82rem, 3.24rem + 1.21vw, 4.29rem);
+  --go-text-size-7: clamp(4.77rem, 4.04rem + 1.51vw, 5.36rem);
 }
 
 @mixin text-size($scale) {

@@ -28,11 +28,17 @@ You can use `--go-heading-font-family` and `--go-body-font-family` CSS variables
 }
 ```
 
-### Responsiveness
+## Fluid type scale
 
-In order to achieve responsive typography, we can make use of the CSS variables `--go-font-tablet-scale` (default: `1`) and `--go-font-desktop-scale` (default: `1.1`).
+### Fluid typography
 
-By design, for mobile devices, the typography is not scaled.
+Fluid typography means the font size changes depending on the screen size. The benefit of this technique is that the text is readable on all screen sizes.
+
+GO UI uses the [CSS clamp](<https://developer.mozilla.org/en-US/docs/Web/CSS/clamp()>) function to give the fluid font sizes a minumum and a maximum limit. By default, on _mobile_ screens (`<768px`), the base font size is set to the minimun value (`16px/1rem`), from _tablet_ to _large_ sizes (`>=768px, <1400px`), they fluidly increases, then from _large_ screens (`>1400px`) onwards the base font size is set to the maximum value（`18px/1.13rem`).
+
+:::tip
+We used the [utopia type calculator](https://utopia.fyi/type/calculator/?c=768,16,1.25,1400,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l) to produce our default font sizes, use it to find the best fit for your project and remember to replace the css variable names `--step-*` with `--go-text-size-*`.
+:::
 
 <!-- Demos, tips, variations, use cases -->
 
