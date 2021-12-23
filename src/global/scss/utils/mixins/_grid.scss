@@ -7,7 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(var(--go-gutter-y) * -1);
-  gap: var(--go-col-gap);
+  gap: var(--go-col-gap, 0);
 }
 
 @mixin make-col-ready() {

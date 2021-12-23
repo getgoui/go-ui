@@ -7,12 +7,14 @@
 $breakpoints: (
   tablet: 768px,
   desktop: 1200px,
+  large: 1400px,
 ) !default;
 
 // Grid containers
 $container-max-widths: (
   tablet: 720px,
   desktop: 1140px,
+  large: 1320px,
 ) !default;
 
 // Grid columns
