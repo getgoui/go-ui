@@ -9,13 +9,6 @@ describe('typography', () => {
     html = fs.readFileSync(path.resolve(__dirname, '../demo/typography.html'), 'utf8');
   });
 
-  it('renders', async () => {
-    const page = await newE2EPage({html});
-    const element = await page.find('.random-target');
-    expect(element).toBeTruthy();
-  });
-
-
   it('passes automated a11y test', async () => {
     const page = await newE2EPage({ html });
     await expect(page).toPassA11y();

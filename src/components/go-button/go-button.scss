@@ -10,10 +10,28 @@ go-button {
   --go-btn-radius: var(--go-border-radius-base, 0.25rem);
 
   display: inline-block;
-  margin: 0;
-  // Style variants
-  &[block] {
+
+  &.block {
     display: block;
+  }
+  // start block level on desktop
+  &.block-desktop {
+    display: block;
+    @include min-query(large) {
+      display: inline-block;
+    }
+  }
+  &.block-tablet {
+    display: block;
+    @include min-query(desktop) {
+      display: inline-block;
+    }
+  }
+  &.block-mobile {
+    display: block;
+    @include min-query(tablet) {
+      display: inline-block;
+    }
   }
 
   // Colour variants
@@ -101,6 +119,12 @@ go-button {
     }
   }
 
+  &[rounded] {
+    .inner-button {
+      border-radius: 100vw;
+    }
+  }
+
   .inner-button {
     // reset button style
     @include reset-btn();
@@ -111,6 +135,7 @@ go-button {
     border-radius: var(--go-btn-radius);
     padding: var(--go-btn-padding-y, 0.5rem) var(--go-btn-padding-x, 1rem);
     box-shadow: var(--go-shadow-1);
+    text-underline-offset: 4px;
     @include transition(background-color, color, box-shadow);
 
     &:hover,

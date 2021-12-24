@@ -1,23 +1,44 @@
 <div class="container">
   <!-- default variants -->
-  <h3>Button variants</h3>
-  <div class="row">
-    <div class="col">
-      <go-button variant="primary">Primary</go-button>
-      <go-button variant="secondary">Secondary</go-button>
-      <go-button variant="tertiary">Tertiary</go-button>
-    </div>
-  </div>
+  <h3>Button colors</h3>
+  <go-button color="primary">Primary</go-button>
+  <go-button color="secondary">Secondary</go-button>
+  <go-button color="tertiary">Tertiary</go-button>
+  <go-button color="danger">Danger</go-button>
 
-  <!-- block level buttons -->
-  <h3>Block level buttons</h3>
-  <go-button outlined block>Block all the way</go-button>
+  <!-- default variants -->
+  <h3>Outline</h3>
+  <go-button outline color="primary">Primary</go-button>
+  <go-button outline color="secondary">Secondary</go-button>
+  <go-button outline color="tertiary">Tertiary</go-button>
+  <go-button outline color="danger">Danger</go-button>
 
-  <!-- button sizes -->
-  <h3>Button sizes</h3>
+  <h3>Flat</h3>
+  <go-button flat color="primary">Primary</go-button>
+  <go-button flat color="secondary">Secondary</go-button>
+  <go-button flat color="tertiary">Tertiary</go-button>
+  <go-button flat color="danger">Danger</go-button>
 
-  <!-- links styled as buttons -->
-  <div class="row">
-    <div class="col"></div>
-  </div>
+  <h3>Disabled</h3>
+  <go-button disabled color="primary">Primary</go-button>
+  <go-button disabled color="secondary">Secondary</go-button>
+  <go-button disabled color="tertiary">Tertiary</go-button>
+  <go-button disabled color="danger">Danger</go-button>
+
+  <h3>Rounded</h3>
+  <go-button rounded outline flat color="primary">Primary</go-button>
+  <go-button rounded outline flat color="secondary">Secondary</go-button>
+  <go-button rounded outline flat color="tertiary">Tertiary</go-button>
+  <go-button rounded outline flat color="danger">Danger</go-button>
+
+  <!-- block -->
+  <h3>Block</h3>
+  <go-button block color="primary">Block on all breakpoints</go-button>
+  <go-button block="mobile" color="primary">Block on mobile</go-button>
+  <go-button block="tablet" color="primary">Block on tablet</go-button>
+  <go-button block="desktop" color="primary">Block on desktop</go-button>
+
+  <h3>Button vs links</h3>
+  <p>While there are times when you want to style links as buttons, it's often not the right approach if you want to style buttons as links.</p>
+  <go-button color="primary" href="https://google.com" target="_blank">I'm a link styled like a button</go-button>
 </div>
