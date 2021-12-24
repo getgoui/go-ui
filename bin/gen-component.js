@@ -30,8 +30,9 @@ export default async function component(args) {
  * @param {boolean} inheritAttrs  Whether to inherit attributes from the host element.
  */
 function writeBoilerplate(tagName, inheritAttrs) {
-  const dir = `./src/components/${tagName}/`;
-  const docsDir = `./docs/docs/components/`;
+  const rootPath = path.resolve(__dirname, '../');
+  const dir = `${rootPath}/src/components/${tagName}/`;
+  const docsDir = `${rootPath}/docs/docs/components/`;
   // Create the directory if it doesn't exist.
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
