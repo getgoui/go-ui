@@ -20,9 +20,9 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "start": "concurrently --kill-others \"npm run dev\" \"npm run docs.start\"",
-    "serve": "stencil build --dev --watch --serve",
-    "dev": "stencil build --dev --docs-readme --watch",
+    "start": "concurrently --kill-others \"npm run watch.components\" \"npm run docs.start\"",
+    "serve.demo": "stencil build --dev --watch --serve",
+    "watch.components": "stencil build --dev --docs-readme --watch",
     "docs.start": "cd docs && npm start",
     "docs.build": "npm run build && cd docs && npm i && npm run build",
     "test.spec": "stencil test --spec",
