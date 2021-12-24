@@ -1,13 +1,13 @@
 import { Component, h, Prop, Element, Host } from '@stencil/core';
-import { ColorVariants } from '../../types';
+import { Breakpoints, ColorVariants } from '../../types';
 import { inheritAttributes } from '../../utils/helper';
 @Component({
   tag: 'go-button',
   styleUrl: 'go-button.scss',
   shadow: false,
 })
-export class GovButton {
-  @Element() button: HTMLElement;
+export class GoButton {
+  @Element() root: HTMLElement;
 
   /**
    * Html type of the button
@@ -20,33 +20,49 @@ export class GovButton {
   @Prop({ reflect: true }) disabled?: boolean = null;
 
   /**
-   * Button variant
+   * Color variants
    */
-  @Prop() variant?: ColorVariants = 'primary';
+  @Prop() color?: ColorVariants = 'primary';
+
+  /**
+   * If set, the button will take up the full width of its parent
+   */
+  @Prop() block?: Breakpoints;
 
   /**
    * If `outlined` is true, the button will have a border based on selected variant
    * @see `variant` property
    */
-  @Prop() outlined?: boolean = false;
+  @Prop({ reflect: true }) outlined?: boolean = false;
 
   /**
-   * If set, the button will take up the full width of its parent
+   * If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant
    */
-  @Prop() block?: boolean = false;
+  @Prop({ reflect: true }) flat?: boolean = false;
 
-  private interitedAttributes = {};
+  /**
+   * If the button has an href, it will be rendered as an anchor tag
+   */
+  @Prop() href?: string;
+
+  private inheritedAttributes = {} as any;
   componentWillLoad() {
-    this.interitedAttributes = inheritAttributes(this.button, ['aria-checked']);
+    this.inheritedAttributes = inheritAttributes(this.root, ['block', 'color', 'disabled'], false);
   }
 
   render() {
-    const { type, disabled, interitedAttributes } = this;
+    const { type, disabled, color, block, inheritedAttributes } = this;
+    const Tag = this.href ? 'a' : 'button';
+    const blockClass = typeof block !== 'undefined' ? (['', 'mobile'].includes(block) ? 'block' : `block-${block}`) : '';
+    const rootClasses = `${color} ${blockClass}`;
+    console.log({ disabled });
     return (
-      <Host>
-        <button type={type} disabled={disabled} aria-disabled={disabled ? 'true' : null} {...interitedAttributes}>
+      <Host class={rootClasses}>
+        <Tag class="inner-button" type={type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes}>
+          <slot name="start"></slot>
           <slot></slot>
-        </button>
+          <slot name="end"></slot>
+        </Tag>
       </Host>
     );
   }

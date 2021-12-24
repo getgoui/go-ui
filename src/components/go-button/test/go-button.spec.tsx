@@ -1,9 +1,9 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GovButton } from '../go-button';
+import { GoButton } from '../go-button';
 describe('go-button', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [GovButton],
+      components: [GoButton],
       html: `<go-button>Test</go-button>`,
     });
     expect(page.root.querySelector('button')).toBeTruthy();
