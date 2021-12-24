@@ -5,3 +5,12 @@
 @import './scss/colors';
 @import './scss/grid';
 @import './scss/typography';
+// global styles
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: var(--go-color-text);
+  background: var(--go-color-bg);
+}
