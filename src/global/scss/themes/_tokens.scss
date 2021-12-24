@@ -1,59 +1,59 @@
-/* CSS variables for default color scheme */
+/* CSS variables for default token scheme */
 :root,
 html {
-  /* primary */
-  --go-token-primary-100: 119, 72, 229;
-  --go-token-primary-200: 101, 47, 226;
-  --go-token-primary-300: 85, 29, 215;
-  --go-token-primary-400: 75, 26, 190;
-  --go-token-primary-500: 65, 23, 166;
-  --go-token-primary-600: 56, 19, 141;
-  --go-token-primary-700: 46, 16, 116;
-  --go-token-primary-800: 36, 12, 91;
-  --go-token-primary-900: 26, 9, 66;
+  // primary
+  --go-token-primary-100: 14, 105, 241;
+  --go-token-primary-200: 12, 94, 216;
+  --go-token-primary-300: 11, 83, 190;
+  --go-token-primary-400: 9, 72, 165;
+  --go-token-primary-500: 8, 61, 140;
+  --go-token-primary-600: 7, 50, 115;
+  --go-token-primary-700: 5, 39, 90;
+  --go-token-primary-800: 4, 28, 64;
+  --go-token-primary-900: 2, 17, 39;
 
-  /* secondary */
-  --go-token-secondary-100: 67, 226, 205;
-  --go-token-secondary-200: 43, 223, 199;
-  --go-token-secondary-300: 31, 208, 184;
-  --go-token-secondary-400: 27, 184, 163;
-  --go-token-secondary-500: 24, 160, 141;
-  --go-token-secondary-600: 20, 136, 120;
-  --go-token-secondary-700: 16, 112, 99;
-  --go-token-secondary-800: 13, 88, 78;
-  --go-token-secondary-900: 9, 64, 56;
+  // secondary
+  --go-token-secondary-100: 218, 220, 232;
+  --go-token-secondary-200: 189, 193, 214;
+  --go-token-secondary-300: 160, 165, 196;
+  --go-token-secondary-400: 131, 138, 178;
+  --go-token-secondary-500: 102, 110, 160;
+  --go-token-secondary-600: 82, 89, 133;
+  --go-token-secondary-700: 64, 70, 103;
+  --go-token-secondary-800: 46, 50, 74;
+  --go-token-secondary-900: 28, 30, 45;
 
-  /* success */
-  --go-token-success-100: 165, 195, 166;
-  --go-token-success-200: 144, 181, 146;
-  --go-token-success-300: 124, 167, 126;
-  --go-token-success-400: 104, 154, 106;
-  --go-token-success-500: 89, 135, 91;
-  --go-token-success-600: 76, 114, 78;
-  --go-token-success-700: 63, 94, 64;
-  --go-token-success-800: 49, 74, 50;
-  --go-token-success-900: 36, 54, 36;
+  // success
+  --go-token-success-100: 167, 222, 163;
+  --go-token-success-200: 139, 212, 133;
+  --go-token-success-300: 110, 201, 104;
+  --go-token-success-400: 82, 190, 74;
+  --go-token-success-500: 66, 165, 59;
+  --go-token-success-600: 54, 135, 48;
+  --go-token-success-700: 42, 106, 38;
+  --go-token-success-800: 30, 76, 27;
+  --go-token-success-900: 18, 46, 17;
 
-  /* error */
-  --go-token-error-100: 236, 179, 171;
-  --go-token-error-200: 229, 150, 140;
-  --go-token-error-300: 222, 122, 108;
-  --go-token-error-400: 215, 93, 77;
-  --go-token-error-500: 209, 64, 46;
-  --go-token-error-600: 177, 55, 39;
-  --go-token-error-700: 146, 45, 32;
-  --go-token-error-800: 114, 35, 25;
-  --go-token-error-900: 83, 25, 18;
+  // error
+  --go-token-error-100: 244, 169, 167;
+  --go-token-error-200: 240, 132, 129;
+  --go-token-error-300: 235, 95, 90;
+  --go-token-error-400: 230, 58, 52;
+  --go-token-error-500: 213, 32, 26;
+  --go-token-error-600: 175, 26, 21;
+  --go-token-error-700: 136, 20, 17;
+  --go-token-error-800: 98, 15, 12;
+  --go-token-error-900: 60, 9, 7;
 
-  /* neutral */
-  --go-token-neutral-100: 163, 163, 163;
-  --go-token-neutral-200: 147, 147, 147;
-  --go-token-neutral-300: 132, 132, 132;
-  --go-token-neutral-400: 117, 117, 117;
-  --go-token-neutral-500: 102, 102, 102;
-  --go-token-neutral-600: 86, 86, 86;
-  --go-token-neutral-700: 71, 71, 71;
-  --go-token-neutral-800: 56, 56, 56;
+  // neutral
+  --go-token-neutral-100: 248, 248, 248;
+  --go-token-neutral-200: 222, 222, 222;
+  --go-token-neutral-300: 196, 196, 196;
+  --go-token-neutral-400: 170, 170, 170;
+  --go-token-neutral-500: 144, 144, 144;
+  --go-token-neutral-600: 118, 118, 118;
+  --go-token-neutral-700: 92, 92, 92;
+  --go-token-neutral-800: 66, 66, 66;
   --go-token-neutral-900: 40, 40, 40;
 
   // darkest
