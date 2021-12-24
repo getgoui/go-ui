@@ -9,9 +9,9 @@ import { Breakpoints, ColorVariants } from "./types";
 export namespace Components {
     interface GoButton {
         /**
-          * If set, the button will take up the full width of its parent
+          * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
          */
-        "block"?: Breakpoints;
+        "block"?: Breakpoints | '';
         /**
           * Color variants
          */
@@ -33,6 +33,7 @@ export namespace Components {
           * @see  `variant` property
          */
         "outlined"?: boolean;
+        "rounded"?: boolean;
         /**
           * Html type of the button
          */
@@ -62,9 +63,9 @@ declare global {
 declare namespace LocalJSX {
     interface GoButton {
         /**
-          * If set, the button will take up the full width of its parent
+          * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
          */
-        "block"?: Breakpoints;
+        "block"?: Breakpoints | '';
         /**
           * Color variants
          */
@@ -86,6 +87,7 @@ declare namespace LocalJSX {
           * @see  `variant` property
          */
         "outlined"?: boolean;
+        "rounded"?: boolean;
         /**
           * Html type of the button
          */

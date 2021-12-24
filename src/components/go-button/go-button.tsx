@@ -26,8 +26,9 @@ export class GoButton {
 
   /**
    * If set, the button will take up the full width of its parent
+   * If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
    */
-  @Prop() block?: Breakpoints;
+  @Prop() block?: Breakpoints | '';
 
   /**
    * If `outlined` is true, the button will have a border based on selected variant
@@ -39,6 +40,8 @@ export class GoButton {
    * If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant
    */
   @Prop({ reflect: true }) flat?: boolean = false;
+
+  @Prop({ reflect: true }) rounded?: boolean = false;
 
   /**
    * If the button has an href, it will be rendered as an anchor tag
@@ -53,9 +56,8 @@ export class GoButton {
   render() {
     const { type, disabled, color, block, inheritedAttributes } = this;
     const Tag = this.href ? 'a' : 'button';
-    const blockClass = typeof block !== 'undefined' ? (['', 'mobile'].includes(block) ? 'block' : `block-${block}`) : '';
+    const blockClass = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
     const rootClasses = `${color} ${blockClass}`;
-    console.log({ disabled });
     return (
       <Host class={rootClasses}>
         <Tag class="inner-button" type={type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes}>
