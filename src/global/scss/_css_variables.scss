@@ -1,8 +1,7 @@
 // CSS Variables
 @import './themes/tokens';
 
-:root,
-html {
+:root {
   // Grid
   --go-outer-gutter: 1rem; // Container gutter
   --go-col-gap: 0; // Gap between columns
@@ -11,6 +10,35 @@ html {
   --go-heading-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   --go-body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 
+  // Border
   --go-border-width-thin: 1px;
   --go-border-width-thick: 0.5rem;
+
+  // Border radius
+  --go-border-radius-base: 0.25rem;
+  --go-border-radius-large: 0.5rem;
+
+  // Focus styles
+  --go-focus-outline-width: 2px;
+  --go-focus-outline-color: var(--go-color-primary, #000);
+  --go-focus-outline-offset: 2px;
+
+  // Colours (other than tokens)
+  --go-color-bg: var(--go-color-lightest);
+  --go-color-text: var(--go-color-darkest);
+  --go-color-link: var(--go-color-secondary-);
+
+  // Transitions
+  --go-transition-duration-fast: 0.1s;
+  --go-transition-duration-normal: 0.2s;
+  --go-transition-duration-slow: 0.5s;
+  --go-transition-timing: ease-in-out;
+
+  // Shadows
+  --go-shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --go-shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --go-shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --go-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --go-shadow-5: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --go-shadow-6: 0 30px 60px -12px rgba(0, 0, 0, 0.22);
 }

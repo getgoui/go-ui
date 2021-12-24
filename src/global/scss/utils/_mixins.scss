@@ -37,6 +37,20 @@
   }
 }
 
+// apply a css rule at all breakpoints with suffix of device name for the variant
+@mixin responsiveVariantClass($variantName, $prop, $value) {
+  &.#{$variantName} {
+    #{$prop}: #{$value};
+  }
+  @each $device, $width in $breakpoints {
+    &.#{$variantName}-#{$device} {
+      @include min-query($device) {
+        #{$prop}: #{$value};
+      }
+    }
+  }
+}
+
 // shorthand for calculating multiples of base spacing
 @function spacing($multiplier) {
   @return calc(var(--base-spacing) * #{$multiplier});
@@ -69,4 +83,12 @@
   // extreme colors
   --go-color-darkest: rgb(var(--go-token-lightest));
   --go-color-lightest: rgb(var(--go-token-darkest));
+}
+
+@mixin reset-btn {
+  // reset button style
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
 }
