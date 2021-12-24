@@ -6,7 +6,9 @@
 
 .color-box-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: auto;
+  gap: 0.5rem;
 }
 .color-box {
   display: block;
