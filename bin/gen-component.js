@@ -186,7 +186,7 @@ const getReadmeContent = (tagname) => `## ${tagname} API
 <!-- Auto Generated Below -->`;
 
 const getDocsContent = (tagname) => {
-  const title = sentenseCase(tagname);
+  const title = sentenseCase(tagname.replace('go-', ''));
   return `---
 title: ${title}
 hide_title: true
@@ -195,11 +195,12 @@ hide_title: true
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/${tagname}/demo/${tagname}.html';
 
-# ${title}
+# ${title} <span class="text-size-0">\`${tagname}\`</span>
 
 <!-- Description -->
-
-${title} is a component.
+<div class="text-size-1">
+  ${title} is a component in Go UI.
+</div>
 
 ## When to use
 
@@ -216,8 +217,8 @@ ${title} is a component.
 
 <!-- Patterns that uses this component -->
 
-- [Pattern 1](#pattern-1)
-- [Pattern 2](#pattern-2)
+- [Pattern 1](#)
+- [Pattern 2](#)
 
 <!-- Demos, tips, variations, use cases -->
 
