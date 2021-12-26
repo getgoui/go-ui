@@ -195,10 +195,10 @@ hide_title: true
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/${tagname}/demo/${tagname}.html';
 
-# ${title} <span class="text-size-0">\`${tagname}\`</span>
+# ${title} <span className="text-size-0">\`${tagname}\`</span>
 
 <!-- Description -->
-<div class="text-size-1">
+<div className="text-size-1">
   ${title} is a component in Go UI.
 </div>
 
