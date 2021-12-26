@@ -6,11 +6,10 @@ import pxtorem from 'postcss-pxtorem';
 import cssnano from 'cssnano';
 
 export const config: Config = {
-  namespace: 'go-components',
+  namespace: 'go-ui',
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader',
     },
     {
       type: 'dist-custom-elements-bundle',
@@ -40,7 +39,7 @@ export const config: Config = {
           replace: false,
         }),
         cssnano({
-          preset: 'default',
+          preset: ['default', { discardComments: { removeAll: true } }],
         }),
       ],
     }),
