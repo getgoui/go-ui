@@ -68,7 +68,7 @@ function writeBoilerplate(tagName, inheritAttrs) {
 
   // write the readme file
   const readmeContent = getReadmeContent(tagName);
-  const readmePath = path.resolve(dir, `${tagName}.md`);
+  const readmePath = path.resolve(dir, `readme.md`);
   try {
     fs.writeFileSync(readmePath, readmeContent);
     console.log(chalk.green('√ README file generated'));
@@ -125,9 +125,9 @@ function getComponentFileContent(tagName, inheritAttrs) {
      inheritAttrs
        ? `
     // Store attributes inherited from the host element
-    private interitedAttributes = {};
+    private inheritedAttrs = {};
     componentWillLoad() {
-      this.interitedAttributes = inheritAttributes(this.button, ['aria-checked']);
+      this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style'], false);
     }
     `
        : ''
