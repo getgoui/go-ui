@@ -17,7 +17,7 @@
   --ifm-color-primary-dark: var(--go-color-primary-600);
   --ifm-color-primary-darker: var(--go-color-primary-700);
   --ifm-color-primary-darkest: var(--go-color-primary-900);
-  --ifm-code-font-size: 95%;
+  --ifm-code-font-size: var(--go-text-size--1);
 }
 
 .docusaurus-highlight-code-line {
@@ -115,4 +115,8 @@ table {
 
 .toggleIcon_node_modules-\@docusaurus-theme-classic-lib-next-theme-Toggle-styles-module {
   font-size: 16px;
+}
+
+[class='iconExternalLink_node_modules-@docusaurus-theme-classic-lib-next-theme-IconExternalLink-styles-module'] {
+  display: none;
 }
