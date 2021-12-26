@@ -1,11 +1,13 @@
 import minimist from 'minimist';
 import component from './gen-component';
 import pattern from './gen-pattern';
+import watch from './watch';
 import help from './help';
 
 const commands = {
   component,
   pattern,
+  watch,
   help,
 };
 

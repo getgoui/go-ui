@@ -1,1 +1,47 @@
-<go-button aria-role="button" aria-checked="true" id="button" role="button" class="yoyo check this out"> Button </go-button>
+<div class="container">
+  <!-- color variants -->
+  <h3>Button colors</h3>
+  <go-button class="what up" color="primary">Primary</go-button>
+  <go-button color="secondary">Secondary</go-button>
+  <go-button color="tertiary">Tertiary</go-button>
+  <go-button color="danger">Danger</go-button>
+
+  <!-- outline -->
+  <h3>Outline</h3>
+  <go-button outline color="primary">Primary</go-button>
+  <go-button outline color="secondary">Secondary</go-button>
+  <go-button outline color="tertiary">Tertiary</go-button>
+  <go-button outline color="danger">Danger</go-button>
+
+  <!-- flat -->
+  <h3>Flat</h3>
+  <go-button flat color="primary">Primary</go-button>
+  <go-button flat color="secondary">Secondary</go-button>
+  <go-button flat color="tertiary">Tertiary</go-button>
+  <go-button flat color="danger">Danger</go-button>
+
+  <!-- disabled -->
+  <h3>Disabled</h3>
+  <go-button disabled color="primary">Primary</go-button>
+  <go-button disabled color="secondary">Secondary</go-button>
+  <go-button disabled color="tertiary">Tertiary</go-button>
+  <go-button disabled color="danger">Danger</go-button>
+
+  <!-- rounded -->
+  <h3>Rounded</h3>
+  <go-button rounded outline flat color="primary">Primary</go-button>
+  <go-button rounded outline flat color="secondary">Secondary</go-button>
+  <go-button rounded outline flat color="tertiary">Tertiary</go-button>
+  <go-button rounded outline flat color="danger">Danger</go-button>
+
+  <!-- block -->
+  <h3>Block</h3>
+  <go-button style="margin-bottom: var(--size-1)" block color="primary">Block on all breakpoints</go-button>
+  <go-button style="margin-bottom: var(--size-1)" block="mobile" color="primary">Block on mobile</go-button>
+  <go-button style="margin-bottom: var(--size-1)" block="tablet" color="primary">Block on tablet</go-button>
+  <go-button style="margin-bottom: var(--size-1)" block="desktop" color="primary">Block on desktop</go-button>
+
+  <h3>Button vs links</h3>
+  <p>While there are times when you want to style links as buttons, it's often not the right approach if you want to style buttons as links.</p>
+  <go-button color="primary" href="https://google.com" target="_blank" rel="noopener noreferrer nofollow">I'm a link styled like a button</go-button>
+</div>

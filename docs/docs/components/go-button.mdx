@@ -6,30 +6,37 @@ hide_title: true
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/go-button/demo/go-button.html';
 
-# Button
+# Button <span className="text-size-0">`go-button`</span>
 
 <!-- Description, a11y, when to use, caveats, etc -->
 
-<div class="text-size-1">A button is a simple way to call on the attention of the user.</div>
+<div className="text-size-1">A button is a simple way to call on the attention of the user.</div>
 
 ## When to use
 
 Use a button when you want to:
 
 - Call on the user’s attention.
-- Provide a way to initiate a process or a navigation.
+- Provide a way to initiate an action or a navigation (see [buttons vs links](#buttons-vs-links)).
 - Provide a command that the user can execute, such as saving data or submitting a form.
+
+### Buttons vs links
+
+For a comprehensive breakdown of buttons and links, see [A Complete Guide to Links and Buttons](https://css-tricks.com/a-complete-guide-to-links-and-buttons/) from CSS Tricks.
+Buttons and links may feel similar but they serve different purposes and have different accessibility requirements.
+
+> Buttons are used for actions that affect the website's front-end or back-end; links are used for navigation and actions that don't affect the website at all.
+>
+> -- <cite>[UX Office](https://ux.iu.edu/writings/buttons-vs-links-basic/)</cite>
 
 ## Related patterns
 
 <!-- Patterns that uses this component -->
 
-- [Pattern 1](#pattern-1)
-- [Pattern 2](#pattern-2)
+- [Button group](../patterns/go-button-group)
+- [Call to action](#)
 
 <!-- Demos, tips, variations, use cases -->
-
-## Demo
 
 <Demo code={demoSource} />
 

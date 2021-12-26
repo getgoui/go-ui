@@ -30,8 +30,9 @@ export default async function component(args) {
  * @param {boolean} inheritAttrs  Whether to inherit attributes from the host element.
  */
 function writeBoilerplate(tagName, inheritAttrs) {
-  const dir = `./src/components/${tagName}/`;
-  const docsDir = `./docs/docs/components/`;
+  const rootPath = path.resolve(__dirname, '../');
+  const dir = `${rootPath}/src/components/${tagName}/`;
+  const docsDir = `${rootPath}/docs/docs/components/`;
   // Create the directory if it doesn't exist.
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
@@ -185,7 +186,7 @@ const getReadmeContent = (tagname) => `## ${tagname} API
 <!-- Auto Generated Below -->`;
 
 const getDocsContent = (tagname) => {
-  const title = sentenseCase(tagname);
+  const title = sentenseCase(tagname.replace('go-', ''));
   return `---
 title: ${title}
 hide_title: true
@@ -194,11 +195,12 @@ hide_title: true
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/${tagname}/demo/${tagname}.html';
 
-# ${title}
+# ${title} <span className="text-size-0">\`${tagname}\`</span>
 
 <!-- Description -->
-
-${title} is a component.
+<div className="text-size-1">
+  ${title} is a component in Go UI.
+</div>
 
 ## When to use
 
@@ -215,8 +217,8 @@ ${title} is a component.
 
 <!-- Patterns that uses this component -->
 
-- [Pattern 1](#pattern-1)
-- [Pattern 2](#pattern-2)
+- [Pattern 1](#)
+- [Pattern 2](#)
 
 <!-- Demos, tips, variations, use cases -->
 

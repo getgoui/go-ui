@@ -20,9 +20,10 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "start": "concurrently --kill-others \"npm run dev\" \"npm run docs.start\"",
-    "serve": "stencil build --dev --watch --serve",
-    "dev": "stencil build --dev --docs-readme --watch",
+    "start": "concurrently --kill-others \"npm run watch.components\" \"npm run docs.start\" \"npx gg watch\"",
+    "serve.demo": "stencil build --dev --watch --serve",
+    "watch.components": "stencil build --dev --watch",
+    "build.readme": "stencil build --docs-readme",
     "docs.start": "cd docs && npm start",
     "docs.build": "npm run build && cd docs && npm i && npm run build",
     "test.spec": "stencil test --spec",
@@ -38,7 +39,8 @@
   },
   "dependencies": {
     "@stencil/core": "^2.11.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "open-props": "^1.0.14"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.3.2",
@@ -51,6 +53,7 @@
     "autoprefixer": "^10.4.0",
     "axe-core": "^4.3.5",
     "chalk": "^4.1.2",
+    "chokidar": "^3.5.2",
     "concurrently": "^6.4.0",
     "cssnano": "^5.0.12",
     "esm": "^3.2.25",
@@ -63,14 +66,14 @@
     "postcss-pxtorem": "^6.0.0",
     "prompts": "^2.4.2",
     "puppeteer": "^5.5.0",
+    "semantic-release": "^18.0.1",
     "semantic-release-cli": "^5.4.4",
     "standard-version": "^9.3.2",
     "stylelint": "^14.1.0",
     "stylelint-a11y": "^1.2.3",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard-scss": "^2.0.1",
-    "yargs": "^17.3.0",
-    "semantic-release": "^18.0.1"
+    "yargs": "^17.3.0"
   },
   "license": "MIT",
   "repository": {

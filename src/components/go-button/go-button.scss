@@ -1,21 +1,163 @@
 go-button {
+  // default colours
+  --go-btn-bg-color: transparent;
+  --go-btn-bg-color-hover: var(--go-color-neutral-100);
+  --go-btn-bg-color-disabled: var(--go-color-neutral-200);
+  --go-btn-text-color: var(--go-color-text);
+  --go-btn-text-color-hover: inherit;
+  --go-btn-text-color-disabled: inherit;
+
+  // shadow
+  --go-btn-shadow: var(--shadow-2);
+
+  // default sizing
+  --go-btn-padding-y: 0.8em;
+  --go-btn-padding-x: 1.5em;
+  --go-btn-inner-gap: var(--size-2);
+  --go-btn-radius: var(--go-border-radius-base, 0.25rem);
+
   display: inline-block;
-  button {
-    // reset button style
-    background: white;
-    color: black;
-    cursor: pointer;
-    border: 1px solid blue;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    &:hover {
-      background: blue;
-      color: white;
+
+  &.block {
+    display: block;
+  }
+  // start block level on desktop
+  &.block-desktop {
+    display: block;
+    @include min-query(large) {
+      display: inline-block;
     }
-    &:focus,
+  }
+  &.block-tablet {
+    display: block;
+    @include min-query(desktop) {
+      display: inline-block;
+    }
+  }
+  &.block-mobile {
+    display: block;
+    @include min-query(tablet) {
+      display: inline-block;
+    }
+  }
+
+  // Colour variants
+  &[color='primary'] {
+    --go-btn-bg-color: var(--go-color-primary-500);
+    --go-btn-bg-color-hover: var(--go-color-primary-300);
+    --go-btn-bg-color-disabled: rgba(var(--go-token-primary-500), 0.5);
+    --go-btn-text-color: var(--go-color-lightest);
+    --go-btn-text-color-hover: var(--go-color-lightest);
+    --go-btn-text-color-disabled: var(--go-color-lightest);
+  }
+  &[color='secondary'] {
+    --go-btn-bg-color: var(--go-color-secondary-500);
+    --go-btn-bg-color-hover: var(--go-color-secondary-300);
+    --go-btn-bg-color-disabled: rgba(var(--go-token-secondary-500), 0.5);
+    --go-btn-text-color: var(--go-color-lightest);
+    --go-btn-text-color-hover: var(--go-color-lightest);
+    --go-btn-text-color-disabled: var(--go-color-lightest);
+  }
+  &[color='tertiary'] {
+    --go-btn-bg-color-hover: var(--go-color-neutral-300);
+    --go-btn-bg-color-disabled: rgba(var(--go-token-neutral-200), 0.5);
+    --go-btn-text-color-disabled: var(--go-color-text);
+    .inner-button {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  &[color='danger'] {
+    --go-btn-bg-color: var(--go-color-error-500);
+    --go-btn-bg-color-hover: var(--go-color-error-200);
+    --go-btn-bg-color-disabled: rgba(var(--go-token-error-500), 0.5);
+    --go-btn-text-color: var(--go-color-lightest);
+    --go-btn-text-color-hover: var(--go-color-lightest);
+    --go-btn-text-color-disabled: var(--go-color-lightest);
+  }
+
+  &[disabled] {
+    --go-btn-bg-color: var(--go-btn-bg-color-disabled);
+    --go-btn-text-color: var(--go-btn-text-color-disabled);
+    .inner-button {
+      cursor: not-allowed;
+      box-shadow: none;
+      &:hover,
+      &:focus {
+        background: var(--go-btn-bg-color-disabled);
+        color: var(--go-btn-text-color-disabled);
+        box-shadow: none;
+        outline: none;
+      }
+    }
+    &[color='tertiary'] {
+      .inner-button {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &[outline] {
+    .inner-button {
+      background: transparent;
+      border: 2px solid var(--go-btn-bg-color);
+      color: var(--go-btn-bg-color);
+      &:hover,
+      &:focus-visible {
+        background: var(--go-btn-bg-color);
+        color: var(--go-btn-text-color);
+      }
+    }
+
+    &[color='tertiary'] {
+      --go-btn-bg-color: var(--go-color-neutral-500);
+    }
+  }
+
+  &[flat] {
+    .inner-button {
+      box-shadow: none;
+      &:hover,
+      &:focus-visible {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &[rounded] {
+    .inner-button {
+      border-radius: 100vw;
+    }
+  }
+
+  .inner-button {
+    // reset button style
+    @include reset-btn();
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--go-btn-inner-gap);
+    width: 100%;
+    text-align: center;
+    background: var(--go-btn-bg-color);
+    color: var(--go-btn-text-color);
+    border-radius: var(--go-btn-radius);
+    padding: var(--go-btn-padding-y, 0.5rem) var(--go-btn-padding-x, 1rem);
+    box-shadow: var(--go-btn-shadow);
+    text-underline-offset: 4px; // optimise for browsers that support it
+    @include transition(background-color, color, box-shadow);
+
+    &:hover,
     &:focus-visible {
-      outline: 2px solid black;
-      outline-offset: 2px;
+      --go-btn-bg-color: var(--go-btn-bg-color-hover, #fff);
+      --go-btn-text-color: var(--go-btn-text-color-hover, #000);
+      box-shadow: var(--go-btn-shadow);
+    }
+    &:focus-visible {
+      outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
+      outline-offset: var(--go-focus-outline-offset);
     }
   }
 }

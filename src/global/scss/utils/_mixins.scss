@@ -37,6 +37,20 @@
   }
 }
 
+// apply a css rule at all breakpoints with suffix of device name for the variant
+@mixin responsiveVariantClass($variantName, $prop, $value) {
+  &.#{$variantName} {
+    #{$prop}: #{$value};
+  }
+  @each $device, $width in $breakpoints {
+    &.#{$variantName}-#{$device} {
+      @include min-query($device) {
+        #{$prop}: #{$value};
+      }
+    }
+  }
+}
+
 // shorthand for calculating multiples of base spacing
 @function spacing($multiplier) {
   @return calc(var(--base-spacing) * #{$multiplier});
@@ -61,7 +75,7 @@
   @each $color-category in $color-categories {
     @for $i from $color-shades through 1 {
       $level: $i * 100;
-      $tokenLevel: $color-shades * 100 - $level;
+      $tokenLevel: ($color-shades + 1) * 100 - $level;
       // define css variable for this shade
       --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$tokenLevel}));
     }
@@ -69,4 +83,60 @@
   // extreme colors
   --go-color-darkest: rgb(var(--go-token-lightest));
   --go-color-lightest: rgb(var(--go-token-darkest));
+}
+
+@mixin reset-btn {
+  // reset button style
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// https://gist.github.com/tobiasahlin/7a421fb9306a4f518aab
+// Usage:   @include transition(width, height 0.3s ease-in-out);
+// Output:  -webkit-transition(width 0.2s, height 0.3s ease-in-out);
+//          transition(width 0.2s, height 0.3s ease-in-out);
+//
+// Pass in any number of transitions
+@mixin transition($transitions...) {
+  $unfoldedTransitions: ();
+  @each $transition in $transitions {
+    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+  }
+
+  -webkit-transition: $unfoldedTransitions;
+  transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition($transition) {
+  // Default values
+  $property: all;
+  $duration: var(--go-duration-normal);
+  $easing: null; // Browser default is ease, which is what we want
+  $delay: null; // Browser default is 0, which is what we want
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfoldedTransition: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i);
+    } @else {
+      $p: nth($defaultProperties, $i);
+    }
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
+}
+
+// what happens in dark mode
+// to be used at the root level
+@mixin dark-mode {
+  [color-scheme='dark'],
+  [data-theme='dark'] {
+    @content;
+  }
 }

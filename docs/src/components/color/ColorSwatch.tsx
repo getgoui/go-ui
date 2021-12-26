@@ -82,7 +82,7 @@ const ColorSwatch = ({ colorName, levels, state, setState }: ColorSwatchProps) =
 const getCode = (colorName: string, levels: ColorLevelsObject, isExtremeColors: boolean): string => {
   let code = `// ${colorName}\n`;
   Object.entries(levels).forEach(([level, color]) => {
-    const cssColorName = `--go-color-${colorName}` + `${isExtremeColors ? '' : '-' + level}`;
+    const cssColorName = `--go-token-${colorName}` + `${isExtremeColors ? '' : '-' + level}`;
     const colorRGB = color
       .rgb()
       .array()

@@ -89,3 +89,10 @@ code {
 .text-capitalize {
   text-transform: capitalize;
 }
+
+// external links
+a[target='_blank'] {
+  &::after {
+    content: ' \2197';
+  }
+}

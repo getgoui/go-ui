@@ -1,0 +1,6 @@
+go-button-group {
+  display: flex;
+  gap: var(--go-button-group-gap, 1rem);
+  flex-wrap: wrap;
+  align-items: baseline;
+}

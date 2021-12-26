@@ -1,7 +1,24 @@
 @import '~normalize.css/normalize.css';
-
 @import './scss/utils';
+
+// Use Open props to define size utilities
+// https://open-props.style/#sizes
+@import '~open-props/sizes.min.css';
+
+// Use Open props to define shadow utilities
+// https://open-props.style/#shadows
+@import '~open-props/shadows.min.css';
+
 @import './scss/css_variables';
 @import './scss/colors';
 @import './scss/grid';
 @import './scss/typography';
+// global styles
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: var(--go-color-text);
+  background: var(--go-color-bg);
+}
