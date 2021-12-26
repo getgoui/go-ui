@@ -33,13 +33,4 @@
   --go-duration-normal: 0.2s;
   --go-duration-slow: 0.5s;
   --go-timing-function: ease-in-out;
-
-  // Shadows
-  --go-shadow-0: 0 0 0 1px rgba(var(--go-token-darkest), 0.05);
-  --go-shadow-1: 0 1px 3px 0 rgba(var(--go-token-darkest), 0.1), 0 1px 2px 0 rgba(var(--go-token-darkest), 0.06);
-  --go-shadow-2: 0 4px 6px -1px rgba(var(--go-token-darkest), 0.1), 0 2px 4px -1px rgba(var(--go-token-darkest), 0.06);
-  --go-shadow-3: 0 10px 15px -3px rgba(var(--go-token-darkest), 0.1), 0 4px 6px -2px rgba(var(--go-token-darkest), 0.05);
-  --go-shadow-4: 0 20px 25px -5px rgba(var(--go-token-darkest), 0.1), 0 10px 10px -5px rgba(var(--go-token-darkest), 0.04);
-  --go-shadow-5: 0 25px 50px -12px rgba(var(--go-token-darkest), 0.25);
-  --go-shadow-6: 0 30px 60px -12px rgba(var(--go-token-darkest), 0.22);
 }

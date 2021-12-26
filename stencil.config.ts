@@ -17,7 +17,7 @@ export const config: Config = {
     },
     {
       type: 'docs-readme',
-      footer: 'Built with ❤️',
+      footer: '',
     },
     {
       type: 'www',

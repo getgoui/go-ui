@@ -75,7 +75,7 @@
   @each $color-category in $color-categories {
     @for $i from $color-shades through 1 {
       $level: $i * 100;
-      $tokenLevel: $color-shades * 100 - $level;
+      $tokenLevel: ($color-shades + 1) * 100 - $level;
       // define css variable for this shade
       --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$tokenLevel}));
     }
@@ -130,4 +130,13 @@
   }
 
   @return $unfoldedTransition;
+}
+
+// what happens in dark mode
+// to be used at the root level
+@mixin dark-mode {
+  [color-scheme='dark'],
+  [data-theme='dark'] {
+    @content;
+  }
 }

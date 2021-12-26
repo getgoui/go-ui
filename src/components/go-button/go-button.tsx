@@ -1,6 +1,11 @@
 import { Component, h, Prop, Element, Host } from '@stencil/core';
 import { Breakpoints, ColorVariants } from '../../types';
 import { inheritAttributes } from '../../utils/helper';
+
+/**
+ * @slot start - Use this slot to prepend content to the button.
+ * @slot end - Use this slot to append content to the button.
+ */
 @Component({
   tag: 'go-button',
   styleUrl: 'go-button.scss',
@@ -50,7 +55,7 @@ export class GoButton {
 
   private inheritedAttributes = {} as any;
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.root, ['block', 'color', 'disabled'], false);
+    this.inheritedAttributes = inheritAttributes(this.root, ['block', 'color', 'disabled', 'style'], false);
   }
 
   render() {
@@ -58,9 +63,12 @@ export class GoButton {
     const Tag = this.href ? 'a' : 'button';
     const blockClass = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
     const rootClasses = `${color} ${blockClass}`;
+
+    // filter inherited attributes to remove class
+
     return (
       <Host class={rootClasses}>
-        <Tag class="inner-button" type={type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes}>
+        <Tag type={this.href ? null : type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes} class="inner-button">
           <slot name="start"></slot>
           <slot></slot>
           <slot name="end"></slot>

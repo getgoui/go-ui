@@ -1,12 +1,19 @@
 go-button {
+  // default colours
   --go-btn-bg-color: transparent;
   --go-btn-bg-color-hover: var(--go-color-neutral-100);
   --go-btn-bg-color-disabled: var(--go-color-neutral-200);
   --go-btn-text-color: var(--go-color-text);
   --go-btn-text-color-hover: inherit;
   --go-btn-text-color-disabled: inherit;
-  --go-btn-padding-y: 0.825em;
-  --go-btn-padding-x: 1.333em;
+
+  // shadow
+  --go-btn-shadow: var(--shadow-2);
+
+  // default sizing
+  --go-btn-padding-y: 0.8em;
+  --go-btn-padding-x: 1.5em;
+  --go-btn-inner-gap: var(--size-2);
   --go-btn-radius: var(--go-border-radius-base, 0.25rem);
 
   display: inline-block;
@@ -105,7 +112,7 @@ go-button {
     }
 
     &[color='tertiary'] {
-      --go-btn-bg-color: var(--go-color-neutral-600);
+      --go-btn-bg-color: var(--go-color-neutral-500);
     }
   }
 
@@ -128,21 +135,25 @@ go-button {
   .inner-button {
     // reset button style
     @include reset-btn();
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--go-btn-inner-gap);
     width: 100%;
     text-align: center;
     background: var(--go-btn-bg-color);
     color: var(--go-btn-text-color);
     border-radius: var(--go-btn-radius);
     padding: var(--go-btn-padding-y, 0.5rem) var(--go-btn-padding-x, 1rem);
-    box-shadow: var(--go-shadow-1);
-    text-underline-offset: 4px;
+    box-shadow: var(--go-btn-shadow);
+    text-underline-offset: 4px; // optimise for browsers that support it
     @include transition(background-color, color, box-shadow);
 
     &:hover,
     &:focus-visible {
       --go-btn-bg-color: var(--go-btn-bg-color-hover, #fff);
       --go-btn-text-color: var(--go-btn-text-color-hover, #000);
-      box-shadow: var(--go-shadow-2);
+      box-shadow: var(--go-btn-shadow);
     }
     &:focus-visible {
       outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
