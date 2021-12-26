@@ -113,6 +113,7 @@ function writeBoilerplate(tagName, inheritAttrs) {
  */
 function getComponentFileContent(tagName, inheritAttrs) {
   return `import { Component, Host, h, Element } from '@stencil/core';
+  import { inheritAttributes } from '../../utils/helper';
 
   @Component({
     tag: '${tagName}',
