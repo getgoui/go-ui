@@ -1,18 +1,17 @@
 {
   "name": "@go-ui/core",
   "version": "0.0.0-development",
-  "description": "Go Components",
+  "description": "Go UI",
   "main": "dist/index.cjs.js",
-  "module": "dist/custom-elements/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/custom-elements/index.d.ts",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.js",
+  "es2017": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/go-components/go-components.esm.js",
+  "unpkg": "dist/go-ui/go-ui.esm.js",
   "files": [
     "dist/",
-    "loader/",
     "src/global/"
   ],
   "bin": {
@@ -39,7 +38,6 @@
   },
   "dependencies": {
     "@stencil/core": "^2.11.0",
-    "normalize.css": "^8.0.1",
     "open-props": "^1.0.14"
   },
   "devDependencies": {
@@ -48,6 +46,7 @@
     "@commitlint/config-conventional": "^13.2.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^1.5.2",
+    "@types/autoprefixer": "^10.2.0",
     "@types/jest": "^26.0.24",
     "@types/puppeteer": "^5.4.4",
     "autoprefixer": "^10.4.0",
