@@ -28,10 +28,13 @@ export const inheritAttributes = (el: HTMLElement, excludes: string[] = [], remo
   return attributeObject;
 };
 
-export const hasShadowDom = (el: HTMLElement) => {
+export function hasShadowDom(el: HTMLElement): boolean {
   return !!el.shadowRoot && !!(el as any).attachShadow;
-};
+}
 
+export function hasSlot(el: HTMLElement, slotName?: string): boolean {
+  return !!el.querySelector(':scope > [slot="' + slotName + '"'); // cast boolean
+}
 // export const clamp = (min: number, n: number, max: number) => {
 //   return Math.max(min, Math.min(n, max));
 // };
@@ -43,3 +46,8 @@ export const hasShadowDom = (el: HTMLElement) => {
 //     timer = setTimeout(func, wait, ...args);
 //   };
 // };
+
+export const isDarkMode = () => {
+  const darkByAttribute = document.documentElement.getAttribute('data-theme') === 'dark' || document.documentElement.getAttribute('color-theme') === 'dark';
+  return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || darkByAttribute;
+};

@@ -41,6 +41,16 @@ export namespace Components {
     }
     interface GoButtonGroup {
     }
+    interface GoGovAuLogo {
+        /**
+          * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
+         */
+        "height": string;
+        /**
+          * If href is provided, logo will be wrapped inside an anchor (`a`) tag. By default, all attributes except `class` and `style` are passed through to the anchor tag.
+         */
+        "href"?: string;
+    }
 }
 declare global {
     interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
@@ -55,9 +65,16 @@ declare global {
         prototype: HTMLGoButtonGroupElement;
         new (): HTMLGoButtonGroupElement;
     };
+    interface HTMLGoGovAuLogoElement extends Components.GoGovAuLogo, HTMLStencilElement {
+    }
+    var HTMLGoGovAuLogoElement: {
+        prototype: HTMLGoGovAuLogoElement;
+        new (): HTMLGoGovAuLogoElement;
+    };
     interface HTMLElementTagNameMap {
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
+        "go-gov-au-logo": HTMLGoGovAuLogoElement;
     }
 }
 declare namespace LocalJSX {
@@ -95,9 +112,20 @@ declare namespace LocalJSX {
     }
     interface GoButtonGroup {
     }
+    interface GoGovAuLogo {
+        /**
+          * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
+         */
+        "height"?: string;
+        /**
+          * If href is provided, logo will be wrapped inside an anchor (`a`) tag. By default, all attributes except `class` and `style` are passed through to the anchor tag.
+         */
+        "href"?: string;
+    }
     interface IntrinsicElements {
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
+        "go-gov-au-logo": GoGovAuLogo;
     }
 }
 export { LocalJSX as JSX };
@@ -106,6 +134,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
+            "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
         }
     }
 }

@@ -1,26 +1,45 @@
 @import './utils/mixins';
+
+@mixin initiate-light-mode {
+  @include go-color-scheme-light;
+  color-scheme: light;
+  .dark-only {
+    display: none;
+  }
+  .light-only {
+    display: block;
+  }
+}
+@mixin initiate-dark-mode {
+  @include go-color-scheme-dark;
+  color-scheme: dark;
+  .light-only {
+    display: none;
+  }
+  .dark-only {
+    display: block;
+  }
+}
+
 // define CSS variables for light color scheme
 // default to light theme
 :root {
-  color-scheme: light;
-  @include go-color-scheme-light;
+  // define colors but don't initiate light mode
+  @include initiate-light-mode;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    color-scheme: dark;
-    @include go-color-scheme-dark;
+    @include initiate-dark-mode;
   }
 }
 // theme overwrites
 [color-scheme='light'],
 [data-theme='light'] {
-  color-scheme: light;
-  @include go-color-scheme-light;
+  @include initiate-light-mode;
 }
 [color-scheme='dark'],
 [data-theme='dark'] {
-  color-scheme: dark;
-  @include go-color-scheme-dark;
+  @include initiate-dark-mode;
 }
 
 // color util classes: .bg-xx .text-xx .border-xx
