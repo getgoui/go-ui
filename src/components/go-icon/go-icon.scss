@@ -6,6 +6,7 @@ go-icon {
     --icon-size: 1.5em;
   }
   display: inline-block;
+  line-height: 1;
   .go-icon {
     font-size: var(--icon-size);
     color: var(--icon-color);

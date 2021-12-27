@@ -62,6 +62,10 @@ export namespace Components {
          */
         "iconSet": MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
         /**
+          * (Semantic icon) If provided, insert label for screen readers
+         */
+        "label"?: string;
+        /**
           * Name of the icon
          */
         "name": string;
@@ -157,6 +161,10 @@ declare namespace LocalJSX {
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
         "iconSet"?: MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
+        /**
+          * (Semantic icon) If provided, insert label for screen readers
+         */
+        "label"?: string;
         /**
           * Name of the icon
          */
