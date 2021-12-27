@@ -40,23 +40,36 @@ export class GoIcon {
    */
   @Prop() color?: string;
 
+  /**
+   * (Semantic icon) If provided, insert label for screen readers
+   */
+  @Prop() label?: string;
+
   private attrs = {} as any;
   componentWillLoad() {
     this.attrs = inheritAttributes(this.el, [], false);
   }
 
   render() {
-    const { iconSet, name, size, color, attrs } = this;
+    const { iconSet, name, size, color, attrs, label } = this;
     const { class: customClasses } = attrs;
+    const ariaAttributes = {
+      'aria-hidden': !label,
+      'aria-label': label ? label : undefined,
+    };
     return (
       <Host
         style={{
           '--icon-size': size ? size : null,
           '--icon-color': color ? color : null,
         }}>
-        {iconSet.startsWith('material') ? <span class={`${iconSet} go-icon${customClasses ? customClasses : ''}`}>{name}</span> : null}
-        {iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon${customClasses ? customClasses : ''}`}></i> : null}
-        {iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon${customClasses ? customClasses : ''}`}></i> : null}
+        {iconSet.startsWith('material') ? (
+          <span class={`${iconSet} go-icon${customClasses ? customClasses : ''}`} {...ariaAttributes}>
+            {name}
+          </span>
+        ) : null}
+        {iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon${customClasses ? customClasses : ''}`} {...ariaAttributes}></i> : null}
+        {iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon${customClasses ? customClasses : ''}`} {...ariaAttributes}></i> : null}
       </Host>
     );
   }
