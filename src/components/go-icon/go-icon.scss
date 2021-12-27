@@ -1,0 +1,13 @@
+go-icon {
+  --icon-size: 1em;
+  --icon-color: currentColor;
+
+  &[icon-set^='material'] {
+    --icon-size: 1.5em;
+  }
+  display: inline-block;
+  .go-icon {
+    font-size: var(--icon-size);
+    color: var(--icon-color);
+  }
+}
