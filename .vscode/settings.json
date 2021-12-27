@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "test",
     "docs",
-    "cli"
+    "cli",
+    "pattern"
   ]
 }

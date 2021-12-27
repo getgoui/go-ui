@@ -1,0 +1,23 @@
+go-gov-au-logo {
+  --divider-color: var(--go-color-darkest);
+  --divider-width: 1px;
+  --divider-gap: 0.5rem;
+  .logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    .crest {
+      img {
+        display: block;
+        height: var(--logo-height, 4rem);
+      }
+    }
+    .divider {
+      display: block;
+      width: var(--divider-width);
+      align-self: stretch;
+      background-color: var(--divider-color);
+      margin: 0 var(--divider-gap);
+    }
+  }
+}
