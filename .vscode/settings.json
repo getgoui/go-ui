@@ -3,6 +3,7 @@
     "test",
     "docs",
     "cli",
-    "pattern"
+    "pattern",
+    "component"
   ]
 }

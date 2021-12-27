@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoints, ColorVariants } from "./types";
+import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export namespace Components {
     interface GoButton {
         /**
@@ -51,6 +52,24 @@ export namespace Components {
          */
         "href"?: string;
     }
+    interface GoIcon {
+        /**
+          * Color of the icon,  supports CSS units and variables. Default: `currentColor`
+         */
+        "color"?: string;
+        /**
+          * Specify the icon set being referenced. Icon font CSS files must be included in the page.
+         */
+        "iconSet": MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
+        /**
+          * Name of the icon
+         */
+        "name": string;
+        /**
+          * Size of the icon, supports CSS units and variables. Default: 1.5em for material icons, 1em for other icon sets.
+         */
+        "size"?: string;
+    }
 }
 declare global {
     interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
@@ -71,10 +90,17 @@ declare global {
         prototype: HTMLGoGovAuLogoElement;
         new (): HTMLGoGovAuLogoElement;
     };
+    interface HTMLGoIconElement extends Components.GoIcon, HTMLStencilElement {
+    }
+    var HTMLGoIconElement: {
+        prototype: HTMLGoIconElement;
+        new (): HTMLGoIconElement;
+    };
     interface HTMLElementTagNameMap {
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
+        "go-icon": HTMLGoIconElement;
     }
 }
 declare namespace LocalJSX {
@@ -122,10 +148,29 @@ declare namespace LocalJSX {
          */
         "href"?: string;
     }
+    interface GoIcon {
+        /**
+          * Color of the icon,  supports CSS units and variables. Default: `currentColor`
+         */
+        "color"?: string;
+        /**
+          * Specify the icon set being referenced. Icon font CSS files must be included in the page.
+         */
+        "iconSet"?: MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
+        /**
+          * Name of the icon
+         */
+        "name"?: string;
+        /**
+          * Size of the icon, supports CSS units and variables. Default: 1.5em for material icons, 1em for other icon sets.
+         */
+        "size"?: string;
+    }
     interface IntrinsicElements {
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-gov-au-logo": GoGovAuLogo;
+        "go-icon": GoIcon;
     }
 }
 export { LocalJSX as JSX };
@@ -135,6 +180,7 @@ declare module "@stencil/core" {
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
+            "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
         }
     }
 }
