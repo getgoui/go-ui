@@ -167,13 +167,7 @@ describe('${tagName}', () => {
      components: [${pascalCase(tagName)}],
      html: \`<${tagName}></${tagName}>\`,
    });
-   expect(page.root).toEqualHtml(\`
-     <${tagName}>
-       <mock:shadow-root>
-         <slot></slot>
-       </mock:shadow-root>
-     </${tagName}>
-   \`);
+   expect(page.root).toBeTruthy();
  });
 });
 `;
