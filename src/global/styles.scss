@@ -1,5 +1,11 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons); // use material icons (Filled)
+
 @import 'normalize.min.css';
 @import './scss/utils';
+
+// Use Open props to define border utilities
+// https://open-props.style/#sizes
+@import '~open-props/sizes.min.css';
 
 // Use Open props to define border utilities
 // https://open-props.style/#borders

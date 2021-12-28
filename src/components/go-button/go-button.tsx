@@ -36,17 +36,25 @@ export class GoButton {
   @Prop() block?: Breakpoints | '';
 
   /**
-   * If `outlined` is true, the button will have a border based on selected variant
+   * If `outline` is true, the button will have a border based on selected variant
    * @see `variant` property
    */
-  @Prop({ reflect: true }) outlined?: boolean = false;
+  @Prop({ reflect: true }) outline?: boolean = false;
 
   /**
    * If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant
    */
   @Prop({ reflect: true }) flat?: boolean = false;
 
-  @Prop({ reflect: true }) rounded?: boolean = false;
+  /**
+   * If button should have pill-shaped corners
+   */
+  @Prop({ reflect: true }) round?: boolean = false;
+
+  /**
+   * Circle shaped icon only button that has min size of 40px for touch devices
+   */
+  @Prop({ reflect: true }) icon?: boolean = false;
 
   /**
    * If the button has an href, it will be rendered as an anchor tag

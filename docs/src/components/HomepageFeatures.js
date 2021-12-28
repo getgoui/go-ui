@@ -8,8 +8,8 @@ const FeatureList = [
     title: 'Pattern first',
     description: (
       <>
-        Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use. Allowing both design and
-        development teams to focus on delivering the product.
+        Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use.
+        Allowing both design and development teams to focus on delivering the product.
         <br />
         <Link href="#">See our patterns</Link>
       </>
@@ -19,19 +19,28 @@ const FeatureList = [
     title: 'Framework agnostic',
     description: (
       <>
-        Have multiple front-end stack in your organisation and need a consistent look and feel? Go Components utilise modern browser features such as web components and CSS custom
-        properties so that they can be used in your front-end tech stack.
+        Have multiple front-end stack in your organisation and need a consistent look and feel? Go Components utilise modern browser features such as web
+        components and CSS custom properties so that they can be used in your front-end tech stack.
         <br />
         <Link href="#">See framework integration</Link>
       </>
     ),
   },
   {
-    title: 'A11y focused',
+    title: 'Accessibility focused',
     description: (
       <>
-        We make sure that our components are accessible and easy to use. We reference the best practice guidelines wherever possible. Our patterns and components go through
-        automated accessibility testing to ensure they meet the WCAG 2.0 AA and WCAG 2.1 AA standard.
+        We make sure that our components are accessible and easy to use. We reference the best practice guidelines wherever possible. Our patterns and
+        components go through automated accessibility testing to ensure they meet the WCAG 2.1 AA standard.
+      </>
+    ),
+  },
+  {
+    title: 'Adaptive',
+    description: (
+      <>
+        Go UI makes it easy for developers to build adaptive web applications, this means out-of-the-box, your application support dark mode and reduced motion
+        preferences from the user's operating system.
       </>
     ),
   },

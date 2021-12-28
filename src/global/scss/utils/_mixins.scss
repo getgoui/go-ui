@@ -68,6 +68,7 @@
   // extreme colors
   --go-color-darkest: rgb(var(--go-token-darkest));
   --go-color-lightest: rgb(var(--go-token-lightest));
+  --shadow-strength: 7%;
 }
 
 // reverse tokens for dark theme
@@ -83,6 +84,12 @@
   // extreme colors
   --go-color-darkest: rgb(var(--go-token-lightest));
   --go-color-lightest: rgb(var(--go-token-darkest));
+
+  // dark shadows
+  --shadow-strength: 30%;
+  --shadow-color: 220 40% 2%;
+
+  --go-color-bg: var(--go-color-neutral-100);
 }
 
 @mixin reset-btn {

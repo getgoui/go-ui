@@ -35,6 +35,16 @@ Type: `Promise<void>`
 
 
 
+### `focusOnControl() => Promise<void>`
+
+Focus on header control
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `open() => Promise<void>`
 
 Opens the accordion item.
