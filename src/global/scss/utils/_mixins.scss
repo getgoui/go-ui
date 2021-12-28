@@ -132,11 +132,14 @@
   @return $unfoldedTransition;
 }
 
-// what happens in dark mode
-// to be used at the root level
-@mixin dark-mode {
-  [color-scheme='dark'],
-  [data-theme='dark'] {
+// reduced motion media query
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
     @content;
   }
+}
+
+@mixin focus-outline {
+  outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
+  outline-offset: var(--go-focus-outline-offset);
 }

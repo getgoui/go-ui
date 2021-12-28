@@ -1,5 +1,17 @@
 // CSS Variables
 @import './themes/tokens';
+/* @link https://utopia.fyi/type/calculator?c=768,16,1.25,1400,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+:root {
+  --go-size--1: clamp(0.8rem, 0.68rem + 0.25vw, 0.9rem);
+  --go-size-0: clamp(1rem, 0.85rem + 0.32vw, 1.13rem);
+  --go-size-1: clamp(1.25rem, 1.06rem + 0.4vw, 1.41rem);
+  --go-size-2: clamp(1.56rem, 1.32rem + 0.5vw, 1.76rem);
+  --go-size-3: clamp(1.95rem, 1.66rem + 0.62vw, 2.2rem);
+  --go-size-4: clamp(2.44rem, 2.07rem + 0.77vw, 2.75rem);
+  --go-size-5: clamp(3.05rem, 2.59rem + 0.97vw, 3.43rem);
+  --go-size-6: clamp(3.82rem, 3.24rem + 1.21vw, 4.29rem);
+  --go-size-7: clamp(4.77rem, 4.04rem + 1.51vw, 5.36rem);
+}
 
 :root {
   // Grid
@@ -9,14 +21,6 @@
   // Typography
   --go-heading-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   --go-body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-
-  // Border
-  --go-border-width-thin: 1px;
-  --go-border-width-thick: 0.5rem;
-
-  // Border radius
-  --go-border-radius-base: 0.25rem;
-  --go-border-radius-large: 0.5rem;
 
   // Focus styles
   --go-focus-outline-width: 2px;
@@ -33,4 +37,7 @@
   --go-duration-normal: 0.2s;
   --go-duration-slow: 0.5s;
   --go-timing-function: ease-in-out;
+
+  // Spacing
+  --go-base-spacing: 0.25rem;
 }
