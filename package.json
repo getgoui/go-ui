@@ -19,8 +19,8 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "start": "concurrently -p \"[{name}]\" --kill-others -n w: npm:watch.*",
-    "serve.demo": "stencil build --dev --watch --serve",
+    "start.docs": "concurrently -p \"[{name}]\" --kill-others -n w: npm:watch.*",
+    "start.dev": "stencil build --dev --watch --serve",
     "watch.components": "stencil build --dev --watch",
     "watch.docs": "cd docs && npm start",
     "watch.others": "gg watch",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@stencil/core": "^2.11.0",
+    "lodash.uniqueid": "^4.0.1",
     "open-props": "^1.0.14"
   },
   "devDependencies": {
