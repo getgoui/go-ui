@@ -132,11 +132,9 @@
   @return $unfoldedTransition;
 }
 
-// what happens in dark mode
-// to be used at the root level
-@mixin dark-mode {
-  [color-scheme='dark'],
-  [data-theme='dark'] {
+// reduced motion media query
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
     @content;
   }
 }

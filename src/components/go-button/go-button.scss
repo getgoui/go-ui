@@ -14,7 +14,7 @@ go-button {
   --go-btn-padding-y: 0.8em;
   --go-btn-padding-x: 1.5em;
   --go-btn-inner-gap: var(--size-2);
-  --go-btn-radius: var(--go-border-radius-base, 0.25rem);
+  --go-btn-radius: var(--radius-2, 0.25rem);
 
   display: inline-block;
 
