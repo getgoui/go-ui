@@ -6,6 +6,7 @@ describe('go-icon', () => {
       components: [GoIcon],
       html: `<go-icon icon-set="material-icons" name="favorite" size="3rem" color="var(--go-color-error-500)"></go-icon>`,
     });
-    expect(page.root.querySelector('span.material-icons').innerText).toEqual('favorite');
+    const el = page.root.querySelector('span.material-icons') as HTMLElement;
+    expect(el.innerText).toEqual('favorite');
   });
 });

@@ -4,8 +4,12 @@ go-gov-au-logo {
   --divider-gap: 0.5rem;
   .logo-wrapper {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
     .crest {
       img {
         display: block;
@@ -13,11 +17,14 @@ go-gov-au-logo {
       }
     }
     .divider {
-      display: block;
-      width: var(--divider-width);
-      align-self: stretch;
-      background-color: var(--divider-color);
-      margin: 0 var(--divider-gap);
+      display: none;
+      @include tablet {
+        display: block;
+        width: var(--divider-width);
+        align-self: stretch;
+        background-color: var(--divider-color);
+        margin: 0 var(--divider-gap);
+      }
     }
   }
 }

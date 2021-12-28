@@ -12,8 +12,9 @@
 | `disabled` | `disabled` | If this button is disabled                                                                                                                                                                                                                  | `boolean`                                            | `null`      |
 | `flat`     | `flat`     | If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant                                                                                                                       | `boolean`                                            | `false`     |
 | `href`     | `href`     | If the button has an href, it will be rendered as an anchor tag                                                                                                                                                                             | `string`                                             | `undefined` |
-| `outlined` | `outlined` | If `outlined` is true, the button will have a border based on selected variant                                                                                                                                                              | `boolean`                                            | `false`     |
-| `rounded`  | `rounded`  |                                                                                                                                                                                                                                             | `boolean`                                            | `false`     |
+| `icon`     | `icon`     | Circle shaped icon only button that has min size of 40px for touch devices                                                                                                                                                                  | `boolean`                                            | `false`     |
+| `outline`  | `outline`  | If `outline` is true, the button will have a border based on selected variant                                                                                                                                                               | `boolean`                                            | `false`     |
+| `round`    | `round`    | If button should have pill-shaped corners                                                                                                                                                                                                   | `boolean`                                            | `false`     |
 | `type`     | `type`     | Html type of the button                                                                                                                                                                                                                     | `"button" \| "reset" \| "submit"`                    | `'button'`  |
 
 
@@ -24,6 +25,19 @@
 | `"end"`   | Use this slot to append content to the button.  |
 | `"start"` | Use this slot to prepend content to the button. |
 
+
+## Dependencies
+
+### Used by
+
+ - [go-search-bar](../go-search-bar)
+
+### Graph
+```mermaid
+graph TD;
+  go-search-bar --> go-button
+  style go-button fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

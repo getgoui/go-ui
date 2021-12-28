@@ -70,11 +70,18 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * If `outlined` is true, the button will have a border based on selected variant
+          * Circle shaped icon only button that has min size of 40px for touch devices
+         */
+        "icon"?: boolean;
+        /**
+          * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
-        "outlined"?: boolean;
-        "rounded"?: boolean;
+        "outline"?: boolean;
+        /**
+          * If button should have pill-shaped corners
+         */
+        "round"?: boolean;
         /**
           * Html type of the button
          */
@@ -102,10 +109,6 @@ export namespace Components {
          */
         "iconSet": MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
         /**
-          * (Semantic icon) If provided, insert label for screen readers
-         */
-        "label"?: string;
-        /**
           * Name of the icon
          */
         "name": string;
@@ -113,6 +116,8 @@ export namespace Components {
           * Size of the icon, supports CSS units and variables. Default: 1.5em for material icons, 1em for other icon sets.
          */
         "size"?: string;
+    }
+    interface GoSearchBar {
     }
 }
 declare global {
@@ -152,6 +157,12 @@ declare global {
         prototype: HTMLGoIconElement;
         new (): HTMLGoIconElement;
     };
+    interface HTMLGoSearchBarElement extends Components.GoSearchBar, HTMLStencilElement {
+    }
+    var HTMLGoSearchBarElement: {
+        prototype: HTMLGoSearchBarElement;
+        new (): HTMLGoSearchBarElement;
+    };
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
@@ -159,6 +170,7 @@ declare global {
         "go-button-group": HTMLGoButtonGroupElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-icon": HTMLGoIconElement;
+        "go-search-bar": HTMLGoSearchBarElement;
     }
 }
 declare namespace LocalJSX {
@@ -224,11 +236,18 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * If `outlined` is true, the button will have a border based on selected variant
+          * Circle shaped icon only button that has min size of 40px for touch devices
+         */
+        "icon"?: boolean;
+        /**
+          * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
-        "outlined"?: boolean;
-        "rounded"?: boolean;
+        "outline"?: boolean;
+        /**
+          * If button should have pill-shaped corners
+         */
+        "round"?: boolean;
         /**
           * Html type of the button
          */
@@ -256,10 +275,6 @@ declare namespace LocalJSX {
          */
         "iconSet"?: MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
         /**
-          * (Semantic icon) If provided, insert label for screen readers
-         */
-        "label"?: string;
-        /**
           * Name of the icon
          */
         "name"?: string;
@@ -268,6 +283,8 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface GoSearchBar {
+    }
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
@@ -275,6 +292,7 @@ declare namespace LocalJSX {
         "go-button-group": GoButtonGroup;
         "go-gov-au-logo": GoGovAuLogo;
         "go-icon": GoIcon;
+        "go-search-bar": GoSearchBar;
     }
 }
 export { LocalJSX as JSX };
@@ -287,6 +305,7 @@ declare module "@stencil/core" {
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
+            "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
         }
     }
 }
