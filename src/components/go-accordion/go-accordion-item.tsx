@@ -37,10 +37,10 @@ export class GoAccordionItem {
 
   panelId: string;
   headerId: string;
-
   panelEl: HTMLElement;
-
   animationHeightInterval: number; // number of px per frame of animation change.
+
+  parentGroup: HTMLGoAccordionElement;
 
   /**
    * Emitted when accordion item has opened
@@ -67,21 +67,38 @@ export class GoAccordionItem {
     this.hasArrowSlot = hasSlot(this.el, 'arrow');
     this.panelId = uniqueId('go-accordion-item-panel-');
     this.headerId = uniqueId('go-accordion-item-header-');
+    this.parentGroup = this.el.closest('go-accordion') as HTMLGoAccordionElement;
   }
   componentDidLoad() {
     if (this.autoHeight) {
       this.panelEl.style.setProperty('--body-max-height', this.panelEl.scrollHeight + 2 + 'px');
     }
-
     this.onTransitionEnd();
-
     this.panelEl.addEventListener('transitionstart', () => {
       this.onTransitionStart();
     });
-
     this.panelEl.addEventListener('transitionend', () => {
       this.onTransitionEnd();
     });
+  }
+
+  handleNavigation(key) {
+    if (key === 'ArrowDown') {
+      if (this.el.nextElementSibling) {
+        (this.el.nextElementSibling as HTMLGoAccordionItemElement).focusOnControl();
+      }
+    }
+    if (key === 'ArrowUp') {
+      if (this.el.previousElementSibling) {
+        (this.el.previousElementSibling as HTMLGoAccordionItemElement).focusOnControl();
+      }
+    }
+    if (key === 'Home') {
+      (this.parentGroup.children[0] as HTMLGoAccordionItemElement).focusOnControl();
+    }
+    if (key === 'End') {
+      (this.parentGroup.children[this.parentGroup.children.length - 1] as HTMLGoAccordionItemElement).focusOnControl();
+    }
   }
 
   onTransitionEnd() {
@@ -132,6 +149,14 @@ export class GoAccordionItem {
     this.active = true;
   }
 
+  /**
+   * Focus on header control
+   */
+  @Method()
+  async focusOnControl() {
+    (this.el.querySelector('.heading-control') as HTMLElement).focus();
+  }
+
   render() {
     const { active, autoHeight, headingTag: HeadingTag, panelId, headerId } = this;
     return (
@@ -142,6 +167,7 @@ export class GoAccordionItem {
             class="heading-control"
             role="button"
             onClick={() => this.toggle()}
+            onKeyDown={(e) => this.handleNavigation(e.key)}
             aria-expanded={active ? 'true' : 'false'}
             aria-controls={panelId}>
             {this.hasHeadingSlot ? <slot name="heading"></slot> : this.heading}

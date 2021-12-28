@@ -22,6 +22,10 @@ go-accordion-item {
         --heading-bg-color: var(--go-color-secondary-600);
         --heading-text-color: var(--go-color-lightest);
       }
+
+      &:focus-visible {
+        @include focus-outline;
+      }
     }
     .arrow {
       display: block;

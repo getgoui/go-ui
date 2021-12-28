@@ -156,8 +156,7 @@ go-button {
       box-shadow: var(--go-btn-shadow);
     }
     &:focus-visible {
-      outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
-      outline-offset: var(--go-focus-outline-offset);
+      @include focus-outline;
     }
   }
 }

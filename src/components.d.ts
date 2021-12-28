@@ -28,6 +28,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * Focus on header control
+         */
+        "focusOnControl": () => Promise<void>;
+        /**
           * Heading text. This will be overwritten by `heading` slot
          */
         "heading"?: string;
