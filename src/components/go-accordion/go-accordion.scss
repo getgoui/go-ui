@@ -35,9 +35,9 @@ go-accordion {
   /**
     @prop --heading-text-color:
       Heading text colour
-      - default: var(--go-text-color, #333333)
+      - default: var(--go-color-text, #333333)
   */
-  --heading-text-color: var(--go-text-color, #333333);
+  --heading-text-color: var(--go-color-text, #333333);
 
   /**
     @prop --heading-bg-color:
