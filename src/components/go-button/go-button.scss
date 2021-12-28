@@ -53,6 +53,11 @@ go-button {
     --go-btn-bg-color-hover: var(--go-color-secondary-500);
     --go-btn-bg-color-disabled: rgba(var(--go-token-secondary-600), 0.5);
   }
+  &[color='danger'] {
+    --go-btn-bg-color: var(--go-color-error-600);
+    --go-btn-bg-color-hover: var(--go-color-error-500);
+    --go-btn-bg-color-disabled: rgba(var(--go-token-error-600), 0.5);
+  }
   &[color='tertiary'] {
     --go-btn-bg-color-hover: var(--go-color-neutral-300);
     --go-btn-bg-color-disabled: rgba(var(--go-token-neutral-200), 0.5);
@@ -65,11 +70,6 @@ go-button {
         text-decoration: none;
       }
     }
-  }
-  &[color='danger'] {
-    --go-btn-bg-color: var(--go-color-error-700);
-    --go-btn-bg-color-hover: var(--go-color-error-200);
-    --go-btn-bg-color-disabled: rgba(var(--go-token-error-700), 0.5);
   }
 
   &[disabled] {
