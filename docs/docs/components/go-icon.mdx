@@ -11,13 +11,18 @@ import demoSource from '!!raw-loader!@/go-ui/components/go-icon/demo/go-icon.htm
 <!-- Description -->
 
 <div className="text-size-1">
-  Icons serve multiple purposes in a UI, they can convey information (e.g. icon button, icon tab) or they can be used as a visual representation (e.g. icon
-  list).
+  Icons serve multiple purposes in a UI, they can convey information (e.g. icon button, icon tab) or they can be used as a visual representation.
 </div>
 
 :::tip Icon font CSS
 
 Before using the `go-icon` component, you need to have the icon font CSS available in your application.
+
+**Go UI does not bundle any icon fonts**. This is to keep the bundle size small for cases when icons are not required.
+
+This documentation site references the Material Icons (Filled) hosted via [Google Fonts](https://fonts.google.com/icons), which is the default icon set for `go-icon` component.
+
+The demo contains example of how to include the icon font CSS in your application.
 
 :::
 
