@@ -1,0 +1,74 @@
+go-accordion {
+  /**
+    @prop --heading-padding-x:
+      Horizontal padding for item heading
+      - default: 1rem
+  */
+  --heading-padding-x: 2rem;
+
+  /**
+    @prop --heading-padding-y:
+      Vertical padding for item heading
+      - default: 1rem
+  */
+  --heading-padding-y: 1rem;
+  /**
+    @prop --panel-padding-x:
+      Horizontal padding for inner content
+      - default: 2rem
+  */
+  --panel-padding-x: 1rem;
+  /**
+    @prop --panel-padding-y:
+      Vertical padding for inner content
+      - default: 2rem
+  */
+  --panel-padding-y: 1rem;
+
+  /**
+    @prop --panel-max-height:
+      Inner content max height. This values is also used for CSS animation
+      - default: 100vh
+  */
+  --panel-max-height: 100vh;
+
+  /**
+    @prop --heading-text-color:
+      Heading text colour
+      - default: var(--go-text-color, #333333)
+  */
+  --heading-text-color: var(--go-text-color, #333333);
+
+  /**
+    @prop --heading-bg-color:
+      Heading background colour
+      - default: var(--go-color-background, #f5f5f5)
+  */
+  --heading-bg-color: var(--go-color-secondary-100);
+
+  /**
+    @prop --heading-font-size:
+      Heading font size
+      - default: var(--go-size-1, 1rem)
+  */
+  --heading-font-size: var(--go-size-1, 1rem);
+
+  /**
+    @prop --heading-font-weight:
+      Heading font weight
+      - default: 700
+  */
+  --heading-font-weight: 700;
+  /**
+    @prop --panel-bg-color:
+      Content background colour
+      - default: var(--go-color-background, #f5f5f5)
+  */
+  --panel-bg-color: var(--go-color-lightest);
+  /**
+    @prop --heading-border-bottom:
+      Bottom border applied to the heading element to better separate the heading and panel, especially useful when content is scrollable.
+      - default: 1px solid var(--go-shadow-color, rgba(0, 0, 0, 0.2))
+  */
+  --heading-border-bottom: 1px solid var(--go-shadow-color, rgba(0, 0, 0, 0.2));
+}

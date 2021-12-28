@@ -8,6 +8,42 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoints, ColorVariants } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export namespace Components {
+    interface GoAccordion {
+        /**
+          * If multiple `<go-accordion-item>`s can open at the same time
+         */
+        "multiple"?: boolean;
+    }
+    interface GoAccordionItem {
+        /**
+          * If the accordion item should be opened by default
+         */
+        "active"?: boolean;
+        /**
+          * If expanded height should be automatically calculated. If set, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
+         */
+        "autoHeight"?: boolean;
+        /**
+          * Closes the accordion item
+         */
+        "close": () => Promise<void>;
+        /**
+          * Heading text. This will be overwritten by `heading` slot
+         */
+        "heading"?: string;
+        /**
+          * The HTML tag to be applied to the heading text. This will be overwritten by `heading` slot
+         */
+        "headingTag"?: string;
+        /**
+          * Opens the accordion item.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Toggle open state of accordion item
+         */
+        "toggle": () => Promise<void>;
+    }
     interface GoButton {
         /**
           * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
@@ -76,6 +112,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
+    }
+    var HTMLGoAccordionElement: {
+        prototype: HTMLGoAccordionElement;
+        new (): HTMLGoAccordionElement;
+    };
+    interface HTMLGoAccordionItemElement extends Components.GoAccordionItem, HTMLStencilElement {
+    }
+    var HTMLGoAccordionItemElement: {
+        prototype: HTMLGoAccordionItemElement;
+        new (): HTMLGoAccordionItemElement;
+    };
     interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
     }
     var HTMLGoButtonElement: {
@@ -101,6 +149,8 @@ declare global {
         new (): HTMLGoIconElement;
     };
     interface HTMLElementTagNameMap {
+        "go-accordion": HTMLGoAccordionElement;
+        "go-accordion-item": HTMLGoAccordionItemElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
@@ -108,6 +158,46 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface GoAccordion {
+        /**
+          * If multiple `<go-accordion-item>`s can open at the same time
+         */
+        "multiple"?: boolean;
+    }
+    interface GoAccordionItem {
+        /**
+          * If the accordion item should be opened by default
+         */
+        "active"?: boolean;
+        /**
+          * If expanded height should be automatically calculated. If set, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
+         */
+        "autoHeight"?: boolean;
+        /**
+          * Heading text. This will be overwritten by `heading` slot
+         */
+        "heading"?: string;
+        /**
+          * The HTML tag to be applied to the heading text. This will be overwritten by `heading` slot
+         */
+        "headingTag"?: string;
+        /**
+          * Emitted when accordion item has closed
+         */
+        "onClosed"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when accordion item started closing
+         */
+        "onClosing"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when accordion item has opened
+         */
+        "onOpened"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when accordion item started opening
+         */
+        "onOpening"?: (event: CustomEvent<any>) => void;
+    }
     interface GoButton {
         /**
           * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
@@ -175,6 +265,8 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface IntrinsicElements {
+        "go-accordion": GoAccordion;
+        "go-accordion-item": GoAccordionItem;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-gov-au-logo": GoGovAuLogo;
@@ -185,6 +277,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "go-accordion": LocalJSX.GoAccordion & JSXBase.HTMLAttributes<HTMLGoAccordionElement>;
+            "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
