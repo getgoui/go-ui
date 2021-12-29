@@ -4,6 +4,7 @@
     "docs",
     "cli",
     "pattern",
-    "component"
+    "component",
+    "utils"
   ]
 }
