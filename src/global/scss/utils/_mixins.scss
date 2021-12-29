@@ -90,6 +90,7 @@
   --shadow-color: 220 40% 2%;
 
   --go-color-bg: var(--go-color-neutral-100);
+  --go-focus-outline-color: var(--go-color-neutral-600);
 }
 
 @mixin reset-btn {
@@ -142,6 +143,12 @@
 // reduced motion media query
 @mixin reduced-motion {
   @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin prefer-dark {
+  @media (prefers-color-scheme: dark) {
     @content;
   }
 }
