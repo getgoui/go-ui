@@ -27,7 +27,7 @@ export class GoButton {
   /**
    * Color variants
    */
-  @Prop() color?: ColorVariants = 'primary';
+  @Prop({ reflect: true }) color?: ColorVariants = 'primary';
 
   /**
    * If set, the button will take up the full width of its parent
