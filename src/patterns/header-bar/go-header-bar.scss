@@ -1,25 +1,28 @@
 go-header-bar {
+  --header-bar-padding-y: 1rem;
+  --header-bar-padding-x: 0;
+  padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
   display: flex;
   position: relative;
-  & > .slot {
-  }
   .menu {
     position: absolute;
-    top: 0;
+    top: var(--header-bar-padding-y);
     left: 0;
+    @include tablet {
+      position: static;
+    }
   }
   .logo {
     flex-grow: 0;
     margin: 0 auto;
+    @include tablet {
+      margin: 0;
+    }
   }
   .actions {
     position: absolute;
-    top: 0;
+    top: var(--header-bar-padding-y);
     right: 0;
-    @include tablet {
-      top: 50%;
-      transform: translateY(-50%);
-    }
   }
   @include tablet {
     align-items: center;

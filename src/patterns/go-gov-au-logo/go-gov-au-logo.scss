@@ -18,10 +18,11 @@ go-gov-au-logo {
       }
     }
     .divider {
-      display: none;
+      display: block;
+      height: 1rem;
       @include tablet {
-        display: block;
         width: var(--divider-width);
+        height: auto;
         align-self: stretch;
         background-color: var(--divider-color);
         margin: 0 var(--divider-gap);
