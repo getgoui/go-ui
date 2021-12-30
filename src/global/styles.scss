@@ -1,17 +1,18 @@
 @import 'normalize.min.css';
 @import './scss/utils';
 
-// Use Open props to define border utilities
+// Use Open props to define utility variables
 // https://open-props.style/#sizes
 @import '~open-props/sizes.min.css';
 
-// Use Open props to define border utilities
 // https://open-props.style/#borders
 @import '~open-props/borders.min.css';
 
-// Use Open props to define shadow utilities
 // https://open-props.style/#shadows
 @import '~open-props/shadows.min.css';
+
+// https://open-props.style/#z-index
+@import '~open-props/zindex.min.css';
 
 @import './scss/css_variables';
 @import './scss/colors';
