@@ -1,7 +1,26 @@
 go-header-bar {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  position: relative;
+  & > .slot {
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .logo {
+    flex-grow: 0;
+    margin: 0 auto;
+  }
+  .actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include tablet {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
   @include tablet {
     align-items: center;
   }
