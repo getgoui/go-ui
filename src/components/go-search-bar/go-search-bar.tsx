@@ -8,7 +8,7 @@ import { Component, Host, h, Element, Method, State } from '@stencil/core';
 export class GoSearchBar {
   @Element() el: HTMLElement;
 
-  @State() isSearchFormOpen = true;
+  @State() isSearchFormOpen = false;
 
   @Method()
   async openSearchForm() {
