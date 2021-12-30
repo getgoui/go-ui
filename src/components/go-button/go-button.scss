@@ -134,11 +134,6 @@ go-button {
       height: var(--go-btn-icon-size);
       padding: 0;
       text-align: center;
-      svg {
-        width: calc(var(--go-btn-icon-size) / 3 * 2);
-        height: calc(var(--go-btn-icon-size) / 3 * 2);
-        margin: 0;
-      }
     }
   }
 
@@ -181,6 +176,12 @@ go-button {
     }
     &:active {
       box-shadow: var(--inner-shadow-3);
+    }
+
+    svg {
+      width: calc(var(--go-btn-icon-size) / 3 * 2);
+      height: calc(var(--go-btn-icon-size) / 3 * 2);
+      margin: 0;
     }
   }
 }
