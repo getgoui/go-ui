@@ -73,7 +73,8 @@ export function selectDirectChildren(elem: HTMLElement, selector: string): HTMLE
  * @returns
  */
 export function getFocusableChildren(parent: HTMLElement): NodeListOf<HTMLElement> {
-  return parent.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  const selectors = ['button', '[href]', 'input', 'select', 'textarea', '[tabindex]:not([tabindex="-1"])', 'go-button'];
+  return parent.querySelectorAll(selectors.join(','));
 }
 
 /**

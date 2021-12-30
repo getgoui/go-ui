@@ -110,14 +110,13 @@
 @mixin transition($transitions...) {
   $unfoldedTransitions: ();
   @each $transition in $transitions {
-    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+    $unfoldedTransitions: append($unfoldedTransitions, unfold-transition($transition), comma);
   }
 
-  -webkit-transition: $unfoldedTransitions;
   transition: $unfoldedTransitions;
 }
 
-@function unfoldTransition($transition) {
+@function unfold-transition($transition) {
   // Default values
   $property: all;
   $duration: var(--go-duration-normal);
@@ -134,6 +133,7 @@
     } @else {
       $p: nth($defaultProperties, $i);
     }
+
     $unfoldedTransition: append($unfoldedTransition, $p);
   }
 
