@@ -3,6 +3,29 @@
 <!-- Auto Generated Below -->
 
 
+## Methods
+
+### `closeSearchForm() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `openSearchForm() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on
