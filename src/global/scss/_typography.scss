@@ -4,6 +4,7 @@
 @mixin typo($type-level, $details) {
   margin: 0;
   @include text-size(map-get($details, 'size'));
+
   font-weight: map-get($details, 'weight');
   line-height: map-get($details, 'line-height');
   letter-spacing: map-get($details, 'letter-spacing');
@@ -37,9 +38,9 @@ body {
   font-size: var(--go-size-0, 1rem);
 }
 
-//----------------------------------
+// ----------------------------------
 // Style native html elements
-//----------------------------------
+// ----------------------------------
 blockquote {
   font-style: italic;
   font-size: var(--go-size-0);
@@ -53,6 +54,7 @@ p {
 code {
   padding: 0 0.4em;
 }
+
 // text alignments
 .text-start {
   text-align: start;

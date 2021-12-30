@@ -6,5 +6,6 @@
     "pattern",
     "component",
     "utils"
-  ]
+  ],
+  "stylelint.validate": ["css", "scss"]
 }

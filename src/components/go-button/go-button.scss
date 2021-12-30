@@ -16,7 +16,6 @@ go-button {
   --go-btn-padding-x: 1.5em;
   --go-btn-inner-gap: 0.5rem;
   --go-btn-radius: var(--radius-2, 0.25rem);
-
   --go-btn-icon-size: 2.5em;
 
   display: inline-block;
@@ -24,6 +23,7 @@ go-button {
   &.block {
     display: block;
   }
+
   // start block level on desktop
   &.block-desktop {
     display: block;
@@ -68,7 +68,8 @@ go-button {
     --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
     .inner-button {
       text-decoration: underline;
-      &:hover {
+      &:hover,
+      &:focus {
         text-decoration: none;
       }
     }
@@ -78,6 +79,7 @@ go-button {
     --go-btn-bg-color: var(--go-btn-bg-color-disabled);
     --go-btn-text-color: var(--go-btn-text-color-disabled);
     .inner-button {
+      /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
       cursor: not-allowed;
       box-shadow: none;
       &:hover,
@@ -151,7 +153,8 @@ go-button {
 
   .inner-button {
     // reset button style
-    @include reset-btn();
+    @include reset-btn;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;

@@ -1,8 +1,8 @@
 // Put scss variables here
 
-//----------------------------------
+// ----------------------------------
 // Grid
-//----------------------------------
+// ----------------------------------
 // Grid breakpoints
 $breakpoints: (
   mobile: 0,
@@ -20,11 +20,12 @@ $container-max-widths: (
 ) !default;
 
 // Grid columns
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 $grid-columns: 12 !default;
 
-//----------------------------------
+// ----------------------------------
 // Typography
-//----------------------------------
+// ----------------------------------
 $typography: (
   display-1: (
     weight: 700,
@@ -89,9 +90,9 @@ $typography: (
   ),
 ) !default;
 
-//----------------------------------
+// ----------------------------------
 // Colors
-//----------------------------------
+// ----------------------------------
 // Sass variables are used to generate CSS variables.
 $color-shades: 9 !default;
 $color-categories: primary, secondary, success, error, neutral !default;

@@ -1,5 +1,4 @@
 // Grid system
-//
 // Generate semantic grid columns with these mixins.
 @use 'sass:math';
 
@@ -44,9 +43,8 @@
 }
 
 // Row columns
-//
 // Specify on a parent element(e.g., .row) to force immediate children into NN
-// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// number of columns. Supports wrapping to new lines, but does not do a Masonry
 // style grid.
 @mixin row-cols($count) {
   > * {
@@ -56,11 +54,11 @@
 }
 
 // Framework grid generation
-//
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
 @mixin make-grid-columns($breakpoints: $breakpoints) {
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   $columns: 12;
   .col {
     flex: 1 0 0%;
