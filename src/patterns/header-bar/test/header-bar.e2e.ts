@@ -11,8 +11,8 @@ describe('header-bar', () => {
 
   it('renders', async () => {
     const page = await newE2EPage({html});
-    const element = await page.find('.random-target');
-    expect(element).toBeTruthy();
+    const element = await page.find('header-bar');
+    expect(element).toHaveClass("hydrated");
   });
 
 
