@@ -58,6 +58,10 @@ export namespace Components {
          */
         "color"?: ColorVariants;
         /**
+          * Reduce inner gaps and outer paddings
+         */
+        "compact"?: boolean;
+        /**
           * If this button is disabled
          */
         "disabled"?: boolean;
@@ -83,6 +87,10 @@ export namespace Components {
          */
         "round"?: boolean;
         /**
+          * Stack elements inside the button
+         */
+        "stack"?: boolean;
+        /**
           * Html type of the button
          */
         "type": 'submit' | 'reset' | 'button';
@@ -98,6 +106,8 @@ export namespace Components {
           * If href is provided, logo will be wrapped inside an anchor (`a`) tag. By default, all attributes except `class` and `style` are passed through to the anchor tag.
          */
         "href"?: string;
+    }
+    interface GoHeaderBar {
     }
     interface GoIcon {
         /**
@@ -118,6 +128,8 @@ export namespace Components {
         "size"?: string;
     }
     interface GoSearchBar {
+        "closeSearchForm": () => Promise<void>;
+        "openSearchForm": () => Promise<void>;
     }
 }
 declare global {
@@ -151,6 +163,12 @@ declare global {
         prototype: HTMLGoGovAuLogoElement;
         new (): HTMLGoGovAuLogoElement;
     };
+    interface HTMLGoHeaderBarElement extends Components.GoHeaderBar, HTMLStencilElement {
+    }
+    var HTMLGoHeaderBarElement: {
+        prototype: HTMLGoHeaderBarElement;
+        new (): HTMLGoHeaderBarElement;
+    };
     interface HTMLGoIconElement extends Components.GoIcon, HTMLStencilElement {
     }
     var HTMLGoIconElement: {
@@ -169,6 +187,7 @@ declare global {
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
+        "go-header-bar": HTMLGoHeaderBarElement;
         "go-icon": HTMLGoIconElement;
         "go-search-bar": HTMLGoSearchBarElement;
     }
@@ -224,6 +243,10 @@ declare namespace LocalJSX {
          */
         "color"?: ColorVariants;
         /**
+          * Reduce inner gaps and outer paddings
+         */
+        "compact"?: boolean;
+        /**
           * If this button is disabled
          */
         "disabled"?: boolean;
@@ -249,6 +272,10 @@ declare namespace LocalJSX {
          */
         "round"?: boolean;
         /**
+          * Stack elements inside the button
+         */
+        "stack"?: boolean;
+        /**
           * Html type of the button
          */
         "type"?: 'submit' | 'reset' | 'button';
@@ -264,6 +291,8 @@ declare namespace LocalJSX {
           * If href is provided, logo will be wrapped inside an anchor (`a`) tag. By default, all attributes except `class` and `style` are passed through to the anchor tag.
          */
         "href"?: string;
+    }
+    interface GoHeaderBar {
     }
     interface GoIcon {
         /**
@@ -291,6 +320,7 @@ declare namespace LocalJSX {
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-gov-au-logo": GoGovAuLogo;
+        "go-header-bar": GoHeaderBar;
         "go-icon": GoIcon;
         "go-search-bar": GoSearchBar;
     }
@@ -304,6 +334,7 @@ declare module "@stencil/core" {
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
+            "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
         }

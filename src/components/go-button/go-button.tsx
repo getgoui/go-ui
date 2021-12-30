@@ -57,6 +57,16 @@ export class GoButton {
   @Prop({ reflect: true }) icon?: boolean = false;
 
   /**
+   * Stack elements inside the button
+   */
+  @Prop({ reflect: true }) stack?: boolean = false;
+
+  /**
+   * Reduce inner gaps and outer paddings
+   */
+  @Prop({ reflect: true }) compact?: boolean = false;
+
+  /**
    * If the button has an href, it will be rendered as an anchor tag
    */
   @Prop() href?: string;
