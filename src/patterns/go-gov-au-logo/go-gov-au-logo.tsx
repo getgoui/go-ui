@@ -36,11 +36,11 @@ export class GoGovAuLogo {
     return (
       <Host>
         <Tag {...inheritedAttributes} class="logo-wrapper" style={{ '--logo-height': height }} href={this.href}>
-          <span class="crest light-only">
-            <slot name="crest"></slot>
+          <span class="main-brand light-only">
+            <slot name="main-brand"></slot>
           </span>
-          <span class="crest dark-only">
-            <slot name="crest-on-dark"></slot>
+          <span class="main-brand dark-only">
+            <slot name="main-brand-on-dark"></slot>
           </span>
           {hasSlot(this.el, 'co-brand') ? <span class="divider"></span> : null}
           <slot name="co-brand"></slot>

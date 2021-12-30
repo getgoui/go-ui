@@ -3,6 +3,7 @@ go-gov-au-logo {
   --divider-width: 1px;
   --divider-gap: 0.5rem;
   .logo-wrapper {
+    text-decoration: none;
     display: inline-flex;
     flex-direction: column;
     @include tablet {
@@ -10,7 +11,7 @@ go-gov-au-logo {
       align-items: center;
       justify-content: center;
     }
-    .crest {
+    .main-brand {
       img {
         display: block;
         height: var(--logo-height, 4rem);
