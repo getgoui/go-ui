@@ -1,0 +1,8 @@
+go-header-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  @include tablet {
+    align-items: center;
+  }
+}
