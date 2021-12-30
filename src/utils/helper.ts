@@ -67,3 +67,30 @@ export function selectDirectChildren(elem: HTMLElement, selector: string): HTMLE
     return child.matches(selector);
   });
 }
+/**
+ * Get all focusable elements inside a given element
+ * @param parent container element
+ * @returns
+ */
+export function getFocusableChildren(parent: HTMLElement): NodeListOf<HTMLElement> {
+  return parent.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+}
+
+/**
+ * Get the first focusable element in a given element
+ * @param parent container element
+ * @returns
+ */
+export function getFirstFocusableChild(parent: HTMLElement): HTMLElement {
+  return getFocusableChildren(parent)[0];
+}
+
+/**
+ * Get the last focusable element in a given element
+ * @param parent container element
+ * @returns
+ */
+export function getLastFocusableChild(parent: HTMLElement): HTMLElement {
+  const list = getFocusableChildren(parent);
+  return list[list.length - 1];
+}

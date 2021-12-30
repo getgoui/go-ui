@@ -6,31 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Go UI demo</title>
     <link rel="stylesheet" href="/build/go-ui.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <script type="module" src="/build/go-ui.esm.js"></script>
     <script nomodule src="/build/go-ui.js"></script>
+    <style>
+      .custom-search-form {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+      }
+      .custom-search-form input {
+        flex: 1;
+        padding: 0.5rem;
+        font-size: var(--go-size-2);
+      }
+      .custom-search-form go-button {
+        font-size: var(--go-size-2);
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-    <div class="header-bar">
-      <go-gov-au-logo href="/">
-        <img
-          slot="crest"
-          src="https://www.dfat.gov.au/sites/default/files/australian-government-strip-black_1f3cd3f7-26d5-3bec-a76c-a0dc0c4c5764.png"
-          alt="Australian government"
-        />
-        <img
-          slot="crest-on-dark"
-          src="https://www.dfat.gov.au/sites/default/files/australian-government-strip-white_2eb9cce7-dabd-3b4f-ba0f-d70d77e45427.png"
-          alt="Australian government on dark background"
-        />
-        <div slot="co-brand">
-          <h1 class="text-size-3">Go UI</h1>
-          <div class="text-size-1">A design system for everyone</div>
-        </div>
-      </go-gov-au-logo>
-      <go-search-bar>
-        <input slot="input" type="search" placeholder="Search" />
-      </go-search-bar>
+      <go-header-bar>
+        <go-gov-au-logo href="/" slot="logo">
+          <img
+            slot="main-brand"
+            src="https://www.dfat.gov.au/sites/default/files/australian-government-strip-black_1f3cd3f7-26d5-3bec-a76c-a0dc0c4c5764.png"
+            alt="Australian government"
+          />
+          <img
+            slot="main-brand-on-dark"
+            src="https://www.dfat.gov.au/sites/default/files/australian-government-strip-white_2eb9cce7-dabd-3b4f-ba0f-d70d77e45427.png"
+            alt="Australian government on dark background"
+          />
+          <div slot="co-brand">
+            <h1 class="text-size-3">Go UI</h1>
+            <div class="text-size-1">A design system for everyone</div>
+          </div>
+        </go-gov-au-logo>
+
+        <go-search-bar slot="search-bar">
+          <div class="custom-search-form" slot="search-form">
+            <input type="search" placeholder="Search" />
+            <go-button color="primary"><go-icon name="search" slot="start"></go-icon> Search</go-button>
+          </div>
+        </go-search-bar>
+      </go-header-bar>
     </div>
   </body>
 </html>
