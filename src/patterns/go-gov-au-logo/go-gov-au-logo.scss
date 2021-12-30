@@ -1,7 +1,7 @@
 go-gov-au-logo {
   --divider-color: var(--go-color-darkest);
   --divider-width: 1px;
-  --divider-gap: 0.5rem;
+  --divider-gap: 1rem;
   .logo-wrapper {
     text-decoration: none;
     display: inline-flex;
@@ -12,8 +12,8 @@ go-gov-au-logo {
       justify-content: center;
     }
     .main-brand {
+      text-align: center;
       img {
-        display: block;
         height: var(--logo-height, 4rem);
       }
     }
