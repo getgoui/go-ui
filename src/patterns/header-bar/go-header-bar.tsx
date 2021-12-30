@@ -11,14 +11,14 @@ export class GoHeaderBar {
   render() {
     return (
       <Host>
-        <div class="menu">
+        <div class="slot menu">
           <slot name="menu"></slot>
         </div>
-        <div class="logo">
+        <div class="slot logo">
           <slot name="logo"></slot>
         </div>
-        <div class="search-bar">
-          <slot name="search-bar"></slot>
+        <div class="slot actions">
+          <slot name="actions"></slot>
         </div>
       </Host>
     );
