@@ -26,7 +26,7 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <!-- <div class="container">
       <go-header-bar>
         <go-button slot="menu" compact flat stack color="tertiary">
           <svg
@@ -67,6 +67,34 @@
           </div>
         </go-search-bar>
       </go-header-bar>
-    </div>
+    </div> -->
+    <a href="#">Test</a>
+    <p>
+      Lorem ipsum dolor sit amet consectetur <go-button id="btn">Show overlay</go-button> adipisicing elit. Adipisci provident animi commodi quae maxime quis
+      ipsa nobis sint beatae debitis!
+    </p>
+
+    <input type="text" placeholde="outside focusable" />
+    <go-overlay id="overlay">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A eos, quidem sint perferendis suscipit
+        <a href="#">Focus</a>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, sapiente.
+        <a href="#">Trapped</a>
+      </p>
+      <p>
+        <go-button id="close-btn">Close</go-button>
+      </p>
+    </go-overlay>
+    <script>
+      const overlay = document.querySelector('#overlay');
+
+      document.querySelector('#btn').addEventListener('click', () => {
+        overlay.open();
+      });
+      document.querySelector('#close-btn').addEventListener('click', () => {
+        overlay.close();
+      });
+    </script>
   </body>
 </html>
