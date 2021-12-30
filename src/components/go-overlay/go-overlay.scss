@@ -1,0 +1,10 @@
+go-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  &.active {
+    display: block;
+  }
+}
