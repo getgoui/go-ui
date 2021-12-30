@@ -32,7 +32,7 @@
     "test.e2e.watch": "stencil test --e2e --watchAll",
     "test.e2e.screenshot": "stencil test --e2e --screenshot",
     "generate": "gg generate",
-    "stylelint": "stylelint \"./src/**/*.scss\"",
+    "stylelint": "stylelint src/**/*.{css,scss}",
     "release": "standard-version",
     "husky.install.hooks": "husky install",
     "semantic-release": "semantic-release"
@@ -74,6 +74,7 @@
     "stylelint-a11y": "^1.2.3",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard-scss": "^2.0.1",
+    "stylelint-no-unsupported-browser-features": "^5.0.2",
     "yargs": "^17.3.0"
   },
   "license": "MIT",

@@ -2,7 +2,6 @@
 @import './utils/mixins/grid';
 
 // Container widths
-//
 // Set the container width, and override it for fixed navbars in media queries.
 // Single container class with breakpoint max-widths
 .container,
@@ -17,6 +16,7 @@
 // Responsive containers that are 100% wide until a breakpoint
 @each $breakpoint, $container-max-width in $container-max-widths {
   .container-#{$breakpoint} {
+    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
     @extend .container-fluid;
   }
 
@@ -29,14 +29,14 @@
     $extend-breakpoint: true;
 
     @each $name, $width in $breakpoints {
-      @if  $extend-breakpoint {
+      @if $extend-breakpoint {
         .container,
         .container#{-$name} {
           @extend %responsive-container-#{$breakpoint};
         }
 
         // Once the current breakpoint is reached, stop extending
-        @if  $breakpoint == $name {
+        @if $breakpoint == $name {
           $extend-breakpoint: false;
         }
       }
@@ -45,7 +45,6 @@
 }
 
 // Row
-//
 // Rows contain your columns.
 
 .row {
@@ -57,7 +56,6 @@
 }
 
 // Columns
-//
 // Common styles for small and large grid columns
 
 @include make-grid-columns;

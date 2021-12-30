@@ -2,6 +2,7 @@
 
 @mixin initiate-light-mode {
   @include go-color-scheme-light;
+
   color-scheme: light;
   .dark-only {
     display: none;
@@ -12,6 +13,7 @@
 }
 @mixin initiate-dark-mode {
   @include go-color-scheme-dark;
+
   color-scheme: dark;
   .light-only {
     display: none;
@@ -32,6 +34,7 @@
     @include initiate-dark-mode;
   }
 }
+
 // theme overwrites
 [color-scheme='light'],
 [data-theme='light'] {

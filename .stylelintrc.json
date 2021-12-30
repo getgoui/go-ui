@@ -3,5 +3,29 @@
     "stylelint-config-standard-scss",
     "stylelint-a11y/recommended",
     "stylelint-config-prettier"
+  ],
+  "plugins": [
+    "stylelint-no-unsupported-browser-features"
+  ],
+  "rules": {
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
+    "alpha-value-notation": null,
+    "scss/dollar-variable-pattern": null,
+    "function-name-case": null,
+    "scss/no-global-function-names": null,
+    "a11y/media-prefers-reduced-motion": null,
+    "color-function-notation": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "value-keyword-case": null,
+    "custom-property-pattern": null
+  },
+  "ignoreFiles": [
+    "src/global/normalize.min.css"
   ]
 }

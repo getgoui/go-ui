@@ -1,7 +1,9 @@
 // CSS Variables
 @import './themes/tokens';
+
 /* @link https://utopia.fyi/type/calculator?c=768,16,1.25,1400,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
 :root {
+  /* stylelint-disable-next-line custom-property-pattern */
   --go-size--1: clamp(0.8rem, 0.68rem + 0.25vw, 0.9rem);
   --go-size-0: clamp(1rem, 0.85rem + 0.32vw, 1.13rem);
   --go-size-1: clamp(1.25rem, 1.06rem + 0.4vw, 1.41rem);
@@ -11,9 +13,7 @@
   --go-size-5: clamp(3.05rem, 2.59rem + 0.97vw, 3.43rem);
   --go-size-6: clamp(3.82rem, 3.24rem + 1.21vw, 4.29rem);
   --go-size-7: clamp(4.77rem, 4.04rem + 1.51vw, 5.36rem);
-}
 
-:root {
   // Grid
   --go-outer-gutter: 1rem; // Container gutter
   --go-col-gap: 0; // Gap between columns

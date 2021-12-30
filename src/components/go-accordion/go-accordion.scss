@@ -12,12 +12,14 @@ go-accordion {
       - default: 1rem
   */
   --heading-padding-y: 1rem;
+
   /**
     @prop --panel-padding-x:
       Horizontal padding for inner content
       - default: 2rem
   */
   --panel-padding-x: 1rem;
+
   /**
     @prop --panel-padding-y:
       Vertical padding for inner content
@@ -37,7 +39,7 @@ go-accordion {
       Heading text colour
       - default: var(--go-color-text, #333333)
   */
-  --heading-text-color: var(--go-color-text, #333333);
+  --heading-text-color: var(--go-color-text, #333);
 
   /**
     @prop --heading-bg-color:
@@ -59,12 +61,14 @@ go-accordion {
       - default: 700
   */
   --heading-font-weight: 700;
+
   /**
     @prop --panel-bg-color:
       Content background colour
       - default: var(--go-color-background, #f5f5f5)
   */
   --panel-bg-color: var(--go-color-lightest);
+
   /**
     @prop --heading-border-bottom:
       Bottom border applied to the heading element to better separate the heading and panel, especially useful when content is scrollable.

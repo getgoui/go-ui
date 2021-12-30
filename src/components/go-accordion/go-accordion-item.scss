@@ -2,6 +2,7 @@ go-accordion-item {
   @include reduced-motion {
     --go-duration-normal: 0.01s;
   }
+
   display: block;
   .heading {
     .heading-control {
@@ -37,6 +38,7 @@ go-accordion-item {
           fill: currentColor;
         }
       }
+
       transition: transform var(--go-duration-normal) var(--go-timing-function);
     }
   }
@@ -48,7 +50,6 @@ go-accordion-item {
     .panel {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-
       overflow: hidden;
       padding: var(--panel-padding-y) var(--panel-padding-x);
     }

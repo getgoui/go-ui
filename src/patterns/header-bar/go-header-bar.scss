@@ -1,6 +1,7 @@
 go-header-bar {
   --header-bar-padding-y: 1rem;
   --header-bar-padding-x: 0;
+
   padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
   display: flex;
   position: relative;
