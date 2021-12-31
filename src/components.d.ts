@@ -130,7 +130,19 @@ export namespace Components {
     interface GoOverlay {
         "active": boolean;
         "close": () => Promise<void>;
+        /**
+          * If true, the overlay will be dismissed when the user clicks outside of it or presses the escape key.
+         */
+        "dismissible": boolean;
+        /**
+          * Heading of the overlay content
+         */
+        "heading"?: string;
         "open": () => Promise<void>;
+        /**
+          * Type of this overlay, can be dialog or alertdialog
+         */
+        "type": 'dialog' | 'alertdialog';
     }
     interface GoSearchBar {
         "closeSearchForm": () => Promise<void>;
@@ -326,6 +338,18 @@ declare namespace LocalJSX {
     }
     interface GoOverlay {
         "active"?: boolean;
+        /**
+          * If true, the overlay will be dismissed when the user clicks outside of it or presses the escape key.
+         */
+        "dismissible"?: boolean;
+        /**
+          * Heading of the overlay content
+         */
+        "heading"?: string;
+        /**
+          * Type of this overlay, can be dialog or alertdialog
+         */
+        "type"?: 'dialog' | 'alertdialog';
     }
     interface GoSearchBar {
     }

@@ -1,10 +1,31 @@
 go-overlay {
+  --go-overlay-color: rgba(var(--go-token-darkest), 0.8);
+  --go-overlay-content-width: 80%;
+  --go-overlay-content-padding-y: 2rem;
+  --go-overlay-content-padding-x: 2rem;
+
   position: fixed;
-  inset: 0;
-  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 0;
   height: 0;
+  overflow: auto;
+  .overlay-content {
+    width: var(--go-overlay-content-width);
+    margin: 5rem auto;
+    background: var(--go-color-bg);
+    padding: var(--go-overlay-content-padding-y) var(--go-overlay-content-padding-x);
+    border-radius: var(--radius-3);
+    opacity: 0;
+  }
   &.active {
-    display: block;
+    background: var(--go-overlay-color);
+    width: 100%;
+    height: 100%;
+    .overlay-content {
+      opacity: 1;
+    }
   }
 }

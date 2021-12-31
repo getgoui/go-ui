@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@stencil/core": "^2.11.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "lodash.uniqueid": "^4.0.1",
     "open-props": "^1.0.14"
   },
