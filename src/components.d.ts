@@ -131,14 +131,14 @@ export namespace Components {
         "active": boolean;
         "close": () => Promise<void>;
         /**
-          * If true, the overlay will be dismissed when the user clicks outside of it or presses the escape key.
-         */
-        "dismissible": boolean;
-        /**
           * Heading of the overlay content
          */
         "heading"?: string;
         "open": () => Promise<void>;
+        /**
+          * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+         */
+        "persistent": boolean;
         /**
           * Type of this overlay, can be dialog or alertdialog
          */
@@ -339,13 +339,13 @@ declare namespace LocalJSX {
     interface GoOverlay {
         "active"?: boolean;
         /**
-          * If true, the overlay will be dismissed when the user clicks outside of it or presses the escape key.
-         */
-        "dismissible"?: boolean;
-        /**
           * Heading of the overlay content
          */
         "heading"?: string;
+        /**
+          * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+         */
+        "persistent"?: boolean;
         /**
           * Type of this overlay, can be dialog or alertdialog
          */
