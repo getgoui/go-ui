@@ -3,7 +3,16 @@ go-overlay {
   --go-overlay-content-width: 80%;
   --go-overlay-content-padding-y: 2rem;
   --go-overlay-content-padding-x: 2rem;
+  /**
+    @prop --go-overlay-content-gap:
+      defines how much space to leave between window top and overlay content
+      - default: 10vh
+  */
+  --go-overlay-content-gap: 10vh;
 
+  @include transition(opacity var(--go-duration-normal) var(--go-timing-function));
+
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,20 +21,29 @@ go-overlay {
   width: 0;
   height: 0;
   overflow: auto;
+  display: grid;
+  place-items: center;
+
   .overlay-content {
-    width: var(--go-overlay-content-width);
-    margin: 5rem auto;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
     background: var(--go-color-bg);
     padding: var(--go-overlay-content-padding-y) var(--go-overlay-content-padding-x);
-    border-radius: var(--radius-3);
-    opacity: 0;
+    @include tablet {
+      width: var(--go-overlay-content-width);
+      height: auto;
+      margin: var(--go-overlay-content-gap) auto;
+      border-radius: var(--radius-3);
+    }
   }
   &.active {
     background: var(--go-overlay-color);
     width: 100%;
     height: 100%;
-    .overlay-content {
-      opacity: 1;
-    }
+    opacity: 1;
+  }
+  .close-btn-wrapper {
+    text-align: right;
   }
 }

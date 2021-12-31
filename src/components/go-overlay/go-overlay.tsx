@@ -17,9 +17,9 @@ export class GoOverlay {
   @Prop() type: 'dialog' | 'alertdialog' = 'dialog';
 
   /**
-   * If true, the overlay will be dismissed when the user clicks outside of it or presses the escape key.
+   * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
    */
-  @Prop() dismissible: boolean = true;
+  @Prop() persistent: boolean = false;
 
   /**
    * Heading of the overlay content
@@ -43,7 +43,6 @@ export class GoOverlay {
     const focusableChildren = getFocusableChildren(this.el);
     this.firstFocusableEl = focusableChildren[0];
     this.lastFocusableEl = focusableChildren[focusableChildren.length - 1];
-
     // trap focus inside overlay
     this.lastFocusableEl.addEventListener('keydown', (e: KeyboardEvent) => {
       if (this.active) {
@@ -55,7 +54,9 @@ export class GoOverlay {
     });
     this.firstFocusableEl.addEventListener('keydown', (e: KeyboardEvent) => {
       if (this.active) {
+        console.log(e.code, e.shiftKey);
         if (e.code === 'Tab' && e.shiftKey) {
+          console.log('asdfaswdfasdfasd');
           e.preventDefault();
           this.lastFocusableEl.focus();
         }
@@ -63,7 +64,7 @@ export class GoOverlay {
     });
 
     // close overlay on click outside
-    if (this.dismissible) {
+    if (!this.persistent) {
       this.el.addEventListener('click', (e: MouseEvent) => {
         if (this.active) {
           if (e.target === this.el && e.target !== this.contentEl) {
@@ -88,7 +89,7 @@ export class GoOverlay {
     this.originator = document.activeElement as HTMLElement;
 
     // close overlay on escape
-    if (this.dismissible) {
+    if (!this.persistent) {
       document.addEventListener('keydown', (e: KeyboardEvent) => {
         if (this.active) {
           if (e.code === 'Escape') {
@@ -100,15 +101,34 @@ export class GoOverlay {
 
     // focus on first focusable element on next tick
     window.requestAnimationFrame(() => {
+      console.log(this.firstFocusableEl);
       this.firstFocusableEl.focus();
     });
   }
 
   render() {
-    const { active, type, heading, headingId } = this;
+    const { active, type, heading, headingId, persistent } = this;
+    console.log({ persistent });
     return (
       <Host role={type} aria-modal="true" aria-labelledby={headingId} class={{ active }}>
         <div class="overlay-content" ref={(el) => (this.contentEl = el)}>
+          {!persistent ? (
+            <div class="close-btn-wrapper">
+              <go-button flat stack color="tertiary" compact onClick={() => this.close()}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+                <span>Close</span>
+              </go-button>
+            </div>
+          ) : null}
           <div id={headingId} class="overlay-heading">
             <slot name="heading">
               <h3>{heading}</h3>
