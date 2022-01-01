@@ -1,8 +1,10 @@
 go-overlay {
   --go-overlay-color: rgba(var(--go-token-darkest), 0.8);
   --go-overlay-content-width: 80%;
-  --go-overlay-content-padding-y: 2rem;
-  --go-overlay-content-padding-x: 2rem;
+  --go-overlay-content-padding-y: 1.5rem;
+  --go-overlay-content-padding-x: 1.5rem;
+  --go-overlay-content-bg-color: var(--go-color-bg);
+  --go-overlay-close-btn-text-color: var(--go-color-text);
   /**
     @prop --go-overlay-content-gap:
       defines how much space to leave between window top and overlay content
@@ -28,7 +30,7 @@ go-overlay {
     width: 100%;
     height: 100vh;
     margin: 0;
-    background: var(--go-color-bg);
+    background: var(--go-overlay-content-bg-color);
     padding: var(--go-overlay-content-padding-y) var(--go-overlay-content-padding-x);
     @include tablet {
       width: var(--go-overlay-content-width);
@@ -45,5 +47,8 @@ go-overlay {
   }
   .close-btn-wrapper {
     text-align: right;
+    go-button {
+      --go-btn-text-color: var(--go-overlay-close-btn-text-color);
+    }
   }
 }

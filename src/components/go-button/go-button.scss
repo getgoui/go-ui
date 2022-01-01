@@ -149,6 +149,9 @@ go-button {
     --go-btn-padding-y: 0.4em;
     --go-btn-padding-x: 0.8em;
     --go-btn-inner-gap: 0.125em;
+    .inner-button {
+      font-size: var(--go-size--1);
+    }
   }
 
   .inner-button {

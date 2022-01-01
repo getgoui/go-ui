@@ -48,7 +48,7 @@ export class GoOverlay {
       if (this.active) {
         if (e.code === 'Tab' && !e.shiftKey) {
           e.preventDefault();
-          this.firstFocusableEl.focus();
+          this.firstFocusableEl?.focus();
         }
       }
     });
@@ -58,7 +58,7 @@ export class GoOverlay {
         if (e.code === 'Tab' && e.shiftKey) {
           console.log('asdfaswdfasdfasd');
           e.preventDefault();
-          this.lastFocusableEl.focus();
+          this.lastFocusableEl?.focus();
         }
       }
     });
@@ -79,7 +79,7 @@ export class GoOverlay {
   async close() {
     enableBodyScroll(this.el);
     this.active = false;
-    this.originator.focus();
+    this.originator?.focus();
   }
 
   @Method()
@@ -102,13 +102,12 @@ export class GoOverlay {
     // focus on first focusable element on next tick
     window.requestAnimationFrame(() => {
       console.log(this.firstFocusableEl);
-      this.firstFocusableEl.focus();
+      this.firstFocusableEl?.focus();
     });
   }
 
   render() {
     const { active, type, heading, headingId, persistent } = this;
-    console.log({ persistent });
     return (
       <Host role={type} aria-modal="true" aria-labelledby={headingId} class={{ active }}>
         <div class="overlay-content" ref={(el) => (this.contentEl = el)}>
