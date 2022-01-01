@@ -127,6 +127,8 @@ export namespace Components {
          */
         "size"?: string;
     }
+    interface GoMainNav {
+    }
     interface GoOverlay {
         "active": boolean;
         "close": () => Promise<void>;
@@ -192,6 +194,12 @@ declare global {
         prototype: HTMLGoIconElement;
         new (): HTMLGoIconElement;
     };
+    interface HTMLGoMainNavElement extends Components.GoMainNav, HTMLStencilElement {
+    }
+    var HTMLGoMainNavElement: {
+        prototype: HTMLGoMainNavElement;
+        new (): HTMLGoMainNavElement;
+    };
     interface HTMLGoOverlayElement extends Components.GoOverlay, HTMLStencilElement {
     }
     var HTMLGoOverlayElement: {
@@ -212,6 +220,7 @@ declare global {
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
         "go-icon": HTMLGoIconElement;
+        "go-main-nav": HTMLGoMainNavElement;
         "go-overlay": HTMLGoOverlayElement;
         "go-search-bar": HTMLGoSearchBarElement;
     }
@@ -336,6 +345,8 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface GoMainNav {
+    }
     interface GoOverlay {
         "active"?: boolean;
         /**
@@ -369,6 +380,7 @@ declare namespace LocalJSX {
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
         "go-icon": GoIcon;
+        "go-main-nav": GoMainNav;
         "go-overlay": GoOverlay;
         "go-search-bar": GoSearchBar;
     }
@@ -384,6 +396,7 @@ declare module "@stencil/core" {
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
+            "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
         }
