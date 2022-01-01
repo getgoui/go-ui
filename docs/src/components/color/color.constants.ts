@@ -4,7 +4,7 @@ export const defaultColors = {
   primary: '#083d8c',
   secondary: '#666ea0',
   success: '#42a53b',
-  error: rgb(213, 32, 26),
+  critical: rgb(213, 32, 26),
   neutral: rgb(144, 144, 144),
 };
 

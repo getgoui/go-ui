@@ -95,5 +95,5 @@ $typography: (
 // ----------------------------------
 // Sass variables are used to generate CSS variables.
 $color-shades: 9 !default;
-$color-categories: primary, secondary, success, error, neutral !default;
+$color-categories: primary, secondary, success, critical, neutral !default;
 $color-categories-extreme: darkest, lightest !default;

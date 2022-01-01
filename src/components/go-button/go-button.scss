@@ -55,10 +55,10 @@ go-button {
     --go-btn-bg-color-hover: var(--go-color-secondary-500);
     --go-btn-bg-color-disabled: rgba(var(--go-token-secondary-600), 0.5);
   }
-  &[color='danger'] {
-    --go-btn-bg-color: var(--go-color-error-600);
-    --go-btn-bg-color-hover: var(--go-color-error-500);
-    --go-btn-bg-color-disabled: rgba(var(--go-token-error-600), 0.5);
+  &[color='critical'] {
+    --go-btn-bg-color: var(--go-color-critical-600);
+    --go-btn-bg-color-hover: var(--go-color-critical-500);
+    --go-btn-bg-color-disabled: rgba(var(--go-token-critical-600), 0.5);
   }
   &[color='tertiary'] {
     --go-btn-bg-color-hover: var(--go-color-neutral-300);
