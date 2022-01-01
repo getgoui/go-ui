@@ -7,5 +7,9 @@
     "component",
     "utils"
   ],
-  "stylelint.validate": ["css", "scss"]
+  "stylelint.validate": ["css", "scss"],
+	"editor.formatOnSave": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.stylelint": true
+	},
 }

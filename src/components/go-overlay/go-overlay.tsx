@@ -56,7 +56,6 @@ export class GoOverlay {
       if (this.active) {
         console.log(e.code, e.shiftKey);
         if (e.code === 'Tab' && e.shiftKey) {
-          console.log('asdfaswdfasdfasd');
           e.preventDefault();
           this.lastFocusableEl?.focus();
         }
