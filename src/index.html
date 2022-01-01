@@ -13,17 +13,23 @@
       .custom-search-form {
         display: flex;
         align-items: stretch;
+        flex-direction: column;
         gap: 1rem;
         padding: 5rem 0;
+      }
+      @media (min-width: 768px) {
+        .custom-search-form {
+          flex-direction: row;
+        }
       }
       .custom-search-form input {
         flex: 1;
         padding: 0.5rem;
-        font-size: var(--go-size-2);
+        font-size: var(--go-size-1);
         border-radius: var(--radius-2);
       }
       .custom-search-form go-button {
-        font-size: var(--go-size-2);
+        font-size: var(--go-size-1);
       }
     </style>
   </head>

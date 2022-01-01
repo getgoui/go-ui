@@ -5,6 +5,7 @@ go-overlay {
   --go-overlay-content-padding-x: 1.5rem;
   --go-overlay-content-bg-color: var(--go-color-bg);
   --go-overlay-close-btn-text-color: var(--go-color-text);
+  --go-overlay-content-max-width: 1140px;
 
   /**
     @prop --go-overlay-content-gap:
@@ -34,6 +35,7 @@ go-overlay {
     margin: 0;
     background: var(--go-overlay-content-bg-color);
     padding: var(--go-overlay-content-padding-y) var(--go-overlay-content-padding-x);
+    max-width: var(--go-overlay-content-max-width);
     @include tablet {
       width: var(--go-overlay-content-width);
       height: auto;
