@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Method, State } from '@stencil/core';
+import { Component, Host, h, Element, Method, State, Listen } from '@stencil/core';
 
 @Component({
   tag: 'go-search-bar',
@@ -21,32 +21,21 @@ export class GoSearchBar {
     this.isSearchFormOpen = false;
   }
 
+  @Listen('overlayClose')
+  handleOverlayClose() {
+    this.closeSearchForm();
+  }
+
   render() {
+    const { isSearchFormOpen } = this;
     return (
       <Host
         class={{
-          open: this.isSearchFormOpen,
+          open: isSearchFormOpen,
         }}>
-        <div class="search-form">
-          <div class="container">
-            <div class="close-btn">
-              <go-button flat stack compact color="tertiary" onClick={() => this.closeSearchForm()}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  viewBox="0 0 24 24">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-                <span>Close</span>
-              </go-button>
-            </div>
-            <slot name="search-form"></slot>
-          </div>
-        </div>
+        <go-overlay heading="Search" active={isSearchFormOpen ? true : null} class="search-form">
+          <slot name="search-form"></slot>
+        </go-overlay>
         <div class="search-btn">
           <go-button class="open-btn" compact flat stack color="tertiary" onClick={() => this.openSearchForm()}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

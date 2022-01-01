@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, Method } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { getFocusableChildren } from '../../utils/helper';
@@ -75,8 +75,29 @@ export class GoOverlay {
     }
   }
 
+  /**
+   * Emitted when the overlay is opened
+   */
+  @Event({
+    eventName: 'overlayOpen',
+    cancelable: true,
+    bubbles: true,
+  })
+  openEvent: EventEmitter<void>;
+
+  /**
+   * Emitted when the overlay is closed
+   */
+  @Event({
+    eventName: 'overlayClose',
+    cancelable: true,
+    bubbles: true,
+  })
+  closeEvent: EventEmitter<void>;
+
   @Method()
   async close() {
+    this.closeEvent.emit();
     enableBodyScroll(this.el);
     this.active = false;
     this.originator?.focus();
@@ -84,6 +105,7 @@ export class GoOverlay {
 
   @Method()
   async open() {
+    this.openEvent.emit();
     disableBodyScroll(this.el);
     this.active = true;
     this.originator = document.activeElement as HTMLElement;
@@ -101,9 +123,17 @@ export class GoOverlay {
 
     // focus on first focusable element on next tick
     window.requestAnimationFrame(() => {
-      console.log(this.firstFocusableEl);
       this.firstFocusableEl?.focus();
     });
+  }
+
+  @Watch('active')
+  watchActiveHandler(newValue: boolean): void {
+    if (newValue) {
+      this.open();
+      return;
+    }
+    this.close();
   }
 
   render() {

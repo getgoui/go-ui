@@ -13,12 +13,14 @@
       .custom-search-form {
         display: flex;
         align-items: stretch;
-        justify-content: space-between;
+        gap: 1rem;
+        padding: 5rem 0;
       }
       .custom-search-form input {
         flex: 1;
         padding: 0.5rem;
         font-size: var(--go-size-2);
+        border-radius: var(--radius-2);
       }
       .custom-search-form go-button {
         font-size: var(--go-size-2);
@@ -26,7 +28,7 @@
     </style>
   </head>
   <body>
-    <!-- <div class="container">
+    <div class="container">
       <go-header-bar>
         <go-button slot="menu" compact flat stack color="tertiary">
           <svg
@@ -67,6 +69,6 @@
           </div>
         </go-search-bar>
       </go-header-bar>
-    </div> -->
+    </div>
   </body>
 </html>

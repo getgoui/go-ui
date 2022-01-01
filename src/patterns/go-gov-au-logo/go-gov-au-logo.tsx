@@ -18,7 +18,7 @@ export class GoGovAuLogo {
    * Set height of the logo group. Slots will be scaled to this height.
    * Width is set to auto to avoid image distortion.
    */
-  @Prop() height: string = '4rem';
+  @Prop() height: string = '3rem';
 
   /**
    * If href is provided, logo will be wrapped inside an anchor (`a`) tag. By default, all attributes except `class` and `style` are passed through to the anchor tag.

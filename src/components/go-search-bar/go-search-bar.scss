@@ -1,6 +1,6 @@
 go-search-bar {
   --search-form-text-color: var(--go-color-lightest);
-  --search-form-overlay-bg: rgba(var(--go-token-primary-700), 0.9);
+  --search-form-overlay-bg: transparent;
   --search-form-padding-y: 1rem;
   --search-form-padding-x: 0;
 
@@ -8,33 +8,4 @@ go-search-bar {
   align-items: flex-end;
   justify-content: flex-end;
   position: relative;
-  go-button {
-    svg {
-      width: 2rem;
-    }
-  }
-  .search-form {
-    display: none;
-    padding: var(--search-form-padding-y) var(--search-form-padding-x);
-    background: var(--search-form-overlay-bg);
-    color: var(--search-form-text-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    z-index: var(--layer-important);
-    .close-btn {
-      text-align: inline-end;
-      margin-bottom: var(--go-size-1);
-      go-button {
-        --go-btn-text-color: var(--search-form-text-color);
-      }
-    }
-  }
-  &.open {
-    .search-form {
-      display: block;
-    }
-  }
 }
