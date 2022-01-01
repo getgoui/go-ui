@@ -139,7 +139,7 @@ export class GoOverlay {
   render() {
     const { active, type, heading, headingId, persistent } = this;
     return (
-      <Host role={type} aria-modal="true" aria-labelledby={headingId} class={{ active }}>
+      <Host role={type} aria-modal="true" aria-labelledby={headingId} class={{ active }} aria-hidden={active ? false : true}>
         <div class="overlay-content" ref={(el) => (this.contentEl = el)}>
           {!persistent ? (
             <div class="close-btn-wrapper">

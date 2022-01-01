@@ -5,6 +5,7 @@ go-header-bar {
   padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
   display: flex;
   position: relative;
+  gap: 1rem;
   .menu {
     position: absolute;
     top: var(--header-bar-padding-y);

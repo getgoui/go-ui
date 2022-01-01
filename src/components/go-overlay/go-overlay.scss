@@ -12,9 +12,6 @@ go-overlay {
   */
   --go-overlay-content-gap: 10vh;
 
-  @include transition(opacity var(--go-duration-normal) var(--go-timing-function));
-
-  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -27,6 +24,10 @@ go-overlay {
   place-items: center;
 
   .overlay-content {
+    @include transition(opacity var(--go-duration-normal) var(--go-timing-function), visibility var(--go-duration-normal));
+
+    visibility: hidden;
+    opacity: 0;
     width: 100%;
     height: 100vh;
     margin: 0;
@@ -43,7 +44,10 @@ go-overlay {
     background: var(--go-overlay-color);
     width: 100%;
     height: 100%;
-    opacity: 1;
+    .overlay-content {
+      opacity: 1;
+      visibility: visible;
+    }
   }
   .close-btn-wrapper {
     text-align: right;
