@@ -44,7 +44,7 @@ export class GoOverlay {
     this.firstFocusableEl = focusableChildren[0];
     this.lastFocusableEl = focusableChildren[focusableChildren.length - 1];
     // trap focus inside overlay
-    this.lastFocusableEl.addEventListener('keydown', (e: KeyboardEvent) => {
+    this.lastFocusableEl?.addEventListener('keydown', (e: KeyboardEvent) => {
       if (this.active) {
         if (e.code === 'Tab' && !e.shiftKey) {
           e.preventDefault();
@@ -52,9 +52,8 @@ export class GoOverlay {
         }
       }
     });
-    this.firstFocusableEl.addEventListener('keydown', (e: KeyboardEvent) => {
+    this.firstFocusableEl?.addEventListener('keydown', (e: KeyboardEvent) => {
       if (this.active) {
-        console.log(e.code, e.shiftKey);
         if (e.code === 'Tab' && e.shiftKey) {
           e.preventDefault();
           this.lastFocusableEl?.focus();
