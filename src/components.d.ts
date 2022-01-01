@@ -343,6 +343,14 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
+          * Emitted when the overlay is closed
+         */
+        "onOverlayClose"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the overlay is opened
+         */
+        "onOverlayOpen"?: (event: CustomEvent<void>) => void;
+        /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent"?: boolean;
