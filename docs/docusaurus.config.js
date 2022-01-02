@@ -8,7 +8,7 @@ module.exports = {
   tagline: 'A pattern-first, framework-agnostic, a11y-focused, open source design system.',
   url: 'https://go.components.style',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'go-components', // Usually your GitHub org/user name.
