@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Method, Watch, Listen } from '@stencil/core';
+import { Component, h, Element, Prop, Method, Watch } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
 import { inheritAttributes } from '../../utils/helper';
 
