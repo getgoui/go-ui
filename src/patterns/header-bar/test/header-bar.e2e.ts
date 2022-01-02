@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 let html = '';
-describe('header-bar', () => {
+describe('go-header-bar', () => {
   // Set up html content
   beforeAll(async () => {
     const fs = require('fs');
@@ -10,11 +10,10 @@ describe('header-bar', () => {
   });
 
   it('renders', async () => {
-    const page = await newE2EPage({html});
-    const element = await page.find('header-bar');
-    expect(element).toHaveClass("hydrated");
+    const page = await newE2EPage({ html });
+    const element = await page.find('go-header-bar');
+    expect(element).toHaveClass('hydrated');
   });
-
 
   it('passes automated a11y test', async () => {
     const page = await newE2EPage({ html });

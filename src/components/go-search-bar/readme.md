@@ -30,11 +30,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [go-overlay](../go-overlay)
 - [go-button](../go-button)
 
 ### Graph
 ```mermaid
 graph TD;
+  go-search-bar --> go-overlay
   go-search-bar --> go-button
   style go-search-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
