@@ -35,8 +35,8 @@
     "generate": "gg generate",
     "stylelint": "stylelint src/**/*.{css,scss}",
     "release": "standard-version",
-    "husky.install.hooks": "husky install",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@stencil/core": "^2.11.0",
@@ -60,7 +60,7 @@
     "concurrently": "^6.4.0",
     "cssnano": "^5.0.12",
     "esm": "^3.2.25",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "lodash.camelcase": "^4.3.0",
@@ -88,10 +88,5 @@
     "branches": [
       "main"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "stylelint"
-    }
   }
 }
