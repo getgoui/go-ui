@@ -99,6 +99,9 @@ export namespace Components {
     interface GoButtonGroup {
     }
     interface GoDialog {
+        /**
+          * If this dialog is active
+         */
         "active": boolean;
         "close": () => Promise<void>;
         /**
@@ -110,6 +113,10 @@ export namespace Components {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent": boolean;
+        /**
+          * Accessible role of the dialog, can be dialog or alertdialog
+         */
+        "role": 'dialog' | 'alertdialog';
     }
     interface GoGovAuLogo {
         /**
@@ -337,6 +344,9 @@ declare namespace LocalJSX {
     interface GoButtonGroup {
     }
     interface GoDialog {
+        /**
+          * If this dialog is active
+         */
         "active"?: boolean;
         /**
           * Heading of the overlay content
@@ -346,6 +356,10 @@ declare namespace LocalJSX {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent"?: boolean;
+        /**
+          * Accessible role of the dialog, can be dialog or alertdialog
+         */
+        "role"?: 'dialog' | 'alertdialog';
     }
     interface GoGovAuLogo {
         /**

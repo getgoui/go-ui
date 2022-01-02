@@ -57,7 +57,7 @@ const Demo = ({ code, hideSource = false }) => {
   const [actualFrameHeight, setActualFrameHeight] = useState(0);
   const [colorScheme, setColorScheme] = useState('light');
   const contentEl = useRef(null);
-  const minFrameHeight = 200;
+  const minFrameHeight = 400;
   const startResizeX = () => {
     setResizingX(true);
     const onResizeX = (e) => {
@@ -97,7 +97,11 @@ const Demo = ({ code, hideSource = false }) => {
     setContentWidth(width);
   };
   const openNewWindow = () => {
-    var win = window.open('', 'Demo', 'toolbar=yes,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,width=1200,height=800,top=0,left=0');
+    var win = window.open(
+      '',
+      'Demo',
+      'toolbar=yes,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,width=1200,height=800,top=0,left=0',
+    );
     setDemoContent(win, code);
   };
   return (

@@ -66,6 +66,7 @@ export class GoOverlay {
       this.el.addEventListener('click', (e: MouseEvent) => {
         if (this.active) {
           if (e.target === this.bgEl) {
+            e.preventDefault();
             this.close();
           }
         }
@@ -95,6 +96,7 @@ export class GoOverlay {
 
   @Method()
   async close() {
+    console.log('close');
     this.closeEvent.emit();
     enableBodyScroll(this.el);
     this.active = false;

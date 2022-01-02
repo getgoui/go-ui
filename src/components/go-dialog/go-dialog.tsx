@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Method, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, Method, Watch, Listen } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
 import { inheritAttributes } from '../../utils/helper';
 
@@ -9,8 +9,15 @@ import { inheritAttributes } from '../../utils/helper';
 })
 export class GoDialog {
   @Element() el: HTMLElement;
-
+  /**
+   * If this dialog is active
+   */
   @Prop({ reflect: true, mutable: true }) active: boolean = false;
+
+  /**
+   * Accessible role of the dialog, can be dialog or alertdialog
+   */
+  @Prop() role: 'dialog' | 'alertdialog' = 'dialog';
 
   /**
    * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
@@ -50,17 +57,25 @@ export class GoDialog {
     }
     this.close();
   }
+
+  // keep active state in sync with overlay
+  handleOverlayClose() {
+    this.close();
+  }
+
   render() {
-    const { active, heading, persistent, headingId, inheritedAttrs } = this;
+    const { role, active, heading, persistent, headingId, inheritedAttrs } = this;
     return (
       <go-overlay
+        class="go-dialog"
         persistent={persistent}
-        role="dialog"
+        role={role}
         aria-modal="true"
         aria-labelledby={headingId}
         active={active}
         aria-hidden={active ? false : true}
         ref={(el) => (this.overlayEl = el)}
+        onOverlayClose={() => this.handleOverlayClose()}
         {...inheritedAttrs}>
         {!persistent ? (
           <div class="close-btn-wrapper">

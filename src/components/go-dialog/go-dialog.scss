@@ -1,31 +1,30 @@
-go-dialog {
-  display: block;
-  go-overlay {
-    --go-overlay-content-padding-y: 1.5rem;
-    --go-overlay-content-padding-x: 1.5rem;
-    --go-overlay-content-width: 80%;
-    --go-overlay-content-bg-color: var(--go-color-bg);
-    --go-overlay-content-max-width: 1140px;
-    --go-overlay-content-gap: 10vh;
+go-overlay.go-dialog {
+  --go-overlay-content-padding-y: 1.5rem;
+  --go-overlay-content-padding-x: 1.5rem;
+  --go-overlay-content-width: 80%;
+  --go-overlay-content-bg-color: var(--go-color-bg);
+  --go-overlay-content-max-width: 1140px;
+  --go-overlay-content-gap: 10vh;
+  --go-overlay-close-btn-text-color: currentColor;
 
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 
-    .overlay-content {
-      padding: var(--go-overlay-content-padding-y) var(--go-overlay-content-padding-x);
-      max-width: var(--go-overlay-content-max-width);
-      background: var(--go-overlay-content-bg-color);
-      @include tablet {
-        width: var(--go-overlay-content-width);
-        height: auto;
-        margin: var(--go-overlay-content-gap) auto;
-        border-radius: var(--radius-3);
-      }
+  .overlay-content {
+    position: relative;
+    padding: var(--go-overlay-content-padding-y) var(--go-overlay-content-padding-x);
+    max-width: var(--go-overlay-content-max-width);
+    background: var(--go-overlay-content-bg-color);
+    @include tablet {
+      width: var(--go-overlay-content-width);
+      height: auto;
+      margin: var(--go-overlay-content-gap) auto;
+      border-radius: var(--radius-3);
     }
-    &.active {
-      .close-btn-wrapper {
-        text-align: right;
-      }
+  }
+  &.active {
+    .close-btn-wrapper {
+      text-align: right;
     }
   }
 }
