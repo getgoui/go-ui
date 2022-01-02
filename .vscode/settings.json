@@ -8,7 +8,7 @@
     "utils"
   ],
   "stylelint.validate": ["css", "scss"],
-	"editor.formatOnSave": false,
+	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.stylelint": true
 	},

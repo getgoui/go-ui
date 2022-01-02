@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoints, ColorVariants } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+import { INavItem } from "./components/go-main-nav/go-main-nav";
 export namespace Components {
     interface GoAccordion {
         /**
@@ -97,6 +98,19 @@ export namespace Components {
     }
     interface GoButtonGroup {
     }
+    interface GoDialog {
+        "active": boolean;
+        "close": () => Promise<void>;
+        /**
+          * Heading of the overlay content
+         */
+        "heading"?: string;
+        "open": () => Promise<void>;
+        /**
+          * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+         */
+        "persistent": boolean;
+    }
     interface GoGovAuLogo {
         /**
           * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
@@ -128,19 +142,20 @@ export namespace Components {
         "size"?: string;
     }
     interface GoMainNav {
+        /**
+          * Navigation items to be rendered
+         */
+        "items": INavItem[];
     }
     interface GoOverlay {
         "active": boolean;
         "close": () => Promise<void>;
-        /**
-          * Heading of the overlay content
-         */
-        "heading"?: string;
         "open": () => Promise<void>;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent": boolean;
+        "theme": 'light' | 'dark';
         /**
           * Type of this overlay, can be dialog or alertdialog
          */
@@ -175,6 +190,12 @@ declare global {
     var HTMLGoButtonGroupElement: {
         prototype: HTMLGoButtonGroupElement;
         new (): HTMLGoButtonGroupElement;
+    };
+    interface HTMLGoDialogElement extends Components.GoDialog, HTMLStencilElement {
+    }
+    var HTMLGoDialogElement: {
+        prototype: HTMLGoDialogElement;
+        new (): HTMLGoDialogElement;
     };
     interface HTMLGoGovAuLogoElement extends Components.GoGovAuLogo, HTMLStencilElement {
     }
@@ -217,6 +238,7 @@ declare global {
         "go-accordion-item": HTMLGoAccordionItemElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
+        "go-dialog": HTMLGoDialogElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
         "go-icon": HTMLGoIconElement;
@@ -315,6 +337,17 @@ declare namespace LocalJSX {
     }
     interface GoButtonGroup {
     }
+    interface GoDialog {
+        "active"?: boolean;
+        /**
+          * Heading of the overlay content
+         */
+        "heading"?: string;
+        /**
+          * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+         */
+        "persistent"?: boolean;
+    }
     interface GoGovAuLogo {
         /**
           * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
@@ -346,13 +379,13 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface GoMainNav {
+        /**
+          * Navigation items to be rendered
+         */
+        "items"?: INavItem[];
     }
     interface GoOverlay {
         "active"?: boolean;
-        /**
-          * Heading of the overlay content
-         */
-        "heading"?: string;
         /**
           * Emitted when the overlay is closed
          */
@@ -365,6 +398,7 @@ declare namespace LocalJSX {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent"?: boolean;
+        "theme"?: 'light' | 'dark';
         /**
           * Type of this overlay, can be dialog or alertdialog
          */
@@ -377,6 +411,7 @@ declare namespace LocalJSX {
         "go-accordion-item": GoAccordionItem;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
+        "go-dialog": GoDialog;
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
         "go-icon": GoIcon;
@@ -393,6 +428,7 @@ declare module "@stencil/core" {
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
+            "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;

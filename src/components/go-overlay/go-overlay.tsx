@@ -1,7 +1,6 @@
 import { Component, Host, h, Element, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { getFocusableChildren } from '../../utils/helper';
+import { getFocusableChildren, inheritAttributes } from '../../utils/helper';
 @Component({
   tag: 'go-overlay',
   styleUrl: 'go-overlay.scss',
@@ -21,13 +20,7 @@ export class GoOverlay {
    */
   @Prop() persistent: boolean = false;
 
-  /**
-   * Heading of the overlay content
-   */
-  @Prop() heading?: string;
-
-  // aria-labelledby https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html
-  headingId: string = uniqueId('overlay-label-');
+  @Prop() theme: 'light' | 'dark' = 'light';
 
   // for trapping focus
   firstFocusableEl: HTMLElement;
@@ -37,7 +30,16 @@ export class GoOverlay {
   originator: HTMLElement;
 
   // for detecting click outside
-  contentEl: HTMLElement;
+  bgEl: HTMLElement;
+
+  // Store attributes inherited from the host element
+  private inheritedAttrs = {};
+  componentWillLoad() {
+    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style'], false);
+    // move this.el to the end of the body
+    const body = document.querySelector('body');
+    body.appendChild(this.el);
+  }
 
   componentDidLoad() {
     const focusableChildren = getFocusableChildren(this.el);
@@ -65,7 +67,7 @@ export class GoOverlay {
     if (!this.persistent) {
       this.el.addEventListener('click', (e: MouseEvent) => {
         if (this.active) {
-          if (e.target === this.el && e.target !== this.contentEl) {
+          if (e.target === this.bgEl) {
             this.close();
           }
         }
@@ -99,14 +101,16 @@ export class GoOverlay {
     enableBodyScroll(this.el);
     this.active = false;
     this.originator?.focus();
+    this.el.style.visibility = 'hidden';
   }
 
   @Method()
   async open() {
+    this.originator = document.activeElement as HTMLElement;
     this.openEvent.emit();
     disableBodyScroll(this.el);
+    this.el.style.visibility = 'visible';
     this.active = true;
-    this.originator = document.activeElement as HTMLElement;
 
     // close overlay on escape
     if (!this.persistent) {
@@ -120,9 +124,7 @@ export class GoOverlay {
     }
 
     // focus on first focusable element on next tick
-    window.requestAnimationFrame(() => {
-      this.firstFocusableEl?.focus();
-    });
+    this.firstFocusableEl?.focus();
   }
 
   @Watch('active')
@@ -135,32 +137,11 @@ export class GoOverlay {
   }
 
   render() {
-    const { active, type, heading, headingId, persistent } = this;
+    const { active, inheritedAttrs } = this;
     return (
-      <Host role={type} aria-modal="true" aria-labelledby={headingId} class={{ active }} aria-hidden={active ? false : true}>
-        <div class="overlay-content" ref={(el) => (this.contentEl = el)}>
-          {!persistent ? (
-            <div class="close-btn-wrapper">
-              <go-button flat stack color="tertiary" compact onClick={() => this.close()}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  viewBox="0 0 24 24">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-                <span>Close</span>
-              </go-button>
-            </div>
-          ) : null}
-          <div id={headingId} class="overlay-heading">
-            <slot name="heading">
-              <h3>{heading}</h3>
-            </slot>
-          </div>
+      <Host class={{ active }} {...inheritedAttrs}>
+        <div class="overlay-bg" ref={(el) => (this.bgEl = el)}></div>
+        <div class="overlay-content">
           <slot></slot>
         </div>
       </Host>

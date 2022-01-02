@@ -1,0 +1,27 @@
+go-dialog {
+  display: block;
+  go-overlay {
+    display: grid;
+    place-items: center;
+
+    .overlay-content {
+      padding: var(--go-overlay-content-padding-y) var(--go-overlay-content-padding-x);
+      max-width: var(--go-overlay-content-max-width);
+      background: var(--go-overlay-content-bg-color);
+      @include tablet {
+        width: var(--go-overlay-content-width);
+        height: auto;
+        margin: var(--go-overlay-content-gap) auto;
+        border-radius: var(--radius-3);
+      }
+    }
+    &.active {
+      .close-btn-wrapper {
+        text-align: right;
+        go-button {
+          --go-btn-text-color: var(--go-overlay-close-btn-text-color);
+        }
+      }
+    }
+  }
+}
