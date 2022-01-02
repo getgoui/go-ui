@@ -88,5 +88,10 @@
     "branches": [
       "main"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "stylelint"
+    }
   }
 }
