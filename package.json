@@ -1,7 +1,7 @@
 {
   "name": "@go-ui/core",
   "version": "0.0.0-development",
-  "description": "Go UI",
+  "description": "A design system for everyone.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.js",
@@ -14,6 +14,7 @@
     "dist/",
     "src/global/"
   ],
+  "homepage": "https://go.components.style/",
   "bin": {
     "gg": "./bin/index.js"
   },

@@ -1,6 +1,13 @@
 go-dialog {
   display: block;
   go-overlay {
+    --go-overlay-content-padding-y: 1.5rem;
+    --go-overlay-content-padding-x: 1.5rem;
+    --go-overlay-content-width: 80%;
+    --go-overlay-content-bg-color: var(--go-color-bg);
+    --go-overlay-content-max-width: 1140px;
+    --go-overlay-content-gap: 10vh;
+
     display: grid;
     place-items: center;
 
@@ -18,9 +25,6 @@ go-dialog {
     &.active {
       .close-btn-wrapper {
         text-align: right;
-        go-button {
-          --go-btn-text-color: var(--go-overlay-close-btn-text-color);
-        }
       }
     }
   }

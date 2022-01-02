@@ -20,8 +20,6 @@ export class GoOverlay {
    */
   @Prop() persistent: boolean = false;
 
-  @Prop() theme: 'light' | 'dark' = 'light';
-
   // for trapping focus
   firstFocusableEl: HTMLElement;
   lastFocusableEl: HTMLElement;

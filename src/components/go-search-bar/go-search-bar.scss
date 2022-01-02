@@ -1,11 +1,13 @@
-go-search-bar {
-  --search-form-text-color: var(--go-color-lightest);
-  --search-form-overlay-bg: transparent;
-  --search-form-padding-y: 1rem;
-  --search-form-padding-x: 0;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  position: relative;
+go-overlay.go-search-bar-overlay {
+  .close-btn-wrapper {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+  &.active {
+    .close-btn-wrapper {
+      display: block;
+    }
+  }
 }

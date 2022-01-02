@@ -1,19 +1,10 @@
 go-overlay {
   --go-overlay-color: rgba(var(--go-token-darkest), 0.8);
-  --go-overlay-content-width: 80%;
-  --go-overlay-content-padding-y: 1.5rem;
-  --go-overlay-content-padding-x: 1.5rem;
-  --go-overlay-content-bg-color: var(--go-color-bg);
-  --go-overlay-close-btn-text-color: var(--go-color-text);
-  --go-overlay-content-max-width: 1140px;
+  --go-overlay-close-btn-text-color: var(--go-color-lightest);
 
-  /**
-    @prop --go-overlay-content-gap:
-      defines how much space to leave between window top and overlay content
-      - default: 10vh
-  */
-  --go-overlay-content-gap: 10vh;
-
+  @include prefer-dark {
+    --go-overlay-close-btn-text-color: var(--go-color-darkest);
+  }
   @include transition(opacity var(--go-duration-normal) var(--go-timing-function));
 
   position: fixed;
@@ -25,6 +16,12 @@ go-overlay {
   height: 0;
   overflow: auto;
   opacity: 0;
+  z-index: var(--layer-important);
+  .close-btn-wrapper {
+    go-button {
+      --go-btn-text-color: var(--go-overlay-close-btn-text-color);
+    }
+  }
   .overlay-bg {
     position: absolute;
     width: 100%;

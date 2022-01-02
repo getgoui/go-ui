@@ -155,7 +155,6 @@ export namespace Components {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent": boolean;
-        "theme": 'light' | 'dark';
         /**
           * Type of this overlay, can be dialog or alertdialog
          */
@@ -398,7 +397,6 @@ declare namespace LocalJSX {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent"?: boolean;
-        "theme"?: 'light' | 'dark';
         /**
           * Type of this overlay, can be dialog or alertdialog
          */
