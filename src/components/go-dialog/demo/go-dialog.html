@@ -24,8 +24,7 @@
 
   <div class="skeleton"></div>
 </div>
-
-<go-overlay id="overlay" heading="Overlay content">
+<go-dialog id="dialog" heading="Dialog content">
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. A eos, quidem sint perferendis suscipit
     <a href="#">Focus</a>
@@ -36,9 +35,9 @@
   <div>
     <go-button id="close-btn" block="mobile">Close</go-button>
   </div>
-</go-overlay>
+</go-dialog>
 
-<go-overlay id="persistent-overlay" persistent="true" heading="Overlay content">
+<go-dialog id="persistent-dialog" persistent="true" heading="Dialog content">
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. A eos, quidem sint perferendis suscipit
     <a href="#">Focus</a>
@@ -49,22 +48,22 @@
   <div>
     <go-button id="close-persistent-btn" block="mobile">Close</go-button>
   </div>
-</go-overlay>
+</go-dialog>
 
 <script>
-  const overlay = document.querySelector('#overlay');
-  const persistentOverlay = document.querySelector('#persistent-overlay');
+  const dialog = document.querySelector('#dialog');
+  const persistentDialog = document.querySelector('#persistent-dialog');
 
   document.querySelector('#btn').addEventListener('click', () => {
-    overlay.open();
+    dialog.open();
   });
   document.querySelector('#btn-persistent').addEventListener('click', () => {
-    persistentOverlay.open();
+    persistentDialog.open();
   });
   document.querySelector('#close-btn').addEventListener('click', () => {
-    overlay.close();
+    dialog.close();
   });
   document.querySelector('#close-persistent-btn').addEventListener('click', () => {
-    persistentOverlay.close();
+    persistentDialog.close();
   });
 </script>
