@@ -5,11 +5,12 @@
 
 ## Properties
 
-| Property     | Attribute    | Description                                                                                                 | Type      | Default     |
-| ------------ | ------------ | ----------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `active`     | `active`     |                                                                                                             | `boolean` | `false`     |
-| `heading`    | `heading`    | Heading of the overlay content                                                                              | `string`  | `undefined` |
-| `persistent` | `persistent` | If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key. | `boolean` | `false`     |
+| Property     | Attribute    | Description                                                                                                 | Type                        | Default     |
+| ------------ | ------------ | ----------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
+| `active`     | `active`     | If this dialog is active                                                                                    | `boolean`                   | `false`     |
+| `heading`    | `heading`    | Heading of the overlay content                                                                              | `string`                    | `undefined` |
+| `persistent` | `persistent` | If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key. | `boolean`                   | `false`     |
+| `role`       | `role`       | Accessible role of the dialog, can be dialog or alertdialog                                                 | `"alertdialog" \| "dialog"` | `'dialog'`  |
 
 
 ## Methods

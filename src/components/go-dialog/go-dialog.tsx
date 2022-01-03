@@ -77,9 +77,12 @@ export class GoDialog {
         ref={(el) => (this.overlayEl = el)}
         onOverlayClose={() => this.handleOverlayClose()}
         {...inheritedAttrs}>
-        {!persistent ? (
-          <div class="close-btn-wrapper">
-            <go-button flat stack color="tertiary" compact onClick={() => this.close()}>
+        <div class="overlay-heading" id={headingId}>
+          <slot name="heading">
+            <h3>{heading}</h3>
+          </slot>
+          {!persistent ? (
+            <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -92,13 +95,7 @@ export class GoDialog {
               </svg>
               <span>Close</span>
             </go-button>
-          </div>
-        ) : null}
-
-        <div class="overlay-heading" id={headingId}>
-          <slot name="heading">
-            <h3>{heading}</h3>
-          </slot>
+          ) : null}
         </div>
         <slot></slot>
       </go-overlay>

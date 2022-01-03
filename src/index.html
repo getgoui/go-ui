@@ -11,76 +11,49 @@
     <script nomodule src="/build/go-ui.js"></script>
   </head>
   <body>
-    <style>
-      .skeleton {
-        width: 100%;
-        height: 120vh;
-        background: var(--go-color-secondary-100);
-        margin: 2rem 0;
-      }
-    </style>
+    <!-- keep this sandbox empty before pushing changes -->
+
     <div class="container">
-      <p style="position: sticky; top: 0; background: var(--go-color-lightest)">
-        <go-button id="btn">Show dialog</go-button>
-        <br />
-        <go-button id="btn-persistent">Show persistent dialog</go-button>
-      </p>
-      <p>A dialog should capture the keyboard focus.</p>
-      <p>A dialog should also prevent body from scrolling when active.</p>
-      <p>
-        See <a href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" target="_blank" rel="nofollow noopener">WAI Design Pattern</a> for more details.
-      </p>
+      <go-header-bar>
+        <go-button slot="menu" compact flat stack color="tertiary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+          <span>Menu</span>
+        </go-button>
 
-      <a href="#">Focus</a>
-      <a href="#">Focus</a>
-      <a href="#">Focus</a>
-      <a href="#">Focus</a>
-      <a href="#">Focus</a>
+        <go-gov-au-logo href="/" slot="logo">
+          <img
+            slot="main-brand"
+            src="https://www.dfat.gov.au/sites/default/files/australian-government-stacked-black_168791ec-96ad-3bcc-817b-27e71beb4522.png"
+            alt="Australian government"
+          />
+          <img
+            slot="main-brand-on-dark"
+            src="https://www.dfat.gov.au/sites/default/files/australian-government-stacked-white_a422272d-3c74-31dc-8361-65d308194362.png"
+            alt="Australian government on dark background"
+          />
+          <div slot="co-brand">
+            <div class="text-size-2"><b>Go UI</b></div>
+            <div class="text-size-1">A design system for everyone</div>
+          </div>
+        </go-gov-au-logo>
 
-      <div class="skeleton"></div>
+        <go-search-bar slot="actions">
+          <div class="custom-search-form" slot="search-form">
+            <input type="search" placeholder="Search" />
+            <go-button color="primary"><go-icon name="search" slot="start"></go-icon> Search</go-button>
+          </div>
+        </go-search-bar>
+      </go-header-bar>
     </div>
-    <go-dialog id="dialog" heading="Dialog content">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. A eos, quidem sint perferendis suscipit
-        <a href="#">Focus</a>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, sapiente.
-        <a href="#">Trapped</a>
-      </p>
-
-      <div>
-        <go-button id="close-btn" block="mobile">Close</go-button>
-      </div>
-    </go-dialog>
-
-    <go-dialog id="persistent-dialog" persistent="true" heading="Dialog content">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. A eos, quidem sint perferendis suscipit
-        <a href="#">Focus</a>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, sapiente.
-        <a href="#">Focus Trapped</a>
-      </p>
-
-      <div>
-        <go-button id="close-persistent-btn" block="mobile">Close</go-button>
-      </div>
-    </go-dialog>
-
-    <script>
-      const dialog = document.querySelector('#dialog');
-      const persistentDialog = document.querySelector('#persistent-dialog');
-
-      document.querySelector('#btn').addEventListener('click', () => {
-        dialog.open();
-      });
-      document.querySelector('#btn-persistent').addEventListener('click', () => {
-        persistentDialog.open();
-      });
-      document.querySelector('#close-btn').addEventListener('click', () => {
-        dialog.close();
-      });
-      document.querySelector('#close-persistent-btn').addEventListener('click', () => {
-        persistentDialog.close();
-      });
-    </script>
   </body>
 </html>

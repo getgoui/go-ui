@@ -24,9 +24,13 @@ go-overlay.go-dialog {
       border-radius: var(--radius-3);
     }
   }
-  &.active {
-    .close-btn-wrapper {
-      text-align: right;
+  .overlay-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex: 1;
+    .close-btn {
+      flex: 0;
     }
   }
 }
