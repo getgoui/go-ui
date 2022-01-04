@@ -1,4 +1,5 @@
 /* stylelint-disable docusaurus/copyright-header */
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -6,6 +7,7 @@
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
 /* You can override the default Infima variables here. */
 :root {
   --go-heading-font-family: 'Open Sans', sans-serif;
@@ -38,6 +40,10 @@ html[data-theme='dark'] {
   .table-of-contents__link:hover,
   .table-of-contents__link:hover code,
   .table-of-contents__link--active,
+  .table-of-contents__link--active code,
+  .table-of-contents__link:focus,
+  .table-of-contents__link:focus code,
+  .table-of-contents__link--active,
   .table-of-contents__link--active code {
     color: var(--ifm-link-color);
   }
@@ -58,7 +64,7 @@ html[data-theme='dark'] {
 
   input,
   button {
-    padding: 1rem 1rem;
+    padding: 1rem;
     border: none;
     margin: 4px;
     border-radius: 0.5rem;
@@ -117,6 +123,8 @@ table {
   font-size: 16px;
 }
 
-[class='iconExternalLink_node_modules-@docusaurus-theme-classic-lib-next-theme-IconExternalLink-styles-module'] {
-  display: none;
+a[target='_blank'].navbar__item {
+  svg {
+    display: none;
+  }
 }

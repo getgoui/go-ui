@@ -132,7 +132,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/go-components/go-components/edit/main/docs/',
-          remarkPlugins: [require('remark-code-import')],
+          remarkPlugins: [require('remark-code-import'), require('remark-mermaid-dataurl')],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
