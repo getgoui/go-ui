@@ -3,9 +3,9 @@ go-button {
   --go-btn-bg-color: transparent;
   --go-btn-bg-color-hover: var(--go-color-neutral-100);
   --go-btn-bg-color-disabled: var(--go-color-neutral-200);
-  --go-btn-text-color: rgb(var(--go-token-lightest));
-  --go-btn-text-color-hover: rgb(var(--go-token-lightest));
-  --go-btn-text-color-disabled: rgb(var(--go-token-lightest));
+  --go-btn-text-color: var(--go-color-lightest);
+  --go-btn-text-color-hover: var(--go-color-lightest);
+  --go-btn-text-color-disabled: var(--go-color-lightest);
 
   // shadow
   --go-btn-shadow: var(--shadow-2);
@@ -17,6 +17,9 @@ go-button {
   --go-btn-inner-gap: 0.5rem;
   --go-btn-radius: var(--radius-2, 0.25rem);
   --go-btn-icon-size: 2.5em;
+
+  // outline fill color
+  --go-btn-outline-fill-color: var(--go-color-bg);
 
   display: inline-block;
 
@@ -98,7 +101,7 @@ go-button {
     }
   }
 
-  &[outline] {
+  &.outline {
     .inner-button {
       background: transparent;
       border: 2px solid var(--go-btn-bg-color);
@@ -112,6 +115,12 @@ go-button {
 
     &[color='tertiary'] {
       --go-btn-bg-color: var(--go-color-neutral-700);
+    }
+  }
+
+  &.outline-fill {
+    .inner-button {
+      background: var(--go-btn-outline-fill-color);
     }
   }
 

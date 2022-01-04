@@ -42,6 +42,11 @@ export class GoButton {
   @Prop({ reflect: true }) outline?: boolean = false;
 
   /**
+   * Outline style with filled background
+   */
+  @Prop({ reflect: true }) outlineFill?: boolean = false;
+
+  /**
    * If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant
    */
   @Prop({ reflect: true }) flat?: boolean = false;
@@ -73,11 +78,11 @@ export class GoButton {
 
   private inheritedAttributes = {} as any;
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.root, ['block', 'color', 'disabled', 'style'], false);
+    this.inheritedAttributes = inheritAttributes(this.root, ['block', 'color', 'disabled', 'style', 'invert'], false);
   }
 
   render() {
-    const { type, disabled, color, block, inheritedAttributes } = this;
+    const { type, disabled, color, block, outline, outlineFill, inheritedAttributes } = this;
     const Tag = this.href ? 'a' : 'button';
     const blockClass = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
     const rootClasses = `${color} ${blockClass}`;
@@ -85,7 +90,12 @@ export class GoButton {
     // filter inherited attributes to remove class
 
     return (
-      <Host class={rootClasses}>
+      <Host
+        class={{
+          [rootClasses]: true,
+          outline,
+          'outline outline-fill': outlineFill,
+        }}>
         <Tag type={this.href ? null : type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes} class="inner-button">
           <slot name="start"></slot>
           <slot></slot>

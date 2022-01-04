@@ -84,6 +84,10 @@ export namespace Components {
          */
         "outline"?: boolean;
         /**
+          * Outline style with filled background
+         */
+        "outlineFill"?: boolean;
+        /**
           * If button should have pill-shaped corners
          */
         "round"?: boolean;
@@ -328,6 +332,10 @@ declare namespace LocalJSX {
           * @see  `variant` property
          */
         "outline"?: boolean;
+        /**
+          * Outline style with filled background
+         */
+        "outlineFill"?: boolean;
         /**
           * If button should have pill-shaped corners
          */

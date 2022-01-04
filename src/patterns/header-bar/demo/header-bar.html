@@ -2,13 +2,16 @@
   .custom-search-form {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    right: 5rem;
     width: 80%;
-    height: 8rem;
-    padding: 2rem;
     display: flex;
-    align-items: stretch;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .custom-search-form input {
+    padding: 0.5rem 1rem;
+    font-size: 1.8rem;
+    border-radius: var(--radius-3);
   }
 </style>
 <div class="container">
@@ -48,7 +51,7 @@
     <go-search-bar slot="actions">
       <div class="custom-search-form" slot="search-form">
         <input type="search" placeholder="Search" />
-        <go-button block flat outline color="primary"><go-icon name="search" slot="start"></go-icon> Search</go-button>
+        <go-button flat color="primary" outline-fill><go-icon name="search" slot="start"></go-icon><span>Search</span></go-button>
       </div>
     </go-search-bar>
   </go-header-bar>
