@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoints, ColorVariants } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
-import { INavItem } from "./components/go-main-nav/go-main-nav";
+import { INavItem } from "./patterns/go-main-nav/go-main-nav";
 export namespace Components {
     interface GoAccordion {
         /**
@@ -153,10 +153,13 @@ export namespace Components {
         "size"?: string;
     }
     interface GoMainNav {
+        "close": () => Promise<void>;
+        "init": (items: INavItem[]) => Promise<void>;
         /**
           * Navigation items to be rendered
          */
         "items": INavItem[];
+        "open": () => Promise<void>;
     }
     interface GoOverlay {
         "active": boolean;

@@ -1,0 +1,12 @@
+// inspired by Bootstrap 4 display utilities
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+
+@each $device, $width in $breakpoints {
+  @include min-query($device) {
+    @each $value in $displays {
+      .d-#{$value}-#{$device} {
+        display: $value !important;
+      }
+    }
+  }
+}

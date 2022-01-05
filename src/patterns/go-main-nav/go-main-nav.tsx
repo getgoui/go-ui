@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Method, State } from '@stencil/core';
 import { inheritAttributes } from '../../utils/helper';
 
 export interface INavItem {
@@ -19,7 +19,12 @@ export class GoMainNav {
   /**
    * Navigation items to be rendered
    */
-  @Prop() items: INavItem[];
+  @Prop({
+    mutable: true,
+  })
+  items: INavItem[];
+
+  @State() isOpen = false;
 
   // Store attributes inherited from the host element
   private inheritedAttrs = {};
@@ -27,30 +32,51 @@ export class GoMainNav {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style'], false);
   }
 
+  renderNavItems(items: INavItem[], isSubNav = false) {
+    return <ul class={{ 'is-sub-nav': isSubNav }}>{items.map((item) => this.renderNavItem(item))}</ul>;
+  }
+
   renderNavItem(item: INavItem) {
-    const Tag = item.isCurrent ? 'span': 'a';
+    const Tag = item.isCurrent ? 'span' : 'a';
     return (
       <li>
         <Tag href={item.url}>
           {item.icon && <i class={item.icon}></i>}
           {item.name}
         </Tag>
-        {item.children && this.renderNavItems(item.children)}
+        {item.children && this.renderNavItems(item.children, true)}
       </li>
-    )}
-
-  renderNavItems(items: INavItem[]) {
-    return (
-      <ul>
-        {items.map((item) => this.renderNavItem(item))}
-      </ul>
     );
   }
+
+  @Method()
+  async init(items: INavItem[]) {
+    this.items = items;
+  }
+
+  @Method()
+  async open() {}
+
+  @Method()
+  async close() {}
 
   render() {
     const { items } = this;
     return (
       <Host>
+        <go-button compact flat stack color="tertiary" class="hidden-tablet-up">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24">
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+          <span>Menu</span>
+        </go-button>
         <nav aria-label="Main navigation" {...this.inheritedAttrs}>
           {/* render navigation items from prop */}
           {items && this.renderNavItems(items)}
