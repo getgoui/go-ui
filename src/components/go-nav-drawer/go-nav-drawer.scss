@@ -63,7 +63,7 @@
   }
 
   ul.is-sub-nav {
-    @include transition(transform, visibility);
+    @include transition(transform 0s, visibility 0s);
 
     visibility: hidden;
     transform: translateX(100%);
@@ -104,6 +104,7 @@
     line-height: 1.5;
     &.active {
       > ul {
+        transition-duration: var(--go-transition-duration, 0.3s);
         visibility: visible;
         transform: translateX(0);
       }

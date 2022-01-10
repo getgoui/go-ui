@@ -20,10 +20,9 @@ export class GoNavDrawer {
   /**
    * Navigation items to be rendered
    */
-  @Prop({
-    mutable: true,
-  })
-  items: INavMenu | string;
+  @Prop() items?: INavMenu | string;
+
+  @State() navItems: INavMenu = null;
 
   // keep track of open state of drawer
   @State() isOpen = false;
@@ -37,18 +36,21 @@ export class GoNavDrawer {
    */
   @Method()
   async init(items: INavMenu) {
-    this.items = items;
+    this.navItems = items;
   }
 
   @Method()
   async open() {
     this.isOpen = true;
-    console.log('open');
   }
 
   @Method()
   async close() {
     this.isOpen = false;
+    this.currentSubMenus.forEach((menuItem) => {
+      menuItem.classList.remove('active');
+    });
+    this.currentSubMenus = [];
   }
 
   @Method()
@@ -64,6 +66,7 @@ export class GoNavDrawer {
   private inheritedAttrs = {};
   componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items'], false);
+    this.navItems = typeof this.items === 'string' ? JSON5.parse(this.items) : this.items;
   }
 
   closeCurrentSubMenu() {
@@ -85,20 +88,8 @@ export class GoNavDrawer {
 
   subMenus: { string: INavMenu } = null;
 
-  renderNavItems(items: INavItem[] | string, isSubNav = false) {
-    let renderItems: INavItem[] = [];
-    if (typeof items === 'string') {
-      try {
-        renderItems = JSON5.parse(items) as INavItem[];
-      } catch (e) {
-        console.warn('Invalid JSON string for main navigation items.');
-        console.warn(e);
-        return;
-      }
-    } else {
-      renderItems = items;
-    }
-    return <ul class={{ 'is-sub-nav': isSubNav }}>{renderItems.map((item) => this.renderNavItem(item))}</ul>;
+  renderNavItems(items: INavItem[], isSubNav = false) {
+    return <ul class={{ 'is-sub-nav': isSubNav }}>{items.map((item) => this.renderNavItem(item))}</ul>;
   }
 
   renderNavItem(item: INavItem) {
@@ -147,7 +138,7 @@ export class GoNavDrawer {
   }
 
   render() {
-    let { items, isOpen, position, currentSubMenus, inheritedAttrs } = this;
+    let { navItems, isOpen, position, currentSubMenus, inheritedAttrs } = this;
 
     return (
       <go-overlay active={isOpen} {...inheritedAttrs} onOverlayClose={() => this.close()}>
@@ -197,7 +188,7 @@ export class GoNavDrawer {
 
           <nav aria-label="Main navigation" {...inheritedAttrs}>
             {/* render navigation items from prop */}
-            {items && this.renderNavItems(items)}
+            {navItems && this.renderNavItems(navItems)}
           </nav>
         </div>
       </go-overlay>
