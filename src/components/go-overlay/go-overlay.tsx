@@ -1,6 +1,8 @@
 import { Component, Host, h, Element, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { getFocusableChildren, inheritAttributes } from '../../utils/helper';
+import { inheritAttributes } from '../../utils/helper';
+import { trapFocus } from '../../utils/trap-focus';
+
 @Component({
   tag: 'go-overlay',
   styleUrl: 'go-overlay.scss',
@@ -20,10 +22,6 @@ export class GoOverlay {
    */
   @Prop() persistent: boolean = false;
 
-  // for trapping focus
-  firstFocusableEl: HTMLElement;
-  lastFocusableEl: HTMLElement;
-
   // keep track of the element that triggered the overlay
   originator: HTMLElement;
 
@@ -40,27 +38,6 @@ export class GoOverlay {
   }
 
   componentDidLoad() {
-    const focusableChildren = getFocusableChildren(this.el);
-    this.firstFocusableEl = focusableChildren[0];
-    this.lastFocusableEl = focusableChildren[focusableChildren.length - 1];
-    // trap focus inside overlay
-    this.lastFocusableEl?.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (this.active) {
-        if (e.code === 'Tab' && !e.shiftKey) {
-          e.preventDefault();
-          this.firstFocusableEl?.focus();
-        }
-      }
-    });
-    this.firstFocusableEl?.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (this.active) {
-        if (e.code === 'Tab' && e.shiftKey) {
-          e.preventDefault();
-          this.lastFocusableEl?.focus();
-        }
-      }
-    });
-
     // close overlay on click outside
     if (!this.persistent) {
       this.el.addEventListener('click', (e: MouseEvent) => {
@@ -111,7 +88,6 @@ export class GoOverlay {
     disableBodyScroll(this.el);
     this.el.style.visibility = 'visible';
     this.active = true;
-
     // close overlay on escape
     if (!this.persistent) {
       document.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -123,8 +99,7 @@ export class GoOverlay {
       });
     }
 
-    // focus on first focusable element on next tick
-    this.firstFocusableEl?.focus();
+    trapFocus(this.el);
   }
 
   @Watch('active')
