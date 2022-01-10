@@ -2,11 +2,13 @@ go-header-bar {
   --header-bar-padding-y: 1rem;
   --header-bar-padding-x: 0;
 
-  padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
-  display: flex;
-  position: relative;
-  gap: 1rem;
-  .menu {
+  .header-bar {
+    display: flex;
+    position: relative;
+    gap: 1rem;
+    padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
+  }
+  .mobile-menu-trigger {
     position: absolute;
     top: var(--header-bar-padding-y);
     left: 0;
