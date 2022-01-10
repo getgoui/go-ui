@@ -46,3 +46,8 @@
 }
 
 // color util classes: .bg-xx .text-xx .border-xx
+
+html {
+  color: var(--go-color-text);
+  background: var(--go-color-bg);
+}

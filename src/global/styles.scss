@@ -20,14 +20,8 @@
 @import './scss/typography';
 @import './scss/display';
 
-// global styles
 * {
   box-sizing: border-box;
-}
-
-html {
-  color: var(--go-color-text);
-  background: var(--go-color-bg);
 }
 
 /* Hiding class, making content visible only to screen readers but not visually */
@@ -39,4 +33,7 @@ html {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+.hidden {
+  visibility: hidden !important;
 }
