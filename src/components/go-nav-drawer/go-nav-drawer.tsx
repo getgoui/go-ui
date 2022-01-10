@@ -133,7 +133,7 @@ export class GoNavDrawer {
           </div>
         </div>
 
-        {items.length > 0 ? (
+        {items?.length > 0 ? (
           <nav>
             <ul>{items.map((item) => this.renderNavItem(item))}</ul>
           </nav>
@@ -193,7 +193,7 @@ export class GoNavDrawer {
     return (
       <go-overlay active={isOpen} {...inheritedAttrs} onOverlayClose={() => this.close()}>
         <div class={{ 'nav-drawer': true, 'open': isOpen, [position]: !!position }} role="navigation" aria-label="Menu">
-          <div class="nav-container">{this.renderNavItems(navItems)}</div>
+          {navItems ? <div class="nav-container">{this.renderNavItems(navItems)}</div> : null}
         </div>
       </go-overlay>
     );
