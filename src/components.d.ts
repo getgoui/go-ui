@@ -5,10 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Breakpoints, ColorVariants } from "./types";
+import { Breakpoints, ColorVariants, INavMenu } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
-import { INavItem } from "./patterns/go-main-nav/go-main-nav";
 export namespace Components {
+    interface DevDemo {
+    }
     interface GoAccordion {
         /**
           * If multiple `<go-accordion-item>`s can open at the same time
@@ -133,6 +134,7 @@ export namespace Components {
         "href"?: string;
     }
     interface GoHeaderBar {
+        "breakpoint": string;
     }
     interface GoIcon {
         /**
@@ -153,13 +155,28 @@ export namespace Components {
         "size"?: string;
     }
     interface GoMainNav {
+        /**
+          * Specify at what breakpoint (see [scss breakpoints](/docs/patterns/global-styles/grid#breakpoints)) should desktop menu be shown
+         */
+        "fullMenuAt": string;
+    }
+    interface GoNavDrawer {
         "close": () => Promise<void>;
-        "init": (items: INavItem[]) => Promise<void>;
+        /**
+          * Initialise the menu
+          * @param items menu items to be rendered
+         */
+        "init": (items: INavMenu) => Promise<void>;
         /**
           * Navigation items to be rendered
          */
-        "items": INavItem[];
+        "items": INavMenu | string;
         "open": () => Promise<void>;
+        /**
+          * Position where the navigation should appear from
+         */
+        "position"?: 'left' | 'right';
+        "toggle": () => Promise<void>;
     }
     interface GoOverlay {
         "active": boolean;
@@ -180,6 +197,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLDevDemoElement extends Components.DevDemo, HTMLStencilElement {
+    }
+    var HTMLDevDemoElement: {
+        prototype: HTMLDevDemoElement;
+        new (): HTMLDevDemoElement;
+    };
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
     }
     var HTMLGoAccordionElement: {
@@ -234,6 +257,12 @@ declare global {
         prototype: HTMLGoMainNavElement;
         new (): HTMLGoMainNavElement;
     };
+    interface HTMLGoNavDrawerElement extends Components.GoNavDrawer, HTMLStencilElement {
+    }
+    var HTMLGoNavDrawerElement: {
+        prototype: HTMLGoNavDrawerElement;
+        new (): HTMLGoNavDrawerElement;
+    };
     interface HTMLGoOverlayElement extends Components.GoOverlay, HTMLStencilElement {
     }
     var HTMLGoOverlayElement: {
@@ -247,6 +276,7 @@ declare global {
         new (): HTMLGoSearchBarElement;
     };
     interface HTMLElementTagNameMap {
+        "dev-demo": HTMLDevDemoElement;
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
         "go-button": HTMLGoButtonElement;
@@ -256,11 +286,14 @@ declare global {
         "go-header-bar": HTMLGoHeaderBarElement;
         "go-icon": HTMLGoIconElement;
         "go-main-nav": HTMLGoMainNavElement;
+        "go-nav-drawer": HTMLGoNavDrawerElement;
         "go-overlay": HTMLGoOverlayElement;
         "go-search-bar": HTMLGoSearchBarElement;
     }
 }
 declare namespace LocalJSX {
+    interface DevDemo {
+    }
     interface GoAccordion {
         /**
           * If multiple `<go-accordion-item>`s can open at the same time
@@ -383,6 +416,7 @@ declare namespace LocalJSX {
         "href"?: string;
     }
     interface GoHeaderBar {
+        "breakpoint"?: string;
     }
     interface GoIcon {
         /**
@@ -404,9 +438,19 @@ declare namespace LocalJSX {
     }
     interface GoMainNav {
         /**
+          * Specify at what breakpoint (see [scss breakpoints](/docs/patterns/global-styles/grid#breakpoints)) should desktop menu be shown
+         */
+        "fullMenuAt"?: string;
+    }
+    interface GoNavDrawer {
+        /**
           * Navigation items to be rendered
          */
-        "items"?: INavItem[];
+        "items"?: INavMenu | string;
+        /**
+          * Position where the navigation should appear from
+         */
+        "position"?: 'left' | 'right';
     }
     interface GoOverlay {
         "active"?: boolean;
@@ -430,6 +474,7 @@ declare namespace LocalJSX {
     interface GoSearchBar {
     }
     interface IntrinsicElements {
+        "dev-demo": DevDemo;
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
         "go-button": GoButton;
@@ -439,6 +484,7 @@ declare namespace LocalJSX {
         "go-header-bar": GoHeaderBar;
         "go-icon": GoIcon;
         "go-main-nav": GoMainNav;
+        "go-nav-drawer": GoNavDrawer;
         "go-overlay": GoOverlay;
         "go-search-bar": GoSearchBar;
     }
@@ -447,6 +493,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "dev-demo": LocalJSX.DevDemo & JSXBase.HTMLAttributes<HTMLDevDemoElement>;
             "go-accordion": LocalJSX.GoAccordion & JSXBase.HTMLAttributes<HTMLGoAccordionElement>;
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
@@ -456,6 +503,7 @@ declare module "@stencil/core" {
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
+            "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
         }
