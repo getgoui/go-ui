@@ -3,6 +3,7 @@ import JSON5 from 'json5';
 
 import { inheritAttributes } from '../../utils/helper';
 import { INavItem, INavMenu } from '../../types/';
+import { trapFocus } from '../../utils/trap-focus';
 
 @Component({
   tag: 'go-nav-drawer',
@@ -82,14 +83,63 @@ export class GoNavDrawer {
   private openSubMenu(e: MouseEvent) {
     const menuItem = (e.target as HTMLElement).closest('li');
     menuItem.classList.add('active');
-
+    trapFocus(menuItem.querySelector('.nav-menu') as HTMLElement);
     this.currentSubMenus = [...this.currentSubMenus, menuItem];
   }
 
   subMenus: { string: INavMenu } = null;
 
-  renderNavItems(items: INavItem[], isSubNav = false) {
-    return <ul class={{ 'is-sub-nav': isSubNav }}>{items.map((item) => this.renderNavItem(item))}</ul>;
+  renderNavItems(items: INavItem[], parentItem?: INavItem) {
+    const isSubNav = !!parentItem;
+
+    return (
+      <div class={{ 'nav-menu': true, 'is-sub-nav': isSubNav }}>
+        <div class="nav-drawer-header">
+          <div class="header-row">
+            {parentItem ? (
+              <go-button class="back-btn" flat stack color="tertiary" compact onClick={() => this.closeCurrentSubMenu()}>
+                <svg
+                  slot="start"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24">
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                <span>Back</span>
+              </go-button>
+            ) : (
+              <span></span>
+            )}
+
+            <div class="title">{isSubNav ? parentItem.label : 'Menu'}</div>
+
+            <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24">
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+              <span>Close</span>
+            </go-button>
+          </div>
+        </div>
+
+        {items.length > 0 ? (
+          <nav>
+            <ul>{items.map((item) => this.renderNavItem(item))}</ul>
+          </nav>
+        ) : null}
+      </div>
+    );
   }
 
   renderNavItem(item: INavItem) {
@@ -132,64 +182,18 @@ export class GoNavDrawer {
             </svg>
           ) : null}
         </Tag>
-        {item.children ? this.renderNavItems(item.children, true) : null}
+        {item.children ? this.renderNavItems(item.children, item) : null}
       </li>
     );
   }
 
   render() {
-    let { navItems, isOpen, position, currentSubMenus, inheritedAttrs } = this;
+    let { navItems, isOpen, position, inheritedAttrs } = this;
 
     return (
       <go-overlay active={isOpen} {...inheritedAttrs} onOverlayClose={() => this.close()}>
         <div class={{ 'nav-drawer': true, 'open': isOpen, [position]: !!position }} role="navigation" aria-label="Menu">
-          <div class="nav-drawer-header">
-            <div class="header-row">
-              {currentSubMenus.length > 0 ? (
-                <go-button class="back-btn" flat stack color="tertiary" compact onClick={() => this.closeCurrentSubMenu()}>
-                  <svg
-                    slot="start"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    viewBox="0 0 24 24">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back</span>
-                </go-button>
-              ) : (
-                <span></span>
-              )}
-
-              <div class="title">{currentSubMenus.length > 0 ? currentSubMenus[currentSubMenus.length - 1].innerText : 'Menu'}</div>
-
-              <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  viewBox="0 0 24 24">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-                <span>Close</span>
-              </go-button>
-            </div>
-
-            {/* if sub levels, show title */}
-
-            <slot name="pre-nav"></slot>
-          </div>
-
-          <nav aria-label="Main navigation" {...inheritedAttrs}>
-            {/* render navigation items from prop */}
-            {navItems && this.renderNavItems(navItems)}
-          </nav>
+          <div class="nav-container">{this.renderNavItems(navItems)}</div>
         </div>
       </go-overlay>
     );

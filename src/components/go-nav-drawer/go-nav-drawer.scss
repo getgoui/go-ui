@@ -27,32 +27,59 @@
     transform: translateX(0);
   }
 
-  .nav-drawer-header {
-    .header-row {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr; // stylelint-disable-line
-      align-items: center;
-      padding: var(--go-size--1) var(--go-size-0);
-      .back-btn {
-        margin-right: auto;
-      }
-      .close-btn {
-        margin-left: auto;
-      }
-      .title {
-        font-weight: bold;
-        font-size: var(--go-size-0);
-        text-align: center;
-      }
-    }
+  .nav-container {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
 
-  > nav {
-    overflow-x: hidden;
-    border-top: 2px solid var(--go-color-neutral-300);
-    position: relative;
+  .nav-menu {
+    @include transition(transform, visibility);
+
+    visibility: visible;
+    transform: translateX(0);
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--drawer-bg-color);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     height: 100%;
-    padding: 1rem 0;
+    .nav-drawer-header {
+      .header-row {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr; // stylelint-disable-line
+        align-items: center;
+        padding: var(--go-size--1) var(--go-size-0);
+        .back-btn {
+          margin-right: auto;
+        }
+        .close-btn {
+          margin-left: auto;
+        }
+        .title {
+          font-weight: bold;
+          font-size: var(--go-size-0);
+          text-align: center;
+        }
+      }
+    }
+
+    nav {
+      border-top: 2px solid var(--go-color-neutral-300);
+      height: 100%;
+      padding: 1rem 0;
+      flex: 1;
+    }
+
+    .nav-menu {
+      box-shadow: var(--shadow-4);
+      visibility: hidden;
+      transform: translateX(100%);
+    }
   }
 
   ul {
@@ -60,20 +87,6 @@
     margin: 0;
     padding: 0;
     height: 100%;
-  }
-
-  ul.is-sub-nav {
-    @include transition(transform 0s, visibility 0s);
-
-    visibility: hidden;
-    transform: translateX(100%);
-    padding: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--drawer-bg-color);
   }
 
   .nav-item-inner {
@@ -103,8 +116,7 @@
     padding: 0;
     line-height: 1.5;
     &.active {
-      > ul {
-        transition-duration: var(--go-transition-duration, 0.3s);
+      > .nav-menu {
         visibility: visible;
         transform: translateX(0);
       }
