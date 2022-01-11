@@ -76,13 +76,15 @@ export class GoNavDrawer {
     }
     const lastSubMenu = this.currentSubMenus.slice(-1)[0];
     lastSubMenu.classList.remove('active');
-
+    lastSubMenu.querySelector('.nav-item-inner').setAttribute('aria-expanded', 'false');
     this.currentSubMenus = this.currentSubMenus.slice(0, -1);
   }
 
   private openSubMenu(e: MouseEvent) {
-    const menuItem = (e.target as HTMLElement).closest('li');
+    const triggerBtn = e.target as HTMLElement;
+    const menuItem = triggerBtn.closest('li');
     menuItem.classList.add('active');
+    triggerBtn.setAttribute('aria-expanded', 'true');
     trapFocus(menuItem.querySelector('.nav-menu') as HTMLElement);
     this.currentSubMenus = [...this.currentSubMenus, menuItem];
   }
@@ -159,7 +161,10 @@ export class GoNavDrawer {
     }
     if (Tag === 'button') {
       attrs = {
-        onClick: (e) => this.openSubMenu(e),
+        'type': 'button',
+        'aria-haspopup': 'true',
+        'aria-expanded': 'false',
+        'onClick': (e) => this.openSubMenu(e),
       };
     }
     return (
