@@ -117,7 +117,8 @@ export class GoNavDrawer {
               <span></span>
             )}
 
-            <div class="title">{isSubNav ? parentItem.label : 'Menu'}</div>
+            {/* <div class="title">{isSubNav ? parentItem.label : 'Menu'}</div> */}
+            <div class="title">Menu</div>
 
             <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
               <svg
@@ -134,9 +135,25 @@ export class GoNavDrawer {
             </go-button>
           </div>
         </div>
-
         {items?.length > 0 ? (
           <nav>
+            {isSubNav && parentItem.url ? (
+              <div class="parent-link">
+                <a href={parentItem.url} {...parentItem.linkAttrs}>
+                  {parentItem.label}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            ) : null}
             <ul>{items.map((item) => this.renderNavItem(item))}</ul>
           </nav>
         ) : null}
