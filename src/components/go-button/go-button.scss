@@ -3,9 +3,9 @@ go-button {
   --go-btn-bg-color: transparent;
   --go-btn-bg-color-hover: var(--go-color-neutral-100);
   --go-btn-bg-color-disabled: var(--go-color-neutral-200);
-  --go-btn-text-color: var(--go-color-lightest);
-  --go-btn-text-color-hover: var(--go-color-lightest);
-  --go-btn-text-color-disabled: var(--go-color-lightest);
+  --go-btn-text-color: #fff;
+  --go-btn-text-color-hover: #fff;
+  --go-btn-text-color-disabled: #fff;
 
   // shadow
   --go-btn-shadow: var(--shadow-2);

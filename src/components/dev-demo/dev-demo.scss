@@ -1,3 +1,8 @@
 dev-demo {
- display: block;
+  display: block;
+  .dark-mode-toggle {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
 }

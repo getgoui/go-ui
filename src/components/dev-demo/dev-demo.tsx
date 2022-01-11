@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Host, State } from '@stencil/core';
 
 @Component({
   tag: 'dev-demo',
@@ -14,6 +14,17 @@ export class DevDemo {
   }
   handleClick2() {
     this.navElRight.toggle();
+  }
+
+  @State() isDark = false;
+
+  componentWillLoad() {
+    this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  toggleDarkMode() {
+    this.isDark = !this.isDark;
+    document.documentElement.setAttribute('data-theme', this.isDark ? 'dark' : 'light');
   }
 
   render() {
@@ -91,19 +102,24 @@ export class DevDemo {
     ];
 
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <go-button onClick={() => this.handleClick()}>Open left</go-button>
+      <Host>
+        <go-button class="dark-mode-toggle" icon color="primary" flat round onClick={() => this.toggleDarkMode()}>
+          <go-icon name={this.isDark ? 'dark_mode' : 'light_mode'}></go-icon>
+        </go-button>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <go-button onClick={() => this.handleClick()}>Open left</go-button>
+            </div>
+            <div class="col">
+              <go-button onClick={() => this.handleClick2()}>Open right</go-button>
+            </div>
           </div>
-          <div class="col">
-            <go-button onClick={() => this.handleClick2()}>Open right</go-button>
-          </div>
-        </div>
 
-        <go-nav-drawer ref={(el) => (this.navEl = el)} items={items}></go-nav-drawer>
-        <go-nav-drawer ref={(el) => (this.navElRight = el)} position="right" items={items}></go-nav-drawer>
-      </div>
+          <go-nav-drawer ref={(el) => (this.navEl = el)} items={items}></go-nav-drawer>
+          <go-nav-drawer ref={(el) => (this.navElRight = el)} position="right" items={items}></go-nav-drawer>
+        </div>
+      </Host>
     );
   }
 }
