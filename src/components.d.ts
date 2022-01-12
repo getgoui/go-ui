@@ -8,7 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoints, ColorVariants, INavMenu } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export namespace Components {
-    interface DevDemo {
+    interface DarkModeToggle {
+    }
+    interface DemoControls {
     }
     interface GoAccordion {
         /**
@@ -198,11 +200,17 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLDevDemoElement extends Components.DevDemo, HTMLStencilElement {
+    interface HTMLDarkModeToggleElement extends Components.DarkModeToggle, HTMLStencilElement {
     }
-    var HTMLDevDemoElement: {
-        prototype: HTMLDevDemoElement;
-        new (): HTMLDevDemoElement;
+    var HTMLDarkModeToggleElement: {
+        prototype: HTMLDarkModeToggleElement;
+        new (): HTMLDarkModeToggleElement;
+    };
+    interface HTMLDemoControlsElement extends Components.DemoControls, HTMLStencilElement {
+    }
+    var HTMLDemoControlsElement: {
+        prototype: HTMLDemoControlsElement;
+        new (): HTMLDemoControlsElement;
     };
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
     }
@@ -277,7 +285,8 @@ declare global {
         new (): HTMLGoSearchBarElement;
     };
     interface HTMLElementTagNameMap {
-        "dev-demo": HTMLDevDemoElement;
+        "dark-mode-toggle": HTMLDarkModeToggleElement;
+        "demo-controls": HTMLDemoControlsElement;
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
         "go-button": HTMLGoButtonElement;
@@ -293,7 +302,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface DevDemo {
+    interface DarkModeToggle {
+    }
+    interface DemoControls {
     }
     interface GoAccordion {
         /**
@@ -484,7 +495,8 @@ declare namespace LocalJSX {
     interface GoSearchBar {
     }
     interface IntrinsicElements {
-        "dev-demo": DevDemo;
+        "dark-mode-toggle": DarkModeToggle;
+        "demo-controls": DemoControls;
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
         "go-button": GoButton;
@@ -503,7 +515,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "dev-demo": LocalJSX.DevDemo & JSXBase.HTMLAttributes<HTMLDevDemoElement>;
+            "dark-mode-toggle": LocalJSX.DarkModeToggle & JSXBase.HTMLAttributes<HTMLDarkModeToggleElement>;
+            "demo-controls": LocalJSX.DemoControls & JSXBase.HTMLAttributes<HTMLDemoControlsElement>;
             "go-accordion": LocalJSX.GoAccordion & JSXBase.HTMLAttributes<HTMLGoAccordionElement>;
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;

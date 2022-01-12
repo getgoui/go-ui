@@ -115,9 +115,9 @@ const Demo = ({ code, hideSource = false }) => {
           </div>
           <div className="controls">
             <div className="devices">
-              <button title="Change color scheme" type="button" onClick={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}>
+              {/* <button title="Change color scheme" type="button" onClick={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}>
                 {colorScheme === 'light' ? '☀️' : '🌙'}
-              </button>
+              </button> */}
               <button title="New window" type="button" onClick={openNewWindow}>
                 <ExternalIcon />
               </button>

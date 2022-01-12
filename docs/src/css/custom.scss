@@ -128,3 +128,23 @@ a[target='_blank'].navbar__item {
     display: none;
   }
 }
+
+.markdown {
+  --ifm-leading: 0.5em;
+  h2 {
+    font-size: var(--go-size-3);
+  }
+  h3 {
+    font-size: var(--go-size-2);
+    code {
+      font-size: var(--go-size-0);
+    }
+  }
+  h4 {
+    font-size: var(--go-size-0);
+    font-weight: normal;
+  }
+  pre {
+    font-size: var(--go-size--1);
+  }
+}
