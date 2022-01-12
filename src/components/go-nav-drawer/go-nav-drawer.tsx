@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Method } from '@stencil/core';
+import { Component, h, Element, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
 import JSON5 from 'json5';
 
 import { inheritAttributes } from '../../utils/helper';
@@ -16,7 +16,7 @@ export class GoNavDrawer {
   /**
    * Position where the navigation should appear from
    */
-  @Prop() position?: 'left' | 'right' = 'left';
+  @Prop({ reflect: true }) position?: 'left' | 'right' = 'left';
 
   /**
    * Navigation items to be rendered
@@ -26,7 +26,7 @@ export class GoNavDrawer {
   @State() navItems: INavMenu = null;
 
   // keep track of open state of drawer
-  @State() isOpen = false;
+  @Prop({ mutable: true, reflect: true }) active = false;
 
   // keep track of open submenus
   @State() currentSubMenus: HTMLElement[] = [];
@@ -40,23 +40,45 @@ export class GoNavDrawer {
     this.navItems = items;
   }
 
+  /**
+   * Emitted when the nav drawer is opened
+   */
+  @Event({
+    eventName: 'open',
+    cancelable: true,
+    bubbles: true,
+  })
+  openEvent: EventEmitter<void>;
+
   @Method()
   async open() {
-    this.isOpen = true;
+    this.active = true;
+    this.openEvent.emit();
   }
+
+  /**
+   * Emitted when the nav drawer is closed
+   */
+  @Event({
+    eventName: 'close',
+    cancelable: true,
+    bubbles: true,
+  })
+  closeEvent: EventEmitter<void>;
 
   @Method()
   async close() {
-    this.isOpen = false;
+    this.active = false;
     this.currentSubMenus.forEach((menuItem) => {
       menuItem.classList.remove('active');
     });
     this.currentSubMenus = [];
+    this.closeEvent.emit();
   }
 
   @Method()
   async toggle() {
-    if (this.isOpen) {
+    if (this.active) {
       this.close();
     } else {
       this.open();
@@ -66,8 +88,13 @@ export class GoNavDrawer {
   // Store attributes inherited from the host element
   private inheritedAttrs = {};
   componentWillLoad() {
-    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items'], false);
-    this.navItems = typeof this.items === 'string' ? JSON5.parse(this.items) : this.items;
+    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position'], false);
+    try {
+      console.log('items', this.items);
+      this.navItems = typeof this.items === 'string' ? JSON5.parse(this.items) : this.items;
+    } catch (e) {
+      console.log({ e });
+    }
   }
 
   closeCurrentSubMenu() {
@@ -210,11 +237,11 @@ export class GoNavDrawer {
   }
 
   render() {
-    let { navItems, isOpen, position, inheritedAttrs } = this;
+    let { navItems, active, position, inheritedAttrs } = this;
 
     return (
-      <go-overlay active={isOpen} {...inheritedAttrs} onOverlayClose={() => this.close()}>
-        <div class={{ 'nav-drawer': true, 'open': isOpen, [position]: !!position }} role="navigation" aria-label="Menu">
+      <go-overlay active={active} {...inheritedAttrs} onOverlayClose={() => this.close()}>
+        <div class={{ 'nav-drawer': true, 'open': active, [position]: !!position }} role="navigation" aria-label="Menu">
           {navItems ? <div class="nav-container">{this.renderNavItems(navItems)}</div> : null}
         </div>
       </go-overlay>

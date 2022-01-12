@@ -161,6 +161,7 @@ export namespace Components {
         "fullMenuAt": string;
     }
     interface GoNavDrawer {
+        "active": boolean;
         "close": () => Promise<void>;
         /**
           * Initialise the menu
@@ -443,10 +444,19 @@ declare namespace LocalJSX {
         "fullMenuAt"?: string;
     }
     interface GoNavDrawer {
+        "active"?: boolean;
         /**
           * Navigation items to be rendered
          */
         "items"?: INavMenu | string;
+        /**
+          * Emitted when the nav drawer is closed
+         */
+        "onClose"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the nav drawer is opened
+         */
+        "onOpen"?: (event: CustomEvent<void>) => void;
         /**
           * Position where the navigation should appear from
          */

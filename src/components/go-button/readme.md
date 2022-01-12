@@ -33,13 +33,17 @@
 
 ### Used by
 
+ - [dev-demo](../dev-demo)
  - [go-dialog](../go-dialog)
+ - [go-nav-drawer](../go-nav-drawer)
  - [go-search-bar](../go-search-bar)
 
 ### Graph
 ```mermaid
 graph TD;
+  dev-demo --> go-button
   go-dialog --> go-button
+  go-nav-drawer --> go-button
   go-search-bar --> go-button
   style go-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

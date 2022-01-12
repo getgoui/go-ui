@@ -48,12 +48,14 @@ Type: `Promise<void>`
 ### Used by
 
  - [go-dialog](../go-dialog)
+ - [go-nav-drawer](../go-nav-drawer)
  - [go-search-bar](../go-search-bar)
 
 ### Graph
 ```mermaid
 graph TD;
   go-dialog --> go-overlay
+  go-nav-drawer --> go-overlay
   go-search-bar --> go-overlay
   style go-overlay fill:#f9f,stroke:#333,stroke-width:4px
 ```
