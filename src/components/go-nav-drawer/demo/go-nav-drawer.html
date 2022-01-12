@@ -95,7 +95,8 @@
         this.rightOpen = !this.rightOpen;
       },
     },
-    template: `<div class="container">
+    template: `
+  <div class="container">
     <go-button @click="handleClick">Open left (component method)</go-button>
     <go-nav-drawer ref="leftMenu" :items.prop="items"></go-nav-drawer>
 
@@ -108,7 +109,8 @@
       :items.prop="items"
       @close="rightOpen = false"
     ></go-nav-drawer>
-  </div>`,
+  </div>
+  `,
   };
 
   const app = createApp(Root);

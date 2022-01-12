@@ -24,6 +24,8 @@ export class DevDemo {
         <go-button class="dark-mode-toggle" icon color="secondary" flat round onClick={() => this.toggleDarkMode()}>
           <go-icon name={this.isDark ? 'dark_mode' : 'light_mode'}></go-icon>
         </go-button>
+
+        {/* component usage code here */}
       </Host>
     );
   }
