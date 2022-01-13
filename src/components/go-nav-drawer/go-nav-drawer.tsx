@@ -28,6 +28,8 @@ export class GoNavDrawer {
   // keep track of open state of drawer
   @Prop({ mutable: true, reflect: true }) active = false;
 
+  @Prop() label = 'Menu';
+
   // keep track of open submenus
   @State() currentSubMenus: HTMLElement[] = [];
 
@@ -145,7 +147,7 @@ export class GoNavDrawer {
             )}
 
             {/* <div class="title">{isSubNav ? parentItem.label : 'Menu'}</div> */}
-            <div class="title">Menu</div>
+            <div class="title">{this.label}</div>
 
             <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
               <svg
@@ -163,7 +165,7 @@ export class GoNavDrawer {
           </div>
         </div>
         {items?.length > 0 ? (
-          <nav>
+          <nav aria-label={isSubNav ? parentItem.label : this.label}>
             {isSubNav && parentItem.url ? (
               <div class="parent-link">
                 <a href={parentItem.url} {...parentItem.linkAttrs}>
@@ -241,7 +243,7 @@ export class GoNavDrawer {
 
     return (
       <go-overlay active={active} {...inheritedAttrs} onOverlayClose={() => this.close()}>
-        <div class={{ 'nav-drawer': true, 'open': active, [position]: !!position }} role="navigation" aria-label="Menu">
+        <div class={{ 'nav-drawer': true, 'open': active, [position]: !!position }}>
           {navItems ? <div class="nav-container">{this.renderNavItems(navItems)}</div> : null}
         </div>
       </go-overlay>

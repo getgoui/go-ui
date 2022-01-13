@@ -1,10 +1,9 @@
-<!-- vue 3 -->
+<!-- material icons -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<div id="app"></div>
-
-<script src="http://unpkg.com/vue@next"></script>
-
+<!-- vue 3 -->
 <script src="https://cdn.jsdelivr.net/npm/vue@3.2.26"></script>
+
+<div id="app"></div>
 
 <script>
   const { createApp } = Vue;
@@ -98,13 +97,15 @@
     template: `
   <div class="container">
     <go-button @click="handleClick">Open left (component method)</go-button>
-    <go-nav-drawer ref="leftMenu" :items.prop="items"></go-nav-drawer>
+    <go-nav-drawer ref="leftMenu"
+      label="Left menu" :items.prop="items"></go-nav-drawer>
 
     <go-button style="float:right" @click="handleClick2">
       Open right (reactive prop change)
     </go-button>
     <go-nav-drawer
       :active="rightOpen"
+      label="Right menu"
       position="right"
       :items.prop="items"
       @close="rightOpen = false"

@@ -78,7 +78,20 @@ export class GoButton {
 
   private inheritedAttributes = {} as any;
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.root, ['block', 'color', 'disabled', 'style', 'invert'], false);
+    this.inheritedAttributes = inheritAttributes(this.root, [
+      'block',
+      'color',
+      'disabled',
+      'style',
+      'invert',
+      'outline',
+      'outline-fill',
+      'flat',
+      'round',
+      'icon',
+      'stack',
+      'compact',
+    ]);
   }
 
   render() {
@@ -87,7 +100,11 @@ export class GoButton {
     const blockClass = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
     const rootClasses = `${color} ${blockClass}`;
 
-    // filter inherited attributes to remove class
+    const inheritedClasses = inheritedAttributes['class'] || '';
+    const innerBtnClasses = {
+      'inner-button': true,
+      [inheritedClasses]: !!inheritedClasses,
+    };
 
     return (
       <Host
@@ -96,7 +113,7 @@ export class GoButton {
           outline,
           'outline outline-fill': outlineFill,
         }}>
-        <Tag type={this.href ? null : type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes} class="inner-button">
+        <Tag type={this.href ? null : type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes} class={innerBtnClasses}>
           <slot name="start"></slot>
           <slot></slot>
           <slot name="end"></slot>

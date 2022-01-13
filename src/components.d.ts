@@ -174,6 +174,7 @@ export namespace Components {
           * Navigation items to be rendered
          */
         "items"?: INavMenu | string;
+        "label": string;
         "open": () => Promise<void>;
         /**
           * Position where the navigation should appear from
@@ -460,6 +461,7 @@ declare namespace LocalJSX {
           * Navigation items to be rendered
          */
         "items"?: INavMenu | string;
+        "label"?: string;
         /**
           * Emitted when the nav drawer is closed
          */

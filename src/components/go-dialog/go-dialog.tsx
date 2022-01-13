@@ -73,7 +73,7 @@ export class GoDialog {
         aria-modal="true"
         aria-labelledby={headingId}
         active={active}
-        aria-hidden={active ? false : true}
+        aria-hidden={active ? null : true}
         ref={(el) => (this.overlayEl = el)}
         onOverlayClose={() => this.handleOverlayClose()}
         {...inheritedAttrs}>

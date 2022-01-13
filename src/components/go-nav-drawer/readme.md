@@ -9,6 +9,7 @@
 | ---------- | ---------- | ------------------------------------------------ | ---------------------- | ----------- |
 | `active`   | `active`   |                                                  | `boolean`              | `false`     |
 | `items`    | `items`    | Navigation items to be rendered                  | `INavItem[] \| string` | `undefined` |
+| `label`    | `label`    |                                                  | `string`               | `'Menu'`    |
 | `position` | `position` | Position where the navigation should appear from | `"left" \| "right"`    | `'left'`    |
 
 
