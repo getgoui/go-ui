@@ -45,5 +45,5 @@ export function trapFocus(parent: HTMLElement): void {
     }
   });
   // focus on first focusable element
-  firstFocusableEl?.focus();
+  setTimeout(() => firstFocusableEl?.focus(), 50);
 }

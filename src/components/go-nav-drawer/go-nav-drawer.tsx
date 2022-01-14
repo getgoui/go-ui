@@ -70,11 +70,10 @@ export class GoNavDrawer {
 
   @Method()
   async close() {
+    while (this.currentSubMenus.length > 0) {
+      await this.closeCurrentSubMenu();
+    }
     this.active = false;
-    this.currentSubMenus.forEach((menuItem) => {
-      menuItem.classList.remove('active');
-    });
-    this.currentSubMenus = [];
     this.closeEvent.emit();
   }
 
@@ -99,7 +98,7 @@ export class GoNavDrawer {
     }
   }
 
-  closeCurrentSubMenu() {
+  async closeCurrentSubMenu() {
     if (this.currentSubMenus.length === 0) {
       return;
     }
@@ -116,6 +115,29 @@ export class GoNavDrawer {
     triggerBtn.setAttribute('aria-expanded', 'true');
     trapFocus(menuItem.querySelector('.nav-menu') as HTMLElement);
     this.currentSubMenus = [...this.currentSubMenus, menuItem];
+  }
+
+  private handleArrowKeys(e: KeyboardEvent) {
+    if (e.code === 'ArrowUp') {
+      e.preventDefault();
+      e.stopPropagation();
+      const currentTrigger = e.target as HTMLElement;
+      const currentItem = currentTrigger.closest('li');
+      const targetItem = currentItem.previousElementSibling;
+      if (targetItem) {
+        (targetItem.querySelector('.nav-item-inner') as HTMLElement).focus();
+      }
+    }
+    if (e.code === 'ArrowDown') {
+      e.preventDefault();
+      e.stopPropagation();
+      const currentTrigger = e.target as HTMLElement;
+      const currentItem = currentTrigger.closest('li');
+      const targetItem = currentItem.nextElementSibling;
+      if (targetItem) {
+        (targetItem.querySelector('.nav-item-inner') as HTMLElement).focus();
+      }
+    }
   }
 
   subMenus: { string: INavMenu } = null;
@@ -148,7 +170,6 @@ export class GoNavDrawer {
 
             {/* <div class="title">{isSubNav ? parentItem.label : 'Menu'}</div> */}
             <div class="title">{this.label}</div>
-
             <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -215,7 +236,7 @@ export class GoNavDrawer {
     }
     return (
       <li class={{ 'nav-item': true, 'has-children': hasChildren }}>
-        <Tag class="nav-item-inner" {...attrs}>
+        <Tag class="nav-item-inner" onKeydown={(e) => this.handleArrowKeys(e)} {...attrs}>
           <span>
             {item.icon && <i class={item.icon}></i>}
             {item.label}

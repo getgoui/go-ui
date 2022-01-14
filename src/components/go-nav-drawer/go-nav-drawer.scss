@@ -4,6 +4,10 @@
   --nav-item-text-color: var(--go-color-darkest);
   --nav-item-bg-color: var(--go-color-lightest);
   --nav-item-hover-bg-color: var(--go-color-neutral-200);
+  --nav-item-padding: var(--go-size--1) var(--go-size-0);
+  --nav-header-padding: var(--go-size--1) var(--go-size-0);
+  --nav-header-border-color: var(--go-color-neutral-200);
+  --submenu-parent-link-border-bottom: 1px solid var(--go-color-neutral-200);
 
   display: block;
   width: 100%;
@@ -15,6 +19,10 @@
   background: var(--drawer-bg-color);
   transform: translateX(-100%);
   @include transition(transform);
+  @include reduced-motion {
+    transition-duration: 0s;
+  }
+
   @include tablet {
     width: var(--drawer-max-width);
   }
@@ -37,6 +45,9 @@
 
   .nav-menu {
     @include transition(transform, visibility);
+    @include reduced-motion {
+      transition-duration: 0s;
+    }
 
     visibility: visible;
     transform: translateX(0);
@@ -51,26 +62,35 @@
     height: 100%;
     .nav-drawer-header {
       .header-row {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr; // stylelint-disable-line
+        display: flex;
         align-items: center;
-        padding: var(--go-size--1) var(--go-size-0);
+        justify-content: space-between;
+        padding: var(--nav-header-padding);
         .back-btn {
           margin-right: auto;
         }
         .close-btn {
           margin-left: auto;
+          flex: 0 0 auto;
         }
         .title {
           font-weight: bold;
           font-size: var(--go-size-0);
-          text-align: center;
+          flex: 1;
+        }
+      }
+    }
+
+    &.is-sub-nav {
+      .nav-drawer-header {
+        .title {
+          margin-left: 1rem;
         }
       }
     }
 
     nav {
-      border-top: 2px solid var(--go-color-neutral-300);
+      border-top: 2px solid var(--nav-header-border-color);
       height: 100%;
       padding: 1rem 0;
       flex: 1;
@@ -97,7 +117,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: var(--go-size--1) var(--go-size-0);
+    padding: var(--nav-item-padding);
     color: var(--nav-item-text-color);
     text-decoration: none;
     background: var(--nav-item-bg-color);
@@ -125,12 +145,13 @@
   }
 
   .parent-link {
+    border-bottom: var(--submenu-parent-link-border-bottom);
     a {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       width: 100%;
-      padding: var(--go-size--1) var(--go-size-0);
+      padding: var(--nav-item-padding);
       color: var(--nav-item-text-color);
       text-decoration: none;
       background: var(--nav-item-bg-color);
