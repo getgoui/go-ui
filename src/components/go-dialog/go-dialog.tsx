@@ -36,7 +36,7 @@ export class GoDialog {
   // Store attributes inherited from the host element
   private inheritedAttrs = {};
   componentWillLoad() {
-    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style'], false);
+    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style']);
   }
 
   @Method()
@@ -73,7 +73,7 @@ export class GoDialog {
         aria-modal="true"
         aria-labelledby={headingId}
         active={active}
-        aria-hidden={active ? null : true}
+        aria-hidden={active ? 'false' : 'true'}
         ref={(el) => (this.overlayEl = el)}
         onOverlayClose={() => this.handleOverlayClose()}
         {...inheritedAttrs}>
