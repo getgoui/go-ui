@@ -69,12 +69,14 @@ Type: `Promise<void>`
 ### Depends on
 
 - [go-button](../go-button)
+- [go-icon](../go-icon)
 - [go-overlay](../go-overlay)
 
 ### Graph
 ```mermaid
 graph TD;
   go-nav-drawer --> go-button
+  go-nav-drawer --> go-icon
   go-nav-drawer --> go-overlay
   style go-nav-drawer fill:#f9f,stroke:#333,stroke-width:4px
 ```

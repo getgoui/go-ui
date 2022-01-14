@@ -190,7 +190,10 @@ export class GoNavDrawer {
             {isSubNav && parentItem.url ? (
               <div class="parent-link">
                 <a href={parentItem.url} {...parentItem.linkAttrs}>
-                  {parentItem.label}
+                  <span class="nav-item-label">
+                    {parentItem.icon && <go-icon name={parentItem.icon}></go-icon>}
+                    <span>{parentItem.label}</span>
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -237,9 +240,9 @@ export class GoNavDrawer {
     return (
       <li class={{ 'nav-item': true, 'has-children': hasChildren }}>
         <Tag class="nav-item-inner" onKeydown={(e) => this.handleArrowKeys(e)} {...attrs}>
-          <span>
-            {item.icon && <i class={item.icon}></i>}
-            {item.label}
+          <span class="nav-item-label">
+            {item.icon && <go-icon name={item.icon}></go-icon>}
+            <span>{item.label}</span>
           </span>
           {hasChildren ? (
             <svg

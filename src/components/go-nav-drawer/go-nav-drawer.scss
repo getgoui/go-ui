@@ -7,6 +7,7 @@
   --nav-item-padding: var(--go-size--1) var(--go-size-0);
   --nav-header-padding: var(--go-size--1) var(--go-size-0);
   --nav-header-border-color: var(--go-color-neutral-200);
+  --nav-item-icon-gap: var(--go-size-0);
   --submenu-parent-link-border-bottom: 1px solid var(--go-color-neutral-200);
 
   display: block;
@@ -55,6 +56,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
     background: var(--drawer-bg-color);
     display: flex;
     flex-direction: column;
@@ -127,6 +129,12 @@
     }
   }
 
+  .nav-item-label {
+    display: flex;
+    align-items: center;
+    gap: var(--nav-item-icon-gap);
+  }
+
   .children-indicator {
     width: 1.5em;
     height: 1.5em;
@@ -140,6 +148,7 @@
       > .nav-menu {
         visibility: visible;
         transform: translateX(0);
+        z-index: 2;
       }
     }
   }

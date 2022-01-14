@@ -84,6 +84,67 @@
             icon: 'info',
           },
         ],
+        items2: [
+          {
+            label: 'Home',
+            url: '/',
+          },
+          {
+            label: 'Components',
+            url: '/components',
+          },
+          {
+            label: 'Styleguide',
+            url: '/styleguide',
+            isCurrent: true,
+            children: [
+              {
+                label: 'Typography',
+                url: '/styleguide/typography',
+                children: [
+                  {
+                    label: 'Headings',
+                    url: '/styleguide/typography/headings',
+                    children: [
+                      {
+                        label: 'Heading 1',
+                        url: '/styleguide/typography/headings/heading-1',
+                      },
+                      {
+                        label: 'Heading 2',
+                        url: '/styleguide/typography/headings/heading-2',
+                      },
+                    ],
+                  },
+                  {
+                    label: 'Paragraphs',
+                    url: '/styleguide/typography/paragraphs',
+                  },
+                  {
+                    label: 'Lists',
+                    url: '/styleguide/typography/lists',
+                  },
+                ],
+              },
+              {
+                label: 'Colors',
+                url: '/styleguide/colors',
+              },
+              {
+                label: 'Icons',
+                url: '/styleguide/icons',
+              },
+              {
+                label: 'Buttons',
+                url: '/styleguide/buttons',
+              },
+            ],
+          },
+          {
+            label: 'About',
+            url: '/about',
+          },
+        ],
       };
     },
     methods: {
@@ -96,20 +157,21 @@
     },
     template: `
   <div class="container">
-    <go-button @click="handleClick">Open left (component method)</go-button>
-    <go-nav-drawer ref="leftMenu"
-      label="Left menu" :items.prop="items"></go-nav-drawer>
-
-    <go-button style="float:right" @click="handleClick2">
-      Open right (reactive prop change)
+    <go-button block class="mb-2" @click="handleClick">Open left menu (via component method)</go-button>
+    <go-nav-drawer
+      ref="leftMenu"
+      label="Left menu"
+      :items.prop="items"></go-nav-drawer>
+    <br />
+    <go-button block class="mb-2" @click="handleClick2">
+      Open right menu (via reactive prop change)
     </go-button>
     <go-nav-drawer
       :active="rightOpen"
       label="Right menu"
       position="right"
-      :items.prop="items"
-      @close="rightOpen = false"
-    ></go-nav-drawer>
+      :items.prop="items2"
+      @close="rightOpen = false"></go-nav-drawer>
   </div>
   `,
   };
