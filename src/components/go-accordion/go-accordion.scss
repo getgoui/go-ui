@@ -67,7 +67,7 @@ go-accordion {
       Content background colour
       - default: var(--go-color-background, #f5f5f5)
   */
-  --panel-bg-color: var(--go-color-lightest);
+  --panel-bg-color: transparent;
 
   /**
     @prop --heading-border-bottom:

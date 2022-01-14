@@ -33,7 +33,7 @@
 
 ### Used by
 
- - [dark-mode-toggle](../demo-controls)
+ - [dark-mode-toggle](../../demo-components/demo-controls)
  - [go-dialog](../go-dialog)
  - [go-nav-drawer](../go-nav-drawer)
  - [go-search-bar](../go-search-bar)
