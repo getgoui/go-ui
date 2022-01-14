@@ -190,10 +190,6 @@ export namespace Components {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent": boolean;
-        /**
-          * Type of this overlay, can be dialog or alertdialog
-         */
-        "type": 'dialog' | 'alertdialog';
     }
     interface GoSearchBar {
         "closeSearchForm": () => Promise<void>;
@@ -489,10 +485,6 @@ declare namespace LocalJSX {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent"?: boolean;
-        /**
-          * Type of this overlay, can be dialog or alertdialog
-         */
-        "type"?: 'dialog' | 'alertdialog';
     }
     interface GoSearchBar {
     }

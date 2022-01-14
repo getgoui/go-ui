@@ -13,6 +13,19 @@
 | `size`    | `size`     | Size of the icon, supports CSS units and variables. Default: 1.5em for material icons, 1em for other icon sets. | `string`                                                                                                                                                                   | `undefined`        |
 
 
+## Dependencies
+
+### Used by
+
+ - [go-nav-drawer](../go-nav-drawer)
+
+### Graph
+```mermaid
+graph TD;
+  go-nav-drawer --> go-icon
+  style go-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 
