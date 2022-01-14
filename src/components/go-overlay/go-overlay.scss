@@ -28,10 +28,17 @@ go-overlay {
     width: 100%;
     height: 100vh;
   }
+  .overlay-content {
+    position: relative;
+    display: none;
+  }
   &.active {
     background: var(--go-overlay-color);
     width: 100%;
     height: 100%;
     opacity: 1;
+    .overlay-content {
+      display: block;
+    }
   }
 }

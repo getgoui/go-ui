@@ -12,10 +12,6 @@ export class GoOverlay {
   @Element() el: HTMLElement;
 
   @Prop({ reflect: true, mutable: true }) active: boolean = false;
-  /**
-   * Type of this overlay, can be dialog or alertdialog
-   */
-  @Prop() type: 'dialog' | 'alertdialog' = 'dialog';
 
   /**
    * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
@@ -73,7 +69,6 @@ export class GoOverlay {
 
   @Method()
   async close() {
-    console.log('close');
     this.closeEvent.emit();
     enableBodyScroll(this.el);
     this.active = false;
