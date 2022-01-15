@@ -67,16 +67,9 @@ go-button {
   &[color='tertiary'] {
     --go-btn-bg-color-hover: var(--go-color-neutral-300);
     --go-btn-bg-color-disabled: rgba(var(--go-token-neutral-200), 0.5);
-    --go-btn-text-color: var(--go-color-text);
-    --go-btn-text-color-hover: var(--go-color-text);
+    --go-btn-text-color: currentColor;
+    --go-btn-text-color-hover: currentColor;
     --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
-    .inner-button {
-      text-decoration: underline;
-      &:hover,
-      &:focus {
-        text-decoration: none;
-      }
-    }
   }
 
   &[disabled] {
@@ -92,11 +85,6 @@ go-button {
         color: var(--go-btn-text-color-disabled);
         box-shadow: none;
         outline: none;
-      }
-    }
-    &[color='tertiary'] {
-      .inner-button {
-        text-decoration: none;
       }
     }
   }
@@ -156,7 +144,7 @@ go-button {
   }
 
   &[compact] {
-    --go-btn-padding-y: 0.4em;
+    --go-btn-padding-y: 0.5em;
     --go-btn-padding-x: 0.8em;
     --go-btn-inner-gap: 0.125em;
     .inner-button {
@@ -180,6 +168,7 @@ go-button {
     padding: var(--go-btn-padding-y, 0.5rem) var(--go-btn-padding-x, 1rem);
     box-shadow: var(--go-btn-shadow);
     text-underline-offset: 4px; // optimise for browsers that support it
+    font-weight: 500;
     @include transition(background-color, color, box-shadow);
 
     &:hover,
