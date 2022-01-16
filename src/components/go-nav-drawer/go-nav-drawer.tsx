@@ -238,7 +238,7 @@ export class GoNavDrawer {
       };
     }
     return (
-      <li class={{ 'nav-item': true, 'has-children': hasChildren }}>
+      <li class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item.isCurrent }}>
         <Tag class="nav-item-inner" onKeydown={(e) => this.handleArrowKeys(e)} {...attrs}>
           <span class="nav-item-label">
             {item.icon && <go-icon name={item.icon}></go-icon>}

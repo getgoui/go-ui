@@ -8,6 +8,8 @@
   --nav-header-padding: var(--go-size--1) var(--go-size-0);
   --nav-header-border-color: var(--go-color-neutral-200);
   --nav-item-icon-gap: var(--go-size-0);
+  --nav-item-current-bar-width: 4px;
+  --nav-item-current-bar-color: var(--go-color-primary-500);
   --submenu-parent-link-border-bottom: 1px solid var(--go-color-neutral-200);
 
   display: block;
@@ -123,6 +125,7 @@
     color: var(--nav-item-text-color);
     text-decoration: none;
     background: var(--nav-item-bg-color);
+    border-left: var(--nav-item-current-bar-width) solid transparent;
     &:hover,
     &:focus {
       background: var(--nav-item-hover-bg-color);
@@ -144,11 +147,18 @@
   li {
     padding: 0;
     line-height: 1.5;
+
     &.active {
       > .nav-menu {
         visibility: visible;
         transform: translateX(0);
         z-index: 2;
+      }
+    }
+
+    &.current {
+      > .nav-item-inner {
+        border-left-color: var(--nav-item-current-bar-color);
       }
     }
   }
@@ -165,6 +175,7 @@
       text-decoration: none;
       background: var(--nav-item-bg-color);
       font-weight: bold;
+      border-left: var(--nav-item-current-bar-width) solid transparent;
       svg {
         @include transition(transform);
 
