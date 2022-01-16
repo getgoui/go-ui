@@ -71,7 +71,6 @@ go-button {
     --go-btn-text-color-hover: currentColor;
     --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
   }
-
   &[disabled] {
     --go-btn-bg-color: var(--go-btn-bg-color-disabled);
     --go-btn-text-color: var(--go-btn-text-color-disabled);
@@ -91,16 +90,16 @@ go-button {
 
   &.outline {
     .inner-button {
+      --go-btn-text-color: var(--go-btn-bg-color);
+
       background: transparent;
       border: 2px solid var(--go-btn-bg-color);
-      color: var(--go-btn-bg-color);
       &:hover,
       &:focus-visible {
         background: var(--go-btn-bg-color);
         color: var(--go-btn-text-color);
       }
     }
-
     &[color='tertiary'] {
       --go-btn-bg-color: var(--go-color-neutral-700);
     }
@@ -187,6 +186,16 @@ go-button {
       width: calc(var(--go-btn-icon-size) / 3 * 2);
       height: calc(var(--go-btn-icon-size) / 3 * 2);
       margin: 0;
+    }
+  }
+}
+
+:where([color-scheme='dark'], [data-theme='dark']) {
+  go-button {
+    &.outline {
+      .inner-button {
+        --go-btn-text-color: var(--go-color-text);
+      }
     }
   }
 }

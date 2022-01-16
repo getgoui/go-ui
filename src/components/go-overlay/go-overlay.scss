@@ -1,9 +1,10 @@
 go-overlay {
-  --go-overlay-color: rgba(var(--go-token-darkest), 0.8);
+  --go-overlay-color: var(--go-color-darkest);
+  --go-overlay-opacity: 0.8;
   --go-overlay-close-btn-text-color: var(--go-color-lightest);
 
   @include prefer-dark {
-    --go-overlay-color: rgba(var(--go-token-darkest), 0.5);
+    --go-overlay-opacity: 0.5;
     --go-overlay-close-btn-text-color: var(--go-color-darkest);
   }
   @include transition(opacity var(--go-duration-normal) var(--go-timing-function));
@@ -27,6 +28,7 @@ go-overlay {
     position: absolute;
     width: 100%;
     height: 100vh;
+    opacity: var(--go-overlay-opacity);
   }
   .overlay-content {
     position: relative;
