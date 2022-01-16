@@ -155,6 +155,16 @@
   }
 }
 
+// to be used on the root level
+@mixin root-prefer-dark {
+  @include prefer-dark {
+    @content;
+  }
+  :where([color-scheme='dark'], [data-theme='dark']) {
+    @content;
+  }
+}
+
 @mixin focus-outline {
   outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
   outline-offset: var(--go-focus-outline-offset);
