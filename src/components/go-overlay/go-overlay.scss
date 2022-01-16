@@ -2,7 +2,7 @@ go-overlay {
   --go-overlay-color: rgba(var(--go-token-darkest), 0.8);
   --go-overlay-close-btn-text-color: var(--go-color-lightest);
 
-  @include transition(opacity var(--go-duration-normal) var(--go-timing-function));
+  @include transition(opacity);
 
   position: fixed;
   top: 0;

@@ -91,7 +91,6 @@ export class GoNavDrawer {
   componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position'], false);
     try {
-      console.log('items', this.items);
       this.navItems = typeof this.items === 'string' ? JSON5.parse(this.items) : this.items;
     } catch (e) {
       console.log({ e });
@@ -268,7 +267,7 @@ export class GoNavDrawer {
     return (
       <go-overlay active={active} {...inheritedAttrs} onOverlayClose={() => this.close()}>
         <div class={{ 'nav-drawer': true, 'open': active, [position]: !!position }}>
-          {navItems ? <div class="nav-container">{this.renderNavItems(navItems)}</div> : null}
+          {navItems ? <div class="nav-container">{this.renderNavItems(navItems)}</div> : <slot></slot>}
         </div>
       </go-overlay>
     );
