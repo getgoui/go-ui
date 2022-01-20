@@ -7,6 +7,9 @@
   "plugins": [
     "stylelint-no-unsupported-browser-features"
   ],
+  "ignoreFiles": [
+    "**/*.min.css"
+  ],
   "rules": {
     "plugin/no-unsupported-browser-features": [
       true,
@@ -23,9 +26,7 @@
     "selector-class-pattern": null,
     "no-descending-specificity": null,
     "value-keyword-case": null,
-    "custom-property-pattern": null
-  },
-  "ignoreFiles": [
-    "src/global/normalize.min.css"
-  ]
+    "custom-property-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": null
+  }
 }

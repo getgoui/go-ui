@@ -117,25 +117,18 @@ export class GoNavDrawer {
   }
 
   private handleArrowKeys(e: KeyboardEvent) {
+    e.preventDefault();
+    const currentTrigger = e.target as HTMLElement;
+    const currentItem = currentTrigger.closest('li');
+    let targetItem = null;
     if (e.code === 'ArrowUp') {
-      e.preventDefault();
-      e.stopPropagation();
-      const currentTrigger = e.target as HTMLElement;
-      const currentItem = currentTrigger.closest('li');
-      const targetItem = currentItem.previousElementSibling;
-      if (targetItem) {
-        (targetItem.querySelector('.nav-item-inner') as HTMLElement).focus();
-      }
+      targetItem = currentItem.previousElementSibling;
     }
     if (e.code === 'ArrowDown') {
-      e.preventDefault();
-      e.stopPropagation();
-      const currentTrigger = e.target as HTMLElement;
-      const currentItem = currentTrigger.closest('li');
-      const targetItem = currentItem.nextElementSibling;
-      if (targetItem) {
-        (targetItem.querySelector('.nav-item-inner') as HTMLElement).focus();
-      }
+      targetItem = currentItem.nextElementSibling;
+    }
+    if (targetItem) {
+      (targetItem.querySelector('.nav-item-inner') as HTMLElement).focus();
     }
   }
 

@@ -3,6 +3,46 @@
 <!-- vue 3 -->
 <script src="https://cdn.jsdelivr.net/npm/vue@3.2.26"></script>
 
+<style>
+  .custom-search-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .custom-search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .custom-search-form input {
+    background: transparent;
+    border: none;
+    padding: 0.5em 1em;
+    height: 2.5em;
+    border: 2px solid var(--go-color-bg);
+    border-right: none;
+    color: var(--go-color-bg);
+    width: 12rem;
+    border-radius: var(--radius-2);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .custom-search-form input:focus {
+    outline: none;
+    border-color: var(--go-color-primary-300);
+  }
+  .custom-search-form go-button .inner-button {
+    border-radius: 0;
+    border-top-right-radius: var(--radius-2);
+    border-bottom-right-radius: var(--radius-2);
+    border: 2px solid var(--go-color-bg);
+  }
+</style>
+
 <div id="app"></div>
 
 <script>
@@ -102,43 +142,3 @@
   app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('go-');
   app.mount('#app');
 </script>
-
-<style>
-  .custom-search-form-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  .custom-search-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .custom-search-form input {
-    background: transparent;
-    border: none;
-    padding: 0.5em 1em;
-    height: 2.5em;
-    border: 2px solid var(--go-color-bg);
-    border-right: none;
-    color: var(--go-color-bg);
-    width: 12rem;
-    border-radius: var(--radius-2);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .custom-search-form input:focus {
-    outline: none;
-    border-color: var(--go-color-primary-300);
-  }
-  .custom-search-form go-button .inner-button {
-    border-radius: 0;
-    border-top-right-radius: var(--radius-2);
-    border-bottom-right-radius: var(--radius-2);
-    border: 2px solid var(--go-color-bg);
-  }
-</style>

@@ -12,6 +12,7 @@
       return {
         leftOpen: false,
         rightOpen: false,
+        customOpen: false,
         items: [
           {
             label: 'Home',
@@ -154,6 +155,9 @@
       handleClick2() {
         this.rightOpen = !this.rightOpen;
       },
+      handleClick3() {
+        this.customOpen = !this.customOpen;
+      },
     },
     template: `
   <div class="container">
@@ -172,6 +176,17 @@
       position="right"
       :items.prop="items2"
       @close="rightOpen = false"></go-nav-drawer>
+    <br />
+    <go-button block class="mb-2" @click="handleClick3">
+      Open custom menu
+    </go-button>
+    <go-nav-drawer
+      :active="customOpen"
+      label="Custom menu"
+      @close="customOpen = false">
+      <h2>Custom menu</h2>
+      <go-button @click="customOpen = false">Close</go-button>
+      <p>Esc keypress still works.</p></go-nav-drawer>
   </div>
   `,
   };

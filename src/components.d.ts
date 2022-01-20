@@ -158,9 +158,14 @@ export namespace Components {
     }
     interface GoMainNav {
         /**
-          * Specify at what breakpoint (see [scss breakpoints](/docs/patterns/global-styles/grid#breakpoints)) should desktop menu be shown
+          * Initialise the menu
+          * @param items menu items to be rendered
          */
-        "fullMenuAt": string;
+        "init": (items: INavMenu) => Promise<void>;
+        /**
+          * Navigation items to be rendered
+         */
+        "items"?: INavMenu | string;
     }
     interface GoNavDrawer {
         "active": boolean;
@@ -447,9 +452,9 @@ declare namespace LocalJSX {
     }
     interface GoMainNav {
         /**
-          * Specify at what breakpoint (see [scss breakpoints](/docs/patterns/global-styles/grid#breakpoints)) should desktop menu be shown
+          * Navigation items to be rendered
          */
-        "fullMenuAt"?: string;
+        "items"?: INavMenu | string;
     }
     interface GoNavDrawer {
         "active"?: boolean;
