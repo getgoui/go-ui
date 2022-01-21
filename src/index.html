@@ -20,9 +20,8 @@
     <!-- vue 3 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.26"></script>
 
-    <div class="container">
-      <go-main-nav
-        items="[
+    <go-main-nav
+      items="[
     {
       label: 'Home',
       url: '/',
@@ -97,6 +96,13 @@
           label: 'Colors',
           url: '/styleguide/colors',
           icon: 'color_lens',
+          children: [
+            {
+              label: 'Primary',
+              url: '/styleguide/colors/primary',
+              icon: 'color_lens',
+            },
+          ]
         },
         {
           label: 'Icons',
@@ -108,6 +114,11 @@
           url: '/styleguide/buttons',
           icon: 'touch_app',
         },
+        {
+          label: 'Forms',
+          url: '/styleguide/forms',
+          icon: 'text_fields',
+        },
       ],
     },
     {
@@ -115,8 +126,7 @@
       url: '/about',
       icon: 'info',
     }]"
-      ></go-main-nav>
-    </div>
+    ></go-main-nav>
     <!-- #endregion demo finish -->
 
     <aside>

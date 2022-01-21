@@ -58,9 +58,14 @@ export class GoMainNav {
   private toggleSubMenu(e: MouseEvent) {
     const triggerBtn = e.currentTarget as HTMLElement;
     const menuItem = triggerBtn.closest('.nav-item.has-children') as HTMLElement;
+
     if (menuItem.classList.contains('active')) {
       this.closeSubMenu(menuItem);
     } else {
+      // close any open menus
+      this.el.querySelectorAll('.nav-menu-root > li.active').forEach((item) => {
+        this.closeSubMenu(item as HTMLElement);
+      });
       menuItem.classList.add('active');
       triggerBtn.setAttribute('aria-expanded', 'true');
     }
@@ -72,14 +77,27 @@ export class GoMainNav {
     triggerBtn.setAttribute('aria-expanded', 'false');
   }
 
-  renderNavLink(item: INavItem) {
-    let Tag = item?.url ? 'a' : 'span';
+  renderNavLink(item: INavItem, isSubmenuParentLink = false) {
+    let Tag = item.isCurrent ? 'span' : 'a';
     let attrs = item?.url ? { href: item.url, ...item.linkAttrs } : {};
-    attrs.class = `${attrs.class || ''} nav-item`;
+
+    attrs.class = `${attrs.class ? attrs.class : ''} nav-item-link${item.isCurrent ? ' current' : ''}`;
     return (
       <Tag {...attrs}>
         {item.icon && <go-icon name={item.icon}></go-icon>}
         <span>{item.label}</span>
+        {isSubmenuParentLink ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        ) : null}
       </Tag>
     );
   }
@@ -146,7 +164,10 @@ export class GoMainNav {
         </Tag>
         {item.children ? (
           <div class="submenu-container">
-            <div class="submenu-header">{this.renderNavLink(item)}</div>
+            <div class="submenu-header">
+              <h4>{this.renderNavLink(item, true)}</h4>
+              {item?.description ? <p>{item.description}</p> : null}
+            </div>
             <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
           </div>
         ) : null}

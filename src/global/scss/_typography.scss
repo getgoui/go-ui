@@ -101,6 +101,10 @@ code {
   font-family: var(--go-heading-font-family);
 }
 
+a {
+  color: var(--go-color-link);
+}
+
 // external links
 a[target='_blank'] {
   &::after {
