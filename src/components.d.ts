@@ -158,14 +158,14 @@ export namespace Components {
     }
     interface GoMainNav {
         /**
-          * Initialise the menu
-          * @param items menu items to be rendered
-         */
-        "init": (items: INavMenu) => Promise<void>;
-        /**
-          * Navigation items to be rendered
+          * Navigation items to be rendered if provided, slot content will not be rendered.
          */
         "items"?: INavMenu | string;
+        /**
+          * parse items prop passed into the menu component
+          * @param items menu items to be rendered
+         */
+        "parseItems": (items: INavMenu | string) => Promise<INavMenu>;
     }
     interface GoNavDrawer {
         "active": boolean;
@@ -452,9 +452,10 @@ declare namespace LocalJSX {
     }
     interface GoMainNav {
         /**
-          * Navigation items to be rendered
+          * Navigation items to be rendered if provided, slot content will not be rendered.
          */
         "items"?: INavMenu | string;
+        "onNavigate"?: (event: CustomEvent<any>) => void;
     }
     interface GoNavDrawer {
         "active"?: boolean;

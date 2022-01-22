@@ -9,7 +9,7 @@ go-main-nav {
   --nav-item-padding: var(--go-size--1) var(--go-size-0);
   --nav-item-icon-gap: 0.5rem;
   --nav-item-current-bar-width: 4px;
-  --nav-item-current-bar-color: var(--go-color-primary-500);
+  --nav-item-current-bar-color: var(--go-color-primary-600);
   --submenu-bg-color: var(--nav-item-active-bg-color);
   --submenu-padding-y: var(--go-size-0);
   --submenu-padding-x: var(--go-size-1);
@@ -97,23 +97,28 @@ go-main-nav {
         padding: var(--submenu-padding-y) var(--submenu-padding-x);
         background: var(--submenu-bg-color);
         > .submenu-header {
-          border-bottom: 1px solid grey;
-          padding: 1rem 0;
-          margin-bottom: 2rem;
-          h4 {
+          border-bottom: 1px solid var(--go-color-neutral-200);
+          padding: 0.5rem 0;
+          margin-bottom: var(--submenu-padding-y);
+          svg {
+            width: 1em;
+          }
+          h5 {
             display: flex;
             align-items: center;
             gap: 0.5em;
-            svg {
-              width: 1em;
-            }
+          }
+          .description {
+            color: var(--go-color-neutral-700);
           }
         }
         .submenu-list {
-          max-height: var(--submenu-max-height);
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
+          gap: 0.75rem;
+          max-height: var(--submenu-max-height);
+          overflow-y: auto;
         }
       }
       &.active {
@@ -131,12 +136,19 @@ go-main-nav {
       }
     }
 
+    .submenu {
+      ul {
+        border-top: 1px solid var(--go-color-secondary-100);
+      }
+    }
+
     .nav-item-link {
       display: flex;
       align-items: center;
       gap: 0.5em;
       text-decoration: none;
       padding: var(--submenu-link-padding);
+      border-left: var(--nav-item-current-bar-width) solid transparent;
       svg {
         @include transition(transform);
 
@@ -148,6 +160,10 @@ go-main-nav {
         svg {
           transform: translateX(4px);
         }
+      }
+
+      &.current {
+        border-left-color: var(--nav-item-current-bar-color);
       }
     }
   }

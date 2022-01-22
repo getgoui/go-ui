@@ -17,11 +17,13 @@
 
 ### Used by
 
+ - [go-main-nav](../../patterns/go-main-nav)
  - [go-nav-drawer](../go-nav-drawer)
 
 ### Graph
 ```mermaid
 graph TD;
+  go-main-nav --> go-icon
   go-nav-drawer --> go-icon
   style go-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
