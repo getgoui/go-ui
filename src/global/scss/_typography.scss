@@ -103,6 +103,10 @@ code {
 
 a {
   color: var(--go-color-link);
+  &:hover,
+  &:focus {
+    color: var(--go-color-link-hover);
+  }
 }
 
 // external links

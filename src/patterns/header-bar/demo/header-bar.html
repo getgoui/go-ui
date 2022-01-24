@@ -102,7 +102,7 @@
     <div class="container">
       <go-nav-drawer ref="mobileMenu" label="Menu" .items="items"></go-nav-drawer>
 
-      <go-header-bar>
+      <go-header-bar breakpoint="tablet">
         <go-button slot="mobile-menu-trigger" compact flat stack color="tertiary" @click="handleClick">
           <go-icon name="menu"></go-icon>
           <span>Menu</span>
@@ -133,7 +133,9 @@
             </div>
           </div>
         </go-search-bar>
+
       </go-header-bar>
+
     </div>
   `,
   };

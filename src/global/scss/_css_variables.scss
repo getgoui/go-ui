@@ -30,7 +30,8 @@
   // Colours (other than tokens)
   --go-color-bg: var(--go-color-lightest);
   --go-color-text: var(--go-color-darkest);
-  --go-color-link: var(--go-color-secondary-600);
+  --go-color-link: var(--go-color-secondary-800);
+  --go-color-link-hover: var(--go-color-secondary-600);
 
   // Transitions
   --go-duration-fast: 0.1s;

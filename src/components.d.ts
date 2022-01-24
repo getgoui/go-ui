@@ -136,7 +136,10 @@ export namespace Components {
         "href"?: string;
     }
     interface GoHeaderBar {
-        "breakpoint": string;
+        /**
+          * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
+         */
+        "breakpoint": Breakpoints;
     }
     interface GoIcon {
         /**
@@ -430,7 +433,10 @@ declare namespace LocalJSX {
         "href"?: string;
     }
     interface GoHeaderBar {
-        "breakpoint"?: string;
+        /**
+          * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
+         */
+        "breakpoint"?: Breakpoints;
     }
     interface GoIcon {
         /**

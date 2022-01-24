@@ -1,4 +1,5 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Breakpoints } from '../../types';
 
 @Component({
   tag: 'go-header-bar',
@@ -8,23 +9,37 @@ import { Component, Host, h, Element, Prop } from '@stencil/core';
 export class GoHeaderBar {
   @Element() el: HTMLElement;
 
-  @Prop() breakpoint: string = '1200px';
+  /**
+   * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
+   */
+  @Prop() breakpoint: Breakpoints = 'desktop';
 
   render() {
+    const { breakpoint } = this;
     return (
       <Host>
-        <div class="header-bar">
-          <div class="slot mobile-menu-trigger">
-            <slot name="mobile-menu-trigger"></slot>
-          </div>
-          <div class="slot logo">
-            <slot name="logo"></slot>
-          </div>
-          <div class="slot actions">
-            <slot name="actions"></slot>
+        <div class="container">
+          <div class={{ 'header-bar': true, [`responsive-${breakpoint}`]: true }}>
+            <div
+              class={{
+                'mobile-menu-trigger': true,
+                [`d-none-${breakpoint}`]: true,
+              }}>
+              <slot name="mobile-menu-trigger"></slot>
+            </div>
+            <div class="logo">
+              <slot name="logo"></slot>
+            </div>
+            <div class="actions">
+              <slot name="actions"></slot>
+            </div>
           </div>
         </div>
-        <div class="main-nav">
+        <div
+          class={{
+            'main-nav d-none-mobile': true,
+            [`d-block-${breakpoint}`]: true,
+          }}>
           <slot name="main-nav"></slot>
         </div>
       </Host>

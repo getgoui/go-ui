@@ -2,10 +2,13 @@ go-gov-au-logo {
   --divider-color: var(--go-color-darkest);
   --divider-width: 1px;
   --divider-gap: 1rem;
+  --link-color: currentColor;
+
   .logo-wrapper {
     text-decoration: none;
     display: inline-flex;
     flex-direction: column;
+    color: var(--link-color);
     @include tablet {
       flex-direction: row;
       align-items: center;

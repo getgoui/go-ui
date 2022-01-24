@@ -1,34 +1,34 @@
 go-header-bar {
+  --header-bar-bg-color: var(--go-bg-color);
+  --header-bar-text-color: var(--go-text-color);
   --header-bar-padding-y: 1rem;
   --header-bar-padding-x: 0;
+  --header-bar-section-gap: 1rem;
 
+  display: block;
+  background: var(--header-bar-bg-color);
+  color: var(--header-bar-text-color);
   .header-bar {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto; // stylelint-disable-line
+    align-items: flex-start;
     position: relative;
-    gap: 1rem;
+    gap: var(--header-bar-section-gap);
     padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
-  }
-  .mobile-menu-trigger {
-    position: absolute;
-    top: var(--header-bar-padding-y);
-    left: 0;
-    @include tablet {
-      position: static;
+    .logo {
+      margin: 0 auto;
     }
-  }
-  .logo {
-    flex-grow: 0;
-    margin: 0 auto;
-    @include tablet {
-      margin: 0;
+
+    // allow responsiveness at different breakpoints
+    @each $device, $width in $breakpoints {
+      &.responsive-#{$device} {
+        @include min-query($device) {
+          grid-template-columns: 1fr auto; // stylelint-disable-line
+          .logo {
+            margin: 0;
+          }
+        }
+      }
     }
-  }
-  .actions {
-    position: absolute;
-    top: var(--header-bar-padding-y);
-    right: 0;
-  }
-  @include tablet {
-    align-items: center;
   }
 }
