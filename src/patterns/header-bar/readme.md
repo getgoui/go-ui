@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Property     | Attribute    | Description | Type     | Default    |
-| ------------ | ------------ | ----------- | -------- | ---------- |
-| `breakpoint` | `breakpoint` |             | `string` | `'1200px'` |
+| Property     | Attribute    | Description                                                                                      | Type                                           | Default     |
+| ------------ | ------------ | ------------------------------------------------------------------------------------------------ | ---------------------------------------------- | ----------- |
+| `breakpoint` | `breakpoint` | Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav) | `"desktop" \| "large" \| "mobile" \| "tablet"` | `'desktop'` |
 
 
 ----------------------------------------------

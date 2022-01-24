@@ -23,17 +23,18 @@
     border: none;
     padding: 0.5em 1em;
     height: 2.5em;
-    border: 2px solid var(--go-color-bg);
+    border-bottom: 4px solid transparent;
     border-right: none;
-    color: var(--go-color-bg);
+    color: var(--go-text-bg);
     width: 12rem;
     border-radius: var(--radius-2);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    background: var(--go-color-bg);
   }
   .custom-search-form input:focus {
     outline: none;
-    border-color: var(--go-color-primary-300);
+    border-bottom-color: var(--go-color-primary-400);
   }
   .custom-search-form go-button .inner-button {
     border-radius: 0;
@@ -99,7 +100,6 @@
       },
     },
     template: `
-    <div class="container">
       <go-nav-drawer ref="mobileMenu" label="Menu" .items="items"></go-nav-drawer>
 
       <go-header-bar breakpoint="tablet">
@@ -134,9 +134,9 @@
           </div>
         </go-search-bar>
 
-      </go-header-bar>
+        <go-main-nav slot="main-nav" .items="items"></go-main-nav>
 
-    </div>
+      </go-header-bar>
   `,
   };
 
