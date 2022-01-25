@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.0-development](https://github.com/go-components/go-components/compare/v0.13.1...v0.0.0-development) (2022-01-25)
+
 ### 0.0.12 (2021-11-30)
 
 
