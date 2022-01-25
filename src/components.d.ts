@@ -125,6 +125,8 @@ export namespace Components {
          */
         "role": 'dialog' | 'alertdialog';
     }
+    interface GoFooter {
+    }
     interface GoGovAuLogo {
         /**
           * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
@@ -247,6 +249,12 @@ declare global {
         prototype: HTMLGoDialogElement;
         new (): HTMLGoDialogElement;
     };
+    interface HTMLGoFooterElement extends Components.GoFooter, HTMLStencilElement {
+    }
+    var HTMLGoFooterElement: {
+        prototype: HTMLGoFooterElement;
+        new (): HTMLGoFooterElement;
+    };
     interface HTMLGoGovAuLogoElement extends Components.GoGovAuLogo, HTMLStencilElement {
     }
     var HTMLGoGovAuLogoElement: {
@@ -297,6 +305,7 @@ declare global {
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-dialog": HTMLGoDialogElement;
+        "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
         "go-icon": HTMLGoIconElement;
@@ -422,6 +431,8 @@ declare namespace LocalJSX {
          */
         "role"?: 'dialog' | 'alertdialog';
     }
+    interface GoFooter {
+    }
     interface GoGovAuLogo {
         /**
           * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
@@ -508,6 +519,7 @@ declare namespace LocalJSX {
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-dialog": GoDialog;
+        "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
         "go-icon": GoIcon;
@@ -528,6 +540,7 @@ declare module "@stencil/core" {
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
+            "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
