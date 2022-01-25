@@ -206,7 +206,9 @@ export class GoMainNav {
   renderRootNav(items: INavItem[]) {
     return (
       <div class={{ 'nav-menu': true }}>
-        <ul class="nav-menu-root">{items.map((item) => this.renderRootNavItem(item))}</ul>
+        <div class="container">
+          <ul class="nav-menu-root">{items.map((item) => this.renderRootNavItem(item))}</ul>
+        </div>
       </div>
     );
   }

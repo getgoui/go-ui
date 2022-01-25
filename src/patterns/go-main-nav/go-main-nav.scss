@@ -18,6 +18,7 @@ go-main-nav {
   --submenu-link-hover-bg-color: var(--go-color-neutral-200);
 
   display: block;
+  box-shadow: var(--nav-shadow);
 
   ul {
     list-style: none;
@@ -32,7 +33,6 @@ go-main-nav {
       align-items: stretch;
       flex-wrap: nowrap;
       position: relative;
-      box-shadow: var(--nav-shadow);
     }
     .nav-item {
       .nav-item-inner {
