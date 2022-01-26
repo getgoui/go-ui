@@ -18,11 +18,11 @@ function HomepageHeader() {
           <Logo className="hero__logo" />
           <div className="hero__text">
             <h1 className="hero__title">{siteConfig.title}</h1>
-            <p className="hero__subtitle">
+            <div className="hero__subtitle">
               A design system for
               <Typewriter
                 options={{
-                  strings: ['everyone', 'Angular developers', 'React developers', 'Vue developers', 'designers', 'content creators'],
+                  strings: ['everyone', 'Angular', 'React', 'Vue', 'Vanilla JS', 'Headless CMS', 'content creators', 'communicators', 'the visually impaired'],
                   autoStart: true,
                   loop: true,
                   delay: 55,
@@ -30,7 +30,7 @@ function HomepageHeader() {
                   pauseFor: 2000,
                 }}
               />
-            </p>
+            </div>
             <div className="margin-top--md">
               <CodeBlock language="bash">npm i @go-ui/core</CodeBlock>
             </div>

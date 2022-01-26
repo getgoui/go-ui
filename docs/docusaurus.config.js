@@ -10,7 +10,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.svg',
   organizationName: 'go-components', // Usually your GitHub org/user name.
   projectName: 'go-components', // Usually your repo name.
   themeConfig:
@@ -115,7 +115,11 @@ module.exports = {
             ],
           },
         ],
-        // copyright: `Copyright © ${new Date().getFullYear()}  Built with Docusaurus.`,
+        copyright: `
+        <small>Built with <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a></small>
+        <br />
+        <small>Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target="_blank" rel="noopener noreferrer">Icons 8</a> from <a href="https://icons8.com/illustrations" target="_blank" rel="noopener noreferrer">Ouch!</a></small>
+        `,
       },
       prism: {
         theme: lightCodeTheme,

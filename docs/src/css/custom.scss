@@ -101,6 +101,10 @@ body {
 .footer__link-item {
   --ifm-footer-link-hover-color: var(--go-color-success-400);
 }
+.footer--dark a {
+  color: white;
+  text-decoration: underline;
+}
 
 table {
   display: table;

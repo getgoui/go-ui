@@ -1,6 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
-import styles from './HomepageFeatures.module.css';
+import './HomepageFeatures.scss';
 import Link from '@docusaurus/Link';
 
 const FeatureList = [
@@ -14,17 +13,19 @@ const FeatureList = [
         <Link href="/docs/patterns/introduction">See our patterns</Link>
       </>
     ),
+    img: '/img/hero/patterns.png',
   },
   {
     title: 'Framework agnostic',
     description: (
       <>
-        Have multiple front-end stack in your organisation and need a consistent look and feel? Go Components utilise modern browser features such as web
-        components and CSS custom properties so that they can be used in your front-end tech stack.
+        Have multiple front-end stack in your organisation and need a consistent look and feel? Go UI utilise modern browser features such as Web Components and
+        CSS custom properties so that they can be used in any front-end tech stack.
         <br />
-        <Link href="#">See framework integration</Link>
+        <Link href="/docs/guides/integration/web-components">See framework integration</Link>
       </>
     ),
+    img: '/img/hero/dev.png',
   },
   {
     title: 'Accessibility focused',
@@ -34,6 +35,7 @@ const FeatureList = [
         components go through automated accessibility testing to ensure they meet the WCAG 2.1 AA standard.
       </>
     ),
+    img: '/img/hero/a11y.png',
   },
   {
     title: 'Adaptive',
@@ -43,26 +45,26 @@ const FeatureList = [
         preferences from the user's operating system.
       </>
     ),
+    img: '/img/hero/adaptive.png',
   },
 ];
 
-function Feature({ Svg, title, description, idx }) {
-  return (
-    <div className="row">
-      <div className="col col--6">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
+    <section className="features">
       <div className="container">
-        {FeatureList.map((props, idx) => (
-          <Feature key={idx} {...props} />
+        {FeatureList.map(({ title, description, img }, idx) => (
+          <div key={idx} className={`feature ${idx % 2 == 0 ? 'feature-alt' : ''}`}>
+            {img && (
+              <div className="feature__img">
+                <img src={img} alt={`${title} illustration`} />
+              </div>
+            )}
+            <div className="feature__text">
+              <h2>{title}</h2>
+              <p>{description}</p>
+            </div>
+          </div>
         ))}
       </div>
     </section>
