@@ -5,7 +5,7 @@ const path = require('path');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Go UI',
-  tagline: 'A pattern-first, framework-agnostic, a11y-focused, open source design system.',
+  tagline: 'A design system for everyone.',
   url: 'https://go.components.style',
   baseUrl: '/',
   onBrokenLinks: 'warn',

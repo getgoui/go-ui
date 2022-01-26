@@ -2,16 +2,23 @@ import React from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import HomepageFeatures from '../components/HomepageFeatures';
 import Mailchimp from 'react-mailchimp-form';
+import './index.scss';
+import Logo from '../../static/img/logo.svg';
+import HomepageFeatures from '../components/HomepageFeatures';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header>
       <div className="container">
-        <h1 className="pt-5">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className="hero">
+          <Logo className="hero__logo" />
+          <div className="hero__text">
+            <h1 className="hero__title">{siteConfig.title}</h1>
+            <p className="hero__subtitle">{siteConfig.tagline}</p>
+          </div>
+        </div>
       </div>
     </header>
   );

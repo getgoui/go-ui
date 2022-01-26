@@ -1,0 +1,12 @@
+.hero {
+  flex-direction: column;
+  padding: 6rem;
+  text-align: center;
+  .hero__logo {
+    width: 12rem;
+  }
+  .hero__title {
+    margin-top: 1rem;
+    font-size: 4rem;
+  }
+}
