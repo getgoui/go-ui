@@ -11,7 +11,7 @@ const FeatureList = [
         Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use.
         Allowing both design and development teams to focus on delivering the product.
         <br />
-        <Link href="#">See our patterns</Link>
+        <Link href="/docs/patterns/introduction">See our patterns</Link>
       </>
     ),
   },
@@ -46,11 +46,11 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ Svg, title, description, idx }) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center padding-horiz--sm">
-        <h4>{title}</h4>
+    <div className="row">
+      <div className="col col--6">
+        <h3>{title}</h3>
         <p>{description}</p>
       </div>
     </div>
@@ -61,11 +61,9 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+        {FeatureList.map((props, idx) => (
+          <Feature key={idx} {...props} />
+        ))}
       </div>
     </section>
   );

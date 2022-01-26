@@ -6,12 +6,12 @@
  * work well for content-centric websites.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400&family=Public+Sans:wght@100;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
 /* You can override the default Infima variables here. */
 :root {
   --go-heading-font-family: 'Public Sans', sans-serif;
-  --go-body-font-family: 'Oxygen', sans-serif;
+  --go-body-font-family: 'Roboto', sans-serif;
   --ifm-color-primary-lightest: var(--go-color-primary-100);
   --ifm-color-primary-lighter: var(--go-color-primary-300);
   --ifm-color-primary-light: var(--go-color-primary-400);
@@ -147,4 +147,14 @@ a[target='_blank'].navbar__item {
   pre {
     font-size: var(--go-size--1);
   }
+}
+
+.theme-code-block {
+  button {
+    font-size: var(--go-size--1);
+  }
+}
+
+.admonition {
+  margin-top: 1em;
 }

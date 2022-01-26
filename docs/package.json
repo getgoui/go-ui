@@ -33,6 +33,7 @@
     "remark-mermaid-dataurl": "^1.0.2",
     "sass": "^1.45.1",
     "swiper": "^7.3.3",
+    "typewriter-effect": "^2.18.2",
     "url-loader": "^4.1.1"
   },
   "browserslist": {

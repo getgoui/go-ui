@@ -6,6 +6,8 @@ import Mailchimp from 'react-mailchimp-form';
 import './index.scss';
 import Logo from '../../static/img/logo.svg';
 import HomepageFeatures from '../components/HomepageFeatures';
+import CodeBlock from '@theme/CodeBlock';
+import Typewriter from 'typewriter-effect';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -16,7 +18,22 @@ function HomepageHeader() {
           <Logo className="hero__logo" />
           <div className="hero__text">
             <h1 className="hero__title">{siteConfig.title}</h1>
-            <p className="hero__subtitle">{siteConfig.tagline}</p>
+            <p className="hero__subtitle">
+              A design system for
+              <Typewriter
+                options={{
+                  strings: ['everyone', 'Angular developers', 'React developers', 'Vue developers', 'designers', 'content creators'],
+                  autoStart: true,
+                  loop: true,
+                  delay: 55,
+                  deleteSpeed: 30,
+                  pauseFor: 2000,
+                }}
+              />
+            </p>
+            <div className="margin-top--md">
+              <CodeBlock language="bash">npm i @go-ui/core</CodeBlock>
+            </div>
           </div>
         </div>
       </div>
