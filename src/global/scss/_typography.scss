@@ -104,7 +104,8 @@ code {
 a {
   color: var(--go-color-link);
   &:hover,
-  &:focus {
+  &:focus-visible {
+    background: var(--go-color-link-hover-bg);
     color: var(--go-color-link-hover);
   }
 }

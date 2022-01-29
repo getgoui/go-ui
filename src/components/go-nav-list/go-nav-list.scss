@@ -1,0 +1,30 @@
+go-nav-list {
+  display: inline-block;
+  &[block] {
+    display: block;
+  }
+
+  .nav-list-header {
+    font-size: var(--go-size-1);
+    font-weight: 700;
+    border-bottom: 1px solid var(--go-color-neutral-300);
+    padding: 0.5rem 0.25rem;
+    .nav-list-header-text {
+      display: flex;
+      padding: 0;
+      line-height: 1.5;
+    }
+  }
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .nav-item-link {
+      --nav-link-padding: 0;
+
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+  }
+}

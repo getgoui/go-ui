@@ -140,30 +140,8 @@ go-main-nav {
       ul {
         border-top: 1px solid var(--go-color-secondary-100);
       }
-    }
-
-    .nav-item-link {
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      text-decoration: none;
-      padding: var(--submenu-link-padding);
-      border-left: var(--nav-item-current-bar-width) solid transparent;
-      svg {
-        @include transition(transform);
-
-        transform: translateX(0);
-      }
-      &:hover,
-      &:focus {
-        background: var(--submenu-link-hover-bg-color);
-        svg {
-          transform: translateX(4px);
-        }
-      }
-
-      &.current {
-        border-left-color: var(--nav-item-current-bar-color);
+      go-nav-link {
+        display: block;
       }
     }
   }

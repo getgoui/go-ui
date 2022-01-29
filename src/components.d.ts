@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Breakpoints, ColorVariants, INavMenu } from "./types";
+import { Breakpoints, ColorVariants, INavItem, INavMenu } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export namespace Components {
     interface DarkModeToggle {
@@ -126,6 +126,7 @@ export namespace Components {
         "role": 'dialog' | 'alertdialog';
     }
     interface GoFooter {
+        "items": INavItem[];
     }
     interface GoGovAuLogo {
         /**
@@ -191,6 +192,28 @@ export namespace Components {
          */
         "position"?: 'left' | 'right';
         "toggle": () => Promise<void>;
+    }
+    interface GoNavLink {
+        "item": INavItem;
+        "showArrow": boolean;
+    }
+    interface GoNavList {
+        /**
+          * Make the list full width
+         */
+        "block": boolean;
+        /**
+          * Heading text
+         */
+        "heading": string;
+        /**
+          * Heading navigation item
+         */
+        "headingItem": INavItem;
+        /**
+          * list of navigation items to be displayed
+         */
+        "items": INavItem[];
     }
     interface GoOverlay {
         "active": boolean;
@@ -285,6 +308,18 @@ declare global {
         prototype: HTMLGoNavDrawerElement;
         new (): HTMLGoNavDrawerElement;
     };
+    interface HTMLGoNavLinkElement extends Components.GoNavLink, HTMLStencilElement {
+    }
+    var HTMLGoNavLinkElement: {
+        prototype: HTMLGoNavLinkElement;
+        new (): HTMLGoNavLinkElement;
+    };
+    interface HTMLGoNavListElement extends Components.GoNavList, HTMLStencilElement {
+    }
+    var HTMLGoNavListElement: {
+        prototype: HTMLGoNavListElement;
+        new (): HTMLGoNavListElement;
+    };
     interface HTMLGoOverlayElement extends Components.GoOverlay, HTMLStencilElement {
     }
     var HTMLGoOverlayElement: {
@@ -311,6 +346,8 @@ declare global {
         "go-icon": HTMLGoIconElement;
         "go-main-nav": HTMLGoMainNavElement;
         "go-nav-drawer": HTMLGoNavDrawerElement;
+        "go-nav-link": HTMLGoNavLinkElement;
+        "go-nav-list": HTMLGoNavListElement;
         "go-overlay": HTMLGoOverlayElement;
         "go-search-bar": HTMLGoSearchBarElement;
     }
@@ -432,6 +469,7 @@ declare namespace LocalJSX {
         "role"?: 'dialog' | 'alertdialog';
     }
     interface GoFooter {
+        "items"?: INavItem[];
     }
     interface GoGovAuLogo {
         /**
@@ -494,6 +532,29 @@ declare namespace LocalJSX {
          */
         "position"?: 'left' | 'right';
     }
+    interface GoNavLink {
+        "item"?: INavItem;
+        "onNavigate"?: (event: CustomEvent<any>) => void;
+        "showArrow"?: boolean;
+    }
+    interface GoNavList {
+        /**
+          * Make the list full width
+         */
+        "block"?: boolean;
+        /**
+          * Heading text
+         */
+        "heading"?: string;
+        /**
+          * Heading navigation item
+         */
+        "headingItem"?: INavItem;
+        /**
+          * list of navigation items to be displayed
+         */
+        "items"?: INavItem[];
+    }
     interface GoOverlay {
         "active"?: boolean;
         /**
@@ -525,6 +586,8 @@ declare namespace LocalJSX {
         "go-icon": GoIcon;
         "go-main-nav": GoMainNav;
         "go-nav-drawer": GoNavDrawer;
+        "go-nav-link": GoNavLink;
+        "go-nav-list": GoNavList;
         "go-overlay": GoOverlay;
         "go-search-bar": GoSearchBar;
     }
@@ -546,6 +609,8 @@ declare module "@stencil/core" {
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
+            "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
+            "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
         }
