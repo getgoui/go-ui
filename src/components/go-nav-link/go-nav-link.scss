@@ -1,8 +1,11 @@
 go-nav-link {
-  --nav-link-padding: var(--go-size--1);
+  --nav-link-padding: 0.5rem 1rem;
   --nav-link-current-bar-width: 4px;
 
   display: inline-block;
+  &[block] {
+    display: block;
+  }
   .nav-item-link {
     display: flex;
     align-items: center;
@@ -14,6 +17,7 @@ go-nav-link {
     svg {
       @include transition(transform);
 
+      margin-left: auto;
       transform: translateX(0);
     }
     &:hover,

@@ -35,11 +35,14 @@ Type: `Promise<INavMenu>`
 ### Depends on
 
 - [go-icon](../../components/go-icon)
+- [go-nav-link](../../components/go-nav-link)
 
 ### Graph
 ```mermaid
 graph TD;
   go-main-nav --> go-icon
+  go-main-nav --> go-nav-link
+  go-nav-link --> go-icon
   style go-main-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

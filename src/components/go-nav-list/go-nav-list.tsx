@@ -29,7 +29,7 @@ export class GoNavList {
   @Prop({ reflect: true }) block: boolean = false;
 
   render() {
-    const { items, headingItem, heading } = this;
+    const { items, headingItem, heading, block } = this;
     let label = 'Navigation list';
     if (headingItem?.label) {
       label = headingItem.label;
@@ -42,7 +42,7 @@ export class GoNavList {
       <nav aria-label={label}>
         {headingItem ? (
           <div class="nav-list-header">
-            <go-nav-link class="nav-list-header-text" item={headingItem}></go-nav-link>
+            <go-nav-link block={block} class="nav-list-header-text" item={headingItem}></go-nav-link>
           </div>
         ) : null}
 
@@ -58,7 +58,7 @@ export class GoNavList {
           <ul class="nav-list">
             {items.map((item) => (
               <li>
-                <go-nav-link item={item}></go-nav-link>
+                <go-nav-link block={block} item={item}></go-nav-link>
               </li>
             ))}
           </ul>

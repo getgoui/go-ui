@@ -194,7 +194,17 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface GoNavLink {
+        /**
+          * full width
+         */
+        "block": boolean;
+        /**
+          * navigation item
+         */
         "item": INavItem;
+        /**
+          * show arrow at the end of the link
+         */
         "showArrow": boolean;
     }
     interface GoNavList {
@@ -533,8 +543,18 @@ declare namespace LocalJSX {
         "position"?: 'left' | 'right';
     }
     interface GoNavLink {
+        /**
+          * full width
+         */
+        "block"?: boolean;
+        /**
+          * navigation item
+         */
         "item"?: INavItem;
         "onNavigate"?: (event: CustomEvent<any>) => void;
+        /**
+          * show arrow at the end of the link
+         */
         "showArrow"?: boolean;
     }
     interface GoNavList {

@@ -10,9 +10,20 @@ import { inheritAttributes } from '../../utils/helper';
 export class GoNavLink {
   @Element() el: HTMLElement;
 
+  /**
+   * navigation item
+   */
   @Prop() item: INavItem;
 
+  /**
+   * show arrow at the end of the link
+   */
   @Prop() showArrow = false;
+
+  /**
+   * full width
+   */
+  @Prop({ reflect: true }) block = false;
 
   @Event({
     eventName: 'navigate',

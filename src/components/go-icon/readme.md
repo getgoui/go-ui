@@ -19,12 +19,14 @@
 
  - [go-main-nav](../../patterns/go-main-nav)
  - [go-nav-drawer](../go-nav-drawer)
+ - [go-nav-link](../go-nav-link)
 
 ### Graph
 ```mermaid
 graph TD;
   go-main-nav --> go-icon
   go-nav-drawer --> go-icon
+  go-nav-link --> go-icon
   style go-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

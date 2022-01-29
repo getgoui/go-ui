@@ -199,7 +199,7 @@ export class GoMainNav {
         {item.children ? (
           <div class="submenu-container">
             <div class="submenu-header">
-              <span class="h6">{this.renderNavLink(item, true)}</span>
+              <go-nav-link block item={item} showArrow></go-nav-link>
               {item?.description ? <p class="description">{item.description}</p> : null}
             </div>
             <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
