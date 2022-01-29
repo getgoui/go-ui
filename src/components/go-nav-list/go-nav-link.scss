@@ -1,0 +1,30 @@
+go-nav-link {
+  --nav-link-padding: var(--go-size--1);
+  --nav-link-current-bar-width: 4px;
+
+  display: inline-block;
+  .nav-item-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    text-decoration: none;
+    padding: var(--nav-link-padding);
+    border-left: var(--nav-link-current-bar-width) solid transparent;
+    line-height: 1.5;
+    svg {
+      @include transition(transform);
+
+      transform: translateX(0);
+    }
+    &:hover,
+    &:focus-visible {
+      svg {
+        transform: translateX(4px);
+      }
+    }
+
+    &.current {
+      border-left-color: var(--nav-item-current-bar-color);
+    }
+  }
+}

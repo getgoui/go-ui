@@ -127,16 +127,24 @@ export class GoMainNav {
     if (hasChildren) {
       return (
         <div class="submenu">
-          <div class="submenu-header">{this.renderNavLink(parent)}</div>
+          <div class="submenu-header">
+            <go-nav-link item={parent}></go-nav-link>
+          </div>
           <ul>
             {parent.children.map((child) => (
-              <li>{this.renderNavLink(child)}</li>
+              <li>
+                <go-nav-link item={child}></go-nav-link>
+              </li>
             ))}
           </ul>
         </div>
       );
     }
-    return <div class="nav-item">{this.renderNavLink(parent)}</div>;
+    return (
+      <div class="nav-item">
+        <go-nav-link item={parent}></go-nav-link>
+      </div>
+    );
   }
 
   renderRootNavItem(item: INavItem) {

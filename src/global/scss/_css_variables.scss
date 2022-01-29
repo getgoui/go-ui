@@ -1,4 +1,13 @@
-// CSS Variables
+/*********************
+
+Default set of CSS variables used in Go UI
+
+*********************/
+
+// load external google font
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@0,400;0,700;1,400&display=swap');
+
+// load color tokens
 @import './themes/tokens';
 
 /* @link https://utopia.fyi/type/calculator?c=768,16,1.25,1400,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
@@ -19,8 +28,8 @@
   --go-col-gap: 0; // Gap between columns
 
   // Typography
-  --go-heading-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  --go-body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --go-heading-font-family: 'Public Sans', sans-serif;
+  --go-body-font-family: 'Public Sans', sans-serif;
 
   // Focus styles
   --go-focus-outline-width: 2px;
@@ -31,7 +40,8 @@
   --go-color-bg: var(--go-color-lightest);
   --go-color-text: var(--go-color-darkest);
   --go-color-link: var(--go-color-secondary-800);
-  --go-color-link-hover: var(--go-color-secondary-600);
+  --go-color-link-hover: var(--go-color-secondary-800);
+  --go-color-link-hover-bg: var(--go-color-neutral-200);
 
   // Transitions
   --go-duration-fast: 0.1s;
