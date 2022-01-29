@@ -15,8 +15,9 @@ export class GoFooter {
     return (
       <Host>
         <footer>
-          <nav></nav>
-
+          <div class="container">
+            <go-nav-list items={this.items}></go-nav-list>
+          </div>
           <div class="external-links">
             <slot name="external-links"></slot>
           </div>

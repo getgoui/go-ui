@@ -15,6 +15,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [go-footer](../../patterns/footer)
+
 ### Depends on
 
 - [go-nav-link](../go-nav-link)
@@ -24,6 +28,7 @@
 graph TD;
   go-nav-list --> go-nav-link
   go-nav-link --> go-icon
+  go-footer --> go-nav-list
   style go-nav-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
