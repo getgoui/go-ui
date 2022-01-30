@@ -1,8 +1,8 @@
 import { Component, Element, h, Method, Prop, State, Host, EventEmitter, Event, Watch } from '@stencil/core';
-import JSON5 from 'json5';
-import { INavItem, INavMenu } from '../../types';
+import { INavItem } from '../../types';
 import { onClickOutside } from '../../utils/dom';
 import { inheritAttributes } from '../../utils/helper';
+import { parseItems } from '../../utils/nav';
 
 @Component({
   tag: 'go-main-nav',
@@ -16,15 +16,15 @@ export class GoMainNav {
    * Navigation items to be rendered
    * if provided, slot content will not be rendered.
    */
-  @Prop() items?: INavMenu | string;
+  @Prop() items?: INavItem[] | string;
 
-  @State() navItems: INavMenu = null;
+  @State() navItems: INavItem[] = null;
 
   // Store attributes inherited from the host element
   private inheritedAttrs = {};
   async componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position']);
-    this.navItems = await this.parseItems(this.items);
+    this.navItems = parseItems(this.items);
     // click outside to close menus
     onClickOutside(this.el, () => {
       this.closeAllSubMenus();
@@ -38,21 +38,17 @@ export class GoMainNav {
   }
 
   /**
-   * parse items prop passed into the menu component
-   * @param items {INavMenu|string} menu items to be rendered
+   * Initialise the menu
+   * @param items {INavItem[]} menu items to be rendered
    */
   @Method()
-  async parseItems(items: INavMenu | string): Promise<INavMenu> {
-    try {
-      return typeof items === 'string' ? JSON5.parse(items) : items;
-    } catch (e) {
-      console.warn('Could not parse items', e);
-    }
+  async init(newItems: INavItem[] | string) {
+    this.navItems = parseItems(newItems);
   }
 
   @Watch('items')
-  async watchItems(newItems: INavMenu | string) {
-    this.navItems = await this.parseItems(newItems);
+  async watchItems(newItems: INavItem[] | string) {
+    this.navItems = parseItems(newItems);
   }
 
   private closeAllSubMenus() {

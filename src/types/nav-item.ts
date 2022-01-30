@@ -7,5 +7,3 @@ export interface INavItem {
   isCurrent?: boolean;
   linkAttrs?: any;
 }
-
-export type INavMenu = INavItem[];

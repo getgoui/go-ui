@@ -1,5 +1,6 @@
-import { Component, h, Element, Prop } from '@stencil/core';
+import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../types';
+import { parseItems } from '../../utils/nav';
 @Component({
   tag: 'go-nav-list',
   styleUrl: 'go-nav-list.scss',
@@ -11,12 +12,16 @@ export class GoNavList {
   /**
    * list of navigation items to be displayed
    */
-  @Prop() items: INavItem[];
+  @Prop() items: INavItem[] | string;
+
+  @State() navItems: INavItem[];
 
   /**
    * Heading navigation item
    */
-  @Prop() headingItem: INavItem;
+  @Prop() headingItem: INavItem | string;
+
+  @State() navHeading: INavItem;
 
   /**
    * Heading text
@@ -28,21 +33,39 @@ export class GoNavList {
    */
   @Prop({ reflect: true }) block: boolean = false;
 
+  @Watch('items')
+  async watchItems(newItems: INavItem[] | string) {
+    this.navItems = parseItems(newItems);
+  }
+
+  @Watch('headingItem')
+  async watchHeadingItem(newItem: INavItem | string) {
+    this.navHeading = parseItems(newItem);
+  }
+
+  componentWillLoad() {
+    this.navItems = parseItems(this.items);
+    this.navHeading = parseItems(this.headingItem);
+  }
+
   render() {
-    const { items, headingItem, heading, block } = this;
+    const { navItems, navHeading, heading, block } = this;
     let label = 'Navigation list';
-    if (headingItem?.label) {
-      label = headingItem.label;
+    if (navHeading?.label) {
+      label = navHeading.label;
     }
     if (heading) {
       label = heading;
     }
-
     return (
       <nav aria-label={label}>
-        {headingItem ? (
+        {navHeading ? (
           <div class="nav-list-header">
-            <go-nav-link block={block} class="nav-list-header-text" item={headingItem}></go-nav-link>
+            {navHeading.url ? (
+              <go-nav-link showArrow block={block} class="nav-list-header-text" item={navHeading}></go-nav-link>
+            ) : (
+              <span class="nav-list-header-text">{navHeading.label}</span>
+            )}
           </div>
         ) : null}
 
@@ -54,9 +77,9 @@ export class GoNavList {
 
         <slot name="heading"></slot>
 
-        {items?.length > 0 ? (
+        {navItems?.length > 0 ? (
           <ul class="nav-list">
-            {items.map((item) => (
+            {navItems.map((item) => (
               <li>
                 <go-nav-link block={block} item={item}></go-nav-link>
               </li>

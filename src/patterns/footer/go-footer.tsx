@@ -16,7 +16,9 @@ export class GoFooter {
       <Host>
         <footer>
           <div class="container">
-            <go-nav-list items={this.items}></go-nav-list>
+            {this.items.map((item) => (
+              <go-nav-list headingItem={item} items={item?.children}></go-nav-list>
+            ))}
           </div>
           <div class="external-links">
             <slot name="external-links"></slot>

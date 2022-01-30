@@ -5,12 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Breakpoints, ColorVariants, INavItem, INavMenu } from "./types";
+import { Breakpoints, ColorVariants, INavItem } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export namespace Components {
     interface DarkModeToggle {
     }
     interface DemoControls {
+    }
+    interface DemoPlayground {
     }
     interface GoAccordion {
         /**
@@ -164,14 +166,14 @@ export namespace Components {
     }
     interface GoMainNav {
         /**
-          * Navigation items to be rendered if provided, slot content will not be rendered.
-         */
-        "items"?: INavMenu | string;
-        /**
-          * parse items prop passed into the menu component
+          * Initialise the menu
           * @param items menu items to be rendered
          */
-        "parseItems": (items: INavMenu | string) => Promise<INavMenu>;
+        "init": (newItems: INavItem[] | string) => Promise<void>;
+        /**
+          * Navigation items to be rendered if provided, slot content will not be rendered.
+         */
+        "items"?: INavItem[] | string;
     }
     interface GoNavDrawer {
         "active": boolean;
@@ -180,11 +182,11 @@ export namespace Components {
           * Initialise the menu
           * @param items menu items to be rendered
          */
-        "init": (items: INavMenu) => Promise<void>;
+        "init": (newItems: INavItem[] | string) => Promise<void>;
         /**
           * Navigation items to be rendered
          */
-        "items"?: INavMenu | string;
+        "items"?: INavItem[] | string;
         "label": string;
         "open": () => Promise<void>;
         /**
@@ -219,11 +221,11 @@ export namespace Components {
         /**
           * Heading navigation item
          */
-        "headingItem": INavItem;
+        "headingItem": INavItem | string;
         /**
           * list of navigation items to be displayed
          */
-        "items": INavItem[];
+        "items": INavItem[] | string;
     }
     interface GoOverlay {
         "active": boolean;
@@ -251,6 +253,12 @@ declare global {
     var HTMLDemoControlsElement: {
         prototype: HTMLDemoControlsElement;
         new (): HTMLDemoControlsElement;
+    };
+    interface HTMLDemoPlaygroundElement extends Components.DemoPlayground, HTMLStencilElement {
+    }
+    var HTMLDemoPlaygroundElement: {
+        prototype: HTMLDemoPlaygroundElement;
+        new (): HTMLDemoPlaygroundElement;
     };
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
     }
@@ -345,6 +353,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "dark-mode-toggle": HTMLDarkModeToggleElement;
         "demo-controls": HTMLDemoControlsElement;
+        "demo-playground": HTMLDemoPlaygroundElement;
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
         "go-button": HTMLGoButtonElement;
@@ -366,6 +375,8 @@ declare namespace LocalJSX {
     interface DarkModeToggle {
     }
     interface DemoControls {
+    }
+    interface DemoPlayground {
     }
     interface GoAccordion {
         /**
@@ -519,7 +530,7 @@ declare namespace LocalJSX {
         /**
           * Navigation items to be rendered if provided, slot content will not be rendered.
          */
-        "items"?: INavMenu | string;
+        "items"?: INavItem[] | string;
         "onNavigate"?: (event: CustomEvent<any>) => void;
     }
     interface GoNavDrawer {
@@ -527,7 +538,7 @@ declare namespace LocalJSX {
         /**
           * Navigation items to be rendered
          */
-        "items"?: INavMenu | string;
+        "items"?: INavItem[] | string;
         "label"?: string;
         /**
           * Emitted when the nav drawer is closed
@@ -569,11 +580,11 @@ declare namespace LocalJSX {
         /**
           * Heading navigation item
          */
-        "headingItem"?: INavItem;
+        "headingItem"?: INavItem | string;
         /**
           * list of navigation items to be displayed
          */
-        "items"?: INavItem[];
+        "items"?: INavItem[] | string;
     }
     interface GoOverlay {
         "active"?: boolean;
@@ -595,6 +606,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "dark-mode-toggle": DarkModeToggle;
         "demo-controls": DemoControls;
+        "demo-playground": DemoPlayground;
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
         "go-button": GoButton;
@@ -618,6 +630,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "dark-mode-toggle": LocalJSX.DarkModeToggle & JSXBase.HTMLAttributes<HTMLDarkModeToggleElement>;
             "demo-controls": LocalJSX.DemoControls & JSXBase.HTMLAttributes<HTMLDemoControlsElement>;
+            "demo-playground": LocalJSX.DemoPlayground & JSXBase.HTMLAttributes<HTMLDemoPlaygroundElement>;
             "go-accordion": LocalJSX.GoAccordion & JSXBase.HTMLAttributes<HTMLGoAccordionElement>;
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;

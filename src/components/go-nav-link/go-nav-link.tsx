@@ -66,7 +66,7 @@ export class GoNavLink {
             stroke-linecap="round"
             stroke-linejoin="round"
             viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5l7 7-7 7" />
+            <path d="m9 18 6-6-6-6" />
           </svg>
         ) : null}
       </Tag>

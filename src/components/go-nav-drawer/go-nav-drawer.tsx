@@ -1,9 +1,9 @@
 import { Component, h, Element, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
-import JSON5 from 'json5';
 
 import { inheritAttributes } from '../../utils/helper';
-import { INavItem, INavMenu } from '../../types/';
+import { INavItem } from '../../types/';
 import { trapFocus } from '../../utils/trap-focus';
+import { parseItems } from '../../utils/nav';
 
 @Component({
   tag: 'go-nav-drawer',
@@ -21,9 +21,9 @@ export class GoNavDrawer {
   /**
    * Navigation items to be rendered
    */
-  @Prop() items?: INavMenu | string;
+  @Prop() items?: INavItem[] | string;
 
-  @State() navItems: INavMenu = null;
+  @State() navItems: INavItem[] = null;
 
   // keep track of open state of drawer
   @Prop({ mutable: true, reflect: true }) active = false;
@@ -35,11 +35,11 @@ export class GoNavDrawer {
 
   /**
    * Initialise the menu
-   * @param items {INavMenu} menu items to be rendered
+   * @param items {INavItem[]} menu items to be rendered
    */
   @Method()
-  async init(items: INavMenu) {
-    this.navItems = items;
+  async init(newItems: INavItem[] | string) {
+    this.navItems = parseItems(newItems);
   }
 
   /**
@@ -91,7 +91,7 @@ export class GoNavDrawer {
   componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position'], false);
     try {
-      this.navItems = typeof this.items === 'string' ? JSON5.parse(this.items) : this.items;
+      this.navItems = parseItems(this.items);
     } catch (e) {
       console.log({ e });
     }
@@ -132,7 +132,7 @@ export class GoNavDrawer {
     }
   }
 
-  subMenus: { string: INavMenu } = null;
+  subMenus: { string: INavItem[] } = null;
 
   renderNavItems(items: INavItem[], parentItem?: INavItem) {
     const isSubNav = !!parentItem;

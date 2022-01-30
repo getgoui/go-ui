@@ -17,6 +17,7 @@ go-nav-link {
     svg {
       @include transition(transform);
 
+      height: 1.25em;
       margin-left: auto;
       transform: translateX(0);
     }
