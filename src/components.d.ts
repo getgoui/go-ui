@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IProp } from "./demo-components/demo-playground/demo-playground";
 import { Breakpoints, ColorVariants, INavItem } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export namespace Components {
@@ -13,6 +14,11 @@ export namespace Components {
     interface DemoControls {
     }
     interface DemoPlayground {
+        "props": IProp[] | string;
+        /**
+          * query selector for the component to apply props to
+         */
+        "target": string;
     }
     interface GoAccordion {
         /**
@@ -377,6 +383,12 @@ declare namespace LocalJSX {
     interface DemoControls {
     }
     interface DemoPlayground {
+        "onLoaded"?: (event: CustomEvent<HTMLElement>) => void;
+        "props"?: IProp[] | string;
+        /**
+          * query selector for the component to apply props to
+         */
+        "target"?: string;
     }
     interface GoAccordion {
         /**

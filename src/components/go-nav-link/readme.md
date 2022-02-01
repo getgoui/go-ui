@@ -23,7 +23,7 @@
 
 ### Used by
 
- - [go-main-nav](../../patterns/go-main-nav)
+ - [go-main-nav](../go-main-nav)
  - [go-nav-list](../go-nav-list)
 
 ### Depends on

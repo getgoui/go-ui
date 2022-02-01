@@ -1,0 +1,1673 @@
+{
+  "timestamp": "2022-01-30T09:54:57",
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "2.12.1",
+    "typescriptVersion": "4.3.5"
+  },
+  "components": [
+    {
+      "filePath": "./src/demo-components/demo-controls/dark-mode-toggle.tsx",
+      "encapsulation": "none",
+      "tag": "dark-mode-toggle",
+      "readme": "## demo-controls API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "demo-controls"
+      ],
+      "dependencies": [
+        "go-button"
+      ],
+      "dependencyGraph": {
+        "dark-mode-toggle": [
+          "go-button"
+        ],
+        "demo-controls": [
+          "dark-mode-toggle"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/demo-components/demo-controls/demo-controls.tsx",
+      "encapsulation": "none",
+      "tag": "demo-controls",
+      "readme": "## demo-controls API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "dark-mode-toggle"
+      ],
+      "dependencyGraph": {
+        "demo-controls": [
+          "dark-mode-toggle"
+        ],
+        "dark-mode-toggle": [
+          "go-button"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/demo-components/demo-playground/demo-playground.tsx",
+      "encapsulation": "none",
+      "tag": "demo-playground",
+      "readme": "## demo-playground API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-accordion/go-accordion.tsx",
+      "encapsulation": "none",
+      "tag": "go-accordion",
+      "readme": "## go-accordion API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "multiple",
+          "reflectToAttr": false,
+          "docs": "If multiple `<go-accordion-item>`s can open at the same time",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [
+        {
+          "event": "opened",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-accordion/go-accordion-item.tsx",
+      "encapsulation": "none",
+      "tag": "go-accordion-item",
+      "readme": "## go-accordion API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "If the accordion item should be opened by default",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "autoHeight",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "auto-height",
+          "reflectToAttr": false,
+          "docs": "If expanded height should be automatically calculated. If set, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height",
+          "docsTags": [],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Heading text.\nThis will be overwritten by `heading` slot",
+          "docsTags": [],
+          "default": "null",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "headingTag",
+          "type": "string",
+          "mutable": false,
+          "attr": "heading-tag",
+          "reflectToAttr": false,
+          "docs": "The HTML tag to be applied to the heading text.\nThis will be overwritten by `heading` slot",
+          "docsTags": [],
+          "default": "'h3'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "close",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "close() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes the accordion item",
+          "docsTags": []
+        },
+        {
+          "name": "focusOnControl",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "focusOnControl() => Promise<void>",
+          "parameters": [],
+          "docs": "Focus on header control",
+          "docsTags": []
+        },
+        {
+          "name": "open",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "open() => Promise<void>",
+          "parameters": [],
+          "docs": "Opens the accordion item.",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "toggle() => Promise<void>",
+          "parameters": [],
+          "docs": "Toggle open state of accordion item",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "closed",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when accordion item has closed",
+          "docsTags": []
+        },
+        {
+          "event": "closing",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when accordion item started closing",
+          "docsTags": []
+        },
+        {
+          "event": "opened",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when accordion item has opened",
+          "docsTags": []
+        },
+        {
+          "event": "opening",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when accordion item started opening",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-button/go-button.tsx",
+      "encapsulation": "none",
+      "tag": "go-button",
+      "readme": "## API\n",
+      "docs": "",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "start - Use this slot to prepend content to the button."
+        },
+        {
+          "name": "slot",
+          "text": "end - Use this slot to append content to the button."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "block",
+          "type": "\"\" | \"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
+          "mutable": false,
+          "attr": "block",
+          "reflectToAttr": false,
+          "docs": "If set, the button will take up the full width of its parent\nIf block=\"{breakpoint}\" is set, the button will take up the full width for the specified breakpoint. e.g. a `block=\"mobile\"` button will display full width on mobile devices.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "desktop",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "mobile",
+              "type": "string"
+            },
+            {
+              "value": "tablet",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "\"critical\" | \"primary\" | \"secondary\" | \"tertiary\"",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "Color variants",
+          "docsTags": [],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "critical",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "tertiary",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "compact",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "compact",
+          "reflectToAttr": true,
+          "docs": "Reduce inner gaps and outer paddings",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If this button is disabled",
+          "docsTags": [],
+          "default": "null",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "flat",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "flat",
+          "reflectToAttr": true,
+          "docs": "If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "mutable": false,
+          "attr": "href",
+          "reflectToAttr": false,
+          "docs": "If the button has an href, it will be rendered as an anchor tag",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": true,
+          "docs": "Circle shaped icon only button that has min size of 40px for touch devices",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "outline",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "outline",
+          "reflectToAttr": true,
+          "docs": "If `outline` is true, the button will have a border based on selected variant",
+          "docsTags": [
+            {
+              "name": "see",
+              "text": " `variant` property"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "outlineFill",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "outline-fill",
+          "reflectToAttr": true,
+          "docs": "Outline style with filled background",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "round",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "round",
+          "reflectToAttr": true,
+          "docs": "If button should have pill-shaped corners",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "stack",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "stack",
+          "reflectToAttr": true,
+          "docs": "Stack elements inside the button",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "\"button\" | \"reset\" | \"submit\"",
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "Html type of the button",
+          "docsTags": [],
+          "default": "'button'",
+          "values": [
+            {
+              "value": "button",
+              "type": "string"
+            },
+            {
+              "value": "reset",
+              "type": "string"
+            },
+            {
+              "value": "submit",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "end",
+          "docs": "Use this slot to append content to the button."
+        },
+        {
+          "name": "start",
+          "docs": "Use this slot to prepend content to the button."
+        }
+      ],
+      "parts": [],
+      "dependents": [
+        "dark-mode-toggle",
+        "go-dialog",
+        "go-nav-drawer",
+        "go-search-bar"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "dark-mode-toggle": [
+          "go-button"
+        ],
+        "go-dialog": [
+          "go-button"
+        ],
+        "go-nav-drawer": [
+          "go-button"
+        ],
+        "go-search-bar": [
+          "go-button"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/patterns/go-button-group/go-button-group.tsx",
+      "encapsulation": "none",
+      "tag": "go-button-group",
+      "readme": "# go-button-group\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-dialog/go-dialog.tsx",
+      "encapsulation": "none",
+      "tag": "go-dialog",
+      "readme": "## go-dialog API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "If this dialog is active",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Heading of the overlay content",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "persistent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "persistent",
+          "reflectToAttr": false,
+          "docs": "If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "role",
+          "type": "\"alertdialog\" | \"dialog\"",
+          "mutable": false,
+          "attr": "role",
+          "reflectToAttr": false,
+          "docs": "Accessible role of the dialog, can be dialog or alertdialog",
+          "docsTags": [],
+          "default": "'dialog'",
+          "values": [
+            {
+              "value": "alertdialog",
+              "type": "string"
+            },
+            {
+              "value": "dialog",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "close",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "close() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "open",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "open() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-overlay",
+        "go-button"
+      ],
+      "dependencyGraph": {
+        "go-dialog": [
+          "go-overlay",
+          "go-button"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/patterns/footer/go-footer.tsx",
+      "encapsulation": "none",
+      "tag": "go-footer",
+      "readme": "## footer API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "items",
+          "type": "INavItem[]",
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-nav-list"
+      ],
+      "dependencyGraph": {
+        "go-footer": [
+          "go-nav-list"
+        ],
+        "go-nav-list": [
+          "go-nav-link"
+        ],
+        "go-nav-link": [
+          "go-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/patterns/go-gov-au-logo/go-gov-au-logo.tsx",
+      "encapsulation": "none",
+      "tag": "go-gov-au-logo",
+      "readme": "## API\n",
+      "docs": "",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "crest - This should be where you reference the Australian Government crest img resource (on light background)."
+        },
+        {
+          "name": "slot",
+          "text": "crest-on-dark - This should be where you reference the Australian Government crest img resource (on dark background)."
+        },
+        {
+          "name": "slot",
+          "text": "co-brand - Add co-branding agency logo / elements here."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "height",
+          "type": "string",
+          "mutable": false,
+          "attr": "height",
+          "reflectToAttr": false,
+          "docs": "Set height of the logo group. Slots will be scaled to this height.\nWidth is set to auto to avoid image distortion.",
+          "docsTags": [],
+          "default": "'3rem'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "mutable": false,
+          "attr": "href",
+          "reflectToAttr": false,
+          "docs": "If href is provided, logo will be wrapped inside an anchor (`a`) tag. By default, all attributes except `class` and `style` are passed through to the anchor tag.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "co-brand",
+          "docs": "Add co-branding agency logo / elements here."
+        },
+        {
+          "name": "crest",
+          "docs": "This should be where you reference the Australian Government crest img resource (on light background)."
+        },
+        {
+          "name": "crest-on-dark",
+          "docs": "This should be where you reference the Australian Government crest img resource (on dark background)."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/patterns/header-bar/go-header-bar.tsx",
+      "encapsulation": "none",
+      "tag": "go-header-bar",
+      "readme": "## API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "breakpoint",
+          "type": "\"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
+          "mutable": false,
+          "attr": "breakpoint",
+          "reflectToAttr": false,
+          "docs": "Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)",
+          "docsTags": [],
+          "default": "'desktop'",
+          "values": [
+            {
+              "value": "desktop",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "mobile",
+              "type": "string"
+            },
+            {
+              "value": "tablet",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-icon/go-icon.tsx",
+      "encapsulation": "none",
+      "tag": "go-icon",
+      "readme": "## API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Color of the icon,  supports CSS units and variables.\nDefault: `currentColor`",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "iconSet",
+          "type": "\"bx\" | \"bxl\" | \"bxs\" | \"fab\" | \"fad\" | \"fal\" | \"far\" | \"fas\" | \"material-icons\" | \"material-icons-outlined\" | \"material-icons-round\" | \"material-icons-sharp\"",
+          "mutable": false,
+          "attr": "icon-set",
+          "reflectToAttr": true,
+          "docs": "Specify the icon set being referenced.\nIcon font CSS files must be included in the page.",
+          "docsTags": [],
+          "default": "'material-icons'",
+          "values": [
+            {
+              "value": "bx",
+              "type": "string"
+            },
+            {
+              "value": "bxl",
+              "type": "string"
+            },
+            {
+              "value": "bxs",
+              "type": "string"
+            },
+            {
+              "value": "fab",
+              "type": "string"
+            },
+            {
+              "value": "fad",
+              "type": "string"
+            },
+            {
+              "value": "fal",
+              "type": "string"
+            },
+            {
+              "value": "far",
+              "type": "string"
+            },
+            {
+              "value": "fas",
+              "type": "string"
+            },
+            {
+              "value": "material-icons",
+              "type": "string"
+            },
+            {
+              "value": "material-icons-outlined",
+              "type": "string"
+            },
+            {
+              "value": "material-icons-round",
+              "type": "string"
+            },
+            {
+              "value": "material-icons-sharp",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "Name of the icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Size of the icon, supports CSS units and variables.\nDefault: 1.5em for material icons, 1em for other icon sets.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "go-main-nav",
+        "go-nav-drawer",
+        "go-nav-link"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "go-main-nav": [
+          "go-icon"
+        ],
+        "go-nav-drawer": [
+          "go-icon"
+        ],
+        "go-nav-link": [
+          "go-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/go-main-nav/go-main-nav.tsx",
+      "encapsulation": "none",
+      "tag": "go-main-nav",
+      "readme": "## go-main-nav API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "items",
+          "type": "INavItem[] | string",
+          "mutable": false,
+          "attr": "items",
+          "reflectToAttr": false,
+          "docs": "Navigation items to be rendered\nif provided, slot content will not be rendered.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "init",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "init(newItems: INavItem[] | string) => Promise<void>",
+          "parameters": [],
+          "docs": "Initialise the menu",
+          "docsTags": [
+            {
+              "name": "param",
+              "text": "items menu items to be rendered"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "event": "navigate",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-icon",
+        "go-nav-link"
+      ],
+      "dependencyGraph": {
+        "go-main-nav": [
+          "go-icon",
+          "go-nav-link"
+        ],
+        "go-nav-link": [
+          "go-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/go-nav-drawer/go-nav-drawer.tsx",
+      "encapsulation": "none",
+      "tag": "go-nav-drawer",
+      "readme": "## go-nav-drawer API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "items",
+          "type": "INavItem[] | string",
+          "mutable": false,
+          "attr": "items",
+          "reflectToAttr": false,
+          "docs": "Navigation items to be rendered",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "'Menu'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "\"left\" | \"right\"",
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": true,
+          "docs": "Position where the navigation should appear from",
+          "docsTags": [],
+          "default": "'left'",
+          "values": [
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "close",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "close() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "init",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "init(newItems: INavItem[] | string) => Promise<void>",
+          "parameters": [],
+          "docs": "Initialise the menu",
+          "docsTags": [
+            {
+              "name": "param",
+              "text": "items menu items to be rendered"
+            }
+          ]
+        },
+        {
+          "name": "open",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "open() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "toggle() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "close",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the nav drawer is closed",
+          "docsTags": []
+        },
+        {
+          "event": "open",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the nav drawer is opened",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-button",
+        "go-icon",
+        "go-overlay"
+      ],
+      "dependencyGraph": {
+        "go-nav-drawer": [
+          "go-button",
+          "go-icon",
+          "go-overlay"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/go-nav-link/go-nav-link.tsx",
+      "encapsulation": "none",
+      "tag": "go-nav-link",
+      "readme": "## go-nav-link API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "block",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "block",
+          "reflectToAttr": true,
+          "docs": "full width",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "item",
+          "type": "INavItem",
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "navigation item",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "showArrow",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "show-arrow",
+          "reflectToAttr": false,
+          "docs": "show arrow at the end of the link",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "navigate",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "go-main-nav",
+        "go-nav-list"
+      ],
+      "dependencies": [
+        "go-icon"
+      ],
+      "dependencyGraph": {
+        "go-nav-link": [
+          "go-icon"
+        ],
+        "go-main-nav": [
+          "go-nav-link"
+        ],
+        "go-nav-list": [
+          "go-nav-link"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/go-nav-list/go-nav-list.tsx",
+      "encapsulation": "none",
+      "tag": "go-nav-list",
+      "readme": "## go-nav-list API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "block",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "block",
+          "reflectToAttr": true,
+          "docs": "Make the list full width",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Heading text",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "headingItem",
+          "type": "INavItem | string",
+          "mutable": false,
+          "attr": "heading-item",
+          "reflectToAttr": false,
+          "docs": "Heading navigation item",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "items",
+          "type": "INavItem[] | string",
+          "mutable": false,
+          "attr": "items",
+          "reflectToAttr": false,
+          "docs": "list of navigation items to be displayed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "go-footer"
+      ],
+      "dependencies": [
+        "go-nav-link"
+      ],
+      "dependencyGraph": {
+        "go-nav-list": [
+          "go-nav-link"
+        ],
+        "go-nav-link": [
+          "go-icon"
+        ],
+        "go-footer": [
+          "go-nav-list"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/go-overlay/go-overlay.tsx",
+      "encapsulation": "none",
+      "tag": "go-overlay",
+      "readme": "## go-overlay API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "persistent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "persistent",
+          "reflectToAttr": false,
+          "docs": "If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "close",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "close() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "open",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "open() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "overlayClose",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the overlay is closed",
+          "docsTags": []
+        },
+        {
+          "event": "overlayOpen",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the overlay is opened",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "go-dialog",
+        "go-nav-drawer",
+        "go-search-bar"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "go-dialog": [
+          "go-overlay"
+        ],
+        "go-nav-drawer": [
+          "go-overlay"
+        ],
+        "go-search-bar": [
+          "go-overlay"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/go-search-bar/go-search-bar.tsx",
+      "encapsulation": "none",
+      "tag": "go-search-bar",
+      "readme": "## go-search-bar API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [
+        {
+          "name": "closeSearchForm",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "closeSearchForm() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "openSearchForm",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "openSearchForm() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-overlay",
+        "go-button"
+      ],
+      "dependencyGraph": {
+        "go-search-bar": [
+          "go-overlay",
+          "go-button"
+        ]
+      }
+    }
+  ]
+}

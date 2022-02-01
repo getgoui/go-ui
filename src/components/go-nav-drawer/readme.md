@@ -33,7 +33,7 @@ Type: `Promise<void>`
 
 
 
-### `init(items: INavMenu) => Promise<void>`
+### `init(newItems: INavItem[] | string) => Promise<void>`
 
 Initialise the menu
 

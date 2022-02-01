@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [go-main-nav](../../patterns/go-main-nav)
+ - [go-main-nav](../go-main-nav)
  - [go-nav-drawer](../go-nav-drawer)
  - [go-nav-link](../go-nav-link)
 

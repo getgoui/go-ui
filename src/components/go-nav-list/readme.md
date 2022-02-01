@@ -5,12 +5,12 @@
 
 ## Properties
 
-| Property      | Attribute | Description                              | Type         | Default     |
-| ------------- | --------- | ---------------------------------------- | ------------ | ----------- |
-| `block`       | `block`   | Make the list full width                 | `boolean`    | `false`     |
-| `heading`     | `heading` | Heading text                             | `string`     | `undefined` |
-| `headingItem` | --        | Heading navigation item                  | `INavItem`   | `undefined` |
-| `items`       | --        | list of navigation items to be displayed | `INavItem[]` | `undefined` |
+| Property      | Attribute      | Description                              | Type                   | Default     |
+| ------------- | -------------- | ---------------------------------------- | ---------------------- | ----------- |
+| `block`       | `block`        | Make the list full width                 | `boolean`              | `false`     |
+| `heading`     | `heading`      | Heading text                             | `string`               | `undefined` |
+| `headingItem` | `heading-item` | Heading navigation item                  | `INavItem \| string`   | `undefined` |
+| `items`       | `items`        | list of navigation items to be displayed | `INavItem[] \| string` | `undefined` |
 
 
 ## Dependencies

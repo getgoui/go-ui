@@ -19,13 +19,13 @@
 
 ## Methods
 
-### `parseItems(items: INavMenu | string) => Promise<INavMenu>`
+### `init(newItems: INavItem[] | string) => Promise<void>`
 
-parse items prop passed into the menu component
+Initialise the menu
 
 #### Returns
 
-Type: `Promise<INavMenu>`
+Type: `Promise<void>`
 
 
 
@@ -34,8 +34,8 @@ Type: `Promise<INavMenu>`
 
 ### Depends on
 
-- [go-icon](../../components/go-icon)
-- [go-nav-link](../../components/go-nav-link)
+- [go-icon](../go-icon)
+- [go-nav-link](../go-nav-link)
 
 ### Graph
 ```mermaid
