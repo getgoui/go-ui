@@ -1,3 +1,43 @@
 demo-playground {
- display: block;
+  display: block;
+  .demo {
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+  .demo-content {
+    position: relative;
+  }
+  .demo-bg {
+    --demo-bg-line-color: var(--go-color-text);
+
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background-color: var(--go-color-bg);
+    background-size: 1rem 1rem;
+    background-image: repeating-linear-gradient(0deg, var(--demo-bg-line-color), var(--demo-bg-line-color) 1px, var(--go-color-bg) 1px, var(--go-color-bg));
+  }
+
+  .controls {
+    padding: 1rem;
+  }
+  .prop-control {
+    margin-bottom: 1rem;
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    input:not([type='checkbox']),
+    select {
+      width: 100%;
+      padding: 0.5rem;
+    }
+  }
+  .usage {
+    pre {
+      font-size: 0.8rem;
+    }
+  }
 }

@@ -18,7 +18,7 @@ export namespace Components {
         /**
           * query selector for the component to apply props to
          */
-        "target": string;
+        "tag": string;
     }
     interface GoAccordion {
         /**
@@ -388,7 +388,7 @@ declare namespace LocalJSX {
         /**
           * query selector for the component to apply props to
          */
-        "target"?: string;
+        "tag"?: string;
     }
     interface GoAccordion {
         /**

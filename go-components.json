@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-01-30T09:54:57",
+  "timestamp": "2022-02-01T21:32:41",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.12.1",
@@ -72,9 +72,56 @@
       "docs": "",
       "docsTags": [],
       "usage": {},
-      "props": [],
+      "props": [
+        {
+          "name": "props",
+          "type": "IProp[] | string",
+          "mutable": true,
+          "attr": "props",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "IProp[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "mutable": false,
+          "attr": "tag",
+          "reflectToAttr": false,
+          "docs": "query selector for the component to apply props to",
+          "docsTags": [],
+          "default": "null",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "loaded",
+          "detail": "HTMLElement",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [],
       "slots": [],

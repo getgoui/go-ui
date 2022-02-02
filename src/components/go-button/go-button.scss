@@ -93,7 +93,7 @@ go-button {
       --go-btn-text-color: var(--go-btn-bg-color);
 
       background: transparent;
-      border: 2px solid var(--go-btn-bg-color);
+      border-color: var(--go-btn-bg-color);
       &:hover,
       &:focus-visible {
         background: var(--go-btn-bg-color);
@@ -163,6 +163,7 @@ go-button {
     text-align: center;
     background: var(--go-btn-bg-color);
     color: var(--go-btn-text-color);
+    border: 2px solid transparent;
     border-radius: var(--go-btn-radius);
     padding: var(--go-btn-padding-y, 0.5rem) var(--go-btn-padding-x, 1rem);
     box-shadow: var(--go-btn-shadow);

@@ -4,14 +4,14 @@ go-accordion {
       Horizontal padding for item heading
       - default: 1rem
   */
-  --heading-padding-x: 2rem;
+  --heading-padding-x: 1rem;
 
   /**
     @prop --heading-padding-y:
       Vertical padding for item heading
-      - default: 1rem
+      - default: 0.5rem
   */
-  --heading-padding-y: 1rem;
+  --heading-padding-y: var(--go-size--1);
 
   /**
     @prop --panel-padding-x:
@@ -46,14 +46,14 @@ go-accordion {
       Heading background colour
       - default: var(--go-color-background, #f5f5f5)
   */
-  --heading-bg-color: var(--go-color-secondary-100);
+  --heading-bg-color: var(--go-color-secondary-200);
 
   /**
     @prop --heading-font-size:
       Heading font size
-      - default: var(--go-size-1, 1rem)
+      - default: var(--go-size-0, 1rem)
   */
-  --heading-font-size: var(--go-size-1, 1rem);
+  --heading-font-size: var(--go-size-0, 1rem);
 
   /**
     @prop --heading-font-weight:
@@ -65,9 +65,9 @@ go-accordion {
   /**
     @prop --panel-bg-color:
       Content background colour
-      - default: var(--go-color-background, #f5f5f5)
+      - default: var(--go-color-neutral-200)
   */
-  --panel-bg-color: transparent;
+  --panel-bg-color: var(--go-color-neutral-200);
 
   /**
     @prop --heading-border-bottom:

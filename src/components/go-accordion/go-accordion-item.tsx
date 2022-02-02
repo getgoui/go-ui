@@ -175,8 +175,17 @@ export class GoAccordionItem {
               {this.hasArrowSlot ? (
                 <slot name="arrow"></slot>
               ) : (
-                <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false">
+                  <path d="m6 9 6 6 6-6" />
                 </svg>
               )}
             </span>

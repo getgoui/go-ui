@@ -65,7 +65,9 @@ export class GoNavLink {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            viewBox="0 0 24 24">
+            viewBox="0 0 24 24"
+            focusable="false"
+            aria-hidden="true">
             <path d="m9 18 6-6-6-6" />
           </svg>
         ) : null}

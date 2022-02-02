@@ -17,7 +17,7 @@ go-accordion-item {
       border: none;
       padding: var(--heading-padding-y) var(--heading-padding-x);
       cursor: pointer;
-      transition: border-radius var(--go-duration-normal) ease var(--go-duration-normal);
+      @include transition(border-radius);
       &:hover,
       &:focus-visible {
         --heading-bg-color: var(--go-color-secondary-600);
@@ -31,15 +31,10 @@ go-accordion-item {
     .arrow {
       display: block;
       color: currentColor;
-      svg {
-        width: 1.5em;
-        height: 1.5em;
-        path {
-          fill: currentColor;
-        }
-      }
+      @include transition(transform);
 
-      transition: transform var(--go-duration-normal) var(--go-timing-function);
+      width: 1.5em;
+      height: 1.5em;
     }
   }
   .panel-wrapper {

@@ -19,12 +19,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
     <demo-playground
-      target="go-button"
+      tag="go-button"
       props="[
-        {prop: 'outline', type: 'boolean', value: true},
+        {name: 'outline', type: 'boolean', value: false},
+        {name: 'outlineFill', type: 'boolean', value: false},
+        {name: 'round', type: 'boolean', value: false},
+        {name: 'color', type: 'select', value: 'primary', 'options': ['primary','secondary','tertiary','critical']},
       ]"
     >
-      <go-button>Test button</go-button>
+      <go-button>Button</go-button>
     </demo-playground>
 
     <!-- #endregion demo finish -->
