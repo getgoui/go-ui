@@ -10,11 +10,10 @@ describe('footer', () => {
   });
 
   it('renders', async () => {
-    const page = await newE2EPage({html});
-    const element = await page.find('footer');
-    expect(element).toHaveClass("hydrated");
+    const page = await newE2EPage({ html });
+    const element = await page.find('go-footer');
+    expect(element).toHaveClass('hydrated');
   });
-
 
   it('passes automated a11y test', async () => {
     const page = await newE2EPage({ html });
