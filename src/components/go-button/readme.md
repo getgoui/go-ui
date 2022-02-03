@@ -33,7 +33,6 @@
 
 ### Used by
 
- - [dark-mode-toggle](../../demo-components/demo-controls)
  - [go-dialog](../go-dialog)
  - [go-nav-drawer](../go-nav-drawer)
  - [go-search-bar](../go-search-bar)
@@ -41,7 +40,6 @@
 ### Graph
 ```mermaid
 graph TD;
-  dark-mode-toggle --> go-button
   go-dialog --> go-button
   go-nav-drawer --> go-button
   go-search-bar --> go-button
