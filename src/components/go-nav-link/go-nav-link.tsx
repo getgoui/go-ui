@@ -39,6 +39,13 @@ export class GoNavLink {
 
   render() {
     const { inheritedAttrs } = this;
+    if (!this.item) {
+      return (
+        <a {...inheritedAttrs}>
+          <slot></slot>
+        </a>
+      );
+    }
     const { isCurrent, url, icon, label } = this.item;
 
     let Tag = this.item.isCurrent ? 'span' : 'a';
