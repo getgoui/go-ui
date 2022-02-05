@@ -11,7 +11,7 @@
 }
 
 // utility classes for text sizes
-@for $i from -1 through 7 {
+@for $i from -1 through 8 {
   .text-size-#{$i} {
     @include text-size($i);
   }

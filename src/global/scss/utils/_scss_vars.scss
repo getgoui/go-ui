@@ -29,13 +29,13 @@ $grid-columns: 12 !default;
 $typography: (
   display-1: (
     weight: 700,
-    size: 7,
-    line-height: 1.9,
+    size: 8,
+    line-height: 1.5,
   ),
   display-2: (
     weight: 700,
-    size: 6,
-    line-height: 1.8,
+    size: 7,
+    line-height: 1.5,
   ),
   h1: (
     weight: 700,
@@ -73,19 +73,9 @@ $typography: (
     line-height: 1.5,
     tag: true,
   ),
-  big: (
-    weight: 400,
-    size: 1,
-    line-height: 1.5,
-  ),
   body: (
     weight: 400,
     size: 0,
-    line-height: 1.5,
-  ),
-  small: (
-    weight: 400,
-    size: -1,
     line-height: 1.5,
   ),
 ) !default;

@@ -10,18 +10,20 @@ Default set of CSS variables used in Go UI
 // load color tokens
 @import './themes/tokens';
 
-/* @link https://utopia.fyi/type/calculator?c=768,16,1.25,1400,18,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+/* @link https://utopia.fyi/type/calculator?c=768,16,1.2,1440,16,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
 :root {
   /* stylelint-disable-next-line custom-property-pattern */
-  --go-size--1: clamp(0.8rem, 0.68rem + 0.25vw, 0.9rem);
-  --go-size-0: clamp(1rem, 0.85rem + 0.32vw, 1.13rem);
-  --go-size-1: clamp(1.25rem, 1.06rem + 0.4vw, 1.41rem);
-  --go-size-2: clamp(1.56rem, 1.32rem + 0.5vw, 1.76rem);
-  --go-size-3: clamp(1.95rem, 1.66rem + 0.62vw, 2.2rem);
-  --go-size-4: clamp(2.44rem, 2.07rem + 0.77vw, 2.75rem);
-  --go-size-5: clamp(3.05rem, 2.59rem + 0.97vw, 3.43rem);
-  --go-size-6: clamp(3.82rem, 3.24rem + 1.21vw, 4.29rem);
-  --go-size-7: clamp(4.77rem, 4.04rem + 1.51vw, 5.36rem);
+  --go-size--1: clamp(0.83rem, 0.87rem + -0.08vw, 0.8rem);
+  --go-size-0: clamp(1rem, 1rem + 0vw, 1rem);
+  --go-size-1: clamp(1.2rem, 1.14rem + 0.12vw, 1.25rem);
+  --go-size-2: clamp(1.44rem, 1.3rem + 0.29vw, 1.56rem);
+  --go-size-3: clamp(1.73rem, 1.47rem + 0.54vw, 1.95rem);
+  --go-size-4: clamp(2.07rem, 1.65rem + 0.88vw, 2.44rem);
+  --go-size-5: clamp(2.49rem, 1.84rem + 1.34vw, 3.05rem);
+  --go-size-6: clamp(2.99rem, 2.04rem + 1.97vw, 3.82rem);
+  --go-size-7: clamp(3.58rem, 2.23rem + 2.82vw, 4.77rem);
+  --go-size-8: clamp(4.3rem, 2.4rem + 3.95vw, 5.96rem);
 
   // Grid
   --go-outer-gutter: 1rem; // Container gutter
