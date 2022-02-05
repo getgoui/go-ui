@@ -1,48 +1,21 @@
-<!-- material icons -->
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
 <div class="container">
-  <!-- color variants -->
-  <h3>Button colors</h3>
-  <go-button class="what up" color="primary">Primary</go-button>
-  <go-button color="secondary">Secondary</go-button>
-  <go-button color="tertiary">Tertiary</go-button>
-  <go-button color="critical">Critical</go-button>
+  <demo-playground
+    tag="go-button"
+    props="[
+    {name: 'color', type: 'select', value: 'primary', 'options': ['primary','secondary','tertiary','critical']},
+    {name: 'outline', type: 'boolean', value: false},
+    {name: 'outlineFill', type: 'boolean', value: false},
+    {name: 'flat', type: 'boolean', value: false},
+    {name: 'disabled', type: 'boolean', value: false},
+    {name: 'round', type: 'boolean', value: false},
+    {name: 'compact', type: 'boolean', value: false},
+  ]"
+  >
+    <go-button>Button</go-button>
+  </demo-playground>
 
-  <!-- outline -->
-  <h3>Outline <span class="text-size-0">(Transparent background)</span></h3>
-  <go-button outline color="primary">Primary</go-button>
-  <go-button outline color="secondary">Secondary</go-button>
-  <go-button outline color="tertiary">Tertiary</go-button>
-  <go-button outline color="critical">Critical</go-button>
-
-  <!-- outline filled variants -->
-  <h3>Outline fill</h3>
-  <go-button outline-fill color="primary">Primary</go-button>
-  <go-button outline-fill color="secondary">Secondary</go-button>
-  <go-button outline-fill color="tertiary">Tertiary</go-button>
-  <go-button outline-fill color="critical">Critical</go-button>
-
-  <!-- flat -->
-  <h3>Flat</h3>
-  <go-button flat color="primary">Primary</go-button>
-  <go-button flat color="secondary">Secondary</go-button>
-  <go-button flat color="tertiary">Tertiary</go-button>
-  <go-button flat color="critical">Critical</go-button>
-
-  <!-- disabled -->
-  <h3>Disabled</h3>
-  <go-button disabled color="primary">Primary</go-button>
-  <go-button disabled color="secondary">Secondary</go-button>
-  <go-button disabled color="tertiary">Tertiary</go-button>
-  <go-button disabled color="critical">Critical</go-button>
-
-  <!-- round -->
-  <h3>Round</h3>
-  <go-button round color="primary">Primary</go-button>
-  <go-button round color="secondary">Secondary</go-button>
-  <go-button round color="tertiary">Tertiary</go-button>
-  <go-button round color="critical">Critical</go-button>
 
   <!-- block -->
   <h3>Block</h3>

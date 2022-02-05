@@ -9,27 +9,15 @@
     <link rel="stylesheet" href="/build/go-ui.css" />
     <script type="module" src="/build/go-ui.esm.js"></script>
     <script nomodule src="/build/go-ui.js"></script>
+
+    <!-- demo components -->
+    <script type="module" src="//cdn.jsdelivr.net/npm/go-ui-demo-utils@latest/dist/go-utils/go-utils.esm.js"></script>
   </head>
   <body>
     <!-- keep this sandbox empty before pushing changes -->
 
     <!-- #region demo start -->
-
-    <!-- material icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-    <demo-playground
-      tag="go-button"
-      props="[
-        {name: 'outline', type: 'boolean', value: false},
-        {name: 'outlineFill', type: 'boolean', value: false},
-        {name: 'round', type: 'boolean', value: false},
-        {name: 'color', type: 'select', value: 'primary', 'options': ['primary','secondary','tertiary','critical']},
-      ]"
-    >
-      <go-button>Button</go-button>
-    </demo-playground>
-
+    <div class="container"></div>
     <!-- #endregion demo finish -->
 
     <aside>
