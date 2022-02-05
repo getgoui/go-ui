@@ -66,7 +66,7 @@ export class GoNavLink {
     attrs['class'] = ` nav-item-link ${attrs['class'] ? attrs['class'] : ''}${isCurrent ? ' current' : ''}`;
     return (
       <Tag {...attrs}>
-        {icon && <go-icon name={icon}></go-icon>}
+        {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
         <span>{label}</span>
         {this.showArrow ? (
           <svg
