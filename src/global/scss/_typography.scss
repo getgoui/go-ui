@@ -109,10 +109,3 @@ a {
     color: var(--go-color-link-hover);
   }
 }
-
-// external links
-a[target='_blank'] {
-  &::after {
-    content: ' \2197';
-  }
-}
