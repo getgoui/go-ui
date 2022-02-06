@@ -80,8 +80,6 @@ export class GoButton {
   componentWillLoad() {
     // a11y check
     if (this.icon) {
-      console.log(this.root);
-      console.log(this.root.hasAttribute('aria-label'));
       if (!this.root.hasAttribute('aria-label') && !this.root.hasAttribute('aria-labelledby')) {
         warnA11y(`go-button with icon must have either aria-label or aria-labelledby attribute`, this.root);
       }

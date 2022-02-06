@@ -50,15 +50,8 @@ export class GoNavList {
 
   render() {
     const { navItems, navHeading, heading, block } = this;
-    let label = 'Navigation list';
-    if (navHeading?.label) {
-      label = navHeading.label;
-    }
-    if (heading) {
-      label = heading;
-    }
     return (
-      <nav aria-label={label}>
+      <div>
         {navHeading ? (
           <div class="nav-list-header">
             {navHeading.url ? (
@@ -88,7 +81,7 @@ export class GoNavList {
         ) : (
           <slot></slot>
         )}
-      </nav>
+      </div>
     );
   }
 }
