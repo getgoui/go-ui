@@ -40,16 +40,22 @@ export class GoIcon {
    */
   @Prop() color?: string;
 
+  /**
+   * Mark this icon to be hidden from screen reader
+   */
+  @Prop() decorative: boolean = false;
+
   private attrs = {} as any;
   componentWillLoad() {
     this.attrs = inheritAttributes(this.el, [], false);
   }
 
   render() {
-    const { iconSet, name, size, color, attrs } = this;
+    const { iconSet, name, size, color, decorative, attrs } = this;
     const { class: customClasses } = attrs;
     return (
       <Host
+        aria-hidden={decorative}
         style={{
           '--icon-size': size ? size : null,
           '--icon-color': color ? color : null,

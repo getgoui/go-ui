@@ -17,7 +17,72 @@
     <!-- keep this sandbox empty before pushing changes -->
 
     <!-- #region demo start -->
-    <div class="container"></div>
+    <go-footer
+      items="[
+    {
+      label: 'Features',
+      url: '#',
+      icon: 'star',
+      children: [
+        {
+          label: 'Home',
+          url: '#',
+          icon: 'home'
+        },
+        {
+          label: 'About',
+          url: '#',
+          icon: 'info'
+        },
+        {
+          label: 'Contact',
+          url: '#',
+          icon: 'contact_mail'
+        }
+      ]
+    },
+    {
+      label: 'Get involved',
+      children: [
+        {
+          label: 'Bug report',
+          url: '#',
+        },
+        {
+          label: 'Feature request',
+          url: '#',
+        },
+        {
+          label: 'Development guide',
+          url: '#',
+        },
+      ],
+    },
+    {
+      label: 'Community',
+      icon: 'people',
+      children: [
+        {
+          label: 'Discord',
+          url: 'https://discord.gg/g7cuQAdPfS',
+          linkAttr: {
+            target: '_blank',
+            rel: 'noopener noreferrer'
+          }
+        },
+        {
+          label: 'Twitter',
+          url: 'https://twitter.com/go-components',
+          linkAttr: {
+            target: '_blank',
+            rel: 'noopener noreferrer'
+          }
+        },
+      ],
+    },
+  ]"
+    ></go-footer>
+
     <!-- #endregion demo finish -->
 
     <aside>

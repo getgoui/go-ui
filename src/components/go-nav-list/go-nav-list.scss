@@ -1,4 +1,6 @@
 go-nav-list {
+  --nav-list-header-padding: 1rem 0.5rem;
+
   display: inline-block;
   &[block] {
     display: block;
@@ -8,11 +10,10 @@ go-nav-list {
     font-size: var(--go-size-1);
     font-weight: 700;
     border-bottom: 1px solid var(--go-color-neutral-300);
-    padding: 0.5rem 0.25rem;
     .nav-list-header-text {
       display: flex;
-      padding: 0;
       line-height: 1.5;
+      padding: var(--nav-list-header-padding);
     }
   }
   .nav-list {
@@ -21,7 +22,7 @@ go-nav-list {
     margin: 0;
 
     .nav-item-link {
-      --nav-link-padding: 0;
+      --nav-link-padding: 0.5rem;
 
       font-size: 1rem;
       margin: 0.25rem 0;

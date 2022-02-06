@@ -122,7 +122,14 @@ export namespace Components {
         "role": 'dialog' | 'alertdialog';
     }
     interface GoFooter {
-        "items": INavItem[];
+        /**
+          * Navigation links to be displayed.
+         */
+        "items": INavItem[] | string;
+        /**
+          * Label for navigation
+         */
+        "navLabel"?: string;
     }
     interface GoGovAuLogo {
         /**
@@ -145,6 +152,10 @@ export namespace Components {
           * Color of the icon,  supports CSS units and variables. Default: `currentColor`
          */
         "color"?: string;
+        /**
+          * Mark this icon to be hidden from screen reader
+         */
+        "decorative": boolean;
         /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
@@ -457,7 +468,14 @@ declare namespace LocalJSX {
         "role"?: 'dialog' | 'alertdialog';
     }
     interface GoFooter {
-        "items"?: INavItem[];
+        /**
+          * Navigation links to be displayed.
+         */
+        "items"?: INavItem[] | string;
+        /**
+          * Label for navigation
+         */
+        "navLabel"?: string;
     }
     interface GoGovAuLogo {
         /**
@@ -480,6 +498,10 @@ declare namespace LocalJSX {
           * Color of the icon,  supports CSS units and variables. Default: `currentColor`
          */
         "color"?: string;
+        /**
+          * Mark this icon to be hidden from screen reader
+         */
+        "decorative"?: boolean;
         /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
