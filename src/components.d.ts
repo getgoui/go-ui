@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoints, ColorVariants, INavItem } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+import { INavItem as INavItem1 } from "./components/types";
 export namespace Components {
     interface GoAccordion {
         /**
