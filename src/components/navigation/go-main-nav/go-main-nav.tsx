@@ -1,8 +1,8 @@
 import { Component, Element, h, Method, Prop, State, Host, EventEmitter, Event, Watch } from '@stencil/core';
-import { INavItem } from '../../types';
-import { onClickOutside } from '../../utils/dom';
-import { inheritAttributes } from '../../utils/helper';
-import { parseItems } from '../../utils/nav';
+import { INavItem } from '../../../types';
+import { onClickOutside } from '../../../utils/dom';
+import { inheritAttributes } from '../../../utils/helper';
+import { parseItems } from '../../../utils/nav';
 
 @Component({
   tag: 'go-main-nav',

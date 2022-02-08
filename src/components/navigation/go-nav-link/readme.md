@@ -28,7 +28,7 @@
 
 ### Depends on
 
-- [go-icon](../go-icon)
+- [go-icon](../../go-icon)
 
 ### Graph
 ```mermaid

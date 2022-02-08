@@ -100,12 +100,3 @@ code {
 .font-heading {
   font-family: var(--go-heading-font-family);
 }
-
-a {
-  color: var(--go-color-link);
-  &:hover,
-  &:focus-visible {
-    background: var(--go-color-link-hover-bg);
-    color: var(--go-color-link-hover);
-  }
-}

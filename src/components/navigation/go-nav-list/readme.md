@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [go-footer](../../patterns/footer)
+ - [go-footer](../../../patterns/footer)
 
 ### Depends on
 

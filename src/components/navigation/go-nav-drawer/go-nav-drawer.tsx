@@ -1,9 +1,9 @@
 import { Component, h, Element, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
 
-import { inheritAttributes } from '../../utils/helper';
-import { INavItem } from '../../types/';
-import { trapFocus } from '../../utils/trap-focus';
-import { parseItems } from '../../utils/nav';
+import { inheritAttributes } from '../../../utils/helper';
+import { INavItem } from '../../../types/';
+import { trapFocus } from '../../../utils/trap-focus';
+import { parseItems } from '../../../utils/nav';
 
 @Component({
   tag: 'go-nav-drawer',

@@ -43,7 +43,7 @@ export class GoFooter {
     return (
       <Host>
         <footer>
-          <div class="container">
+          <div class="container nav-container">
             {navItems ? (
               <NavWrapperTag aria-label={navLabel}>
                 <div class="row">
@@ -56,11 +56,17 @@ export class GoFooter {
               <slot name="nav"></slot>
             )}
           </div>
-          <div class="external-links">
-            <slot name="external-links"></slot>
+
+          <div class="container">
+            <div class="external-links">
+              <slot name="external-links"></slot>
+            </div>
           </div>
-          <div class="copyright">
-            <slot name="copyright"></slot>
+
+          <div class="container">
+            <div class="copyright">
+              <slot name="copyright"></slot>
+            </div>
           </div>
         </footer>
       </Host>

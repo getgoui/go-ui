@@ -34,7 +34,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [go-icon](../go-icon)
+- [go-icon](../../go-icon)
 - [go-nav-link](../go-nav-link)
 
 ### Graph

@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
-import { INavItem } from '../../types';
-import { parseItems } from '../../utils/nav';
+import { INavItem } from '../../../types';
+import { parseItems } from '../../../utils/nav';
 @Component({
   tag: 'go-nav-list',
   styleUrl: 'go-nav-list.scss',

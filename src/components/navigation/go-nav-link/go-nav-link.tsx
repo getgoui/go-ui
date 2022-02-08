@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { INavItem } from '../../types';
-import { inheritAttributes } from '../../utils/helper';
+import { INavItem } from '../../../types';
+import { inheritAttributes } from '../../../utils/helper';
 
 @Component({
   tag: 'go-nav-link',
