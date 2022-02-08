@@ -1,6 +1,9 @@
 go-footer {
+  --footer-section-gap: 3rem;
+
   display: block;
   .nav-container {
+    padding-bottom: var(--footer-section-gap);
     border-bottom: 1px solid var(--go-color-neutral-300);
   }
 }

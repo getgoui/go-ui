@@ -28,16 +28,21 @@ export class GoFooter {
    */
   @Prop() navLabel?: string = 'Footer navigation';
 
+  private hasCopyRightSlot = false;
+
   componentWillLoad() {
     console.log(this.items);
     this.navItems = parseItems(this.items);
     if (this.navItems?.length > 0 && !this.navLabel) {
       warnA11y('Please add a unique "nav-label" in order to put navigation items into the nav landmark for better accessibility.');
     }
+
+    // check if copyright slot is empty
+    this.hasCopyRightSlot = !!this.el.querySelector('slot[name="copyright"]');
   }
 
   render() {
-    const { navItems, navLabel } = this;
+    const { navItems, navLabel, hasCopyRightSlot } = this;
 
     const NavWrapperTag = navLabel ? 'nav' : 'div';
     return (
@@ -58,16 +63,18 @@ export class GoFooter {
           </div>
 
           <div class="container">
-            <div class="external-links">
-              <slot name="external-links"></slot>
+            <div class="extra-links">
+              <slot name="extra-links"></slot>
             </div>
           </div>
 
-          <div class="container">
-            <div class="copyright">
-              <slot name="copyright"></slot>
+          {hasCopyRightSlot ? (
+            <div class="container">
+              <div class="copyright">
+                <slot name="copyright"></slot>
+              </div>
             </div>
-          </div>
+          ) : null}
         </footer>
       </Host>
     );

@@ -67,7 +67,7 @@ export class GoNavLink {
     return (
       <Tag {...attrs}>
         {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
-        <span>{label}</span>
+        <span class="nav-link-text">{label}</span>
         {this.showArrow ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
