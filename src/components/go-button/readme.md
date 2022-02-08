@@ -34,7 +34,7 @@
 ### Used by
 
  - [go-dialog](../go-dialog)
- - [go-nav-drawer](../go-nav-drawer)
+ - [go-nav-drawer](../navigation/go-nav-drawer)
  - [go-search-bar](../go-search-bar)
 
 ### Graph

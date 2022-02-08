@@ -68,9 +68,9 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [go-button](../go-button)
-- [go-icon](../go-icon)
-- [go-overlay](../go-overlay)
+- [go-button](../../go-button)
+- [go-icon](../../go-icon)
+- [go-overlay](../../go-overlay)
 
 ### Graph
 ```mermaid

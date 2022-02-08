@@ -1,5 +1,5 @@
 go-nav-link {
-  --nav-link-padding: 0.5rem 1rem;
+  --nav-link-padding: var(--go-base-spacing) calc(var(--go-base-spacing) * 2);
   --nav-link-current-bar-width: 4px;
 
   display: inline-block;
@@ -10,10 +10,12 @@ go-nav-link {
     display: flex;
     align-items: center;
     gap: 0.5em;
-    text-decoration: none;
     padding: var(--nav-link-padding);
     border-left: var(--nav-link-current-bar-width) solid transparent;
     line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    border-radius: var(--radius-2);
     svg {
       @include transition(transform);
 
@@ -23,6 +25,7 @@ go-nav-link {
     }
     &:hover,
     &:focus-visible {
+      text-decoration: none;
       svg {
         transform: translateX(4px);
       }

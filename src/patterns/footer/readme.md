@@ -5,16 +5,17 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type         | Default     |
-| -------- | --------- | ----------- | ------------ | ----------- |
-| `items`  | --        |             | `INavItem[]` | `undefined` |
+| Property   | Attribute   | Description                       | Type                   | Default               |
+| ---------- | ----------- | --------------------------------- | ---------------------- | --------------------- |
+| `items`    | `items`     | Navigation links to be displayed. | `INavItem[] \| string` | `undefined`           |
+| `navLabel` | `nav-label` | Label for navigation              | `string`               | `'Footer navigation'` |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [go-nav-list](../../components/go-nav-list)
+- [go-nav-list](../../components/navigation/go-nav-list)
 
 ### Graph
 ```mermaid

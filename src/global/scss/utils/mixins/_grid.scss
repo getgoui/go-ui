@@ -5,8 +5,6 @@
 @mixin make-row() {
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(var(--go-gutter-y) * -1);
-  gap: var(--go-col-gap, 1rem);
 }
 
 @mixin make-col-ready() {
@@ -25,6 +23,7 @@
   @if $size {
     flex: 0 0 auto;
     width: percentage(math.div($size, $columns));
+    padding: 0 calc(var(--go-col-gap, 1rem) / 2);
   } @else {
     flex: 1 1 0;
     max-width: 100%;

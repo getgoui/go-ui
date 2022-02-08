@@ -1,3 +1,6 @@
 go-footer {
   display: block;
+  .nav-container {
+    border-bottom: 1px solid var(--go-color-neutral-300);
+  }
 }
