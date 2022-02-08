@@ -1,5 +1,6 @@
 go-nav-list {
-  --nav-list-header-padding: var(--go-base-spacing) 0.5rem;
+  --nav-list-header-padding: var(--go-base-spacing) 0;
+  --nav-list-header-gap: 2rem;
 
   display: inline-block;
   &[block] {
@@ -7,7 +8,8 @@ go-nav-list {
   }
 
   .nav-list-header {
-    font-size: var(--go-size-0);
+    margin-top: var(--nav-list-header-gap);
+    font-size: var(--go-size-1);
     font-weight: 700;
 
     // border-bottom: 1px solid var(--go-color-neutral-300);

@@ -1,5 +1,5 @@
 go-nav-link {
-  --nav-link-padding: var(--go-base-spacing) calc(var(--go-base-spacing) * 2);
+  --nav-link-padding: var(--go-base-spacing) 0;
   --nav-link-current-bar-width: 4px;
 
   display: inline-block;
@@ -13,21 +13,28 @@ go-nav-link {
     padding: var(--nav-link-padding);
     border-left: var(--nav-link-current-bar-width) solid transparent;
     line-height: 1.5;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    border-radius: var(--radius-2);
+    text-decoration: none;
+    .nav-link-text {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+    }
+    go-icon {
+      text-decoration: none;
+    }
     svg {
       @include transition(transform);
 
       height: 1.25em;
       margin-left: auto;
-      transform: translateX(0);
+      transform: translateX(-4px);
     }
     &:hover,
     &:focus-visible {
-      text-decoration: none;
+      .nav-link-text {
+        text-decoration: none;
+      }
       svg {
-        transform: translateX(4px);
+        transform: translateX(0);
       }
     }
 
