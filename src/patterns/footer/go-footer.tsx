@@ -1,8 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../types';
-import { warnA11y } from '../../utils/helper';
+import { warnA11y, hasSlot } from '../../utils/helper';
 import { parseItems } from '../../utils/nav';
-
 @Component({
   tag: 'go-footer',
   styleUrl: 'go-footer.scss',
@@ -14,60 +13,66 @@ export class GoFooter {
   /**
    * Navigation links to be displayed.
    */
-  @Prop() items: INavItem[] | string;
-
-  @State() navItems: INavItem[];
-
-  @Watch('items')
-  async watchItems(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
-  }
+  @Prop() links: INavItem[] | string;
 
   /**
    * Label for navigation
    */
   @Prop() navLabel?: string = 'Footer navigation';
 
+  /**
+   * Dark theme footer
+   */
+  @Prop() dark?: boolean = false;
+
+  @State() navItems: INavItem[];
+
+  @Watch('links')
+  async watchItems(newItems: INavItem[] | string) {
+    this.navItems = parseItems(newItems);
+  }
+
   private hasCopyRightSlot = false;
+  private hasFooterBottomSlot = false;
 
   componentWillLoad() {
-    console.log(this.items);
-    this.navItems = parseItems(this.items);
+    this.navItems = parseItems(this.links);
     if (this.navItems?.length > 0 && !this.navLabel) {
       warnA11y('Please add a unique "nav-label" in order to put navigation items into the nav landmark for better accessibility.');
     }
 
     // check if copyright slot is empty
-    this.hasCopyRightSlot = !!this.el.querySelector('slot[name="copyright"]');
+    this.hasCopyRightSlot = hasSlot(this.el, 'copyright');
+    this.hasFooterBottomSlot = hasSlot(this.el, 'footer-bottom');
   }
 
   render() {
-    const { navItems, navLabel, hasCopyRightSlot } = this;
+    const { navItems, navLabel, dark, hasCopyRightSlot, hasFooterBottomSlot } = this;
 
-    const NavWrapperTag = navLabel ? 'nav' : 'div';
     return (
-      <Host>
+      <Host class={{ dark }}>
         <footer>
-          <div class="container nav-container">
-            {navItems ? (
-              <NavWrapperTag aria-label={navLabel}>
+          {navItems ? (
+            <div class="container nav-container">
+              <nav aria-label={navLabel}>
                 <div class="row">
                   {navItems?.map((item) => (
                     <go-nav-list class="col-12 col-tablet-4 col-desktop-3" block headingItem={item} items={item?.children}></go-nav-list>
                   ))}
                 </div>
-              </NavWrapperTag>
-            ) : (
-              <slot name="nav"></slot>
-            )}
-          </div>
-
-          <div class="container">
-            <div class="extra-links">
-              <slot name="extra-links"></slot>
+              </nav>
             </div>
-          </div>
+          ) : (
+            <slot></slot>
+          )}
 
+          {hasFooterBottomSlot ? (
+            <div class="container">
+              <div class="footer-bottom">
+                <slot name="footer-bottom"></slot>
+              </div>
+            </div>
+          ) : null}
           {hasCopyRightSlot ? (
             <div class="container">
               <div class="copyright">

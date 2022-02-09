@@ -123,9 +123,13 @@ export namespace Components {
     }
     interface GoFooter {
         /**
+          * Dark theme footer
+         */
+        "dark"?: boolean;
+        /**
           * Navigation links to be displayed.
          */
-        "items": INavItem[] | string;
+        "links": INavItem[] | string;
         /**
           * Label for navigation
          */
@@ -469,9 +473,13 @@ declare namespace LocalJSX {
     }
     interface GoFooter {
         /**
+          * Dark theme footer
+         */
+        "dark"?: boolean;
+        /**
           * Navigation links to be displayed.
          */
-        "items"?: INavItem[] | string;
+        "links"?: INavItem[] | string;
         /**
           * Label for navigation
          */
