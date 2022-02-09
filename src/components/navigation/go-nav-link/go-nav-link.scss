@@ -9,7 +9,7 @@ go-nav-link {
   .nav-item-link {
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.5rem;
     padding: var(--nav-link-padding);
     border-left: var(--nav-link-current-bar-width) solid transparent;
     line-height: 1.5;

@@ -7,7 +7,8 @@
 
 | Property   | Attribute   | Description                       | Type                   | Default               |
 | ---------- | ----------- | --------------------------------- | ---------------------- | --------------------- |
-| `items`    | `items`     | Navigation links to be displayed. | `INavItem[] \| string` | `undefined`           |
+| `dark`     | `dark`      | Dark theme footer                 | `boolean`              | `false`               |
+| `links`    | `links`     | Navigation links to be displayed. | `INavItem[] \| string` | `undefined`           |
 | `navLabel` | `nav-label` | Label for navigation              | `string`               | `'Footer navigation'` |
 
 
