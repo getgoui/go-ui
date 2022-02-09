@@ -235,6 +235,7 @@ const getDocsContent = (patternName, tags, createElement) => {
   return `---
 title: ${title}
 hide_title: true
+hide_table_of_contents: true
 ${getTagsFrontmatter(tags)}
 ---
 

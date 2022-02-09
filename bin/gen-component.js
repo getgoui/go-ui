@@ -185,6 +185,7 @@ const getDocsContent = (tagname) => {
   return `---
 title: ${title}
 hide_title: true
+hide_table_of_contents: true
 ---
 
 import Demo from '@/components/Demo';
