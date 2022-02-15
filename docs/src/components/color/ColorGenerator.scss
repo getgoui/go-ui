@@ -8,6 +8,7 @@
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
+  overflow-y: hidden;
   gap: 0.5rem;
 }
 .color-box {
@@ -43,7 +44,7 @@
     margin: 1rem auto;
     position: relative;
     input[type='color'] {
-      -webkit-appearance: none;
+      appearance: none;
       visibility: hidden;
       position: absolute;
       bottom: 0;
@@ -55,7 +56,26 @@
       cursor: pointer;
       background: var(--go-color-lightest);
       border: none;
-      box-shadow: 0 0.25em 0.9em 0 rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      &:hover,
+      &:focus {
+        box-shadow: var(--shadow-3);
+      }
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     }
+  }
+}
+.color-table {
+  td {
+    text-align: center;
+    padding: 0.25em 0;
+    font-size: var(--go-size--1);
+    border: 1px solid var(--go-color-neutral-200);
   }
 }
