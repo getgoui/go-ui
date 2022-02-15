@@ -3,7 +3,7 @@ import Color from 'color';
 import ColorLevelsObject from './color.type';
 import './ColorGenerator.scss';
 import ColorSwatch from './ColorSwatch';
-import { rgb, defaultColors, defaultExtremeColors, centerShade, lightnessInterval } from './color.constants';
+import { rgb, defaultColors, defaultExtremeColors, centerShade, lightnessInterval, getDefaultColorValues } from './color.constants';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -19,8 +19,10 @@ import SwiperCore, { Navigation, Pagination } from 'swiper';
 SwiperCore.use([Navigation, Pagination]);
 
 function ColorGenerator() {
+  // const colorValues = getDefaultColorValues();
   const [baseColors, setBaseColors] = useState(defaultColors);
   const [extremeColors, setExtremeColors] = useState(defaultExtremeColors);
+  const [interval, setLightnessInterval] = useState(lightnessInterval);
   let colorObjects = {} as { [key: string]: ColorLevelsObject };
 
   Object.entries(baseColors).forEach(([key, rgb]) => {
@@ -31,7 +33,7 @@ function ColorGenerator() {
     // lighter colors
     for (let i = centerShade - 1; i > 0; i--) {
       const n = centerShade - i;
-      const lighten = i * lightnessInterval;
+      const lighten = i * interval;
       const color = baseColor.lighten(lighten);
       // console.log(`${key}-${n * 100}`, color);
       colorObjects[key][`${n * 100}`] = color;
@@ -42,7 +44,7 @@ function ColorGenerator() {
     // darker colors
     for (let i = 0; i < centerShade; i++) {
       const n = centerShade + i;
-      const darken = i * lightnessInterval;
+      const darken = i * interval;
       const color = baseColor.darken(darken);
       // console.log(`${key}-${n * 100}`, color);
       colorObjects[key][`${n * 100}`] = color;
@@ -55,7 +57,14 @@ function ColorGenerator() {
       {Object.entries(colorObjects).map(([key, levels]) => {
         return (
           <SwiperSlide key={key}>
-            <ColorSwatch colorName={key} levels={levels} state={baseColors} setState={setBaseColors} />
+            <ColorSwatch
+              colorName={key}
+              levels={levels}
+              state={baseColors}
+              setState={setBaseColors}
+              lightnessInterval={interval}
+              setLightnessInterval={setLightnessInterval}
+            />
           </SwiperSlide>
         );
       })}
@@ -64,7 +73,14 @@ function ColorGenerator() {
         const color = Color(rgb);
         return (
           <SwiperSlide key={key}>
-            <ColorSwatch colorName={key} levels={{ '': color }} state={extremeColors} setState={setExtremeColors} />
+            <ColorSwatch
+              colorName={key}
+              levels={{ '': color }}
+              state={extremeColors}
+              setState={setExtremeColors}
+              lightnessInterval={interval}
+              setLightnessInterval={setLightnessInterval}
+            />
           </SwiperSlide>
         );
       })}
