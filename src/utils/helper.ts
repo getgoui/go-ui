@@ -68,7 +68,7 @@ export function selectDirectChildren(elem: HTMLElement, selector: string): HTMLE
   });
 }
 
-export function warnA11y(...args: any[]) {
-  console.log(`%c[Go UI a11y warning]`, 'background: #e63a34; color: #fff; font-size: 24px;padding: 8px;');
+export function warning(...args: any[]) {
+  console.log(`%c[Go UI warning]`, 'background: #e63a34; color: #fff; font-size: 24px;padding: 8px;');
   console.warn(...args);
 }

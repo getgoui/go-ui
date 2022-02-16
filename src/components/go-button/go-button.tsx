@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element, Host } from '@stencil/core';
 import { Breakpoints, ColorVariants } from '../../types';
-import { inheritAttributes, warnA11y } from '../../utils/helper';
+import { inheritAttributes, warning } from '../../utils/helper';
 
 /**
  * @slot start - Use this slot to prepend content to the button.
@@ -81,7 +81,7 @@ export class GoButton {
     // a11y check
     if (this.icon) {
       if (!this.root.hasAttribute('aria-label') && !this.root.hasAttribute('aria-labelledby')) {
-        warnA11y(`go-button with icon must have either aria-label or aria-labelledby attribute`, this.root);
+        warning(`go-button with icon must have either aria-label or aria-labelledby attribute`, this.root);
       }
     }
 

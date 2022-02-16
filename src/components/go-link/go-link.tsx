@@ -40,7 +40,11 @@ export class GoLink {
     if (url.startsWith('#')) {
       return false;
     }
-    return new URL(url).origin !== location.origin;
+    const tmp = document.createElement('a');
+    tmp.href = url;
+    const isExternal = tmp.host !== window.location.host;
+    tmp.remove();
+    return isExternal;
   }
 
   render() {
