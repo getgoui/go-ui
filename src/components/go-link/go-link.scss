@@ -1,3 +1,7 @@
 go-link {
- display: block;
+  .external-link-icon {
+    height: 1em;
+    fill: currentColor;
+    transform: translate(10%, 15%);
+  }
 }

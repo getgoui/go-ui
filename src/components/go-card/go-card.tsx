@@ -1,5 +1,4 @@
 import { Component, Host, h, Element } from '@stencil/core';
-import { inheritAttributes } from '../../utils/helper';
 
 @Component({
   tag: 'go-card',

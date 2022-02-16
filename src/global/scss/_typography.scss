@@ -103,9 +103,12 @@ code {
 
 a {
   color: var(--go-color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
   &:hover,
   &:focus-visible {
     color: var(--go-color-link-hover);
     background-color: var(--go-color-link-hover-bg);
+    text-decoration: none;
   }
 }

@@ -175,6 +175,12 @@ export namespace Components {
          */
         "size"?: string;
     }
+    interface GoLink {
+        /**
+          * The href of the link.
+         */
+        "href": string;
+    }
     interface GoMainNav {
         /**
           * Initialise the menu
@@ -313,6 +319,12 @@ declare global {
         prototype: HTMLGoIconElement;
         new (): HTMLGoIconElement;
     };
+    interface HTMLGoLinkElement extends Components.GoLink, HTMLStencilElement {
+    }
+    var HTMLGoLinkElement: {
+        prototype: HTMLGoLinkElement;
+        new (): HTMLGoLinkElement;
+    };
     interface HTMLGoMainNavElement extends Components.GoMainNav, HTMLStencilElement {
     }
     var HTMLGoMainNavElement: {
@@ -360,6 +372,7 @@ declare global {
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
         "go-icon": HTMLGoIconElement;
+        "go-link": HTMLGoLinkElement;
         "go-main-nav": HTMLGoMainNavElement;
         "go-nav-drawer": HTMLGoNavDrawerElement;
         "go-nav-link": HTMLGoNavLinkElement;
@@ -534,6 +547,12 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface GoLink {
+        /**
+          * The href of the link.
+         */
+        "href"?: string;
+    }
     interface GoMainNav {
         /**
           * Navigation items to be rendered if provided, slot content will not be rendered.
@@ -622,6 +641,7 @@ declare namespace LocalJSX {
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
         "go-icon": GoIcon;
+        "go-link": GoLink;
         "go-main-nav": GoMainNav;
         "go-nav-drawer": GoNavDrawer;
         "go-nav-link": GoNavLink;
@@ -644,6 +664,7 @@ declare module "@stencil/core" {
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
+            "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
