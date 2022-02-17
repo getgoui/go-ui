@@ -19,9 +19,16 @@ import demoSource from '!!raw-loader!@/go-ui/components/go-link/demo/go-link.htm
 
 <Demo code={demoSource} />
 
-## Security vulnerability
+## Tabnabbing
 
-It should be noted that [links to cross-origin destinations are unsafe](https://web.dev/external-anchors-use-rel-noopener/), so whenever you need to link to an external site, you should add `rel="noopener noreferrer"` to the link, `go-link` will take care of this for you when it detects the link is external.
+It should be noted that [links to cross-origin destinations are unsafe](https://web.dev/external-anchors-use-rel-noopener/), this phishing technique is called [tabnabbing](https://en.wikipedia.org/wiki/Tabnabbing), so whenever you need to link to an external site, you should add `rel="noopener noreferrer"` to the link, `go-link` will take care of this for you when it detects the link is external.
+
+:::tip
+
+All modern browsers now automatically apply the `noopener` behaviour to links with `target="_blank"`.
+https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener
+
+:::
 
 ## Accessibility
 
