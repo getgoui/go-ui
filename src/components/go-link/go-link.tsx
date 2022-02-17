@@ -12,28 +12,40 @@ export class GoLink {
   @Element() el: HTMLElement;
 
   /**
-   * The href of the link.
+   * The `href` of the link.
    */
   @Prop() href: string;
+
+  /**
+   * The `target` of the link.
+   */
+  @Prop() target?: '_blank' | '_self' | '_parent' | '_top';
 
   // Store attributes inherited from the host element
   private attrs = {};
   componentWillLoad() {
     this.checkExternal();
-    this.attrs = inheritAttributes(this.el, ['href']);
+    this.attrs = inheritAttributes(this.el, ['href', 'target']);
   }
 
   @State() isExternal: boolean = false;
 
-  @State() opensNewTab: boolean = false;
+  @State() isNewTab: boolean = false;
+
+  @Watch('target')
+  checkNewTab() {
+    this.isNewTab = this.target === '_blank';
+  }
 
   @Watch('href')
   checkExternal() {
-    console.log(this.href);
     if (!this.href) {
       return;
     }
     this.isExternal = this.isExternalURL(this.href);
+    if (this.isExternal) {
+      this.isNewTab = true;
+    }
   }
 
   private isExternalURL(url: string): boolean {
@@ -48,12 +60,13 @@ export class GoLink {
   }
 
   render() {
-    const { href, attrs, isExternal } = this;
+    const { href, target, attrs, isExternal, isNewTab } = this;
 
     let linkAttrs = {
       ...attrs,
       href,
       class: `go-link${attrs['class'] ? attrs['class'] : ''}`,
+      target: isExternal || isNewTab ? '_blank' : target,
     };
 
     return (
@@ -61,12 +74,15 @@ export class GoLink {
         <span>
           <slot></slot>
         </span>
-        {isExternal ? (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="external-link-icon">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
-          </svg>
-        ) : null}
+        {isExternal || isNewTab
+          ? [
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="external-link-icon">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+              </svg>,
+              <span class="visually-hidden">Opens in new a tab or window</span>,
+            ]
+          : null}
       </a>
     );
   }

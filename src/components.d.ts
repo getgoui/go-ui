@@ -177,9 +177,13 @@ export namespace Components {
     }
     interface GoLink {
         /**
-          * The href of the link.
+          * The `href` of the link.
          */
         "href": string;
+        /**
+          * The `target` of the link.
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
     }
     interface GoMainNav {
         /**
@@ -549,9 +553,13 @@ declare namespace LocalJSX {
     }
     interface GoLink {
         /**
-          * The href of the link.
+          * The `href` of the link.
          */
         "href"?: string;
+        /**
+          * The `target` of the link.
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
     }
     interface GoMainNav {
         /**
