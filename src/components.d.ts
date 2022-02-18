@@ -102,6 +102,27 @@ export namespace Components {
     interface GoButtonGroup {
     }
     interface GoCard {
+        /**
+          * Subtitle of the card
+         */
+        "cardSubtitle"?: string;
+        /**
+          * Title of the card
+         */
+        "cardTitle"?: string;
+        /**
+          * Position of featured media in the card
+         */
+        "mediaPosition": | 'top'
+    | 'left'
+    | 'right'
+    | 'bottom'
+    | 'start' // responsive top left
+    | 'end';
+        /**
+          * Use mouse as the light source (ray-tracing)
+         */
+        "rayTracing"?: boolean;
     }
     interface GoDialog {
         /**
@@ -480,6 +501,27 @@ declare namespace LocalJSX {
     interface GoButtonGroup {
     }
     interface GoCard {
+        /**
+          * Subtitle of the card
+         */
+        "cardSubtitle"?: string;
+        /**
+          * Title of the card
+         */
+        "cardTitle"?: string;
+        /**
+          * Position of featured media in the card
+         */
+        "mediaPosition"?: | 'top'
+    | 'left'
+    | 'right'
+    | 'bottom'
+    | 'start' // responsive top left
+    | 'end';
+        /**
+          * Use mouse as the light source (ray-tracing)
+         */
+        "rayTracing"?: boolean;
     }
     interface GoDialog {
         /**

@@ -5,7 +5,8 @@
     "cli",
     "pattern",
     "component",
-    "utils"
+    "utils",
+    "go-card"
   ],
   "stylelint.validate": ["css", "scss"],
 	"editor.formatOnSave": true,
