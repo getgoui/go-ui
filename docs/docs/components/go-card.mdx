@@ -6,21 +6,17 @@ hide_table_of_contents: true
 
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/go-card/demo/go-card.html';
+import mediaCardDemoSource from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-media.html';
 
 # Card <span className="text-size-0">`go-card`</span>
 
 <!-- Description -->
 
-<div className="text-size-1">Card is a component in Go UI.</div>
+<div className="text-size-1">A card is an essential component to any modern design system.</div>
 
-## When to use
+## Accessibility
 
--
--
-
-## A11y
-
-(Provide relevant a11y information here.)
+<!-- A11y -->
 
 ## Related patterns
 
@@ -31,9 +27,13 @@ import demoSource from '!!raw-loader!@/go-ui/components/go-card/demo/go-card.htm
 
 <!-- Demos, tips, variations, use cases -->
 
-## Demo
+## Basic cards
 
-<Demo code={demoSource} />
+<Demo hideSource code={demoSource} />
+
+## Card with image
+
+<Demo hideSource code={mediaCardDemoSource} />
 
 <!-- API -->
 

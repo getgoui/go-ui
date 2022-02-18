@@ -1,0 +1,15 @@
+<demo-playground
+  tag="go-card"
+  props="[
+{name: 'cardTitle', type: 'string', value: 'Title'},
+{name: 'cardSubtitle', type: 'string', value: 'Subtitle'},
+{name: 'mediaPosition', type: 'select', value: 'top', options: ['top', 'left', 'right', 'bottom']},
+]"
+>
+  <div class="container">
+    <go-card card-title="Card" card-subtitle="I'm normal card">
+      <img src="https://res.cloudinary.com/seanwuapps/image/upload/c_scale,w_800/v1603083086/coffee_ud1ucg.jpg" alt="Photo" slot="media" />
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+    </go-card>
+  </div>
+</demo-playground>
