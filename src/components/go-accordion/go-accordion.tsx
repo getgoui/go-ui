@@ -15,10 +15,10 @@ export class GoAccordion {
 
   activeItem: HTMLGoAccordionItemElement;
 
-  items: Node[];
+  items: HTMLGoAccordionItemElement[];
 
   componentWillLoad() {
-    this.items = Array.from(this.el.children);
+    this.items = Array.from(this.el.children) as HTMLGoAccordionItemElement[];
     // if there's any active accordion item, show them by default and close the rest.
     if (!this.multiple) {
       this.activeItem = selectDirectChildren(this.el, 'go-accordion-item[active]')[0] as HTMLGoAccordionItemElement;
@@ -41,8 +41,8 @@ export class GoAccordion {
 
   closeNonActive() {
     this.items.forEach((item) => {
-      if (!item.isEqualNode(this.activeItem)) {
-        (item as HTMLGoAccordionItemElement).close();
+      if (!item.isSameNode(this.activeItem)) {
+        item.close();
       }
     });
   }

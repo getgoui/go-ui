@@ -103,9 +103,9 @@
       <go-nav-drawer ref="mobileMenu" label="Menu" .items="items"></go-nav-drawer>
 
       <go-header-bar breakpoint="tablet">
-        <go-button slot="mobile-menu-trigger" compact flat stack color="tertiary" @click="handleClick">
+        <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack color="tertiary" @click="handleClick">
           <go-icon name="menu"></go-icon>
-          <span>Menu</span>
+          <span id="menu-label">Menu</span>
         </go-button>
 
         <go-gov-au-logo href="/" slot="logo">

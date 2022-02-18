@@ -35,7 +35,7 @@ export function hasShadowDom(el: HTMLElement): boolean {
 }
 
 export function hasSlot(el: HTMLElement, slotName?: string): boolean {
-  return !!el.querySelector(':scope > [slot="' + slotName + '"]'); // cast boolean
+  return !!el.querySelector('[slot="' + slotName + '"]');
 }
 // export const clamp = (min: number, n: number, max: number) => {
 //   return Math.max(min, Math.min(n, max));
