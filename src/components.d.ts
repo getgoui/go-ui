@@ -111,6 +111,10 @@ export namespace Components {
          */
         "cardTitle"?: string;
         /**
+          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
+         */
+        "href"?: string;
+        /**
           * Position of featured media in the card
          */
         "mediaPosition": | 'top'
@@ -119,10 +123,6 @@ export namespace Components {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
-        /**
-          * Use mouse as the light source (ray-tracing)
-         */
-        "rayTracing"?: boolean;
     }
     interface GoDialog {
         /**
@@ -197,6 +197,7 @@ export namespace Components {
         "size"?: string;
     }
     interface GoLink {
+        "expandClickableArea"?: boolean;
         /**
           * The `href` of the link.
          */
@@ -510,6 +511,10 @@ declare namespace LocalJSX {
          */
         "cardTitle"?: string;
         /**
+          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
+         */
+        "href"?: string;
+        /**
           * Position of featured media in the card
          */
         "mediaPosition"?: | 'top'
@@ -518,10 +523,6 @@ declare namespace LocalJSX {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
-        /**
-          * Use mouse as the light source (ray-tracing)
-         */
-        "rayTracing"?: boolean;
     }
     interface GoDialog {
         /**
@@ -594,6 +595,7 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface GoLink {
+        "expandClickableArea"?: boolean;
         /**
           * The `href` of the link.
          */

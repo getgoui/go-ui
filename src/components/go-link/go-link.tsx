@@ -21,6 +21,8 @@ export class GoLink {
    */
   @Prop() target?: '_blank' | '_self' | '_parent' | '_top';
 
+  @Prop() expandClickableArea?: boolean = false;
+
   // Store attributes inherited from the host element
   private attrs = {};
   componentWillLoad() {
@@ -60,12 +62,19 @@ export class GoLink {
   }
 
   render() {
-    const { href, target, attrs, isExternal, isNewTab } = this;
+    const { href, target, attrs, isExternal, isNewTab, expandClickableArea } = this;
 
+    let classes = ['go-link'];
+    if (attrs['class']) {
+      classes.push(attrs['class']);
+    }
+    if (expandClickableArea) {
+      classes.push('expand');
+    }
     let linkAttrs = {
       ...attrs,
       href,
-      class: `go-link ${attrs['class'] ? attrs['class'] : ''}`,
+      class: classes.join(' '),
       target: isExternal || isNewTab ? '_blank' : target,
     };
 
