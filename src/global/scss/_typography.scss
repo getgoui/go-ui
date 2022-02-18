@@ -103,8 +103,7 @@ code {
 
 a {
   color: var(--go-color-link);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  @include underline;
   &:hover,
   &:focus-visible {
     color: var(--go-color-link-hover);

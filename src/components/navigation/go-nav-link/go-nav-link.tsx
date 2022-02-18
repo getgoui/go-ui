@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Host, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { INavItem } from '../../../types';
 import { inheritAttributes } from '../../../utils/helper';
 
@@ -48,7 +48,7 @@ export class GoNavLink {
     }
     const { isCurrent, url, icon, label } = this.item;
 
-    let Tag = this.item.isCurrent ? 'span' : 'a';
+    let Tag = this.item.isCurrent ? 'span' : 'go-link';
     let attrs = {
       ...this.item?.linkAttrs,
       ...inheritedAttrs,
@@ -65,11 +65,14 @@ export class GoNavLink {
 
     attrs['class'] = ` nav-item-link ${attrs['class'] ? attrs['class'] : ''}${isCurrent ? ' current' : ''}`;
     return (
-      <Tag {...attrs}>
-        {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
-        <span class="nav-link-text">{label}</span>
+      <Host>
+        <Tag {...attrs}>
+          {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
+          <span class="nav-link-text">{label}</span>
+        </Tag>
         {this.showArrow ? (
           <svg
+            class="arrow"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             stroke="currentColor"
@@ -82,7 +85,7 @@ export class GoNavLink {
             <path d="m9 18 6-6-6-6" />
           </svg>
         ) : null}
-      </Tag>
+      </Host>
     );
   }
 }

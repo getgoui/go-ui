@@ -145,4 +145,11 @@ go-main-nav {
       }
     }
   }
+
+  go-nav-link {
+    --nav-link-padding: var(--submenu-link-padding);
+    .nav-item-link .nav-link-text {
+      text-decoration: none;
+    }
+  }
 }

@@ -65,15 +65,13 @@ export class GoLink {
     let linkAttrs = {
       ...attrs,
       href,
-      class: `go-link${attrs['class'] ? attrs['class'] : ''}`,
+      class: `go-link ${attrs['class'] ? attrs['class'] : ''}`,
       target: isExternal || isNewTab ? '_blank' : target,
     };
 
     return (
       <a {...linkAttrs}>
-        <span>
-          <slot></slot>
-        </span>
+        <slot></slot>
         {isExternal || isNewTab
           ? [
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="external-link-icon">
