@@ -30,10 +30,7 @@ export class GoCard {
     | 'bottom'
     | 'start' // responsive top left
     | 'end' = 'top'; // responsive bottom right
-  /**
-   * Use mouse as the light source (ray-tracing)
-   */
-  @Prop() rayTracing?: boolean = false;
+
 
   hasCustomTitle: boolean;
 
