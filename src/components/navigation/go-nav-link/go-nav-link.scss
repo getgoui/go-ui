@@ -1,45 +1,76 @@
 go-nav-link {
   --nav-link-padding: var(--go-base-spacing) 0;
-  --nav-link-current-bar-width: 4px;
+  --nav-link-current-bar-width: var(--go-base-spacing);
+  --nav-link-current-bar-color: currentColor;
+  --nav-link-hover-fg-color: var(--go-color-link-hover);
+  --nav-link-hover-bg-color: var(--go-color-link-hover-bg);
+  --nav-link-arrow-gap: var(--go-base-spacing);
+  --nav-link-arrow-color: var(--go-color-link);
+  --nav-link-arrow-color-hover: var(--go-color-link-hover);
+  --nav-link-align-y: center;
 
-  display: inline-block;
+  display: inline-flex;
+  align-items: var(--nav-link-align-y);
+  justify-content: space-between;
+  color: var(--go-color-link);
+  position: relative;
+
   &[block] {
-    display: block;
-  }
-  .nav-item-link {
     display: flex;
+    go-link {
+      display: block;
+      flex: 1;
+    }
+    .nav-item-link {
+      display: flex;
+    }
+  }
+
+  .nav-item-link {
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: var(--nav-link-padding);
     border-left: var(--nav-link-current-bar-width) solid transparent;
     line-height: 1.5;
     text-decoration: none;
-    .nav-link-text {
-      text-decoration: underline;
-      text-underline-offset: 0.25em;
-    }
-    go-icon {
-      text-decoration: none;
-    }
-    svg {
-      @include transition(transform);
 
-      height: 1.25em;
-      margin-left: auto;
-      transform: translateX(-4px);
+    .nav-link-text {
+      @include underline;
     }
+
     &:hover,
     &:focus-visible {
       .nav-link-text {
         text-decoration: none;
       }
-      svg {
-        transform: translateX(0);
-      }
+    }
+    &::after {
+      // expand clickable area to include arrow
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    go-icon {
+      text-decoration: none;
+    }
+    svg.external-link-icon {
+      flex: 0 0 auto;
+      transform: none;
     }
 
     &.current {
-      border-left-color: var(--nav-item-current-bar-color);
+      border-left-color: var(--nav-link-current-bar-color);
     }
+  }
+
+  .arrow {
+    flex: 0 0 auto;
+    color: var(--nav-link-arrow-color);
+    height: 1.25em;
+    margin-left: var(--nav-link-arrow-gap);
   }
 }

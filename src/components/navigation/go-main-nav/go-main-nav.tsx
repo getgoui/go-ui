@@ -124,12 +124,12 @@ export class GoMainNav {
       return (
         <div class="submenu">
           <div class="submenu-header">
-            <go-nav-link item={parent}></go-nav-link>
+            <go-nav-link block item={parent}></go-nav-link>
           </div>
           <ul>
             {parent.children.map((child) => (
               <li>
-                <go-nav-link item={child}></go-nav-link>
+                <go-nav-link block item={child}></go-nav-link>
               </li>
             ))}
           </ul>
@@ -138,7 +138,7 @@ export class GoMainNav {
     }
     return (
       <div class="nav-item">
-        <go-nav-link item={parent}></go-nav-link>
+        <go-nav-link block item={parent}></go-nav-link>
       </div>
     );
   }
