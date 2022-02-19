@@ -19,4 +19,24 @@ describe('go-accordion', () => {
     const page = await newE2EPage({ html });
     await expect(page).toPassA11y();
   });
+
+  it('can be navigated by keyboard', async () => {
+    const page = await newE2EPage({ html });
+    let firstItem = (await page.findAll('go-accordion-item'))[0];
+    expect(firstItem).toHaveClass('active');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await page.waitFor(1000);
+
+    firstItem = (await page.findAll('go-accordion-item'))[0];
+    expect(firstItem).not.toHaveClass('active');
+    const secondItem = (await page.findAll('go-accordion-item'))[1];
+    expect(secondItem).toHaveClass('active');
+
+    const focusedBtn = await secondItem.find('button'); // 2nd accordion item
+    const activeInnerText = await page.evaluate(() => (document.activeElement as HTMLElement).innerText);
+    expect(focusedBtn.innerText).toEqual(activeInnerText);
+  });
 });
