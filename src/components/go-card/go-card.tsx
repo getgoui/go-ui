@@ -44,6 +44,10 @@ export class GoCard {
    * Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
    */
   @Prop() href?: string;
+  /**
+   * when href is present, `target` attribute to be applied to the card link
+   */
+  @Prop() target?: '_blank' | '_self' | '_parent' | '_top';
 
   hasCustomTitle: boolean;
 
@@ -61,7 +65,7 @@ export class GoCard {
   }
 
   render() {
-    const { hasMedia, mediaPosition, hasCustomTitle, cardTitle, cardSubtitle, hasPreTitle, hasFooter, href } = this;
+    const { hasMedia, mediaPosition, hasCustomTitle, cardTitle, cardSubtitle, hasPreTitle, hasFooter, href, target } = this;
 
     return (
       <Host class={{ [`media ${mediaPosition}`]: hasMedia, 'has-link': !!href }}>
@@ -81,7 +85,7 @@ export class GoCard {
                   cardTitle ? (
                     <h2 class="card-title">
                       {href ? (
-                        <go-link href={href} expandClickableArea={true}>
+                        <go-link href={href} target={target ? target : null} expand-clickable-area={true}>
                           {cardTitle}
                         </go-link>
                       ) : (
