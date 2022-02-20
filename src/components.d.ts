@@ -123,6 +123,10 @@ export namespace Components {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
+        /**
+          * when href is present, `target` attribute to be applied to the card link
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
     }
     interface GoDialog {
         /**
@@ -523,6 +527,10 @@ declare namespace LocalJSX {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
+        /**
+          * when href is present, `target` attribute to be applied to the card link
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
     }
     interface GoDialog {
         /**
