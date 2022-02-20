@@ -98,12 +98,13 @@ export class GoButton {
       'icon',
       'stack',
       'compact',
+      'href',
     ]);
   }
 
   render() {
-    const { type, disabled, color, block, outline, outlineFill, inheritedAttributes } = this;
-    const Tag = this.href ? 'a' : 'button';
+    const { type, disabled, color, block, outline, outlineFill, inheritedAttributes, href } = this;
+    const Tag = href ? 'a' : 'button';
     const blockClass = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
     const rootClasses = `${color} ${blockClass}`;
 
@@ -120,7 +121,13 @@ export class GoButton {
           outline,
           'outline outline-fill': outlineFill,
         }}>
-        <Tag type={this.href ? null : type} aria-disabled={disabled ? 'true' : null} disabled={disabled} {...inheritedAttributes} class={innerBtnClasses}>
+        <Tag
+          href={href ? href : null}
+          type={href ? null : type}
+          aria-disabled={disabled ? 'true' : null}
+          disabled={disabled}
+          {...inheritedAttributes}
+          class={innerBtnClasses}>
           <slot name="start"></slot>
           <slot></slot>
           <slot name="end"></slot>

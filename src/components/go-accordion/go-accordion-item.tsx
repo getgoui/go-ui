@@ -112,7 +112,6 @@ export class GoAccordionItem {
     }
   }
   onTransitionStart() {
-    console.log('transitionstart');
     if (this.active) {
       this.panelEl.style.visibility = 'visible';
       this.opening.emit();
