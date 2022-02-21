@@ -31,20 +31,26 @@ go-button {
   // start block level on desktop
   &.block-desktop {
     display: block;
+    width: 100%;
     @include min-query(large) {
       display: inline-block;
+      width: auto;
     }
   }
   &.block-tablet {
     display: block;
+    width: 100%;
     @include min-query(desktop) {
       display: inline-block;
+      width: auto;
     }
   }
   &.block-mobile {
     display: block;
+    width: 100%;
     @include min-query(tablet) {
       display: inline-block;
+      width: auto;
     }
   }
 

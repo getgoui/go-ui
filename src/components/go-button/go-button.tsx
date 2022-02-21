@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Host } from '@stencil/core';
+import { Component, h, Prop, Element, Host, Watch, State } from '@stencil/core';
 import { Breakpoints, ColorVariants } from '../../types';
 import { inheritAttributes, warning } from '../../utils/helper';
 
@@ -102,11 +102,16 @@ export class GoButton {
     ]);
   }
 
+  @State() blockClasses: string;
+  @Watch('block')
+  handleBlockChange(block: Breakpoints | '') {
+    this.blockClasses = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
+  }
+
   render() {
-    const { type, disabled, color, block, outline, outlineFill, inheritedAttributes, href } = this;
+    const { type, disabled, color, blockClasses, outline, outlineFill, inheritedAttributes, href } = this;
     const Tag = href ? 'a' : 'button';
-    const blockClass = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
-    const rootClasses = `${color} ${blockClass}`;
+    const rootClasses = `${color} ${blockClasses}`;
 
     const inheritedClasses = inheritedAttributes['class'] || '';
     const innerBtnClasses = {
