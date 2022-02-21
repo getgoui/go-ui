@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# Theming
 
 There are 2 ways of customising your stylesheet for Go Components. 
 

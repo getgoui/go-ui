@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Sass 
 
-Go Components are built with [Sass](https://sass-lang.com/) preprocessor. Although CSS variables in modern browsers gives us a lot of flexibility, there are cases where pre-processing and post-processing are required, such as defining breakpoints for media queries. 
+Go UI is built with [Sass](https://sass-lang.com/) preprocessor. Although CSS variables in modern browsers gives us a lot of flexibility, there are cases where pre-processing and post-processing are required, such as defining breakpoints for media queries. 
 
 This means if your project supports sass, you can utilise our built-in customisation options to customise your global stylesheet.
 
