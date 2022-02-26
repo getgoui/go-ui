@@ -77,22 +77,6 @@ go-button {
     --go-btn-text-color-hover: currentColor;
     --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
   }
-  &[disabled] {
-    --go-btn-bg-color: var(--go-btn-bg-color-disabled);
-    --go-btn-text-color: var(--go-btn-text-color-disabled);
-    .inner-button {
-      /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-      cursor: not-allowed;
-      box-shadow: none;
-      &:hover,
-      &:focus {
-        background: var(--go-btn-bg-color-disabled);
-        color: var(--go-btn-text-color-disabled);
-        box-shadow: none;
-        outline: none;
-      }
-    }
-  }
 
   &.outline {
     .inner-button {
@@ -154,6 +138,23 @@ go-button {
     --go-btn-inner-gap: 0.125em;
     .inner-button {
       font-size: var(--go-size--1);
+    }
+  }
+
+  &[disabled] {
+    --go-btn-bg-color: var(--go-btn-bg-color-disabled);
+    --go-btn-text-color: var(--go-btn-text-color-disabled);
+    .inner-button {
+      /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+      cursor: not-allowed;
+      box-shadow: none;
+      &:hover,
+      &:focus {
+        background: var(--go-btn-bg-color-disabled);
+        color: var(--go-btn-text-color-disabled);
+        box-shadow: none;
+        outline: none;
+      }
     }
   }
 

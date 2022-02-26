@@ -146,7 +146,7 @@ module.exports = {
           editUrl: 'https://github.com/go-components/go-components/edit/main/docs/blog/',
         },
         theme: {
-          customCss: [require.resolve('./static/demo-assets/build/go-ui.css'), require.resolve('./src/css/custom.scss')],
+          customCss: [require.resolve('../src/global/scss/_css_variables.scss'), require.resolve('./src/css/custom.scss')],
         },
       }),
     ],

@@ -30,13 +30,6 @@
 }
 
 html[data-theme='dark'] {
-  --ifm-color-primary: #20232a;
-  --ifm-font-color-base-inverse: white;
-  --ifm-link-color: #a4d1a2;
-  --ifm-link-hover-color: white;
-  --ifm-navbar-link-hover-color: var(--ifm-link-color);
-  --ifm-menu-color-active: var(--ifm-link-color);
-
   .table-of-contents__link:hover,
   .table-of-contents__link:hover code,
   .table-of-contents__link--active,
@@ -76,7 +69,7 @@ html[data-theme='dark'] {
   }
   button {
     background: var(--ifm-color-primary);
-    color: white;
+    color: var(--go-color-text);
     cursor: pointer;
     &:hover,
     &:focus {
@@ -144,6 +137,14 @@ table {
   }
   pre {
     font-size: var(--go-size--1);
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
   }
 }
 

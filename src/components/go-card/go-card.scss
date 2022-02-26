@@ -107,6 +107,7 @@ go-card {
   border-radius: var(--go-card-radius);
   box-shadow: var(--go-card-shadow);
   overflow: hidden;
+  height: 100%;
 
   .card-inner {
     padding: var(--go-card-outer-padding);
@@ -115,6 +116,7 @@ go-card {
     flex: 1;
     flex-direction: column;
     gap: var(--go-card-inner-gap);
+    height: 100%;
     .card-title-section {
       .card-title {
         font-size: var(--go-card-title-font-size);
@@ -198,4 +200,18 @@ go-card {
       }
     }
   }
+
+  // content
+  .card-content {
+    flex: 1 0 auto;
+  }
+
+  // footer
+  .card-footer {
+    flex: 0 0 auto;
+  }
+}
+
+.equal-height-row {
+  align-items: stretch;
 }
