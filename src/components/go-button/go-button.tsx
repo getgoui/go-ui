@@ -109,12 +109,6 @@ export class GoButton {
     const blockClass = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
     const rootClasses = `${color} ${blockClass}`;
 
-    const inheritedClasses = inheritedAttributes['class'] || '';
-    const innerBtnClasses = {
-      'inner-button': true,
-      [inheritedClasses]: !!inheritedClasses,
-    };
-
     return (
       <Host
         class={{
@@ -127,8 +121,8 @@ export class GoButton {
           type={href ? null : type}
           aria-disabled={disabled ? 'true' : null}
           disabled={disabled}
-          {...inheritedAttributes}
-          class={innerBtnClasses}>
+          class="inner-button"
+          {...inheritedAttributes}>
           <slot name="start"></slot>
           <slot></slot>
           <slot name="end"></slot>
