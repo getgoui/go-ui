@@ -198,4 +198,24 @@ go-card {
       }
     }
   }
+
+  // content
+  .card-content {
+    flex: 1 0 auto;
+    line-height: 1.5;
+  }
+
+  // footer
+  .card-footer {
+    go-button {
+      margin-right: var(--go-card-inner-gap);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.equal-height-row {
+  align-items: stretch;
 }

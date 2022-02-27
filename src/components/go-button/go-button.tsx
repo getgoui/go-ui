@@ -88,6 +88,7 @@ export class GoButton {
     this.inheritedAttributes = inheritAttributes(this.root, [
       'block',
       'color',
+      'class',
       'disabled',
       'style',
       'invert',
