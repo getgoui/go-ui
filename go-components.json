@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-02-18T11:00:03",
+  "timestamp": "2022-02-28T08:16:26",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.13.0",
@@ -42,7 +42,63 @@
           "passive": false
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--heading-bg-color",
+          "annotation": "prop",
+          "docs": "Heading background colour - default: var(--go-color-background, #f5f5f5)"
+        },
+        {
+          "name": "--heading-border-bottom",
+          "annotation": "prop",
+          "docs": "Bottom border applied to the heading element to better separate the heading and panel, especially useful when content is scrollable. - default: 1px solid var(--go-shadow-color, rgba(0, 0, 0, 0.2))"
+        },
+        {
+          "name": "--heading-font-size",
+          "annotation": "prop",
+          "docs": "Heading font size - default: var(--go-size-0, 1rem)"
+        },
+        {
+          "name": "--heading-font-weight",
+          "annotation": "prop",
+          "docs": "Heading font weight - default: 700"
+        },
+        {
+          "name": "--heading-padding-x",
+          "annotation": "prop",
+          "docs": "Horizontal padding for item heading - default: 1rem"
+        },
+        {
+          "name": "--heading-padding-y",
+          "annotation": "prop",
+          "docs": "Vertical padding for item heading - default: 0.5rem"
+        },
+        {
+          "name": "--heading-text-color",
+          "annotation": "prop",
+          "docs": "Heading text colour - default: var(--go-color-text, #333333)"
+        },
+        {
+          "name": "--panel-bg-color",
+          "annotation": "prop",
+          "docs": "Content background colour - default: var(--go-color-neutral-200)"
+        },
+        {
+          "name": "--panel-max-height",
+          "annotation": "prop",
+          "docs": "Inner content max height. This values is also used for CSS animation - default: 100vh"
+        },
+        {
+          "name": "--panel-padding-x",
+          "annotation": "prop",
+          "docs": "Horizontal padding for inner content - default: 2rem"
+        },
+        {
+          "name": "--panel-padding-y",
+          "annotation": "prop",
+          "docs": "Vertical padding for inner content - default: 2rem"
+        }
+      ],
       "slots": [],
       "parts": [],
       "dependents": [],
@@ -486,7 +542,13 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--go-btn-bg-color",
+          "annotation": "prop",
+          "docs": "Background colour for the button. - default: transparent"
+        }
+      ],
       "slots": [
         {
           "name": "end",
@@ -650,12 +712,127 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "target",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "mutable": false,
+          "attr": "target",
+          "reflectToAttr": false,
+          "docs": "when href is present, `target` attribute to be applied to the card link",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "_blank",
+              "type": "string"
+            },
+            {
+              "value": "_parent",
+              "type": "string"
+            },
+            {
+              "value": "_self",
+              "type": "string"
+            },
+            {
+              "value": "_top",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--go-card-bg",
+          "annotation": "prop",
+          "docs": "Background colour of card"
+        },
+        {
+          "name": "--go-card-border-width",
+          "annotation": "prop",
+          "docs": "Border width for `bordered` card - default: 2px"
+        },
+        {
+          "name": "--go-card-fg",
+          "annotation": "prop",
+          "docs": "Foreground (text) color for the card"
+        },
+        {
+          "name": "--go-card-inner-gap",
+          "annotation": "prop",
+          "docs": "Gap size in between inner sections of card. ie. title, content, footer"
+        },
+        {
+          "name": "--go-card-media-aspect-ratio",
+          "annotation": "prop",
+          "docs": "Aspect ratio for media for when media position = top|bottom"
+        },
+        {
+          "name": "--go-card-media-basis",
+          "annotation": "prop",
+          "docs": "Flex basis for media position = left|right"
+        },
+        {
+          "name": "--go-card-media-height",
+          "annotation": "prop",
+          "docs": "Height of media for media position = top|bottom"
+        },
+        {
+          "name": "--go-card-media-object-position",
+          "annotation": "prop",
+          "docs": "[Object-position rule](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) for the media. default: center"
+        },
+        {
+          "name": "--go-card-outer-padding",
+          "annotation": "prop",
+          "docs": "Outer padding of card."
+        },
+        {
+          "name": "--go-card-radius",
+          "annotation": "prop",
+          "docs": "Border radius for card"
+        },
+        {
+          "name": "--go-card-shadow",
+          "annotation": "prop",
+          "docs": "Card shadow"
+        },
+        {
+          "name": "--go-card-subtitle-font-size",
+          "annotation": "prop",
+          "docs": "Font size of subtitle"
+        },
+        {
+          "name": "--go-card-subtitle-font-weight",
+          "annotation": "prop",
+          "docs": "Font weight of subtitle"
+        },
+        {
+          "name": "--go-card-subtitle-text-color",
+          "annotation": "prop",
+          "docs": "Text colour of subtitle"
+        },
+        {
+          "name": "--go-card-title-color",
+          "annotation": "prop",
+          "docs": "Text colour of card title"
+        },
+        {
+          "name": "--go-card-title-font-size",
+          "annotation": "prop",
+          "docs": "Font size of card title text"
+        },
+        {
+          "name": "--go-card-title-font-weight",
+          "annotation": "prop",
+          "docs": "Font weight of card title text"
+        }
+      ],
       "slots": [
         {
           "name": "custom-title",

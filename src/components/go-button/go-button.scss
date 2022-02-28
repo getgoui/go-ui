@@ -1,5 +1,11 @@
 go-button {
   // default colours
+
+  /**
+    @prop --go-btn-bg-color:
+      Background colour for the button.
+      - default: transparent
+  */
   --go-btn-bg-color: transparent;
   --go-btn-bg-color-hover: var(--go-color-neutral-100);
   --go-btn-bg-color-disabled: var(--go-color-neutral-200);

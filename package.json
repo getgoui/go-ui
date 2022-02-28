@@ -25,6 +25,7 @@
     "watch.components": "stencil build --dev --watch",
     "watch.docs": "cd docs && npm start",
     "watch.others": "gg watch",
+    "watch.json-data": "stencil build --docs-json ./go-components.json --watch",
     "build.readme": "stencil build --docs-readme",
     "build.json-data": "stencil build --docs-json ./go-components.json",
     "docs.build": "npm run build && cd docs && npm i && npm run build",

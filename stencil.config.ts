@@ -3,7 +3,6 @@ import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
-import cssnano from 'cssnano';
 
 export const config: Config = {
   namespace: 'go-ui',
@@ -37,9 +36,6 @@ export const config: Config = {
           propList: ['*'],
           selectorBlackList: [':root', 'html', 'body'],
           replace: false,
-        }),
-        cssnano({
-          preset: ['default', { discardComments: { removeAll: true } }],
         }),
       ],
     }),

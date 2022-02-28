@@ -51,6 +51,7 @@
       border-top: 1px solid var(--go-color-neutral-100, #ccc);
       height: var(--min-frame-height, 400px);
       box-shadow: var(--demo-frame-shadow);
+      transition: height 0.3s ease-in-out;
 
       .resize-handle {
         position: absolute;

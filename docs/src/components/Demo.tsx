@@ -39,7 +39,7 @@ const DemoFrame = ({ code, onLoad, onResize, colorScheme }) => {
       // set html visibility style to visible
       htmlElement.style.visibility = 'visible';
 
-      onLoad(window);
+      window.addEventListener('load', () => onLoad(window));
 
       return () => {
         window.removeEventListener('resize', resizeHandler);
@@ -146,7 +146,8 @@ const Demo = ({ code, hideSource = false }) => {
               code={code}
               onLoad={(frameWindow) => {
                 setTimeout(() => {
-                  const buffer = 40;
+                  console.log('yo');
+                  const buffer = 80;
                   contentEl.current.style.height = buffer + frameWindow.document.body.getBoundingClientRect().height + 'px';
                   contentEl.current.querySelector('.loading-overlay').style.display = 'none';
                 }, 1000);
