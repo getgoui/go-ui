@@ -16,18 +16,19 @@ export default async function watch(args) {
     fs.writeFileSync(saveTarget, data);
   };
   const onComponentChange = (file) => {
-    console.log(chalk.green(`- ${file} changed`));
-    console.log(chalk.green(`- Updating readme.md file`));
-    // run stencil build --docs-readme command
-    // @optimisation - find a way to only run doc generation
-    exec('npx stencil build --docs-readme', (err, stdout, stderr) => {
-      console.log(stdout);
-      if (err) {
-        console.error(chalk.red(`exec error: ${err}`));
-        return;
-      }
-      console.log(chalk.green(`- [Result] readme file updated.`));
-    });
+    console.log(chalk.green(`- ${file} changed, [trying to see if stencil build watch will pick this up]`));
+    // console.log(chalk.green(`- ${file} changed`));
+    // console.log(chalk.green(`- Updating readme.md file`));
+    // // run stencil build --docs-readme command
+    // // @optimisation - find a way to only run doc generation
+    // exec('npx stencil build --docs-readme', (err, stdout, stderr) => {
+    //   console.log(stdout);
+    //   if (err) {
+    //     console.error(chalk.red(`exec error: ${err}`));
+    //     return;
+    //   }
+    //   console.log(chalk.green(`- [Result] readme file updated.`));
+    // });
   };
   const watch = {
     [`${rootPath}/src/global/**/*.scss`]: onGlobalStyleChange,
