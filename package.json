@@ -22,7 +22,7 @@
     "build": "stencil build",
     "start.docs": "concurrently -p \"[{name}]\" --kill-others -n w: npm:watch.*",
     "start.dev": "stencil build --dev --watch --serve",
-    "watch.components": "stencil build --watch",
+    "watch.components": "stencil build --dev --watch",
     "watch.docs": "cd docs && npm start",
     "watch.others": "gg watch",
     "build.readme": "stencil build --docs-readme",
