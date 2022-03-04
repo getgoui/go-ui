@@ -1,0 +1,388 @@
+// Put scss variables here
+
+// ----------------------------------
+// Grid
+// ----------------------------------
+// Grid breakpoints
+$breakpoints: (
+  mobile: 0,
+  tablet: 768px,
+  desktop: 1200px,
+  large: 1400px,
+) !default;
+
+// Grid containers
+$container-max-widths: (
+  mobile: 100%,
+  tablet: 93.75%,
+  desktop: 1140px,
+  large: 1320px,
+) !default;
+
+// Grid columns
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+$grid-columns: 12 !default;
+
+// ----------------------------------
+// Typography
+// ----------------------------------
+$typography: (
+  display-1: (
+    weight: 700,
+    size: 8,
+    line-height: 1.5,
+  ),
+  display-2: (
+    weight: 700,
+    size: 7,
+    line-height: 1.5,
+  ),
+  h1: (
+    weight: 700,
+    size: 5,
+    line-height: 1.7,
+    tag: true,
+  ),
+  h2: (
+    weight: 500,
+    size: 4,
+    line-height: 1.6,
+    tag: true,
+  ),
+  h3: (
+    weight: 500,
+    size: 3,
+    line-height: 1.5,
+    tag: true,
+  ),
+  h4: (
+    weight: 600,
+    size: 2,
+    line-height: 1.5,
+    tag: true,
+  ),
+  h5: (
+    weight: 700,
+    size: 1,
+    line-height: 1.5,
+    tag: true,
+  ),
+  h6: (
+    weight: 700,
+    size: 0,
+    line-height: 1.5,
+    tag: true,
+  ),
+  body: (
+    weight: 400,
+    size: 0,
+    line-height: 1.5,
+  ),
+) !default;
+
+// ----------------------------------
+// Colors
+// ----------------------------------
+// Sass variables are used to generate CSS variables.
+$color-shades: 9 !default;
+$color-categories: primary, secondary, success, critical, neutral !default;
+$color-categories-extreme: darkest, lightest !default;
+
+// Put scss mixins here
+@use 'sass:map';
+
+// min-width media query
+@mixin min-query($device) {
+  @if map-has-key($breakpoints, $device) {
+    @media (min-width: map-get($breakpoints, $device)) {
+      @content;
+    }
+  } @else {
+    // device is not in our map, but it might be a width value
+    @media (min-width: $device) {
+      @content;
+    }
+  }
+}
+
+// Shorthand for tablet media query
+// e.g.
+//   @include tablet {
+//     font-size: 24px;
+//   }
+@mixin tablet {
+  @include min-query(tablet) {
+    @content;
+  }
+}
+
+// Shorthand for desktop media query
+// e.g.
+//   @include desktop {
+//     font-size: 32px;
+//   }
+@mixin desktop {
+  @include min-query(desktop) {
+    @content;
+  }
+}
+
+// apply a css rule at all breakpoints with suffix of device name for the variant
+@mixin responsive-variant-classes($variantName, $prop, $value) {
+  &.#{$variantName} {
+    #{$prop}: #{$value};
+  }
+  @each $device, $width in $breakpoints {
+    &.#{$variantName}-#{$device} {
+      @include min-query($device) {
+        #{$prop}: #{$value};
+      }
+    }
+  }
+}
+
+// shorthand for calculating multiples of base spacing
+@function spacing($multiplier) {
+  @return calc(var(--base-spacing) * #{$multiplier});
+}
+
+// Generate colours from color tokens css variables
+@mixin go-color-scheme-light {
+  @each $color-category in $color-categories {
+    @for $i from 1 through $color-shades {
+      $level: $i * 100;
+
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
+    }
+  }
+
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-darkest));
+  --go-color-lightest: rgb(var(--go-token-lightest));
+  --shadow-strength: 7%;
+}
+
+// reverse tokens for dark theme
+@mixin go-color-scheme-dark {
+  @each $color-category in $color-categories {
+    @for $i from $color-shades through 1 {
+      $level: $i * 100;
+      $tokenLevel: ($color-shades + 1) * 100 - $level;
+
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$tokenLevel}));
+    }
+  }
+
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-lightest));
+  --go-color-lightest: rgb(var(--go-token-darkest));
+
+  // dark shadows
+  --shadow-strength: 30%;
+  --shadow-color: 220 40% 2%;
+  --go-color-bg: var(--go-color-neutral-100);
+  --go-focus-outline-color: var(--go-color-neutral-600);
+  --go-color-link: var(--go-color-primary-900);
+  --go-color-link-hover: var(--go-color-primary-900);
+}
+
+@mixin reset-btn {
+  // reset button style
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// https://gist.github.com/tobiasahlin/7a421fb9306a4f518aab
+// Usage:   @include transition(width, height 0.3s ease-in-out);
+// Output:  -webkit-transition(width 0.2s, height 0.3s ease-in-out);
+//          transition(width 0.2s, height 0.3s ease-in-out);
+// Pass in any number of transitions
+@mixin transition($transitions...) {
+  $unfoldedTransitions: ();
+  @each $transition in $transitions {
+    $unfoldedTransitions: append($unfoldedTransitions, unfold-transition($transition), comma);
+  }
+
+  transition: $unfoldedTransitions;
+}
+
+@function unfold-transition($transition) {
+  // Default values
+  $property: all;
+  $duration: var(--go-duration-normal);
+  $easing: var(--go-timing-function);
+  $delay: null; // Browser default is 0, which is what we want
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfoldedTransition: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i);
+    } @else {
+      $p: nth($defaultProperties, $i);
+    }
+
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
+}
+
+// reduced motion media query
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin prefer-dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// to be used on the root level
+@mixin root-prefer-dark {
+  @include prefer-dark {
+    @content;
+  }
+  :where([color-scheme='dark'], [data-theme='dark']) {
+    @content;
+  }
+}
+
+@mixin focus-outline {
+  outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
+  outline-offset: var(--go-focus-outline-offset);
+}
+
+@mixin underline {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/*********************
+
+Default set of CSS variables used in Go UI
+
+*********************/
+
+// load external google font
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700&display=swap');
+
+// load color tokens
+
+/* CSS variables for default token scheme */
+:root {
+  // primary
+  --go-token-primary-100: 14, 105, 241;
+  --go-token-primary-200: 12, 94, 216;
+  --go-token-primary-300: 11, 83, 190;
+  --go-token-primary-400: 9, 72, 165;
+  --go-token-primary-500: 8, 61, 140;
+  --go-token-primary-600: 7, 50, 115;
+  --go-token-primary-700: 5, 39, 90;
+  --go-token-primary-800: 4, 28, 64;
+  --go-token-primary-900: 2, 17, 39;
+
+  // secondary
+  --go-token-secondary-100: 218, 220, 232;
+  --go-token-secondary-200: 189, 193, 214;
+  --go-token-secondary-300: 160, 165, 196;
+  --go-token-secondary-400: 131, 138, 178;
+  --go-token-secondary-500: 102, 110, 160;
+  --go-token-secondary-600: 82, 89, 133;
+  --go-token-secondary-700: 64, 70, 103;
+  --go-token-secondary-800: 46, 50, 74;
+  --go-token-secondary-900: 28, 30, 45;
+
+  // success
+  --go-token-success-100: 167, 222, 163;
+  --go-token-success-200: 139, 212, 133;
+  --go-token-success-300: 110, 201, 104;
+  --go-token-success-400: 82, 190, 74;
+  --go-token-success-500: 66, 165, 59;
+  --go-token-success-600: 54, 135, 48;
+  --go-token-success-700: 42, 106, 38;
+  --go-token-success-800: 30, 76, 27;
+  --go-token-success-900: 18, 46, 17;
+
+  // critical
+  --go-token-critical-100: 244, 169, 167;
+  --go-token-critical-200: 240, 132, 129;
+  --go-token-critical-300: 235, 95, 90;
+  --go-token-critical-400: 230, 58, 52;
+  --go-token-critical-500: 213, 32, 26;
+  --go-token-critical-600: 175, 26, 21;
+  --go-token-critical-700: 136, 20, 17;
+  --go-token-critical-800: 98, 15, 12;
+  --go-token-critical-900: 60, 9, 7;
+
+  // neutral
+  --go-token-neutral-100: 248, 248, 248;
+  --go-token-neutral-200: 222, 222, 222;
+  --go-token-neutral-300: 196, 196, 196;
+  --go-token-neutral-400: 170, 170, 170;
+  --go-token-neutral-500: 144, 144, 144;
+  --go-token-neutral-600: 118, 118, 118;
+  --go-token-neutral-700: 92, 92, 92;
+  --go-token-neutral-800: 66, 66, 66;
+  --go-token-neutral-900: 40, 40, 40;
+
+  // darkest
+  --go-token-darkest: 0, 0, 0;
+
+  // lightest
+  --go-token-lightest: 255, 255, 255;
+}
+
+/* @link https://utopia.fyi/type/calculator?c=768,16,1.2,1440,16,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
+:root {
+  /* stylelint-disable-next-line custom-property-pattern */
+  --go-size--1: clamp(0.83rem, 0.87rem + -0.08vw, 0.8rem);
+  --go-size-0: clamp(1rem, 1rem + 0vw, 1rem);
+  --go-size-1: clamp(1.2rem, 1.14rem + 0.12vw, 1.25rem);
+  --go-size-2: clamp(1.44rem, 1.3rem + 0.29vw, 1.56rem);
+  --go-size-3: clamp(1.73rem, 1.47rem + 0.54vw, 1.95rem);
+  --go-size-4: clamp(2.07rem, 1.65rem + 0.88vw, 2.44rem);
+  --go-size-5: clamp(2.49rem, 1.84rem + 1.34vw, 3.05rem);
+  --go-size-6: clamp(2.99rem, 2.04rem + 1.97vw, 3.82rem);
+  --go-size-7: clamp(3.58rem, 2.23rem + 2.82vw, 4.77rem);
+  --go-size-8: clamp(4.3rem, 2.4rem + 3.95vw, 5.96rem);
+
+  // Grid
+  --go-outer-gutter: 1rem; // Container gutter
+  --go-col-gap: 1rem; // Gap between columns
+
+  // Typography
+  --go-heading-font-family: 'Public Sans', sans-serif;
+  --go-body-font-family: 'Public Sans', sans-serif;
+
+  // Focus styles
+  --go-focus-outline-width: 2px;
+  --go-focus-outline-color: var(--go-color-primary, #000);
+  --go-focus-outline-offset: 2px;
+
+  // Colours (other than tokens)
+  --go-color-bg: var(--go-color-lightest);
+  --go-color-text: var(--go-color-darkest);
+  --go-color-link: var(--go-color-primary-500);
+  --go-color-link-hover: var(--go-color-primary-300);
+  --go-color-link-hover-bg: var(--go-color-neutral-100);
+
+  // Transitions
+  --go-duration-fast: 0.1s;
+  --go-duration-normal: 0.2s;
+  --go-duration-slow: 0.5s;
+  --go-timing-function: ease-in-out;
+
+  // Spacing
+  --go-base-spacing: 0.25rem; // 4px
+}

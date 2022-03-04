@@ -19,7 +19,7 @@ npm i @go-ui/core
 
 ## Framework setup
 
-You can use our patterns and components within your preferred JavaScript framework or *no framework at all*, [see how](./integration/web-components.md).
+You can use our patterns and components within your preferred JavaScript framework or *no framework at all*.
 
 - [Angular](./integration/angular.md)
 - [React](./integration/react.md)

@@ -1,4 +1,4 @@
-/* stylelint-disable docusaurus/copyright-header */
+@import './go-vars';
 
 /**
  * Any CSS included here will be global. The classic template
@@ -6,12 +6,10 @@
  * work well for content-centric websites.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
-
 /* You can override the default Infima variables here. */
 :root {
   --go-heading-font-family: 'Public Sans', sans-serif;
-  --go-body-font-family: 'Roboto', sans-serif;
+  --go-body-font-family: 'Public Sans', sans-serif;
   --ifm-color-primary-lightest: var(--go-color-primary-100);
   --ifm-color-primary-lighter: var(--go-color-primary-300);
   --ifm-color-primary-light: var(--go-color-primary-400);
@@ -31,7 +29,7 @@
 html {
   font-family: var(--go-heading-font-family);
 }
-html[data-theme='dark'] {
+[data-theme='dark'] {
   --ifm-color-primary-lightest: var(--go-color-success-100);
   --ifm-color-primary-lighter: var(--go-color-success-300);
   --ifm-color-primary-light: var(--go-color-success-400);
@@ -78,7 +76,7 @@ html[data-theme='dark'] {
   }
   button {
     background: var(--ifm-color-primary);
-    color: white;
+    color: var(--ifm-font-color-base);
     cursor: pointer;
     &:hover,
     &:focus {
