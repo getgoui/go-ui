@@ -10,15 +10,17 @@ A design system that focuses on:
 
 ## Pattern-first
 
-Pattern first approach allows us to focus on what benefits our users, the developers, the most. We hope to provide you with standards-compliant and end-user-friendly patterns with rationales to save you from debating over common patterns over and over. Instead, your team can focus on the delivery of real features that benefits the end users. 
+Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use. Allowing both design and development teams to focus on delivering the product.
 
-## Flexibility
-...
-### Framework-agnostic
 
-### Component usage
+## Framework-agnostic
 
-Components are built to be tree-shakeable so your app is not bloated with unused code.
+Have multiple front-end stack in your organisation and need a consistent look and feel? Go UI utilise modern browser features such as Web Components and CSS custom properties so that they can be used in any front-end tech stack.
+
+## Adaptive
+
+Go UI makes it easy for developers to build adaptive web applications, this means out-of-the-box, your application support dark mode and reduced motion preferences from the user's operating system.
+
 
 
 ## A11y
@@ -27,7 +29,7 @@ Accessibility (a11y) is one of the most important criteria that enterprise web a
 
 - Automated a11y testing for each component.
 - Use semantic HTML elements under the hood.
-- Build and reference w3.org a11y guidelines wherever possible.
+- Reference w3.org guidelines wherever possible.
 - By the nature of open-source, we encourage a11y experts in the community to test our system and [provide feedbacks](https://github.com/go-components/go-components/issues/new?assignees=&labels=a11y%2C+bug&template=a11y-issue.md&title=%5BA11y+BUG%5D).
 
 
@@ -38,16 +40,16 @@ Become a sponsor to:
 - Have your organisation's logo and link featured here and on our home page.
 - Gain high-priority issue support.
 
-Contact gov.components@gmail.com to get started, we look forward to hearing from you.
+Contact getgoui@gmail.com to get started, we look forward to hearing from you.
 
 
 ## Tech stack
 
 - Component engine - [Stencil](https://stenciljs.com/)
 - Documentation site - [Docusaurus](https://docusaurus.io/)
-- Documentation site hosting - [Netlify]()
+- Documentation site hosting - [Netlify](https://www.netlify.com/)
+- Automated testing - [Jest](https://jestjs.io/) + [Puppeteer](https://pptr.dev/)
 - A11y testing - [axe-core](https://github.com/dequelabs/axe-core)
-
 
 
 ## Contributors ✨

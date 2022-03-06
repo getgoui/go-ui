@@ -97,7 +97,7 @@ module.exports = {
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/go-components',
+                href: 'https://twitter.com/getgoui',
               },
             ],
           },

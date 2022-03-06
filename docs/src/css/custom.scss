@@ -119,9 +119,6 @@ table {
     border-bottom: 2px solid var(--ifm-table-border-color);
   }
 }
-.markdown h1:first-child {
-  margin-top: 0;
-}
 
 .toggleIcon_node_modules-\@docusaurus-theme-classic-lib-next-theme-Toggle-styles-module {
   font-size: 16px;
@@ -129,6 +126,9 @@ table {
 
 .markdown {
   --ifm-leading: 0.5em;
+  h1:first-child {
+    margin-top: 0;
+  }
   h2 {
     font-size: var(--go-size-3);
   }
@@ -144,6 +144,13 @@ table {
   }
   pre {
     font-size: var(--go-size--1);
+  }
+  a {
+    text-decoration: underline;
+    &:hover,
+    :focus-visible {
+      text-decoration: none;
+    }
   }
 }
 
