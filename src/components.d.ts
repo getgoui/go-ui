@@ -100,6 +100,7 @@ export namespace Components {
         "type": 'submit' | 'reset' | 'button';
     }
     interface GoButtonGroup {
+        "block"?: Breakpoints;
     }
     interface GoCard {
         /**
@@ -504,6 +505,7 @@ declare namespace LocalJSX {
         "type"?: 'submit' | 'reset' | 'button';
     }
     interface GoButtonGroup {
+        "block"?: Breakpoints;
     }
     interface GoCard {
         /**

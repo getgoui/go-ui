@@ -3,7 +3,7 @@ go-card {
     @prop --go-card-outer-padding:
       Outer padding of card.
   */
-  --go-card-outer-padding: 2rem 1rem;
+  --go-card-outer-padding: 1.25rem 1rem;
 
   /**
     @prop --go-card-inner-gap:
@@ -93,7 +93,7 @@ go-card {
     @prop --go-card-radius:
       Border radius for card
   */
-  --go-card-radius: var(--radius-3);
+  --go-card-radius: var(--radius-2);
 
   /**
     @prop --go-card-shadow:
@@ -107,6 +107,7 @@ go-card {
   border-radius: var(--go-card-radius);
   box-shadow: var(--go-card-shadow);
   overflow: hidden;
+  height: 100%;
 
   .card-inner {
     padding: var(--go-card-outer-padding);
@@ -115,6 +116,7 @@ go-card {
     flex: 1;
     flex-direction: column;
     gap: var(--go-card-inner-gap);
+    height: 100%;
     .card-title-section {
       .card-title {
         font-size: var(--go-card-title-font-size);
@@ -207,12 +209,7 @@ go-card {
 
   // footer
   .card-footer {
-    go-button {
-      margin-right: var(--go-card-inner-gap);
-      &:last-child {
-        margin-right: 0;
-      }
-    }
+    flex: 0 0 auto;
   }
 }
 

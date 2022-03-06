@@ -98,11 +98,7 @@ const Demo = ({ code, hideSource = false }) => {
     setContentWidth(width);
   };
   const openNewWindow = () => {
-    var win = window.open(
-      '',
-      'Demo',
-      'toolbar=yes,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,width=1200,height=800,top=0,left=0',
-    );
+    var win = window.open('', 'Demo');
     setDemoContent(win, code);
   };
   return (
