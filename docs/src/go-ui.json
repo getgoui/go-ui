@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-03-04T10:10:26",
+  "timestamp": "2022-03-06T08:26:54",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.13.0",
@@ -586,11 +586,48 @@
       "docs": "",
       "docsTags": [],
       "usage": {},
-      "props": [],
+      "props": [
+        {
+          "name": "block",
+          "type": "\"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
+          "mutable": false,
+          "attr": "block",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "default": "'mobile'",
+          "values": [
+            {
+              "value": "desktop",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "mobile",
+              "type": "string"
+            },
+            {
+              "value": "tablet",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--go-button-group-gap",
+          "annotation": "prop",
+          "docs": "gap size between buttons inside the group - default: 0.5rem"
+        }
+      ],
       "slots": [],
       "parts": [],
       "dependents": [],

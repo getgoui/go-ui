@@ -1,6 +1,17 @@
 go-button-group {
+  /**
+    @prop --go-button-group-gap:
+      gap size between buttons inside the group
+      - default: 0.5rem
+  */
+  --go-button-group-gap: 0.5rem;
+
   display: flex;
-  gap: var(--go-button-group-gap, 1rem);
+  flex-direction: column;
+  gap: var(--go-button-group-gap);
   flex-wrap: wrap;
   align-items: baseline;
+  @include tablet {
+    flex-direction: row;
+  }
 }

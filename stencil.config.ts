@@ -23,6 +23,10 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
       copy: [{ src: 'demo.html', dest: 'demo.html' }],
     },
+    {
+      type: 'docs-json',
+      file: 'docs/src/go-ui.json',
+    },
   ],
   globalStyle: 'src/global/styles.scss',
   plugins: [
