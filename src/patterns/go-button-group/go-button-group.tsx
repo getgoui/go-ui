@@ -1,4 +1,5 @@
-import { Component, Host, h, Element } from '@stencil/core';
+import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Breakpoints } from '../../types';
 
 @Component({
   tag: 'go-button-group',
@@ -8,11 +9,12 @@ import { Component, Host, h, Element } from '@stencil/core';
 export class GoButtonGroup {
   @Element() el: HTMLElement;
 
+  @Prop({ reflect: true }) block?: Breakpoints = 'mobile';
+
   componentWillLoad() {
     // Make buttons inside take up full width on mobile.
     this.el.querySelectorAll('go-button').forEach((button) => {
-      // button.setAttribute('block', 'mobile');
-      button.block = 'mobile';
+      button.block = this.block;
     });
   }
   render() {
