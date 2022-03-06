@@ -8,7 +8,8 @@
     "stylelint-no-unsupported-browser-features"
   ],
   "ignoreFiles": [
-    "**/*.min.css"
+    "**/*.min.css",
+    "docs/**/*.scss"
   ],
   "rules": {
     "plugin/no-unsupported-browser-features": [

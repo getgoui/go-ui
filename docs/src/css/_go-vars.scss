@@ -342,6 +342,58 @@ Default set of CSS variables used in Go UI
   --go-token-lightest: 255, 255, 255;
 }
 
+@mixin initiate-light-mode {
+  @include go-color-scheme-light;
+
+  color-scheme: light;
+  .dark-only {
+    display: none;
+  }
+  .light-only {
+    display: block;
+  }
+}
+@mixin initiate-dark-mode {
+  @include go-color-scheme-dark;
+
+  color-scheme: dark;
+  .light-only {
+    display: none;
+  }
+  .dark-only {
+    display: block;
+  }
+}
+
+// define CSS variables for light color scheme
+// default to light theme
+:root {
+  // define colors but don't initiate light mode
+  @include initiate-light-mode;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include initiate-dark-mode;
+  }
+}
+
+// theme overwrites
+[color-scheme='light'],
+[data-theme='light'] {
+  @include initiate-light-mode;
+}
+[color-scheme='dark'],
+[data-theme='dark'] {
+  @include initiate-dark-mode;
+}
+
+// color util classes: .bg-xx .text-xx .border-xx
+
+html {
+  color: var(--go-color-text);
+  background: var(--go-color-bg);
+}
+
 /* @link https://utopia.fyi/type/calculator?c=768,16,1.2,1440,16,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
 
 :root {
