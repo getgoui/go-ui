@@ -204,11 +204,18 @@ go-card {
   // content
   .card-content {
     flex: 1 0 auto;
+    line-height: 1.5;
   }
 
   // footer
   .card-footer {
     flex: 0 0 auto;
+    go-button {
+      margin-right: var(--go-card-inner-gap);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
 

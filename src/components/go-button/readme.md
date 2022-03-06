@@ -29,6 +29,13 @@
 | `"start"` | Use this slot to prepend content to the button. |
 
 
+## CSS Custom Properties
+
+| Name                | Description                                              |
+| ------------------- | -------------------------------------------------------- |
+| `--go-btn-bg-color` | Background colour for the button. - default: transparent |
+
+
 ## Dependencies
 
 ### Used by

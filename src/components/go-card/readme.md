@@ -25,6 +25,29 @@
 | `"pre-title"`    | Slot for content above the card title |
 
 
+## CSS Custom Properties
+
+| Name                              | Description                                                                                                             |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `--go-card-bg`                    | Background colour of card                                                                                               |
+| `--go-card-border-width`          | Border width for `bordered` card - default: 2px                                                                         |
+| `--go-card-fg`                    | Foreground (text) color for the card                                                                                    |
+| `--go-card-inner-gap`             | Gap size in between inner sections of card. ie. title, content, footer                                                  |
+| `--go-card-media-aspect-ratio`    | Aspect ratio for media for when media position = top\|bottom                                                            |
+| `--go-card-media-basis`           | Flex basis for media position = left\|right                                                                             |
+| `--go-card-media-height`          | Height of media for media position = top\|bottom                                                                        |
+| `--go-card-media-object-position` | [Object-position rule](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) for the media. default: center |
+| `--go-card-outer-padding`         | Outer padding of card.                                                                                                  |
+| `--go-card-radius`                | Border radius for card                                                                                                  |
+| `--go-card-shadow`                | Card shadow                                                                                                             |
+| `--go-card-subtitle-font-size`    | Font size of subtitle                                                                                                   |
+| `--go-card-subtitle-font-weight`  | Font weight of subtitle                                                                                                 |
+| `--go-card-subtitle-text-color`   | Text colour of subtitle                                                                                                 |
+| `--go-card-title-color`           | Text colour of card title                                                                                               |
+| `--go-card-title-font-size`       | Font size of card title text                                                                                            |
+| `--go-card-title-font-weight`     | Font weight of card title text                                                                                          |
+
+
 ## Dependencies
 
 ### Depends on

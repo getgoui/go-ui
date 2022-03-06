@@ -27,7 +27,6 @@ describe('go-button', () => {
         outline-fill
         flat
         disabled
-        class="custom-class"
         >Hello</go-button>`,
     });
 
@@ -36,7 +35,6 @@ describe('go-button', () => {
     const nativeButton = await page.root.querySelector('button');
     expect(nativeButton).toHaveAttribute('aria-disabled');
     expect(nativeButton).toHaveAttribute('disabled');
-    expect(nativeButton).toHaveClass('custom-class');
   });
 
   it('renders <a> tag when href is passed in', async () => {
@@ -45,12 +43,10 @@ describe('go-button', () => {
       html: `
       <go-button
         href="https://www.google.com"
-        class="custom-class"
         >Link</go-button>`,
     });
     const aTag = page.root.querySelector('a');
     expect(aTag).toBeTruthy();
-    expect(aTag).toHaveClass('custom-class');
     expect(aTag).toHaveClass('inner-button');
     expect(aTag.getAttribute('href')).toEqual('https://www.google.com');
     expect(page.root.querySelector('button')).toBeFalsy();

@@ -1,4 +1,4 @@
-@import './utils/mixins';
+@import './utils';
 
 @mixin initiate-light-mode {
   @include go-color-scheme-light;

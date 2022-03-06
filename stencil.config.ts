@@ -3,7 +3,6 @@ import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
-import cssnano from 'cssnano';
 
 export const config: Config = {
   namespace: 'go-ui',
@@ -24,6 +23,10 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
       copy: [{ src: 'demo.html', dest: 'demo.html' }],
     },
+    {
+      type: 'docs-json',
+      file: 'docs/src/go-ui.json',
+    },
   ],
   globalStyle: 'src/global/styles.scss',
   plugins: [
@@ -37,9 +40,6 @@ export const config: Config = {
           propList: ['*'],
           selectorBlackList: [':root', 'html', 'body'],
           replace: false,
-        }),
-        cssnano({
-          preset: ['default', { discardComments: { removeAll: true } }],
         }),
       ],
     }),

@@ -32,13 +32,14 @@ const DemoFrame = ({ code, onLoad, onResize, colorScheme }) => {
       };
 
       window.addEventListener('resize', resizeHandler);
-      onLoad(window);
 
       const htmlElement = window.document.documentElement;
       // set html color-scheme attribute to colorScheme
       htmlElement.setAttribute('color-scheme', colorScheme);
       // set html visibility style to visible
       htmlElement.style.visibility = 'visible';
+
+      window.addEventListener('load', () => onLoad(window));
 
       return () => {
         window.removeEventListener('resize', resizeHandler);
@@ -133,24 +134,26 @@ const Demo = ({ code, hideSource = false }) => {
             </div>
           </div>
         </div>
-
         <div
           className="content"
           ref={contentEl}
           style={{
-            'width': contentWidth,
-            'height': contentHeight,
-            '--min-frame-height': minFrameHeight + 'px',
+            width: contentWidth,
           }}>
           <div className="frame-wrapper">
             {resizingX || resizingY ? <div className="resize-overlay"></div> : null}
             <DemoFrame
               code={code}
               onLoad={(frameWindow) => {
-                setActualFrameHeight(frameWindow.document.body.scrollHeight);
+                setTimeout(() => {
+                  console.log('yo');
+                  const buffer = 80;
+                  contentEl.current.style.height = buffer + frameWindow.document.body.getBoundingClientRect().height + 'px';
+                  contentEl.current.querySelector('.loading-overlay').style.display = 'none';
+                }, 1000);
               }}
               onResize={(frameWindow) => {
-                setActualFrameHeight(frameWindow.document.body.scrollHeight);
+                setActualFrameHeight(frameWindow.document.body.getBoundingClientRect().height);
               }}
               colorScheme={colorScheme}
             />
@@ -163,14 +166,16 @@ const Demo = ({ code, hideSource = false }) => {
             title="Drag to resize, double click to reset">
             <span>||</span>
           </button>
-          <button
+          {/* <button
             type="button"
             onMouseDown={startResizeY}
             onDoubleClick={() => setContentHeight(`${actualFrameHeight + 80}px`)}
             className="resize-handle y-axis"
             title="Drag to resize, double click to show full content">
             <span>||</span>
-          </button>
+          </button> */}
+
+          <div className="loading-overlay">Loading demo...</div>
         </div>
       </div>
       {!hideSource ? (

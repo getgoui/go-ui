@@ -97,7 +97,7 @@ module.exports = {
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/go-components',
+                href: 'https://twitter.com/getgoui',
               },
             ],
           },
@@ -146,7 +146,7 @@ module.exports = {
           editUrl: 'https://github.com/go-components/go-components/edit/main/docs/blog/',
         },
         theme: {
-          customCss: [require.resolve('../src/global/scss/_css_variables.scss'), require.resolve('./src/css/custom.scss')],
+          customCss: [require.resolve('./src/css/custom.scss')],
         },
       }),
     ],
