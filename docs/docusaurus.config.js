@@ -11,8 +11,8 @@ module.exports = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.svg',
-  organizationName: 'go-components', // Usually your GitHub org/user name.
-  projectName: 'go-components', // Usually your repo name.
+  organizationName: 'getgoui', // Usually your GitHub org/user name.
+  projectName: 'go-ui', // Usually your repo name.
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -49,7 +49,7 @@ module.exports = {
             label: 'Get involved',
           },
           {
-            href: 'https://github.com/go-components/go-components',
+            href: 'https://github.com/getgoui/go-ui',
             label: 'GitHub',
             position: 'right',
           },

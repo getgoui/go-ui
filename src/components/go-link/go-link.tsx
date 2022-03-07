@@ -27,7 +27,7 @@ export class GoLink {
   private attrs = {};
   componentWillLoad() {
     this.checkExternal();
-    this.attrs = inheritAttributes(this.el, ['href', 'target']);
+    this.attrs = inheritAttributes(this.el, ['href', 'target', 'expand-clickable-area']);
   }
 
   @State() isExternal: boolean = false;
