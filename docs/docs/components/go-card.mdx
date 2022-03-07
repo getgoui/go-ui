@@ -8,25 +8,13 @@ import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/go-card/demo/go-card.html';
 import mediaCardDemoSource from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-media.html';
 import cardFooterDemo from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-footer-slot.html';
+import cardLinkDemo from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-links.html';
 
 # Card <span className="text-size-0">`go-card`</span>
 
 <!-- Description -->
 
 <div className="text-size-1">A card is an essential component to any modern design system.</div>
-
-## Accessibility
-
-<!-- A11y -->
-
-## Related patterns
-
-<!-- Patterns that uses this component -->
-
-- [Pattern 1](#)
-- [Pattern 2](#)
-
-<!-- Demos, tips, variations, use cases -->
 
 ## Basic cards
 
@@ -41,6 +29,14 @@ import cardFooterDemo from '!!raw-loader!@/go-ui/components/go-card/demo/go-card
 Use `footer` slot to add actions to the bottom of the card.
 
 <Demo hideSource code={cardFooterDemo} />
+
+## Card links
+
+Often with cards you want to allow users to click a link to another page to find out more information. `go-card` allows you to create accessible link cards with ease.
+
+Similar to [`go-link`](./go-link) component, you can add a `href` attribute and turn the card into a link. The whole card will be clickable for ease of use and only the title part will be announced as a link for screen readers.
+
+<Demo hideSource code={cardLinkDemo} />
 
 <!-- API -->
 
