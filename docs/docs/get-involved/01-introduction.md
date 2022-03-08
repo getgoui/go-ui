@@ -2,29 +2,37 @@
 
 The goal of this project is to make it easier to develop accessible products with a good user experience. In order to achieve this goal, the project needs input and support from the web community, this includes developers, designers, content creators and business owners.
 
+## Why
+
 Getting involved helps the community to build better products and services for the general public, and depending on your role, you also get these benefits:
-## as a developer
+### as a developer
 
 - Work on a great tech stack ([Stencil](https://stenciljs.com/), [Docusaurus](https://docusaurus.io/), [Puppeteer](https://pptr.dev/), [axe-core](https://github.com/dequelabs/axe-core)) and custom-built tools for a nicer [developer experience](./04-development-guide.md).
-- Learn how to build components that can be used everywhere.
+- Learn how to build components that can be [used everywhere](../guides/web-components.md) by everyone.
 - Get recognised as an awesome OSS contributor (see [Contributors section](https://github.com/getgoui/go-ui#contributors-) on our GitHub page)
 - Spend less time repeating the same implementation
 
-## as a designer
+### as a designer
 
 - Improve accessibility for many projects and their users.
 - Show case your experience and expertise.
 - Learn more about accessibility and coding practices.
 
-## as a business
+### as a business
 
 - Supporting open source software projects can greatly improve the reputation of your brand in the developer community, which will in turn help your resourcing and hiring.
 - [Get in touch](#get-in-touch) to see more ways GO UI can help your project.
 
 
-## How to help
+## How
 
 There are many ways to contribute to this project. You can help us via:
+
+### Sponsorship
+
+The easiest way to help the project is to sponsor it, simply visit the GitHub page and click the "Sponsor" button.
+
+Sponsors will be featured on the home page of this website.
 
 ### Review documentations
 
