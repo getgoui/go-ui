@@ -149,7 +149,7 @@ module.exports = {
           customCss: [require.resolve('./src/css/custom.scss')],
         },
         googleAnalytics: {
-          trackingID: 'G-CJS361GWNM',
+          trackingID: 'UA-222249493-1',
         },
       }),
     ],
