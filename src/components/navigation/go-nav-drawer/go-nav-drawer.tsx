@@ -116,22 +116,6 @@ export class GoNavDrawer {
     this.currentSubMenus = [...this.currentSubMenus, menuItem];
   }
 
-  private handleArrowKeys(e: KeyboardEvent) {
-    e.preventDefault();
-    const currentTrigger = e.target as HTMLElement;
-    const currentItem = currentTrigger.closest('li');
-    let targetItem = null;
-    if (e.code === 'ArrowUp') {
-      targetItem = currentItem.previousElementSibling;
-    }
-    if (e.code === 'ArrowDown') {
-      targetItem = currentItem.nextElementSibling;
-    }
-    if (targetItem) {
-      (targetItem.querySelector('.nav-item-inner') as HTMLElement).focus();
-    }
-  }
-
   subMenus: { string: INavItem[] } = null;
 
   renderNavItems(items: INavItem[], parentItem?: INavItem) {
@@ -231,7 +215,7 @@ export class GoNavDrawer {
     }
     return (
       <li class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item.isCurrent }}>
-        <Tag class="nav-item-inner" onKeydown={(e) => this.handleArrowKeys(e)} {...attrs}>
+        <Tag class="nav-item-inner" {...attrs}>
           <span class="nav-item-label">
             {item.icon && <go-icon name={item.icon}></go-icon>}
             <span>{item.label}</span>
