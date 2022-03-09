@@ -52,7 +52,6 @@
       border: var(--demo-frame-border);
       border-top: none;
       height: var(--min-frame-height, 400px);
-      transition: height 0.3s ease-in-out;
 
       .resize-handle {
         position: absolute;
@@ -77,6 +76,20 @@
           height: 100%;
           cursor: col-resize;
           border-bottom-right-radius: var(--browser-window-radius);
+        }
+        &.y-axis {
+          transition: none;
+          top: 100%;
+          left: 0;
+          bottom: auto;
+          width: 100%;
+          height: var(--browser-resize-handle-size);
+          cursor: row-resize;
+          border-bottom-left-radius: var(--browser-window-radius);
+          border-bottom-right-radius: var(--browser-window-radius);
+          > span {
+            transform: rotate(90deg);
+          }
         }
       }
       .frame-wrapper {
@@ -105,7 +118,7 @@
         bottom: 0;
         left: 0;
         z-index: 999;
-        background: rgb(var(--go-token-neutral-300));
+        background: rgb(var(--go-token-neutral-100));
         display: flex;
         justify-content: center;
         align-items: center;

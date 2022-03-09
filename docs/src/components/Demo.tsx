@@ -18,12 +18,10 @@ const setDemoContent = (window, code) => {
   doc.close();
 };
 
-const DemoFrame = ({ code, onLoad, onResize, colorScheme }) => {
+const DemoFrame = ({ code, onLoad, onResize, colorScheme = null }) => {
   const demoFrame = useRef(null);
   // onload content
   useEffect(() => {
-    console.log(colorScheme);
-
     if (demoFrame.current) {
       const window = demoFrame.current.contentWindow;
       setDemoContent(window, code);
@@ -32,12 +30,6 @@ const DemoFrame = ({ code, onLoad, onResize, colorScheme }) => {
       };
 
       window.addEventListener('resize', resizeHandler);
-
-      const htmlElement = window.document.documentElement;
-      // set html color-scheme attribute to colorScheme
-      htmlElement.setAttribute('color-scheme', colorScheme);
-      // set html visibility style to visible
-      htmlElement.style.visibility = 'visible';
 
       window.addEventListener('load', () => onLoad(window));
 
@@ -56,7 +48,7 @@ const Demo = ({ code, hideSource = false }) => {
   const [contentWidth, setContentWidth] = useState('100%');
   const [contentHeight, setContentHeight] = useState('100%');
   const [actualFrameHeight, setActualFrameHeight] = useState(0);
-  const [colorScheme, setColorScheme] = useState('light');
+  const [loaded, setLoaded] = useState(false);
   const contentEl = useRef(null);
   const minFrameHeight = 400;
   const startResizeX = () => {
@@ -101,6 +93,7 @@ const Demo = ({ code, hideSource = false }) => {
     var win = window.open('', 'Demo');
     setDemoContent(win, code);
   };
+  const frameHeightBuffer = 80;
   return (
     <div className="demo-container">
       <div className="fake-browser">
@@ -112,9 +105,6 @@ const Demo = ({ code, hideSource = false }) => {
           </div>
           <div className="controls">
             <div className="devices">
-              {/* <button title="Change color scheme" type="button" onClick={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}>
-                {colorScheme === 'light' ? '☀️' : '🌙'}
-              </button> */}
               <button title="New window" type="button" onClick={openNewWindow}>
                 <ExternalIcon />
               </button>
@@ -131,10 +121,11 @@ const Demo = ({ code, hideSource = false }) => {
           </div>
         </div>
         <div
-          className="content"
+          className={'content ' + (loaded ? 'loaded' : '')}
           ref={contentEl}
           style={{
             width: contentWidth,
+            height: contentHeight,
           }}>
           <div className="frame-wrapper">
             {resizingX || resizingY ? <div className="resize-overlay"></div> : null}
@@ -142,16 +133,13 @@ const Demo = ({ code, hideSource = false }) => {
               code={code}
               onLoad={(frameWindow) => {
                 setTimeout(() => {
-                  console.log('yo');
-                  const buffer = 80;
-                  contentEl.current.style.height = buffer + frameWindow.document.body.getBoundingClientRect().height + 'px';
-                  contentEl.current.querySelector('.loading-overlay').style.display = 'none';
+                  setContentHeight(frameHeightBuffer + frameWindow.document.body.getBoundingClientRect().height + 'px');
+                  setLoaded(true);
                 }, 1000);
               }}
               onResize={(frameWindow) => {
                 setActualFrameHeight(frameWindow.document.body.getBoundingClientRect().height);
               }}
-              colorScheme={colorScheme}
             />
           </div>
           <button
@@ -162,16 +150,16 @@ const Demo = ({ code, hideSource = false }) => {
             title="Drag to resize, double click to reset">
             <span>||</span>
           </button>
-          {/* <button
+          <button
             type="button"
             onMouseDown={startResizeY}
-            onDoubleClick={() => setContentHeight(`${actualFrameHeight + 80}px`)}
+            onDoubleClick={() => setContentHeight(`${actualFrameHeight + frameHeightBuffer}px`)}
             className="resize-handle y-axis"
             title="Drag to resize, double click to show full content">
             <span>||</span>
-          </button> */}
+          </button>
 
-          <div className="loading-overlay">Loading demo...</div>
+          {loaded ? null : <div className="loading-overlay">Loading demo...</div>}
         </div>
       </div>
       {!hideSource ? (
