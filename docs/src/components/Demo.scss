@@ -1,6 +1,7 @@
 .demo-container {
-  margin: 2rem 0;
+  margin: 2rem 0 4rem;
   padding-right: 28px;
+
   iframe {
     background: #fff;
   }
@@ -49,9 +50,9 @@
 
     .content {
       position: relative;
-      border: var(--demo-frame-border);
-      border-top: none;
-      height: var(--min-frame-height, 400px);
+      border: none;
+      min-height: var(--min-frame-height, 200px);
+      height: 100%;
 
       .resize-handle {
         position: absolute;
@@ -98,11 +99,7 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        .resize-overlay {
-          position: absolute;
-          inset: 0;
-          z-index: 10;
-        }
+
         iframe {
           width: 100%;
           max-width: 100%;
@@ -111,6 +108,7 @@
           z-index: 9;
         }
       }
+      .resize-overlay,
       .loading-overlay {
         position: absolute;
         top: 0;
@@ -118,11 +116,15 @@
         bottom: 0;
         left: 0;
         z-index: 999;
-        background: rgb(var(--go-token-neutral-100));
+        background: var(--go-color-neutral-100);
+        color: var(--go-color-darkest);
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 1rem;
+      }
+      .resize-overlay {
+        opacity: 0.75;
       }
     }
   }
@@ -155,6 +157,7 @@
   }
 
   details.source-code {
+    margin-top: 2rem;
     padding: 0.5em 0.5em 0;
     summary {
       border: 1px solid var(--ifm-color-primary-light);

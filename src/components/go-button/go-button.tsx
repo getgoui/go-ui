@@ -32,8 +32,9 @@ export class GoButton {
   /**
    * If set, the button will take up the full width of its parent
    * If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
+   * If block="all", the button will take full width on all devices.
    */
-  @Prop({ reflect: true }) block?: Breakpoints | '';
+  @Prop({ reflect: true }) block?: Breakpoints;
 
   /**
    * If `outline` is true, the button will have a border based on selected variant
@@ -110,8 +111,8 @@ export class GoButton {
   }
 
   @Watch('block')
-  handleBlockChange(block: Breakpoints | '') {
-    this.blockClasses = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
+  handleBlockChange(block: Breakpoints) {
+    this.blockClasses = typeof block !== 'undefined' ? `${block === 'all' ? 'block' : `block-${block}`}` : '';
   }
 
   render() {
