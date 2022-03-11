@@ -5,24 +5,25 @@ hide_table_of_contents: true
 ---
 
 import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/patterns/go-button-group/demo/go-button-group.html';
+import demoSource from '!!raw-loader!@/go-ui/patterns/go-button-group/demo/button-group.html';
+import demoSourceConnected from '!!raw-loader!@/go-ui/patterns/go-button-group/demo/button-group-connected.html';
 
 # Button group
 
 <!-- Description -->
 
-This is a pattern to group buttons together.
+Make buttons nicely grouped.
 
 ## When to use
 
 - When you need to present users with multiple actions to choose from.
 - When you need consistent alignment of buttons.
 
-## A11y
-
-(Provide relevant a11y information here.)
-
 ## Components
+
+:::warning go-button dependency
+Only `go-button` components are optimised as child components, use them as direct children of `go-button-group`.
+:::
 
 - [Button](../components/go-button)
 
@@ -32,6 +33,10 @@ This is a pattern to group buttons together.
 
 <Demo code={demoSource} />
 
+Remove gap between buttons with `no-gap` attribute.
+
+<Demo code={demoSourceConnected} />
+
 <!-- API -->
 
-{@include: ../../../src/components/go-button-group/readme.md}
+{@include: ../../../src/patterns/go-button-group/readme.md}

@@ -112,7 +112,7 @@ export class GoButton {
 
   @Watch('block')
   handleBlockChange(block: Breakpoints) {
-    this.blockClasses = typeof block !== 'undefined' ? `${block === 'all' ? 'block' : `block-${block}`}` : '';
+    this.blockClasses = typeof block !== 'undefined' ? `block-${block}` : '';
   }
 
   render() {

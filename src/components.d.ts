@@ -50,9 +50,9 @@ export namespace Components {
     }
     interface GoButton {
         /**
-          * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
+          * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices. If block="all", the button will take full width on all devices.
          */
-        "block"?: Breakpoints | '';
+        "block"?: Breakpoints;
         /**
           * Color variants
          */
@@ -100,7 +100,14 @@ export namespace Components {
         "type": 'submit' | 'reset' | 'button';
     }
     interface GoButtonGroup {
+        /**
+          * If specified, buttons within group will be full width on smaller devices and auto-width going forward. e.g. having `block="tablet"` will make all buttons in group take up full width on mobile and tablet sizes and auto-width on larger devices.
+         */
         "block"?: Breakpoints;
+        /**
+          * No gap between buttons.
+         */
+        "connected"?: boolean;
     }
     interface GoCard {
         /**
@@ -455,9 +462,9 @@ declare namespace LocalJSX {
     }
     interface GoButton {
         /**
-          * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices.
+          * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices. If block="all", the button will take full width on all devices.
          */
-        "block"?: Breakpoints | '';
+        "block"?: Breakpoints;
         /**
           * Color variants
          */
@@ -505,7 +512,14 @@ declare namespace LocalJSX {
         "type"?: 'submit' | 'reset' | 'button';
     }
     interface GoButtonGroup {
+        /**
+          * If specified, buttons within group will be full width on smaller devices and auto-width going forward. e.g. having `block="tablet"` will make all buttons in group take up full width on mobile and tablet sizes and auto-width on larger devices.
+         */
         "block"?: Breakpoints;
+        /**
+          * No gap between buttons.
+         */
+        "connected"?: boolean;
     }
     interface GoCard {
         /**
