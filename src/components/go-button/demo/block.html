@@ -1,8 +1,14 @@
 <div class="container">
   <!-- block -->
-  <h3>Block</h3>
-  <go-button style="margin-bottom: var(--go-size--1)" block color="primary">Block on all breakpoints</go-button>
-  <go-button style="margin-bottom: var(--go-size--1)" block="mobile" color="primary">Block on mobile</go-button>
-  <go-button style="margin-bottom: var(--go-size--1)" block="tablet" color="primary">Block on tablet</go-button>
-  <go-button style="margin-bottom: var(--go-size--1)" block="desktop" color="primary">Block on desktop</go-button>
+  <p>Full width on all devices</p>
+  <go-button block="all" color="primary">Button</go-button>
+
+  <p>Full width on mobile, inline from tablet onwards</p>
+  <go-button block="mobile" color="primary">Button</go-button>
+
+  <p>Full width on mobile and tablet, inline from desktop onwards</p>
+  <go-button block="tablet" color="primary">Button</go-button>
+
+  <p>Full width on mobile, tablet and desktop, inline from large onwards</p>
+  <go-button block="desktop" color="primary">Button</go-button>
 </div>

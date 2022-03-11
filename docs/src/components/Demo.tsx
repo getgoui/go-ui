@@ -50,7 +50,7 @@ const Demo = ({ code, hideSource = false }) => {
   const [actualFrameHeight, setActualFrameHeight] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const contentEl = useRef(null);
-  const minFrameHeight = 400;
+  const minFrameHeight = 200;
   const startResizeX = () => {
     setResizingX(true);
     const onResizeX = (e) => {
@@ -124,38 +124,31 @@ const Demo = ({ code, hideSource = false }) => {
           className={'content ' + (loaded ? 'loaded' : '')}
           ref={contentEl}
           style={{
-            width: contentWidth,
-            height: contentHeight,
+            'width': contentWidth,
+            'height': contentHeight,
+            '--min-frame-height': minFrameHeight + 'px',
           }}>
           <div className="frame-wrapper">
-            {resizingX || resizingY ? <div className="resize-overlay"></div> : null}
+            {resizingX || resizingY ? (
+              <div className="resize-overlay">
+                {contentWidth} x {contentHeight}
+              </div>
+            ) : null}
             <DemoFrame
               code={code}
               onLoad={(frameWindow) => {
                 setTimeout(() => {
-                  setContentHeight(frameHeightBuffer + frameWindow.document.body.getBoundingClientRect().height + 'px');
+                  const initialHeight = Math.ceil(frameHeightBuffer + frameWindow.document.body.getBoundingClientRect().height);
+                  setContentHeight(initialHeight + 'px');
                   setLoaded(true);
                 }, 1000);
               }}
-              onResize={(frameWindow) => {
-                setActualFrameHeight(frameWindow.document.body.getBoundingClientRect().height);
-              }}
             />
           </div>
-          <button
-            type="button"
-            onMouseDown={startResizeX}
-            onDoubleClick={() => setContentWidth('100%')}
-            className="resize-handle x-axis"
-            title="Drag to resize, double click to reset">
+          <button type="button" onMouseDown={startResizeX} className="resize-handle x-axis">
             <span>||</span>
           </button>
-          <button
-            type="button"
-            onMouseDown={startResizeY}
-            onDoubleClick={() => setContentHeight(`${actualFrameHeight + frameHeightBuffer}px`)}
-            className="resize-handle y-axis"
-            title="Drag to resize, double click to show full content">
+          <button type="button" onMouseDown={startResizeY} className="resize-handle y-axis">
             <span>||</span>
           </button>
 
