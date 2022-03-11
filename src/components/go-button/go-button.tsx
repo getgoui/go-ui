@@ -76,6 +76,8 @@ export class GoButton {
    */
   @Prop() href?: string;
 
+  @State() blockClasses: string;
+
   private inheritedAttributes = {} as any;
   componentWillLoad() {
     // a11y check
@@ -83,6 +85,10 @@ export class GoButton {
       if (!this.root.hasAttribute('aria-label') && !this.root.hasAttribute('aria-labelledby')) {
         warning(`go-button with icon must have either aria-label or aria-labelledby attribute`, this.root);
       }
+    }
+
+    if (this.block) {
+      this.handleBlockChange(this.block);
     }
 
     this.inheritedAttributes = inheritAttributes(this.root, [
@@ -103,7 +109,6 @@ export class GoButton {
     ]);
   }
 
-  @State() blockClasses: string;
   @Watch('block')
   handleBlockChange(block: Breakpoints | '') {
     this.blockClasses = typeof block !== 'undefined' ? `${block === '' ? 'block' : `block-${block}`}` : '';
@@ -113,7 +118,6 @@ export class GoButton {
     const { type, disabled, color, blockClasses, outline, outlineFill, inheritedAttributes, href } = this;
     const Tag = href ? 'a' : 'button';
     const rootClasses = `${color} ${blockClasses}`;
-
     return (
       <Host
         class={{
