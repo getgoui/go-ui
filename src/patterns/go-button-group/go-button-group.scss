@@ -2,16 +2,34 @@ go-button-group {
   /**
     @prop --go-button-group-gap:
       gap size between buttons inside the group
-      - default: 0.5rem
+      - default: 1rem
   */
-  --go-button-group-gap: 0.5rem;
+  --go-button-group-gap: 1rem;
 
   display: flex;
-  flex-direction: column;
   gap: var(--go-button-group-gap);
   flex-wrap: wrap;
   align-items: baseline;
-  @include tablet {
-    flex-direction: row;
+
+  &.connected {
+    flex-wrap: nowrap;
+    gap: 0;
+    go-button {
+      &:first-of-type {
+        .inner-button {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+      &:last-of-type {
+        .inner-button {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+      &:not(:first-of-type, :last-of-type) {
+        --go-btn-radius: 0;
+      }
+    }
   }
 }

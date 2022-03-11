@@ -9,17 +9,28 @@ import { Breakpoints } from '../../types';
 export class GoButtonGroup {
   @Element() el: HTMLElement;
 
-  @Prop({ reflect: true }) block?: Breakpoints = 'mobile';
+  /**
+   * If specified, buttons within group will be full width on smaller devices and auto-width going forward. e.g. having `block="tablet"` will make all buttons in group take up full width on mobile and tablet sizes and auto-width on larger devices.
+   */
+  @Prop({ reflect: true }) block?: Breakpoints;
 
-  componentWillLoad() {
+  /**
+   * No gap between buttons.
+   */
+  @Prop() connected?: boolean = false;
+
+  async componentWillLoad() {
     // Make buttons inside take up full width on mobile.
-    this.el.querySelectorAll('go-button').forEach((button) => {
-      button.block = this.block;
-    });
+    if (this.block) {
+      this.el.querySelectorAll('go-button').forEach((button) => {
+        button.setAttribute('block', this.block);
+      });
+    }
   }
   render() {
+    const { connected } = this;
     return (
-      <Host>
+      <Host role="group" class={{ connected }}>
         <slot></slot>
       </Host>
     );

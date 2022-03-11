@@ -29,12 +29,11 @@ go-button {
 
   display: inline-block;
 
-  &.block {
+  &.block-all {
     display: block;
     width: 100%;
   }
 
-  // start block level on desktop
   &.block-desktop {
     display: block;
     width: 100%;
