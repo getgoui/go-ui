@@ -18,7 +18,7 @@ const setDemoContent = (window, code) => {
   doc.close();
 };
 
-const DemoFrame = ({ code, onLoad, onResize, colorScheme = null }) => {
+const DemoFrame = ({ code, onLoad, onResize = null, colorScheme = null }) => {
   const demoFrame = useRef(null);
   // onload content
   useEffect(() => {
@@ -26,7 +26,7 @@ const DemoFrame = ({ code, onLoad, onResize, colorScheme = null }) => {
       const window = demoFrame.current.contentWindow;
       setDemoContent(window, code);
       const resizeHandler = (e) => {
-        onResize(e.target);
+        // onResize(e.target);
       };
 
       window.addEventListener('resize', resizeHandler);
