@@ -31,6 +31,7 @@ export class GoSkipLink {
 
     if (!targetEl) {
       warning(`[go-skip-link] target ${this.target} not found.`);
+      return;
     }
 
     if (targetEl.hasAttribute('tabindex')) {
