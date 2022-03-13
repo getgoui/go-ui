@@ -295,6 +295,12 @@ export namespace Components {
         "closeSearchForm": () => Promise<void>;
         "openSearchForm": () => Promise<void>;
     }
+    interface GoSkipLink {
+        /**
+          * Tell skip link which element to focus (supports any query selector)
+         */
+        "target"?: string;
+    }
 }
 declare global {
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
@@ -399,6 +405,12 @@ declare global {
         prototype: HTMLGoSearchBarElement;
         new (): HTMLGoSearchBarElement;
     };
+    interface HTMLGoSkipLinkElement extends Components.GoSkipLink, HTMLStencilElement {
+    }
+    var HTMLGoSkipLinkElement: {
+        prototype: HTMLGoSkipLinkElement;
+        new (): HTMLGoSkipLinkElement;
+    };
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
@@ -417,6 +429,7 @@ declare global {
         "go-nav-list": HTMLGoNavListElement;
         "go-overlay": HTMLGoOverlayElement;
         "go-search-bar": HTMLGoSearchBarElement;
+        "go-skip-link": HTMLGoSkipLinkElement;
     }
 }
 declare namespace LocalJSX {
@@ -706,6 +719,12 @@ declare namespace LocalJSX {
     }
     interface GoSearchBar {
     }
+    interface GoSkipLink {
+        /**
+          * Tell skip link which element to focus (supports any query selector)
+         */
+        "target"?: string;
+    }
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
@@ -724,6 +743,7 @@ declare namespace LocalJSX {
         "go-nav-list": GoNavList;
         "go-overlay": GoOverlay;
         "go-search-bar": GoSearchBar;
+        "go-skip-link": GoSkipLink;
     }
 }
 export { LocalJSX as JSX };
@@ -747,6 +767,7 @@ declare module "@stencil/core" {
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
+            "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
         }
     }
 }

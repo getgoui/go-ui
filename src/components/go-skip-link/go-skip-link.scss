@@ -1,0 +1,35 @@
+go-skip-link {
+  /**
+    @prop --skip-link-padding:
+      Padding to apply to the skip link focusable area
+      - default: 1rem 2rem
+  */
+  --skip-link-padding: 1rem 2rem;
+
+  /**
+    @prop --skip-link-bg-color:
+      Background color for the skip link focusable area
+      - default: var(--go-color-secondary-700)
+  */
+  --skip-link-bg-color: var(--go-color-secondary-700);
+
+  /**
+    @prop --skip-link-text-color:
+      Text color for the skip link focusable area
+      - default: var(--go-color-lightest)
+  */
+  --skip-link-text-color: var(--go-color-lightest);
+
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+
+  a,
+  a:focus-visible {
+    display: block;
+    padding: var(--skip-link-padding);
+    background: var(--skip-link-bg-color);
+    color: var(--skip-link-text-color);
+    box-shadow: var(--shadow-2);
+  }
+}

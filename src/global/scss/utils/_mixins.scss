@@ -92,7 +92,7 @@
   // dark shadows
   --shadow-strength: 30%;
   --shadow-color: 220 40% 2%;
-  --go-color-bg: var(--go-color-neutral-100);
+  --go-color-bg: var(--go-color-lightest);
   --go-focus-outline-color: var(--go-color-neutral-600);
   --go-color-link: var(--go-color-primary-900);
   --go-color-link-hover: var(--go-color-primary-900);
@@ -175,4 +175,16 @@
 @mixin underline {
   text-decoration: underline;
   text-underline-offset: 0.2em;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
