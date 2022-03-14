@@ -31,7 +31,9 @@ export default function ColorDisplay() {
                 const textColor = color.isDark() ? '#fff' : '#000';
                 return (
                   <div key={index} className="color-box">
-                    <ColorPreview text={isExtreme ? '' : (index + 1) * 100} color={color} textColor={textColor} isSpecial={index === 4} />
+                    <ColorPreview color={color} isSpecial={index === 4}>
+                      {isExtreme ? '' : (index + 1) * 100}
+                    </ColorPreview>
                     <code style={{ fontSize: '0.8em' }}>{color.hex()}</code>
                   </div>
                 );

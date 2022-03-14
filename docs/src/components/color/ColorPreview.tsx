@@ -2,10 +2,16 @@ import React from 'react';
 import Color from 'color';
 import './ColorPreview.scss';
 
-export default function ColorPreview({ color, textColor, text, isSpecial }) {
+export interface ColorPreviewProps {
+  color: Color;
+  isSpecial?: boolean;
+  children?: React.ReactNode;
+}
+export default function ColorPreview({ color, isSpecial, children }: ColorPreviewProps) {
+  const textColor = color.isDark() ? '#fff' : '#000';
   return (
-    <div className={`color-preview${isSpecial ? ' special' : ''}`} style={{ backgroundColor: color.rgb().string(), color: textColor }} title={color.hex()}>
-      <span>{text}</span>
-    </div>
+    <span className={`color-preview${isSpecial ? ' special' : ''}`} style={{ backgroundColor: color.rgb().string(), color: textColor }} title={color.hex()}>
+      {children}
+    </span>
   );
 }

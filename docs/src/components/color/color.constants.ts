@@ -2,20 +2,17 @@ import Color from 'color';
 
 export const rgb = (r, g, b) => ({ r, g, b });
 
-export const defaultColors = {
-  primary: '#083d8c',
-  secondary: '#666ea0',
-  success: '#42a53b',
-  critical: rgb(213, 32, 26),
-  neutral: rgb(144, 144, 144),
-};
-
-export const defaultExtremeColors = {
-  darkest: rgb(0, 0, 0),
-  lightest: rgb(255, 255, 255),
-};
+export const colorCategories = ['primary', 'secondary', 'success', 'critical', 'neutral'];
+export const colorLevels = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+export const extremeColorCategories = ['darkest', 'lightest'];
 // get all color keys from combine default colors with extreme colors
-export const lightnessInterval = 0.18;
+export const lightnessIntervals = {
+  primary: 0.2,
+  secondary: 0.2,
+  success: 0.2,
+  critical: 0.2,
+  neutral: 0.2,
+};
 export const totalShades = 9;
 export const centerShade = Math.ceil(totalShades / 2);
 
@@ -29,9 +26,9 @@ function getKeysFromName(name: string, isExtreme: boolean = false): string[] {
     return [`--go-color-${name}`];
   }
   let results = [];
-  for (let i = 0; i < totalShades; i++) {
-    results.push(`--go-color-${name}-${(i + 1) * 100}`);
-  }
+  colorLevels.forEach((level) => {
+    results.push(`--go-color-${name}-${level}`);
+  });
   return results;
 }
 
@@ -41,10 +38,10 @@ export function getDefaultColorValues() {
 
   // get the color token names from constants
   let colorValues = {} as { [key: string]: Color[] };
-  Object.keys(defaultColors).forEach((name) => {
+  colorCategories.forEach((name) => {
     colorValues[name] = getKeysFromName(name).map((key) => getColorFromKey(key, rootStyle));
   });
-  Object.keys(defaultExtremeColors).forEach((name) => {
+  extremeColorCategories.forEach((name) => {
     colorValues[name] = getKeysFromName(name, true).map((key) => getColorFromKey(key, rootStyle));
   });
   return colorValues;
