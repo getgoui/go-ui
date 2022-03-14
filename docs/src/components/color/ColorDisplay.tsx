@@ -1,6 +1,7 @@
 import React from 'react';
 import { getDefaultColorValues } from './color.constants';
 import ColorPreview from './ColorPreview';
+import { useColorMode } from '@docusaurus/theme-common';
 
 export default function ColorDisplay() {
   const colorValues = getDefaultColorValues();

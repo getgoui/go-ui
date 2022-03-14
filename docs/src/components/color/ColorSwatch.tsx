@@ -4,7 +4,7 @@ import ColorLevelsObject from './color.type';
 import { centerShade, extremeColorCategories, colorCategories, colorLevels } from './color.constants';
 import CodeBlock from '@theme/CodeBlock';
 import ColorPreview from './ColorPreview';
-import { ColorBox } from './ColorBox';
+import { ColorPickerBox } from './ColorPickerBox';
 
 export interface ColorSwatchProps {
   category: string;
@@ -26,8 +26,6 @@ const ColorSwatch = ({ category, lightnessInterval, onLightnessIntervalChange, c
     }
   };
 
-  console.log({ colors });
-
   return (
     <div className="color-swatches">
       <h4 className="text-capitalize">{category}</h4>
@@ -43,7 +41,7 @@ const ColorSwatch = ({ category, lightnessInterval, onLightnessIntervalChange, c
             {colors.map((color, i) => {
               return (
                 <td key={i}>
-                  <ColorBox value={color} onChange={(color) => onIndividualColorChange(color, i)}></ColorBox>
+                  <ColorPickerBox value={color} onChange={(color) => onIndividualColorChange(color, i)}></ColorPickerBox>
                 </td>
               );
             })}
@@ -92,15 +90,16 @@ const ColorSwatch = ({ category, lightnessInterval, onLightnessIntervalChange, c
 
       <p>Copy the code below and paste in your stylesheet to override the default color tokens.</p>
 
-      {/* <CodeBlock className="css">{getCode(colorName, levels, isExtremeColors)}</CodeBlock> */}
+      <CodeBlock className="css">{getCode(category, colors, isExtremeColors)}</CodeBlock>
     </div>
   );
 };
 
-const getCode = (colorName: string, levels: ColorLevelsObject, isExtremeColors: boolean): string => {
-  let code = `// ${colorName}\n`;
-  Object.entries(levels).forEach(([level, color]) => {
-    const cssColorName = `--go-token-${colorName}` + `${isExtremeColors ? '' : '-' + level}`;
+const getCode = (category: string, colors: Color[], isExtremeColors: boolean): string => {
+  let code = `// ${category}\n`;
+  colors.forEach((color, i) => {
+    const level = colorLevels[i];
+    const cssColorName = `--go-token-${category}` + `${isExtremeColors ? '' : '-' + level}`;
     const colorRGB = color
       .rgb()
       .array()

@@ -35,7 +35,6 @@ function getKeysFromName(name: string, isExtreme: boolean = false): string[] {
 export function getDefaultColorValues() {
   // get css variables from the root DOM element
   const rootStyle = window.getComputedStyle(document.querySelector('html'));
-
   // get the color token names from constants
   let colorValues = {} as { [key: string]: Color[] };
   colorCategories.forEach((name) => {

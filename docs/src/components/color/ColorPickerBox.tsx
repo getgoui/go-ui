@@ -1,18 +1,18 @@
 /**
- * single ColorBox to change colour and update color value
+ * single ColorPickerBox to change colour and update color value
  */
 import React from 'react';
 import Color from 'color';
 import ColorPreview from './ColorPreview';
-import './ColorBox.scss';
+import './ColorPickerBox.scss';
 
-interface ColorBoxProps {
+interface ColorPickerBoxProps {
   value: Color;
   onChange: (c: Color) => void;
   children?: React.ReactNode;
 }
 
-export const ColorBox = ({ value, onChange, children }: ColorBoxProps) => {
+export const ColorPickerBox = ({ value, onChange, children }: ColorPickerBoxProps) => {
   const handleChange = (e) => {
     const color = Color(e.target.value);
     if (!color) {
@@ -22,7 +22,7 @@ export const ColorBox = ({ value, onChange, children }: ColorBoxProps) => {
   };
 
   return (
-    <label className="color-box">
+    <label className="color-picker-box">
       <ColorPreview color={value}>{children}</ColorPreview>
       <input className="control" type="color" value={value.hex()} onChange={handleChange} />
     </label>
