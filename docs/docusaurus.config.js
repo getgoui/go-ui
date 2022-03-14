@@ -175,7 +175,6 @@ module.exports = {
         indexPages: true,
       },
     ],
-    //   // '@docusaurus/theme-live-codeblock',
     //   './plugins/custom-hmr/custom-hmr.js',
   ],
   stylesheets: ['https://fonts.googleapis.com/icon?family=Material+Icons'],

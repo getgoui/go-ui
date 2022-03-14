@@ -71,11 +71,20 @@
     }
   }
 }
-.color-table {
-  td {
-    text-align: center;
-    padding: 0.25em 0;
-    font-size: var(--go-size--1);
-    border: 1px solid var(--go-color-neutral-200);
+
+.color-table-wrapper {
+  .color-table {
+    th {
+      background: var(--go-color-neutral-100);
+    }
+    th,
+    td {
+      font-size: var(--go-size--1);
+      border: 1px solid var(--go-color-neutral-200);
+    }
+    td {
+      text-align: center;
+      padding: 0.25em 0;
+    }
   }
 }
