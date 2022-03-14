@@ -3,6 +3,7 @@ import Color from 'color';
 import ColorLevelsObject from './color.type';
 import { centerShade, extremeColorCategories, colorCategories, colorLevels } from './color.constants';
 import CodeBlock from '@theme/CodeBlock';
+import { ColorTable } from './ColorTable';
 import ColorPreview from './ColorPreview';
 import { ColorPickerBox } from './ColorPickerBox';
 
@@ -17,6 +18,9 @@ export interface ColorSwatchProps {
 
 const ColorSwatch = ({ category, lightnessInterval, onLightnessIntervalChange, colors, onKeyColorChange, onIndividualColorChange }: ColorSwatchProps) => {
   const isExtremeColors = extremeColorCategories.includes(category);
+  const middleColorIndex = Math.floor(colorLevels.length / 2);
+
+  const targetColor = isExtremeColors ? colors[0] : colors[middleColorIndex];
 
   // custom colour input
   const colorInput = useRef(null);
@@ -34,47 +38,19 @@ const ColorSwatch = ({ category, lightnessInterval, onLightnessIntervalChange, c
           <code>{`--go-color-${category}${isExtremeColors ? '' : '-{level}'}`}</code>
         </small>
       </p>
-
-      <table className="color-table">
-        <tbody>
-          <tr>
-            {colors.map((color, i) => {
-              return (
-                <td key={i}>
-                  <ColorPickerBox value={color} onChange={(color) => onIndividualColorChange(color, i)}></ColorPickerBox>
-                </td>
-              );
-            })}
-          </tr>
-          <tr>
-            {colors.map((color, i) => {
-              return <td key={`${category}-${i}-hex`}>{color.hex()}</td>;
-            })}
-          </tr>
-        </tbody>
-      </table>
-
-      {/* <div className="text--center">
-        <div>
-          <label htmlFor={`${colorName}-input`} className="margin-top--md">
-            {isExtremeColors
-              ? `Click button below to choose a different color for ${colorName}`
-              : `Click button below to choose a different color for the center shade (${centerShade * 100})`}
-          </label>
-          <div className="color-input-group">
-            <button type="button" className="color-input-button" onClick={toggleColorInput}>
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="m4 15.76-1 4A1 1 0 0 0 3.75 21a1 1 0 0 0 .49 0l4-1a1 1 0 0 0 .47-.26L17 11.41l1.29 1.3 1.42-1.42-1.3-1.29L21 7.41a2 2 0 0 0 0-2.82L19.41 3a2 2 0 0 0-2.82 0L14 5.59l-1.3-1.3-1.42 1.42L12.58 7l-8.29 8.29a1 1 0 0 0-.29.47zm1.87.75L14 8.42 15.58 10l-8.09 8.1-2.12.53z" />
-              </svg>
-              <span className="visually-hidden">Pick a different key colour</span>
-            </button>
-            <input ref={colorInput} id={`${colorName}-input`} type="color" value={targetColor.hex()} onChange={handleColorChange} />
-          </div>
-          <p>{targetColor.hex()}</p>
-        </div>
-        {!isExtremeColors ? (
+      {/* color table */}
+      <ColorTable colors={colors} onIndividualColorChange={onIndividualColorChange} isExtremeColors={isExtremeColors} category={category} />
+      {!isExtremeColors ? (
+        <div className="text--center">
           <div>
-            <label htmlFor={`${colorName}-lightness-interval`} className="margin-top--md">
+            <h4>
+              Change key color {colorLevels[middleColorIndex]} to change all {category} colors
+            </h4>
+            <ColorPickerBox value={targetColor} onChange={(color) => onKeyColorChange(color)}></ColorPickerBox>
+            <p>{targetColor.hex()}</p>
+          </div>
+          <div>
+            <label htmlFor={`${category}-lightness-interval`} className="margin-top--md">
               Choose a lightness interval
             </label>
             <input
@@ -82,11 +58,12 @@ const ColorSwatch = ({ category, lightnessInterval, onLightnessIntervalChange, c
               step="0.01"
               value={lightnessInterval}
               className="color-input-button"
-              onInput={(e) => setLightnessInterval(parseFloat((e.target as HTMLInputElement).value))}
+              onInput={(e) => onLightnessIntervalChange(parseFloat((e.target as HTMLInputElement).value))}
+              required
             />
           </div>
-        ) : null}
-      </div> */}
+        </div>
+      ) : null}
 
       <p>Copy the code below and paste in your stylesheet to override the default color tokens.</p>
 

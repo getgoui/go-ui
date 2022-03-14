@@ -23,8 +23,8 @@ export const ColorPickerBox = ({ value, onChange, children }: ColorPickerBoxProp
 
   return (
     <label className="color-picker-box">
-      <ColorPreview color={value}>{children}</ColorPreview>
       <input className="control" type="color" value={value.hex()} onChange={handleChange} />
+      <ColorPreview color={value}>{children}</ColorPreview>
     </label>
   );
 };

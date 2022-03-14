@@ -31,19 +31,18 @@ function ColorGenerator() {
     let newColorCategory = [];
 
     newColorCategory[middleColorIndex] = colorValue;
-
     for (let i = 0; i < colorLevels.length; i++) {
       if (i < middleColorIndex) {
         // 100 - 400
         let lighten = (middleColorIndex - i) * lightnessInterval;
         const color = Color(colorValue).lighten(lighten);
-        newColorCategory[i] = color.rgb().object();
+        newColorCategory[i] = color;
       }
       if (i > middleColorIndex) {
         // 600-900
         let darken = (i - middleColorIndex) * lightnessInterval;
         const color = Color(colorValue).darken(darken);
-        newColorCategory[i] = color.rgb().object();
+        newColorCategory[i] = color;
       }
     }
     setColors({
@@ -58,6 +57,8 @@ function ColorGenerator() {
       ...intervals,
       [categoryName]: intervalValue,
     });
+    const middleColorIndex = Math.floor(colorLevels.length / 2);
+    handleKeyColorChange(categoryName, colors[categoryName][middleColorIndex]);
   };
 
   // handle individual colour changes
