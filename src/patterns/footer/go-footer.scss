@@ -21,6 +21,8 @@ go-footer {
     --footer-text-color: rgb(var(--go-token-lightest));
     --footer-link-color: var(--footer-text-color);
     --footer-link-color-hover: rgb(var(--go-token-success-200));
+    --nav-link-arrow-color: var(--footer-text-color);
+    --nav-link-arrow-color-hover: var(--footer-link-color-hover);
     --footer-link-bg-color-hover: transparent;
   }
   go-nav-list {

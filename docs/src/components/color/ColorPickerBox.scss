@@ -1,3 +1,19 @@
+.color-picker-box-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  .divider {
+    width: 1px;
+    align-self: stretch;
+    background-color: var(--go-color-neutral-200);
+  }
+  input.control {
+    width: 6rem;
+    padding: 8px 12px;
+  }
+}
 .color-picker-box {
   position: relative;
   .color-preview {

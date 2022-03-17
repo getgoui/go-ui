@@ -47,7 +47,6 @@ const ColorSwatch = ({ category, lightnessInterval, onLightnessIntervalChange, c
               Change key color {colorLevels[middleColorIndex]} to change all {category} colors
             </h4>
             <ColorPickerBox value={targetColor} onChange={(color) => onKeyColorChange(color)}></ColorPickerBox>
-            <p>{targetColor.hex()}</p>
           </div>
           <div>
             <label htmlFor={`${category}-lightness-interval`} className="margin-top--md">

@@ -9,7 +9,7 @@ go-main-nav {
   --nav-item-padding: var(--go-size--1) var(--go-size-0);
   --nav-item-icon-gap: 0.5rem;
   --nav-item-current-bar-width: 4px;
-  --nav-item-current-bar-color: var(--go-color-primary-600);
+  --nav-item-current-bar-color: var(--go-color-secondary-700);
   --submenu-bg-color: var(--nav-item-active-bg-color);
   --submenu-padding-y: var(--go-size-0);
   --submenu-padding-x: var(--go-size-1);
@@ -101,7 +101,8 @@ go-main-nav {
           padding: 0.5rem 0;
           margin-bottom: var(--submenu-padding-y);
           svg {
-            width: 1em;
+            width: 1.5em;
+            height: 1.5em;
           }
           h5 {
             display: flex;

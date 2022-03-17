@@ -166,6 +166,18 @@ export namespace Components {
          */
         "links": INavItem[] | string;
         /**
+          * Number of navigation columns
+         */
+        "navCols"?: number;
+        /**
+          * Number of navigation columns for desktop and up
+         */
+        "navColsDesktop"?: number;
+        /**
+          * Number of navigation columns for tablet and up
+         */
+        "navColsTablet"?: number;
+        /**
           * Label for navigation
          */
         "navLabel"?: string;
@@ -588,6 +600,18 @@ declare namespace LocalJSX {
           * Navigation links to be displayed.
          */
         "links"?: INavItem[] | string;
+        /**
+          * Number of navigation columns
+         */
+        "navCols"?: number;
+        /**
+          * Number of navigation columns for desktop and up
+         */
+        "navColsDesktop"?: number;
+        /**
+          * Number of navigation columns for tablet and up
+         */
+        "navColsTablet"?: number;
         /**
           * Label for navigation
          */
