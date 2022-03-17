@@ -1,9 +1,9 @@
 {
-  "timestamp": "2022-03-06T08:26:54",
+  "timestamp": "2022-03-17T10:49:42",
   "compiler": {
     "name": "@stencil/core",
-    "version": "2.13.0",
-    "typescriptVersion": "4.3.5"
+    "version": "2.14.1",
+    "typescriptVersion": "4.5.4"
   },
   "components": [
     {
@@ -295,15 +295,16 @@
       "props": [
         {
           "name": "block",
-          "type": "\"\" | \"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
+          "type": "\"all\" | \"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
           "mutable": false,
           "attr": "block",
           "reflectToAttr": true,
-          "docs": "If set, the button will take up the full width of its parent\nIf block=\"{breakpoint}\" is set, the button will take up the full width for the specified breakpoint. e.g. a `block=\"mobile\"` button will display full width on mobile devices.",
+          "docs": "If set, the button will take up the full width of its parent\nIf block=\"{breakpoint}\" is set, the button will take up the full width for the specified breakpoint. e.g. a `block=\"mobile\"` button will display full width on mobile devices.\nIf block=\"all\", the button will take full width on all devices.",
           "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "all",
+              "type": "string"
             },
             {
               "value": "desktop",
@@ -589,14 +590,17 @@
       "props": [
         {
           "name": "block",
-          "type": "\"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
+          "type": "\"all\" | \"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
           "mutable": false,
           "attr": "block",
           "reflectToAttr": true,
-          "docs": "",
+          "docs": "If specified, buttons within group will be full width on smaller devices and auto-width going forward. e.g. having `block=\"tablet\"` will make all buttons in group take up full width on mobile and tablet sizes and auto-width on larger devices.",
           "docsTags": [],
-          "default": "'mobile'",
           "values": [
+            {
+              "value": "all",
+              "type": "string"
+            },
             {
               "value": "desktop",
               "type": "string"
@@ -616,6 +620,23 @@
           ],
           "optional": true,
           "required": false
+        },
+        {
+          "name": "connected",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "connected",
+          "reflectToAttr": false,
+          "docs": "No gap between buttons.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [],
@@ -625,7 +646,7 @@
         {
           "name": "--go-button-group-gap",
           "annotation": "prop",
-          "docs": "gap size between buttons inside the group - default: 0.5rem"
+          "docs": "gap size between buttons inside the group - default: 1rem"
         }
       ],
       "slots": [],
@@ -1072,6 +1093,57 @@
           "required": false
         },
         {
+          "name": "navCols",
+          "type": "number",
+          "mutable": false,
+          "attr": "nav-cols",
+          "reflectToAttr": false,
+          "docs": "Number of navigation columns",
+          "docsTags": [],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "navColsDesktop",
+          "type": "number",
+          "mutable": false,
+          "attr": "nav-cols-desktop",
+          "reflectToAttr": false,
+          "docs": "Number of navigation columns for desktop and up",
+          "docsTags": [],
+          "default": "4",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "navColsTablet",
+          "type": "number",
+          "mutable": false,
+          "attr": "nav-cols-tablet",
+          "reflectToAttr": false,
+          "docs": "Number of navigation columns for tablet and up",
+          "docsTags": [],
+          "default": "3",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "navLabel",
           "type": "string",
           "mutable": false,
@@ -1201,7 +1273,7 @@
       "props": [
         {
           "name": "breakpoint",
-          "type": "\"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
+          "type": "\"all\" | \"desktop\" | \"large\" | \"mobile\" | \"tablet\"",
           "mutable": false,
           "attr": "breakpoint",
           "reflectToAttr": false,
@@ -1209,6 +1281,10 @@
           "docsTags": [],
           "default": "'desktop'",
           "values": [
+            {
+              "value": "all",
+              "type": "string"
+            },
             {
               "value": "desktop",
               "type": "string"
@@ -2098,6 +2174,59 @@
           "go-button"
         ]
       }
+    },
+    {
+      "filePath": "./src/components/go-skip-link/go-skip-link.tsx",
+      "encapsulation": "none",
+      "tag": "go-skip-link",
+      "readme": "## go-skip-link API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "target",
+          "type": "string",
+          "mutable": false,
+          "attr": "target",
+          "reflectToAttr": false,
+          "docs": "Tell skip link which element to focus (supports any query selector)",
+          "docsTags": [],
+          "default": "'main'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--skip-link-bg-color",
+          "annotation": "prop",
+          "docs": "Background color for the skip link focusable area - default: var(--go-color-secondary-700)"
+        },
+        {
+          "name": "--skip-link-padding",
+          "annotation": "prop",
+          "docs": "Padding to apply to the skip link focusable area - default: 1rem 2rem"
+        },
+        {
+          "name": "--skip-link-text-color",
+          "annotation": "prop",
+          "docs": "Text color for the skip link focusable area - default: var(--go-color-lightest)"
+        }
+      ],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     }
   ]
 }
