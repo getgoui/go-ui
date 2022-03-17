@@ -5,13 +5,12 @@ go-nav-link {
   --nav-link-hover-fg-color: var(--go-color-link-hover);
   --nav-link-hover-bg-color: var(--go-color-link-hover-bg);
   --nav-link-arrow-gap: var(--go-base-spacing);
-  --nav-link-arrow-color: var(--go-color-link);
-  --nav-link-arrow-color-hover: var(--go-color-link-hover);
+  --nav-link-arrow-color: currentColor;
+  --nav-link-arrow-color-hover: currentColor;
   --nav-link-align-y: center;
 
   display: inline-flex;
   align-items: var(--nav-link-align-y);
-  justify-content: space-between;
   color: var(--go-color-link);
   position: relative;
 
@@ -26,6 +25,10 @@ go-nav-link {
     }
   }
 
+  &.current {
+    border-left-color: var(--nav-link-current-bar-color);
+  }
+
   .nav-item-link {
     display: inline-flex;
     align-items: center;
@@ -35,6 +38,25 @@ go-nav-link {
     line-height: 1.5;
     text-decoration: none;
 
+    go-icon {
+      text-decoration: none;
+    }
+    svg.external-link-icon {
+      flex: 0 0 auto;
+      transform: none;
+    }
+    .arrow {
+      @include transition(transform);
+
+      stroke: var(--nav-link-arrow-color);
+      flex: 0 0 auto;
+      height: 1.25em;
+      margin-left: calc(var(--nav-link-arrow-gap) + 4px);
+      transform: translateX(-4px);
+    }
+  }
+
+  a.nav-item-link {
     .nav-link-text {
       @include underline;
     }
@@ -43,6 +65,9 @@ go-nav-link {
     &:focus-visible {
       .nav-link-text {
         text-decoration: none;
+      }
+      .arrow {
+        transform: translateX(0);
       }
     }
     &::after {
@@ -54,23 +79,5 @@ go-nav-link {
       right: 0;
       bottom: 0;
     }
-    go-icon {
-      text-decoration: none;
-    }
-    svg.external-link-icon {
-      flex: 0 0 auto;
-      transform: none;
-    }
-
-    &.current {
-      border-left-color: var(--nav-link-current-bar-color);
-    }
-  }
-
-  .arrow {
-    flex: 0 0 auto;
-    color: var(--nav-link-arrow-color);
-    height: 1.25em;
-    margin-left: var(--nav-link-arrow-gap);
   }
 }

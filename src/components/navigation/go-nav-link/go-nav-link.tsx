@@ -48,7 +48,7 @@ export class GoNavLink {
     }
     const { isCurrent, url, icon, label } = this.item;
 
-    let Tag = this.item.isCurrent ? 'span' : 'go-link';
+    let Tag = isCurrent || !url ? 'span' : 'go-link';
     let attrs = {
       ...this.item?.linkAttrs,
       ...inheritedAttrs,
@@ -69,22 +69,23 @@ export class GoNavLink {
         <Tag {...attrs}>
           {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
           <span class="nav-link-text">{label}</span>
+          {url && this.showArrow ? (
+            <svg
+              class="arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+              focusable="false"
+              aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          ) : null}
         </Tag>
-        {this.showArrow ? (
-          <svg
-            class="arrow"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            viewBox="0 0 24 24"
-            focusable="false"
-            aria-hidden="true">
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-        ) : null}
       </Host>
     );
   }

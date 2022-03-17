@@ -10,9 +10,9 @@ go-nav-list {
 
   .nav-list-header {
     margin-top: var(--nav-list-header-gap);
-    font-size: var(--go-size-1);
-    font-weight: 700;
+    font-size: var(--go-size-0);
     color: var(--nav-list-header-text-color);
+    margin-bottom: 1rem;
 
     // border-bottom: 1px solid var(--go-color-neutral-300);
     .nav-list-header-text {

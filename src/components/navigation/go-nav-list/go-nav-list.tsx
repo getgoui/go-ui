@@ -54,11 +54,7 @@ export class GoNavList {
       <div>
         {navHeading ? (
           <div class="nav-list-header">
-            {navHeading.url ? (
-              <go-nav-link showArrow block={block} class="nav-list-header-text" item={navHeading}></go-nav-link>
-            ) : (
-              <span class="nav-list-header-text">{navHeading.label}</span>
-            )}
+            <go-nav-link showArrow block={block} class="nav-list-header-text" item={navHeading}></go-nav-link>
           </div>
         ) : null}
 

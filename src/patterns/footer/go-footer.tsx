@@ -25,6 +25,21 @@ export class GoFooter {
    */
   @Prop() dark?: boolean = false;
 
+  /**
+   * Number of navigation columns
+   */
+  @Prop() navCols?: number = 1;
+
+  /**
+   * Number of navigation columns for tablet and up
+   */
+  @Prop() navColsTablet?: number = 3;
+
+  /**
+   * Number of navigation columns for desktop and up
+   */
+  @Prop() navColsDesktop?: number = 4;
+
   @State() navItems: INavItem[];
 
   @Watch('links')
@@ -48,7 +63,7 @@ export class GoFooter {
 
   render() {
     const { navItems, navLabel, dark, hasCopyRightSlot, hasFooterBottomSlot } = this;
-
+    const { navCols, navColsTablet, navColsDesktop } = this;
     return (
       <Host class={{ dark }}>
         <footer>
@@ -57,7 +72,11 @@ export class GoFooter {
               <nav aria-label={navLabel}>
                 <div class="row">
                   {navItems?.map((item) => (
-                    <go-nav-list class="col-12 col-tablet-4 col-desktop-3" block headingItem={item} items={item?.children}></go-nav-list>
+                    <go-nav-list
+                      class={`col-${12 / navCols} col-tablet-${12 / navColsTablet} col-desktop-${12 / navColsDesktop}`}
+                      block
+                      headingItem={item}
+                      items={item?.children}></go-nav-list>
                   ))}
                 </div>
               </nav>
