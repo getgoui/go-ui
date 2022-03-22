@@ -6,8 +6,6 @@ hide_table_of_contents: true
 
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/go-card/demo/go-card.html';
-import mediaCardDemoSource from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-media.html';
-import cardFooterDemo from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-footer-slot.html';
 import cardLinkDemo from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-links.html';
 
 # Card <span className="text-size-0">`go-card`</span>
@@ -16,19 +14,10 @@ import cardLinkDemo from '!!raw-loader!@/go-ui/components/go-card/demo/go-card-l
 
 <div className="text-size-1">A card is an essential component to any modern design system.</div>
 
-## Basic cards
+## Card playground
 
 <Demo hideSource code={demoSource} />
 
-## Card with image
-
-<Demo hideSource code={mediaCardDemoSource} />
-
-## Card with footer
-
-Use `footer` slot to add actions to the bottom of the card.
-
-<Demo hideSource code={cardFooterDemo} />
 
 ## Card links
 

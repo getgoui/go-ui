@@ -1,11 +1,42 @@
-<demo-playground
+<wc-playground
   tag="go-card"
   props="[
-    {name: 'cardTitle', type: 'string', value: 'Title'},
-    {name: 'cardSubtitle', type: 'string', value: 'Subtitle'},
-    ]"
->
-  <div class="container">
-    <go-card> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis </go-card>
+    {name: 'cardTitle', type: 'string'},
+    {name: 'cardSubtitle', type: 'string'},
+    {name: 'mediaPosition', attr: 'media-position', type: 'select', options: ['top', 'left', 'right', 'bottom']},
+  ]"
+  slots='[
+  {
+    "name": "custom-title",
+    "docs": "Slot for custom card title"
+  },
+  {
+    "name": "default",
+    "docs": "Card content"
+  },
+  {
+    "name": "footer",
+    "docs": "Slot for card footer markup"
+  },
+  {
+    "name": "media",
+    "docs": "Slot for media markup for media card"
+  },
+  {
+    "name": "pre-title",
+    "docs": "Slot for content above the card title"
+  }
+]'
+  code="
+<go-card card-title='Basic card' card-subtitle='Subtitle'>
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+
+  <img src='//images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=600&h=600&q=80' alt='Photo' slot='media' />
+  <div slot='pre-title'>Active 2 hours ago</div>
+  <div slot='footer'>
+    <go-button>Button</go-button>
   </div>
-</demo-playground>
+</go-card>
+"
+>
+</wc-playground>
