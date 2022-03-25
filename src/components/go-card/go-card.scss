@@ -99,7 +99,7 @@ go-card {
     @prop --go-card-shadow:
       Card shadow
   */
-  --go-card-shadow: var(--shadow-3);
+  --go-card-shadow: var(--shadow-2);
 
   display: block;
   background: var(--go-card-bg);
@@ -149,6 +149,7 @@ go-card {
   &.media {
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
     &.top,
     &.bottom {
       .card-media {
