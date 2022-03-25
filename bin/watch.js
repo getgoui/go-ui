@@ -10,13 +10,24 @@ export default async function watch(args) {
   console.log(chalk.green('Watching for changes...'));
   const rootPath = path.resolve(__dirname, '../');
   const onGlobalStyleChange = (file) => {
-    console.log(chalk.green(`- ${file} changed`));
+    console.log(chalk.green(`🎉 ${file} changed`));
     const saveTarget = path.resolve(rootPath, 'src/global/styles.scss');
     const data = fs.readFileSync(saveTarget, 'utf8');
     fs.writeFileSync(saveTarget, data);
   };
+
+  // docusaurus doesn't pickup built js changes, we manually save demo.html to trigger live reload
+  const onComponentChange = (file) => {
+    console.log(chalk.green(`🎉 ${file} changed`));
+    const saveTarget = path.resolve(rootPath, 'docs/static/demo-assets/demo.html');
+    let data = fs.readFileSync(saveTarget, 'utf8');
+    data = data.replaceAll('{CACHE_BUSTER}', new Date().getTime().toString());
+    fs.writeFileSync(saveTarget, data);
+  };
   const watch = {
     [`${rootPath}/src/global/**/*.scss`]: onGlobalStyleChange,
+    [`${rootPath}/src/**/*.tsx`]: onComponentChange,
+    [`${rootPath}/src/**/*.scss`]: onComponentChange,
   };
 
   const watchers = [];
