@@ -1,0 +1,38 @@
+go-tab {
+  position: relative;
+  z-index: 2;
+  padding: 0.5em 0.5em 0.7em;
+  border: 1px solid hsl(219deg 1% 72%);
+  border-radius: 0 0.2em 0.2em;
+  box-shadow: 0 0 0.2em hsl(219deg 1% 72%);
+  background: hsl(220deg 43% 20%);
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &:focus {
+    border-color: hsl(20deg 96% 48%);
+    box-shadow: 0 0 0.2em hsl(20deg 96% 48%);
+    outline: 0;
+  }
+
+  &:focus::after {
+    position: absolute;
+    bottom: 0;
+    right: -1px;
+    left: -1px;
+    border-bottom: 3px solid hsl(20deg 96% 48%);
+    border-radius: 0 0 0.2em 0.2em;
+    content: '';
+  }
+
+  p {
+    margin: 0;
+  }
+
+  * + p {
+    margin-top: 1em;
+  }
+}

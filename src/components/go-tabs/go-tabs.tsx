@@ -1,5 +1,13 @@
-import { Component, Host, h, Element } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State } from '@stencil/core';
+import uniqueId from 'lodash.uniqueid';
 
+interface Tab {
+  tabId: string;
+  panelId: string;
+  panelEl: HTMLGoTabElement;
+  label: string;
+  active: boolean;
+}
 @Component({
   tag: 'go-tabs',
   styleUrl: 'go-tabs.scss',
@@ -8,257 +16,113 @@ import { Component, Host, h, Element } from '@stencil/core';
 export class GoTabs {
   @Element() el: HTMLElement;
 
-  componentDidLoad() {
-    (function () {
-      var tablist = document.querySelectorAll('[role="tablist"]')[0];
-      var tabs;
-      var panels;
+  /**
+   * Provides a label that describes the purpose of the set of tabs.
+   */
+  @Prop() tabGroupLabel?: string;
 
-      generateArrays();
+  @State() tabChildren: Tab[];
 
-      function generateArrays() {
-        tabs = document.querySelectorAll('[role="tab"]');
-        panels = document.querySelectorAll('[role="tabpanel"]');
-      }
+  @State() panels: HTMLElement[];
 
-      // For easy reference
-      var keys = {
-        end: 35,
-        home: 36,
-        left: 37,
-        up: 38,
-        right: 39,
-        down: 40,
-        delete: 46,
-        enter: 13,
-        space: 32,
-      };
-
-      // Add or subtract depending on key pressed
-      var direction = {
-        37: -1,
-        38: -1,
-        39: 1,
-        40: 1,
-      };
-
-      // Bind listeners
-      for (var i = 0; i < tabs.length; ++i) {
-        addListeners(i);
-      }
-
-      function addListeners(index) {
-        tabs[index].addEventListener('click', clickEventListener);
-        tabs[index].addEventListener('keydown', keydownEventListener);
-        tabs[index].addEventListener('keyup', keyupEventListener);
-
-        // Build an array with all tabs (<button>s) in it
-        tabs[index].index = index;
-      }
-
-      // When a tab is clicked, activateTab is fired to activate it
-      function clickEventListener(event) {
-        var tab = event.target;
-        activateTab(tab, false);
-      }
-
-      // Handle keydown on tabs
-      function keydownEventListener(event) {
-        var key = event.keyCode;
-
-        switch (key) {
-          case keys.end:
-            event.preventDefault();
-            // Activate last tab
-            focusLastTab();
-            break;
-          case keys.home:
-            event.preventDefault();
-            // Activate first tab
-            focusFirstTab();
-            break;
-
-          // Up and down are in keydown
-          // because we need to prevent page scroll >:)
-          case keys.up:
-          case keys.down:
-            determineOrientation(event);
-            break;
-        }
-      }
-
-      // Handle keyup on tabs
-      function keyupEventListener(event) {
-        var key = event.keyCode;
-
-        switch (key) {
-          case keys.left:
-          case keys.right:
-            determineOrientation(event);
-            break;
-          case keys.delete:
-            determineDeletable(event);
-            break;
-          case keys.enter:
-          case keys.space:
-            activateTab(event.target);
-            break;
-        }
-      }
-
-      // When a tablist’s aria-orientation is set to vertical,
-      // only up and down arrow should function.
-      // In all other cases only left and right arrow function.
-      function determineOrientation(event) {
-        var key = event.keyCode;
-        var vertical = tablist.getAttribute('aria-orientation') == 'vertical';
-        var proceed = false;
-
-        if (vertical) {
-          if (key === keys.up || key === keys.down) {
-            event.preventDefault();
-            proceed = true;
-          }
-        } else {
-          if (key === keys.left || key === keys.right) {
-            proceed = true;
-          }
-        }
-
-        if (proceed) {
-          switchTabOnArrowPress(event);
-        }
-      }
-
-      // Either focus the next, previous, first, or last tab
-      // depending on key pressed
-      function switchTabOnArrowPress(event) {
-        var pressed = event.keyCode;
-
-        if (direction[pressed]) {
-          var target = event.target;
-          if (target.index !== undefined) {
-            if (tabs[target.index + direction[pressed]]) {
-              tabs[target.index + direction[pressed]].focus();
-            } else if (pressed === keys.left || pressed === keys.up) {
-              focusLastTab();
-            } else if (pressed === keys.right || pressed == keys.down) {
-              focusFirstTab();
-            }
-          }
-        }
-      }
-
-      // Activates any given tab panel
-      function activateTab(tab, setFocus = true) {
-        // Deactivate all other tabs
-        deactivateTabs();
-
-        // Remove tabindex attribute
-        tab.removeAttribute('tabindex');
-
-        // Set the tab as selected
-        tab.setAttribute('aria-selected', 'true');
-
-        // Get the value of aria-controls (which is an ID)
-        var controls = tab.getAttribute('aria-controls');
-
-        // Remove is-hidden class from tab panel to make it visible
-        document.getElementById(controls).classList.remove('is-hidden');
-
-        // Set focus when required
-        if (setFocus) {
-          tab.focus();
-        }
-      }
-
-      // Deactivate all tabs and tab panels
-      function deactivateTabs() {
-        for (var t = 0; t < tabs.length; t++) {
-          tabs[t].setAttribute('tabindex', '-1');
-          tabs[t].setAttribute('aria-selected', 'false');
-        }
-
-        for (var p = 0; p < panels.length; p++) {
-          panels[p].classList.add('is-hidden');
-        }
-      }
-
-      // Make a guess
-      function focusFirstTab() {
-        tabs[0].focus();
-      }
-
-      // Make a guess
-      function focusLastTab() {
-        tabs[tabs.length - 1].focus();
-      }
-
-      // Detect if a tab is deletable
-      function determineDeletable(event) {
-        var target = event.target;
-
-        if (target.getAttribute('data-deletable') !== null) {
-          // Delete target tab
-          deleteTab(event);
-
-          // Update arrays related to tabs widget
-          generateArrays();
-
-          // Activate the closest tab to the one that was just deleted
-          if (target.index - 1 < 0) {
-            activateTab(tabs[0]);
-          } else {
-            activateTab(tabs[target.index - 1]);
-          }
-        }
-      }
-
-      // Deletes a tab and its panel
-      function deleteTab(event) {
-        var target = event.target;
-        var panel = document.getElementById(target.getAttribute('aria-controls'));
-
-        target.parentElement.removeChild(target);
-        panel.parentElement.removeChild(panel);
-      }
-    })();
+  componentWillLoad() {
+    this.refreshTabs();
   }
 
+  refreshTabs() {
+    const children = Array.from(this.el.querySelectorAll('go-tab')) as HTMLGoTabElement[];
+    this.tabChildren = children.map((goTab, index) => {
+      const tabId = uniqueId('tab-');
+      const panelId = tabId + '-panel';
+
+      return {
+        panelEl: goTab,
+        tabId: goTab.tabId || tabId,
+        panelId: goTab.panelId || panelId,
+        label: goTab.label,
+        active: goTab.active || index === 0,
+      };
+    });
+  }
+
+  componentDidLoad() {
+    // activate the active tab
+    this.tabChildren.forEach((tab) => {
+      if (tab.active) {
+        tab.panelEl.active = true;
+      }
+    });
+  }
+
+  async deactivateTabs() {
+    this.tabChildren.forEach((tab) => {
+      tab.panelEl.active = false;
+
+      return {
+        ...tab,
+        active: false,
+      };
+    });
+  }
+
+  // Activates any given tab panel
+  async activateTab(tabEl, setFocus = true) {
+    await this.deactivateTabs();
+    const tabId = tabEl.getAttribute('id');
+    this.tabChildren = this.tabChildren.map((tab) => {
+      if (tab.tabId === tabId) {
+        tab.panelEl.active = true;
+        return {
+          ...tab,
+          active: true,
+        };
+      }
+      return tab;
+    });
+
+    // Set focus when required
+    if (setFocus) {
+      tabEl.focus();
+    }
+  }
+
+  // When a tab is clicked, activateTab is fired to activate it
+  onTabClick(e) {
+    const tabEl = e.target as HTMLElement;
+    this.activateTab(tabEl, false);
+  }
+
+  // function focusFirstTab() {
+  //   tabs[0].focus();
+  // }
+
+  // function focusLastTab() {
+  //   tabs[tabs.length - 1].focus();
+  // }
+
   render() {
+    const { tabChildren, tabGroupLabel } = this;
     return (
       <Host>
         <div class="tabs">
-          <div role="tablist" aria-label="Entertainment">
-            <button type="button" role="tab" aria-selected="true" aria-controls="nils-tab" id="nils">
-              hello world
-            </button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="agnes-tab" id="agnes" tabindex="-1">
-              Agnes Obel
-            </button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="complex-complex" id="complex" tabindex="-1" data-deletable="">
-              Joke
-            </button>
+          <div role="tablist" aria-label={tabGroupLabel}>
+            {tabChildren.map((tab, index) => {
+              return (
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={tab.active ? 'true' : 'false'}
+                  tabindex={tab.active ? undefined : '-1'}
+                  aria-controls={tab.panelId}
+                  id={tab.tabId}
+                  onClick={(e) => this.onTabClick(e)}
+                  key={index}>
+                  {tab.tabId}.{tab.panelId}.{tab.label}
+                </button>
+              );
+            })}
           </div>
-
-          <div tabindex="0" role="tabpanel" id="nils-tab" aria-labelledby="nils">
-            <p>
-              Nils Frahm is a German musician, composer and record producer based in Berlin. He is known for combining classical and electronic music and for an
-              unconventional approach to the piano in which he mixes a grand piano, upright piano, Roland Juno-60, Rhodes piano, drum machine, and Moog Taurus.
-            </p>
-          </div>
-
-          <div tabindex="0" role="tabpanel" id="agnes-tab" aria-labelledby="agnes" class="is-hidden">
-            <p>
-              Agnes Caroline Thaarup Obel is a Danish singer/songwriter. Her first album, Philharmonics, was released by PIAS Recordings on 4 October 2010 in
-              Europe. Philharmonics was certified gold in June 2011 by the Belgian Entertainment Association (BEA) for sales of 10,000 Copies.
-            </p>
-          </div>
-
-          <div tabindex="0" role="tabpanel" id="complex-complex" aria-labelledby="complex" class="is-hidden">
-            <p>Fear of complicated buildings:</p>
-            <p>A complex complex complex.</p>
-          </div>
+          <slot></slot>
         </div>
       </Host>
     );

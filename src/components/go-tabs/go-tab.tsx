@@ -1,23 +1,39 @@
-import { Component, h } from '@stencil/core';
-
+import { Component, h, Prop, Element, Host } from '@stencil/core';
 @Component({
   tag: 'go-tab',
   styleUrl: 'go-tab.scss',
 })
 export class GoTab {
+  @Element() el: HTMLElement;
+
+  @Prop() label: string;
+
+  /**
+   * If this tab is currently active
+   * if multiple `go-tab` are active in the same `go-tabs`, first one is active.
+   */
+  @Prop({ mutable: true }) active: boolean;
+
+  /**
+   * `id` for the tab button element.
+   * If not provided, a unique id will be generated.
+   */
+  @Prop({ mutable: true }) tabId?: string;
+
+  /**
+   * id for the tab panel element
+   * If not provided, a unique id will be generated.
+   */
+  @Prop({ mutable: true }) panelId?: string;
+
+  componentWillLoad() {}
+
   render() {
+    const { panelId, tabId, active } = this;
     return (
-      <div role="tablist" aria-label="Entertainment">
-        <button type="button" role="tab" aria-selected="true" aria-controls="nils-tab" id="nils">
-          Nils Frahm
-        </button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="agnes-tab" id="agnes" tabindex="-1">
-          Agnes Obel
-        </button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="complex-complex" id="complex" tabindex="-1" data-deletable="">
-          Joke
-        </button>
-      </div>
+      <Host tabindex="0" role="tabpanel" id={panelId} aria-labelledby={tabId} class={{ 'tab-panel': true, active }}>
+        <slot></slot>
+      </Host>
     );
   }
 }

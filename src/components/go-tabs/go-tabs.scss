@@ -1,12 +1,13 @@
 go-tabs {
   .tabs {
     width: 20em;
-    font-family: 'lucida grande', sans-serif;
   }
 
   [role='tablist'] {
-    margin: 0 0 -0.1em;
-    overflow: visible;
+    overflow: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
   }
 
   [role='tab'] {
@@ -14,12 +15,10 @@ go-tabs {
     margin: 0;
     padding: 0.3em 0.5em 0.4em;
     border: 1px solid hsl(219deg 1% 72%);
+    border-top: 4px solid transparent;
     border-radius: 0.2em 0.2em 0 0;
     box-shadow: 0 0 0.2em hsl(219deg 1% 72%);
     overflow: visible;
-    font-family: inherit;
-    font-size: inherit;
-    background: hsl(220deg 20% 94%);
   }
 
   [role='tab']:hover::before,
@@ -35,9 +34,7 @@ go-tabs {
   }
 
   [role='tab'][aria-selected='true'] {
-    border-radius: 0;
-    background: hsl(220deg 43% 99%);
-    outline: 0;
+    background: red;
   }
 
   [role='tab'][aria-selected='true']:not(:focus):not(:hover)::before {
@@ -66,44 +63,6 @@ go-tabs {
 
   [role='tab']:hover::before,
   [role='tab']:focus::before {
-    border-color: hsl(20deg 96% 48%);
-  }
-
-  [role='tabpanel'] {
-    position: relative;
-    z-index: 2;
-    padding: 0.5em 0.5em 0.7em;
-    border: 1px solid hsl(219deg 1% 72%);
-    border-radius: 0 0.2em 0.2em;
-    box-shadow: 0 0 0.2em hsl(219deg 1% 72%);
-    background: hsl(220deg 43% 99%);
-  }
-
-  [role='tabpanel'].is-hidden {
-    display: none;
-  }
-
-  [role='tabpanel']:focus {
-    border-color: hsl(20deg 96% 48%);
-    box-shadow: 0 0 0.2em hsl(20deg 96% 48%);
-    outline: 0;
-  }
-
-  [role='tabpanel']:focus::after {
-    position: absolute;
-    bottom: 0;
-    right: -1px;
-    left: -1px;
-    border-bottom: 3px solid hsl(20deg 96% 48%);
-    border-radius: 0 0 0.2em 0.2em;
-    content: '';
-  }
-
-  [role='tabpanel'] p {
-    margin: 0;
-  }
-
-  [role='tabpanel'] * + p {
-    margin-top: 1em;
+    border-color: red;
   }
 }

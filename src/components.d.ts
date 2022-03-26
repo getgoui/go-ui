@@ -313,6 +313,27 @@ export namespace Components {
          */
         "target"?: string;
     }
+    interface GoTab {
+        /**
+          * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
+         */
+        "active": boolean;
+        "label": string;
+        /**
+          * id for the tab panel element If not provided, a unique id will be generated.
+         */
+        "panelId"?: string;
+        /**
+          * `id` for the tab button element. If not provided, a unique id will be generated.
+         */
+        "tabId"?: string;
+    }
+    interface GoTabs {
+        /**
+          * Provides a label that describes the purpose of the set of tabs.
+         */
+        "tabGroupLabel"?: string;
+    }
 }
 declare global {
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
@@ -423,6 +444,18 @@ declare global {
         prototype: HTMLGoSkipLinkElement;
         new (): HTMLGoSkipLinkElement;
     };
+    interface HTMLGoTabElement extends Components.GoTab, HTMLStencilElement {
+    }
+    var HTMLGoTabElement: {
+        prototype: HTMLGoTabElement;
+        new (): HTMLGoTabElement;
+    };
+    interface HTMLGoTabsElement extends Components.GoTabs, HTMLStencilElement {
+    }
+    var HTMLGoTabsElement: {
+        prototype: HTMLGoTabsElement;
+        new (): HTMLGoTabsElement;
+    };
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
@@ -442,6 +475,8 @@ declare global {
         "go-overlay": HTMLGoOverlayElement;
         "go-search-bar": HTMLGoSearchBarElement;
         "go-skip-link": HTMLGoSkipLinkElement;
+        "go-tab": HTMLGoTabElement;
+        "go-tabs": HTMLGoTabsElement;
     }
 }
 declare namespace LocalJSX {
@@ -749,6 +784,27 @@ declare namespace LocalJSX {
          */
         "target"?: string;
     }
+    interface GoTab {
+        /**
+          * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
+         */
+        "active"?: boolean;
+        "label"?: string;
+        /**
+          * id for the tab panel element If not provided, a unique id will be generated.
+         */
+        "panelId"?: string;
+        /**
+          * `id` for the tab button element. If not provided, a unique id will be generated.
+         */
+        "tabId"?: string;
+    }
+    interface GoTabs {
+        /**
+          * Provides a label that describes the purpose of the set of tabs.
+         */
+        "tabGroupLabel"?: string;
+    }
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
@@ -768,6 +824,8 @@ declare namespace LocalJSX {
         "go-overlay": GoOverlay;
         "go-search-bar": GoSearchBar;
         "go-skip-link": GoSkipLink;
+        "go-tab": GoTab;
+        "go-tabs": GoTabs;
     }
 }
 export { LocalJSX as JSX };
@@ -792,6 +850,8 @@ declare module "@stencil/core" {
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
+            "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
+            "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
         }
     }
 }
