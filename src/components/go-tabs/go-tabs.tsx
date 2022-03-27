@@ -37,6 +37,10 @@ export class GoTabs {
 
   initialiseTabs() {
     const children = Array.from(this.el.querySelectorAll('go-tab')) as HTMLGoTabElement[];
+    if (children.length === 0) {
+      return;
+    }
+
     this.tabChildren = children.map((goTab) => {
       const tabId = uniqueId('tab-');
       const panelId = tabId + '-panel';
@@ -59,6 +63,9 @@ export class GoTabs {
   }
 
   componentDidLoad() {
+    if (!this.tabChildren?.length) {
+      return;
+    }
     // load rect for indicator
     const activeTabId = this.tabChildren.findIndex((tab) => tab.active);
     setTimeout(() => {
@@ -199,24 +206,26 @@ export class GoTabs {
         }}>
         <div class={{ tabs: true, vertical }}>
           <div role="tablist" ref={(el) => (this.tablistEl = el)} aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
-            {tabChildren.map((tab, index) => {
-              return (
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={tab.active ? 'true' : 'false'}
-                  tabindex={tab.active ? undefined : '-1'}
-                  aria-controls={tab.panelId}
-                  id={tab.tabId}
-                  onClick={(e) => this.onTabClick(e)}
-                  onKeyDown={(e) => this.onTabKeyDown(e)}
-                  key={index}
-                  class={{ active: tab.active }}
-                  ref={(el) => this.tabs.push(el)}>
-                  {tab.label}
-                </button>
-              );
-            })}
+            {tabChildren
+              ? tabChildren.map((tab, index) => {
+                  return (
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={tab.active ? 'true' : 'false'}
+                      tabindex={tab.active ? undefined : '-1'}
+                      aria-controls={tab.panelId}
+                      id={tab.tabId}
+                      onClick={(e) => this.onTabClick(e)}
+                      onKeyDown={(e) => this.onTabKeyDown(e)}
+                      key={index}
+                      class={{ active: tab.active }}
+                      ref={(el) => this.tabs.push(el)}>
+                      {tab.label}
+                    </button>
+                  );
+                })
+              : null}
             <div class="tabs-active-indicator-track" aria-hidden="true">
               <div class="tabs-active-indicator"></div>
             </div>
