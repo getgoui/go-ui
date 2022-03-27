@@ -48,7 +48,7 @@ go-tabs {
 
     &:hover,
     &:focus {
-      outline: 0;
+      outline: 0; // stylelint-disable-line a11y/no-outline-none
       background: var(--tab-hover-bg-color);
     }
     &:focus-visible {
