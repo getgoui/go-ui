@@ -29,6 +29,7 @@ export class GoTabs {
 
   tabs: HTMLElement[] = [];
   panels: HTMLGoTabElement[] = [];
+  tablistEl: HTMLElement;
 
   componentWillLoad() {
     this.initialiseTabs();
@@ -60,7 +61,10 @@ export class GoTabs {
   componentDidLoad() {
     // load rect for indicator
     const activeTabId = this.tabChildren.findIndex((tab) => tab.active);
-    setTimeout(() => (this.activeTabRect = this.tabs[activeTabId].getBoundingClientRect()), 10);
+    setTimeout(() => {
+      this.activeTabPosition = this.tabs[activeTabId].getBoundingClientRect();
+      this.activeTabOffset = this.tabs[activeTabId].scrollLeft;
+    }, 10);
   }
 
   deactivateTabs() {
@@ -73,13 +77,15 @@ export class GoTabs {
     });
   }
 
-  @State() activeTabRect: DOMRect;
+  @State() activeTabPosition: DOMRect;
+  @State() activeTabOffset: number;
   // Activates any given tab panel
   activateTab(tabEl: HTMLElement, setFocus = true) {
     this.deactivateTabs();
     const tabId = tabEl.getAttribute('id');
 
-    this.activeTabRect = tabEl.getBoundingClientRect();
+    this.activeTabPosition = tabEl.getBoundingClientRect();
+    this.activeTabOffset = this.tablistEl.scrollLeft;
 
     this.tabChildren = this.tabChildren.map((tab, i) => {
       if (tab.tabId === tabId) {
@@ -126,6 +132,11 @@ export class GoTabs {
       // because we need to prevent page scroll >:)
       case 'ArrowUp':
       case 'ArrowDown':
+        if (this.vertical) {
+          event.preventDefault();
+          this.switchTabOnArrowPress(event);
+        }
+        break;
       case 'ArrowLeft':
       case 'ArrowRight':
         event.preventDefault();
@@ -170,15 +181,19 @@ export class GoTabs {
   }
 
   render() {
-    const { tabChildren, tabGroupLabel, vertical, activeTabRect } = this;
+    const { tabChildren, tabGroupLabel, vertical, activeTabPosition, activeTabOffset } = this;
+    console.log({
+      activeTabOffset,
+      activeTabPosition,
+    });
     return (
       <Host
         style={{
-          '--tabs-active-indicator-left': `${activeTabRect?.left || 0}px`,
-          '--tabs-active-indicator-width': `${activeTabRect?.width || 0}px`,
+          '--tabs-active-indicator-left': `${activeTabPosition?.left + activeTabOffset || 0}px`,
+          '--tabs-active-indicator-width': `${activeTabPosition?.width || 0}px`,
         }}>
         <div class={{ tabs: true, vertical }}>
-          <div role="tablist" aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
+          <div role="tablist" ref={(el) => (this.tablistEl = el)} aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
             {tabChildren.map((tab, index) => {
               return (
                 <button
