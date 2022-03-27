@@ -4,7 +4,6 @@ import uniqueId from 'lodash.uniqueid';
 interface Tab {
   tabId: string;
   panelId: string;
-  panelEl: HTMLGoTabElement;
   label: string;
   active: boolean;
 }
@@ -28,7 +27,8 @@ export class GoTabs {
 
   @State() tabChildren: Tab[];
 
-  @State() panels: HTMLElement[];
+  tabs: HTMLElement[] = [];
+  panels: HTMLGoTabElement[] = [];
 
   componentWillLoad() {
     this.initialiseTabs();
@@ -36,34 +36,36 @@ export class GoTabs {
 
   initialiseTabs() {
     const children = Array.from(this.el.querySelectorAll('go-tab')) as HTMLGoTabElement[];
-    this.tabChildren = children.map((goTab, index) => {
+    this.tabChildren = children.map((goTab) => {
       const tabId = uniqueId('tab-');
       const panelId = tabId + '-panel';
       goTab.tabId = tabId;
       goTab.panelId = panelId;
       return {
-        panelEl: goTab,
         tabId: goTab.tabId || tabId,
         panelId: goTab.panelId || panelId,
         label: goTab.label,
-        active: goTab.active || index === 0,
+        active: goTab.active,
       };
     });
+    this.panels = children;
+    // if no active tab set, activate first tab
+    const activeIndex = this.tabChildren.findIndex((tab) => tab.active);
+    if (activeIndex === -1) {
+      this.tabChildren = this.tabChildren.map((tab, i) => ({ ...tab, active: i === 0 }));
+      this.panels[0].active = true;
+    }
   }
 
   componentDidLoad() {
-    // activate the active tab
-    this.tabChildren.forEach((tab) => {
-      if (tab.active) {
-        tab.panelEl.active = true;
-      }
-    });
+    // load rect for indicator
+    const activeTabId = this.tabChildren.findIndex((tab) => tab.active);
+    setTimeout(() => (this.activeTabRect = this.tabs[activeTabId].getBoundingClientRect()), 10);
   }
 
-  async deactivateTabs() {
+  deactivateTabs() {
+    this.panels.forEach((panel) => (panel.active = false));
     this.tabChildren = this.tabChildren.map((tab) => {
-      tab.panelEl.active = false;
-
       return {
         ...tab,
         active: false,
@@ -71,13 +73,17 @@ export class GoTabs {
     });
   }
 
+  @State() activeTabRect: DOMRect;
   // Activates any given tab panel
-  async activateTab(tabEl, setFocus = true) {
-    await this.deactivateTabs();
+  activateTab(tabEl: HTMLElement, setFocus = true) {
+    this.deactivateTabs();
     const tabId = tabEl.getAttribute('id');
-    this.tabChildren = this.tabChildren.map((tab) => {
+
+    this.activeTabRect = tabEl.getBoundingClientRect();
+
+    this.tabChildren = this.tabChildren.map((tab, i) => {
       if (tab.tabId === tabId) {
-        tab.panelEl.active = true;
+        this.panels[i].active = true;
         return {
           ...tab,
           active: true,
@@ -101,11 +107,9 @@ export class GoTabs {
   /**********************************
    * Keyboard support
    ***********************************/
-  private tabs = [];
 
   onTabKeyDown(event: KeyboardEvent) {
     const key = event.code;
-    console.log({ key });
     switch (key) {
       case 'End':
         event.preventDefault();
@@ -147,9 +151,9 @@ export class GoTabs {
       const targetIndex = currentIndex + this.direction[pressed];
       if (this.tabs[targetIndex]) {
         this.tabs[targetIndex].focus();
-      } else if (pressed === 'Left' || pressed === 'Up') {
+      } else if (pressed === 'ArrowLeft' || pressed === 'ArrowUp') {
         this.focusLastTab();
-      } else if (pressed === 'Right' || pressed == 'Down') {
+      } else if (pressed === 'ArrowRight' || pressed == 'ArrowDown') {
         this.focusFirstTab();
       }
     }
@@ -166,10 +170,14 @@ export class GoTabs {
   }
 
   render() {
-    const { tabChildren, tabGroupLabel, vertical } = this;
+    const { tabChildren, tabGroupLabel, vertical, activeTabRect } = this;
     return (
-      <Host>
-        <div class="tabs">
+      <Host
+        style={{
+          '--tabs-active-indicator-left': `${activeTabRect?.left || 0}px`,
+          '--tabs-active-indicator-width': `${activeTabRect?.width || 0}px`,
+        }}>
+        <div class={{ tabs: true, vertical }}>
           <div role="tablist" aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
             {tabChildren.map((tab, index) => {
               return (
@@ -183,11 +191,15 @@ export class GoTabs {
                   onClick={(e) => this.onTabClick(e)}
                   onKeyDown={(e) => this.onTabKeyDown(e)}
                   key={index}
+                  class={{ active: tab.active }}
                   ref={(el) => this.tabs.push(el)}>
                   {tab.label}
                 </button>
               );
             })}
+            <div class="tabs-active-indicator-track">
+              <div class="tabs-active-indicator"></div>
+            </div>
           </div>
           <slot></slot>
         </div>
