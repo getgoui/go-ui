@@ -1,0 +1,70 @@
+go-tabs {
+  --tab-padding: 0.75rem 1.25rem;
+  --tab-bg-color: transparent;
+  --tab-hover-bg-color: var(--go-color-neutral-200);
+  --tab-text-color: var(--go-color-neutral-700);
+  --tab-focus-color: var(--go-color-primary-600);
+  --tab-active-color: var(--go-color-primary-800);
+  --tab-active-bg-color: transparent;
+  --tab-border-width: 0.2em;
+  --tab-active-indicator-color: var(--tab-active-color);
+  --tabs-active-indicator-width: 0;
+  --tabs-active-indicator-height: 0.2em;
+  --tabs-active-indicator-color: var(--tab-active-color);
+
+  [role='tablist'] {
+    overflow: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    position: relative;
+    .tabs-active-indicator-track {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      .tabs-active-indicator {
+        @include transition(transform, width);
+
+        transform: translateX(var(--tabs-active-indicator-left));
+        width: var(--tabs-active-indicator-width);
+        height: var(--tabs-active-indicator-height);
+        border-radius: var(--radius-round);
+        background: var(--tabs-active-indicator-color);
+      }
+    }
+  }
+  [role='tab'] {
+    border: unset;
+    padding: var(--tab-padding);
+    border-top: var(--tab-border-width) solid transparent;
+    border-bottom: var(--tab-border-width) solid transparent;
+    white-space: nowrap;
+    background: var(--tab-bg-color);
+    color: var(--tab-text-color);
+    font-weight: 700;
+    @include transition(background-color, color);
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      background: var(--tab-hover-bg-color);
+    }
+    &:focus-visible {
+      border-top-color: var(--tab-focus-color);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    &:not(.active) {
+      cursor: pointer;
+    }
+    &[aria-selected='true'] {
+      background: var(--tab-active-bg-color);
+
+      // border-bottom-color: var(--tab-active-color);
+      color: var(--tab-active-color);
+      text-decoration: none;
+    }
+  }
+}

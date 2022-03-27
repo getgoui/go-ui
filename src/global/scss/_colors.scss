@@ -1,5 +1,55 @@
 @import './utils';
 
+// Generate colours from color tokens css variables
+@mixin go-color-scheme-light {
+  @each $color-category in $color-categories {
+    @for $i from 1 through $color-shades {
+      $level: $i * 100;
+
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$level}));
+    }
+  }
+
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-darkest));
+  --go-color-lightest: rgb(var(--go-token-lightest));
+
+  // functional colors
+  --go-color-bg: var(--go-color-lightest);
+  --go-focus-outline-color: var(--go-color-neutral-600);
+  --go-color-link: var(--go-color-primary-900);
+  --go-color-link-hover: var(--go-color-primary-900);
+
+  // open props override
+  --shadow-strength: 15%;
+}
+
+// reverse tokens for dark theme
+@mixin go-color-scheme-dark {
+  @each $color-category in $color-categories {
+    @for $i from $color-shades through 1 {
+      $level: $i * 100;
+      $tokenLevel: ($color-shades + 1) * 100 - $level;
+
+      // define css variable for this shade
+      --go-color-#{$color-category}-#{$level}: rgb(var(--go-token-#{$color-category}-#{$tokenLevel}));
+    }
+  }
+
+  // extreme colors
+  --go-color-darkest: rgb(var(--go-token-lightest));
+  --go-color-lightest: rgb(var(--go-token-darkest));
+
+  // dark shadows
+  --shadow-strength: 30%;
+  --shadow-color: 220 40% 2%;
+  --go-color-bg: var(--go-color-neutral-100);
+  --go-focus-outline-color: var(--go-color-neutral-600);
+  --go-color-link: var(--go-color-primary-900);
+  --go-color-link-hover: var(--go-color-primary-900);
+}
+
 @mixin initiate-light-mode {
   @include go-color-scheme-light;
 
