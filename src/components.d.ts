@@ -333,6 +333,10 @@ export namespace Components {
           * Provides a label that describes the purpose of the set of tabs.
          */
         "tabGroupLabel"?: string;
+        /**
+          * Set tabs orientation to vertical
+         */
+        "vertical": boolean;
     }
 }
 declare global {
@@ -804,6 +808,10 @@ declare namespace LocalJSX {
           * Provides a label that describes the purpose of the set of tabs.
          */
         "tabGroupLabel"?: string;
+        /**
+          * Set tabs orientation to vertical
+         */
+        "vertical"?: boolean;
     }
     interface IntrinsicElements {
         "go-accordion": GoAccordion;

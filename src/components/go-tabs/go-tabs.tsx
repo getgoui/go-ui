@@ -21,20 +21,26 @@ export class GoTabs {
    */
   @Prop() tabGroupLabel?: string;
 
+  /**
+   * Set tabs orientation to vertical
+   */
+  @Prop() vertical: boolean = false;
+
   @State() tabChildren: Tab[];
 
   @State() panels: HTMLElement[];
 
   componentWillLoad() {
-    this.refreshTabs();
+    this.initialiseTabs();
   }
 
-  refreshTabs() {
+  initialiseTabs() {
     const children = Array.from(this.el.querySelectorAll('go-tab')) as HTMLGoTabElement[];
     this.tabChildren = children.map((goTab, index) => {
       const tabId = uniqueId('tab-');
       const panelId = tabId + '-panel';
-
+      goTab.tabId = tabId;
+      goTab.panelId = panelId;
       return {
         panelEl: goTab,
         tabId: goTab.tabId || tabId,
@@ -55,7 +61,7 @@ export class GoTabs {
   }
 
   async deactivateTabs() {
-    this.tabChildren.forEach((tab) => {
+    this.tabChildren = this.tabChildren.map((tab) => {
       tab.panelEl.active = false;
 
       return {
@@ -92,20 +98,79 @@ export class GoTabs {
     this.activateTab(tabEl, false);
   }
 
-  // function focusFirstTab() {
-  //   tabs[0].focus();
-  // }
+  /**********************************
+   * Keyboard support
+   ***********************************/
+  private tabs = [];
 
-  // function focusLastTab() {
-  //   tabs[tabs.length - 1].focus();
-  // }
+  onTabKeyDown(event: KeyboardEvent) {
+    const key = event.code;
+    console.log({ key });
+    switch (key) {
+      case 'End':
+        event.preventDefault();
+        // Activate last tab
+        this.focusLastTab();
+        break;
+      case 'Home':
+        event.preventDefault();
+        // Activate first tab
+        this.focusFirstTab();
+        break;
+
+      // Up and down are in keydown
+      // because we need to prevent page scroll >:)
+      case 'ArrowUp':
+      case 'ArrowDown':
+      case 'ArrowLeft':
+      case 'ArrowRight':
+        event.preventDefault();
+        this.switchTabOnArrowPress(event);
+        break;
+    }
+  }
+
+  // Add or subtract depending on key pressed
+  private direction = {
+    ArrowUp: -1,
+    ArrowLeft: -1,
+    ArrowDown: 1,
+    ArrowRight: 1,
+  };
+
+  // Either focus the next, previous, first, or last tab
+  // depending on key pressed
+  switchTabOnArrowPress(event) {
+    var pressed = event.code;
+    const currentIndex = this.tabs.findIndex((tab) => event.target.isSameNode(tab));
+    if (this.direction[pressed] && currentIndex !== -1) {
+      const targetIndex = currentIndex + this.direction[pressed];
+      if (this.tabs[targetIndex]) {
+        this.tabs[targetIndex].focus();
+      } else if (pressed === 'Left' || pressed === 'Up') {
+        this.focusLastTab();
+      } else if (pressed === 'Right' || pressed == 'Down') {
+        this.focusFirstTab();
+      }
+    }
+  }
+
+  // Focus on the first tab
+  focusFirstTab() {
+    this.tabs[0].focus();
+  }
+
+  // Focus on the last tab
+  focusLastTab() {
+    this.tabs[this.tabs.length - 1].focus();
+  }
 
   render() {
-    const { tabChildren, tabGroupLabel } = this;
+    const { tabChildren, tabGroupLabel, vertical } = this;
     return (
       <Host>
         <div class="tabs">
-          <div role="tablist" aria-label={tabGroupLabel}>
+          <div role="tablist" aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
             {tabChildren.map((tab, index) => {
               return (
                 <button
@@ -116,8 +181,10 @@ export class GoTabs {
                   aria-controls={tab.panelId}
                   id={tab.tabId}
                   onClick={(e) => this.onTabClick(e)}
-                  key={index}>
-                  {tab.tabId}.{tab.panelId}.{tab.label}
+                  onKeyDown={(e) => this.onTabKeyDown(e)}
+                  key={index}
+                  ref={(el) => this.tabs.push(el)}>
+                  {tab.label}
                 </button>
               );
             })}
