@@ -63,7 +63,12 @@ export class GoTabs {
     const activeTabId = this.tabChildren.findIndex((tab) => tab.active);
     setTimeout(() => {
       this.activeTabPosition = this.tabs[activeTabId].getBoundingClientRect();
-      this.activeTabOffset = this.tabs[activeTabId].scrollLeft;
+      this.activeTabOffset = this.tablistEl.scrollLeft - this.tablistEl.getBoundingClientRect().left;
+      console.log({
+        tabRect: this.activeTabPosition,
+        scrollLeft: this.tablistEl.scrollLeft,
+        tablistLeft: this.tablistEl.getBoundingClientRect().left,
+      });
     }, 10);
   }
 
@@ -85,7 +90,7 @@ export class GoTabs {
     const tabId = tabEl.getAttribute('id');
 
     this.activeTabPosition = tabEl.getBoundingClientRect();
-    this.activeTabOffset = this.tablistEl.scrollLeft;
+    this.activeTabOffset = this.tablistEl.scrollLeft - this.tablistEl.getBoundingClientRect().left;
 
     this.tabChildren = this.tabChildren.map((tab, i) => {
       if (tab.tabId === tabId) {
@@ -212,7 +217,7 @@ export class GoTabs {
                 </button>
               );
             })}
-            <div class="tabs-active-indicator-track">
+            <div class="tabs-active-indicator-track" aria-hidden="true">
               <div class="tabs-active-indicator"></div>
             </div>
           </div>

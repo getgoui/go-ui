@@ -1,11 +1,11 @@
 go-tabs {
-  --tab-padding: 0.75rem 1.5rem;
+  --tab-padding: 0.75rem 1.25rem;
   --tab-bg-color: transparent;
   --tab-hover-bg-color: var(--go-color-neutral-200);
-  --tab-text-color: var(--go-text-color);
+  --tab-text-color: var(--go-color-neutral-700);
   --tab-focus-color: var(--go-color-primary-600);
-  --tab-active-color: var(--go-color-success-900);
-  --tab-active-bg-color: var(--go-color-primary-100);
+  --tab-active-color: var(--go-color-primary-800);
+  --tab-active-bg-color: transparent;
   --tab-border-width: 0.2em;
   --tab-active-indicator-color: var(--tab-active-color);
   --tabs-active-indicator-width: 0;
@@ -43,6 +43,7 @@ go-tabs {
     white-space: nowrap;
     background: var(--tab-bg-color);
     color: var(--tab-text-color);
+    font-weight: 700;
     @include transition(background-color, color);
 
     &:hover,
