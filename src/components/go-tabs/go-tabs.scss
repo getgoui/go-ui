@@ -11,6 +11,12 @@ go-tabs {
   --tabs-active-indicator-width: 0;
   --tabs-active-indicator-height: 0.2em;
   --tabs-active-indicator-color: var(--tab-active-color);
+  --tabs-vertical-tablist-basis: 25%;
+  --tabs-tablist-gap: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--tabs-tablist-gap);
 
   [role='tablist'] {
     overflow: auto;
@@ -18,28 +24,10 @@ go-tabs {
     flex-wrap: nowrap;
     width: 100%;
     position: relative;
-    .tabs-active-indicator-track {
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      .tabs-active-indicator {
-        @include transition(transform, width);
-
-        transform: translateX(var(--tabs-active-indicator-left));
-        width: var(--tabs-active-indicator-width);
-        height: var(--tabs-active-indicator-height);
-        border-radius: var(--radius-round);
-        background: var(--tabs-active-indicator-color);
-      }
-    }
   }
   [role='tab'] {
-    border: unset;
     padding: var(--tab-padding);
-    border-top: var(--tab-border-width) solid transparent;
-    border-bottom: var(--tab-border-width) solid transparent;
+    border: var(--tab-border-width) solid transparent;
     white-space: nowrap;
     background: var(--tab-bg-color);
     color: var(--tab-text-color);
@@ -65,6 +53,48 @@ go-tabs {
       // border-bottom-color: var(--tab-active-color);
       color: var(--tab-active-color);
       text-decoration: none;
+    }
+  }
+
+  .tabs-active-indicator-track {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .tabs-active-indicator {
+      @include transition(transform, width, height);
+
+      transform: translateX(var(--tabs-active-indicator-left));
+      width: var(--tabs-active-indicator-width);
+      height: var(--tabs-active-indicator-height);
+      border-radius: var(--radius-round);
+      background: var(--tabs-active-indicator-color);
+    }
+  }
+  &.vertical {
+    flex-direction: row;
+    [role='tablist'] {
+      flex-direction: column;
+      flex: 0 0 var(--tabs-vertical-tablist-basis, 25%);
+      .tabs-active-indicator-track {
+        width: auto;
+        top: 0;
+        left: auto;
+        .tabs-active-indicator {
+          --tabs-active-indicator-width: 4px;
+
+          transform: translateY(var(--tabs-active-indicator-top));
+        }
+      }
+    }
+    [role='tab'] {
+      text-align: left;
+      white-space: normal;
+      &:focus-visible {
+        border-top-color: transparent;
+        border-left-color: var(--tab-focus-color);
+      }
     }
   }
 }
