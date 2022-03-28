@@ -69,13 +69,7 @@ export class GoTabs {
     // load rect for indicator
     const activeTabId = this.tabChildren.findIndex((tab) => tab.active);
     setTimeout(() => {
-      this.activeTabPosition = this.tabs[activeTabId].getBoundingClientRect();
-      this.activeTabOffset = this.tablistEl.scrollLeft - this.tablistEl.getBoundingClientRect().left;
-      console.log({
-        tabRect: this.activeTabPosition,
-        scrollLeft: this.tablistEl.scrollLeft,
-        tablistLeft: this.tablistEl.getBoundingClientRect().left,
-      });
+      this.activeTabRect = this.tabs[activeTabId].getBoundingClientRect();
     }, 10);
   }
 
@@ -89,15 +83,14 @@ export class GoTabs {
     });
   }
 
-  @State() activeTabPosition: DOMRect;
-  @State() activeTabOffset: number;
+  @State() activeTabRect: DOMRect;
+
   // Activates any given tab panel
   activateTab(tabEl: HTMLElement, setFocus = true) {
     this.deactivateTabs();
     const tabId = tabEl.getAttribute('id');
 
-    this.activeTabPosition = tabEl.getBoundingClientRect();
-    this.activeTabOffset = this.tablistEl.scrollLeft - this.tablistEl.getBoundingClientRect().left;
+    this.activeTabRect = tabEl.getBoundingClientRect();
 
     this.tabChildren = this.tabChildren.map((tab, i) => {
       if (tab.tabId === tabId) {
@@ -193,45 +186,59 @@ export class GoTabs {
   }
 
   render() {
-    const { tabChildren, tabGroupLabel, vertical, activeTabPosition, activeTabOffset } = this;
+    const { tabChildren, tabGroupLabel, vertical, activeTabRect, tablistEl } = this;
+
+    const tablistScrollLeft = tablistEl?.scrollLeft || 0;
+    const tablistScrollTop = tablistEl?.scrollTop || 0;
+    const tablistRect = tablistEl?.getBoundingClientRect();
+
+    const activeOffsetLeft = tablistScrollLeft - tablistRect?.left || 0;
+    const activeOffsetTop = tablistScrollTop - tablistRect?.top || 0;
     console.log({
-      activeTabOffset,
-      activeTabPosition,
+      tablistScrollLeft,
+      tablistRect,
+      activeTabRect,
     });
     return (
       <Host
-        style={{
-          '--tabs-active-indicator-left': `${activeTabPosition?.left + activeTabOffset || 0}px`,
-          '--tabs-active-indicator-width': `${activeTabPosition?.width || 0}px`,
-        }}>
-        <div class={{ tabs: true, vertical }}>
-          <div role="tablist" ref={(el) => (this.tablistEl = el)} aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
-            {tabChildren
-              ? tabChildren.map((tab, index) => {
-                  return (
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={tab.active ? 'true' : 'false'}
-                      tabindex={tab.active ? undefined : '-1'}
-                      aria-controls={tab.panelId}
-                      id={tab.tabId}
-                      onClick={(e) => this.onTabClick(e)}
-                      onKeyDown={(e) => this.onTabKeyDown(e)}
-                      key={index}
-                      class={{ active: tab.active }}
-                      ref={(el) => this.tabs.push(el)}>
-                      {tab.label}
-                    </button>
-                  );
-                })
-              : null}
-            <div class="tabs-active-indicator-track" aria-hidden="true">
-              <div class="tabs-active-indicator"></div>
-            </div>
+        class={{ tabs: true, vertical }}
+        style={
+          vertical
+            ? {
+                '--tabs-active-indicator-top': `${activeTabRect?.top + activeOffsetTop || 0}px`,
+                '--tabs-active-indicator-height': `${activeTabRect?.height || 0}px`,
+              }
+            : {
+                '--tabs-active-indicator-left': `${activeTabRect?.left + activeOffsetLeft || 0}px`,
+                '--tabs-active-indicator-width': `${activeTabRect?.width || 0}px`,
+              }
+        }>
+        <div role="tablist" ref={(el) => (this.tablistEl = el)} aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
+          {tabChildren
+            ? tabChildren.map((tab, index) => {
+                return (
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={tab.active ? 'true' : 'false'}
+                    tabindex={tab.active ? undefined : '-1'}
+                    aria-controls={tab.panelId}
+                    id={tab.tabId}
+                    onClick={(e) => this.onTabClick(e)}
+                    onKeyDown={(e) => this.onTabKeyDown(e)}
+                    key={index}
+                    class={{ active: tab.active }}
+                    ref={(el) => this.tabs.push(el)}>
+                    {tab.label}
+                  </button>
+                );
+              })
+            : null}
+          <div class="tabs-active-indicator-track" aria-hidden="true">
+            <div class="tabs-active-indicator"></div>
           </div>
-          <slot></slot>
         </div>
+        <slot></slot>
       </Host>
     );
   }
