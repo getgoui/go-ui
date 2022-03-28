@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = {
   title: 'Go UI',
   tagline: 'A design system for everyone.',
-  url: 'https://go.components.style',
+  url: 'https://go-ui.com',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -110,7 +110,7 @@ module.exports = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/go-components/go-components',
+                href: 'https://github.com/getgoui/go-ui',
               },
             ],
           },
@@ -135,7 +135,7 @@ module.exports = {
           sidebarCollapsed: false,
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/go-components/go-components/edit/main/docs/',
+          editUrl: 'https://github.com/getgoui/go-ui/edit/main/docs/',
           remarkPlugins: [require('remark-code-import'), require('remark-mermaid-dataurl')],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
@@ -143,7 +143,7 @@ module.exports = {
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: 'https://github.com/go-components/go-components/edit/main/docs/blog/',
+          editUrl: 'https://github.com/getgoui/go-ui/edit/main/docs/blog/',
         },
         theme: {
           customCss: [require.resolve('./src/css/custom.scss')],
