@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoints, ColorVariants, INavItem } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+import { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
         /**
@@ -329,6 +330,10 @@ export namespace Components {
         "tabId"?: string;
     }
     interface GoTabs {
+        /**
+          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+         */
+        "manual": boolean;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
@@ -804,6 +809,15 @@ declare namespace LocalJSX {
         "tabId"?: string;
     }
     interface GoTabs {
+        /**
+          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+         */
+        "manual"?: boolean;
+        /**
+          * tab change event
+          * @param ActivatedTab , tabEl, panelEl}
+         */
+        "onTabChange"?: (event: CustomEvent<ActivatedTab>) => void;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
