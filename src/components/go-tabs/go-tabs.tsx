@@ -1,11 +1,16 @@
-import { Component, Host, h, Element, Prop, State } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
 
-interface Tab {
+export interface TabChild {
   tabId: string;
   panelId: string;
   label: string;
   active: boolean;
+}
+export interface ActivatedTab {
+  index: number;
+  tabEl: HTMLElement;
+  panelEl: HTMLElement;
 }
 @Component({
   tag: 'go-tabs',
@@ -25,8 +30,23 @@ export class GoTabs {
    */
   @Prop() vertical: boolean = false;
 
-  @State() tabChildren: Tab[];
+  /**
+   * By default, tabs are automatically activated and their panel is displayed when they receive focus.
+   * If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+   */
+  @Prop() manual: boolean = false;
 
+  /**
+   * tab change event
+   * @param ActivatedTab {index, tabEl, panelEl}
+   */
+  @Event() tabChange: EventEmitter<ActivatedTab>;
+
+  @State() tabChildren: TabChild[];
+
+  @State() activeTabRect: DOMRect;
+
+  activeIndex = -1;
   tabs: HTMLElement[] = [];
   panels: HTMLGoTabElement[] = [];
   tablistEl: HTMLElement;
@@ -67,9 +87,10 @@ export class GoTabs {
       return;
     }
     // load rect for indicator
-    const activeTabId = this.tabChildren.findIndex((tab) => tab.active);
+    this.activeIndex = this.tabChildren.findIndex((tab) => tab.active);
     setTimeout(() => {
-      this.activeTabRect = this.tabs[activeTabId].getBoundingClientRect();
+      this.activeTabRect = this.tabs[this.activeIndex].getBoundingClientRect();
+      this.activateTab(this.tabs[this.activeIndex], true, true);
     }, 10);
   }
 
@@ -83,10 +104,22 @@ export class GoTabs {
     });
   }
 
-  @State() activeTabRect: DOMRect;
-
   // Activates any given tab panel
-  activateTab(tabEl: HTMLElement, setFocus = true) {
+  activateTab(tabEl: HTMLElement, setFocus = true, isOnload = false) {
+    // if tab is already active, do nothing
+    if (tabEl.getAttribute('aria-selected') === 'true') {
+      if (isOnload) {
+        // emit event
+        this.tabChange.emit({
+          index: this.activeIndex,
+          tabEl,
+          panelEl: this.panels[this.activeIndex],
+        });
+      }
+
+      return;
+    }
+
     this.deactivateTabs();
     const tabId = tabEl.getAttribute('id');
 
@@ -95,6 +128,7 @@ export class GoTabs {
     this.tabChildren = this.tabChildren.map((tab, i) => {
       if (tab.tabId === tabId) {
         this.panels[i].active = true;
+        this.activeIndex = i;
         return {
           ...tab,
           active: true,
@@ -107,6 +141,13 @@ export class GoTabs {
     if (setFocus) {
       tabEl.focus();
     }
+
+    // emit event
+    this.tabChange.emit({
+      index: this.activeIndex,
+      tabEl,
+      panelEl: this.panels[this.activeIndex],
+    });
   }
 
   // When a tab is clicked, activateTab is fired to activate it
@@ -119,18 +160,26 @@ export class GoTabs {
    * Keyboard support
    ***********************************/
 
-  onTabKeyDown(event: KeyboardEvent) {
+  onKeydown(event: KeyboardEvent) {
     const key = event.code;
     switch (key) {
       case 'End':
         event.preventDefault();
         // Activate last tab
-        this.focusLastTab();
+        if (this.manual) {
+          this.focusLastTab();
+        } else {
+          this.activateTab(this.tabs[this.tabs.length - 1]);
+        }
         break;
       case 'Home':
         event.preventDefault();
         // Activate first tab
-        this.focusFirstTab();
+        if (this.manual) {
+          this.focusFirstTab();
+        } else {
+          this.activateTab(this.tabs[0]);
+        }
         break;
 
       // Up and down are in keydown
@@ -160,17 +209,37 @@ export class GoTabs {
 
   // Either focus the next, previous, first, or last tab
   // depending on key pressed
-  switchTabOnArrowPress(event) {
+  switchTabOnArrowPress(event): void {
     var pressed = event.code;
     const currentIndex = this.tabs.findIndex((tab) => event.target.isSameNode(tab));
     if (this.direction[pressed] && currentIndex !== -1) {
       const targetIndex = currentIndex + this.direction[pressed];
       if (this.tabs[targetIndex]) {
-        this.tabs[targetIndex].focus();
-      } else if (pressed === 'ArrowLeft' || pressed === 'ArrowUp') {
-        this.focusLastTab();
-      } else if (pressed === 'ArrowRight' || pressed == 'ArrowDown') {
-        this.focusFirstTab();
+        if (this.manual) {
+          this.tabs[targetIndex].focus();
+          return;
+        }
+        this.activateTab(this.tabs[targetIndex]);
+        return;
+      }
+
+      // target index out of range
+      if (pressed === 'ArrowLeft' || pressed === 'ArrowUp') {
+        if (this.manual) {
+          this.focusLastTab();
+          return;
+        }
+        this.activateTab(this.tabs[this.tabs.length - 1]);
+        return;
+      }
+
+      if (pressed === 'ArrowRight' || pressed == 'ArrowDown') {
+        if (this.manual) {
+          this.focusFirstTab();
+          return;
+        }
+        this.activateTab(this.tabs[0]);
+        return;
       }
     }
   }
@@ -194,11 +263,7 @@ export class GoTabs {
 
     const activeOffsetLeft = tablistScrollLeft - tablistRect?.left || 0;
     const activeOffsetTop = tablistScrollTop - tablistRect?.top || 0;
-    console.log({
-      tablistScrollLeft,
-      tablistRect,
-      activeTabRect,
-    });
+
     return (
       <Host
         class={{ tabs: true, vertical }}
@@ -225,7 +290,7 @@ export class GoTabs {
                     aria-controls={tab.panelId}
                     id={tab.tabId}
                     onClick={(e) => this.onTabClick(e)}
-                    onKeyDown={(e) => this.onTabKeyDown(e)}
+                    onKeyDown={(e) => this.onKeydown(e)}
                     key={index}
                     class={{ active: tab.active }}
                     ref={(el) => this.tabs.push(el)}>

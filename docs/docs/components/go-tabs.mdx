@@ -7,6 +7,7 @@ hide_table_of_contents: true
 import Demo from '@/components/Demo';
 import demoSource from '!!raw-loader!@/go-ui/components/go-tabs/demo/go-tabs.html';
 import verticalDemo from '!!raw-loader!@/go-ui/components/go-tabs/demo/go-tabs-vertical.html';
+import manualDemo from '!!raw-loader!@/go-ui/components/go-tabs/demo/go-tabs-manual.html';
 
 # Tabs <span className="text-size-0">`go-tabs`</span>
 
@@ -26,7 +27,8 @@ References:
 ## Accessibility
 
 - `go-tabs` and `go-tab` components are built based on the [W3C tabs design pattern](https://www.w3.org/TR/wai-aria-practices/#tabpanel).
-- More specifically, the [Tabs With Manual Activation](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html) pattern was used in our tabs as it fits more use cases including when tab content is not immediately available.
+- By default, the [Tabs With Automatic Activation](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html) pattern is used, where a tab is automatically activated and its associated panel is displayed when the tab receives focus.
+- If the panel content cannot be displayed instantly, add `manual="true"` attribute to adopt the [Tabs With Manual Activation](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html) pattern.
 
 References:
 
@@ -39,6 +41,10 @@ References:
 ## Vertical tabs
 
 <Demo code={verticalDemo} />
+
+## Manual activation
+
+<Demo code={manualDemo} />
 
 <!-- API -->
 
