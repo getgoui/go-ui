@@ -10,3 +10,8 @@ $displays: none, inline, inline-block, block, table, table-row, table-cell, flex
     }
   }
 }
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus-visible) {
+  @include visually-hidden;
+}

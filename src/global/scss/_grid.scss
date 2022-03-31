@@ -23,6 +23,8 @@
   @include min-query($breakpoint) {
     %responsive-container-#{$breakpoint} {
       max-width: $container-max-width;
+      padding-left: var(--go-outer-gutter, 0.5rem);
+      padding-right: var(--go-outer-gutter, 0.5rem);
     }
 
     // Extend each breakpoint which is smaller or equal to the current breakpoint

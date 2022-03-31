@@ -20,11 +20,13 @@
 @import './scss/typography';
 @import './scss/display';
 
+html,
+body {
+  scroll-behavior: smooth;
+  @include reduced-motion {
+    scroll-behavior: auto;
+  }
+}
 * {
   box-sizing: border-box;
-}
-
-.visually-hidden,
-.visually-hidden-focusable:not(:focus-visible) {
-  @include visually-hidden;
 }

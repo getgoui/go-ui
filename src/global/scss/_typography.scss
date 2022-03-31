@@ -1,15 +1,3 @@
-@mixin text-size($scale) {
-  font-size: var(--go-size-#{$scale});
-}
-@mixin typo($type-level, $details) {
-  margin: 0;
-  @include text-size(map-get($details, 'size'));
-
-  font-weight: map-get($details, 'weight');
-  line-height: map-get($details, 'line-height');
-  letter-spacing: map-get($details, 'letter-spacing');
-}
-
 // utility classes for text sizes
 @for $i from -1 through 8 {
   .text-size-#{$i} {
