@@ -343,6 +343,20 @@ export namespace Components {
          */
         "vertical": boolean;
     }
+    interface GoToc {
+        /**
+          * Label for the TOC
+         */
+        "label": string;
+        /**
+          * Specify the scope to get TOC items from
+         */
+        "scope": string;
+        /**
+          * Selector for the TOC items
+         */
+        "selector": string;
+    }
 }
 declare global {
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
@@ -465,6 +479,12 @@ declare global {
         prototype: HTMLGoTabsElement;
         new (): HTMLGoTabsElement;
     };
+    interface HTMLGoTocElement extends Components.GoToc, HTMLStencilElement {
+    }
+    var HTMLGoTocElement: {
+        prototype: HTMLGoTocElement;
+        new (): HTMLGoTocElement;
+    };
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
@@ -486,6 +506,7 @@ declare global {
         "go-skip-link": HTMLGoSkipLinkElement;
         "go-tab": HTMLGoTabElement;
         "go-tabs": HTMLGoTabsElement;
+        "go-toc": HTMLGoTocElement;
     }
 }
 declare namespace LocalJSX {
@@ -827,6 +848,20 @@ declare namespace LocalJSX {
          */
         "vertical"?: boolean;
     }
+    interface GoToc {
+        /**
+          * Label for the TOC
+         */
+        "label"?: string;
+        /**
+          * Specify the scope to get TOC items from
+         */
+        "scope"?: string;
+        /**
+          * Selector for the TOC items
+         */
+        "selector"?: string;
+    }
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
@@ -848,6 +883,7 @@ declare namespace LocalJSX {
         "go-skip-link": GoSkipLink;
         "go-tab": GoTab;
         "go-tabs": GoTabs;
+        "go-toc": GoToc;
     }
 }
 export { LocalJSX as JSX };
@@ -874,6 +910,7 @@ declare module "@stencil/core" {
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
+            "go-toc": LocalJSX.GoToc & JSXBase.HTMLAttributes<HTMLGoTocElement>;
         }
     }
 }
