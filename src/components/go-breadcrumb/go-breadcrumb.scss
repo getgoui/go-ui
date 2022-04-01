@@ -1,0 +1,35 @@
+go-breadcrumb {
+  --breadcrumb-item-gap: 0.5rem;
+
+  display: block;
+  go-link {
+    --nav-link-current-bar-width: 0;
+  }
+  ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+      align-items: center;
+      vertical-align: middle;
+      display: none;
+      @include tablet {
+        display: inline-flex;
+      }
+      &:last-child {
+        display: inline-flex;
+        margin-right: 0;
+      }
+      &:nth-last-child(2) {
+        display: inline-flex;
+      }
+      .breadcrumb-separator {
+        margin-left: var(--breadcrumb-item-gap);
+        margin-right: var(--breadcrumb-item-gap);
+        width: 1rem;
+        height: 1rem;
+        vertical-align: middle;
+      }
+    }
+  }
+}
