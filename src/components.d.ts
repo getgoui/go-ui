@@ -49,6 +49,20 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
+    interface GoBreadcrumb {
+        /**
+          * Hide current page (last item without url) from the breadcrumb
+         */
+        "hideCurrent": boolean;
+        /**
+          * list of navigation items to be displayed
+         */
+        "items": INavItem[] | string;
+        /**
+          * The label for the navigation landmark. This is used by assistive technologies to identify the landmark.
+         */
+        "label": string;
+    }
     interface GoButton {
         /**
           * If set, the button will take up the full width of its parent If block="{breakpoint}" is set, the button will take up the full width for the specified breakpoint. e.g. a `block="mobile"` button will display full width on mobile devices. If block="all", the button will take full width on all devices.
@@ -371,6 +385,12 @@ declare global {
         prototype: HTMLGoAccordionItemElement;
         new (): HTMLGoAccordionItemElement;
     };
+    interface HTMLGoBreadcrumbElement extends Components.GoBreadcrumb, HTMLStencilElement {
+    }
+    var HTMLGoBreadcrumbElement: {
+        prototype: HTMLGoBreadcrumbElement;
+        new (): HTMLGoBreadcrumbElement;
+    };
     interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
     }
     var HTMLGoButtonElement: {
@@ -488,6 +508,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
+        "go-breadcrumb": HTMLGoBreadcrumbElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-card": HTMLGoCardElement;
@@ -549,6 +570,20 @@ declare namespace LocalJSX {
           * Emitted when accordion item started opening
          */
         "onOpening"?: (event: CustomEvent<any>) => void;
+    }
+    interface GoBreadcrumb {
+        /**
+          * Hide current page (last item without url) from the breadcrumb
+         */
+        "hideCurrent"?: boolean;
+        /**
+          * list of navigation items to be displayed
+         */
+        "items"?: INavItem[] | string;
+        /**
+          * The label for the navigation landmark. This is used by assistive technologies to identify the landmark.
+         */
+        "label"?: string;
     }
     interface GoButton {
         /**
@@ -865,6 +900,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
+        "go-breadcrumb": GoBreadcrumb;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-card": GoCard;
@@ -892,6 +928,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "go-accordion": LocalJSX.GoAccordion & JSXBase.HTMLAttributes<HTMLGoAccordionElement>;
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
+            "go-breadcrumb": LocalJSX.GoBreadcrumb & JSXBase.HTMLAttributes<HTMLGoBreadcrumbElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
