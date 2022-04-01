@@ -3,6 +3,7 @@ go-footer {
   --footer-nav-section-padding: 3rem 0;
   --footer-bottom-section-padding: var(--footer-section-padding);
   --footer-copyright-section-padding: var(--footer-section-padding);
+  --footer-separator-color: var(--go-color-neutral-300);
 
   // colours
   --footer-bg-color: var(--go-color-lightest);
@@ -24,8 +25,10 @@ go-footer {
     --nav-link-arrow-color: var(--footer-text-color);
     --nav-link-arrow-color-hover: var(--footer-link-color-hover);
     --footer-link-bg-color-hover: transparent;
+    --footer-separator-color: rgb(var(--go-token-neutral-300));
   }
   go-nav-list {
+    --go-color-link: var(--footer-text-color);
     --nav-list-header-text-color: var(--footer-text-color);
   }
   a {
@@ -40,11 +43,11 @@ go-footer {
     padding: var(--footer-nav-section-padding);
   }
   .footer-bottom {
-    border-top: 1px solid var(--go-color-neutral-300);
+    border-top: 1px solid var(--footer-separator-color);
     padding: var(--footer-bottom-section-padding);
   }
   .copyright {
-    border-top: 1px solid var(--go-color-neutral-300);
+    border-top: 1px solid var(--footer-separator-color);
     padding: var(--footer-copyright-section-padding);
   }
 }
