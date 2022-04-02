@@ -48,7 +48,7 @@ export class GoBreadcrumb {
 
   render() {
     const { label, navItems, hideCurrent } = this;
-    if (!navItems.length) {
+    if (!navItems?.length) {
       return null;
     }
     return (
