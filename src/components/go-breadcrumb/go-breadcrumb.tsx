@@ -48,6 +48,9 @@ export class GoBreadcrumb {
 
   render() {
     const { label, navItems, hideCurrent } = this;
+    if (!navItems.length) {
+      return null;
+    }
     return (
       <Host>
         <nav aria-label={label}>
