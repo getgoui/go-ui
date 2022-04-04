@@ -328,6 +328,36 @@ export namespace Components {
          */
         "target"?: string;
     }
+    interface GoSpinner {
+        /**
+          * Set the base color of the spinner.
+         */
+        "baseColor"?: string;
+        /**
+          * Set how long it should take to complete one full rotation in milliseconds.
+         */
+        "duration"?: number;
+        /**
+          * set the loading state
+         */
+        "loading": boolean;
+        /**
+          * Set the ring color of the spinner.
+         */
+        "ringColor"?: string;
+        /**
+          * Set the width of the spinner ring
+         */
+        "ringWidth"?: string;
+        /**
+          * Set the width and height of the spinner.
+         */
+        "size"?: string;
+        /**
+          * If true, spinner and label will be stacked.
+         */
+        "stacked"?: boolean;
+    }
     interface GoTab {
         /**
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
@@ -487,6 +517,12 @@ declare global {
         prototype: HTMLGoSkipLinkElement;
         new (): HTMLGoSkipLinkElement;
     };
+    interface HTMLGoSpinnerElement extends Components.GoSpinner, HTMLStencilElement {
+    }
+    var HTMLGoSpinnerElement: {
+        prototype: HTMLGoSpinnerElement;
+        new (): HTMLGoSpinnerElement;
+    };
     interface HTMLGoTabElement extends Components.GoTab, HTMLStencilElement {
     }
     var HTMLGoTabElement: {
@@ -525,6 +561,7 @@ declare global {
         "go-overlay": HTMLGoOverlayElement;
         "go-search-bar": HTMLGoSearchBarElement;
         "go-skip-link": HTMLGoSkipLinkElement;
+        "go-spinner": HTMLGoSpinnerElement;
         "go-tab": HTMLGoTabElement;
         "go-tabs": HTMLGoTabsElement;
         "go-toc": HTMLGoTocElement;
@@ -849,6 +886,36 @@ declare namespace LocalJSX {
          */
         "target"?: string;
     }
+    interface GoSpinner {
+        /**
+          * Set the base color of the spinner.
+         */
+        "baseColor"?: string;
+        /**
+          * Set how long it should take to complete one full rotation in milliseconds.
+         */
+        "duration"?: number;
+        /**
+          * set the loading state
+         */
+        "loading"?: boolean;
+        /**
+          * Set the ring color of the spinner.
+         */
+        "ringColor"?: string;
+        /**
+          * Set the width of the spinner ring
+         */
+        "ringWidth"?: string;
+        /**
+          * Set the width and height of the spinner.
+         */
+        "size"?: string;
+        /**
+          * If true, spinner and label will be stacked.
+         */
+        "stacked"?: boolean;
+    }
     interface GoTab {
         /**
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
@@ -917,6 +984,7 @@ declare namespace LocalJSX {
         "go-overlay": GoOverlay;
         "go-search-bar": GoSearchBar;
         "go-skip-link": GoSkipLink;
+        "go-spinner": GoSpinner;
         "go-tab": GoTab;
         "go-tabs": GoTabs;
         "go-toc": GoToc;
@@ -945,6 +1013,7 @@ declare module "@stencil/core" {
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
+            "go-spinner": LocalJSX.GoSpinner & JSXBase.HTMLAttributes<HTMLGoSpinnerElement>;
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
             "go-toc": LocalJSX.GoToc & JSXBase.HTMLAttributes<HTMLGoTocElement>;

@@ -23,8 +23,10 @@
 
 ### Used by
 
+ - [go-breadcrumb](../../go-breadcrumb)
  - [go-main-nav](../go-main-nav)
  - [go-nav-list](../go-nav-list)
+ - [go-toc](../../go-toc)
 
 ### Depends on
 
@@ -34,8 +36,10 @@
 ```mermaid
 graph TD;
   go-nav-link --> go-icon
+  go-breadcrumb --> go-nav-link
   go-main-nav --> go-nav-link
   go-nav-list --> go-nav-link
+  go-toc --> go-nav-link
   style go-nav-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
