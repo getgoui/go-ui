@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-03-19T00:28:30",
+  "timestamp": "2022-04-04T09:39:40",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.14.1",
@@ -274,6 +274,88 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-breadcrumb/go-breadcrumb.tsx",
+      "encapsulation": "none",
+      "tag": "go-breadcrumb",
+      "readme": "## go-breadcrumbs API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "hideCurrent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "hide-current",
+          "reflectToAttr": false,
+          "docs": "Hide current page (last item without url) from the breadcrumb",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "items",
+          "type": "INavItem[] | string",
+          "mutable": false,
+          "attr": "items",
+          "reflectToAttr": false,
+          "docs": "list of navigation items to be displayed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label for the navigation landmark. This is used by assistive technologies to identify the landmark.",
+          "docsTags": [],
+          "default": "'Breadcrumb'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-nav-link"
+      ],
+      "dependencyGraph": {
+        "go-breadcrumb": [
+          "go-nav-link"
+        ],
+        "go-nav-link": [
+          "go-icon"
+        ]
+      }
     },
     {
       "filePath": "./src/components/go-button/go-button.tsx",
@@ -1892,8 +1974,10 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "go-breadcrumb",
         "go-main-nav",
-        "go-nav-list"
+        "go-nav-list",
+        "go-toc"
       ],
       "dependencies": [
         "go-icon"
@@ -1902,10 +1986,16 @@
         "go-nav-link": [
           "go-icon"
         ],
+        "go-breadcrumb": [
+          "go-nav-link"
+        ],
         "go-main-nav": [
           "go-nav-link"
         ],
         "go-nav-list": [
+          "go-nav-link"
+        ],
+        "go-toc": [
           "go-nav-link"
         ]
       }
@@ -2227,6 +2317,389 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-spinner/go-spinner.tsx",
+      "encapsulation": "none",
+      "tag": "go-spinner",
+      "readme": "## go-spinner API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "baseColor",
+          "type": "string",
+          "mutable": false,
+          "attr": "base-color",
+          "reflectToAttr": false,
+          "docs": "Set the base color of the spinner.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "duration",
+          "type": "number",
+          "mutable": false,
+          "attr": "duration",
+          "reflectToAttr": false,
+          "docs": "Set how long it should take to complete one full rotation in milliseconds.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "loading",
+          "reflectToAttr": true,
+          "docs": "set the loading state",
+          "docsTags": [],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "ringColor",
+          "type": "string",
+          "mutable": false,
+          "attr": "ring-color",
+          "reflectToAttr": false,
+          "docs": "Set the ring color of the spinner.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "ringWidth",
+          "type": "string",
+          "mutable": false,
+          "attr": "ring-width",
+          "reflectToAttr": false,
+          "docs": "Set the width of the spinner ring",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Set the width and height of the spinner.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "stacked",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "stacked",
+          "reflectToAttr": false,
+          "docs": "If true, spinner and label will be stacked.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-tabs/go-tab.tsx",
+      "encapsulation": "none",
+      "tag": "go-tab",
+      "readme": "## go-tabs API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": false,
+          "docs": "If this tab is currently active\nif multiple `go-tab` are active in the same `go-tabs`, first one is active.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "panelId",
+          "type": "string",
+          "mutable": true,
+          "attr": "panel-id",
+          "reflectToAttr": false,
+          "docs": "id for the tab panel element\nIf not provided, a unique id will be generated.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "tabId",
+          "type": "string",
+          "mutable": true,
+          "attr": "tab-id",
+          "reflectToAttr": false,
+          "docs": "`id` for the tab button element.\nIf not provided, a unique id will be generated.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-tabs/go-tabs.tsx",
+      "encapsulation": "none",
+      "tag": "go-tabs",
+      "readme": "## go-tabs API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "manual",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "manual",
+          "reflectToAttr": false,
+          "docs": "By default, tabs are automatically activated and their panel is displayed when they receive focus.\nIf `manual` is true, users need to activate a tab by pressing the Enter or Space key.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tabGroupLabel",
+          "type": "string",
+          "mutable": false,
+          "attr": "tab-group-label",
+          "reflectToAttr": false,
+          "docs": "Provides a label that describes the purpose of the set of tabs.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "Set tabs orientation to vertical",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "tabChange",
+          "detail": "ActivatedTab",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "tab change event",
+          "docsTags": [
+            {
+              "name": "param",
+              "text": "ActivatedTab , tabEl, panelEl}"
+            }
+          ]
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-toc/go-toc.tsx",
+      "encapsulation": "none",
+      "tag": "go-toc",
+      "readme": "## go-toc API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Label for the TOC",
+          "docsTags": [],
+          "default": "'On this page'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "mutable": false,
+          "attr": "scope",
+          "reflectToAttr": false,
+          "docs": "Specify the scope to get TOC items from",
+          "docsTags": [],
+          "default": "'main'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "selector",
+          "type": "string",
+          "mutable": false,
+          "attr": "selector",
+          "reflectToAttr": false,
+          "docs": "Selector for the TOC items",
+          "docsTags": [],
+          "default": "'h2'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-nav-link"
+      ],
+      "dependencyGraph": {
+        "go-toc": [
+          "go-nav-link"
+        ],
+        "go-nav-link": [
+          "go-icon"
+        ]
+      }
     }
   ]
 }

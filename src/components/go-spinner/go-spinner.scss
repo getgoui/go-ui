@@ -1,0 +1,32 @@
+go-spinner {
+  --spinner-ring-color: var(--go-color-primary-800);
+  --spinner-base-color: var(--go-color-neutral-300);
+  --spinner-size: 1.5rem;
+  --spinner-ring-width: calc(var(--spinner-size) / 10);
+  --spinner-duration: 500ms;
+  --spinner-gap: 0.5rem;
+
+  display: inline-flex;
+  gap: var(--spinner-gap);
+  align-items: center;
+  &.stacked {
+    flex-direction: column;
+  }
+  .spinner {
+    border: var(--spinner-ring-width) solid var(--spinner-base-color);
+    border-radius: 50%;
+    border-top-color: var(--spinner-ring-color);
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+    animation: spin var(--spinner-duration) linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
