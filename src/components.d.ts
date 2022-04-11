@@ -213,6 +213,19 @@ export namespace Components {
          */
         "breakpoint": Breakpoints;
     }
+    interface GoHero {
+        "breadcrumb"?: INavItem[] | string;
+        "heading": string;
+        /**
+          * hero image alt text (requires img-src attribute to be present to render)
+         */
+        "imgAlt"?: string;
+        /**
+          * hero image src url (requires img-alt attribute to be present to render)
+         */
+        "imgSrc"?: string;
+        "preHeading"?: string;
+    }
     interface GoIcon {
         /**
           * Color of the icon,  supports CSS units and variables. Default: `currentColor`
@@ -463,6 +476,12 @@ declare global {
         prototype: HTMLGoHeaderBarElement;
         new (): HTMLGoHeaderBarElement;
     };
+    interface HTMLGoHeroElement extends Components.GoHero, HTMLStencilElement {
+    }
+    var HTMLGoHeroElement: {
+        prototype: HTMLGoHeroElement;
+        new (): HTMLGoHeroElement;
+    };
     interface HTMLGoIconElement extends Components.GoIcon, HTMLStencilElement {
     }
     var HTMLGoIconElement: {
@@ -552,6 +571,7 @@ declare global {
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
+        "go-hero": HTMLGoHeroElement;
         "go-icon": HTMLGoIconElement;
         "go-link": HTMLGoLinkElement;
         "go-main-nav": HTMLGoMainNavElement;
@@ -770,6 +790,19 @@ declare namespace LocalJSX {
          */
         "breakpoint"?: Breakpoints;
     }
+    interface GoHero {
+        "breadcrumb"?: INavItem[] | string;
+        "heading"?: string;
+        /**
+          * hero image alt text (requires img-src attribute to be present to render)
+         */
+        "imgAlt"?: string;
+        /**
+          * hero image src url (requires img-alt attribute to be present to render)
+         */
+        "imgSrc"?: string;
+        "preHeading"?: string;
+    }
     interface GoIcon {
         /**
           * Color of the icon,  supports CSS units and variables. Default: `currentColor`
@@ -975,6 +1008,7 @@ declare namespace LocalJSX {
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
+        "go-hero": GoHero;
         "go-icon": GoIcon;
         "go-link": GoLink;
         "go-main-nav": GoMainNav;
@@ -1004,6 +1038,7 @@ declare module "@stencil/core" {
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
+            "go-hero": LocalJSX.GoHero & JSXBase.HTMLAttributes<HTMLGoHeroElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
             "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
