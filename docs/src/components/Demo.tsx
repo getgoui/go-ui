@@ -141,7 +141,7 @@ const Demo = ({ code, hideSource = false }) => {
                   const initialHeight = Math.ceil(frameHeightBuffer + frameWindow.document.body.getBoundingClientRect().height);
                   setContentHeight(initialHeight + 'px');
                   setLoaded(true);
-                }, 1000);
+                }, 200);
               }}
             />
           </div>
