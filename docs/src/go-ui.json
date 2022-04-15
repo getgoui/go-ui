@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-04-09T08:00:54",
+  "timestamp": "2022-04-15T08:57:40",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.14.1",
@@ -276,6 +276,147 @@
       "dependencyGraph": {}
     },
     {
+      "filePath": "./src/components/go-banner/go-banner.tsx",
+      "encapsulation": "none",
+      "tag": "go-banner",
+      "readme": "## go-banner API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "dismissible",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "dismissible",
+          "reflectToAttr": false,
+          "docs": "If the banner can be dismissed, a close button will be rendered",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Heading of banner",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"critical\" | \"info\" | \"success\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "Type of banner",
+          "docsTags": [],
+          "default": "'info'",
+          "values": [
+            {
+              "value": "critical",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dismissed",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--banner-bg-color",
+          "annotation": "prop",
+          "docs": "Background color for banner. @default: inherit"
+        },
+        {
+          "name": "--banner-border-color",
+          "annotation": "prop",
+          "docs": "Define the border color for left decorative banner bar. @default: var(--go-color-primary-200)"
+        },
+        {
+          "name": "--banner-border-width",
+          "annotation": "prop",
+          "docs": "Define the border width for hte left decorative banner bar. @default: 0.25rem"
+        },
+        {
+          "name": "--banner-fg-color",
+          "annotation": "prop",
+          "docs": "Foreground color for banner @default: var(--go-color-darkest)"
+        },
+        {
+          "name": "--banner-heading-gap The gap between the heading and the content. @default 0.5rem",
+          "annotation": "prop",
+          "docs": ""
+        },
+        {
+          "name": "--banner-icon-bar-padding-x",
+          "annotation": "prop",
+          "docs": "Padding on left and right of the icon, if \"icon\" slot has content. @default: 0.5rem"
+        },
+        {
+          "name": "--banner-padding",
+          "annotation": "prop",
+          "docs": "Outer padding of banner area @default: 1rem 1.5rem"
+        },
+        {
+          "name": "--banner-radius",
+          "annotation": "prop",
+          "docs": "Define border radius for banner. @default: var(--radius-2)"
+        },
+        {
+          "name": "--banner-shadow",
+          "annotation": "prop",
+          "docs": "Shadow for banner @default: var(--shadow-1)"
+        }
+      ],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-button"
+      ],
+      "dependencyGraph": {
+        "go-banner": [
+          "go-button"
+        ]
+      }
+    },
+    {
       "filePath": "./src/components/go-breadcrumb/go-breadcrumb.tsx",
       "encapsulation": "none",
       "tag": "go-breadcrumb",
@@ -344,7 +485,9 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "go-hero"
+      ],
       "dependencies": [
         "go-nav-link"
       ],
@@ -354,6 +497,9 @@
         ],
         "go-nav-link": [
           "go-icon"
+        ],
+        "go-hero": [
+          "go-breadcrumb"
         ]
       }
     },
@@ -644,12 +790,16 @@
       ],
       "parts": [],
       "dependents": [
+        "go-banner",
         "go-dialog",
         "go-nav-drawer",
         "go-search-bar"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "go-banner": [
+          "go-button"
+        ],
         "go-dialog": [
           "go-button"
         ],
@@ -1397,6 +1547,121 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-hero/go-hero.tsx",
+      "encapsulation": "none",
+      "tag": "go-hero",
+      "readme": "## go-hero API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "breadcrumb",
+          "type": "INavItem[] | string",
+          "mutable": false,
+          "attr": "breadcrumb",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "INavItem[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "imgAlt",
+          "type": "string",
+          "mutable": false,
+          "attr": "img-alt",
+          "reflectToAttr": false,
+          "docs": "hero image alt text\n(requires img-src attribute to be present to render)",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "imgSrc",
+          "type": "string",
+          "mutable": false,
+          "attr": "img-src",
+          "reflectToAttr": false,
+          "docs": "hero image src url\n(requires img-alt attribute to be present to render)",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "preHeading",
+          "type": "string",
+          "mutable": false,
+          "attr": "pre-heading",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-breadcrumb"
+      ],
+      "dependencyGraph": {
+        "go-hero": [
+          "go-breadcrumb"
+        ],
+        "go-breadcrumb": [
+          "go-nav-link"
+        ],
+        "go-nav-link": [
+          "go-icon"
+        ]
+      }
     },
     {
       "filePath": "./src/components/go-icon/go-icon.tsx",

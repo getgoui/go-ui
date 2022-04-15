@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element, Host, Watch, State } from '@stencil/core';
-import { Breakpoints, ColorVariants } from '../../types';
+import { Breakpoints, ButtonColorVariants } from '../../types';
 import { inheritAttributes, warning } from '../../utils/helper';
 
 /**
@@ -27,7 +27,7 @@ export class GoButton {
   /**
    * Color variants
    */
-  @Prop({ reflect: true }) color?: ColorVariants = 'primary';
+  @Prop({ reflect: true }) color?: ButtonColorVariants = 'primary';
 
   /**
    * If set, the button will take up the full width of its parent
