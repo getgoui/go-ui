@@ -9,9 +9,9 @@ go-banner {
   /**
     @prop --banner-border-color:
       Define the border color for left decorative banner bar.
-      - default: var(--go-color-primary-200)
+      - default: var(--go-color-primary-300)
   */
-  --banner-border-color: var(--go-color-primary-200);
+  --banner-border-color: var(--go-color-primary-300);
 
   /**
     @prop --banner-radius:
@@ -21,11 +21,18 @@ go-banner {
   --banner-radius: var(--radius-2);
 
   /**
-    @prop --banner-padding:
-      Outer padding of banner area
-      - default: 1rem 1.5rem
+    @prop --banner-padding-x:
+      Horizontal padding of banner area
+      - default: 1rem
   */
-  --banner-padding: 1rem 1.5rem;
+  --banner-padding-x: 1rem;
+
+  /**
+    @prop --banner-padding-y:
+      Vertical padding of banner area
+      - default: 1.5rem
+  */
+  --banner-padding-y: 1.5rem;
 
   /**
     @prop --banner-heading-gap
@@ -67,9 +74,14 @@ go-banner {
   background-color: var(--banner-bg-color);
   color: var(--banner-fg-color);
   box-shadow: var(--banner-shadow);
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: stretch;
+  position: relative;
+
+  &.is-showing {
+    display: flex;
+  }
 
   &[variant='success'] {
     --banner-border-color: var(--go-color-success-300);
@@ -81,7 +93,7 @@ go-banner {
     --banner-bg-color: var(--go-color-critical-100);
     --banner-fg-color: var(--go-color-darkest);
   }
-  .icon-bar {
+  .icon-col {
     background: var(--banner-border-color);
     color: var(--banner-icon-color);
     padding: 0 calc(var(--banner-border-width) + var(--banner-icon-bar-padding)) 0 var(--banner-icon-bar-padding);
@@ -89,12 +101,16 @@ go-banner {
     align-items: center;
   }
   .banner-content {
-    padding: var(--banner-padding);
+    padding: var(--banner-padding-y) var(--banner-padding-x);
     h2 {
       margin-bottom: var(--banner-heading-gap);
     }
     p:last-child {
       margin-bottom: 0;
     }
+  }
+  .dismissible-col {
+    padding-top: var(--banner-padding-y);
+    padding-right: var(--banner-padding-x);
   }
 }

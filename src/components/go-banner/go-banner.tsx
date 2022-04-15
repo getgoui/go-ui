@@ -41,11 +41,11 @@ export class GoBanner {
   }
 
   render() {
-    const { hasIcon, heading, dismissible } = this;
+    const { hasIcon, heading, dismissible, isShowing } = this;
     return (
-      <Host class={{ 'has-icon': hasIcon }}>
+      <Host class={{ 'has-icon': hasIcon, dismissible, 'is-showing': isShowing }}>
         {hasIcon ? (
-          <div class="icon-bar">
+          <div class="icon-col">
             <slot name="icon"></slot>
           </div>
         ) : null}
@@ -54,7 +54,22 @@ export class GoBanner {
           {heading ? <h2 class="h5">{heading}</h2> : null}
           <slot></slot>
         </section>
-        {dismissible ? <go-button></go-button> : null}
+        {dismissible ? (
+          <div class="dismissible-col">
+            <go-button class="dismissible-btn" flat={true} icon={true} onClick={() => this.handleClose()} color="tertiary" round={true}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24">
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+            </go-button>
+          </div>
+        ) : null}
       </Host>
     );
   }

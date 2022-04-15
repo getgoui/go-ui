@@ -9,6 +9,7 @@ go-hero {
   --hero-image-flex-basis: 40%;
   --hero-container-gap: 2rem;
 
+  display: block;
   background-color: var(--hero-bg-color);
   color: var(--hero-fg-color);
   position: relative;
