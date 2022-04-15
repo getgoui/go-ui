@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Breakpoints, ColorVariants, INavItem } from "./types";
+import { BannerVariants, Breakpoints, ButtonColorVariants, INavItem } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
@@ -49,6 +49,20 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
+    interface GoBanner {
+        /**
+          * If the banner can be dismissed, a close button will be rendered
+         */
+        "dismissible"?: boolean;
+        /**
+          * Heading of banner
+         */
+        "heading"?: string;
+        /**
+          * Type of banner
+         */
+        "variant": BannerVariants;
+    }
     interface GoBreadcrumb {
         /**
           * Hide current page (last item without url) from the breadcrumb
@@ -71,7 +85,7 @@ export namespace Components {
         /**
           * Color variants
          */
-        "color"?: ColorVariants;
+        "color"?: ButtonColorVariants;
         /**
           * Reduce inner gaps and outer paddings
          */
@@ -428,6 +442,12 @@ declare global {
         prototype: HTMLGoAccordionItemElement;
         new (): HTMLGoAccordionItemElement;
     };
+    interface HTMLGoBannerElement extends Components.GoBanner, HTMLStencilElement {
+    }
+    var HTMLGoBannerElement: {
+        prototype: HTMLGoBannerElement;
+        new (): HTMLGoBannerElement;
+    };
     interface HTMLGoBreadcrumbElement extends Components.GoBreadcrumb, HTMLStencilElement {
     }
     var HTMLGoBreadcrumbElement: {
@@ -563,6 +583,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
+        "go-banner": HTMLGoBannerElement;
         "go-breadcrumb": HTMLGoBreadcrumbElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
@@ -628,6 +649,21 @@ declare namespace LocalJSX {
          */
         "onOpening"?: (event: CustomEvent<any>) => void;
     }
+    interface GoBanner {
+        /**
+          * If the banner can be dismissed, a close button will be rendered
+         */
+        "dismissible"?: boolean;
+        /**
+          * Heading of banner
+         */
+        "heading"?: string;
+        "onDismissed"?: (event: CustomEvent<void>) => void;
+        /**
+          * Type of banner
+         */
+        "variant"?: BannerVariants;
+    }
     interface GoBreadcrumb {
         /**
           * Hide current page (last item without url) from the breadcrumb
@@ -650,7 +686,7 @@ declare namespace LocalJSX {
         /**
           * Color variants
          */
-        "color"?: ColorVariants;
+        "color"?: ButtonColorVariants;
         /**
           * Reduce inner gaps and outer paddings
          */
@@ -1000,6 +1036,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
+        "go-banner": GoBanner;
         "go-breadcrumb": GoBreadcrumb;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
@@ -1030,6 +1067,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "go-accordion": LocalJSX.GoAccordion & JSXBase.HTMLAttributes<HTMLGoAccordionElement>;
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
+            "go-banner": LocalJSX.GoBanner & JSXBase.HTMLAttributes<HTMLGoBannerElement>;
             "go-breadcrumb": LocalJSX.GoBreadcrumb & JSXBase.HTMLAttributes<HTMLGoBreadcrumbElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;

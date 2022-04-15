@@ -14,6 +14,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [go-hero](../go-hero)
+
 ### Depends on
 
 - [go-nav-link](../navigation/go-nav-link)
@@ -23,6 +27,7 @@
 graph TD;
   go-breadcrumb --> go-nav-link
   go-nav-link --> go-icon
+  go-hero --> go-breadcrumb
   style go-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

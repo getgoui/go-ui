@@ -55,7 +55,7 @@ export class GoIcon {
     const { class: customClasses } = attrs;
     return (
       <Host
-        aria-hidden={decorative}
+        aria-hidden={decorative ? 'true' : 'false'}
         style={{
           '--icon-size': size ? size : null,
           '--icon-color': color ? color : null,
