@@ -1,0 +1,34 @@
+go-badge {
+  --badge-font-size: var(--go-size--1);
+  --badge-size: 2em;
+  --badge-bg-color: var(--go-color-critical-600);
+  --badge-fg-color: var(--go-color-lightest);
+  --badge-dot-size: 0.75rem;
+
+  position: relative;
+  display: inline-block;
+  .badge-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    font-size: var(--badge-font-size);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    min-width: var(--badge-size);
+    min-height: var(--badge-size);
+    padding: 0 0.5rem;
+    height: var(--badge-size);
+    line-height: var(--badge-size);
+    border-radius: var(--radius-round);
+    color: var(--badge-fg-color);
+    background-color: var(--badge-bg-color);
+    font-weight: 700;
+    &.dot-only {
+      min-width: var(--badge-dot-size);
+      min-height: var(--badge-dot-size);
+      font-size: 0;
+      padding: 0;
+    }
+  }
+}
