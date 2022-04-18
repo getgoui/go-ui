@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-04-15T08:57:40",
+  "timestamp": "2022-04-18T01:36:08",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.14.1",
@@ -361,47 +361,52 @@
         {
           "name": "--banner-bg-color",
           "annotation": "prop",
-          "docs": "Background color for banner. @default: inherit"
+          "docs": "Background color for banner. - default: var(--go-color-primary-100)"
         },
         {
           "name": "--banner-border-color",
           "annotation": "prop",
-          "docs": "Define the border color for left decorative banner bar. @default: var(--go-color-primary-200)"
+          "docs": "Define the border color for left decorative banner bar. - default: var(--go-color-primary-300)"
         },
         {
           "name": "--banner-border-width",
           "annotation": "prop",
-          "docs": "Define the border width for hte left decorative banner bar. @default: 0.25rem"
+          "docs": "Define the border width for hte left decorative banner bar. - default: 0.5rem"
         },
         {
           "name": "--banner-fg-color",
           "annotation": "prop",
-          "docs": "Foreground color for banner @default: var(--go-color-darkest)"
+          "docs": "Foreground color for banner - default: var(--go-color-darkest)"
         },
         {
-          "name": "--banner-heading-gap The gap between the heading and the content. @default 0.5rem",
+          "name": "--banner-heading-gap The gap between the heading and the content. - default 0.5rem",
           "annotation": "prop",
           "docs": ""
         },
         {
-          "name": "--banner-icon-bar-padding-x",
+          "name": "--banner-icon-bar-padding",
           "annotation": "prop",
-          "docs": "Padding on left and right of the icon, if \"icon\" slot has content. @default: 0.5rem"
+          "docs": "Padding for icon bar - default: 0.5rem"
         },
         {
-          "name": "--banner-padding",
+          "name": "--banner-padding-x",
           "annotation": "prop",
-          "docs": "Outer padding of banner area @default: 1rem 1.5rem"
+          "docs": "Horizontal padding of banner area - default: 1rem"
+        },
+        {
+          "name": "--banner-padding-y",
+          "annotation": "prop",
+          "docs": "Vertical padding of banner area - default: 1.5rem"
         },
         {
           "name": "--banner-radius",
           "annotation": "prop",
-          "docs": "Define border radius for banner. @default: var(--radius-2)"
+          "docs": "Define border radius for banner. - default: var(--radius-2)"
         },
         {
           "name": "--banner-shadow",
           "annotation": "prop",
-          "docs": "Shadow for banner @default: var(--shadow-1)"
+          "docs": "Shadow for banner - default: var(--shadow-1)"
         }
       ],
       "slots": [],
