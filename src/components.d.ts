@@ -49,6 +49,28 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
+    interface GoBadge {
+        /**
+          * Number to be displayed on the badge
+         */
+        "count": number;
+        /**
+          * If true, the badge will be displayed only as a dot, no number will be shown
+         */
+        "dotOnly"?: boolean;
+        /**
+          * Provide a meaningful label for the badge
+         */
+        "label"?: string;
+        /**
+          * maximum number displayable on the badge, if count is greater than max, `{max}+` is displayed
+         */
+        "max": number;
+        /**
+          * minimum number displayable on the badge, if count is less than min, the badge will not be displayed
+         */
+        "min": number;
+    }
     interface GoBanner {
         /**
           * If the banner can be dismissed, a close button will be rendered
@@ -442,6 +464,12 @@ declare global {
         prototype: HTMLGoAccordionItemElement;
         new (): HTMLGoAccordionItemElement;
     };
+    interface HTMLGoBadgeElement extends Components.GoBadge, HTMLStencilElement {
+    }
+    var HTMLGoBadgeElement: {
+        prototype: HTMLGoBadgeElement;
+        new (): HTMLGoBadgeElement;
+    };
     interface HTMLGoBannerElement extends Components.GoBanner, HTMLStencilElement {
     }
     var HTMLGoBannerElement: {
@@ -583,6 +611,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
+        "go-badge": HTMLGoBadgeElement;
         "go-banner": HTMLGoBannerElement;
         "go-breadcrumb": HTMLGoBreadcrumbElement;
         "go-button": HTMLGoButtonElement;
@@ -648,6 +677,28 @@ declare namespace LocalJSX {
           * Emitted when accordion item started opening
          */
         "onOpening"?: (event: CustomEvent<any>) => void;
+    }
+    interface GoBadge {
+        /**
+          * Number to be displayed on the badge
+         */
+        "count"?: number;
+        /**
+          * If true, the badge will be displayed only as a dot, no number will be shown
+         */
+        "dotOnly"?: boolean;
+        /**
+          * Provide a meaningful label for the badge
+         */
+        "label"?: string;
+        /**
+          * maximum number displayable on the badge, if count is greater than max, `{max}+` is displayed
+         */
+        "max"?: number;
+        /**
+          * minimum number displayable on the badge, if count is less than min, the badge will not be displayed
+         */
+        "min"?: number;
     }
     interface GoBanner {
         /**
@@ -1036,6 +1087,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
+        "go-badge": GoBadge;
         "go-banner": GoBanner;
         "go-breadcrumb": GoBreadcrumb;
         "go-button": GoButton;
@@ -1067,6 +1119,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "go-accordion": LocalJSX.GoAccordion & JSXBase.HTMLAttributes<HTMLGoAccordionElement>;
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
+            "go-badge": LocalJSX.GoBadge & JSXBase.HTMLAttributes<HTMLGoBadgeElement>;
             "go-banner": LocalJSX.GoBanner & JSXBase.HTMLAttributes<HTMLGoBannerElement>;
             "go-breadcrumb": LocalJSX.GoBreadcrumb & JSXBase.HTMLAttributes<HTMLGoBreadcrumbElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
