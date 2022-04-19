@@ -14,7 +14,7 @@
     "dist/",
     "src/global/"
   ],
-  "homepage": "https://go.components.style/",
+  "homepage": "https://go-ui.com/",
   "bin": {
     "gg": "./bin/index.js"
   },
@@ -83,7 +83,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/go-components/go-components.git"
+    "url": "https://github.com/getgoui/go-ui"
   },
   "release": {
     "branches": [
