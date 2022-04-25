@@ -108,7 +108,6 @@ export class GoTooltip {
   @State() isActive: boolean = false;
 
   showTooltip() {
-    console.log('show tooltip');
     this.isActive = true;
   }
   hideTooltip() {
