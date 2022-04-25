@@ -11,26 +11,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      # setup pnpm for faster npm install
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7.0.0-rc.8
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v2
         with:
           node-version: 14.x
+          cache: 'pnpm'
       # Install deps and cache
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1.6.0
+        run: pnpm install
 
       - name: Stylelint
-        run: npm run stylelint
+        run: pnpm stylelint
 
       - name: Unit Test
-        run: npm run test.spec
+        run: pnpm test.spec
 
       - name: E2E Test
-        run: npm run test.e2e
+        run: pnpm test.e2e
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: pnpx semantic-release
