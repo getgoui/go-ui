@@ -1,0 +1,54 @@
+go-tooltip {
+  /**
+    @prop --tooltip-bg-color:
+      Background color of the tooltip.
+      - default: var(--go-color-primary-800)
+  */
+  --tooltip-bg-color: var(--go-color-primary-800);
+
+  /**
+    @prop --tooltip-fg-color:
+      Text color of the tooltip.
+      - default: var(--go-color-lightest)
+  */
+  --tooltip-fg-color: var(--go-color-lightest);
+
+  /**
+    @prop --tooltip-padding:
+      Padding around tooltip
+      - default: 0.5rem
+  */
+  --tooltip-padding: 0.5rem;
+
+  /**
+    @prop --tooltip-radius:
+      Border radius of tooltip
+      - default: var(--radius-2)
+  */
+  --tooltip-radius: var(--radius-2);
+
+  @include transition(opacity, visibility);
+
+  position: fixed;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--tooltip-bg-color);
+  color: var(--tooltip-fg-color);
+  padding: var(--tooltip-padding);
+  border-radius: var(--tooltip-radius);
+  box-shadow: var(--shadow-1);
+
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip-tail {
+    position: absolute;
+    background: var(--tooltip-bg-color);
+    width: 6px;
+    height: 6px;
+    transform: rotate(45deg);
+  }
+}

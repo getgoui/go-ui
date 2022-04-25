@@ -57,7 +57,8 @@ const Demo = ({ code, hideSource = false }) => {
       if (!contentEl?.current) {
         return;
       }
-      setContentWidth(e.clientX - contentEl.current.getBoundingClientRect().left + 'px');
+      const frameWidth = Math.round(e.clientX - contentEl.current.getBoundingClientRect().left);
+      setContentWidth(frameWidth + 'px');
     };
 
     document.addEventListener('mousemove', onResizeX);
@@ -76,7 +77,7 @@ const Demo = ({ code, hideSource = false }) => {
       if (height <= minFrameHeight) {
         height = minFrameHeight;
       }
-      setContentHeight(height + 'px');
+      setContentHeight(Math.round(height) + 'px');
     };
     document.addEventListener('mousemove', onResizeY);
     document.addEventListener('mouseup', () => {

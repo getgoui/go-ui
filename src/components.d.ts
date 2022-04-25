@@ -450,6 +450,21 @@ export namespace Components {
          */
         "selector": string;
     }
+    interface GoTooltip {
+        /**
+          * Add arrow to the tooltip
+         */
+        "arrow": boolean;
+        /**
+          * Improve positioning for inline trigger elements that span over multiple lines. Reference: https://floating-ui.com/docs/inline
+         */
+        "inline": boolean;
+        "placement": 'top' | 'bottom' | 'left' | 'right';
+        /**
+          * Query selector string for the element inside the slot that triggers the tooltip.
+         */
+        "triggerId": string;
+    }
 }
 declare global {
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
@@ -608,6 +623,12 @@ declare global {
         prototype: HTMLGoTocElement;
         new (): HTMLGoTocElement;
     };
+    interface HTMLGoTooltipElement extends Components.GoTooltip, HTMLStencilElement {
+    }
+    var HTMLGoTooltipElement: {
+        prototype: HTMLGoTooltipElement;
+        new (): HTMLGoTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "go-accordion": HTMLGoAccordionElement;
         "go-accordion-item": HTMLGoAccordionItemElement;
@@ -635,6 +656,7 @@ declare global {
         "go-tab": HTMLGoTabElement;
         "go-tabs": HTMLGoTabsElement;
         "go-toc": HTMLGoTocElement;
+        "go-tooltip": HTMLGoTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -1084,6 +1106,21 @@ declare namespace LocalJSX {
          */
         "selector"?: string;
     }
+    interface GoTooltip {
+        /**
+          * Add arrow to the tooltip
+         */
+        "arrow"?: boolean;
+        /**
+          * Improve positioning for inline trigger elements that span over multiple lines. Reference: https://floating-ui.com/docs/inline
+         */
+        "inline"?: boolean;
+        "placement"?: 'top' | 'bottom' | 'left' | 'right';
+        /**
+          * Query selector string for the element inside the slot that triggers the tooltip.
+         */
+        "triggerId"?: string;
+    }
     interface IntrinsicElements {
         "go-accordion": GoAccordion;
         "go-accordion-item": GoAccordionItem;
@@ -1111,6 +1148,7 @@ declare namespace LocalJSX {
         "go-tab": GoTab;
         "go-tabs": GoTabs;
         "go-toc": GoToc;
+        "go-tooltip": GoTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -1143,6 +1181,7 @@ declare module "@stencil/core" {
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
             "go-toc": LocalJSX.GoToc & JSXBase.HTMLAttributes<HTMLGoTocElement>;
+            "go-tooltip": LocalJSX.GoTooltip & JSXBase.HTMLAttributes<HTMLGoTooltipElement>;
         }
     }
 }
