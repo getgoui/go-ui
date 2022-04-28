@@ -307,8 +307,30 @@ export namespace Components {
         "items"?: INavItem[] | string;
     }
     interface GoMd {
+        /**
+          * Markdown content to be rendered
+         */
         "content": string;
+        /**
+          * Whether to linkify headings. If present with no value, the entire heading text becomes the link, otherwise the symbol provided becomes the link. Note that this is only about displaying links, headings will get ids anyway [Read more](https://md-block.verou.me/#api)
+         */
+        "hlinks"?: string;
+        /**
+          * Minimum heading level [Read more](https://md-block.verou.me/#api)
+         */
+        "hmin"?: number;
+        /**
+          * Render inline markdown
+         */
         "inline"?: boolean;
+        /**
+          * External Markdown file to load. If specified, original element content will be rendered and displayed while the file is loading (or if it fails to load). [Read more](https://md-block.verou.me/#api)
+         */
+        "src"?: string;
+        /**
+          * Sanitize content [Read more](https://md-block.verou.me/#api)
+         */
+        "untrusted"?: boolean;
     }
     interface GoNavDrawer {
         "active": boolean;
@@ -964,8 +986,30 @@ declare namespace LocalJSX {
         "onNavigate"?: (event: CustomEvent<any>) => void;
     }
     interface GoMd {
+        /**
+          * Markdown content to be rendered
+         */
         "content"?: string;
+        /**
+          * Whether to linkify headings. If present with no value, the entire heading text becomes the link, otherwise the symbol provided becomes the link. Note that this is only about displaying links, headings will get ids anyway [Read more](https://md-block.verou.me/#api)
+         */
+        "hlinks"?: string;
+        /**
+          * Minimum heading level [Read more](https://md-block.verou.me/#api)
+         */
+        "hmin"?: number;
+        /**
+          * Render inline markdown
+         */
         "inline"?: boolean;
+        /**
+          * External Markdown file to load. If specified, original element content will be rendered and displayed while the file is loading (or if it fails to load). [Read more](https://md-block.verou.me/#api)
+         */
+        "src"?: string;
+        /**
+          * Sanitize content [Read more](https://md-block.verou.me/#api)
+         */
+        "untrusted"?: boolean;
     }
     interface GoNavDrawer {
         "active"?: boolean;
