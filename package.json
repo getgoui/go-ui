@@ -44,6 +44,7 @@
     "json5": "^2.2.0",
     "lodash.debounce": "^4.0.8",
     "lodash.uniqueid": "^4.0.1",
+    "md-block": "^0.0.1",
     "open-props": "^1.1.1"
   },
   "devDependencies": {
