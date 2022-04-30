@@ -105,6 +105,9 @@ go-banner {
     h2 {
       margin-bottom: var(--banner-heading-gap);
     }
+    p:first-child {
+      margin-top: 0;
+    }
     p:last-child {
       margin-bottom: 0;
     }

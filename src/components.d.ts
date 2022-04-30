@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerVariants, Breakpoints, ButtonColorVariants, INavItem } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
@@ -312,25 +313,25 @@ export namespace Components {
          */
         "content": string;
         /**
-          * Whether to linkify headings. If present with no value, the entire heading text becomes the link, otherwise the symbol provided becomes the link. Note that this is only about displaying links, headings will get ids anyway [Read more](https://md-block.verou.me/#api)
-         */
-        "hlinks"?: string;
-        /**
-          * Minimum heading level [Read more](https://md-block.verou.me/#api)
-         */
-        "hmin"?: number;
-        /**
           * Render inline markdown
          */
         "inline"?: boolean;
         /**
-          * External Markdown file to load. If specified, original element content will be rendered and displayed while the file is loading (or if it fails to load). [Read more](https://md-block.verou.me/#api)
+          * [markdown-it](https://github.com/markdown-it/markdown-it) options **Note**: if `use-go-ui` is set to true, these options will be overwritten
          */
-        "src"?: string;
+        "mdOptions"?: Options | string;
         /**
-          * Sanitize content [Read more](https://md-block.verou.me/#api)
+          * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
          */
-        "untrusted"?: boolean;
+        "sanitise"?: boolean;
+        /**
+          * url to load remote markdown content if `src` is set, content in the `content` prop will be overwritten
+         */
+        "src": string;
+        /**
+          * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
+         */
+        "useGoUi"?: boolean;
     }
     interface GoNavDrawer {
         "active": boolean;
@@ -991,25 +992,25 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * Whether to linkify headings. If present with no value, the entire heading text becomes the link, otherwise the symbol provided becomes the link. Note that this is only about displaying links, headings will get ids anyway [Read more](https://md-block.verou.me/#api)
-         */
-        "hlinks"?: string;
-        /**
-          * Minimum heading level [Read more](https://md-block.verou.me/#api)
-         */
-        "hmin"?: number;
-        /**
           * Render inline markdown
          */
         "inline"?: boolean;
         /**
-          * External Markdown file to load. If specified, original element content will be rendered and displayed while the file is loading (or if it fails to load). [Read more](https://md-block.verou.me/#api)
+          * [markdown-it](https://github.com/markdown-it/markdown-it) options **Note**: if `use-go-ui` is set to true, these options will be overwritten
+         */
+        "mdOptions"?: Options | string;
+        /**
+          * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
+         */
+        "sanitise"?: boolean;
+        /**
+          * url to load remote markdown content if `src` is set, content in the `content` prop will be overwritten
          */
         "src"?: string;
         /**
-          * Sanitize content [Read more](https://md-block.verou.me/#api)
+          * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
          */
-        "untrusted"?: boolean;
+        "useGoUi"?: boolean;
     }
     interface GoNavDrawer {
         "active"?: boolean;

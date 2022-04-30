@@ -1,8 +1,9 @@
 import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
-import { MarkdownElement } from 'md-block';
-import { extension as MarkdownBlockExtension } from 'md-block';
-import 'md-block';
-
+import MarkdownIt, { Options } from 'markdown-it';
+import iterator from 'markdown-it-for-inline';
+import mdContainer from 'markdown-it-container';
+import DOMPurify from 'dompurify';
+import JSON5 from 'json5';
 @Component({
   tag: 'go-md',
   styleUrl: 'go-md.scss',
@@ -22,77 +23,154 @@ export class GoMd {
   @Prop() content: string;
 
   /**
-   * Sanitize content
-   * [Read more](https://md-block.verou.me/#api)
+   * url to load remote markdown content
+   * if `src` is set, content in the `content` prop will be overwritten
    */
-  @Prop() untrusted? = false;
+  @Prop() src: string;
 
   /**
-   * External Markdown file to load.
-   * If specified, original element content will be rendered and displayed while the file is loading (or if it fails to load).
-   * [Read more](https://md-block.verou.me/#api)
+   * [markdown-it](https://github.com/markdown-it/markdown-it) options
+   * **Note**: if `use-go-ui` is set to true, these options will be overwritten
    */
-  @Prop() src?: string;
+  @Prop() mdOptions?: Options | string;
 
   /**
-   * Minimum heading level
-   * [Read more](https://md-block.verou.me/#api)
+   * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
    */
-  @Prop() hmin?: number;
+  @Prop() sanitise?: boolean = false;
 
   /**
-   * Whether to linkify headings.
-   * If present with no value, the entire heading text becomes the link, otherwise the symbol provided becomes the link.
-   * Note that this is only about displaying links, headings will get ids anyway
-   * [Read more](https://md-block.verou.me/#api)
+   * Use go-ui markdown renderer:
+   * - Only `typographer` is enabled in markdown-it options
+   *
+   * - linkify with [`go-link`](https://go-ui.com/docs/components/go-link)
+   * - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
    */
-  @Prop() hlinks?: string;
+  @Prop() useGoUi?: boolean = false;
 
-  componentWillLoad() {
-    MarkdownBlockExtension.extend = (marked, defaultRenderer) => {
-      marked.use({
-        renderer: {
-          ...defaultRenderer,
-          heading(text, level) {
-            return `<h${level}>🎉🎉${text}</h${level}>`;
-          },
-        },
-      });
-      return marked;
-    };
+  private md: MarkdownIt;
+
+  private createMdInstance(): MarkdownIt {
+    const { mdOptions, useGoUi } = this;
+    let options: Options = null;
+    if (typeof mdOptions === 'string') {
+      try {
+        options = JSON5.parse(mdOptions);
+      } catch (e) {
+        console.error('Could not parse md-options, using default.', e);
+      }
+    }
+
+    if (useGoUi) {
+      options = {
+        linkify: true,
+      };
+    }
+
+    return new MarkdownIt(options);
   }
 
-  private mdEl: MarkdownElement;
+  private async initialiseRenderer() {
+    if (!this.md) {
+      this.md = this.createMdInstance();
+    }
+    if (this.useGoUi) {
+      // add go-ui markdown renderer
+      // banner
+      const bannerOptions = ['info', 'critical', 'success'];
+      bannerOptions.forEach((type) => {
+        this.md.use(mdContainer, type, {
+          render: function (tokens, idx) {
+            console.log(tokens[idx]);
+            const regex = new RegExp(`^${type}\\s+(.*)$`, '');
+            var m = tokens[idx].info.trim().match(regex);
+            console.log(regex);
+            if (tokens[idx].nesting === 1) {
+              // opening tag
+              const headingAttr = m && m[1] ? ` heading="${m[1]}"` : ``;
+              return `<go-banner variant="${type}" ${headingAttr}>\n`;
+            } else {
+              // closing tag
+              return '</go-banner>\n';
+            }
+          },
+        });
+      });
+      // links
+      this.md.use(iterator, 'go-link', 'link_open', function (tokens, idx) {
+        // Make sure link contains only text
+        if (tokens[idx + 2].type !== 'link_close' || tokens[idx + 1].type !== 'text') {
+          return;
+        }
+        // Do replacement
+        tokens[idx].tag = 'go-link';
+        tokens[idx + 2].tag = 'go-link';
+      });
+    }
+  }
 
-  @Watch('content')
-  handleContentChange(content) {
-    if (!this.mdEl) {
+  /**
+   * Get the rendered HTML
+   * @returns output html
+   */
+  async getRenderedContent(input?: string): Promise<string> {
+    if (!input) {
+      return '';
+    }
+    await this.initialiseRenderer();
+
+    let output = '';
+
+    // get html output
+    if (this.inline) {
+      output = this.md.renderInline(input);
+    } else {
+      output = this.md.render(input);
+    }
+    // sanitise if needed
+    if (this.sanitise) {
+      output = DOMPurify.sanitize(output);
+    }
+
+    return output;
+  }
+
+  async renderSrc() {
+    // try fetching remote markdown content from this.src
+    const response = await fetch(this.src);
+    if (response.ok) {
+      const data = await response.text();
+      this.el.innerHTML = await this.getRenderedContent(data);
+    }
+  }
+
+  async renderContent() {
+    this.el.innerHTML = await this.getRenderedContent(this.content);
+  }
+
+  async componentWillLoad() {
+    await this.initialiseRenderer();
+    if (this.src) {
+      await this.renderSrc();
       return;
     }
-    this.mdEl.mdContent = content;
+    this.renderContent();
+  }
+
+  @Watch('src')
+  async handleSrcChange() {
+    await this.renderSrc();
+  }
+
+  @Watch('content')
+  async handleContentChange() {
+    this.renderContent();
   }
 
   render() {
-    const { inline, content, untrusted, src, hmin, hlinks } = this;
-    const attrs = {
-      untrusted,
-      src,
-      hmin,
-      hlinks,
-    };
     return (
       <Host>
-        {inline ? (
-          <md-span {...attrs} ref={(el) => (this.mdEl = el)}>
-            {content}
-            <slot></slot>
-          </md-span>
-        ) : (
-          <md-block {...attrs} ref={(el) => (this.mdEl = el)}>
-            {content}
-            <slot></slot>
-          </md-block>
-        )}
+        <slot></slot>
       </Host>
     );
   }
