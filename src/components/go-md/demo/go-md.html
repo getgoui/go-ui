@@ -1,78 +1,47 @@
 <div class="container">
-  <go-md sanitise="true" md-options="{html: true}" src="//raw.githubusercontent.com/getgoui/go-ui/main/README.md">Fallback content.</go-md>
   <go-md
-    use-go-ui="true"
     content="
-
 [Basic markdown syntax](https://commonmark.org/help/)
 
+*Italic*
 
-## Banners
+**Bold**
 
-::: info hello world
+# Heading 1
 
-This is an info [banner](/docs/components/go-banner).
+## Heading 2
 
-:::
+### Heading 3
 
+###### Heading 6
 
-::: critical Error
+[Link](http://a.com)
 
-Something went wrong.
+![Image](https://picsum.photos/id/870/400/200)
 
-:::
+> Blockquote
+>
+> multiple lines
+>
+> This is a quoted text
 
+- List
+- List
+- List
 
-::: success Success
-
-Operation was successful.
-
-:::
-
----
-
-## Links
-
-Links are rendered with `go-link` component.
-
-https://google.com
-
-https://go-ui.com
-
-I'm a [link](#) to id
-
-This is an [external link](https://www.google.com)
+1. One
+1. Two
+1. Three
 
 ---
 
-## Table
+`Inline code` with backticks
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-"
-  >
-  </go-md>
-  <!--
-
-  <go-md
-    inline="true"
-    content="
-# Heading
-
-Text **bold text** *italic text* ~strike~
-
-```js
-test.foo();
 ```
-
-```html
-&lt;foo>
+# code block
+print '3 backticks or'
+print 'indent 4 spaces'
 ```
-
-* List item 1
-* List item 2
 "
-  ></go-md> -->
+  ></go-md>
 </div>

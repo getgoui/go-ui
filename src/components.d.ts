@@ -999,6 +999,7 @@ declare namespace LocalJSX {
           * [markdown-it](https://github.com/markdown-it/markdown-it) options **Note**: if `use-go-ui` is set to true, these options will be overwritten
          */
         "mdOptions"?: Options | string;
+        "onInit"?: (event: CustomEvent<any>) => void;
         /**
           * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
          */

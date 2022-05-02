@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Watch, Event, EventEmitter } from '@stencil/core';
 import MarkdownIt, { Options } from 'markdown-it';
 import iterator from 'markdown-it-for-inline';
 import mdContainer from 'markdown-it-container';
@@ -48,9 +48,11 @@ export class GoMd {
    */
   @Prop() useGoUi?: boolean = false;
 
+  @Event() init: EventEmitter;
+
   private md: MarkdownIt;
 
-  private createMdInstance(): MarkdownIt {
+  private createMdInstance(): void {
     const { mdOptions, useGoUi } = this;
     let options: Options = null;
     if (typeof mdOptions === 'string') {
@@ -67,12 +69,15 @@ export class GoMd {
       };
     }
 
-    return new MarkdownIt(options);
+    this.md = new MarkdownIt(options);
+
+    // emit initialise event
+    this.init.emit(this.md);
   }
 
   private async initialiseRenderer() {
     if (!this.md) {
-      this.md = this.createMdInstance();
+      this.createMdInstance();
     }
     if (this.useGoUi) {
       // add go-ui markdown renderer
@@ -81,10 +86,8 @@ export class GoMd {
       bannerOptions.forEach((type) => {
         this.md.use(mdContainer, type, {
           render: function (tokens, idx) {
-            console.log(tokens[idx]);
             const regex = new RegExp(`^${type}\\s+(.*)$`, '');
             var m = tokens[idx].info.trim().match(regex);
-            console.log(regex);
             if (tokens[idx].nesting === 1) {
               // opening tag
               const headingAttr = m && m[1] ? ` heading="${m[1]}"` : ``;
@@ -165,6 +168,11 @@ export class GoMd {
   @Watch('content')
   async handleContentChange() {
     this.renderContent();
+  }
+
+  @Watch('mdOptions')
+  async handleMdOptionsChange() {
+    this.createMdInstance();
   }
 
   render() {
