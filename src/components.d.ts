@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerVariants, Breakpoints, ButtonColorVariants, INavItem } from "./types";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
@@ -306,6 +307,32 @@ export namespace Components {
          */
         "items"?: INavItem[] | string;
     }
+    interface GoMd {
+        /**
+          * Markdown content to be rendered
+         */
+        "content": string;
+        /**
+          * Render inline markdown
+         */
+        "inline"?: boolean;
+        /**
+          * [markdown-it](https://github.com/markdown-it/markdown-it) options **Note**: if `use-go-ui` is set to true, these options will be overwritten
+         */
+        "mdOptions"?: Options | string;
+        /**
+          * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
+         */
+        "sanitise"?: boolean;
+        /**
+          * url to load remote markdown content if `src` is set, content in the `content` prop will be overwritten
+         */
+        "src": string;
+        /**
+          * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
+         */
+        "useGoUi"?: boolean;
+    }
     interface GoNavDrawer {
         "active": boolean;
         "close": () => Promise<void>;
@@ -563,6 +590,12 @@ declare global {
         prototype: HTMLGoMainNavElement;
         new (): HTMLGoMainNavElement;
     };
+    interface HTMLGoMdElement extends Components.GoMd, HTMLStencilElement {
+    }
+    var HTMLGoMdElement: {
+        prototype: HTMLGoMdElement;
+        new (): HTMLGoMdElement;
+    };
     interface HTMLGoNavDrawerElement extends Components.GoNavDrawer, HTMLStencilElement {
     }
     var HTMLGoNavDrawerElement: {
@@ -646,6 +679,7 @@ declare global {
         "go-icon": HTMLGoIconElement;
         "go-link": HTMLGoLinkElement;
         "go-main-nav": HTMLGoMainNavElement;
+        "go-md": HTMLGoMdElement;
         "go-nav-drawer": HTMLGoNavDrawerElement;
         "go-nav-link": HTMLGoNavLinkElement;
         "go-nav-list": HTMLGoNavListElement;
@@ -952,6 +986,33 @@ declare namespace LocalJSX {
         "items"?: INavItem[] | string;
         "onNavigate"?: (event: CustomEvent<any>) => void;
     }
+    interface GoMd {
+        /**
+          * Markdown content to be rendered
+         */
+        "content"?: string;
+        /**
+          * Render inline markdown
+         */
+        "inline"?: boolean;
+        /**
+          * [markdown-it](https://github.com/markdown-it/markdown-it) options **Note**: if `use-go-ui` is set to true, these options will be overwritten
+         */
+        "mdOptions"?: Options | string;
+        "onInit"?: (event: CustomEvent<any>) => void;
+        /**
+          * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
+         */
+        "sanitise"?: boolean;
+        /**
+          * url to load remote markdown content if `src` is set, content in the `content` prop will be overwritten
+         */
+        "src"?: string;
+        /**
+          * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
+         */
+        "useGoUi"?: boolean;
+    }
     interface GoNavDrawer {
         "active"?: boolean;
         /**
@@ -1138,6 +1199,7 @@ declare namespace LocalJSX {
         "go-icon": GoIcon;
         "go-link": GoLink;
         "go-main-nav": GoMainNav;
+        "go-md": GoMd;
         "go-nav-drawer": GoNavDrawer;
         "go-nav-link": GoNavLink;
         "go-nav-list": GoNavList;
@@ -1171,6 +1233,7 @@ declare module "@stencil/core" {
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
             "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
+            "go-md": LocalJSX.GoMd & JSXBase.HTMLAttributes<HTMLGoMdElement>;
             "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;

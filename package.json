@@ -41,9 +41,13 @@
     "@floating-ui/dom": "^0.4.5",
     "@stencil/core": "^2.13.0",
     "body-scroll-lock": "^4.0.0-beta.0",
+    "dompurify": "^2.3.6",
     "json5": "^2.2.0",
     "lodash.debounce": "^4.0.8",
     "lodash.uniqueid": "^4.0.1",
+    "markdown-it": "^13.0.0",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-for-inline": "^0.1.1",
     "open-props": "^1.1.1"
   },
   "devDependencies": {
@@ -54,6 +58,7 @@
     "@stencil/sass": "^1.5.2",
     "@types/autoprefixer": "^10.2.0",
     "@types/jest": "^26.0.24",
+    "@types/markdown-it": "^12.2.3",
     "@types/puppeteer": "^5.4.4",
     "autoprefixer": "^10.4.1",
     "axe-core": "^4.3.5",
