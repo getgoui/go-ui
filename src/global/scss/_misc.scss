@@ -1,0 +1,21 @@
+ul,
+ol {
+  li {
+    margin-block: 0.5em;
+  }
+}
+:root {
+  --go-color-table-border: var(--go-color-neutral-200);
+  --go-table-cell-padding: 0.5em;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: 1px solid var(--go-color-table-border);
+    padding: var(--go-table-cell-padding);
+  }
+}

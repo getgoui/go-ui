@@ -60,6 +60,20 @@ p {
 }
 code {
   padding: 0 0.4em;
+  border-radius: var(--radius-2);
+  background-color: var(--go-color-code-bg);
+  color: var(--go-color-code-fg);
+  line-height: 1.5;
+}
+pre {
+  padding: 1rem;
+  border-radius: var(--radius-2);
+  background-color: var(--go-color-code-bg);
+  line-height: 1.5;
+  code {
+    padding: 0;
+    background-color: transparent;
+  }
 }
 
 // text alignments

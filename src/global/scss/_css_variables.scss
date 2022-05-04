@@ -44,6 +44,8 @@ Default set of CSS variables used in Go UI
   --go-color-link: var(--go-color-primary-500);
   --go-color-link-hover: var(--go-color-primary-300);
   --go-color-link-hover-bg: var(--go-color-neutral-100);
+  --go-color-code-bg: var(--go-color-neutral-100);
+  --go-color-code-fg: var(--go-color-neutral-800);
 
   // Transitions
   --go-duration-fast: 0.1s;
