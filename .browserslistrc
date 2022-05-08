@@ -8,3 +8,4 @@ iOS >= 12
 Safari >= 12
 not ie > 0
 not op_mini all
+not kaios 2.5

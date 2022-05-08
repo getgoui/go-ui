@@ -449,6 +449,20 @@ export namespace Components {
          */
         "tabId"?: string;
     }
+    interface GoTableWrapper {
+        /**
+          * Bordered table
+         */
+        "bordered": boolean;
+        /**
+          * Hoverable rows
+         */
+        "hoverable": boolean;
+        /**
+          * Striped rows
+         */
+        "striped": boolean;
+    }
     interface GoTabs {
         /**
           * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
@@ -644,6 +658,12 @@ declare global {
         prototype: HTMLGoTabElement;
         new (): HTMLGoTabElement;
     };
+    interface HTMLGoTableWrapperElement extends Components.GoTableWrapper, HTMLStencilElement {
+    }
+    var HTMLGoTableWrapperElement: {
+        prototype: HTMLGoTableWrapperElement;
+        new (): HTMLGoTableWrapperElement;
+    };
     interface HTMLGoTabsElement extends Components.GoTabs, HTMLStencilElement {
     }
     var HTMLGoTabsElement: {
@@ -688,6 +708,7 @@ declare global {
         "go-skip-link": HTMLGoSkipLinkElement;
         "go-spinner": HTMLGoSpinnerElement;
         "go-tab": HTMLGoTabElement;
+        "go-table-wrapper": HTMLGoTableWrapperElement;
         "go-tabs": HTMLGoTabsElement;
         "go-toc": HTMLGoTocElement;
         "go-tooltip": HTMLGoTooltipElement;
@@ -1134,6 +1155,20 @@ declare namespace LocalJSX {
          */
         "tabId"?: string;
     }
+    interface GoTableWrapper {
+        /**
+          * Bordered table
+         */
+        "bordered"?: boolean;
+        /**
+          * Hoverable rows
+         */
+        "hoverable"?: boolean;
+        /**
+          * Striped rows
+         */
+        "striped"?: boolean;
+    }
     interface GoTabs {
         /**
           * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
@@ -1208,6 +1243,7 @@ declare namespace LocalJSX {
         "go-skip-link": GoSkipLink;
         "go-spinner": GoSpinner;
         "go-tab": GoTab;
+        "go-table-wrapper": GoTableWrapper;
         "go-tabs": GoTabs;
         "go-toc": GoToc;
         "go-tooltip": GoTooltip;
@@ -1242,6 +1278,7 @@ declare module "@stencil/core" {
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
             "go-spinner": LocalJSX.GoSpinner & JSXBase.HTMLAttributes<HTMLGoSpinnerElement>;
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
+            "go-table-wrapper": LocalJSX.GoTableWrapper & JSXBase.HTMLAttributes<HTMLGoTableWrapperElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
             "go-toc": LocalJSX.GoToc & JSXBase.HTMLAttributes<HTMLGoTocElement>;
             "go-tooltip": LocalJSX.GoTooltip & JSXBase.HTMLAttributes<HTMLGoTooltipElement>;
