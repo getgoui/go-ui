@@ -78,6 +78,7 @@ export class GoTooltip {
       middleware.push(inline());
     }
     computePosition(triggerEl, tooltipEl, {
+      strategy: 'fixed',
       placement: this.placement,
       middleware,
     }).then(({ x, y, placement, middlewareData }) => {
