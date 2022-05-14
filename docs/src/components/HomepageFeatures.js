@@ -57,7 +57,7 @@ export default function HomepageFeatures() {
           <div key={idx} className={`feature ${idx % 2 == 0 ? 'feature-alt' : ''}`}>
             {img && (
               <div className="feature__img">
-                <img src={img} alt={`${title} illustration`} />
+                <img src={img} alt={`${title} illustration`} loading="lazy" />
               </div>
             )}
             <div className="feature__text">
