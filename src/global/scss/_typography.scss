@@ -105,11 +105,14 @@ pre {
 
 a {
   color: var(--go-color-link);
+  background-color: var(--go-color-link-bg);
   @include underline;
+
   &:hover,
   &:focus-visible {
-    color: var(--go-color-link-hover);
-    background-color: var(--go-color-link-hover-bg);
+    --go-color-link: var(--go-color-link-hover);
+    --go-color-link-bg: var(--go-color-link-hover-bg);
+
     text-decoration: none;
   }
 }
