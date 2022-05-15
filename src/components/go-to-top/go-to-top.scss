@@ -17,10 +17,14 @@ go-to-top {
   position: fixed;
   bottom: var(--go-to-top-bottom);
   right: var(--go-to-top-right);
+  pointer-events: none;
+  z-index: var(--layer-important);
   opacity: 0;
-
-  @include transition(opacity);
+  transform: scale(0);
+  @include transition(transform, opacity);
   &.active {
+    pointer-events: inherit;
+    transform: scale(1);
     opacity: 1;
   }
 }

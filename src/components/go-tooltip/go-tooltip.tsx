@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, State } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Method } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
 import debounce from 'lodash.debounce';
 import { computePosition, flip, shift, arrow, offset, autoUpdate, inline } from '@floating-ui/dom';
@@ -27,9 +27,13 @@ export class GoTooltip {
    */
   @Prop() inline: boolean = false;
 
+  /**
+   * placement of tooltip relative to the trigger element
+   */
   @Prop() placement: 'top' | 'bottom' | 'left' | 'right' = 'top';
 
   private triggerEl: HTMLElement;
+  private arrowEl: HTMLElement;
 
   componentWillLoad() {
     // if id attribute is not provided, generate a unique id for the tooltip
@@ -37,9 +41,6 @@ export class GoTooltip {
       this.el.id = uniqueId('go-tooltip-');
     }
     this.triggerEl = document.querySelector(`#${this.triggerId}`) as HTMLElement;
-    if (!this.triggerEl) {
-      return;
-    }
   }
 
   componentDidLoad() {
@@ -51,14 +52,18 @@ export class GoTooltip {
     // add event handlers to triggerEl
     this.triggerEl.addEventListener('mouseenter', () => this.showTooltip());
     document.addEventListener('mousemove', (e) => this.debouncedDetermineMouseOut(e));
-    console.log(this.triggerEl);
     this.triggerEl.addEventListener('focusin', () => this.showTooltip());
     this.triggerEl.addEventListener('focusout', () => this.hideTooltip());
 
-    const arrowEl = this.el.querySelector('.tooltip-tail') as HTMLElement;
-    this.initialiseTooltip(this.triggerEl, this.el, arrowEl);
+    this.arrowEl = this.el.querySelector('.tooltip-tail') as HTMLElement;
+    this.initialiseTooltip(this.triggerEl, this.el, this.arrowEl);
     // keep watching for changes to the tooltip position
-    autoUpdate(this.triggerEl, this.el, () => this.initialiseTooltip(this.triggerEl, this.el, arrowEl));
+    autoUpdate(
+      this.triggerEl,
+      this.el,
+      debounce(() => this.initialiseTooltip(this.triggerEl, this.el, this.arrowEl), 300),
+      { animationFrame: true },
+    );
 
     // press esc to hide tooltip
     document.addEventListener('keydown', (e) => {
@@ -68,7 +73,13 @@ export class GoTooltip {
     });
   }
 
+  @Method()
+  reposition() {
+    this.initialiseTooltip(this.triggerEl, this.el, this.arrowEl);
+  }
+
   initialiseTooltip(triggerEl, tooltipEl, arrowEl) {
+    console.log('initialiseTooltip');
     let middleware = [offset(8), flip(), shift()];
     if (this.arrow) {
       middleware.push(arrow({ element: arrowEl }));

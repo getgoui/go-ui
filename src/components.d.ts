@@ -506,7 +506,11 @@ export namespace Components {
           * Improve positioning for inline trigger elements that span over multiple lines. Reference: https://floating-ui.com/docs/inline
          */
         "inline": boolean;
+        /**
+          * placement of tooltip relative to the trigger element
+         */
         "placement": 'top' | 'bottom' | 'left' | 'right';
+        "reposition": () => Promise<void>;
         /**
           * Query selector string for the element inside the slot that triggers the tooltip.
          */
@@ -1230,6 +1234,9 @@ declare namespace LocalJSX {
           * Improve positioning for inline trigger elements that span over multiple lines. Reference: https://floating-ui.com/docs/inline
          */
         "inline"?: boolean;
+        /**
+          * placement of tooltip relative to the trigger element
+         */
         "placement"?: 'top' | 'bottom' | 'left' | 'right';
         /**
           * Query selector string for the element inside the slot that triggers the tooltip.
