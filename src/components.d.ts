@@ -477,6 +477,12 @@ export namespace Components {
          */
         "vertical": boolean;
     }
+    interface GoToTop {
+        /**
+          * how far from the top of the page the button should be shown (in px)
+         */
+        "offset": number;
+    }
     interface GoToc {
         /**
           * Label for the TOC
@@ -670,6 +676,12 @@ declare global {
         prototype: HTMLGoTabsElement;
         new (): HTMLGoTabsElement;
     };
+    interface HTMLGoToTopElement extends Components.GoToTop, HTMLStencilElement {
+    }
+    var HTMLGoToTopElement: {
+        prototype: HTMLGoToTopElement;
+        new (): HTMLGoToTopElement;
+    };
     interface HTMLGoTocElement extends Components.GoToc, HTMLStencilElement {
     }
     var HTMLGoTocElement: {
@@ -710,6 +722,7 @@ declare global {
         "go-tab": HTMLGoTabElement;
         "go-table-wrapper": HTMLGoTableWrapperElement;
         "go-tabs": HTMLGoTabsElement;
+        "go-to-top": HTMLGoToTopElement;
         "go-toc": HTMLGoTocElement;
         "go-tooltip": HTMLGoTooltipElement;
     }
@@ -1188,6 +1201,12 @@ declare namespace LocalJSX {
          */
         "vertical"?: boolean;
     }
+    interface GoToTop {
+        /**
+          * how far from the top of the page the button should be shown (in px)
+         */
+        "offset"?: number;
+    }
     interface GoToc {
         /**
           * Label for the TOC
@@ -1245,6 +1264,7 @@ declare namespace LocalJSX {
         "go-tab": GoTab;
         "go-table-wrapper": GoTableWrapper;
         "go-tabs": GoTabs;
+        "go-to-top": GoToTop;
         "go-toc": GoToc;
         "go-tooltip": GoTooltip;
     }
@@ -1280,6 +1300,7 @@ declare module "@stencil/core" {
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
             "go-table-wrapper": LocalJSX.GoTableWrapper & JSXBase.HTMLAttributes<HTMLGoTableWrapperElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
+            "go-to-top": LocalJSX.GoToTop & JSXBase.HTMLAttributes<HTMLGoToTopElement>;
             "go-toc": LocalJSX.GoToc & JSXBase.HTMLAttributes<HTMLGoTocElement>;
             "go-tooltip": LocalJSX.GoTooltip & JSXBase.HTMLAttributes<HTMLGoTooltipElement>;
         }

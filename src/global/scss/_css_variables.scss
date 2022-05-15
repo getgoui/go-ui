@@ -42,6 +42,7 @@ Default set of CSS variables used in Go UI
   --go-color-bg: var(--go-color-lightest);
   --go-color-text: var(--go-color-darkest);
   --go-color-link: var(--go-color-primary-500);
+  --go-color-link-bg: transparent;
   --go-color-link-hover: var(--go-color-primary-300);
   --go-color-link-hover-bg: var(--go-color-neutral-100);
   --go-color-code-bg: var(--go-color-neutral-100);
@@ -49,7 +50,7 @@ Default set of CSS variables used in Go UI
 
   // Transitions
   --go-duration-fast: 0.1s;
-  --go-duration-normal: 0.2s;
+  --go-duration-normal: 0.25s;
   --go-duration-slow: 0.5s;
   --go-timing-function: ease-in-out;
 

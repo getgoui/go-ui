@@ -22,7 +22,20 @@ go-button {
   --go-btn-padding-x: 1.5em;
   --go-btn-inner-gap: 0.5rem;
   --go-btn-radius: var(--radius-2, 0.25rem);
-  --go-btn-icon-size: 2.5em;
+
+  /**
+    @prop --go-btn-icon-size:
+      Outer size of the icon button.
+      - default: 3rem
+  */
+  --go-btn-icon-size: 3rem;
+
+  /**
+    @prop --go-btn-inline-icon-size:
+      Size of the icon inside the button.
+      - default: 1.5rem
+  */
+  --go-btn-inline-icon-size: 1.5rem;
 
   // outline fill color
   --go-btn-outline-fill-color: var(--go-color-bg);
@@ -196,8 +209,8 @@ go-button {
     }
 
     svg {
-      width: calc(var(--go-btn-icon-size) / 3 * 2);
-      height: calc(var(--go-btn-icon-size) / 3 * 2);
+      width: var(--go-btn-inline-icon-size);
+      height: var(--go-btn-inline-icon-size);
       margin: 0;
     }
   }

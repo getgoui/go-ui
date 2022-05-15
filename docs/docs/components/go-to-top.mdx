@@ -1,0 +1,30 @@
+---
+title: Back to top
+hide_title: true
+hide_table_of_contents: true
+---
+
+import Demo from '@/components/Demo';
+import demoSource from '!!raw-loader!@/go-ui/components/go-to-top/demo/go-to-top.html';
+
+# Back to top <span className="text-size-0">`go-to-top`</span>
+
+<!-- Description -->
+
+<div className="text-size-1">A button that allows users to quickly scroll back to top of the page.</div>
+
+## Usage
+
+- Fixed at the bottom right (left if the page is RTL) corner of the page.
+- Appears when the user scrolls down to a certain distance (customisable, defaults to `200px`) from the top of the page.
+- Disappears when the user scrolls back to the top of the page.
+
+<!-- Demos, tips, variations, use cases -->
+
+## Demo
+
+<Demo code={demoSource} />
+
+<!-- API -->
+
+{@include: ../../../src/components/go-to-top/readme.md}

@@ -40,19 +40,21 @@ export class GoTooltip {
     if (!this.triggerEl) {
       return;
     }
-    this.triggerEl.setAttribute('aria-describedby', this.el.id);
-    // add event handlers to triggerEl
-    this.triggerEl.addEventListener('mouseenter', () => this.showTooltip());
-    document.addEventListener('mousemove', (e) => this.debouncedDetermineMouseOut(e));
-
-    this.triggerEl.addEventListener('focus', () => this.showTooltip());
-    this.triggerEl.addEventListener('blur', () => this.hideTooltip());
   }
 
   componentDidLoad() {
     if (!this.triggerEl) {
       return;
     }
+
+    this.triggerEl.setAttribute('aria-describedby', this.el.id);
+    // add event handlers to triggerEl
+    this.triggerEl.addEventListener('mouseenter', () => this.showTooltip());
+    document.addEventListener('mousemove', (e) => this.debouncedDetermineMouseOut(e));
+    console.log(this.triggerEl);
+    this.triggerEl.addEventListener('focusin', () => this.showTooltip());
+    this.triggerEl.addEventListener('focusout', () => this.hideTooltip());
+
     const arrowEl = this.el.querySelector('.tooltip-tail') as HTMLElement;
     this.initialiseTooltip(this.triggerEl, this.el, arrowEl);
     // keep watching for changes to the tooltip position
@@ -76,6 +78,7 @@ export class GoTooltip {
       middleware.push(inline());
     }
     computePosition(triggerEl, tooltipEl, {
+      strategy: 'fixed',
       placement: this.placement,
       middleware,
     }).then(({ x, y, placement, middlewareData }) => {

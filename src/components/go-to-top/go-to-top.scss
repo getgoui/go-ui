@@ -1,0 +1,12 @@
+go-to-top {
+  display: block;
+  position: fixed;
+  bottom: 2rem;
+  right: 4rem;
+  opacity: 0;
+
+  @include transition(opacity);
+  &.active {
+    opacity: 1;
+  }
+}

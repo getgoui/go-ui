@@ -38,10 +38,12 @@ go-tooltip {
   padding: var(--tooltip-padding);
   border-radius: var(--tooltip-radius);
   box-shadow: var(--shadow-1);
+  pointer-events: none;
 
   &.is-active {
     visibility: visible;
     opacity: 1;
+    pointer-events: inherit;
   }
 
   .tooltip-tail {
