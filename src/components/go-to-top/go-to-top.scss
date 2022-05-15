@@ -1,8 +1,22 @@
 go-to-top {
+  /**
+    @prop --go-to-top-right:
+      Right position of the button.
+      - default: 2rem
+  */
+  --go-to-top-right: 2rem;
+
+  /**
+    @prop --go-to-top-bottom:
+      Bottom position of the button.
+      - default: 2rem
+  */
+  --go-to-top-bottom: 2rem;
+
   display: block;
   position: fixed;
-  bottom: 2rem;
-  right: 4rem;
+  bottom: var(--go-to-top-bottom);
+  right: var(--go-to-top-right);
   opacity: 0;
 
   @include transition(opacity);
