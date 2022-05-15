@@ -36,7 +36,7 @@ export class GoToTop {
     const { active } = this;
     return (
       <Host class={{ active }}>
-        <go-button color="secondary" flat href={`#${this.targetId}`} id="go-to-top-btn" type="button" icon round aria-labelledby="go-to-top-btn-tooltip">
+        <go-button color="primary" flat href={`#${this.targetId}`} id="go-to-top-btn" type="button" icon round aria-labelledby="go-to-top-btn-tooltip">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
