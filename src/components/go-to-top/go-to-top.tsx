@@ -1,6 +1,6 @@
-import { Component, Host, h, Element } from '@stencil/core';
+import { Component, Host, h, Element, State, Prop } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
-
+import debounce from 'lodash.debounce';
 @Component({
   tag: 'go-to-top',
   styleUrl: 'go-to-top.scss',
@@ -9,6 +9,10 @@ import uniqueId from 'lodash.uniqueid';
 export class GoToTop {
   @Element() el: HTMLElement;
 
+  /**
+   * how far from the top of the page the button should be shown (in px)
+   */
+  @Prop() offset: number = 200;
   private targetId: string;
 
   componentWillLoad() {
@@ -20,11 +24,18 @@ export class GoToTop {
     }
   }
 
-  componentDidLoad() {}
+  componentDidLoad() {
+    window.onscroll = debounce(() => {
+      this.active = window.scrollY > this.offset;
+    }, 200);
+  }
+
+  @State() active = false;
 
   render() {
+    const { active } = this;
     return (
-      <Host>
+      <Host class={{ active }}>
         <go-button color="secondary" flat href={`#${this.targetId}`} id="go-to-top-btn" type="button" icon round aria-labelledby="go-to-top-btn-tooltip">
           <svg
             xmlns="http://www.w3.org/2000/svg"

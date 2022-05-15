@@ -478,6 +478,10 @@ export namespace Components {
         "vertical": boolean;
     }
     interface GoToTop {
+        /**
+          * how far from the top of the page the button should be shown (in px)
+         */
+        "offset": number;
     }
     interface GoToc {
         /**
@@ -1198,6 +1202,10 @@ declare namespace LocalJSX {
         "vertical"?: boolean;
     }
     interface GoToTop {
+        /**
+          * how far from the top of the page the button should be shown (in px)
+         */
+        "offset"?: number;
     }
     interface GoToc {
         /**
