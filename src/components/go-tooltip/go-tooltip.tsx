@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, State, Method } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
 import debounce from 'lodash.debounce';
 import { computePosition, flip, shift, arrow, offset, autoUpdate, inline } from '@floating-ui/dom';
@@ -71,11 +71,6 @@ export class GoTooltip {
         this.hideTooltip();
       }
     });
-  }
-
-  @Method()
-  reposition() {
-    this.initialiseTooltip(this.triggerEl, this.el, this.arrowEl);
   }
 
   initialiseTooltip(triggerEl, tooltipEl, arrowEl) {
