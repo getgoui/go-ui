@@ -394,6 +394,28 @@ export namespace Components {
          */
         "persistent": boolean;
     }
+    interface GoProgress {
+        /**
+          * Set progress to indeterminate state
+         */
+        "indeterminate": boolean;
+        /**
+          * Show label at the end of progress bar
+         */
+        "label": string;
+        /**
+          * Total amount of work required for progress to complete
+         */
+        "max": number;
+        /**
+          * min value of the progress bar
+         */
+        "min"?: number;
+        /**
+          * How much of the task that has been completed
+         */
+        "value"?: number;
+    }
     interface GoSearchBar {
         "closeSearchForm": () => Promise<void>;
         "openSearchForm": () => Promise<void>;
@@ -643,6 +665,12 @@ declare global {
         prototype: HTMLGoOverlayElement;
         new (): HTMLGoOverlayElement;
     };
+    interface HTMLGoProgressElement extends Components.GoProgress, HTMLStencilElement {
+    }
+    var HTMLGoProgressElement: {
+        prototype: HTMLGoProgressElement;
+        new (): HTMLGoProgressElement;
+    };
     interface HTMLGoSearchBarElement extends Components.GoSearchBar, HTMLStencilElement {
     }
     var HTMLGoSearchBarElement: {
@@ -719,6 +747,7 @@ declare global {
         "go-nav-link": HTMLGoNavLinkElement;
         "go-nav-list": HTMLGoNavListElement;
         "go-overlay": HTMLGoOverlayElement;
+        "go-progress": HTMLGoProgressElement;
         "go-search-bar": HTMLGoSearchBarElement;
         "go-skip-link": HTMLGoSkipLinkElement;
         "go-spinner": HTMLGoSpinnerElement;
@@ -1118,6 +1147,28 @@ declare namespace LocalJSX {
          */
         "persistent"?: boolean;
     }
+    interface GoProgress {
+        /**
+          * Set progress to indeterminate state
+         */
+        "indeterminate"?: boolean;
+        /**
+          * Show label at the end of progress bar
+         */
+        "label"?: string;
+        /**
+          * Total amount of work required for progress to complete
+         */
+        "max"?: number;
+        /**
+          * min value of the progress bar
+         */
+        "min"?: number;
+        /**
+          * How much of the task that has been completed
+         */
+        "value"?: number;
+    }
     interface GoSearchBar {
     }
     interface GoSkipLink {
@@ -1264,6 +1315,7 @@ declare namespace LocalJSX {
         "go-nav-link": GoNavLink;
         "go-nav-list": GoNavList;
         "go-overlay": GoOverlay;
+        "go-progress": GoProgress;
         "go-search-bar": GoSearchBar;
         "go-skip-link": GoSkipLink;
         "go-spinner": GoSpinner;
@@ -1300,6 +1352,7 @@ declare module "@stencil/core" {
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
+            "go-progress": LocalJSX.GoProgress & JSXBase.HTMLAttributes<HTMLGoProgressElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
             "go-spinner": LocalJSX.GoSpinner & JSXBase.HTMLAttributes<HTMLGoSpinnerElement>;

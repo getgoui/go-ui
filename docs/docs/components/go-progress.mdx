@@ -1,0 +1,51 @@
+---
+title: Progress
+hide_title: true
+hide_table_of_contents: true
+---
+
+import Demo from '@/components/Demo';
+import demoSource from '!!raw-loader!@/go-ui/components/go-progress/demo/go-progress.html';
+
+# Progress <span className="text-size-0">`go-progress`</span>
+
+<!-- Description -->
+
+<div className="text-size-1">Progress is a component in Go UI.</div>
+
+## When to use
+
+-
+-
+
+## Accessibility
+
+https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/progressbar_role
+
+:::tip Loading a section
+
+> If the progress bar is describing the loading progress of a particular region of a page, include the aria-describedby attribute to reference the progress bar's status, and set the aria-busy attribute to true on the region until it is finished loading.
+> https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/progressbar_role
+
+:::
+
+### Why not the `progress` element?
+
+it's difficult to customise and unify cross browsers.
+
+## Related patterns
+
+<!-- Patterns that uses this component -->
+
+- [Pattern 1](#)
+- [Pattern 2](#)
+
+<!-- Demos, tips, variations, use cases -->
+
+## Demo
+
+<Demo code={demoSource} />
+
+<!-- API -->
+
+{@include: ../../../src/components/go-progress/readme.md}

@@ -1,0 +1,33 @@
+<div class="container">
+  <h3>Determinate</h3>
+  <div class="row">
+    <div class="col-10">
+      <go-progress value="10" max="100" label="10%"></go-progress>
+    </div>
+  </div>
+  <go-button round type="button" id="add-btn">Add 10%</go-button>
+  <go-button round outline-fill type="button" id="remove-btn">Remove 10%</go-button>
+
+  <h3>Indeterminate</h3>
+  <div class="row">
+    <div class="col-12">
+      <go-progress></go-progress>
+      <go-progress label="Loading" value="10" max="100" indeterminate="true"></go-progress>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById('add-btn').addEventListener('click', function () {
+    var progress = document.querySelector('go-progress');
+    const newVal = progress.value + 10;
+    progress.setAttribute('value', newVal);
+    progress.setAttribute('label', newVal + '%');
+  });
+  // remove 10%
+  document.getElementById('remove-btn').addEventListener('click', function () {
+    var progress = document.querySelector('go-progress');
+    const newVal = progress.value - 10;
+    progress.setAttribute('value', newVal);
+    progress.setAttribute('label', newVal + '%');
+  });
+</script>
