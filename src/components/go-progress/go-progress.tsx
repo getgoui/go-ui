@@ -14,21 +14,31 @@ export class GoProgress {
   /**
    * Total amount of work required for progress to complete
    */
-  @Prop() max: number;
+  @Prop() max?: number = 100;
   /**
    * How much of the task that has been completed
    */
   @Prop({ mutable: true }) value?: number;
 
   /**
-   * Show label at the end of progress bar
+   * Descriptive label for screen readers to identify the progress bar
    */
-  @Prop() label: string;
+  @Prop() label?: string;
+
+  /**
+   * Id of the label element for the progress bar
+   */
+  @Prop() labelledby?: string;
 
   /**
    * Set progress to indeterminate state
    */
-  @Prop({ mutable: true }) indeterminate: boolean;
+  @Prop({ mutable: true }) indeterminate?: boolean = false;
+
+  /**
+   * Display percentage of completion
+   */
+  @Prop() showPercentage?: boolean = false;
 
   @State() percentage: number;
 
@@ -39,10 +49,6 @@ export class GoProgress {
       this.indeterminate = true;
     }
     const total = this.max - this.min;
-    if (newValue > this.max) {
-      this.percentage = 100;
-      return;
-    }
     this.percentage = Math.round((newValue / total) * 100);
   }
 
@@ -51,14 +57,19 @@ export class GoProgress {
   }
 
   render() {
-    const { percentage, indeterminate, label, value, max, min } = this;
+    const { percentage, indeterminate, label, labelledby, value, max, min, showPercentage } = this;
+    let ariaAttrs = {
+      'aria-valuenow': indeterminate ? null : value,
+      'aria-valuemin': indeterminate ? null : min,
+      'aria-valuemax': indeterminate ? null : max,
+    };
     return (
       <Host>
-        <div class={{ track: true, indeterminate }} aria-label={label} role="progressbar" aria-valuenow={value} aria-valuemin={min} aria-valuemax={max}>
+        <div class={{ track: true, indeterminate }} aria-label={label} aria-labelledby={labelledby} role="progressbar" {...ariaAttrs}>
           <slot></slot>
           <span class="bar" style={indeterminate ? null : { transform: `translateX(-${100 - percentage}%` }}></span>
         </div>
-        {label ? <span class="label">{label}</span> : null}
+        {showPercentage ? <span class="percentage">{percentage}%</span> : null}
       </Host>
     );
   }

@@ -1,16 +1,18 @@
 go-progress {
   --go-progress-color: var(--go-color-primary-600);
-  --go-progress-height: 0.25rem;
+  --go-progress-bar-height: 0.25rem;
+  --go-progress-padding: var(--go-progress-bar-height) 0;
   --go-progress-radius: var(--radius-round);
   --go-progress-track-color: var(--go-color-neutral-200);
 
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: var(--go-progress-padding);
   .track {
     flex: 1;
     position: relative;
-    height: var(--go-progress-height);
+    height: var(--go-progress-bar-height);
     background-color: var(--go-progress-track-color);
     border-radius: var(--go-progress-radius);
     overflow: hidden;
@@ -28,12 +30,11 @@ go-progress {
     &.indeterminate {
       .bar {
         border-radius: var(--go-progress-radius);
-        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-        background: linear-gradient(to right, transparent 0%, var(--go-progress-color) 30%, var(--go-progress-color) 70%, transparent 100%);
         transform-origin: left center;
         animation: indeterminate-progress 1.5s linear infinite;
         @include reduced-motion {
-          animation: indeterminate-progress-rm 1.5s linear infinite alternate;
+          transform: translateX(0%) scaleX(30%);
+          animation: indeterminate-progress-rm 3s steps(6, jump-none) infinite alternate;
         }
       }
     }
@@ -41,21 +42,22 @@ go-progress {
 }
 @keyframes indeterminate-progress {
   0% {
-    transform: translateX(-100%) scaleX(0);
+    transform: translateX(-10%) scaleX(0);
   }
   50% {
-    transform: translateX(0) scaleX(80%);
+    transform: translateX(0%) scaleX(70%);
   }
   100% {
-    transform: translateX(150%) scaleX(0);
+    transform: translateX(110%) scaleX(0);
   }
 }
 
 @keyframes indeterminate-progress-rm {
   0% {
-    transform: translateX(-100%);
+    transform-origin: left;
   }
+
   100% {
-    transform: translateX(100%);
+    transform-origin: right;
   }
 }

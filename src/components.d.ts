@@ -398,19 +398,27 @@ export namespace Components {
         /**
           * Set progress to indeterminate state
          */
-        "indeterminate": boolean;
+        "indeterminate"?: boolean;
         /**
-          * Show label at the end of progress bar
+          * Descriptive label for screen readers to identify the progress bar
          */
-        "label": string;
+        "label"?: string;
+        /**
+          * Id of the label element for the progress bar
+         */
+        "labelledby"?: string;
         /**
           * Total amount of work required for progress to complete
          */
-        "max": number;
+        "max"?: number;
         /**
           * min value of the progress bar
          */
         "min"?: number;
+        /**
+          * Display percentage of completion
+         */
+        "showPercentage"?: boolean;
         /**
           * How much of the task that has been completed
          */
@@ -1153,9 +1161,13 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         /**
-          * Show label at the end of progress bar
+          * Descriptive label for screen readers to identify the progress bar
          */
         "label"?: string;
+        /**
+          * Id of the label element for the progress bar
+         */
+        "labelledby"?: string;
         /**
           * Total amount of work required for progress to complete
          */
@@ -1164,6 +1176,10 @@ declare namespace LocalJSX {
           * min value of the progress bar
          */
         "min"?: number;
+        /**
+          * Display percentage of completion
+         */
+        "showPercentage"?: boolean;
         /**
           * How much of the task that has been completed
          */
