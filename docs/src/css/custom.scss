@@ -19,8 +19,9 @@
   --ifm-color-primary-darker: var(--go-color-primary-700);
   --ifm-color-primary-darkest: var(--go-color-primary-900);
   --ifm-code-font-size: var(--go-size--1);
-  --ifm-link-color: var(--go-color-success-600);
-  --ifm-navbar-link-hover-color: var(--go-color-success-600);
+  --ifm-link-color: var(--go-color-link);
+  --ifm-navbar-link-hover-color: var(--go-color-success-700);
+  --ifm-menu-color-active: var(--go-color-darkest);
 }
 
 .docusaurus-highlight-code-line {
