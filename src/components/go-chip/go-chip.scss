@@ -1,0 +1,99 @@
+go-chip {
+  /**
+    @prop --go-chip-gap:
+      Gap between label, prefix and suffix.
+      - default: 0.5em
+  */
+  --go-chip-gap: 0.5em;
+
+  /**
+    @prop --go-chip-padding:
+      Padding of the chip
+      - default: 0.25em 0.75em
+  */
+  --go-chip-padding: 0.25em 0.75em;
+
+  /**
+    @prop --go-chip-radius:
+      Radius of chip
+      - default: var(--radius-round)
+  */
+  --go-chip-radius: var(--radius-round);
+
+  /**
+    @prop --go-chip-color-bg:
+      Background color of chip
+      - default: var(--go-color-neutral-200)
+  */
+  --go-chip-color-bg: var(--go-color-neutral-200);
+
+  /**
+    @prop --go-chip-color-fg:
+      Foreground color of chip
+      - default: var(--go-color-text)
+  */
+  --go-chip-color-fg: var(--go-color-text);
+
+  /**
+    @prop --go-chip-font-size:
+      Font size of chip
+      - default: var(--go-size--1)
+  */
+  --go-chip-font-size: var(--go-size--1);
+
+  /**
+    @prop --go-chip-border-width:
+      Border width of the chip
+      - default: 1px
+  */
+  --go-chip-border-width: 1px;
+
+  /**
+    @prop --go-chip-color-border:
+      Border color of the chip
+      - default: transparent
+  */
+  --go-chip-color-border: transparent;
+
+  display: inline;
+
+  // colors 'primary' | 'secondary' | 'success' | 'critical' | 'neutral'
+  &[variant='primary'] {
+    --go-chip-color-border: var(--go-color-primary-200);
+    --go-chip-color-bg: var(--go-color-primary-200);
+    --go-chip-color-fg: var(--go-color-text);
+  }
+  &[variant='secondary'] {
+    --go-chip-color-border: var(--go-color-secondary-200);
+    --go-chip-color-bg: var(--go-color-secondary-200);
+    --go-chip-color-fg: var(--go-color-text);
+  }
+  &[variant='success'] {
+    --go-chip-color-border: var(--go-color-success-200);
+    --go-chip-color-bg: var(--go-color-success-200);
+    --go-chip-color-fg: var(--go-color-text);
+  }
+  &[variant='critical'] {
+    --go-chip-color-border: var(--go-color-critical-200);
+    --go-chip-color-bg: var(--go-color-critical-200);
+    --go-chip-color-fg: var(--go-color-text);
+  }
+
+  // outline
+  &[outline] {
+    --go-chip-color-bg: transparent;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--go-chip-gap);
+    padding: var(--go-chip-padding);
+    border: var(--go-chip-border-width) solid var(--go-chip-color-border);
+    border-radius: var(--go-chip-radius);
+    background-color: var(--go-chip-color-bg);
+    color: var(--go-chip-color-fg);
+    font-size: var(--go-chip-font-size);
+    line-height: 1.5em;
+  }
+}
