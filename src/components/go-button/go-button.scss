@@ -195,7 +195,7 @@ go-button {
     box-shadow: var(--go-btn-shadow);
     text-underline-offset: 4px; // optimise for browsers that support it
     font-weight: 500;
-    @include transition(background-color, color, box-shadow);
+    @include transition(background-color, color, box-shadow, outline-offset 0.05s);
 
     &:hover,
     &:focus-visible {
@@ -206,6 +206,8 @@ go-button {
       @include focus-outline;
     }
     &:active {
+      --go-focus-outline-offset: 0;
+
       box-shadow: var(--inner-shadow-3);
     }
 
