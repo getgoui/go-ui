@@ -19,11 +19,14 @@ go-badge {
     min-height: var(--badge-size);
     padding: 0 0.5rem;
     height: var(--badge-size);
-    line-height: var(--badge-size);
     border-radius: var(--radius-round);
     color: var(--badge-fg-color);
     background-color: var(--badge-bg-color);
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     &.dot-only {
       min-width: var(--badge-dot-size);
       min-height: var(--badge-dot-size);
