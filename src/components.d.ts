@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerVariants, Breakpoints, ButtonColorVariants, INavItem } from "./types";
+import { ChipVariants } from "./types/variants";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
@@ -187,6 +188,17 @@ export namespace Components {
           * when href is present, `target` attribute to be applied to the card link
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
+    }
+    interface GoChip {
+        /**
+          * If `outline` is true, the button will have a border based on selected variant
+          * @see  `variant` property
+         */
+        "outline"?: boolean;
+        /**
+          * Colour variant of the chip
+         */
+        "variant": ChipVariants;
     }
     interface GoDialog {
         /**
@@ -595,6 +607,12 @@ declare global {
         prototype: HTMLGoCardElement;
         new (): HTMLGoCardElement;
     };
+    interface HTMLGoChipElement extends Components.GoChip, HTMLStencilElement {
+    }
+    var HTMLGoChipElement: {
+        prototype: HTMLGoChipElement;
+        new (): HTMLGoChipElement;
+    };
     interface HTMLGoDialogElement extends Components.GoDialog, HTMLStencilElement {
     }
     var HTMLGoDialogElement: {
@@ -742,6 +760,7 @@ declare global {
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-card": HTMLGoCardElement;
+        "go-chip": HTMLGoChipElement;
         "go-dialog": HTMLGoDialogElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
@@ -946,6 +965,17 @@ declare namespace LocalJSX {
           * when href is present, `target` attribute to be applied to the card link
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
+    }
+    interface GoChip {
+        /**
+          * If `outline` is true, the button will have a border based on selected variant
+          * @see  `variant` property
+         */
+        "outline"?: boolean;
+        /**
+          * Colour variant of the chip
+         */
+        "variant"?: ChipVariants;
     }
     interface GoDialog {
         /**
@@ -1318,6 +1348,7 @@ declare namespace LocalJSX {
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-card": GoCard;
+        "go-chip": GoChip;
         "go-dialog": GoDialog;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
@@ -1355,6 +1386,7 @@ declare module "@stencil/core" {
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
+            "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
