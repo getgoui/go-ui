@@ -45,9 +45,10 @@ export class GoBadge {
     return (
       <Host>
         <slot></slot>
-        <span aria-label={label ? label : null} class={{ 'badge-count': true, 'dot-only': dotOnly }}>
-          {count && !dotOnly ? displayCount : null}
-        </span>
+        <div class={{ 'badge-count': true, 'dot-only': dotOnly }}>
+          {label ? <span class="visually-hidden">{label}</span> : null}
+          {count && !dotOnly ? <span aria-hidden="true">{displayCount}</span> : null}
+        </div>
       </Host>
     );
   }
