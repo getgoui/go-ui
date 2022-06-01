@@ -1,10 +1,11 @@
 import { Component, h, Prop, Element, Host, Watch, State } from '@stencil/core';
-import { Breakpoints, ButtonColorVariants } from '../../types';
+import { Breakpoints, ColorVariants } from '../../types';
 import { inheritAttributes, warning } from '../../utils/helper';
 
 /**
- * @slot start - Use this slot to prepend content to the button.
- * @slot end - Use this slot to append content to the button.
+ * @slot default - Button text
+ * @slot prefix - Use this slot to prepend content to the button.
+ * @slot suffix - Use this slot to append content to the button.
  */
 @Component({
   tag: 'go-button',
@@ -25,9 +26,9 @@ export class GoButton {
   @Prop({ reflect: true }) disabled?: boolean = null;
 
   /**
-   * Color variants
+   * Button variants
    */
-  @Prop({ reflect: true }) color?: ButtonColorVariants = 'primary';
+  @Prop({ reflect: true }) variant?: ColorVariants | 'text' = 'neutral';
 
   /**
    * If set, the button will take up the full width of its parent
@@ -94,7 +95,7 @@ export class GoButton {
 
     this.inheritedAttributes = inheritAttributes(this.root, [
       'block',
-      'color',
+      'variant',
       'class',
       'disabled',
       'style',
@@ -116,9 +117,9 @@ export class GoButton {
   }
 
   render() {
-    const { type, disabled, color, blockClasses, outline, outlineFill, inheritedAttributes, href } = this;
+    const { type, disabled, variant, blockClasses, outline, outlineFill, inheritedAttributes, href } = this;
     const Tag = href ? 'a' : 'button';
-    const rootClasses = `${color} ${blockClasses}`;
+    const rootClasses = `${variant} ${blockClasses}`;
     return (
       <Host
         class={{
@@ -133,9 +134,9 @@ export class GoButton {
           disabled={disabled}
           class="inner-button"
           {...inheritedAttributes}>
-          <slot name="start"></slot>
+          <slot name="prefix"></slot>
           <slot></slot>
-          <slot name="end"></slot>
+          <slot name="suffix"></slot>
         </Tag>
       </Host>
     );
