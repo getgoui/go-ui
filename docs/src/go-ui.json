@@ -620,11 +620,15 @@
       "docsTags": [
         {
           "name": "slot",
-          "text": "start - Use this slot to prepend content to the button."
+          "text": "default - Button text"
         },
         {
           "name": "slot",
-          "text": "end - Use this slot to append content to the button."
+          "text": "prefix - Use this slot to prepend content to the button."
+        },
+        {
+          "name": "slot",
+          "text": "suffix - Use this slot to append content to the button."
         }
       ],
       "usage": {},
@@ -656,36 +660,6 @@
             },
             {
               "value": "tablet",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "color",
-          "type": "\"critical\" | \"primary\" | \"secondary\" | \"tertiary\"",
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": true,
-          "docs": "Color variants",
-          "docsTags": [],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "critical",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "secondary",
-              "type": "string"
-            },
-            {
-              "value": "tertiary",
               "type": "string"
             }
           ],
@@ -874,6 +848,44 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"critical\" | \"neutral\" | \"primary\" | \"secondary\" | \"success\" | \"text\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "Button variants",
+          "docsTags": [],
+          "default": "'neutral'",
+          "values": [
+            {
+              "value": "critical",
+              "type": "string"
+            },
+            {
+              "value": "neutral",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "text",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [],
@@ -898,17 +910,22 @@
       ],
       "slots": [
         {
-          "name": "end",
-          "docs": "Use this slot to append content to the button."
+          "name": "default",
+          "docs": "Button text"
         },
         {
-          "name": "start",
+          "name": "prefix",
           "docs": "Use this slot to prepend content to the button."
+        },
+        {
+          "name": "suffix",
+          "docs": "Use this slot to append content to the button."
         }
       ],
       "parts": [],
       "dependents": [
         "go-banner",
+        "go-chip",
         "go-dialog",
         "go-nav-drawer",
         "go-search-bar",
@@ -917,6 +934,9 @@
       "dependencies": [],
       "dependencyGraph": {
         "go-banner": [
+          "go-button"
+        ],
+        "go-chip": [
           "go-button"
         ],
         "go-dialog": [
@@ -1275,6 +1295,129 @@
       "dependencyGraph": {
         "go-card": [
           "go-link"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/go-chip/go-chip.tsx",
+      "encapsulation": "none",
+      "tag": "go-chip",
+      "readme": "## go-chip API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "outline",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "outline",
+          "reflectToAttr": true,
+          "docs": "If `outline` is true, the button will have a border based on selected variant",
+          "docsTags": [
+            {
+              "name": "see",
+              "text": " `variant` property"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"critical\" | \"neutral\" | \"primary\" | \"secondary\" | \"success\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "Colour variant of the chip",
+          "docsTags": [],
+          "default": "'neutral'",
+          "values": [
+            {
+              "value": "critical",
+              "type": "string"
+            },
+            {
+              "value": "neutral",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--go-chip-border-width",
+          "annotation": "prop",
+          "docs": "Border width of the chip - default: 1px"
+        },
+        {
+          "name": "--go-chip-color-bg",
+          "annotation": "prop",
+          "docs": "Background color of chip - default: var(--go-color-neutral-200)"
+        },
+        {
+          "name": "--go-chip-color-border",
+          "annotation": "prop",
+          "docs": "Border color of the chip - default: transparent"
+        },
+        {
+          "name": "--go-chip-color-fg",
+          "annotation": "prop",
+          "docs": "Foreground color of chip - default: var(--go-color-text)"
+        },
+        {
+          "name": "--go-chip-font-size",
+          "annotation": "prop",
+          "docs": "Font size of chip - default: var(--go-size--1)"
+        },
+        {
+          "name": "--go-chip-gap",
+          "annotation": "prop",
+          "docs": "Gap between label, prefix and suffix. - default: 0.5em"
+        },
+        {
+          "name": "--go-chip-padding",
+          "annotation": "prop",
+          "docs": "Padding of the chip - default: 0.25em 0.75em"
+        },
+        {
+          "name": "--go-chip-radius",
+          "annotation": "prop",
+          "docs": "Radius of chip - default: var(--radius-2)"
+        }
+      ],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "go-button"
+      ],
+      "dependencyGraph": {
+        "go-chip": [
+          "go-button"
         ]
       }
     },
@@ -2759,6 +2902,137 @@
           ],
           "optional": true,
           "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Descriptive label for screen readers to identify the progress bar",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "labelledby",
+          "type": "string",
+          "mutable": false,
+          "attr": "labelledby",
+          "reflectToAttr": false,
+          "docs": "Id of the label element for the progress bar",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": false,
+          "docs": "Total amount of work required for progress to complete",
+          "docsTags": [],
+          "default": "100",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "mutable": false,
+          "attr": "min",
+          "reflectToAttr": false,
+          "docs": "min value of the progress bar",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "showPercentage",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "show-percentage",
+          "reflectToAttr": false,
+          "docs": "Display percentage of completion",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "How much of the task that has been completed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/go-search-bar/go-search-bar.tsx",
+      "encapsulation": "none",
+      "tag": "go-search-bar",
+      "readme": "## go-search-bar API\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [
+        {
+          "name": "closeSearchForm",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "closeSearchForm() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
         },
         {
           "name": "label",
