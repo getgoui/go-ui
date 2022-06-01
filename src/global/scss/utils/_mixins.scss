@@ -109,17 +109,24 @@
   }
 }
 
+@mixin prefer-light {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+}
+
 @mixin prefer-dark {
   @media (prefers-color-scheme: dark) {
     @content;
   }
 }
 
-// to be used on the root level
-@mixin root-prefer-dark {
-  @include prefer-dark {
+@mixin theme-light {
+  :where([color-scheme='light'], [data-theme='light']) {
     @content;
   }
+}
+@mixin theme-dark {
   :where([color-scheme='dark'], [data-theme='dark']) {
     @content;
   }

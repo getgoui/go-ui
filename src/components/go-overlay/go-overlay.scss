@@ -39,7 +39,7 @@ go-overlay {
   }
 }
 
-@include root-prefer-dark {
+@include theme-dark {
   go-overlay {
     --go-overlay-color: rgba(var(--go-token-darkest), 0.8);
     --go-overlay-close-btn-text-color: var(--go-text-color);
