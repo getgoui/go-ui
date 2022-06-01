@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ButtonColorVariants, INavItem } from "./types";
+import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./types";
 import { ChipVariants } from "./types/variants";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
@@ -107,10 +107,6 @@ export namespace Components {
          */
         "block"?: Breakpoints;
         /**
-          * Color variants
-         */
-        "color"?: ButtonColorVariants;
-        /**
           * Reduce inner gaps and outer paddings
          */
         "compact"?: boolean;
@@ -151,6 +147,10 @@ export namespace Components {
           * Html type of the button
          */
         "type": 'submit' | 'reset' | 'button';
+        /**
+          * Button variants
+         */
+        "variant"?: ColorVariants | 'text';
     }
     interface GoButtonGroup {
         /**
@@ -884,10 +884,6 @@ declare namespace LocalJSX {
          */
         "block"?: Breakpoints;
         /**
-          * Color variants
-         */
-        "color"?: ButtonColorVariants;
-        /**
           * Reduce inner gaps and outer paddings
          */
         "compact"?: boolean;
@@ -928,6 +924,10 @@ declare namespace LocalJSX {
           * Html type of the button
          */
         "type"?: 'submit' | 'reset' | 'button';
+        /**
+          * Button variants
+         */
+        "variant"?: ColorVariants | 'text';
     }
     interface GoButtonGroup {
         /**
