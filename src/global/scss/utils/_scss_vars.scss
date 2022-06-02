@@ -6,17 +6,17 @@
 // Grid breakpoints
 $breakpoints: (
   mobile: 0,
-  tablet: 768px,
-  desktop: 1200px,
-  large: 1400px,
+  tablet: 600px,
+  desktop: 1024px,
+  large: 1440px,
 ) !default;
 
 // Grid containers
 $container-max-widths: (
   mobile: 100%,
   tablet: 95%,
-  desktop: 1140px,
-  large: 1320px,
+  desktop: 960px,
+  large: 1040px,
 ) !default;
 
 // Grid columns
