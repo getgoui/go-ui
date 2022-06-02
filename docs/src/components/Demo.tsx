@@ -8,6 +8,7 @@ import demoTemplate from '!!raw-loader!../../static/demo-assets/demo.html';
 import PhoneIcon from '../assets/icons/phone.svg';
 import TabletIcon from '../assets/icons/tablet.svg';
 import LaptopIcon from '../assets/icons/laptop.svg';
+import DesktopIcon from '../assets/icons/desktop.svg';
 import ExternalIcon from '../assets/icons/external-link.svg';
 
 const setDemoContent = (window, code) => {
@@ -87,7 +88,13 @@ const Demo = ({ code, hideSource = false }) => {
   };
 
   const resizeToDevice = (device) => {
-    let width = device === 'phone' ? '375px' : device === 'tablet' ? '768px' : device === 'laptop' ? '1200px' : '100%';
+    const widthMap = {
+      mobile: '375px',
+      tablet: '600px',
+      desktop: '1024px',
+      large: '1440px',
+    };
+    let width = widthMap[device] || '100%';
     setContentWidth(width);
   };
   const openNewWindow = () => {
@@ -106,17 +113,20 @@ const Demo = ({ code, hideSource = false }) => {
           </div>
           <div className="controls">
             <div className="devices">
-              <button title="New window" type="button" onClick={openNewWindow}>
+              <button title="Open in new window" type="button" onClick={openNewWindow}>
                 <ExternalIcon />
               </button>
-              <button title="Mobile view" type="button" onClick={() => resizeToDevice('phone')}>
+              <button title="Mobile view" type="button" onClick={() => resizeToDevice('mobile')}>
                 <PhoneIcon />
               </button>
               <button title="Tablet view" type="button" onClick={() => resizeToDevice('tablet')}>
                 <TabletIcon />
               </button>
-              <button title="Desktop view" type="button" onClick={() => resizeToDevice('laptop')}>
+              <button title="Desktop view" type="button" onClick={() => resizeToDevice('desktop')}>
                 <LaptopIcon />
+              </button>
+              <button title="Large view" type="button" onClick={() => resizeToDevice('large')}>
+                <DesktopIcon />
               </button>
             </div>
           </div>

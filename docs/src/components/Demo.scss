@@ -148,6 +148,9 @@
       &:focus-visible {
         background: #666;
         color: white;
+        svg {
+          fill: white;
+        }
       }
     }
     svg {
