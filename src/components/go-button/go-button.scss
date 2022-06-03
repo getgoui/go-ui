@@ -158,6 +158,7 @@ go-button {
     @include reset-btn;
 
     display: inline-flex;
+    vertical-align: middle;
     align-items: center;
     justify-content: center;
     gap: var(--go-btn-inner-gap);
