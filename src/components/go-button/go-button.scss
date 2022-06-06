@@ -86,6 +86,9 @@ go-button {
     }
     &[variant='text'] {
       --go-btn-bg-color: var(--go-color-neutral-700);
+      .inner-button {
+        border-color: transparent;
+      }
     }
   }
 
@@ -127,8 +130,8 @@ go-button {
   }
 
   &[compact] {
-    --go-btn-padding-y: 0.5em;
-    --go-btn-padding-x: 0.8em;
+    --go-btn-padding-y: 0.25em;
+    --go-btn-padding-x: 0.5em;
     --go-btn-inner-gap: 0.125em;
     .inner-button {
       font-size: var(--go-size--1);
@@ -173,20 +176,12 @@ go-button {
     box-shadow: var(--go-btn-shadow);
     text-underline-offset: 4px; // optimise for browsers that support it
     font-weight: 500;
-    @include transition(background-color, color, box-shadow, outline-offset 0.05s);
+    @include clickable;
 
     &:hover,
     &:focus-visible {
       --go-btn-bg-color: var(--go-btn-bg-color-hover);
       --go-btn-text-color: var(--go-btn-text-color-hover);
-    }
-    &:focus-visible {
-      @include focus-outline;
-    }
-    &:active {
-      --go-focus-outline-offset: 0;
-
-      box-shadow: var(--inner-shadow-3);
     }
 
     svg {
@@ -195,9 +190,20 @@ go-button {
       margin: 0;
     }
   }
+
+  &[variant='text'] {
+    .inner-button {
+      text-decoration: underline;
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: none;
+      }
+    }
+  }
 }
 
-@include theme-light {
+@include light {
   go-button {
     // Colour variants
     &[variant='primary'] {
@@ -228,7 +234,7 @@ go-button {
   }
 }
 
-@include theme-dark {
+@include dark {
   go-button {
     // Colour variants
     &[variant='primary'] {
