@@ -76,6 +76,10 @@
   }
 
   transition: $unfoldedTransitions;
+
+  @include reduced-motion {
+    transition-duration: 0s;
+  }
 }
 
 @function unfold-transition($transition) {
@@ -132,6 +136,24 @@
   }
 }
 
+@mixin light {
+  @include prefer-light {
+    @content;
+  }
+  @include theme-light {
+    @content;
+  }
+}
+
+@mixin dark {
+  @include prefer-dark {
+    @content;
+  }
+  @include theme-dark {
+    @content;
+  }
+}
+
 @mixin focus-outline {
   outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
   outline-offset: var(--go-focus-outline-offset);
@@ -171,4 +193,19 @@
 /* Use this */
 @mixin typography($type) {
   @include typo(map-get($typography, $type), map-get($typography, $type));
+}
+
+@mixin clickable {
+  cursor: pointer;
+  @include transition(background-color, color, outline-offset 20ms);
+
+  &:focus-visible {
+    @include focus-outline;
+  }
+
+  &:active {
+    --go-focus-outline-offset: 0;
+
+    box-shadow: var(--inner-shadow-3);
+  }
 }
