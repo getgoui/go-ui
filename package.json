@@ -77,7 +77,7 @@
     "postcss-pxtorem": "^6.0.0",
     "prompts": "^2.4.2",
     "puppeteer": "^5.5.0",
-    "semantic-release": "^18.0.1",
+    "semantic-release": "^19.0.3",
     "semantic-release-cli": "^5.4.4",
     "standard-version": "^9.3.2",
     "stylelint": "^14.2.0",
