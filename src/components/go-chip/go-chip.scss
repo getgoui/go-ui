@@ -16,16 +16,16 @@ go-chip {
   /**
     @prop --go-chip-radius:
       Radius of chip
-      - default: var(--radius-round)
+      - default: var(--radius-2)
   */
-  --go-chip-radius: var(--radius-round);
+  --go-chip-radius: var(--radius-2);
 
   /**
     @prop --go-chip-color-bg:
       Background color of chip
-      - default: var(--go-color-neutral-200)
+      - default: var(--go-color-neutral-100)
   */
-  --go-chip-color-bg: var(--go-color-neutral-200);
+  --go-chip-color-bg: var(--go-color-neutral-100);
 
   /**
     @prop --go-chip-color-fg:
@@ -33,6 +33,13 @@ go-chip {
       - default: var(--go-color-text)
   */
   --go-chip-color-fg: var(--go-color-text);
+
+  /**
+    @prop --go-chip-color-bg-hover:
+      Background color on hover for `clickable` chips
+      - default: var(--go-color-neutral-200)
+  */
+  --go-chip-color-bg-hover: var(--go-color-neutral-200);
 
   /**
     @prop --go-chip-font-size:
@@ -57,31 +64,11 @@ go-chip {
 
   display: inline;
 
-  // colors 'primary' | 'secondary' | 'success' | 'critical' | 'neutral'
-  &[variant='primary'] {
-    --go-chip-color-border: var(--go-color-primary-200);
-    --go-chip-color-bg: var(--go-color-primary-200);
-    --go-chip-color-fg: var(--go-color-text);
-  }
-  &[variant='secondary'] {
-    --go-chip-color-border: var(--go-color-secondary-200);
-    --go-chip-color-bg: var(--go-color-secondary-200);
-    --go-chip-color-fg: var(--go-color-text);
-  }
-  &[variant='success'] {
-    --go-chip-color-border: var(--go-color-success-200);
-    --go-chip-color-bg: var(--go-color-success-200);
-    --go-chip-color-fg: var(--go-color-text);
-  }
-  &[variant='critical'] {
-    --go-chip-color-border: var(--go-color-critical-200);
-    --go-chip-color-bg: var(--go-color-critical-200);
-    --go-chip-color-fg: var(--go-color-text);
-  }
-
   // outline
   &[outline] {
-    --go-chip-color-bg: transparent;
+    .chip {
+      --go-chip-color-bg: transparent;
+    }
   }
 
   .chip {
@@ -94,6 +81,69 @@ go-chip {
     background-color: var(--go-chip-color-bg);
     color: var(--go-chip-color-fg);
     font-size: var(--go-chip-font-size);
-    line-height: 1.5em;
+    line-height: 1.5;
+    &.clickable {
+      @include clickable;
+      &:hover,
+      &:focus-visible {
+        background-color: var(--go-chip-color-bg-hover);
+      }
+    }
+  }
+}
+
+// Color variants
+@mixin chip-light-styles {
+  go-chip {
+    // colors 'primary' | 'secondary' | 'success' | 'critical' | 'neutral'
+    &[variant='primary'] {
+      --go-chip-color-border: var(--go-color-primary-100);
+      --go-chip-color-bg: var(--go-color-primary-100);
+      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-primary-200);
+    }
+    &[variant='secondary'] {
+      --go-chip-color-border: var(--go-color-secondary-100);
+      --go-chip-color-bg: var(--go-color-secondary-100);
+      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-secondary-200);
+    }
+    &[variant='success'] {
+      --go-chip-color-border: var(--go-color-success-100);
+      --go-chip-color-bg: var(--go-color-success-100);
+      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-success-200);
+    }
+    &[variant='critical'] {
+      --go-chip-color-border: var(--go-color-critical-100);
+      --go-chip-color-bg: var(--go-color-critical-100);
+      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-critical-200);
+    }
+  }
+}
+@mixin chip-dark-styles {
+  go-chip {
+    // colors 'primary' | 'secondary' | 'success' | 'critical' | 'neutral'
+    &[variant='primary'] {
+      --go-chip-color-border: var(--go-color-primary-200);
+      --go-chip-color-bg: var(--go-color-primary-200);
+      --go-chip-color-fg: var(--go-color-text);
+    }
+    &[variant='secondary'] {
+      --go-chip-color-border: var(--go-color-secondary-200);
+      --go-chip-color-bg: var(--go-color-secondary-200);
+      --go-chip-color-fg: var(--go-color-text);
+    }
+    &[variant='success'] {
+      --go-chip-color-border: var(--go-color-success-200);
+      --go-chip-color-bg: var(--go-color-success-200);
+      --go-chip-color-fg: var(--go-color-text);
+    }
+    &[variant='critical'] {
+      --go-chip-color-border: var(--go-color-critical-200);
+      --go-chip-color-bg: var(--go-color-critical-200);
+      --go-chip-color-fg: var(--go-color-text);
+    }
   }
 }

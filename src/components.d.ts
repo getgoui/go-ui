@@ -191,10 +191,18 @@ export namespace Components {
     }
     interface GoChip {
         /**
+          * Make chip clickable
+         */
+        "clickable"?: boolean;
+        /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
         "outline"?: boolean;
+        /**
+          * If true, the chip will become a toggle button, checkmark will be displayed in `prefix` slot when selected
+         */
+        "toggle"?: boolean;
         /**
           * Colour variant of the chip
          */
@@ -968,10 +976,22 @@ declare namespace LocalJSX {
     }
     interface GoChip {
         /**
+          * Make chip clickable
+         */
+        "clickable"?: boolean;
+        /**
+          * Emitted on chip click, only if `clickable` is true
+         */
+        "onChipClick"?: (event: CustomEvent<GoChip>) => void;
+        /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
         "outline"?: boolean;
+        /**
+          * If true, the chip will become a toggle button, checkmark will be displayed in `prefix` slot when selected
+         */
+        "toggle"?: boolean;
         /**
           * Colour variant of the chip
          */

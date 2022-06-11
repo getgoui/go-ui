@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import { ChipVariants } from '../../types/variants';
 import { hasSlot } from '../../utils/helper';
 
@@ -21,6 +21,25 @@ export class GoChip {
    */
   @Prop({ reflect: true }) outline?: boolean = false;
 
+  /**
+   * Make chip clickable
+   */
+  @Prop() clickable?: boolean = false;
+
+  /**
+   * If true, the chip will become a toggle button, checkmark will be displayed in `prefix` slot when selected
+   */
+  @Prop() toggle?: boolean = false;
+
+  /**
+   * Emitted on chip click, only if `clickable` is true
+   */
+  @Event() chipClick: EventEmitter<GoChip>;
+
+  onChipClickHandler() {
+    this.chipClick.emit(this);
+  }
+
   private hasPrefix = false;
 
   private hasSuffix = false;
@@ -31,10 +50,16 @@ export class GoChip {
   }
 
   render() {
-    const { hasPrefix, hasSuffix } = this;
+    const { hasPrefix, hasSuffix, clickable, toggle } = this;
+    const Tag = clickable ? 'button' : 'div';
     return (
       <Host>
-        <div class="chip">
+        <Tag
+          class={{
+            chip: true,
+            clickable,
+          }}
+          onClick={clickable ? () => this.onChipClickHandler() : undefined}>
           {hasPrefix ? (
             <span class="prefix">
               <slot name="prefix"></slot>
@@ -48,7 +73,8 @@ export class GoChip {
               <slot name="suffix"></slot>
             </span>
           ) : null}
-        </div>
+        </Tag>
+        {toggle ? <input type="checkbox" /> : null}
       </Host>
     );
   }
