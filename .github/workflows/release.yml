@@ -22,7 +22,7 @@ jobs:
           cache: 'pnpm'
       # Install deps and cache
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Stylelint
         run: pnpm stylelint
