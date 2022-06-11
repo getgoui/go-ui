@@ -31,9 +31,11 @@
 
 ## CSS Custom Properties
 
-| Name                | Description                                              |
-| ------------------- | -------------------------------------------------------- |
-| `--go-btn-bg-color` | Background colour for the button. - default: transparent |
+| Name                        | Description                                              |
+| --------------------------- | -------------------------------------------------------- |
+| `--go-btn-bg-color`         | Background colour for the button. - default: transparent |
+| `--go-btn-icon-size`        | Outer size of the icon button. - default: 3rem           |
+| `--go-btn-inline-icon-size` | Size of the icon inside the button. - default: 1.5rem    |
 
 
 ## Dependencies
@@ -44,6 +46,7 @@
  - [go-dialog](../go-dialog)
  - [go-nav-drawer](../navigation/go-nav-drawer)
  - [go-search-bar](../go-search-bar)
+ - [go-to-top](../go-to-top)
 
 ### Graph
 ```mermaid
@@ -52,6 +55,7 @@ graph TD;
   go-dialog --> go-button
   go-nav-drawer --> go-button
   go-search-bar --> go-button
+  go-to-top --> go-button
   style go-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

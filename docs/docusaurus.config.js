@@ -125,6 +125,14 @@ module.exports = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'HNTM91YDD1',
+        // Public API key: it is safe to commit it
+        apiKey: 'ab1e5977dd71b391791fd44a83fe80ef',
+        indexName: 'go-ui',
+      },
     }),
   presets: [
     [
@@ -166,16 +174,6 @@ module.exports = {
         },
       },
     ],
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        // ... Your options. https://github.com/easyops-cn/docusaurus-search-local#plugin-options
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        indexPages: true,
-      },
-    ],
-    //   './plugins/custom-hmr/custom-hmr.js',
   ],
   stylesheets: ['https://fonts.googleapis.com/icon?family=Material+Icons'],
 };
