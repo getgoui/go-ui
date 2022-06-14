@@ -13,6 +13,8 @@ go-button {
   --go-btn-text-color-hover: #fff;
   --go-btn-text-color-disabled: #fff;
   --go-focus-outline-color: var(--go-btn-bg-color);
+  --go-btn-outline-text-color: #000;
+  --go-btn-outline-text-color-hover: #000;
 
   // shadow
   --go-btn-shadow: var(--shadow-2);
@@ -74,14 +76,13 @@ go-button {
 
   &.outline {
     .inner-button {
-      --go-btn-text-color: var(--go-btn-bg-color);
-
       background: transparent;
       border-color: var(--go-btn-bg-color);
+      color: var(--go-btn-outline-text-color);
       &:hover,
       &:focus-visible {
         background: var(--go-btn-bg-color);
-        color: var(--go-btn-text-color);
+        color: var(--go-btn-outline-text-color-hover);
       }
     }
     &[variant='text'] {
@@ -192,6 +193,13 @@ go-button {
   }
 
   &[variant='text'] {
+    --go-focus-outline-color: var(--go-color-primary-600);
+    --go-btn-bg-color: transparent;
+    --go-btn-bg-color-hover: var(--go-color-neutral-300);
+    --go-btn-bg-color-disabled: rgba(var(--go-token-neutral-200), 0.5);
+    --go-btn-text-color: currentColor;
+    --go-btn-text-color-hover: currentColor;
+    --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
     .inner-button {
       text-decoration: underline;
 
@@ -203,7 +211,7 @@ go-button {
   }
 }
 
-@mixin btn-light-styles {
+@mixin btn-light-overrides {
   go-button {
     // Colour variants
     &[variant='primary'] {
@@ -222,18 +230,13 @@ go-button {
       --go-btn-bg-color: var(--go-color-critical-600);
       --go-btn-bg-color-hover: var(--go-color-critical-500);
     }
-    &[variant='text'] {
-      --go-focus-outline-color: var(--go-color-primary-600);
-      --go-btn-bg-color: transparent;
-      --go-btn-bg-color-hover: var(--go-color-neutral-300);
-      --go-btn-bg-color-disabled: rgba(var(--go-token-neutral-200), 0.5);
-      --go-btn-text-color: currentColor;
-      --go-btn-text-color-hover: currentColor;
-      --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
+    &.outline {
+      --go-btn-outline-text-color: var(--go-btn-bg-color);
+      --go-btn-outline-text-color-hover: var(--go-color-lightest);
     }
   }
 }
-@mixin btn-dark-styles {
+@mixin btn-dark-overrides {
   go-button {
     // Colour variants
     &[variant='primary'] {
@@ -256,19 +259,9 @@ go-button {
       --go-btn-bg-color: var(--go-color-critical-400);
       --go-btn-bg-color-hover: var(--go-color-critical-500);
     }
-    &[variant='text'] {
-      --go-focus-outline-color: var(--go-color-primary-600);
-      --go-btn-bg-color: transparent;
-      --go-btn-bg-color-hover: var(--go-color-neutral-300);
-      --go-btn-bg-color-disabled: rgba(var(--go-token-neutral-200), 0.5);
-      --go-btn-text-color: currentColor;
-      --go-btn-text-color-hover: currentColor;
-      --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
-    }
     &.outline {
-      .inner-button {
-        --go-btn-text-color: var(--go-color-text);
-      }
+      --go-btn-outline-text-color: var(--go-color-darkest);
+      --go-btn-outline-text-color-hover: var(--go-color-darkest);
     }
   }
 }
@@ -279,16 +272,15 @@ go-button {
 // light theme
 // dark theme
 
-@include btn-light-styles;
 @include prefer-light {
-  @include btn-light-styles;
+  @include btn-light-overrides;
 }
 @include prefer-dark {
-  @include btn-dark-styles;
+  @include btn-dark-overrides;
 }
 @include theme-light {
-  @include btn-light-styles;
+  @include btn-light-overrides;
 }
 @include theme-dark {
-  @include btn-dark-styles;
+  @include btn-dark-overrides;
 }
