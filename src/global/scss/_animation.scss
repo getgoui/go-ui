@@ -1,0 +1,23 @@
+.animate-fade-in {
+  animation: fade-in var(--go-duration-slow) var(--go-timing-function);
+}
+.animate-fade-out {
+  animation: fade-out var(--go-duration-slow) var(--go-timing-function);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

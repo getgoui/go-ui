@@ -191,18 +191,18 @@ export namespace Components {
     }
     interface GoChip {
         /**
-          * Make chip clickable
+          * Make chip clickable, `chipClick` event will be emitted on click
          */
         "clickable"?: boolean;
+        /**
+          * Make chip dismissible, close button will be shown and `chipDismiss` event will be emitted when close button is clicked
+         */
+        "dismissible"?: boolean;
         /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
         "outline"?: boolean;
-        /**
-          * If true, the chip will become a toggle button, checkmark will be displayed in `prefix` slot when selected
-         */
-        "toggle"?: boolean;
         /**
           * Colour variant of the chip
          */
@@ -976,22 +976,26 @@ declare namespace LocalJSX {
     }
     interface GoChip {
         /**
-          * Make chip clickable
+          * Make chip clickable, `chipClick` event will be emitted on click
          */
         "clickable"?: boolean;
         /**
+          * Make chip dismissible, close button will be shown and `chipDismiss` event will be emitted when close button is clicked
+         */
+        "dismissible"?: boolean;
+        /**
           * Emitted on chip click, only if `clickable` is true
          */
-        "onChipClick"?: (event: CustomEvent<GoChip>) => void;
+        "onChipClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted on chip dismiss, only if `dismissible` is true
+         */
+        "onChipDismissed"?: (event: CustomEvent<any>) => void;
         /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
         "outline"?: boolean;
-        /**
-          * If true, the chip will become a toggle button, checkmark will be displayed in `prefix` slot when selected
-         */
-        "toggle"?: boolean;
         /**
           * Colour variant of the chip
          */
