@@ -56,7 +56,6 @@
     "@commitlint/config-conventional": "^13.2.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^1.5.2",
-    "@types/autoprefixer": "^10.2.0",
     "@types/jest": "^26.0.24",
     "@types/markdown-it": "^12.2.3",
     "@types/puppeteer": "^5.4.4",
