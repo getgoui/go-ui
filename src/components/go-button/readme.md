@@ -44,7 +44,6 @@
 ### Used by
 
  - [go-banner](../go-banner)
- - [go-chip](../go-chip)
  - [go-dialog](../go-dialog)
  - [go-nav-drawer](../navigation/go-nav-drawer)
  - [go-search-bar](../go-search-bar)
@@ -54,7 +53,6 @@
 ```mermaid
 graph TD;
   go-banner --> go-button
-  go-chip --> go-button
   go-dialog --> go-button
   go-nav-drawer --> go-button
   go-search-bar --> go-button
