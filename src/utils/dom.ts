@@ -9,3 +9,23 @@ export function onClickOutside(el: HTMLElement, callback: (event: MouseEvent) =>
     callback(e);
   });
 }
+
+/**
+ * Add one time animationend event listener to given element, and remove it after fired once
+ */
+export function onAnimationEnd(el: HTMLElement, callback: () => void) {
+  el.addEventListener('animationend', callback, { once: true });
+}
+
+/**
+ * Fade out and remove element
+ * @param el target element
+ */
+export function fadeOutRemove(el: HTMLElement, callback?: () => void) {
+  // fade out DOM element then remove
+  el.classList.add('animate-fade-out');
+  onAnimationEnd(el, () => {
+    el.remove();
+    if (callback) callback();
+  });
+}

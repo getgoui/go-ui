@@ -1,4 +1,4 @@
-go-chip {
+:root {
   /**
     @prop --go-chip-gap:
       Gap between label, prefix and suffix.
@@ -7,11 +7,25 @@ go-chip {
   --go-chip-gap: 0.5em;
 
   /**
+    @prop --go-chip-padding-y:
+      Vertical padding of the chip
+      - default: 0.25em
+  */
+  --go-chip-padding-y: 0.25em;
+
+  /**
+    @prop --go-chip-padding-x:
+      Horizontal padding of the chip
+      - default: 0.75em
+  */
+  --go-chip-padding-x: 0.75em;
+
+  /**
     @prop --go-chip-padding:
       Padding of the chip
-      - default: 0.25em 0.75em
+      - default: var(--go-chip-padding-y) var(--go-chip-padding-x)
   */
-  --go-chip-padding: 0.25em 0.75em;
+  --go-chip-padding: var(--go-chip-padding-y) var(--go-chip-padding-x);
 
   /**
     @prop --go-chip-radius:
@@ -51,9 +65,9 @@ go-chip {
   /**
     @prop --go-chip-border-width:
       Border width of the chip
-      - default: 1px
+      - default: 2px
   */
-  --go-chip-border-width: 1px;
+  --go-chip-border-width: 2px;
 
   /**
     @prop --go-chip-color-border:
@@ -62,28 +76,98 @@ go-chip {
   */
   --go-chip-color-border: transparent;
 
-  display: inline;
+  /**
+    @prop --go-chip-dismiss-btn-gap:
+      Gap between chip content and the dismiss button (only applicable when `dismissable` is `true`)
+      - default: 0
+  */
+  --go-chip-dismiss-btn-gap: 0;
+
+  /**
+    @prop --go-chip-dismiss-btn-size:
+      Width and height of the dismiss button
+      - default: calc(1.5em + 2 * var(--go-chip-padding-y))
+  */
+  --go-chip-dismiss-btn-size: calc(1.5em + 2 * var(--go-chip-padding-y));
+}
+
+go-chip {
+  display: inline-flex;
+  align-items: center;
+  border: var(--go-chip-border-width) solid var(--go-chip-color-border);
+  border-radius: var(--go-chip-radius);
+  background-color: var(--go-chip-color-bg);
+  color: var(--go-chip-color-fg);
+  font-size: var(--go-chip-font-size);
+
+  .chip-main {
+    padding: var(--go-chip-padding);
+    border-radius: calc(var(--go-chip-radius) - var(--go-chip-border-width));
+    line-height: 1.5;
+    display: flex;
+    gap: var(--go-chip-gap);
+    align-items: center;
+  }
 
   // outline
   &[outline] {
-    .chip {
-      --go-chip-color-bg: transparent;
+    background-color: transparent;
+  }
+
+  // clickable
+  &.clickable {
+    .chip-main {
+      @include reset-btn;
+      @include clickable;
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--go-chip-color-bg-hover);
+      }
+    }
+    &.dismissible {
+      .chip-main {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--go-chip-gap);
-    padding: var(--go-chip-padding);
-    border: var(--go-chip-border-width) solid var(--go-chip-color-border);
-    border-radius: var(--go-chip-radius);
-    background-color: var(--go-chip-color-bg);
-    color: var(--go-chip-color-fg);
-    font-size: var(--go-chip-font-size);
-    line-height: 1.5;
-    &.clickable {
+  // dismissible
+  &.dismissible {
+    gap: var(--go-chip-dismiss-btn-gap);
+    align-items: stretch;
+
+    .chip-main {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: var(--go-chip-padding-y);
+        right: 0;
+        bottom: var(--go-chip-padding-y);
+        width: 1px;
+        background: var(--go-chip-color-border);
+        filter: brightness(0.9);
+      }
+    }
+    .dismiss-btn {
+      @include reset-btn;
       @include clickable;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: calc(var(--go-chip-radius) - var(--go-chip-border-width));
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      width: var(--go-chip-dismiss-btn-size);
+      height: var(--go-chip-dismiss-btn-size);
+      svg {
+        display: block;
+        width: auto;
+        height: 1.2em;
+      }
       &:hover,
       &:focus-visible {
         background-color: var(--go-chip-color-bg-hover);
@@ -93,57 +177,76 @@ go-chip {
 }
 
 // Color variants
-@mixin chip-light-styles {
-  go-chip {
-    // colors 'primary' | 'secondary' | 'success' | 'critical' | 'neutral'
-    &[variant='primary'] {
-      --go-chip-color-border: var(--go-color-primary-100);
-      --go-chip-color-bg: var(--go-color-primary-100);
-      --go-chip-color-fg: var(--go-color-text);
-      --go-chip-color-bg-hover: var(--go-color-primary-200);
-    }
-    &[variant='secondary'] {
-      --go-chip-color-border: var(--go-color-secondary-100);
-      --go-chip-color-bg: var(--go-color-secondary-100);
-      --go-chip-color-fg: var(--go-color-text);
-      --go-chip-color-bg-hover: var(--go-color-secondary-200);
-    }
-    &[variant='success'] {
-      --go-chip-color-border: var(--go-color-success-100);
-      --go-chip-color-bg: var(--go-color-success-100);
-      --go-chip-color-fg: var(--go-color-text);
-      --go-chip-color-bg-hover: var(--go-color-success-200);
-    }
-    &[variant='critical'] {
-      --go-chip-color-border: var(--go-color-critical-100);
-      --go-chip-color-bg: var(--go-color-critical-100);
-      --go-chip-color-fg: var(--go-color-text);
-      --go-chip-color-bg-hover: var(--go-color-critical-200);
-    }
-  }
-}
-@mixin chip-dark-styles {
+@mixin chip-light-overrides {
   go-chip {
     // colors 'primary' | 'secondary' | 'success' | 'critical' | 'neutral'
     &[variant='primary'] {
       --go-chip-color-border: var(--go-color-primary-200);
       --go-chip-color-bg: var(--go-color-primary-200);
-      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-primary-300);
     }
     &[variant='secondary'] {
       --go-chip-color-border: var(--go-color-secondary-200);
       --go-chip-color-bg: var(--go-color-secondary-200);
-      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-secondary-300);
     }
     &[variant='success'] {
       --go-chip-color-border: var(--go-color-success-200);
       --go-chip-color-bg: var(--go-color-success-200);
-      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-success-300);
     }
     &[variant='critical'] {
       --go-chip-color-border: var(--go-color-critical-200);
       --go-chip-color-bg: var(--go-color-critical-200);
-      --go-chip-color-fg: var(--go-color-text);
+      --go-chip-color-bg-hover: var(--go-color-critical-300);
+    }
+    &[variant='neutral'] {
+      --go-chip-color-border: var(--go-color-neutral-200);
+      --go-chip-color-bg: var(--go-color-neutral-200);
+      --go-chip-color-bg-hover: var(--go-color-neutral-300);
     }
   }
+}
+@mixin chip-dark-overrides {
+  go-chip {
+    // colors 'primary' | 'secondary' | 'success' | 'critical' | 'neutral'
+    &[variant='primary'] {
+      --go-chip-color-border: var(--go-color-primary-400);
+      --go-chip-color-bg: var(--go-color-primary-400);
+      --go-chip-color-bg-hover: var(--go-color-primary-500);
+    }
+    &[variant='secondary'] {
+      --go-chip-color-border: var(--go-color-secondary-300);
+      --go-chip-color-bg: var(--go-color-secondary-300);
+      --go-chip-color-bg-hover: var(--go-color-secondary-400);
+    }
+    &[variant='success'] {
+      --go-chip-color-border: var(--go-color-success-300);
+      --go-chip-color-bg: var(--go-color-success-300);
+      --go-chip-color-bg-hover: var(--go-color-success-400);
+    }
+    &[variant='critical'] {
+      --go-chip-color-border: var(--go-color-critical-300);
+      --go-chip-color-bg: var(--go-color-critical-300);
+      --go-chip-color-bg-hover: var(--go-color-critical-400);
+    }
+    &[variant='neutral'] {
+      --go-chip-color-border: var(--go-color-neutral-300);
+      --go-chip-color-bg: var(--go-color-neutral-300);
+      --go-chip-color-bg-hover: var(--go-color-neutral-400);
+    }
+  }
+}
+
+@include prefer-light {
+  @include chip-light-overrides;
+}
+@include prefer-dark {
+  @include chip-dark-overrides;
+}
+@include theme-light {
+  @include chip-light-overrides;
+}
+@include theme-dark {
+  @include chip-dark-overrides;
 }
