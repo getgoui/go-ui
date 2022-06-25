@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-06-11T10:21:54",
+  "timestamp": "2022-06-25T00:58:45",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.14.1",
@@ -925,7 +925,6 @@
       "parts": [],
       "dependents": [
         "go-banner",
-        "go-chip",
         "go-dialog",
         "go-nav-drawer",
         "go-search-bar",
@@ -934,9 +933,6 @@
       "dependencies": [],
       "dependencyGraph": {
         "go-banner": [
-          "go-button"
-        ],
-        "go-chip": [
           "go-button"
         ],
         "go-dialog": [
@@ -1308,6 +1304,40 @@
       "usage": {},
       "props": [
         {
+          "name": "clickable",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "clickable",
+          "reflectToAttr": false,
+          "docs": "Make chip clickable, `chipClick` event will be emitted on click",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "dismissible",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "dismissible",
+          "reflectToAttr": false,
+          "docs": "Make chip dismissible, close button will be shown and `chipDismiss` event will be emitted when close button is clicked",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "outline",
           "type": "boolean",
           "mutable": false,
@@ -1365,18 +1395,42 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "chipClick",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted on chip click, only if `clickable` is true",
+          "docsTags": []
+        },
+        {
+          "event": "chipDismissed",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted on chip dismiss, only if `dismissible` is true",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
           "name": "--go-chip-border-width",
           "annotation": "prop",
-          "docs": "Border width of the chip - default: 1px"
+          "docs": "Border width of the chip - default: 2px"
         },
         {
           "name": "--go-chip-color-bg",
           "annotation": "prop",
-          "docs": "Background color of chip - default: var(--go-color-neutral-200)"
+          "docs": "Background color of chip - default: var(--go-color-neutral-100)"
+        },
+        {
+          "name": "--go-chip-color-bg-hover",
+          "annotation": "prop",
+          "docs": "Background color on hover for `clickable` chips - default: var(--go-color-neutral-200)"
         },
         {
           "name": "--go-chip-color-border",
@@ -1387,6 +1441,16 @@
           "name": "--go-chip-color-fg",
           "annotation": "prop",
           "docs": "Foreground color of chip - default: var(--go-color-text)"
+        },
+        {
+          "name": "--go-chip-dismiss-btn-gap",
+          "annotation": "prop",
+          "docs": "Gap between chip content and the dismiss button (only applicable when `dismissable` is `true`) - default: 0"
+        },
+        {
+          "name": "--go-chip-dismiss-btn-size",
+          "annotation": "prop",
+          "docs": "Width and height of the dismiss button - default: calc(1.5em + 2 * var(--go-chip-padding-y))"
         },
         {
           "name": "--go-chip-font-size",
@@ -1401,7 +1465,17 @@
         {
           "name": "--go-chip-padding",
           "annotation": "prop",
-          "docs": "Padding of the chip - default: 0.25em 0.75em"
+          "docs": "Padding of the chip - default: var(--go-chip-padding-y) var(--go-chip-padding-x)"
+        },
+        {
+          "name": "--go-chip-padding-x",
+          "annotation": "prop",
+          "docs": "Horizontal padding of the chip - default: 0.75em"
+        },
+        {
+          "name": "--go-chip-padding-y",
+          "annotation": "prop",
+          "docs": "Vertical padding of the chip - default: 0.25em"
         },
         {
           "name": "--go-chip-radius",
@@ -1412,14 +1486,8 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "go-button"
-      ],
-      "dependencyGraph": {
-        "go-chip": [
-          "go-button"
-        ]
-      }
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/go-dialog/go-dialog.tsx",
@@ -2902,137 +2970,6 @@
           ],
           "optional": true,
           "required": false
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": false,
-          "docs": "Descriptive label for screen readers to identify the progress bar",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "labelledby",
-          "type": "string",
-          "mutable": false,
-          "attr": "labelledby",
-          "reflectToAttr": false,
-          "docs": "Id of the label element for the progress bar",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "max",
-          "type": "number",
-          "mutable": false,
-          "attr": "max",
-          "reflectToAttr": false,
-          "docs": "Total amount of work required for progress to complete",
-          "docsTags": [],
-          "default": "100",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "min",
-          "type": "number",
-          "mutable": false,
-          "attr": "min",
-          "reflectToAttr": false,
-          "docs": "min value of the progress bar",
-          "docsTags": [],
-          "default": "0",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "showPercentage",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "show-percentage",
-          "reflectToAttr": false,
-          "docs": "Display percentage of completion",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "value",
-          "type": "number",
-          "mutable": true,
-          "attr": "value",
-          "reflectToAttr": false,
-          "docs": "How much of the task that has been completed",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": true,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "./src/components/go-search-bar/go-search-bar.tsx",
-      "encapsulation": "none",
-      "tag": "go-search-bar",
-      "readme": "## go-search-bar API\n",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [
-        {
-          "name": "closeSearchForm",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "signature": "closeSearchForm() => Promise<void>",
-          "parameters": [],
-          "docs": "",
-          "docsTags": []
         },
         {
           "name": "label",
