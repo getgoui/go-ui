@@ -214,6 +214,8 @@ go-button {
 @mixin btn-light-overrides {
   go-button {
     // Colour variants
+    --go-btn-bg-color: var(--go-color-neutral-600);
+    --go-btn-bg-color-hover: var(--go-color-neutral-500);
     &[variant='primary'] {
       --go-btn-bg-color: var(--go-color-primary-600);
       --go-btn-bg-color-hover: var(--go-color-primary-500);
@@ -239,6 +241,8 @@ go-button {
 @mixin btn-dark-overrides {
   go-button {
     // Colour variants
+    --go-btn-bg-color: var(--go-color-neutral-400);
+    --go-btn-bg-color-hover: var(--go-color-neutral-500);
     &[variant='primary'] {
       --go-btn-bg-color: var(--go-color-primary-400);
       --go-btn-bg-color-hover: var(--go-color-primary-500);
@@ -246,10 +250,6 @@ go-button {
     &[variant='secondary'] {
       --go-btn-bg-color: var(--go-color-secondary-400);
       --go-btn-bg-color-hover: var(--go-color-secondary-500);
-    }
-    &[variant='neutral'] {
-      --go-btn-bg-color: var(--go-color-neutral-300);
-      --go-btn-bg-color-hover: var(--go-color-neutral-500);
     }
     &[variant='success'] {
       --go-btn-bg-color: var(--go-color-success-400);
