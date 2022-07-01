@@ -178,7 +178,7 @@ export namespace Components {
         /**
           * Position of featured media in the card
          */
-        "mediaPosition": | 'top'
+        "mediaPosition"?: | 'top'
     | 'left'
     | 'right'
     | 'bottom'
@@ -188,6 +188,33 @@ export namespace Components {
           * when href is present, `target` attribute to be applied to the card link
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
+    }
+    interface GoCardRow {
+        /**
+          * Number of columns from mobile breakpoint and up
+         */
+        "cols": number;
+        /**
+          * Number of columns from desktop breakpoint and up
+         */
+        "colsDesktop": number;
+        /**
+          * Number of columns from large breakpoint and up
+         */
+        "colsLarge": number;
+        /**
+          * Number of columns from tablet breakpoint and up
+         */
+        "colsTablet": number;
+        /**
+          * By default, `go-card-row` stretches all cards inside to the tallest card in view, unless this property is set to true.
+         */
+        "noStretch": boolean;
+        "refresh": () => Promise<void>;
+        /**
+          * If set, cards will fade in one by one with the specified delay in milliseconds.
+         */
+        "stagger"?: number;
     }
     interface GoChip {
         /**
@@ -615,6 +642,12 @@ declare global {
         prototype: HTMLGoCardElement;
         new (): HTMLGoCardElement;
     };
+    interface HTMLGoCardRowElement extends Components.GoCardRow, HTMLStencilElement {
+    }
+    var HTMLGoCardRowElement: {
+        prototype: HTMLGoCardRowElement;
+        new (): HTMLGoCardRowElement;
+    };
     interface HTMLGoChipElement extends Components.GoChip, HTMLStencilElement {
     }
     var HTMLGoChipElement: {
@@ -768,6 +801,7 @@ declare global {
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-card": HTMLGoCardElement;
+        "go-card-row": HTMLGoCardRowElement;
         "go-chip": HTMLGoChipElement;
         "go-dialog": HTMLGoDialogElement;
         "go-footer": HTMLGoFooterElement;
@@ -973,6 +1007,32 @@ declare namespace LocalJSX {
           * when href is present, `target` attribute to be applied to the card link
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
+    }
+    interface GoCardRow {
+        /**
+          * Number of columns from mobile breakpoint and up
+         */
+        "cols"?: number;
+        /**
+          * Number of columns from desktop breakpoint and up
+         */
+        "colsDesktop"?: number;
+        /**
+          * Number of columns from large breakpoint and up
+         */
+        "colsLarge"?: number;
+        /**
+          * Number of columns from tablet breakpoint and up
+         */
+        "colsTablet"?: number;
+        /**
+          * By default, `go-card-row` stretches all cards inside to the tallest card in view, unless this property is set to true.
+         */
+        "noStretch"?: boolean;
+        /**
+          * If set, cards will fade in one by one with the specified delay in milliseconds.
+         */
+        "stagger"?: number;
     }
     interface GoChip {
         /**
@@ -1372,6 +1432,7 @@ declare namespace LocalJSX {
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-card": GoCard;
+        "go-card-row": GoCardRow;
         "go-chip": GoChip;
         "go-dialog": GoDialog;
         "go-footer": GoFooter;
@@ -1410,6 +1471,7 @@ declare module "@stencil/core" {
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
+            "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
