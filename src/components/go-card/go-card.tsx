@@ -31,7 +31,7 @@ export class GoCard {
   /**
    * Position of featured media in the card
    */
-  @Prop() mediaPosition:
+  @Prop() mediaPosition?:
     | 'top'
     | 'left'
     | 'right'

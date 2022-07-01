@@ -1,0 +1,18 @@
+go-card-row {
+  --card-row-gap: 1rem;
+
+  align-items: stretch;
+
+  --go-col-gap: var(--card-row-gap);
+  &.no-stretch {
+    align-items: flex-start;
+  }
+  &.stagger {
+    .card-col > go-card {
+      opacity: 0;
+    }
+  }
+  .card-col {
+    margin-bottom: var(--card-row-gap);
+  }
+}

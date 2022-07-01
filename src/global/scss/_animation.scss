@@ -1,8 +1,23 @@
+@mixin animation($name, $fill-mode) {
+  animation: #{$name} var(--go-duration-slow) var(--go-timing-function);
+  animation-fill-mode: $fill-mode;
+}
 .animate-fade-in {
-  animation: fade-in var(--go-duration-slow) var(--go-timing-function);
+  @include animation(fade-in, forwards);
 }
 .animate-fade-out {
-  animation: fade-out var(--go-duration-slow) var(--go-timing-function);
+  @include animation(fade-out, forwards);
+}
+
+.stagger-fade-in {
+  @include animation(fade-in, forwards);
+
+  animation-delay: var(--stagger-delay);
+}
+.stagger-fade-out {
+  @include animation(fade-out, forwards);
+
+  animation-delay: var(--stagger-delay);
 }
 
 @keyframes fade-in {
