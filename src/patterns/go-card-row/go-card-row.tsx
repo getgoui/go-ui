@@ -48,7 +48,7 @@ export class GoCardRow {
   }
 
   @Method()
-  refresh() {
+  async refresh() {
     const { cols, colsTablet, colsDesktop, colsLarge } = this;
     const cards = this.el.querySelectorAll('go-card');
     let colClasses = ['card-col'];
