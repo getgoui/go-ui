@@ -1,4 +1,6 @@
-import { Component, Host, h, Element, Prop, Method } from '@stencil/core';
+import { Component, h, Element, Prop } from '@stencil/core';
+import { moveEl } from '../../utils/dom';
+import { hasSlot } from '../../utils/helper';
 
 @Component({
   tag: 'go-card-row',
@@ -43,52 +45,108 @@ export class GoCardRow {
    */
   // @Prop() carousel = false;
 
-  componentDidLoad() {
-    this.refresh();
+  /**
+   * Heading for this card row section
+   */
+  @Prop() heading?: string;
+
+  /**
+   * View more link href
+   */
+  @Prop() moreLinkHref?: string;
+
+  /**
+   * View more link text
+   */
+  @Prop() moreLinkText?: string;
+
+  hasHeadingSlot: boolean;
+  componentWillLoad() {
+    this.hasHeadingSlot = hasSlot(this.el, 'heading');
   }
 
-  @Method()
-  async refresh() {
+  rowEl: HTMLElement;
+
+  contentObserver: MutationObserver;
+
+  colClasses = ['card-col'];
+
+  async componentDidLoad() {
     const { cols, colsTablet, colsDesktop, colsLarge } = this;
-    const cards = this.el.querySelectorAll('go-card');
-    let colClasses = ['card-col'];
+
     // mobile cols
-    colClasses.push(`col-${Math.ceil(12 / cols)}`);
-    colClasses.push(`col-tablet-${Math.ceil(12 / colsTablet)}`);
-    colClasses.push(`col-desktop-${Math.ceil(12 / colsDesktop)}`);
-    colClasses.push(`col-large-${Math.ceil(12 / colsLarge)}`);
+    this.colClasses.push(`col-${Math.ceil(12 / cols)}`);
+    this.colClasses.push(`col-tablet-${Math.ceil(12 / colsTablet)}`);
+    this.colClasses.push(`col-desktop-${Math.ceil(12 / colsDesktop)}`);
+    this.colClasses.push(`col-large-${Math.ceil(12 / colsLarge)}`);
+    this.loadCards();
+  }
 
-    cards.forEach((card, i) => {
-      // create wrapper container
-      const wrapper = document.createElement('div');
-      wrapper.classList.add(...colClasses);
-
-      // insert wrapper before el in the DOM tree
-      card.parentNode.insertBefore(wrapper, card);
-
-      // move el into wrapper
-      wrapper.appendChild(card);
-
-      // add stagger fade in effect
-      if (this.stagger) {
-        card.classList.add('stagger-fade-in');
-        card.style.cssText = `--stagger-delay: ${i * this.stagger}ms`;
-      }
+  loadCards() {
+    const newCards = this.el.querySelectorAll('go-card:not(.loaded)');
+    newCards.forEach((card: HTMLGoCardElement, i) => {
+      this.prepareCard(card, this.colClasses, i);
     });
   }
 
+  prepareCard(card: HTMLGoCardElement, colClasses: string[], i: number = 0) {
+    // create wrapper container
+    const wrapper = document.createElement('div');
+    wrapper.classList.add(...colClasses);
+
+    // insert wrapper before el in the DOM tree
+    card.parentNode.insertBefore(wrapper, card);
+
+    // move el into wrapper
+    moveEl(card, wrapper);
+
+    // add stagger fade in effect
+    if (this.stagger) {
+      card.classList.add('stagger-fade-in');
+      card.style.cssText = `--stagger-delay: ${i * this.stagger}ms`;
+    }
+
+    card.classList.add('loaded');
+    // move card into correct element
+    moveEl(wrapper, this.rowEl);
+  }
+
   render() {
-    const { noStretch, stagger } = this;
+    const { noStretch, stagger, heading, moreLinkHref, moreLinkText, hasHeadingSlot } = this;
+    const shouldRenderHeading = heading || hasHeadingSlot;
+    const shouldRenderMoreLink = moreLinkHref && moreLinkText;
 
     return (
-      <Host
-        class={{
-          'card-row row': true,
-          'no-stretch': noStretch,
-          'stagger': !!stagger,
-        }}>
-        <slot></slot>
-      </Host>
+      <section>
+        {shouldRenderHeading || shouldRenderMoreLink ? (
+          <div class="heading-row">
+            {shouldRenderHeading ? (
+              <slot name="heading">
+                <h2>{heading}</h2>
+              </slot>
+            ) : (
+              <span></span>
+            )}
+            {shouldRenderMoreLink ? (
+              <go-nav-link
+                item={{
+                  url: moreLinkHref,
+                  label: moreLinkText,
+                }}
+                showArrow={true}></go-nav-link>
+            ) : null}
+          </div>
+        ) : null}
+        <div
+          class={{
+            'card-row row': true,
+            'no-stretch': noStretch,
+            'stagger': !!stagger,
+          }}
+          ref={(el) => (this.rowEl = el)}>
+          <slot></slot>
+        </div>
+      </section>
     );
   }
 }

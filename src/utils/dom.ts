@@ -29,3 +29,12 @@ export function fadeOutRemove(el: HTMLElement, callback?: () => void) {
     if (callback) callback();
   });
 }
+
+/**
+ * Move an element into another parent
+ * @param el Element to be moved
+ * @param to Parent element to move el into
+ */
+export function moveEl(el: HTMLElement, to: HTMLElement) {
+  to.appendChild(el);
+}
