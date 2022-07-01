@@ -56,4 +56,12 @@ Default set of CSS variables used in Go UI
 
   // Spacing
   --go-base-spacing: 0.25rem; // 4px
+
+  // Table
+  --go-table-cell-padding: 1rem;
+  --go-table-border-width-thin: 1px;
+  --go-table-header-border: 2px solid var(--go-color-neutral-500);
+  --go-color-table-border: var(--go-color-neutral-200);
+  --go-color-table-striped-bg: var(--go-color-neutral-100);
+  --go-color-table-hover-bg: var(--go-color-primary-100);
 }
