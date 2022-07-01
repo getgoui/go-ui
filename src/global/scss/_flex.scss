@@ -1,0 +1,37 @@
+// flex alignments
+$align-values: start, end, center, baseline, stretch;
+$justify-values: start, end, center, between, around;
+
+// align-items
+@each $device, $width in $breakpoints {
+  @include min-query($device) {
+    @each $value in $align-values {
+      @if $device == mobile {
+        .align-items-#{$value} {
+          align-items: $value !important;
+        }
+      } @else {
+        .align-items-#{$value}-#{$device} {
+          align-items: $value !important;
+        }
+      }
+    }
+  }
+}
+
+// justify-content
+@each $device, $width in $breakpoints {
+  @include min-query($device) {
+    @each $value in $align-values {
+      @if $device == mobile {
+        .justify-content-#{$value} {
+          justify-content: $value !important;
+        }
+      } @else {
+        .justify-content-#{$value}-#{$device} {
+          justify-content: $value !important;
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,14 @@ $displays: none, inline, inline-block, block, table, table-row, table-cell, flex
 @each $device, $width in $breakpoints {
   @include min-query($device) {
     @each $value in $displays {
-      .d-#{$value}-#{$device} {
-        display: $value !important;
+      @if $device == mobile {
+        .d-#{$value} {
+          display: $value !important;
+        }
+      } @else {
+        .d-#{$value}-#{$device} {
+          display: $value !important;
+        }
       }
     }
   }

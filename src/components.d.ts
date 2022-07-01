@@ -207,10 +207,21 @@ export namespace Components {
          */
         "colsTablet": number;
         /**
+          * Heading for this card row section
+         */
+        "heading"?: string;
+        /**
+          * View more link href
+         */
+        "moreLinkHref"?: string;
+        /**
+          * View more link text
+         */
+        "moreLinkText"?: string;
+        /**
           * By default, `go-card-row` stretches all cards inside to the tallest card in view, unless this property is set to true.
          */
         "noStretch": boolean;
-        "refresh": () => Promise<void>;
         /**
           * If set, cards will fade in one by one with the specified delay in milliseconds.
          */
@@ -1025,6 +1036,18 @@ declare namespace LocalJSX {
           * Number of columns from tablet breakpoint and up
          */
         "colsTablet"?: number;
+        /**
+          * Heading for this card row section
+         */
+        "heading"?: string;
+        /**
+          * View more link href
+         */
+        "moreLinkHref"?: string;
+        /**
+          * View more link text
+         */
+        "moreLinkText"?: string;
         /**
           * By default, `go-card-row` stretches all cards inside to the tallest card in view, unless this property is set to true.
          */

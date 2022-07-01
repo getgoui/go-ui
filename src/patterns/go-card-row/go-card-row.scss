@@ -7,12 +7,30 @@ go-card-row {
   &.no-stretch {
     align-items: flex-start;
   }
-  &.stagger {
-    .card-col > go-card {
+
+  go-card {
+    opacity: 0;
+    max-height: 200px;
+    &.loaded {
+      opacity: 1;
+      max-height: inherit;
+    }
+  }
+  .stagger {
+    go-card.loaded {
       opacity: 0;
     }
   }
+
   .card-col {
     margin-bottom: var(--card-row-gap);
+  }
+
+  .heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--go-size-1);
+    padding: 0 var(--go-outer-gutter);
   }
 }
