@@ -2,6 +2,10 @@ import { Component, h, Element, Prop } from '@stencil/core';
 import { moveEl } from '../../utils/dom';
 import { hasSlot } from '../../utils/helper';
 
+/**
+ * @slot default - Default slot, to be filled with `go-card` elements
+ * @slot heading - Overwrite default `h2` heading for this card row section
+ */
 @Component({
   tag: 'go-card-row',
   styleUrl: 'go-card-row.scss',
