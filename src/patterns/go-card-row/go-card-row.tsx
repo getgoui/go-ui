@@ -36,7 +36,8 @@ export class GoCardRow {
   @Prop() colsLarge = 4;
 
   /**
-   * If set, cards will fade in one by one with the specified delay in milliseconds.
+   * If set, cards will fade in one by one with the specified delay in milliseconds when they are in the viewport.
+   * uses `IntersectionObserver`, [see browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
    */
   @Prop() stagger?: number;
 
@@ -61,35 +62,68 @@ export class GoCardRow {
   @Prop() moreLinkText?: string;
 
   hasHeadingSlot: boolean;
-  componentWillLoad() {
-    this.hasHeadingSlot = hasSlot(this.el, 'heading');
-  }
 
+  /**
+   * the DOM ref of direct parent of the cards
+   */
   rowEl: HTMLElement;
 
+  /**
+   * class list for each card
+   */
+  cardClasses = ['card-col'];
+
+  /**
+   * intersection observer to check if cards are in view
+   */
+  inViewObserver: IntersectionObserver;
   contentObserver: MutationObserver;
 
-  colClasses = ['card-col'];
+  componentWillLoad() {
+    // check if heading slot is used
+    this.hasHeadingSlot = hasSlot(this.el, 'heading');
+
+    // initialise intersection observer
+    this.inViewObserver = new IntersectionObserver(
+      (entries) => {
+        console.log(entries);
+        entries.forEach((entry, i) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          const card = entry.target as HTMLElement;
+          // add stagger fade in effect
+          card.classList.add('stagger-fade-in');
+          card.style.cssText = `--stagger-delay: ${i * this.stagger}ms`;
+          // stop observing
+          this.inViewObserver.unobserve(card);
+        });
+      },
+      {
+        threshold: 0.2, // >= 1/5th of card is in view
+      },
+    );
+  }
 
   async componentDidLoad() {
     const { cols, colsTablet, colsDesktop, colsLarge } = this;
 
     // mobile cols
-    this.colClasses.push(`col-${Math.ceil(12 / cols)}`);
-    this.colClasses.push(`col-tablet-${Math.ceil(12 / colsTablet)}`);
-    this.colClasses.push(`col-desktop-${Math.ceil(12 / colsDesktop)}`);
-    this.colClasses.push(`col-large-${Math.ceil(12 / colsLarge)}`);
+    this.cardClasses.push(`col-${Math.ceil(12 / cols)}`);
+    this.cardClasses.push(`col-tablet-${Math.ceil(12 / colsTablet)}`);
+    this.cardClasses.push(`col-desktop-${Math.ceil(12 / colsDesktop)}`);
+    this.cardClasses.push(`col-large-${Math.ceil(12 / colsLarge)}`);
     this.loadCards();
   }
 
   loadCards() {
     const newCards = this.el.querySelectorAll('go-card:not(.loaded)');
-    newCards.forEach((card: HTMLGoCardElement, i) => {
-      this.prepareCard(card, this.colClasses, i);
+    newCards.forEach((card: HTMLGoCardElement) => {
+      this.prepareCard(card, this.cardClasses);
     });
   }
 
-  prepareCard(card: HTMLGoCardElement, colClasses: string[], i: number = 0) {
+  prepareCard(card: HTMLGoCardElement, colClasses: string[]) {
     // create wrapper container
     const wrapper = document.createElement('div');
     wrapper.classList.add(...colClasses);
@@ -100,15 +134,13 @@ export class GoCardRow {
     // move el into wrapper
     moveEl(card, wrapper);
 
-    // add stagger fade in effect
-    if (this.stagger) {
-      card.classList.add('stagger-fade-in');
-      card.style.cssText = `--stagger-delay: ${i * this.stagger}ms`;
-    }
-
     card.classList.add('loaded');
     // move card into correct element
     moveEl(wrapper, this.rowEl);
+
+    if (this.stagger) {
+      this.inViewObserver.observe(card);
+    }
   }
 
   render() {

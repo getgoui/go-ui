@@ -1,7 +1,7 @@
 <div class="container" id="container"></div>
 <script>
   const container = document.querySelector('#container');
-  let rowHtml = `<go-card-row stagger="300" cols="1" cols-tablet="2" cols-desktop="3" cols-large="4">`;
+  let rowHtml = `<go-card-row stagger="300" cols="1" cols-tablet="2" cols-desktop="3" cols-large="3">`;
 
   fetch(
     'https://mcuapi.herokuapp.com/api/v1/movies?page=1&limit=10&columns=title%2Coverview%2Crelease_date%2Ccover_url%2Ctrailer_url&order=chronology%2CDESC&filter=phase%3D3',

@@ -223,7 +223,7 @@ export namespace Components {
          */
         "noStretch": boolean;
         /**
-          * If set, cards will fade in one by one with the specified delay in milliseconds.
+          * If set, cards will fade in one by one with the specified delay in milliseconds when they are in the viewport. uses `IntersectionObserver`, [see browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
          */
         "stagger"?: number;
     }
@@ -1053,7 +1053,7 @@ declare namespace LocalJSX {
          */
         "noStretch"?: boolean;
         /**
-          * If set, cards will fade in one by one with the specified delay in milliseconds.
+          * If set, cards will fade in one by one with the specified delay in milliseconds when they are in the viewport. uses `IntersectionObserver`, [see browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
          */
         "stagger"?: number;
     }
