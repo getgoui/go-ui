@@ -246,6 +246,19 @@ export namespace Components {
          */
         "variant": ChipVariants;
     }
+    interface GoContentLayout {
+        "breadcrumbs"?: INavItem[] | string;
+        "heroImgAlt"?: string;
+        "heroImgSrc"?: string;
+        "intro"?: string;
+        /**
+          * href on logo link
+         */
+        "logoHref": string;
+        "mainNav": INavItem[] | string;
+        "pageHeading": string;
+        "preHeading"?: string;
+    }
     interface GoDialog {
         /**
           * If this dialog is active
@@ -309,7 +322,13 @@ export namespace Components {
         "breakpoint": Breakpoints;
     }
     interface GoHero {
+        /**
+          * Breadcrumb navigation items
+         */
         "breadcrumb"?: INavItem[] | string;
+        /**
+          * Hero heading (h1)
+         */
         "heading": string;
         /**
           * hero image alt text (requires img-src attribute to be present to render)
@@ -319,6 +338,9 @@ export namespace Components {
           * hero image src url (requires img-alt attribute to be present to render)
          */
         "imgSrc"?: string;
+        /**
+          * Pre heading text - use only when required
+         */
         "preHeading"?: string;
     }
     interface GoIcon {
@@ -665,6 +687,12 @@ declare global {
         prototype: HTMLGoChipElement;
         new (): HTMLGoChipElement;
     };
+    interface HTMLGoContentLayoutElement extends Components.GoContentLayout, HTMLStencilElement {
+    }
+    var HTMLGoContentLayoutElement: {
+        prototype: HTMLGoContentLayoutElement;
+        new (): HTMLGoContentLayoutElement;
+    };
     interface HTMLGoDialogElement extends Components.GoDialog, HTMLStencilElement {
     }
     var HTMLGoDialogElement: {
@@ -814,6 +842,7 @@ declare global {
         "go-card": HTMLGoCardElement;
         "go-card-row": HTMLGoCardRowElement;
         "go-chip": HTMLGoChipElement;
+        "go-content-layout": HTMLGoContentLayoutElement;
         "go-dialog": HTMLGoDialogElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
@@ -1084,6 +1113,19 @@ declare namespace LocalJSX {
          */
         "variant"?: ChipVariants;
     }
+    interface GoContentLayout {
+        "breadcrumbs"?: INavItem[] | string;
+        "heroImgAlt"?: string;
+        "heroImgSrc"?: string;
+        "intro"?: string;
+        /**
+          * href on logo link
+         */
+        "logoHref"?: string;
+        "mainNav"?: INavItem[] | string;
+        "pageHeading"?: string;
+        "preHeading"?: string;
+    }
     interface GoDialog {
         /**
           * If this dialog is active
@@ -1145,7 +1187,13 @@ declare namespace LocalJSX {
         "breakpoint"?: Breakpoints;
     }
     interface GoHero {
+        /**
+          * Breadcrumb navigation items
+         */
         "breadcrumb"?: INavItem[] | string;
+        /**
+          * Hero heading (h1)
+         */
         "heading"?: string;
         /**
           * hero image alt text (requires img-src attribute to be present to render)
@@ -1155,6 +1203,9 @@ declare namespace LocalJSX {
           * hero image src url (requires img-alt attribute to be present to render)
          */
         "imgSrc"?: string;
+        /**
+          * Pre heading text - use only when required
+         */
         "preHeading"?: string;
     }
     interface GoIcon {
@@ -1457,6 +1508,7 @@ declare namespace LocalJSX {
         "go-card": GoCard;
         "go-card-row": GoCardRow;
         "go-chip": GoChip;
+        "go-content-layout": GoContentLayout;
         "go-dialog": GoDialog;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
@@ -1496,6 +1548,7 @@ declare module "@stencil/core" {
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
             "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
+            "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;

@@ -37,7 +37,7 @@ export class GoHeaderBar {
         </div>
         <div
           class={{
-            'main-nav d-none-mobile': true,
+            'main-nav d-none': true,
             [`d-block-${breakpoint}`]: true,
           }}>
           <slot name="main-nav"></slot>

@@ -126,9 +126,10 @@ export class GoNavDrawer {
         <div class="nav-drawer-header">
           <div class="header-row">
             {parentItem ? (
-              <go-button class="back-btn" flat stack color="tertiary" compact onClick={() => this.closeCurrentSubMenu()}>
+              <go-button class="back-btn" flat stack variant="text" compact onClick={() => this.closeCurrentSubMenu()}>
                 <svg
-                  slot="start"
+                  slot="prefix"
+                  aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   stroke="currentColor"
@@ -144,10 +145,11 @@ export class GoNavDrawer {
               <span></span>
             )}
 
-            {/* <div class="title">{isSubNav ? parentItem.label : 'Menu'}</div> */}
-            <div class="title">{this.label}</div>
-            <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
+            {/* <div class="title">{isSubNav ? parentItem.label : this.label}</div> */}
+            {!isSubNav && <div class="title">{this.label}</div>}
+            <go-button class="close-btn" flat stack variant="text" compact onClick={() => this.close()}>
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 stroke="currentColor"

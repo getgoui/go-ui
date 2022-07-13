@@ -103,8 +103,8 @@
       <go-nav-drawer ref="mobileMenu" label="Menu" .items="items"></go-nav-drawer>
 
       <go-header-bar breakpoint="tablet">
-        <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack color="tertiary" @click="handleClick">
-          <go-icon name="menu"></go-icon>
+        <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack variant="text" @click="handleClick">
+          <go-icon name="menu" slot="prefix"></go-icon>
           <span id="menu-label">Menu</span>
         </go-button>
 

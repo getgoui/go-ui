@@ -2,6 +2,9 @@ import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
 import { INavItem } from '../../types';
 import { warning } from '../../utils/helper';
 
+/**
+ * @slot default - content below the main heading
+ */
 @Component({
   tag: 'go-hero',
   styleUrl: 'go-hero.scss',
@@ -10,10 +13,19 @@ import { warning } from '../../utils/helper';
 export class GoHero {
   @Element() el: HTMLElement;
 
+  /**
+   * Hero heading (h1)
+   */
   @Prop() heading: string;
 
+  /**
+   * Pre heading text - use only when required
+   */
   @Prop() preHeading?: string;
 
+  /**
+   * Breadcrumb navigation items
+   */
   @Prop() breadcrumb?: INavItem[] | string;
   /**
    * hero image src url

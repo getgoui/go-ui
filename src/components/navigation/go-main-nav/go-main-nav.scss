@@ -1,8 +1,10 @@
 go-main-nav {
-  --nav-bg-color: var(--go-color-neutral-100);
+  --nav-border-top: 1px solid var(--go-color-neutral-200);
+  --nav-border-bottom: 1px solid var(--go-color-neutral-200);
+  --nav-bg-color: var(--go-color-bg);
   --nav-shadow: var(--shadow-2);
   --nav-item-text-color: var(--go-color-darkest);
-  --nav-item-bg-color: var(--go-color-neutral-100);
+  --nav-item-bg-color: var(--nav-bg-color);
   --nav-item-hover-bg-color: var(--go-color-lightest);
   --nav-item-active-bg-color: var(--go-color-bg);
   --nav-item-current-bg-color: var(--nav-item-bg-color);
@@ -19,14 +21,14 @@ go-main-nav {
 
   display: block;
   box-shadow: var(--nav-shadow);
-
+  border-top: var(--nav-border-top);
   ul {
     list-style: none;
-    padding-inline-start: 2ch;
   }
   > nav {
     background: var(--nav-bg-color);
     .nav-menu-root {
+      margin: 0;
       padding: 0;
       display: flex;
       flex-direction: row;
