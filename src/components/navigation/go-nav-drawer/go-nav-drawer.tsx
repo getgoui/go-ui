@@ -93,7 +93,7 @@ export class GoNavDrawer {
     try {
       this.navItems = parseItems(this.items);
     } catch (e) {
-      console.log({ e });
+      console.warn('Could not parse nav items.', e);
     }
   }
 
