@@ -20,3 +20,20 @@ export function prefersDark(): boolean {
 export function prefersReducedMotion(): boolean {
   return mm('(prefers-reduced-motion: reduce)').matches;
 }
+
+export function watchDevice(callback: (device) => void): void {
+  const syncEl = document.createElement('div');
+  syncEl.setAttribute('id', 'sync-mq');
+  document.body.appendChild(syncEl);
+  console.log('yo', syncEl);
+  var observer = new ResizeObserver(function (entries) {
+    // get device type from body content
+    if (!entries[0]) {
+      return;
+    }
+    const style = getComputedStyle(syncEl, '::before').getPropertyValue('content');
+    callback(style.replace(/"/g, ''));
+  });
+
+  observer.observe(syncEl);
+}

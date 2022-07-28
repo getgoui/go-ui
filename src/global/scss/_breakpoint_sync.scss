@@ -1,0 +1,8 @@
+#sync-mq::before {
+  @each $device, $width in $breakpoints {
+    @include min-query($device) {
+      content: '#{$device}';
+      display: none;
+    }
+  }
+}
