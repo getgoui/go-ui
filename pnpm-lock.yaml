@@ -5,7 +5,7 @@ specifiers:
   '@commitlint/cli': ^13.2.1
   '@commitlint/config-conventional': ^13.2.0
   '@floating-ui/dom': ^0.4.5
-  '@stencil/core': ^2.13.0
+  '@stencil/core': ^2.17.1
   '@stencil/postcss': ^2.1.0
   '@stencil/sass': ^1.5.2
   '@types/jest': ^26.0.24
@@ -49,7 +49,6 @@ specifiers:
 
 dependencies:
   '@floating-ui/dom': 0.4.5
-  '@stencil/core': 2.14.1
   body-scroll-lock: 4.0.0-beta.0
   dompurify: 2.3.6
   json5: 2.2.0
@@ -64,8 +63,9 @@ devDependencies:
   '@axe-core/puppeteer': 4.4.0_puppeteer@5.5.0
   '@commitlint/cli': 13.2.1
   '@commitlint/config-conventional': 13.2.0
-  '@stencil/postcss': 2.1.0_@stencil+core@2.14.1
-  '@stencil/sass': 1.5.2_@stencil+core@2.14.1
+  '@stencil/core': 2.17.1
+  '@stencil/postcss': 2.1.0_@stencil+core@2.17.1
+  '@stencil/sass': 1.5.2_@stencil+core@2.17.1
   '@types/jest': 26.0.24
   '@types/markdown-it': 12.2.3
   '@types/puppeteer': 5.4.5
@@ -1072,27 +1072,28 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@stencil/core/2.14.1:
-    resolution: {integrity: sha512-G58fJeDbi58+7uQnyaGInnehfub9tJikFZ4PkT/FuelMV9wGq2FKB0fxKctKQ3mhhHAiFDuGNzRD1isZZQvUCg==}
+  /@stencil/core/2.17.1:
+    resolution: {integrity: sha512-ErjQsNALgZQ9SYeBHhqwL1UO+Zbptwl3kwrRJC2tGlc3G/T6UvPuaKr+PGsqI+CZGia+0+R5EELQvFu74mYeIg==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
+    dev: true
 
-  /@stencil/postcss/2.1.0_@stencil+core@2.14.1:
+  /@stencil/postcss/2.1.0_@stencil+core@2.17.1:
     resolution: {integrity: sha512-/e4TYEXErGaHxH0ocg620YqEMLuMLpK/Wg4MJsiJglrLZCZhU4XCX1N0SwxaIOUbEZ1Zh+AqQ++yMI92ilndEA==}
     peerDependencies:
       '@stencil/core': '>=2.0.0'
     dependencies:
-      '@stencil/core': 2.14.1
+      '@stencil/core': 2.17.1
       autoprefixer: 10.4.2_postcss@8.3.11
       postcss: 8.3.11
     dev: true
 
-  /@stencil/sass/1.5.2_@stencil+core@2.14.1:
+  /@stencil/sass/1.5.2_@stencil+core@2.17.1:
     resolution: {integrity: sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==}
     peerDependencies:
       '@stencil/core': '>=1.0.2'
     dependencies:
-      '@stencil/core': 2.14.1
+      '@stencil/core': 2.17.1
     dev: true
 
   /@szmarczak/http-timer/1.1.2:
