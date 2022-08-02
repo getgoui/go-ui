@@ -1,35 +1,52 @@
-import { Component, Host, h, Element, Prop, State } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Method } from '@stencil/core';
 import { INavItem } from '../../types';
 import uniqueId from 'lodash.uniqueid';
+
+export interface TocProps {
+  label?: string;
+  scope?: string;
+  selector?: string;
+}
 
 @Component({
   tag: 'go-toc',
   styleUrl: 'go-toc.scss',
   shadow: false,
 })
-export class GoToc {
+export class GoToc implements TocProps {
   @Element() el: HTMLElement;
 
   /**
    * Label for the TOC
    */
-  @Prop() label: string = 'On this page';
+  @Prop() label?: string = 'On this page';
 
   /**
    * Specify the scope to get TOC items from
    */
-  @Prop() scope: string = 'main';
+  @Prop() scope?: string = 'main';
 
   /**
    * Selector for the TOC items
    */
-  @Prop() selector: string = 'h2';
+  @Prop() selector?: string = 'h2';
 
   @State() tocItems?: INavItem[];
 
   labelId: string = uniqueId('go-toc-heading-');
 
   componentWillLoad() {
+    this.init();
+  }
+
+  /**
+   * Query the DOM and generate TOC
+   * If content in scope is dynamically loaded, it may not be available when this toc component loads.
+   * call this `init` method and have the toc regenerate the links
+   * @returns void
+   */
+  @Method()
+  async init() {
     const scopeEl = document.querySelector(this.scope);
     if (!scopeEl) {
       return;
@@ -38,7 +55,7 @@ export class GoToc {
     if (!items.length) {
       return;
     }
-    this.initialiseItems(items);
+    this.setupItems(items);
   }
 
   /**
@@ -46,7 +63,7 @@ export class GoToc {
    * If the element doesn't have a `id` attribute, generate an unique id and set it to the element
    * Finally set the tocItems state with url and label
    */
-  private initialiseItems(items: NodeListOf<Element>) {
+  private setupItems(items: NodeListOf<Element>) {
     const tocItems: INavItem[] = [];
     for (let i = 0; i < items.length; i++) {
       const item = items[i];

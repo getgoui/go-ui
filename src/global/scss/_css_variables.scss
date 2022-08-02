@@ -4,9 +4,6 @@ Default set of CSS variables used in Go UI
 
 *********************/
 
-// load external google font
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700&display=swap');
-
 // load color tokens
 @import './themes/tokens';
 
@@ -30,8 +27,8 @@ Default set of CSS variables used in Go UI
   --go-col-gap: 1rem; // Gap between columns
 
   // Typography
-  --go-heading-font-family: 'Public Sans', sans-serif;
-  --go-body-font-family: 'Public Sans', sans-serif;
+  --go-heading-font-family: 'Noto Sans', sans-serif;
+  --go-body-font-family: 'Noto Sans', sans-serif;
 
   // Focus styles
   --go-focus-outline-width: 2px;

@@ -1,11 +1,12 @@
 > 0.5%
 last 2 major versions
 not dead
-Chrome >= 60
+Chrome >= 91
 Firefox >= 60
 Firefox ESR
-iOS >= 12
-Safari >= 12
+iOS >= 13
+Safari >= 13
 not ie > 0
 not op_mini all
 not kaios 2.5
+not baidu > 0

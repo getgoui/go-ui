@@ -2,18 +2,38 @@ import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
 import { INavItem } from '../../types';
 import { warning } from '../../utils/helper';
 
+export interface HeroProps {
+  heading: string;
+  preHeading?: string;
+  breadcrumb?: INavItem[] | string;
+  imgSrc?: string;
+  imgAlt?: string;
+}
+
+/**
+ * @slot default - content below the main heading
+ */
 @Component({
   tag: 'go-hero',
   styleUrl: 'go-hero.scss',
   shadow: false,
 })
-export class GoHero {
+export class GoHero implements HeroProps {
   @Element() el: HTMLElement;
 
+  /**
+   * Hero heading (h1)
+   */
   @Prop() heading: string;
 
+  /**
+   * Pre heading text - use only when required
+   */
   @Prop() preHeading?: string;
 
+  /**
+   * Breadcrumb navigation items
+   */
   @Prop() breadcrumb?: INavItem[] | string;
   /**
    * hero image src url

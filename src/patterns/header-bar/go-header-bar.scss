@@ -11,13 +11,10 @@ go-header-bar {
   .header-bar {
     display: grid;
     grid-template-columns: auto 1fr auto; // stylelint-disable-line
-    align-items: flex-start;
+    align-items: center;
     position: relative;
     gap: var(--header-bar-section-gap);
     padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
-    .logo {
-      margin: 0 auto;
-    }
 
     // allow responsiveness at different breakpoints
     @each $device, $width in $breakpoints {

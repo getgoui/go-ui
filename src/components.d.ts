@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./types";
 import { ChipVariants } from "./types/variants";
+import { TocProps } from "./components/go-toc/go-toc";
+import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
@@ -246,6 +248,20 @@ export namespace Components {
          */
         "variant": ChipVariants;
     }
+    interface GoContentLayout {
+        "breadcrumbs"?: INavItem[] | string;
+        "heroImgAlt"?: string;
+        "heroImgSrc"?: string;
+        "initToc": () => Promise<void>;
+        "intro"?: string;
+        "pageHeading": string;
+        "preHeading"?: string;
+        "sidebarDesktopPosition"?: SidebarPosition;
+        "sidebarMobilePosition"?: SidebarPosition;
+        "sidebarSticky"?: boolean;
+        "toc"?: boolean;
+        "tocProps"?: TocProps;
+    }
     interface GoDialog {
         /**
           * If this dialog is active
@@ -309,7 +325,13 @@ export namespace Components {
         "breakpoint": Breakpoints;
     }
     interface GoHero {
+        /**
+          * Breadcrumb navigation items
+         */
         "breadcrumb"?: INavItem[] | string;
+        /**
+          * Hero heading (h1)
+         */
         "heading": string;
         /**
           * hero image alt text (requires img-src attribute to be present to render)
@@ -319,6 +341,9 @@ export namespace Components {
           * hero image src url (requires img-alt attribute to be present to render)
          */
         "imgSrc"?: string;
+        /**
+          * Pre heading text - use only when required
+         */
         "preHeading"?: string;
     }
     interface GoIcon {
@@ -573,17 +598,22 @@ export namespace Components {
     }
     interface GoToc {
         /**
+          * Query the DOM and generate TOC If content in scope is dynamically loaded, it may not be available when this toc component loads. call this `init` method and have the toc regenerate the links
+          * @returns void
+         */
+        "init": () => Promise<void>;
+        /**
           * Label for the TOC
          */
-        "label": string;
+        "label"?: string;
         /**
           * Specify the scope to get TOC items from
          */
-        "scope": string;
+        "scope"?: string;
         /**
           * Selector for the TOC items
          */
-        "selector": string;
+        "selector"?: string;
     }
     interface GoTooltip {
         /**
@@ -603,6 +633,42 @@ export namespace Components {
          */
         "triggerId": string;
     }
+}
+export interface GoAccordionItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoAccordionItemElement;
+}
+export interface GoBannerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoBannerElement;
+}
+export interface GoChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoChipElement;
+}
+export interface GoMainNavCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoMainNavElement;
+}
+export interface GoMdCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoMdElement;
+}
+export interface GoNavDrawerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoNavDrawerElement;
+}
+export interface GoNavLinkCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoNavLinkElement;
+}
+export interface GoOverlayCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoOverlayElement;
+}
+export interface GoTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoTabsElement;
 }
 declare global {
     interface HTMLGoAccordionElement extends Components.GoAccordion, HTMLStencilElement {
@@ -664,6 +730,12 @@ declare global {
     var HTMLGoChipElement: {
         prototype: HTMLGoChipElement;
         new (): HTMLGoChipElement;
+    };
+    interface HTMLGoContentLayoutElement extends Components.GoContentLayout, HTMLStencilElement {
+    }
+    var HTMLGoContentLayoutElement: {
+        prototype: HTMLGoContentLayoutElement;
+        new (): HTMLGoContentLayoutElement;
     };
     interface HTMLGoDialogElement extends Components.GoDialog, HTMLStencilElement {
     }
@@ -814,6 +886,7 @@ declare global {
         "go-card": HTMLGoCardElement;
         "go-card-row": HTMLGoCardRowElement;
         "go-chip": HTMLGoChipElement;
+        "go-content-layout": HTMLGoContentLayoutElement;
         "go-dialog": HTMLGoDialogElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
@@ -866,19 +939,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when accordion item has closed
          */
-        "onClosed"?: (event: CustomEvent<any>) => void;
+        "onClosed"?: (event: GoAccordionItemCustomEvent<any>) => void;
         /**
           * Emitted when accordion item started closing
          */
-        "onClosing"?: (event: CustomEvent<any>) => void;
+        "onClosing"?: (event: GoAccordionItemCustomEvent<any>) => void;
         /**
           * Emitted when accordion item has opened
          */
-        "onOpened"?: (event: CustomEvent<any>) => void;
+        "onOpened"?: (event: GoAccordionItemCustomEvent<any>) => void;
         /**
           * Emitted when accordion item started opening
          */
-        "onOpening"?: (event: CustomEvent<any>) => void;
+        "onOpening"?: (event: GoAccordionItemCustomEvent<any>) => void;
     }
     interface GoBadge {
         /**
@@ -911,7 +984,7 @@ declare namespace LocalJSX {
           * Heading of banner
          */
         "heading"?: string;
-        "onDismissed"?: (event: CustomEvent<void>) => void;
+        "onDismissed"?: (event: GoBannerCustomEvent<void>) => void;
         /**
           * Type of banner
          */
@@ -1069,11 +1142,11 @@ declare namespace LocalJSX {
         /**
           * Emitted on chip click, only if `clickable` is true
          */
-        "onChipClick"?: (event: CustomEvent<any>) => void;
+        "onChipClick"?: (event: GoChipCustomEvent<any>) => void;
         /**
           * Emitted on chip dismiss, only if `dismissible` is true
          */
-        "onChipDismissed"?: (event: CustomEvent<any>) => void;
+        "onChipDismissed"?: (event: GoChipCustomEvent<any>) => void;
         /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
@@ -1083,6 +1156,19 @@ declare namespace LocalJSX {
           * Colour variant of the chip
          */
         "variant"?: ChipVariants;
+    }
+    interface GoContentLayout {
+        "breadcrumbs"?: INavItem[] | string;
+        "heroImgAlt"?: string;
+        "heroImgSrc"?: string;
+        "intro"?: string;
+        "pageHeading"?: string;
+        "preHeading"?: string;
+        "sidebarDesktopPosition"?: SidebarPosition;
+        "sidebarMobilePosition"?: SidebarPosition;
+        "sidebarSticky"?: boolean;
+        "toc"?: boolean;
+        "tocProps"?: TocProps;
     }
     interface GoDialog {
         /**
@@ -1145,7 +1231,13 @@ declare namespace LocalJSX {
         "breakpoint"?: Breakpoints;
     }
     interface GoHero {
+        /**
+          * Breadcrumb navigation items
+         */
         "breadcrumb"?: INavItem[] | string;
+        /**
+          * Hero heading (h1)
+         */
         "heading"?: string;
         /**
           * hero image alt text (requires img-src attribute to be present to render)
@@ -1155,6 +1247,9 @@ declare namespace LocalJSX {
           * hero image src url (requires img-alt attribute to be present to render)
          */
         "imgSrc"?: string;
+        /**
+          * Pre heading text - use only when required
+         */
         "preHeading"?: string;
     }
     interface GoIcon {
@@ -1195,7 +1290,7 @@ declare namespace LocalJSX {
           * Navigation items to be rendered if provided, slot content will not be rendered.
          */
         "items"?: INavItem[] | string;
-        "onNavigate"?: (event: CustomEvent<any>) => void;
+        "onNavigate"?: (event: GoMainNavCustomEvent<any>) => void;
     }
     interface GoMd {
         /**
@@ -1210,7 +1305,8 @@ declare namespace LocalJSX {
           * [markdown-it](https://github.com/markdown-it/markdown-it) options **Note**: if `use-go-ui` is set to true, these options will be overwritten
          */
         "mdOptions"?: Options | string;
-        "onInit"?: (event: CustomEvent<any>) => void;
+        "onInit"?: (event: GoMdCustomEvent<any>) => void;
+        "onRendered"?: (event: GoMdCustomEvent<any>) => void;
         /**
           * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
          */
@@ -1234,11 +1330,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the nav drawer is closed
          */
-        "onClose"?: (event: CustomEvent<void>) => void;
+        "onClose"?: (event: GoNavDrawerCustomEvent<void>) => void;
         /**
           * Emitted when the nav drawer is opened
          */
-        "onOpen"?: (event: CustomEvent<void>) => void;
+        "onOpen"?: (event: GoNavDrawerCustomEvent<void>) => void;
         /**
           * Position where the navigation should appear from
          */
@@ -1253,7 +1349,7 @@ declare namespace LocalJSX {
           * navigation item
          */
         "item"?: INavItem;
-        "onNavigate"?: (event: CustomEvent<any>) => void;
+        "onNavigate"?: (event: GoNavLinkCustomEvent<any>) => void;
         /**
           * show arrow at the end of the link
          */
@@ -1282,11 +1378,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the overlay is closed
          */
-        "onOverlayClose"?: (event: CustomEvent<void>) => void;
+        "onOverlayClose"?: (event: GoOverlayCustomEvent<void>) => void;
         /**
           * Emitted when the overlay is opened
          */
-        "onOverlayOpen"?: (event: CustomEvent<void>) => void;
+        "onOverlayOpen"?: (event: GoOverlayCustomEvent<void>) => void;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
@@ -1398,7 +1494,7 @@ declare namespace LocalJSX {
           * tab change event
           * @param ActivatedTab , tabEl, panelEl}
          */
-        "onTabChange"?: (event: CustomEvent<ActivatedTab>) => void;
+        "onTabChange"?: (event: GoTabsCustomEvent<ActivatedTab>) => void;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
@@ -1457,6 +1553,7 @@ declare namespace LocalJSX {
         "go-card": GoCard;
         "go-card-row": GoCardRow;
         "go-chip": GoChip;
+        "go-content-layout": GoContentLayout;
         "go-dialog": GoDialog;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
@@ -1496,6 +1593,7 @@ declare module "@stencil/core" {
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
             "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
+            "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;

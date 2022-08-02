@@ -7,29 +7,21 @@ go-gov-au-logo {
   .logo-wrapper {
     text-decoration: none;
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     color: var(--link-color);
-    @include tablet {
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-    }
     .main-brand {
-      text-align: center;
       img {
         height: var(--logo-height, 3rem);
       }
     }
     .divider {
-      display: block;
-      height: 1rem;
-      @include tablet {
-        width: var(--divider-width);
-        height: auto;
-        align-self: stretch;
-        background-color: var(--divider-color);
-        margin: 0 var(--divider-gap);
-      }
+      width: var(--divider-width);
+      height: auto;
+      align-self: stretch;
+      background-color: var(--divider-color);
+      margin: 0 var(--divider-gap);
     }
   }
 }
