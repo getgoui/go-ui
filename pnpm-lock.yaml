@@ -4,7 +4,7 @@ specifiers:
   '@axe-core/puppeteer': ^4.3.2
   '@commitlint/cli': ^13.2.1
   '@commitlint/config-conventional': ^13.2.0
-  '@floating-ui/dom': ^0.4.5
+  '@floating-ui/dom': ^1.0.0
   '@stencil/core': ^2.17.1
   '@stencil/postcss': ^2.1.0
   '@stencil/sass': ^1.5.2
@@ -48,7 +48,7 @@ specifiers:
   yargs: ^17.3.1
 
 dependencies:
-  '@floating-ui/dom': 0.4.5
+  '@floating-ui/dom': 1.0.0
   body-scroll-lock: 4.0.0-beta.0
   dompurify: 2.3.6
   json5: 2.2.0
@@ -595,14 +595,14 @@ packages:
       - typescript
     dev: true
 
-  /@floating-ui/core/0.6.2:
-    resolution: {integrity: sha512-jktYRmZwmau63adUG3GKOAVCofBXkk55S/zQ94XOorAHhwqFIOFAy1rSp2N0Wp6/tGbe9V3u/ExlGZypyY17rg==}
+  /@floating-ui/core/1.0.0:
+    resolution: {integrity: sha512-sm3nW0hHAxTv3gRDdCH8rNVQxijF+qPFo5gAeXCErRjKC7Qc28lIQ3R9Vd7Gw+KgwfA7RhRydDFuGeI0peGq7A==}
     dev: false
 
-  /@floating-ui/dom/0.4.5:
-    resolution: {integrity: sha512-b+prvQgJt8pieaKYMSJBXHxX/DYwdLsAWxKYqnO5dO2V4oo/TYBZJAUQCVNjTWWsrs6o4VDrNcP9+E70HAhJdw==}
+  /@floating-ui/dom/1.0.0:
+    resolution: {integrity: sha512-PMqJvY5Fae8HVQgUqM+lidprS6p9LSvB0AUhCdYKqr3YCaV+WaWCeVNBtXPRY2YIdrgcsL2+vd5F07FxgihHUw==}
     dependencies:
-      '@floating-ui/core': 0.6.2
+      '@floating-ui/core': 1.0.0
     dev: false
 
   /@hutson/parse-repository-url/3.0.2:
@@ -1251,8 +1251,8 @@ packages:
       '@types/yargs-parser': 21.0.0
     dev: true
 
-  /@types/yauzl/2.9.2:
-    resolution: {integrity: sha512-8uALY5LTvSuHgloDVUvWP3pIauILm+8/0pDMokuDYIoNsOkSwd5AiHBTSEJjKTDcZr5z8UpgOWZkxBF4iJftoA==}
+  /@types/yauzl/2.10.0:
+    resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
       '@types/node': 17.0.21
@@ -3741,7 +3741,7 @@ packages:
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
-      '@types/yauzl': 2.9.2
+      '@types/yauzl': 2.10.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4232,7 +4232,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.15.2
+      uglify-js: 3.16.3
     dev: true
 
   /har-schema/2.0.0:
@@ -8882,8 +8882,8 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: false
 
-  /uglify-js/3.15.2:
-    resolution: {integrity: sha512-peeoTk3hSwYdoc9nrdiEJk+gx1ALCtTjdYuKSXMTDqq7n1W7dHPqWDdSi+BPL0ni2YMeHD7hKUSdbj3TZauY2A==}
+  /uglify-js/3.16.3:
+    resolution: {integrity: sha512-uVbFqx9vvLhQg0iBaau9Z75AxWJ8tqM9AV890dIZCLApF4rTcyHwmAvLeEdYRs+BzYWu8Iw81F79ah0EfTXbaw==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
