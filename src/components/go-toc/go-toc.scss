@@ -4,8 +4,8 @@ go-toc {
   --toc-border-gap: 2rem;
   --toc-padding: 1.5rem 0;
 
+  display: block;
   .go-toc {
-    display: block;
     padding: var(--toc-padding);
     nav {
       position: relative;

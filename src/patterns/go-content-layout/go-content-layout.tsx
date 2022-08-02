@@ -1,23 +1,35 @@
-import { Component, Host, h, Element, Prop, State } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Method, State, Watch } from '@stencil/core';
+import { TocProps } from '../../components/go-toc/go-toc';
 import { INavItem } from '../../types';
+import { watchDevice } from '../../utils/match-media';
+import { hasSlot } from '../../utils/helper';
+
+export type SidebarPosition = 'start' | 'end';
+
+export interface ContentLayoutProps {
+  pageHeading: string;
+  preHeading?: string;
+  intro?: string;
+  breadcrumbs?: INavItem[] | string;
+  heroImgSrc?: string;
+  heroImgAlt?: string;
+  toc?: boolean;
+  tocProps?: TocProps;
+  sidebarMobilePosition?: SidebarPosition;
+  sidebarDesktopPosition?: SidebarPosition;
+}
 
 /**
- * @slot header - use go-header-bar to create an accessible header with logo and navigation items
  * @slot intro - Hero section intro text
- *
+ * @slot main - Main section
  */
 @Component({
   tag: 'go-content-layout',
   styleUrl: 'go-content-layout.scss',
   shadow: false,
 })
-export class GoContentLayout {
+export class GoContentLayout implements ContentLayoutProps {
   @Element() el: HTMLElement;
-
-  /**
-   * href on logo link
-   */
-  @Prop() logoHref: string;
 
   @Prop() pageHeading: string;
 
@@ -31,79 +43,115 @@ export class GoContentLayout {
 
   @Prop() heroImgAlt?: string;
 
-  @Prop() mainNav: INavItem[] | string;
+  @Prop() toc?: boolean;
 
-  mobileMenu: HTMLGoNavDrawerElement;
+  @Prop() tocProps?: TocProps;
 
-  handleMainNavigation(e) {
-    console.log(e);
+  @Prop() sidebarMobilePosition?: SidebarPosition = 'start';
+
+  @Prop() sidebarDesktopPosition?: SidebarPosition = 'start';
+
+  @Prop() sidebarSticky? = false;
+  tocEl: HTMLGoTocElement;
+
+  sidebarTemplate: HTMLElement;
+
+  sidebarContainerStart: HTMLElement;
+  sidebarContainerEnd: HTMLElement;
+
+  @Method()
+  async initToc() {
+    if (this.tocEl) {
+      await this.tocEl.init();
+    }
   }
 
-  /**
-   * control mobile menu open state
-   */
-  @State() isMobileMenuOpen = false;
-  openMobileMenu() {
-    this.isMobileMenuOpen = true;
+  @State() computedSidebarPosition: SidebarPosition | null = null;
+  hasSidebar = false;
+  async componentWillLoad() {
+    this.hasSidebar = hasSlot(this.el, 'sidebar');
+    // add resize observer to toggle between mobile and desktop
+    watchDevice((device) => {
+      const { sidebarMobilePosition, sidebarDesktopPosition } = this;
+      const deviceSidebarPosition = {
+        mobile: sidebarMobilePosition,
+        tablet: sidebarMobilePosition,
+        desktop: sidebarDesktopPosition,
+        large: sidebarDesktopPosition,
+      };
+
+      this.computedSidebarPosition = deviceSidebarPosition[device];
+    });
   }
-  closeMobileMenu() {
-    this.isMobileMenuOpen = false;
+
+  rowEl: HTMLElement;
+
+  @Watch('computedSidebarPosition')
+  adjustSidebarPosition(pos: SidebarPosition | null) {
+    if (!this.hasSidebar || !this.sidebarTemplate) {
+      return;
+    }
+    const tempSidebar = this.sidebarTemplate;
+    tempSidebar.style.display = 'block';
+    tempSidebar.setAttribute('aria-hidden', 'false');
+    if (pos === 'start') {
+      this.sidebarContainerStart.appendChild(tempSidebar);
+    } else {
+      this.sidebarContainerEnd?.appendChild(tempSidebar);
+    }
+  }
+
+  componentDidLoad() {
+    this.initToc();
   }
 
   render() {
-    const { pageHeading, intro, preHeading, breadcrumbs, mainNav, isMobileMenuOpen, logoHref } = this;
+    const { pageHeading, intro, preHeading, breadcrumbs, toc, tocProps, hasSidebar, computedSidebarPosition, sidebarSticky: sticky } = this;
+
+    const classes = {
+      start:
+        computedSidebarPosition === 'start'
+          ? {
+              'content-sidebar col-12 col-desktop-3': true,
+              sticky,
+            }
+          : null,
+      end:
+        computedSidebarPosition === 'end'
+          ? {
+              'content-sidebar col-12 col-desktop-3 offset-desktop-1': true,
+              sticky,
+            }
+          : null,
+    };
+
     return (
       <Host>
-        <slot name="header">
-          <header>
-            <go-nav-drawer active={isMobileMenuOpen} label="Menu" items={mainNav} onClose={() => this.closeMobileMenu()}></go-nav-drawer>
-            <go-header-bar>
-              <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack variant="text" onClick={() => this.openMobileMenu()}>
-                <svg
-                  slot="prefix"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  aria-hidden="true"
-                  viewBox="0 0 24 24">
-                  <path d="M3 12h18M3 6h18M3 18h18" />
-                </svg>
-                <span id="menu-label">Menu</span>
-              </go-button>
-
-              <go-gov-au-logo href={logoHref} slot="logo">
-                <img
-                  slot="main-brand"
-                  src="https://www.dfat.gov.au/sites/default/files/australian-government-stacked-black_168791ec-96ad-3bcc-817b-27e71beb4522.png"
-                  alt="Main brand"
-                />
-                <img
-                  slot="main-brand-on-dark"
-                  src="https://www.dfat.gov.au/sites/default/files/australian-government-stacked-white_a422272d-3c74-31dc-8361-65d308194362.png"
-                  alt="Main brand on dark background"
-                />
-                <div slot="co-brand">
-                  <div class="text-size-2">
-                    <b>Go UI</b>
-                  </div>
-                  <div class="text-size--1">A design system for everyone</div>
-                </div>
-              </go-gov-au-logo>
-
-              <go-main-nav slot="main-nav" items={mainNav}></go-main-nav>
-            </go-header-bar>
-          </header>
-        </slot>
+        <div ref={(el) => (this.sidebarTemplate = el)} id="sidebar-template" aria-hidden={true} style={{ display: 'none' }}>
+          <div class={{ 'content-sidebar': true, sticky }}>
+            {toc && <go-toc {...tocProps} ref={(el) => (this.tocEl = el)}></go-toc>}
+            <slot name="sidebar"></slot>
+          </div>
+        </div>
         <go-hero breadcrumb={breadcrumbs} preHeading={preHeading} heading={pageHeading}>
           <slot name="intro">
             <p>{intro}</p>
           </slot>
         </go-hero>
-
-        <slot></slot>
+        <div class="container content-container">
+          <div class="row">
+            {hasSidebar && <aside ref={(el) => (this.sidebarContainerStart = el)} class={classes.start}></aside>}
+            <main
+              class={{
+                'col-12 col-desktop-8 content-main': true,
+                'offset-desktop-1': hasSidebar && computedSidebarPosition === 'start',
+              }}>
+              {!hasSidebar && toc && <go-toc {...tocProps} ref={(el) => (this.tocEl = el)}></go-toc>}
+              <slot></slot>
+            </main>
+            {hasSidebar && <aside ref={(el) => (this.sidebarContainerEnd = el)} class={classes.end}></aside>}
+          </div>
+        </div>
       </Host>
     );
   }

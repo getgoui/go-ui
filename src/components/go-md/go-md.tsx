@@ -20,7 +20,7 @@ export class GoMd {
   /**
    * Markdown content to be rendered
    */
-  @Prop() content: string;
+  @Prop({ mutable: true }) content: string;
 
   /**
    * url to load remote markdown content
@@ -49,6 +49,8 @@ export class GoMd {
   @Prop() useGoUi?: boolean = false;
 
   @Event() init: EventEmitter;
+
+  @Event() rendered: EventEmitter;
 
   private md: MarkdownIt;
 
@@ -143,12 +145,13 @@ export class GoMd {
     const response = await fetch(this.src);
     if (response.ok) {
       const data = await response.text();
-      this.el.innerHTML = await this.getRenderedContent(data);
+      this.content = data;
     }
   }
 
   async renderContent() {
     this.el.innerHTML = await this.getRenderedContent(this.content);
+    this.rendered.emit(this.md);
   }
 
   async componentWillLoad() {

@@ -2,6 +2,14 @@ import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
 import { INavItem } from '../../types';
 import { warning } from '../../utils/helper';
 
+export interface HeroProps {
+  heading: string;
+  preHeading?: string;
+  breadcrumb?: INavItem[] | string;
+  imgSrc?: string;
+  imgAlt?: string;
+}
+
 /**
  * @slot default - content below the main heading
  */
@@ -10,7 +18,7 @@ import { warning } from '../../utils/helper';
   styleUrl: 'go-hero.scss',
   shadow: false,
 })
-export class GoHero {
+export class GoHero implements HeroProps {
   @Element() el: HTMLElement;
 
   /**

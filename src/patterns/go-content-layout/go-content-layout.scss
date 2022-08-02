@@ -1,3 +1,19 @@
 go-content-layout {
+  --content-container-padding: 2rem 0;
+
   display: block;
+  .content-container {
+    position: relative;
+    padding: var(--content-container-padding);
+    @include desktop {
+      > .row {
+        align-items: flex-start;
+      }
+      .sticky {
+        position: sticky;
+        top: 0;
+        bottom: 0;
+      }
+    }
+  }
 }
