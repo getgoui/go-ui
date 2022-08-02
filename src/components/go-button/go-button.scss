@@ -176,7 +176,7 @@ go-button {
     padding: var(--go-btn-padding-y, 0.5rem) var(--go-btn-padding-x, 1rem);
     box-shadow: var(--go-btn-shadow);
     text-underline-offset: 4px; // optimise for browsers that support it
-    font-weight: 500;
+    font-weight: 400;
     @include clickable;
 
     &:hover,
