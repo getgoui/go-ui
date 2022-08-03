@@ -49,6 +49,16 @@ export class GoCard {
    */
   @Prop() target?: '_blank' | '_self' | '_parent' | '_top';
 
+  /**
+   * Flat card without box-shadow
+   */
+  @Prop() flat: boolean = false;
+
+  /**
+   * Show border on card
+   */
+  @Prop() border: boolean = false;
+
   hasCustomTitle: boolean;
 
   hasMedia: boolean;
@@ -65,10 +75,10 @@ export class GoCard {
   }
 
   render() {
-    const { hasMedia, mediaPosition, hasCustomTitle, cardTitle, cardSubtitle, hasPreTitle, hasFooter, href, target } = this;
+    const { hasMedia, mediaPosition, hasCustomTitle, cardTitle, cardSubtitle, hasPreTitle, hasFooter, href, target, flat, border } = this;
 
     return (
-      <Host class={{ [`media ${mediaPosition}`]: hasMedia, 'has-link': !!href }}>
+      <Host class={{ [`media ${mediaPosition}`]: hasMedia, 'has-link': !!href, flat, border }}>
         {hasMedia && (
           <div class="card-media">
             <slot name="media"></slot>

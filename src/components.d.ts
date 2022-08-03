@@ -166,6 +166,10 @@ export namespace Components {
     }
     interface GoCard {
         /**
+          * Show border on card
+         */
+        "border": boolean;
+        /**
           * Subtitle of the card
          */
         "cardSubtitle"?: string;
@@ -173,6 +177,10 @@ export namespace Components {
           * Title of the card
          */
         "cardTitle"?: string;
+        /**
+          * Flat card without box-shadow
+         */
+        "flat": boolean;
         /**
           * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
          */
@@ -1067,6 +1075,10 @@ declare namespace LocalJSX {
     }
     interface GoCard {
         /**
+          * Show border on card
+         */
+        "border"?: boolean;
+        /**
           * Subtitle of the card
          */
         "cardSubtitle"?: string;
@@ -1074,6 +1086,10 @@ declare namespace LocalJSX {
           * Title of the card
          */
         "cardTitle"?: string;
+        /**
+          * Flat card without box-shadow
+         */
+        "flat"?: boolean;
         /**
           * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
          */
