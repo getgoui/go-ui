@@ -31,7 +31,7 @@ go-tabs {
     white-space: nowrap;
     background: var(--tab-bg-color);
     color: var(--tab-text-color);
-    font-weight: 700;
+    font-weight: 500;
     @include transition(background-color, color);
 
     &:hover,
@@ -49,10 +49,9 @@ go-tabs {
     }
     &[aria-selected='true'] {
       background: var(--tab-active-bg-color);
-
-      // border-bottom-color: var(--tab-active-color);
       color: var(--tab-active-color);
       text-decoration: none;
+      text-shadow: 0 0 1px currentColor;
     }
   }
 
