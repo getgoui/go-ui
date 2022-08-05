@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { INavItem } from '../../../types';
+import { INavItem } from '../../../interfaces';
 import { inheritAttributes } from '../../../utils/helper';
 
 @Component({

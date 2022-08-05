@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, Method, State, Watch } from '@stencil/core';
 import { TocProps } from '../../components/go-toc/go-toc';
-import { INavItem } from '../../types';
+import { INavItem } from '../../interfaces';
 import { watchDevice } from '../../utils/match-media';
 import { hasSlot } from '../../utils/helper';
 

@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./types";
-import { ChipVariants } from "./types/variants";
+import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./interfaces";
+import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
@@ -555,6 +555,10 @@ export namespace Components {
          */
         "stacked"?: boolean;
     }
+    interface GoSwitch {
+        "checked"?: boolean;
+        "value": any;
+    }
     interface GoTab {
         /**
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
@@ -847,6 +851,12 @@ declare global {
         prototype: HTMLGoSpinnerElement;
         new (): HTMLGoSpinnerElement;
     };
+    interface HTMLGoSwitchElement extends Components.GoSwitch, HTMLStencilElement {
+    }
+    var HTMLGoSwitchElement: {
+        prototype: HTMLGoSwitchElement;
+        new (): HTMLGoSwitchElement;
+    };
     interface HTMLGoTabElement extends Components.GoTab, HTMLStencilElement {
     }
     var HTMLGoTabElement: {
@@ -912,6 +922,7 @@ declare global {
         "go-search-bar": HTMLGoSearchBarElement;
         "go-skip-link": HTMLGoSkipLinkElement;
         "go-spinner": HTMLGoSpinnerElement;
+        "go-switch": HTMLGoSwitchElement;
         "go-tab": HTMLGoTabElement;
         "go-table-wrapper": HTMLGoTableWrapperElement;
         "go-tabs": HTMLGoTabsElement;
@@ -1472,6 +1483,10 @@ declare namespace LocalJSX {
          */
         "stacked"?: boolean;
     }
+    interface GoSwitch {
+        "checked"?: boolean;
+        "value"?: any;
+    }
     interface GoTab {
         /**
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
@@ -1587,6 +1602,7 @@ declare namespace LocalJSX {
         "go-search-bar": GoSearchBar;
         "go-skip-link": GoSkipLink;
         "go-spinner": GoSpinner;
+        "go-switch": GoSwitch;
         "go-tab": GoTab;
         "go-table-wrapper": GoTableWrapper;
         "go-tabs": GoTabs;
@@ -1627,6 +1643,7 @@ declare module "@stencil/core" {
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
             "go-spinner": LocalJSX.GoSpinner & JSXBase.HTMLAttributes<HTMLGoSpinnerElement>;
+            "go-switch": LocalJSX.GoSwitch & JSXBase.HTMLAttributes<HTMLGoSwitchElement>;
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
             "go-table-wrapper": LocalJSX.GoTableWrapper & JSXBase.HTMLAttributes<HTMLGoTableWrapperElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
