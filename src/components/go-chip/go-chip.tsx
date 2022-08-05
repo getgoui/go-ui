@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
-import { ChipVariants } from '../../types/variants';
+import { ChipVariants } from '../../interfaces/variants';
 import { hasSlot } from '../../utils/helper';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, Element, h, Method, Prop, State, Host, EventEmitter, Event, Watch } from '@stencil/core';
-import { INavItem } from '../../../types';
+import { INavItem } from '../../../interfaces';
 import { onClickOutside } from '../../../utils/dom';
 import { inheritAttributes } from '../../../utils/helper';
 import { parseItems } from '../../../utils/nav';

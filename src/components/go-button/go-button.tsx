@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element, Host, Watch, State } from '@stencil/core';
-import { Breakpoints, ColorVariants } from '../../types';
+import { Breakpoints, ColorVariants } from '../../interfaces';
 import { inheritAttributes, warning } from '../../utils/helper';
 
 /**

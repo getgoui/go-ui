@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop, State, Method } from '@stencil/core';
-import { INavItem } from '../../types';
+import { INavItem } from '../../interfaces';
 import uniqueId from 'lodash.uniqueid';
 
 export interface TocProps {

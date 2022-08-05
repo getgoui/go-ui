@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
-import { INavItem } from '../../types';
+import { INavItem } from '../../interfaces';
 import { warning } from '../../utils/helper';
 
 export interface HeroProps {

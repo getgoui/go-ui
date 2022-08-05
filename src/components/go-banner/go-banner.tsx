@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop, Event, EventEmitter, State } from '@stencil/core';
-import { BannerVariants } from '../../types';
+import { BannerVariants } from '../../interfaces';
 import { hasSlot } from '../../utils/helper';
 
 @Component({

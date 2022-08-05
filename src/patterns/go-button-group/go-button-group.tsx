@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
-import { Breakpoints } from '../../types';
+import { Breakpoints } from '../../interfaces';
 
 @Component({
   tag: 'go-button-group',
