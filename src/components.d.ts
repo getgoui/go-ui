@@ -557,6 +557,9 @@ export namespace Components {
     }
     interface GoSwitch {
         "checked"?: boolean;
+        "disabled"?: boolean;
+        "label": string;
+        "name": string;
         "value": any;
     }
     interface GoTab {
@@ -1485,6 +1488,9 @@ declare namespace LocalJSX {
     }
     interface GoSwitch {
         "checked"?: boolean;
+        "disabled"?: boolean;
+        "label"?: string;
+        "name"?: string;
         "value"?: any;
     }
     interface GoTab {
