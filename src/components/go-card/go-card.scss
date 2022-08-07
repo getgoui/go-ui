@@ -69,9 +69,9 @@ go-card {
   /**
     @prop --go-card-border-color:
       Border color for card (for `border` card only)
-      - default: var(--go-color-primary-100)
+      - default: var(--go-color-neutral-200)
   */
-  --go-card-border-color: var(--go-color-primary-100);
+  --go-card-border-color: var(--go-color-neutral-200);
 
   /**
     @prop --go-card-media-basis:
