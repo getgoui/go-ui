@@ -1,15 +1,16 @@
 /*********************
-
-Default set of CSS variables used in Go UI
-
+Default Go UI CSS variables
 *********************/
 
 // load color tokens
 @import './themes/tokens';
 
-/* @link https://utopia.fyi/type/calculator?c=768,16,1.2,1440,16,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+// @see https://utopia.fyi/type/calculator?c=768,16,1.2,1440,16,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
 
 :root {
+  //////////////////////
+  // Font sizes
+  //////////////////////
   /* stylelint-disable-next-line custom-property-pattern */
   --go-size--1: clamp(0.83rem, 0.87rem + -0.08vw, 0.8rem);
   --go-size-0: clamp(1rem, 1rem + 0vw, 1rem);
@@ -22,15 +23,21 @@ Default set of CSS variables used in Go UI
   --go-size-7: clamp(3.58rem, 2.23rem + 2.82vw, 4.77rem);
   --go-size-8: clamp(4.3rem, 2.4rem + 3.95vw, 5.96rem);
 
+  //////////////////////
   // Grid
+  //////////////////////
   --go-outer-gutter: 0.5rem; // Container gutter
   --go-col-gap: 1rem; // Gap between columns
 
-  // Typography
+  //////////////////////
+  // Font family
+  //////////////////////
   --go-heading-font-family: 'Noto Sans', sans-serif;
   --go-body-font-family: 'Noto Sans', sans-serif;
 
-  // Focus styles
+  //////////////////////
+  // Focus
+  //////////////////////
   --go-focus-outline-width: 2px;
   --go-focus-outline-offset: 2px;
 
@@ -44,7 +51,9 @@ Default set of CSS variables used in Go UI
   --go-color-code-bg: var(--go-color-neutral-100);
   --go-color-code-fg: var(--go-color-neutral-800);
 
+  //////////////////////
   // Transitions
+  //////////////////////
   --go-duration-fast: 0.1s;
   --go-duration-normal: 0.25s;
   --go-duration-slow: 0.5s;
@@ -61,4 +70,7 @@ Default set of CSS variables used in Go UI
   --go-color-table-border: var(--go-color-neutral-200);
   --go-color-table-striped-bg: var(--go-color-neutral-100);
   --go-color-table-hover-bg: var(--go-color-primary-100);
+
+  // Form variables
+  --form-label-gap: 4px;
 }
