@@ -84,6 +84,7 @@ export class GoSwitch {
           <input
             ref={(el) => (this.inputEl = el)}
             type="checkbox"
+            role="switch"
             id={inputId}
             name={name}
             disabled={disabled}
@@ -95,9 +96,9 @@ export class GoSwitch {
           <div class="switch-group">
             <span class="switch-track">
               <span class="switch-handle"></span>
-              {showOnOff ? <span class="switch-text">{isOn ? activeLabel : inactiveLabel}</span> : null}
+              {showOnOff ? <span class="switch-text" aria-hidden="true">{isOn ? activeLabel : inactiveLabel}</span> : null}
             </span>
-            {showOnOffOutside ? <span class="text-size-0">{isOn ? activeLabel : inactiveLabel}</span> : null}
+            {showOnOffOutside ? <span class="text-size-0" aria-hidden="true">{isOn ? activeLabel : inactiveLabel}</span> : null}
           </div>
         </div>
       </Host>
