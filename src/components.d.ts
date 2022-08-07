@@ -556,10 +556,34 @@ export namespace Components {
         "stacked"?: boolean;
     }
     interface GoSwitch {
+        /**
+          * "on" label to show when `showOnOff*` is set to true
+         */
+        "activeLabel": string;
         "checked"?: boolean;
         "disabled"?: boolean;
+        /**
+          * make this field full width
+         */
+        "fullWidth": boolean;
+        /**
+          * "off" label to show when `showOnOff*` is set to true
+         */
+        "inactiveLabel": string;
         "label": string;
         "name": string;
+        /**
+          * show on/off text in switch toggle
+         */
+        "showOnOff": boolean;
+        /**
+          * show on/off text next to the switch toggle
+         */
+        "showOnOffOutside": boolean;
+        /**
+          * Display label on top of switch
+         */
+        "stack": boolean;
         "value": any;
     }
     interface GoTab {
@@ -1487,10 +1511,34 @@ declare namespace LocalJSX {
         "stacked"?: boolean;
     }
     interface GoSwitch {
+        /**
+          * "on" label to show when `showOnOff*` is set to true
+         */
+        "activeLabel"?: string;
         "checked"?: boolean;
         "disabled"?: boolean;
+        /**
+          * make this field full width
+         */
+        "fullWidth"?: boolean;
+        /**
+          * "off" label to show when `showOnOff*` is set to true
+         */
+        "inactiveLabel"?: string;
         "label"?: string;
         "name"?: string;
+        /**
+          * show on/off text in switch toggle
+         */
+        "showOnOff"?: boolean;
+        /**
+          * show on/off text next to the switch toggle
+         */
+        "showOnOffOutside"?: boolean;
+        /**
+          * Display label on top of switch
+         */
+        "stack"?: boolean;
         "value"?: any;
     }
     interface GoTab {

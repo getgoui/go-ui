@@ -1,3 +1,185 @@
 go-switch {
- display: block;
+  /**
+    @prop --switch-width:
+      width of switch control
+      - default: 4rem
+  */
+  --switch-width: 4rem;
+
+  /**
+    @prop --switch-height:
+      height of switch control
+      - default: 2rem
+  */
+  --switch-height: 2rem;
+
+  /**
+    @prop --switch-bg-color:
+      default background color of switch control
+      - default: var(--go-color-neutral-500)
+  */
+  --switch-bg-color: var(--go-color-neutral-500);
+
+  /**
+    @prop --switch-bg-color-checked:
+      background color of switch control when checked
+      - default: var(--go-color-primary-600)
+  */
+  --switch-bg-color-checked: var(--go-color-primary-600);
+
+  /**
+    @prop --switch-label-gap:
+      gap between label and switch control
+      - default: 1rem
+  */
+  --switch-label-gap: 1rem;
+
+  /**
+    @prop --switch-radius:
+      border radius of switch control
+      - default: var(--radius-round)
+  */
+  --switch-radius: var(--radius-round);
+
+  /**
+    @prop --switch-handle-color:
+      color of the switch handle
+      - default: #fff
+  */
+  --switch-handle-color: #fff;
+
+  /**
+    @prop --switch-handle-gap:
+      gap between handle circle and the edge of the switch
+      - default: 4px
+  */
+  --switch-handle-gap: 4px;
+
+  /**
+    @prop --switch-handle-shadow:
+      box shadow for the handle circle
+      - default: var(--shadow-2)
+  */
+  --switch-handle-shadow: var(--shadow-2);
+
+  /**
+    @prop --switch-shadow:
+      shadow on the switch track
+      - default: var(--inner-shadow-1)
+  */
+  --switch-shadow: var(--inner-shadow-1);
+
+  /**
+    @prop --switch-text-color:
+      Text color for on off label
+      - default: #fff
+  */
+  --switch-text-color: #fff;
+  --switch-handle-size: calc(min(var(--switch-width), var(--switch-height)) - 2 * var(--switch-handle-gap));
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--switch-label-gap);
+  &.stack {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--form-label-gap);
+  }
+  &.full-width {
+    display: flex;
+    justify-content: space-between;
+  }
+  label {
+    font-weight: 700;
+  }
+
+  .switch-container {
+    position: relative;
+  }
+  .switch-group {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--switch-label-gap) / 2);
+  }
+  .switch-track {
+    @include transition(background-color, outline-offset var(--go-duration-fast));
+
+    display: block;
+    position: relative;
+    padding-inline: var(--switch-handle-gap);
+    width: var(--switch-width);
+    height: var(--switch-height);
+    background: var(--switch-bg-color);
+    border-radius: var(--switch-radius);
+    box-shadow: var(--switch-shadow);
+
+    .switch-text {
+      position: absolute;
+      top: 50%;
+      left: auto;
+      right: 20%;
+      transform: translateY(-50%);
+      color: var(--switch-text-color);
+      font-size: max(calc(var(--switch-handle-size) / 2), 12px);
+      font-weight: 500;
+    }
+  }
+
+  .switch-handle {
+    display: block;
+    position: absolute;
+    top: var(--switch-handle-gap);
+    left: var(--switch-handle-gap);
+    bottom: var(--switch-handle-gap);
+    z-index: 1;
+    background: var(--switch-handle-color);
+    width: var(--switch-handle-size);
+    height: var(--switch-handle-size);
+    border-radius: var(--switch-radius);
+    box-shadow: var(--switch-handle-shadow);
+    @include transition(transform var(--go-duration-fast));
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    outline: none;
+    cursor: pointer;
+    &:checked {
+      ~ .switch-group {
+        .switch-track {
+          --switch-bg-color: var(--switch-bg-color-checked);
+          .switch-handle {
+            transform: translateX(calc(var(--switch-width) - var(--switch-handle-size) - 2 * var(--switch-handle-gap)));
+          }
+          .switch-text {
+            left: 20%;
+            right: auto;
+          }
+        }
+      }
+    }
+
+    &:focus-visible {
+      &:active {
+        ~ .switch-group {
+          .switch-track {
+            outline-offset: 0;
+          }
+        }
+      }
+      ~ .switch-group {
+        .switch-track {
+          outline: var(--go-focus-outline-width) solid var(--switch-bg-color);
+          outline-offset: var(--go-focus-outline-offset);
+        }
+      }
+    }
+  }
 }
