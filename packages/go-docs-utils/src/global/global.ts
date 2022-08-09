@@ -1,0 +1,1 @@
+import '@go-ui/core';
