@@ -26,3 +26,4 @@ UserInterfaceState.xcuserstate
 
 # Demo assets should be available during build
 docs/static/demo-assets
+.turbo
