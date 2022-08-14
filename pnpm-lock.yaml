@@ -172,8 +172,8 @@ importers:
 
   packages/docsite-utils:
     specifiers:
-      '@go-ui/core': ^0.37.0
-      '@stencil/core': ^2.13.0
+      '@go-ui/core': workspace:*
+      '@stencil/core': ^2.17.3
       '@stencil/postcss': ^2.1.0
       '@stencil/sass': ^1.5.2
       '@types/jest': ^27.0.3
@@ -190,7 +190,7 @@ importers:
       prismjs: ^1.26.0
       puppeteer: ^10.0.0
     dependencies:
-      '@go-ui/core': 0.37.1
+      '@go-ui/core': link:../core
       '@stencil/core': 2.17.3
       copy-text-to-clipboard: 3.0.1
       json5: 2.2.1
@@ -2933,41 +2933,14 @@ packages:
       - typescript
     dev: true
 
-  /@floating-ui/core/0.6.2:
-    resolution: {integrity: sha512-jktYRmZwmau63adUG3GKOAVCofBXkk55S/zQ94XOorAHhwqFIOFAy1rSp2N0Wp6/tGbe9V3u/ExlGZypyY17rg==}
-    dev: false
-
   /@floating-ui/core/1.0.1:
     resolution: {integrity: sha512-bO37brCPfteXQfFY0DyNDGB3+IMe4j150KFQcgJ5aBP295p9nBGeHEs/p0czrRbtlHq4Px/yoPXO/+dOCcF4uA==}
-    dev: false
-
-  /@floating-ui/dom/0.4.5:
-    resolution: {integrity: sha512-b+prvQgJt8pieaKYMSJBXHxX/DYwdLsAWxKYqnO5dO2V4oo/TYBZJAUQCVNjTWWsrs6o4VDrNcP9+E70HAhJdw==}
-    dependencies:
-      '@floating-ui/core': 0.6.2
     dev: false
 
   /@floating-ui/dom/1.0.1:
     resolution: {integrity: sha512-wBDiLUKWU8QNPNOTAFHiIAkBv1KlHauG2AhqjSeh2H+wR8PX+AArXfz8NkRexH5PgMJMmSOS70YS89AbWYh5dA==}
     dependencies:
       '@floating-ui/core': 1.0.1
-    dev: false
-
-  /@go-ui/core/0.37.1:
-    resolution: {integrity: sha512-9YlTfnAVBHgQLSi4Cw0ihB/tnXdN5ZqH2Xjwhpu+i4+zTCTD47u9FwZ/MFEWUcc1SBKLbvJTvURox/4kcMmgew==}
-    hasBin: true
-    dependencies:
-      '@floating-ui/dom': 0.4.5
-      '@stencil/core': 2.17.3
-      body-scroll-lock: 4.0.0-beta.0
-      dompurify: 2.3.10
-      json5: 2.2.1
-      lodash.debounce: 4.0.8
-      lodash.uniqueid: 4.0.1
-      markdown-it: 13.0.1
-      markdown-it-container: 3.0.0
-      markdown-it-for-inline: 0.1.1
-      open-props: 1.4.8
     dev: false
 
   /@hapi/hoek/9.3.0:

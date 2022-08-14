@@ -28,8 +28,8 @@
     "deploy": "npm version patch && npm publish --access public"
   },
   "dependencies": {
-    "@go-ui/core": "^0.37.0",
-    "@stencil/core": "^2.13.0",
+    "@go-ui/core": "workspace:*",
+    "@stencil/core": "^2.17.3",
     "copy-text-to-clipboard": "^3.0.1",
     "json5": "^2.2.0",
     "lodash.camelcase": "^4.3.0",

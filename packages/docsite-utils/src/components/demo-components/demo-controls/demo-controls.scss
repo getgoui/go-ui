@@ -4,6 +4,8 @@ demo-controls {
   top: 0;
   right: 0;
   z-index: var(--layer-important);
+  transform: rotate(-90deg);
+  transform-origin: right bottom;
 
   go-button.demo-control-btn {
     --go-btn-inner-gap: 1rem;
@@ -12,8 +14,6 @@ demo-controls {
       border-bottom-right-radius: 0;
       box-shadow: var(--shadow-3);
     }
-    transform: rotate(-90deg);
-    transform-origin: right bottom;
   }
 }
 

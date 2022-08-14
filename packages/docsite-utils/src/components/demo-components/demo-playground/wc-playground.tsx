@@ -225,7 +225,7 @@ export class WcPlayground {
                 <go-button
                   compact
                   class={{ 'control-panel-opener': true }}
-                  color="primary"
+                  variant="success"
                   onClick={() => this.openConfigPanel()}
                   aria-label="Open configuration panel"
                 >
@@ -244,7 +244,7 @@ export class WcPlayground {
                 <go-button
                   round
                   compact
-                  color="tertiary"
+                  variant="text"
                   flat
                   icon
                   onClick={() => this.closeConfigPanel()}

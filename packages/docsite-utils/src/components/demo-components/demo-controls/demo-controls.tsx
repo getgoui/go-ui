@@ -19,7 +19,7 @@ export class DemoControls {
   render() {
     return (
       <Host>
-        <go-button class="demo-control-btn" type="button" onClick={() => this.open()} compact>
+        <go-button variant="primary" class="demo-control-btn" type="button" onClick={() => this.open()} compact>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -37,7 +37,7 @@ export class DemoControls {
           <div class="demo-control-drawer">
             <div class="demo-control-header">
               <h4>Demo controls</h4>
-              <go-button type="button" onClick={() => this.close()} stack flat compact color="tertiary">
+              <go-button type="button" onClick={() => this.close()} stack flat compact variant="text">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
