@@ -47,7 +47,7 @@ export default async function pattern(args) {
 function writeBoilerplate(patternName, createElement, tags) {
   const tagName = getTagName(patternName);
   const rootPath = path.resolve(__dirname, "../");
-  const dir = `${rootPath}/packages/core/src/patterns/${patternName}/`;
+  const dir = `${rootPath}/src/patterns/${patternName}/`;
   const docsDir = `${rootPath}/docs/docs/patterns/`;
   // Create the directory if it doesn't exist.
   if (!fs.existsSync(dir)) {
