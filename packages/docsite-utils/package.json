@@ -1,6 +1,6 @@
 {
-  "name": "@go-ui/utils",
-  "version": "0.5.11",
+  "name": "@go-ui/docsite-utils",
+  "version": "1.0.0",
   "description": "Utility components for Go UI document site",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

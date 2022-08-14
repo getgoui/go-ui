@@ -34,6 +34,22 @@ export namespace Components {
         "tag": string;
     }
 }
+export interface PropsPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPropsPanelElement;
+}
+export interface SlotsPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSlotsPanelElement;
+}
+export interface WcOutputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLWcOutputElement;
+}
+export interface WcPlaygroundCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLWcPlaygroundElement;
+}
 declare global {
     interface HTMLDarkModeToggleElement extends Components.DarkModeToggle, HTMLStencilElement {
     }
@@ -87,22 +103,22 @@ declare namespace LocalJSX {
     }
     interface PropsPanel {
         "debug"?: boolean;
-        "onPropChange"?: (event: CustomEvent<IProp[]>) => void;
+        "onPropChange"?: (event: PropsPanelCustomEvent<IProp[]>) => void;
         "values"?: IProp[];
     }
     interface SlotsPanel {
         "debug"?: boolean;
-        "onSlotDisplayChange"?: (event: CustomEvent<ISlot[]>) => void;
+        "onSlotDisplayChange"?: (event: SlotsPanelCustomEvent<ISlot[]>) => void;
         "values"?: ISlot[];
     }
     interface WcOutput {
-        "onCopyCode"?: (event: CustomEvent<any>) => void;
+        "onCopyCode"?: (event: WcOutputCustomEvent<any>) => void;
         "usage"?: string;
     }
     interface WcPlayground {
         "block"?: boolean;
         "code"?: string;
-        "onLoaded"?: (event: CustomEvent<HTMLElement>) => void;
+        "onLoaded"?: (event: WcPlaygroundCustomEvent<HTMLElement>) => void;
         "props"?: IProp[] | string;
         "slots"?: ISlot[] | string;
         /**
