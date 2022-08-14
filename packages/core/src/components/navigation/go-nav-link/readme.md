@@ -24,6 +24,7 @@
 ### Used by
 
  - [go-breadcrumb](../../go-breadcrumb)
+ - [go-card-row](../../../patterns/go-card-row)
  - [go-main-nav](../go-main-nav)
  - [go-nav-list](../go-nav-list)
  - [go-toc](../../go-toc)
@@ -37,6 +38,7 @@
 graph TD;
   go-nav-link --> go-icon
   go-breadcrumb --> go-nav-link
+  go-card-row --> go-nav-link
   go-main-nav --> go-nav-link
   go-nav-list --> go-nav-link
   go-toc --> go-nav-link

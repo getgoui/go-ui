@@ -19,13 +19,13 @@ export const config: Config = {
     },
     {
       type: 'www',
-      dir: 'docs/static/demo-assets',
+      dir: '../docs/static/demo-assets',
       serviceWorker: null, // disable service workers
       copy: [{ src: 'demo.html', dest: 'demo.html' }],
     },
     {
       type: 'docs-json',
-      file: 'docs/src/go-ui.json',
+      file: '../docs/src/go-ui.json',
     },
   ],
   globalStyle: 'src/global/styles.scss',

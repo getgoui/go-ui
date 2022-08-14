@@ -17,9 +17,10 @@
 
 ## Events
 
-| Event  | Description | Type               |
-| ------ | ----------- | ------------------ |
-| `init` |             | `CustomEvent<any>` |
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `init`     |             | `CustomEvent<any>` |
+| `rendered` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------
