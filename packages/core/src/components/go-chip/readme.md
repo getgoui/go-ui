@@ -3,6 +3,112 @@
 <!-- Auto Generated Below -->
 
 
+## Usage
+
+### Go-chip
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<div class="container">
+  <go-chip>hello world</go-chip>
+  <go-chip>
+    <go-icon name="info_outline" slot="prefix"></go-icon>
+    hello world
+  </go-chip>
+
+  <go-chip>
+    <go-icon name="delete_outline" slot="suffix"></go-icon>
+    hello world
+  </go-chip>
+  <hr />
+  <go-chip>Neutral (default)</go-chip>
+  <go-chip variant="primary">Primary</go-chip>
+  <go-chip variant="secondary">Secondary</go-chip>
+  <go-chip variant="success">Success</go-chip>
+  <go-chip variant="critical">Critical</go-chip>
+
+  <hr />
+  <go-chip outline="true" variant="primary">Outline</go-chip>
+  <go-chip outline="true" variant="secondary">Outline</go-chip>
+  <go-chip outline="true" variant="success">Outline</go-chip>
+  <go-chip outline="true" variant="critical">Outline</go-chip>
+</div>
+
+
+### Go-chip-clickable
+
+<div class="container">
+  <go-chip clickable>Neutral (default)</go-chip>
+  <go-chip clickable variant="primary">Primary</go-chip>
+  <go-chip clickable variant="secondary">Secondary</go-chip>
+  <go-chip clickable variant="success">Success</go-chip>
+  <go-chip clickable variant="critical">Critical</go-chip>
+  <hr />
+  <go-chip outline clickable>Neutral (default)</go-chip>
+  <go-chip outline clickable variant="primary">Primary</go-chip>
+  <go-chip outline clickable variant="secondary">Secondary</go-chip>
+  <go-chip outline clickable variant="success">Success</go-chip>
+  <go-chip outline clickable variant="critical">Critical</go-chip>
+</div>
+
+<script>
+  document.querySelectorAll('go-chip').forEach((chip) => {
+    chip.addEventListener('chipClick', (e) => {
+      alert('You clicked the chip! Check browser console for event details.');
+      console.log('chipClick event fired with ', e);
+    });
+  });
+</script>
+
+
+### Go-chip-combo
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<div class="container">
+  <go-chip clickable dismissible>Neutral (default)</go-chip>
+  <go-chip clickable dismissible variant="primary">Primary</go-chip>
+  <go-chip clickable dismissible variant="secondary">Secondary</go-chip>
+  <go-chip clickable dismissible variant="success">Success</go-chip>
+  <go-chip clickable dismissible variant="critical">Critical</go-chip>
+  <hr />
+
+  <go-chip clickable dismissible outline>Neutral (default)</go-chip>
+  <go-chip clickable dismissible outline variant="primary">Primary</go-chip>
+  <go-chip clickable dismissible outline variant="secondary">Secondary</go-chip>
+  <go-chip clickable dismissible outline variant="success">Success</go-chip>
+  <go-chip clickable dismissible outline variant="critical">Critical</go-chip>
+</div>
+
+
+### Go-chip-dismissible
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<div class="container">
+  <go-chip dismissible>Neutral (default)</go-chip>
+  <go-chip dismissible variant="primary">Primary</go-chip>
+  <go-chip dismissible variant="secondary">Secondary</go-chip>
+  <go-chip dismissible variant="success">Success</go-chip>
+  <go-chip dismissible variant="critical">Critical</go-chip>
+  <hr />
+
+  <go-chip dismissible outline>Neutral (default)</go-chip>
+  <go-chip dismissible outline variant="primary">Primary</go-chip>
+  <go-chip dismissible outline variant="secondary">Secondary</go-chip>
+  <go-chip dismissible outline variant="success">Success</go-chip>
+  <go-chip dismissible outline variant="critical">Critical</go-chip>
+</div>
+
+<script>
+  document.querySelectorAll('go-chip').forEach((chip) => {
+    chip.addEventListener('chipDismissed', (e) => {
+      alert('You dismissed the chip! Check browser console for event details.');
+      console.log('chipDismiss event fired with ', e);
+      e.target.remove();
+    });
+  });
+</script>
+
+
+
 ## Properties
 
 | Property      | Attribute     | Description                                                                                                            | Type                                                               | Default     |

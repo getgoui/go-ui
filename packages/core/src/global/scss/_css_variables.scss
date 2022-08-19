@@ -60,8 +60,17 @@ Default Go UI CSS variables
   --go-timing-function: ease-in-out;
   --stagger-delay: 100ms;
 
+  //////////////////////
   // Spacing
+  //////////////////////
   --go-base-spacing: 0.25rem; // 4px
+
+  //////////////////////
+  // Border
+  //////////////////////
+  --go-border-thin: 1px;
+  --go-border-thick: 4px;
+  --go-color-border: var(--go-color-neutral-200);
 
   // Table
   --go-table-cell-padding: 1rem;

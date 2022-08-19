@@ -4,6 +4,7 @@
     "allowUnreachableCode": false,
     "declaration": false,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "lib": [
       "dom",
       "es2017"
@@ -20,6 +21,7 @@
     "src"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "stencil.config.ts"
   ]
 }

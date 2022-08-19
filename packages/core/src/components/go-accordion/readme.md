@@ -3,6 +3,77 @@
 <!-- Auto Generated Below -->
 
 
+## Usage
+
+### Multiple
+
+<div class="container">
+  <go-accordion multiple>
+    <go-accordion-item heading="We"> Lorem ipsum dolor sit </go-accordion-item>
+    <go-accordion-item heading="Are"> Lorem ipsum dolor sit </go-accordion-item>
+    <go-accordion-item heading="Groot"> Lorem ipsum dolor sit </go-accordion-item>
+  </go-accordion>
+</div>
+
+
+### Nested
+
+<div class="container">
+  <go-accordion>
+    <go-accordion-item heading="Accordions can be nested too">
+      Lorem ipsum dolor sit
+
+      <go-accordion id="inner-accordion">
+        <go-accordion-item heading="Nested">
+          Lorem ipsum dolor sit
+        </go-accordion-item>
+
+        <go-accordion-item heading="Accordions">
+          Lorem ipsum dolor sit
+        </go-accordion-item>
+        <go-accordion-item heading="Are pretty cool">
+          Lorem ipsum dolor sit
+        </go-accordion-item>
+      </go-accordion>
+
+    </go-accordion-item>
+    <go-accordion-item heading="Yayyy"">
+      Lorem ipsum dolor sit
+    </go-accordion-item>
+  </go-accordion>
+</div>
+
+
+### Single
+
+<div class="container">
+  <go-accordion id="inner-accordion">
+    <go-accordion-item heading="I" active> Add <code>active</code> attribute to open an item by default. </go-accordion-item>
+    <go-accordion-item heading="Am"> Lorem ipsum dolor sit </go-accordion-item>
+    <go-accordion-item heading="Groot"> Lorem ipsum dolor sit </go-accordion-item>
+  </go-accordion>
+</div>
+
+
+### Slots
+
+<div class="container">
+  <go-accordion>
+    <go-accordion-item>
+      <div slot="heading">
+        <mark> Use <code>slot="heading"</code> to customise heading </mark>
+      </div>
+      Lorem ipsum dolor sit
+    </go-accordion-item>
+    <go-accordion-item heading="Customise arrow">
+      <div slot="arrow" style="text-align: center; color: red; width: 60px; height: 60px; font-size: 60px; line-height: 60px">&#10084;</div>
+      Use <code>slot="arrow"</code> to customise arrow
+    </go-accordion-item>
+  </go-accordion>
+</div>
+
+
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                                                                                                           | Type      | Default |

@@ -3,6 +3,109 @@
 <!-- Auto Generated Below -->
 
 
+## Usage
+
+### Go-card
+
+<wc-playground
+  tag="go-card"
+  props="[
+    {name: 'cardTitle', type: 'string'},
+    {name: 'cardSubtitle', type: 'string'},
+    {name: 'mediaPosition', attr: 'media-position', type: 'select', options: ['top', 'left', 'right', 'bottom']},
+    {name: 'href', attr: 'href', type: 'string'},
+    {name: 'flat', attr: 'flat', type: 'boolean'},
+    {name: 'border', attr: 'border', type: 'boolean'}
+  ]"
+  slots='[
+  {
+    "name": "custom-title",
+    "docs": "Slot for custom card title"
+  },
+  {
+    "name": "default",
+    "docs": "Card content"
+  },
+  {
+    "name": "footer",
+    "docs": "Slot for card footer markup"
+  },
+  {
+    "name": "media",
+    "docs": "Slot for media markup for media card"
+  },
+  {
+    "name": "pre-title",
+    "docs": "Slot for content above the card title"
+  }
+]'
+  code="
+<go-card card-title='Basic card' card-subtitle='Subtitle'>
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+
+  <img src='//images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=600&h=600&q=80' alt='Photo' slot='media' />
+  <div slot='pre-title'>Active 2 hours ago</div>
+  <div slot='footer'>
+    <go-button variant='primary'>Button</go-button>
+  </div>
+</go-card>
+">
+</wc-playground>
+
+
+### Go-card-footer-slot
+
+<div class="container">
+  <div class="row equal-height-row">
+    <div class="col-tablet-4">
+      <go-card card-title="Title" card-subtitle="Subtitle">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+        <go-button-group slot="footer">
+          <go-button type="button" variant="primary">Primary</go-button>
+          <go-button type="button" variant="secondary">Secondary</go-button>
+        </go-button-group>
+      </go-card>
+    </div>
+    <div class="col-tablet-4">
+      <go-card card-title="Title" card-subtitle="Subtitle">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis Lorem ipsum dolor sit amet consectetur dolor sit
+        amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus
+        facilis
+        <go-button-group slot="footer">
+          <go-button type="button" variant="primary">Primary</go-button>
+          <go-button type="button" variant="secondary">Secondary</go-button>
+        </go-button-group>
+      </go-card>
+    </div>
+    <div class="col-tablet-4">
+      <go-card card-title="Title" card-subtitle="Subtitle">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis Lorem ipsum dolor sit amet consectetur
+        <div slot="footer">Lorem ipsum dolor sit.</div>
+      </go-card>
+    </div>
+  </div>
+</div>
+
+
+### Go-card-links
+
+<div class="container">
+  <div class="row">
+    <div class="col-tablet-6">
+      <go-card card-title="Title" card-subtitle="Subtitle" href="#">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+      </go-card>
+    </div>
+    <div class="col-tablet-6">
+      <go-card card-title="External link" card-subtitle="Subtitle" href="https://seanwuapps.com">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+      </go-card>
+    </div>
+  </div>
+</div>
+
+
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                                                                                                                                                                                           | Type                                                         | Default     |

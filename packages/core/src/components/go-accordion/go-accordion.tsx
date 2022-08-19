@@ -40,7 +40,7 @@ export class GoAccordion {
   }
 
   closeNonActive() {
-    this.items.forEach((item) => {
+    this.items.forEach(item => {
       if (!item.isSameNode(this.activeItem)) {
         item.close();
       }

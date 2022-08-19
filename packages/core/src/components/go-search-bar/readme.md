@@ -3,6 +3,14 @@
 <!-- Auto Generated Below -->
 
 
+## Usage
+
+### Go-search-bar
+
+<go-search-bar></go-search-bar>
+
+
+
 ## Methods
 
 ### `closeSearchForm() => Promise<void>`

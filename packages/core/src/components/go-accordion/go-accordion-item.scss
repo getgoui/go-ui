@@ -20,8 +20,8 @@ go-accordion-item {
       @include transition(border-radius);
       &:hover,
       &:focus-visible {
-        --heading-bg-color: var(--go-color-secondary-600);
-        --heading-text-color: var(--go-color-lightest);
+        --heading-bg-color: var(--heading-bg-color-hover);
+        --heading-text-color: var(--heading-fg-color-hover);
       }
 
       &:focus-visible {
