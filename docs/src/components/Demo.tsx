@@ -24,9 +24,9 @@ const DemoFrame = ({ code, onLoad, onResize = null, colorScheme = null }) => {
   // onload content
   useEffect(() => {
     if (demoFrame.current) {
-      const window = demoFrame.current.contentWindow;
+      const window = (demoFrame.current as HTMLIFrameElement).contentWindow;
       setDemoContent(window, code);
-      const resizeHandler = (e) => {
+      const resizeHandler = e => {
         // onResize(e.target);
       };
 
@@ -54,7 +54,7 @@ const Demo = ({ code, hideSource = false }) => {
   const minFrameHeight = 200;
   const startResizeX = () => {
     setResizingX(true);
-    const onResizeX = (e) => {
+    const onResizeX = e => {
       if (!contentEl?.current) {
         return;
       }
@@ -70,7 +70,7 @@ const Demo = ({ code, hideSource = false }) => {
   };
   const startResizeY = () => {
     setResizingY(true);
-    const onResizeY = (e) => {
+    const onResizeY = e => {
       if (!contentEl?.current) {
         return;
       }
@@ -87,7 +87,7 @@ const Demo = ({ code, hideSource = false }) => {
     });
   };
 
-  const resizeToDevice = (device) => {
+  const resizeToDevice = device => {
     const widthMap = {
       mobile: '375px',
       tablet: '600px',
@@ -147,7 +147,7 @@ const Demo = ({ code, hideSource = false }) => {
             ) : null}
             <DemoFrame
               code={code}
-              onLoad={(frameWindow) => {
+              onLoad={frameWindow => {
                 setTimeout(() => {
                   const initialHeight = Math.ceil(frameHeightBuffer + frameWindow.document.body.getBoundingClientRect().height);
                   setContentHeight(initialHeight + 'px');

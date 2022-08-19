@@ -1,10 +1,10 @@
 {
-  "name": "demo-app",
+  "name": "@go-ui/demo-app",
   "private": true,
   "version": "0.0.1",
   "description": "Go UI Demo app",
   "scripts": {
-    "build": "stencil build",
+    "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
