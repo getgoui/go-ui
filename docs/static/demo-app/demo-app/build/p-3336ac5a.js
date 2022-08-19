@@ -1,0 +1,1 @@
+function c(c,n){document.addEventListener("click",(o=>{c.contains(o.target)||n(o)}))}function n(c,n){n.appendChild(c)}export{n as m,c as o}
