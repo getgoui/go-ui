@@ -5,6 +5,47 @@
 <!-- Auto Generated Below -->
 
 
+## Usage
+
+### Button-group
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <go-button-group block="mobile">
+        <go-button variant="primary">Primary action</go-button>
+        <go-button variant="secondary" outline-fill flat>Secondary action</go-button>
+      </go-button-group>
+    </div>
+  </div>
+</div>
+
+
+### Button-group-connected
+
+<div class="container">
+  <div class="row">
+    <div class="col-tablet-6">
+      <p>Connected button group</p>
+      <go-button-group connected>
+        <go-button variant="primary">Button</go-button>
+        <go-button variant="primary">Button</go-button>
+        <go-button variant="primary">Button</go-button>
+      </go-button-group>
+    </div>
+    <div class="col-tablet-6">
+      <p>Connected compact buttons</p>
+      <go-button-group connected>
+        <go-button variant="secondary" compact>Button</go-button>
+        <go-button variant="secondary" compact>Button</go-button>
+        <go-button variant="secondary" compact>Button</go-button>
+      </go-button-group>
+    </div>
+  </div>
+</div>
+
+
+
 ## Properties
 
 | Property    | Attribute   | Description                                                                                                                                                                                                                                        | Type                                                    | Default     |
