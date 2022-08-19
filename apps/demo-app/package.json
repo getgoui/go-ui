@@ -1,0 +1,27 @@
+{
+  "name": "demo-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Stencil App Starter",
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "2.17.3",
+    "@stencil/sass": "^1.5.2",
+    "@types/jest": "^27.0.3",
+    "jest": "^27.4.5",
+    "jest-cli": "^27.4.5",
+    "puppeteer": "^10.0.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@go-ui/core": "workspace:*",
+    "@go-ui/docsite-utils": "workspace:*",
+    "qs": "^6.11.0"
+  }
+}
