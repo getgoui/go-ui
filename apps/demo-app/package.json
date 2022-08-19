@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "description": "Stencil App Starter",
   "scripts": {
+    "cp": "cpr www ../../docs/static/demo-app",
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
