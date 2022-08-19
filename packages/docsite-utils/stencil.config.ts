@@ -18,13 +18,7 @@ export const config: Config = {
       type: 'docs-readme',
       footer: '',
     },
-    {
-      type: 'www',
-      serviceWorker: null, // disable service workers
-    },
   ],
-  globalScript: 'src/global/global.ts',
-  globalStyle: 'src/global/style.scss',
   plugins: [
     sass(),
     postcss({

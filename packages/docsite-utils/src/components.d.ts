@@ -9,6 +9,7 @@ import { IProp } from "./components/demo-components/demo-playground/prop.type";
 import { ISlot } from "./components/demo-components/demo-playground/slot.type";
 export namespace Components {
     interface DarkModeToggle {
+        "inline": boolean;
     }
     interface DemoControls {
     }
@@ -98,6 +99,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface DarkModeToggle {
+        "inline"?: boolean;
     }
     interface DemoControls {
     }

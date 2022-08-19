@@ -1,4 +1,4 @@
-import { Component, h, State, Host, Watch } from '@stencil/core';
+import { Component, h, State, Host, Watch, Prop } from '@stencil/core';
 
 @Component({
   tag: 'dark-mode-toggle',
@@ -7,6 +7,8 @@ import { Component, h, State, Host, Watch } from '@stencil/core';
 })
 export class DarkModeToggle {
   @State() isDark = false;
+
+  @Prop() inline = false;
 
   componentWillLoad() {
     // match OS preference
@@ -39,10 +41,11 @@ export class DarkModeToggle {
         <go-switch
           checked={this.isDark}
           name="dark-toggle"
-          label="Dark mode"
           full-width
           onChange={() => this.toggleDarkMode()}
           show-on-off
+          active-label="🌙"
+          inactive-label="🌞"
         ></go-switch>
       </Host>
     );
