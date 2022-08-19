@@ -1,6 +1,5 @@
-@import url('https://cdn.jsdelivr.net/npm/@go-ui/core@latest/dist/go-ui/go-ui.css');
-@import '../../../src/global/scss/themes/tokens';
-@import '../../../src/global/scss/_utils.scss';
+@import "~@go-ui/core/src/global/scss/themes/tokens";
+@import "~@go-ui/core/src/global/scss/utils";
 
 /**
  * Any CSS included here will be global. The classic template
@@ -10,7 +9,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-heading-font-family: 'Public Sans', sans-serif;
+  --ifm-heading-font-family: "Public Sans", sans-serif;
   --ifm-color-primary-lightest: var(--go-color-primary-100);
   --ifm-color-primary-lighter: var(--go-color-primary-300);
   --ifm-color-primary-light: var(--go-color-primary-400);
@@ -33,7 +32,7 @@
 html {
   font-family: var(--go-heading-font-family);
 }
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary-lightest: var(--go-color-success-100);
   --ifm-color-primary-lighter: var(--go-color-success-300);
   --ifm-color-primary-light: var(--go-color-success-400);
