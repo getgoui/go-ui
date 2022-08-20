@@ -1,0 +1,12 @@
+.demo-frame {
+  border: var(--go-border-thin) solid var(--go-color-border);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  .demo-container {
+    padding: 1rem;
+  }
+
+  go-accordion {
+    --heading-radius: 0;
+  }
+}

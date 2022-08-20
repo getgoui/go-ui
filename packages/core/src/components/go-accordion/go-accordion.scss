@@ -89,4 +89,11 @@ go-accordion {
       - default: var(--go-color-text)
   */
   --heading-fg-color-hover: var(--go-color-text);
+
+  /**
+    @prop --heading-radius:
+      Border radius of heading button
+      - default: var(--radius-2)
+  */
+  --heading-radius: var(--radius-2);
 }

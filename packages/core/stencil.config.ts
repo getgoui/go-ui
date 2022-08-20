@@ -14,10 +14,6 @@ export const config: Config = {
       type: 'dist-custom-elements',
     },
     {
-      type: 'docs-readme',
-      footer: '',
-    },
-    {
       type: 'www',
       dir: '../../docs/static/demo-assets',
       serviceWorker: null, // disable service workers

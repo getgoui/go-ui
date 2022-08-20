@@ -9,7 +9,7 @@ go-accordion-item {
       background: var(--heading-bg-color);
       color: var(--heading-text-color);
       font-size: var(--heading-font-size, 1rem);
-      border-radius: var(--radius-2, 0.25rem);
+      border-radius: var(--heading-radius);
       display: flex;
       align-items: center;
       justify-content: space-between;

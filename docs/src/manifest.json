@@ -1,0 +1,15 @@
+{
+  "name": "Go UI Docs",
+  "short_name": "Go UI",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg"
+    }
+  ],
+  "background_color": "#16161d",
+  "theme_color": "#269AA2"
+}

@@ -1,11 +1,12 @@
 import { Component, Host, h, Element, Prop, State, Method } from '@stencil/core';
 import { INavItem } from '../../interfaces';
 import uniqueId from 'lodash.uniqueid';
+import { warning } from '../../utils/helper';
 
 export interface TocProps {
   label?: string;
-  scope?: string;
   selector?: string;
+  labelClass?: string;
 }
 
 @Component({
@@ -22,14 +23,14 @@ export class GoToc implements TocProps {
   @Prop() label?: string = 'On this page';
 
   /**
-   * Specify the scope to get TOC items from
-   */
-  @Prop() scope?: string = 'main';
-
-  /**
    * Selector for the TOC items
    */
   @Prop() selector?: string = 'h2';
+
+  /**
+   * Custom classes to be applied to the label
+   */
+  @Prop() labelClass?: string = '';
 
   @State() tocItems?: INavItem[];
 
@@ -47,12 +48,9 @@ export class GoToc implements TocProps {
    */
   @Method()
   async init() {
-    const scopeEl = document.querySelector(this.scope);
-    if (!scopeEl) {
-      return;
-    }
-    const items = scopeEl.querySelectorAll(this.selector);
+    const items = document.querySelectorAll(this.selector);
     if (!items.length) {
+      warning('TOC selector (' + this.selector + ') yield no result.');
       return;
     }
     this.setupItems(items);
@@ -83,15 +81,17 @@ export class GoToc implements TocProps {
   }
 
   render() {
-    const { labelId } = this;
+    const { labelId, labelClass } = this;
     return (
       <Host>
         {this.tocItems && this.tocItems.length ? (
           <div class="go-toc">
             <nav aria-labelledby={labelId}>
               <div class="go-toc-line" aria-hidden="true"></div>
-              <div id={labelId} class="go-toc-title h4">
-                {this.label}
+              <div id={labelId}>
+                <slot name="label">
+                  <span class={`go-toc-title h5 ${labelClass}`}>{this.label}</span>
+                </slot>
               </div>
               <ul class="go-toc-list">
                 {this.tocItems.map(({ label, url }) => (

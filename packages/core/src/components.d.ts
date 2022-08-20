@@ -262,6 +262,10 @@ export namespace Components {
         "heroImgSrc"?: string;
         "initToc": () => Promise<void>;
         "intro"?: string;
+        /**
+          * no hero banner
+         */
+        "noHero"?: boolean;
         "pageHeading": string;
         "preHeading"?: string;
         "sidebarDesktopPosition"?: SidebarPosition;
@@ -646,9 +650,9 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Specify the scope to get TOC items from
+          * Custom classes to be applied to the label
          */
-        "scope"?: string;
+        "labelClass"?: string;
         /**
           * Selector for the TOC items
          */
@@ -1216,6 +1220,10 @@ declare namespace LocalJSX {
         "heroImgAlt"?: string;
         "heroImgSrc"?: string;
         "intro"?: string;
+        /**
+          * no hero banner
+         */
+        "noHero"?: boolean;
         "pageHeading"?: string;
         "preHeading"?: string;
         "sidebarDesktopPosition"?: SidebarPosition;
@@ -1601,9 +1609,9 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Specify the scope to get TOC items from
+          * Custom classes to be applied to the label
          */
-        "scope"?: string;
+        "labelClass"?: string;
         /**
           * Selector for the TOC items
          */
