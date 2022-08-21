@@ -3,7 +3,7 @@ import { sass } from '@stencil/sass';
 import siteConfig from './config';
 
 export const config: Config = {
-  globalStyle: 'node_modules/@go-ui/core/dist/go-ui/go-ui.css',
+  globalStyle: 'src/global/app.scss',
   globalScript: 'src/global/app.ts',
   taskQueue: 'async',
   plugins: [

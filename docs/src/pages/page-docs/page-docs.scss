@@ -1,0 +1,12 @@
+.sidebar-layout {
+  --sidebar-width: 320px;
+  padding: 2rem 0;
+  display: flex;
+  aside {
+    width: var(--sidebar-width);
+  }
+  main {
+    width: calc(100% - var(--sidebar-width));
+    flex-grow: 1;
+  }
+}
