@@ -168,4 +168,4 @@ This is an [external link](https://www.google.com)
 
 ----------------------------------------------
 
-
+*Built with [StencilJS](https://stenciljs.com/)*

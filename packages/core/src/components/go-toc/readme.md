@@ -53,11 +53,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                             | Type     | Default          |
-| ---------- | ---------- | --------------------------------------- | -------- | ---------------- |
-| `label`    | `label`    | Label for the TOC                       | `string` | `'On this page'` |
-| `scope`    | `scope`    | Specify the scope to get TOC items from | `string` | `'main'`         |
-| `selector` | `selector` | Selector for the TOC items              | `string` | `'h2'`           |
+| Property     | Attribute     | Description                               | Type     | Default          |
+| ------------ | ------------- | ----------------------------------------- | -------- | ---------------- |
+| `label`      | `label`       | Label for the TOC                         | `string` | `'On this page'` |
+| `labelClass` | `label-class` | Custom classes to be applied to the label | `string` | `''`             |
+| `selector`   | `selector`    | Selector for the TOC items                | `string` | `'h2'`           |
 
 
 ## Methods
@@ -96,4 +96,4 @@ graph TD;
 
 ----------------------------------------------
 
-
+*Built with [StencilJS](https://stenciljs.com/)*

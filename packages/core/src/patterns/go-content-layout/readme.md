@@ -131,19 +131,20 @@
 
 ## Properties
 
-| Property                 | Attribute                  | Description | Type                   | Default     |
-| ------------------------ | -------------------------- | ----------- | ---------------------- | ----------- |
-| `breadcrumbs`            | `breadcrumbs`              |             | `INavItem[] \| string` | `undefined` |
-| `heroImgAlt`             | `hero-img-alt`             |             | `string`               | `undefined` |
-| `heroImgSrc`             | `hero-img-src`             |             | `string`               | `undefined` |
-| `intro`                  | `intro`                    |             | `string`               | `undefined` |
-| `pageHeading`            | `page-heading`             |             | `string`               | `undefined` |
-| `preHeading`             | `pre-heading`              |             | `string`               | `undefined` |
-| `sidebarDesktopPosition` | `sidebar-desktop-position` |             | `"end" \| "start"`     | `'start'`   |
-| `sidebarMobilePosition`  | `sidebar-mobile-position`  |             | `"end" \| "start"`     | `'start'`   |
-| `sidebarSticky`          | `sidebar-sticky`           |             | `boolean`              | `false`     |
-| `toc`                    | `toc`                      |             | `boolean`              | `undefined` |
-| `tocProps`               | --                         |             | `TocProps`             | `undefined` |
+| Property                 | Attribute                  | Description    | Type                   | Default     |
+| ------------------------ | -------------------------- | -------------- | ---------------------- | ----------- |
+| `breadcrumbs`            | `breadcrumbs`              |                | `INavItem[] \| string` | `undefined` |
+| `heroImgAlt`             | `hero-img-alt`             |                | `string`               | `undefined` |
+| `heroImgSrc`             | `hero-img-src`             |                | `string`               | `undefined` |
+| `intro`                  | `intro`                    |                | `string`               | `undefined` |
+| `noHero`                 | `no-hero`                  | no hero banner | `boolean`              | `false`     |
+| `pageHeading`            | `page-heading`             |                | `string`               | `undefined` |
+| `preHeading`             | `pre-heading`              |                | `string`               | `undefined` |
+| `sidebarDesktopPosition` | `sidebar-desktop-position` |                | `"end" \| "start"`     | `'start'`   |
+| `sidebarMobilePosition`  | `sidebar-mobile-position`  |                | `"end" \| "start"`     | `'start'`   |
+| `sidebarSticky`          | `sidebar-sticky`           |                | `boolean`              | `false`     |
+| `toc`                    | `toc`                      |                | `boolean`              | `undefined` |
+| `tocProps`               | --                         |                | `TocProps`             | `undefined` |
 
 
 ## Methods
@@ -188,4 +189,4 @@ graph TD;
 
 ----------------------------------------------
 
-
+*Built with [StencilJS](https://stenciljs.com/)*
