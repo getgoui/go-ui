@@ -1,6 +1,7 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import pretty from 'pretty';
+import hljs from 'highlight.js';
 
 @Component({
   tag: 'demo-frame',
@@ -10,6 +11,8 @@ import pretty from 'pretty';
 export class DemoFrame {
   @Prop() component: string;
   @Prop() demo: string;
+
+  @Prop() hideSource: boolean = false;
 
   @State() demoSource: string;
   componentWillLoad() {
@@ -24,8 +27,13 @@ export class DemoFrame {
     this.demoSource = pretty(target?.usage[demo]);
   }
 
+  componentDidLoad() {
+    hljs.configure({ ignoreUnescapedHTML: true });
+    hljs.highlightAll();
+  }
+
   render() {
-    const { demoSource } = this;
+    const { demoSource, hideSource } = this;
     if (!demoSource) {
       return null;
     }
@@ -35,13 +43,16 @@ export class DemoFrame {
           <div class="demo-container">
             <div innerHTML={demoSource}></div>
           </div>
-          <go-accordion>
-            <go-accordion-item heading="Source">
-              <pre>
-                <code>{demoSource}</code>
-              </pre>
-            </go-accordion-item>
-          </go-accordion>
+          {!hideSource && (
+            <go-accordion>
+              <go-accordion-item heading="Source">
+                <pre class="code-block">
+                  <copy-code-btn code={demoSource}></copy-code-btn>
+                  <code class="language-html">{demoSource}</code>
+                </pre>
+              </go-accordion-item>
+            </go-accordion>
+          )}
         </div>
       </Host>
     );

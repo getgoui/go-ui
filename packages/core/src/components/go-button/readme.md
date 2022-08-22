@@ -1,3 +1,6 @@
+---
+title: Button
+---
 # Button <span class="text-size-0">`go-button`</span>
 
 <div class="text-size-1">A button is a simple way to call on the attention of the user.</div>
@@ -90,7 +93,7 @@ Buttons and links may feel similar but they serve different purposes and have di
   <go-button variant="critical">Critical</go-button>
   <go-button variant="text">Text</go-button>
 
-  <hr>
+  <hr />
 
   <go-button compact>Neutral (Default)</go-button>
   <go-button compact variant="primary">Primary</go-button>
@@ -99,7 +102,7 @@ Buttons and links may feel similar but they serve different purposes and have di
   <go-button compact variant="critical">Critical</go-button>
   <go-button compact variant="text">Text</go-button>
 
-  <hr>
+  <hr />
 
   <go-button outline="true">Neutral (Default)</go-button>
   <go-button outline="true" variant="primary">Primary</go-button>
@@ -108,7 +111,7 @@ Buttons and links may feel similar but they serve different purposes and have di
   <go-button outline="true" variant="critical">Critical</go-button>
   <go-button outline="true" variant="text">Text</go-button>
 
-  <hr>
+  <hr />
 
   <go-button outline="true" flat="true">Neutral (Default)</go-button>
   <go-button outline="true" flat="true" variant="primary">Primary</go-button>
@@ -117,7 +120,7 @@ Buttons and links may feel similar but they serve different purposes and have di
   <go-button outline="true" flat="true" variant="critical">Critical</go-button>
   <go-button outline="true" flat="true" variant="text">Text</go-button>
 
-  <hr>
+  <hr />
 
   <go-button outline="true" flat="true" round>Neutral (Default)</go-button>
   <go-button outline="true" flat="true" round variant="primary">Primary</go-button>
@@ -125,38 +128,7 @@ Buttons and links may feel similar but they serve different purposes and have di
   <go-button outline="true" flat="true" round variant="success">Success</go-button>
   <go-button outline="true" flat="true" round variant="critical">Critical</go-button>
   <go-button outline="true" flat="true" round variant="text">Text</go-button>
-<!--
-  <wc-playground
-    tag="go-button"
-    props="[
-      {name: 'variant', type: 'select', value: 'neutral', 'options': ['neutral','primary','secondary','tertiary','critical','text']},
-      {name: 'outline', type: 'boolean', value: false},
-      {name: 'outlineFill', type: 'boolean', value: false},
-      {name: 'flat', type: 'boolean', value: false},
-      {name: 'disabled', type: 'boolean', value: false},
-      {name: 'round', type: 'boolean', value: false},
-      {name: 'compact', type: 'boolean', value: false},
-    ]"
-    slots='[
-        {
-          "name": "default",
-          "docs": "Button text"
-        },
-        {
-          "name": "prefix",
-          "docs": "Use this slot to prepend content to the button."
-        },
-        {
-          "name": "suffix",
-          "docs": "Use this slot to append content to the button."
-        }
-    ]'
-    code='<go-button type="button">
-      Button
-    </go-button>'
-  >
 
-  </wc-playground> -->
 </div>
 
 </div>
@@ -219,11 +191,11 @@ Buttons and links may feel similar but they serve different purposes and have di
 
 ## CSS Custom Properties
 
-| Name                        | Description                                              |
-| --------------------------- | -------------------------------------------------------- |
-| `--go-btn-bg-color`         | Background colour for the button. - default: transparent |
-| `--go-btn-icon-size`        | Outer size of the icon button. - default: 3rem           |
-| `--go-btn-inline-icon-size` | Size of the icon inside the button. - default: 1.5rem    |
+| Name                        | Description                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------- |
+| `--go-btn-bg-color`         | Background colour for the button. - default: transparent                         |
+| `--go-btn-icon-size`        | Outer size of the icon button. - default: 3rem                                   |
+| `--go-btn-inline-icon-size` | Size of the icon inside the button. - default: calc(var(--go-btn-icon-size) / 2) |
 
 
 ## Dependencies

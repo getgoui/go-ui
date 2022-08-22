@@ -6,7 +6,7 @@
   "module": "dist/index.js",
   "scripts": {
     "prebuild": "",
-    "build": "cpr content www/content -d && stencil build --prerender",
+    "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
@@ -14,11 +14,11 @@
   },
   "devDependencies": {
     "@go-ui/core": "workspace:*",
-    "@go-ui/docsite-utils": "workspace:*",
     "@stencil/core": "2.17.3",
     "@stencil/helmet": "^0.3.3",
     "@stencil/sass": "^1.5.2",
     "@types/jest": "^27.5.2",
+    "@types/node": "^18.7.6",
     "cpr": "^3.0.1",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
@@ -28,7 +28,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "copy-text-to-clipboard": "^3.0.1",
     "highlight.js": "^11.6.0",
+    "json5": "^2.2.1",
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.uniqueid": "^4.0.1",
     "markdown-it": "^13.0.1",
     "markdown-it-include": "^2.0.0",
     "markdown-it-meta": "^0.0.1",

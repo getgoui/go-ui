@@ -1,26 +1,16 @@
 import { Component, Prop, State, h } from '@stencil/core';
 import MarkdownIt from 'markdown-it';
 import meta from 'markdown-it-meta';
-import hljs from 'highlight.js';
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
+import { siteUrl } from '../../utils/helpers';
 
 const routePrefix = 'docs/';
-const highlight = (str, lang) => {
-  if (lang && hljs.getLanguage(lang)) {
-    try {
-      return hljs.highlight(str, { language: lang }).value;
-    } catch (__) {}
-  }
-
-  return ''; // use external default escaping
-};
 
 const md = new MarkdownIt({
   html: true,
   linkify: true,
   typographer: true,
-  highlight,
 });
 md.use(meta);
 
@@ -57,20 +47,25 @@ export class PageDocs {
 
   async loadPage() {
     const compDocs = docs.components.find(comp => comp.tag === this.componentName);
-    console.log(compDocs);
     this.result = md.render(compDocs.readme);
   }
   async loadSidebarNav() {
     this.sidebarNavItems = docs.components.map((comp: JsonDocsComponent) => {
+      const url = siteUrl(this.buildSidebarItemUrl(comp));
       return {
-        url: comp.filePath,
+        url,
         label: comp.tag,
       };
     });
   }
 
+  buildSidebarItemUrl(comp: JsonDocsComponent): string {
+    return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', 'docs/');
+  }
+
   render() {
     const { result, sidebarNavItems } = this;
+
     return (
       <div class="sidebar-layout">
         <aside class="sidebar">

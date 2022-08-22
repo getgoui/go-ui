@@ -19,7 +19,7 @@
     "gg": "./bin/index.js"
   },
   "scripts": {
-    "build": "stencil build",
+    "build": "stencil build --docs",
     "start": "concurrently -p \"[{name}]\" --kill-others -n w: npm:watch.*",
     "serve": "stencil build --dev --watch --serve",
     "watch.components": "stencil build --dev --watch",

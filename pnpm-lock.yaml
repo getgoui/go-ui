@@ -34,15 +34,19 @@ importers:
   docs:
     specifiers:
       '@go-ui/core': workspace:*
-      '@go-ui/docsite-utils': workspace:*
       '@stencil/core': 2.17.3
       '@stencil/helmet': ^0.3.3
       '@stencil/sass': ^1.5.2
       '@types/jest': ^27.5.2
+      '@types/node': ^18.7.6
+      copy-text-to-clipboard: ^3.0.1
       cpr: ^3.0.1
       highlight.js: ^11.6.0
       jest: ^27.5.1
       jest-cli: ^27.5.1
+      json5: ^2.2.1
+      lodash.kebabcase: ^4.1.1
+      lodash.uniqueid: ^4.0.1
       markdown-it: ^13.0.1
       markdown-it-include: ^2.0.0
       markdown-it-meta: ^0.0.1
@@ -52,7 +56,11 @@ importers:
       typescript: ^4.7.4
       workbox-build: ^6.5.4
     dependencies:
+      copy-text-to-clipboard: 3.0.1
       highlight.js: 11.6.0
+      json5: 2.2.1
+      lodash.kebabcase: 4.1.1
+      lodash.uniqueid: 4.0.1
       markdown-it: 13.0.1
       markdown-it-include: 2.0.0_markdown-it@13.0.1
       markdown-it-meta: 0.0.1
@@ -60,11 +68,11 @@ importers:
       stencil-router-v2: 0.6.0_@stencil+core@2.17.3
     devDependencies:
       '@go-ui/core': link:../packages/core
-      '@go-ui/docsite-utils': link:../packages/docsite-utils
       '@stencil/core': 2.17.3
       '@stencil/helmet': 0.3.3
       '@stencil/sass': 1.5.2_@stencil+core@2.17.3
       '@types/jest': 27.5.2
+      '@types/node': 18.7.6
       cpr: 3.0.1
       jest: 27.5.1
       jest-cli: 27.5.1

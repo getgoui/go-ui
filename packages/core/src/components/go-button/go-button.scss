@@ -8,13 +8,12 @@ go-button {
   */
   --go-btn-bg-color: var(--go-color-neutral-600);
   --go-btn-bg-color-hover: var(--go-color-neutral-500);
-  --go-btn-bg-color-disabled: rgba(var(--go-btn-bg-color), 0.5);
   --go-btn-text-color: #fff;
   --go-btn-text-color-hover: #fff;
-  --go-btn-text-color-disabled: #fff;
   --go-focus-outline-color: var(--go-btn-bg-color);
   --go-btn-outline-text-color: #000;
   --go-btn-outline-text-color-hover: #000;
+  --go-btn-disabled-opacity: 0.5;
 
   // shadow
   --go-btn-shadow: var(--shadow-2);
@@ -35,9 +34,9 @@ go-button {
   /**
     @prop --go-btn-inline-icon-size:
       Size of the icon inside the button.
-      - default: 1.5rem
+      - default: calc(var(--go-btn-icon-size) / 2)
   */
-  --go-btn-inline-icon-size: 1.5rem;
+  --go-btn-inline-icon-size: calc(var(--go-btn-icon-size) / 2);
 
   // outline fill color
   --go-btn-outline-fill-color: var(--go-color-bg);
@@ -134,6 +133,7 @@ go-button {
     --go-btn-padding-y: 0.25em;
     --go-btn-padding-x: 0.5em;
     --go-btn-inner-gap: 0.125em;
+    --go-btn-icon-size: 2rem;
     .inner-button {
       font-size: var(--go-size--1);
       line-height: 1.5em;
@@ -141,16 +141,13 @@ go-button {
   }
 
   &[disabled] {
-    --go-btn-bg-color: var(--go-btn-bg-color-disabled);
-    --go-btn-text-color: var(--go-btn-text-color-disabled);
     .inner-button {
       /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
       cursor: not-allowed;
       box-shadow: none;
+      opacity: var(--go-btn-disabled-opacity);
       &:hover,
       &:focus {
-        background: var(--go-btn-bg-color-disabled);
-        color: var(--go-btn-text-color-disabled);
         box-shadow: none;
         outline: none;
       }
@@ -196,10 +193,8 @@ go-button {
     --go-focus-outline-color: var(--go-color-primary-600);
     --go-btn-bg-color: transparent;
     --go-btn-bg-color-hover: var(--go-color-neutral-300);
-    --go-btn-bg-color-disabled: rgba(var(--go-token-neutral-200), 0.5);
     --go-btn-text-color: currentColor;
     --go-btn-text-color-hover: currentColor;
-    --go-btn-text-color-disabled: rgba(var(--go-color-text), 0.5);
     .inner-button {
       text-decoration: underline;
 
