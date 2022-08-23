@@ -39,17 +39,24 @@ importers:
       '@stencil/sass': ^1.5.2
       '@types/jest': ^27.5.2
       '@types/node': ^18.7.6
+      chalk: ^4.1.2
+      chokidar: ^3.5.3
+      concurrently: ^6.5.1
       copy-text-to-clipboard: ^3.0.1
       cpr: ^3.0.1
+      esm: ^3.2.25
       highlight.js: ^11.6.0
       jest: ^27.5.1
       jest-cli: ^27.5.1
       json5: ^2.2.1
+      lodash-es: ^4.17.21
       lodash.kebabcase: ^4.1.1
+      lodash.startcase: ^4.4.0
       lodash.uniqueid: ^4.0.1
       markdown-it: ^13.0.1
       markdown-it-include: ^2.0.0
       markdown-it-meta: ^0.0.1
+      minimist: ^1.2.6
       pretty: ^2.0.0
       puppeteer: ^10.4.0
       stencil-router-v2: ^0.6.0
@@ -59,7 +66,9 @@ importers:
       copy-text-to-clipboard: 3.0.1
       highlight.js: 11.6.0
       json5: 2.2.1
+      lodash-es: 4.17.21
       lodash.kebabcase: 4.1.1
+      lodash.startcase: 4.4.0
       lodash.uniqueid: 4.0.1
       markdown-it: 13.0.1
       markdown-it-include: 2.0.0_markdown-it@13.0.1
@@ -73,9 +82,14 @@ importers:
       '@stencil/sass': 1.5.2_@stencil+core@2.17.3
       '@types/jest': 27.5.2
       '@types/node': 18.7.6
+      chalk: 4.1.2
+      chokidar: 3.5.3
+      concurrently: 6.5.1
       cpr: 3.0.1
+      esm: 3.2.25
       jest: 27.5.1
       jest-cli: 27.5.1
+      minimist: 1.2.6
       puppeteer: 10.4.0
       typescript: 4.7.4
       workbox-build: 6.5.4
@@ -8245,6 +8259,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.camelcase/4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
 
@@ -8289,7 +8307,6 @@ packages:
 
   /lodash.startcase/4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}
-    dev: true
 
   /lodash.truncate/4.4.2:
     resolution: {integrity: sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw==}

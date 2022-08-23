@@ -1,12 +1,19 @@
 import { Env } from '@stencil/core';
 
-export function siteUrl(relativePath) {
-  console.log(Env.baseUrl);
+export function removeLeadingSlash(str: string): string {
+  if (str.startsWith('/')) {
+    return str.substring(1);
+  }
+  return str;
+}
+
+export function siteUrl(relativePath: string): string {
   let baseUrl = Env.baseUrl;
   if (!baseUrl.endsWith('/')) {
     baseUrl = `${baseUrl}/`;
   }
-  return `${baseUrl}${relativePath}`;
+
+  return `${baseUrl}${removeLeadingSlash(relativePath)}`;
 }
 
 export function escapeHtml(unsafe) {

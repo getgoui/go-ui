@@ -22,6 +22,12 @@ export const config: Config = {
       baseUrl: siteConfig.baseUrl,
       prerenderConfig: './prerender.config.ts',
       serviceWorker: false,
+      copy: [
+        {
+          src: '../content/',
+          dest: 'assets/content/',
+        },
+      ],
     },
   ],
 };

@@ -13,7 +13,7 @@ export class SeoTags {
     const { pageTitle, description, image } = this;
     return (
       <Helmet>
-        <title>{pageTitle}</title>
+        <title>{pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.name}</title>
         <meta name="description" content={description} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@seanwuapps" />

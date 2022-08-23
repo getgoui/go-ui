@@ -1,6 +1,8 @@
+import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { Build, Component, Prop, State, Watch, h } from '@stencil/core';
 
 import siteConfig from '../../../config';
+import { removeLeadingSlash } from '../../utils/helpers';
 
 declare global {
   var docsearch: any;
@@ -16,11 +18,19 @@ export class AppHeader {
 
   @Prop() inline = false;
 
+  @State() navItems: INavItem[] = [];
+
   componentWillLoad() {
     // match OS preference
     this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     // check if there's any local storage override
     this.checkLocalStorage();
+
+    this.navItems = siteConfig.navbar.main.map(item => {
+      const cleanPathname = removeLeadingSlash(window.location.pathname);
+      const cleanUrl = removeLeadingSlash(item.url);
+      return { ...item, isCurrent: cleanPathname.includes(cleanUrl) };
+    });
   }
 
   checkLocalStorage() {
@@ -60,9 +70,10 @@ export class AppHeader {
   }
 
   render() {
+    const { isDark, navItems } = this;
     return (
       <header>
-        <go-nav-drawer ref={el => (this.mobileMenu = el)} label="Menu" items={siteConfig.navbar.main}></go-nav-drawer>
+        <go-nav-drawer ref={el => (this.mobileMenu = el)} label="Menu" items={navItems}></go-nav-drawer>
         <go-header-bar breakpoint="tablet">
           <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack variant="text" onClick={() => this.handleMobileTriggerClick()}>
             <go-icon name="menu" slot="prefix"></go-icon>
@@ -86,13 +97,13 @@ export class AppHeader {
             </go-button>
             {siteConfig.darkThemeSwitch && (
               <go-button variant="text" icon round flat onClick={() => this.toggleDarkMode()}>
-                <go-icon size="1.5rem" icon-set="bx" name={this.isDark ? 'moon' : 'sun'}></go-icon>
+                <go-icon size="1.5rem" icon-set="bx" name={isDark ? 'moon' : 'sun'}></go-icon>
               </go-button>
             )}
             {siteConfig?.algolia ? <div id="algolia-search" class="algolia"></div> : null}
           </div>
 
-          <go-main-nav slot="main-nav" items={siteConfig.navbar.main}></go-main-nav>
+          <go-main-nav slot="main-nav" items={navItems}></go-main-nav>
         </go-header-bar>
       </header>
     );

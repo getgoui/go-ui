@@ -51,7 +51,7 @@ export class GoTooltip {
     this.triggerEl.setAttribute('aria-describedby', this.el.id);
     // add event handlers to triggerEl
     this.triggerEl.addEventListener('mouseenter', () => this.showTooltip());
-    document.addEventListener('mousemove', (e) => this.debouncedDetermineMouseOut(e));
+    document.addEventListener('mousemove', e => this.debouncedDetermineMouseOut(e));
     this.triggerEl.addEventListener('focusin', () => this.showTooltip());
     this.triggerEl.addEventListener('focusout', () => this.hideTooltip());
 
@@ -66,7 +66,7 @@ export class GoTooltip {
     );
 
     // press esc to hide tooltip
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         this.hideTooltip();
       }
@@ -74,7 +74,6 @@ export class GoTooltip {
   }
 
   initialiseTooltip(triggerEl, tooltipEl, arrowEl) {
-    console.log('initialiseTooltip');
     let middleware = [offset(8), flip(), shift()];
     if (this.arrow) {
       middleware.push(arrow({ element: arrowEl }));

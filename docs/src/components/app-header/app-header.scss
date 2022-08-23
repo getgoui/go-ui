@@ -1,3 +1,9 @@
+app-header {
+  position: sticky;
+  top: 0;
+  background: var(--go-color-bg);
+  z-index: var(--layer-important);
+}
 .nav-actions {
   display: flex;
   align-items: center;

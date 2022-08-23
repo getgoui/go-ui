@@ -1,4 +1,5 @@
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
+import startCase from 'lodash.startcase';
 
 const siteConfig = {
   name: 'Go UI',
@@ -17,12 +18,12 @@ const siteConfig = {
       //   url: '/docs/guides/getting-started',
       //   label: 'Guides',
       // },
-      // {
-      //   url: '/docs/patterns/introduction',
-      //   label: 'Patterns',
-      // },
       {
-        url: '/docs/components/go-button',
+        url: '/docs/patterns',
+        label: 'Patterns',
+      },
+      {
+        url: '/docs/components',
         label: 'Components',
       },
       // {
@@ -104,6 +105,16 @@ const siteConfig = {
     // Public API key: it is safe to commit it
     apiKey: 'ab1e5977dd71b391791fd44a83fe80ef',
     indexName: 'go-ui',
+  },
+  sidebar: {
+    componentPrefix: 'go-',
+    /**
+     * Convert tag to human-friendly label, default: [startCase](https://lodash.com/docs/4.17.15#startCase)
+     * @param tag component tag
+     */
+    tagToLabel(tag: string): string {
+      return startCase(tag.replace(this.componentPrefix, ''));
+    },
   },
 };
 
