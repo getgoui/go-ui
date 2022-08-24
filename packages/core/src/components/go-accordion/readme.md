@@ -1,4 +1,45 @@
-## go-accordion API
+---
+title: Accordion
+---
+
+# Accordion <span class="text-size-0">`go-accordion`</span>
+
+<!-- Description -->
+
+<div class="text-size-1">Accordions help users reduce cluster by showing only the sections that they are interested in.</div>
+
+## Accessibility
+
+`go-accordion` and `go-accordion-item` components are implemented following the [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) guidelines.
+
+
+## Demo
+
+### Single mode
+
+By default only one `<go-accordion-item>` element inside a `<go-accordion>` can be expanded at any given time. When clicked on a different `<go-accordion-item>`, the active one will be collapsed and the clicked one will be expanded.
+
+<demo-frame component="go-accordion" demo="single"></demo-frame>
+
+### Multiple mode
+
+There are times when you need multiple items to be open at the same time. Just add `multiple` attribute to the `<go-accordion>` element.
+
+<demo-frame component="go-accordion" demo="multiple"></demo-frame>
+
+### Nested
+
+Nested accordions are also possible, the components will figure out which `<go-accordion>` component is being interacted with.
+
+<demo-frame component="go-accordion" demo="nested"></demo-frame>
+
+### Customisation
+
+There are 2 slots you can use to customise each item. `slot="heading"` and `slot="arrow"`
+
+<demo-frame component="go-accordion" demo="slots"></demo-frame>
+
+
 
 <!-- Auto Generated Below -->
 
