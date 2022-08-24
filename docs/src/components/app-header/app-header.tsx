@@ -71,6 +71,11 @@ export class AppHeader {
 
   render() {
     const { isDark, navItems } = this;
+    const repoLinkProps = {
+      target: '_blank',
+      href: siteConfig.repoLink.url,
+      rel: 'noopener noreferrer nofollow',
+    };
     return (
       <header>
         <go-nav-drawer ref={el => (this.mobileMenu = el)} label="Menu" items={navItems}></go-nav-drawer>
@@ -92,11 +97,11 @@ export class AppHeader {
           </go-gov-au-logo>
 
           <div class="nav-actions" slot="actions">
-            <go-button href={siteConfig.repoLink.url} variant="text" icon round flat aria-label={siteConfig.repoLink.label}>
+            <go-button {...repoLinkProps} variant="text" icon round flat compact aria-label={siteConfig.repoLink.label}>
               <go-icon size="1.5rem" icon-set="bxl" name="github"></go-icon>
             </go-button>
             {siteConfig.darkThemeSwitch && (
-              <go-button variant="text" icon round flat onClick={() => this.toggleDarkMode()}>
+              <go-button variant="text" icon round flat compact onClick={() => this.toggleDarkMode()}>
                 <go-icon size="1.5rem" icon-set="bx" name={isDark ? 'moon' : 'sun'}></go-icon>
               </go-button>
             )}

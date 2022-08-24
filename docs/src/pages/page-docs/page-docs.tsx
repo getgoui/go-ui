@@ -1,13 +1,9 @@
 import { Component, Prop, State, h } from '@stencil/core';
 import MarkdownIt from 'markdown-it';
 import meta from 'markdown-it-meta';
-import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
+import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { removeLeadingSlash, siteUrl } from '../../utils/helpers';
-import siteConfig from '../../../config';
-import { groupBy } from 'lodash-es';
-
-const routePrefix = 'docs/';
+import { getDocsPrefix, siteUrl, buildSidebar } from '../../utils/helpers';
 
 const md = new MarkdownIt({
   html: true,
@@ -33,7 +29,6 @@ export class PageDocs {
   private sidebarNavItems = [] as INavItem[];
 
   private currentPath = '';
-  private currentPathParts = [];
   private meta = null;
 
   async componentWillLoad() {
@@ -41,10 +36,9 @@ export class PageDocs {
     if (url.endsWith('/')) {
       url = url.substring(0, url.length - 1);
     }
-    this.currentPath = url.replace(routePrefix, '');
+    this.currentPath = url.replace(getDocsPrefix(), '');
     const pathParts = this.currentPath.split('/');
     this.pageName = pathParts.pop();
-    this.currentPathParts = pathParts;
     await this.loadPage();
     await this.loadSidebarNav();
   }
@@ -75,46 +69,7 @@ export class PageDocs {
   }
 
   async loadSidebarNav() {
-    const links = docs.components.map((comp: JsonDocsComponent) => {
-      const path = this.buildSidebarItemUrl(comp, false);
-      const parents = path.split('/');
-      parents.pop();
-      return {
-        url: siteUrl(routePrefix + path),
-        label: siteConfig.sidebar.tagToLabel(comp.tag),
-        path,
-        parents,
-      };
-    });
-
-    let sidebar = groupBy(links, item => item.parents[0]);
-
-    console.log({ sidebar });
-    // links.forEach((navItem: INavItem) => {
-    //   console.log(navItem);
-    // });
-
-    // const relevantComps = docs.components.filter((comp: JsonDocsComponent) => {
-    //   const relativePath = this.buildSidebarItemUrl(comp, false);
-    //   console.log(relativePath, this.currentPathParts);
-
-    //   return comp.filePath.includes(this.currentPath);
-    // });
-    // console.log({ relevantComps });
-    docs.components.forEach((comp: JsonDocsComponent) => {
-      const url = siteUrl(this.buildSidebarItemUrl(comp));
-      const path = removeLeadingSlash(url.replace(routePrefix, ''));
-      const parents = path.split('/');
-      parents.pop();
-
-      // let label = siteConfig.sidebar.tagToLabel(comp.tag);
-    });
-
-    // console.log(structure);
-  }
-
-  buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true): string {
-    return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? routePrefix : '');
+    this.sidebarNavItems = buildSidebar();
   }
 
   render() {

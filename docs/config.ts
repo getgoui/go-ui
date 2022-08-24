@@ -7,11 +7,12 @@ const siteConfig = {
   logo: '/assets/img/logo.svg',
   logoDark: '/assets/img/logo.svg',
   baseUrl: 'https://go-ui.com/',
+  docsRoutePrefix: 'docs/',
   repoLink: {
     url: 'https://github.com/getgoui/go-ui',
     label: 'Github',
   },
-  darkThemeSwitch: false,
+  darkThemeSwitch: true,
   navbar: {
     main: [
       // {
