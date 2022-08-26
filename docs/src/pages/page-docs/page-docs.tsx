@@ -3,6 +3,7 @@ import MarkdownIt from 'markdown-it';
 import meta from 'markdown-it-meta';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
+import { goUiPlugin } from '@go-ui/core';
 import { getDocsPrefix, siteUrl, buildSidebar } from '../../utils/helpers';
 
 const md = new MarkdownIt({
@@ -10,7 +11,7 @@ const md = new MarkdownIt({
   linkify: true,
   typographer: true,
 });
-md.use(meta);
+md.use(meta).use(goUiPlugin);
 
 @Component({
   tag: 'page-docs',
@@ -31,6 +32,8 @@ export class PageDocs {
   private currentPath = '';
   private meta = null;
 
+  private tocEl: HTMLGoTocElement;
+
   async componentWillLoad() {
     await this.init();
   }
@@ -38,7 +41,6 @@ export class PageDocs {
   @Watch('params')
   async init() {
     let url = this.params[0];
-    console.log({ url });
     if (url.endsWith('/')) {
       url = url.substring(0, url.length - 1);
     }
@@ -78,6 +80,15 @@ export class PageDocs {
     this.sidebarNavItems = buildSidebar();
   }
 
+  @Watch('result')
+  refreshToc() {
+    console.log('docs result changed');
+    if (!this.tocEl) {
+      return;
+    }
+    this.tocEl.init();
+  }
+
   render() {
     const { result, sidebarNavItems, meta } = this;
     return [
@@ -95,7 +106,7 @@ export class PageDocs {
                 <div class="content-container" innerHTML={result}></div>
               </div>
               <div class="d-none d-block-desktop col-desktop-3">
-                <go-toc class="toc" selector=".content-container h2" label-class="h6"></go-toc>
+                <go-toc ref={el => (this.tocEl = el)} class="toc" selector=".content-container h2" label-class="h6"></go-toc>
               </div>
             </div>
           </div>

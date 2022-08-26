@@ -16,7 +16,6 @@ export class WcOutput {
   @Watch('usage')
   renderOutput(newValue) {
     this.output = hljs.highlight(newValue, { language: 'xml' }).value;
-    console.log(this.output);
   }
 
   render() {
