@@ -1,50 +1,24 @@
-## go-to-top API
+---
+title: Back to top
+---
 
-<!-- Auto Generated Below -->
+# Back to top <span class="text-size-0">`go-to-top`</span>
 
+<!-- Description -->
+
+<div class="text-size-1">A button that allows users to quickly scroll back to top of the page.</div>
 
 ## Usage
 
-### Go-to-top
+- Fixed at the bottom right corner of the page where people expect it to be.
+- Appears when the user scrolls down to a certain distance (customisable, defaults to `200px`) from the top of the page.
+- Disappears when the user scrolls back to the top of the page.
 
-<div class="container" style="height: 400px">
-  <go-md sanitise="true" md-options="{html: true}" src="//raw.githubusercontent.com/getgoui/go-ui/main/README.md">Fallback content.</go-md>
+<!-- Demos, tips, variations, use cases -->
 
-  <go-to-top></go-to-top>
-</div>
+## Demo
 
+<demo-frame component="go-to-top" demo="go-to-top"></demo-frame>
 
+<!-- Auto Generated Below -->
 
-## Properties
-
-| Property | Attribute | Description                                                         | Type     | Default |
-| -------- | --------- | ------------------------------------------------------------------- | -------- | ------- |
-| `offset` | `offset`  | how far from the top of the page the button should be shown (in px) | `number` | `200`   |
-
-
-## CSS Custom Properties
-
-| Name                 | Description                                    |
-| -------------------- | ---------------------------------------------- |
-| `--go-to-top-bottom` | Bottom position of the button. - default: 2rem |
-| `--go-to-top-right`  | Right position of the button. - default: 2rem  |
-
-
-## Dependencies
-
-### Depends on
-
-- [go-button](../go-button)
-- [go-tooltip](../go-tooltip)
-
-### Graph
-```mermaid
-graph TD;
-  go-to-top --> go-button
-  go-to-top --> go-tooltip
-  style go-to-top fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

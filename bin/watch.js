@@ -1,19 +1,27 @@
 import chalk from 'chalk';
 import chokidar from 'chokidar';
 import path from 'path';
+import { exec } from 'child_process';
 import cpr from 'cpr';
 
 /**
  * Watch file changes and run custom commands
  */
 export default async function watch(args) {
-  console.log(chalk.green('Watching for changes...'));
   const rootPath = path.resolve(__dirname, '../');
-  const srcPath = `${rootPath}/content/`;
-  const destPath = `${rootPath}/www/assets/content/`;
 
-  const onContentChange = file => {
-    console.log(chalk.green(`🎉 ${file} changed`));
+  console.log(chalk.green('Watching for changes...'));
+
+  const rebuildCoreComps = file => {
+    console.log(chalk.green(`🐌 Core file [${file}] changed, rebuilding core`));
+    exec('pnpm build.core').stdout.pipe(process.stdout);
+  };
+
+  const srcPath = `${rootPath}/docs/content/`;
+  const destPath = `${rootPath}/docs/www/assets/content/`;
+
+  const copyDocsContents = file => {
+    console.log(chalk.green(`📖 Docs site content [${file}] changed`));
 
     cpr(
       srcPath,
@@ -30,8 +38,10 @@ export default async function watch(args) {
       },
     );
   };
+
   const watch = {
-    [`${rootPath}/content/**/*`]: onContentChange,
+    [`${rootPath}/docs/content/**/*`]: copyDocsContents,
+    [`${rootPath}/packages/core/src/**/*`]: rebuildCoreComps,
   };
 
   const watchers = [];

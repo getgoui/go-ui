@@ -1,83 +1,78 @@
-## API
+---
+title: Icon
+---
 
-<!-- Auto Generated Below -->
 
+# Icon <span class="text-size-0">`go-icon`</span>
+
+<!-- Description -->
+
+<div class="text-size-1">
+  Icons serve multiple purposes in a UI, they can convey information (e.g. icon button, icon tab) or they can be used as a visual representation.
+</div>
+
+:::tip Icon font CSS
+
+Before using the `go-icon` component, you need to have the icon font CSS available in your application.
+
+**Go UI does not bundle any icon fonts**. This is to keep the bundle size small for cases when icons are not required.
+
+This documentation site references the Material Icons (Filled) hosted via [Google Fonts](https://fonts.google.com/icons), which is the default icon set for `go-icon` component.
+
+The demo contains example of how to include the icon font CSS in your application.
+
+:::
+
+## Accessibility
+
+There are two types of icons and they should be used in different ways.
+
+- **Decorative icons** are purely for visual purposes, they should not be announced by screen readers, `go-icon` will add `aria-hidden` attribute to the by default.
+
+- **Semantic icons** are meant to convey information and should be announced by screen readers, provide a `label` attribute to the `go-icon` component and the appropriate aria attributes will be applied.
+
+## Supported icon sets
+
+### Material Icons
+
+[Official site](https://fonts.google.com/icons)
+
+The following values can be used to render material icons:
+
+- `material-icons` (Filled)
+- `material-icons-outlined` (Outlined)
+- `material-icons-round` (Rounded)
+- `material-icons-sharp` (Sharp)
+
+### Font Awesome
+
+[Official site](https://fontawesome.com/v5.15/icons)
+
+The following values can be used to render Font Awesome icons ([See official docs](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use)):
+
+- `fas`
+- `far`
+- `fal`
+- `fad`
+- `fab`
+
+### Boxicons
+
+[Official site](https://boxicons.com/)
+
+The following values can be used to render Boxicons icons ([See official docs](https://boxicons.com/usage)):
+
+- `bx` (Regular)
+- `bxs` (Solid)
+- `bxl` (Logo)
+
+
+<!-- Demos, tips, variations, use cases -->
 
 ## Usage
 
-### Go-icon
+The following example shows how you can integrate and customise different supported icon sets.
 
-<!-- Include Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<demo-frame component="go-icon" demo="go-icon"></demo-frame>
 
-<!-- Include Font Awesome -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
-<!-- Include Boxicons -->
-<link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
-
-<div class="container">
-  <h3>
-    <go-link href="https://fonts.google.com/icons">Material Icons</go-link>
-  </h3>
-  <div>
-    <go-icon icon-set="material-icons" name="favorite" size="3rem" color="var(--go-color-critical-500)"></go-icon>
-    <go-icon icon-set="material-icons" name="home" label="Home"></go-icon>
-  </div>
-
-  <h3>
-    <go-link href="https://fontawesome.com/">Font Awesome</go-link>
-  </h3>
-  <div>
-    <go-icon icon-set="fas" name="heart" size="3rem" color="var(--go-color-critical-500)"></go-icon>
-    <go-icon icon-set="fas" name="home" label="Home"></go-icon>
-  </div>
-
-  <h3>
-    <go-link href="https://boxicons.com/">Boxicons</go-link>
-  </h3>
-  <div>
-    <go-icon icon-set="bxs" name="heart" size="3rem" color="var(--go-color-critical-500)"></go-icon>
-    <go-icon icon-set="bx" name="home" label="Home"></go-icon>
-  </div>
-</div>
-
-
-
-## Properties
-
-| Property     | Attribute    | Description                                                                                                     | Type                                                                                                                                                                       | Default            |
-| ------------ | ------------ | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `color`      | `color`      | Color of the icon,  supports CSS units and variables. Default: `currentColor`                                   | `string`                                                                                                                                                                   | `undefined`        |
-| `decorative` | `decorative` | Mark this icon to be hidden from screen reader                                                                  | `boolean`                                                                                                                                                                  | `false`            |
-| `iconSet`    | `icon-set`   | Specify the icon set being referenced. Icon font CSS files must be included in the page.                        | `"bx" \| "bxl" \| "bxs" \| "fab" \| "fad" \| "fal" \| "far" \| "fas" \| "material-icons" \| "material-icons-outlined" \| "material-icons-round" \| "material-icons-sharp"` | `'material-icons'` |
-| `name`       | `name`       | Name of the icon                                                                                                | `string`                                                                                                                                                                   | `undefined`        |
-| `size`       | `size`       | Size of the icon, supports CSS units and variables. Default: 1.5em for material icons, 1em for other icon sets. | `string`                                                                                                                                                                   | `undefined`        |
-
-
-## Dependencies
-
-### Used by
-
- - [go-main-nav](../navigation/go-main-nav)
- - [go-nav-drawer](../navigation/go-nav-drawer)
- - [go-nav-link](../navigation/go-nav-link)
-
-### Graph
-```mermaid
-graph TD;
-  go-main-nav --> go-icon
-  go-nav-drawer --> go-icon
-  go-nav-link --> go-icon
-  style go-icon fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+<!-- Auto Generated Below -->

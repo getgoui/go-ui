@@ -1,66 +1,32 @@
-## go-breadcrumbs API
+---
+title: Breadcrumb
+---
+
+# Breadcrumb <span class="text-size-0">`go-breadcrumb`</span>
+
+<!-- Description -->
+
+<div class="text-size-1">Breadcrumb provide a quick way to help users understand where they are in the website's information hierarchy.</div>
+
+## Usage and guidance
+
+Always place breadcrumb at the top of a page, and have the [skip link](../go-skip-link) target an element below the breadcrumb so that screen readers can skip this navigation area.
+
+- On desktop devices, the breadcrumb should start with "Home" even though the logo should also link to the home page.
+- Labels of the breadcrumb items should reflect their page headings in the actual information architecture.
+- On mobile devices, due to the limited screen real estate, the breadcrumb items are condensed into only having the direct parent of the current page (and the current page title if `show-current` attribute is set to `"true"`). User should be able to click on the logo to go back to the home page.
+- If items in breadcrumb get too long, the items will wrap into the next line. This is an sign that the information architecture (IA) might need to be updated.
+
+## Accessibility
+
+- Breadcrumb are contained within a `<nav>` landmark region labelled as "Breadcrumb" (you can change this by setting the `label` attribute).
+- If item has `url` and `hide-current` attribute is not set, the current page will be rendered as a link, in this scenario `aria-current="page"` is set to the link element.
+
+<!-- Demos, tips, variations, use cases -->
+
+## Demo
+
+<demo-frame component="go-breadcrumb" demo="go-breadcrumb"></demo-frame>
+
 
 <!-- Auto Generated Below -->
-
-
-## Usage
-
-### Go-breadcrumb
-
-<!-- material icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
-<go-breadcrumb
-  items="[
-{
-  label: 'Home',
-  url: '#',
-},
-{
-  label: 'Top level content page',
-  url: '#',
-},
-{
-  label: 'Parent page',
-  url: '#',
-},
-{
-  label: 'Current page',
-},
-]"
->
-</go-breadcrumb>
-
-
-
-## Properties
-
-| Property      | Attribute      | Description                                                                                             | Type                   | Default        |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------------- | ---------------------- | -------------- |
-| `hideCurrent` | `hide-current` | Hide current page (last item without url) from the breadcrumb                                           | `boolean`              | `false`        |
-| `items`       | `items`        | list of navigation items to be displayed                                                                | `INavItem[] \| string` | `undefined`    |
-| `label`       | `label`        | The label for the navigation landmark. This is used by assistive technologies to identify the landmark. | `string`               | `'Breadcrumb'` |
-
-
-## Dependencies
-
-### Used by
-
- - [go-hero](../go-hero)
-
-### Depends on
-
-- [go-nav-link](../navigation/go-nav-link)
-
-### Graph
-```mermaid
-graph TD;
-  go-breadcrumb --> go-nav-link
-  go-nav-link --> go-icon
-  go-hero --> go-breadcrumb
-  style go-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

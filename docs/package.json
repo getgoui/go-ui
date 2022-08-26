@@ -5,11 +5,8 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "scripts": {
-    "prebuild": "",
     "build": "stencil build --prerender",
-    "start": "concurrently -p \"[{name}]\" --kill-others -n w: pnpm:watch.*",
-    "watch.content": "node ./bin/index.js watch",
-    "watch.site": "stencil build --dev --watch --serve",
+    "start": "stencil build  --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"

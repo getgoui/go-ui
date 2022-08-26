@@ -8,9 +8,9 @@
 </style>
 <div class="container">
   <p style="position: sticky; top: 0; background: var(--go-color-lightest)">
-    <go-button block="mobile" id="btn">Show dialog</go-button>
+    <go-button block="mobile" id="btn" variant="primary">Show dialog</go-button>
     <br />
-    <go-button block="mobile" id="btn-persistent">Show persistent dialog</go-button>
+    <go-button block="mobile" id="btn-persistent" variant="primary">Show persistent dialog</go-button>
   </p>
   <p>A dialog should capture the keyboard focus.</p>
   <p>A dialog should also prevent body from scrolling when active.</p>
@@ -54,10 +54,12 @@
 </go-dialog>
 
 <script>
+  alert('yo')
   const dialog = document.querySelector('#normal');
   const persistentDialog = document.querySelector('#persistent');
 
   document.querySelector('#btn').addEventListener('click', () => {
+    console.log('clicked', dialog)
     dialog.open();
   });
   document.querySelector('#btn-persistent').addEventListener('click', () => {

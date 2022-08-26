@@ -1,51 +1,24 @@
-## go-badge API
+---
+title: Badge
+---
 
-<!-- Auto Generated Below -->
+# Badge <span class="text-size-0">`go-badge`</span>
 
+<!-- Description -->
+
+<div class="text-size-1">Badge is used to alert users to a particular status or to show a count.</div>
 
 ## Usage
 
-### Go-badge
+Badges are to be used on interactable elements such as buttons, links and other elements that need to convey a status.
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+## Accessibility
 
-<wc-playground
-  tag="go-badge"
-  props="[
-  {name: 'count', type: 'number'},
-  {name: 'min', type: 'number'},
-  {name: 'max', type: 'number'},
-  {name: 'dotOnly', type: 'boolean'},
-  {name: 'label', type: 'string'},
-  ]"
-  slots='[
-  {
-    "name": "default",
-    "docs": "Element to receive the badge"
-  },
-  ]'
-  code='
-  <go-badge label="You have 9 unread messages" count="9" min="1" max="1000">
-    <go-button variant="primary" icon aria-label="Example Button">
-      <go-icon decorative name="favorite"></go-icon>
-    </go-button>
-  </go-badge>'
->
-</wc-playground>
+Badges contain only limited information, in order to make assistive technologies convey the meanings correctly, you can use the `label` attribute on the badge component.
+
+## Demo
+
+<demo-frame component="go-badge" demo="go-badge" hide-source />
 
 
-
-## Properties
-
-| Property  | Attribute  | Description                                                                                         | Type      | Default     |
-| --------- | ---------- | --------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `count`   | `count`    | Number to be displayed on the badge                                                                 | `number`  | `undefined` |
-| `dotOnly` | `dot-only` | If true, the badge will be displayed only as a dot, no number will be shown                         | `boolean` | `false`     |
-| `label`   | `label`    | Provide a meaningful label for the badge                                                            | `string`  | `undefined` |
-| `max`     | `max`      | maximum number displayable on the badge, if count is greater than max, `{max}+` is displayed        | `number`  | `99`        |
-| `min`     | `min`      | minimum number displayable on the badge, if count is less than min, the badge will not be displayed | `number`  | `0`         |
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+<!-- Auto Generated Below -->

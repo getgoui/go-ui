@@ -1,1 +1,21 @@
-{"devDependencies":{"@changesets/cli":"^2.24.2"}}
+{
+  "scripts": {
+    "build": "nx run-many --target=build",
+    "build.affected": "nx affected:build",
+    "watch": "node ./bin/index.js watch",
+    "build.core": "nx build @go-ui/core",
+    "dev.docs": "nx start @go-ui/docs"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.24.2",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
+    "cpr": "^3.0.1",
+    "esm": "^3.2.25",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.kebabcase": "^4.1.1",
+    "minimist": "^1.2.6",
+    "nx": "14.5.10",
+    "prompts": "^2.4.2"
+  }
+}

@@ -1,22 +1,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
 <wc-playground
-  tag="go-banner"
-  props="[
-    {name: 'heading', type: 'string'},
-    {name: 'dismissible', type: 'boolean'},
-    {name: 'variant', type: 'select', options: ['info', 'critical', 'success']},
-  ]"
-  slots='[
-  {
-    "name": "default",
-    "docs": "Banner content"
-  },
-  {
-    "name": "icon",
-    "docs": "Slot for banner icon"
-  }
-]'
+    tag="go-banner"
+    props="[
+      {name: 'heading', type: 'string'},
+      {name: 'dismissible', type: 'boolean'},
+      {name: 'global', type: 'boolean'},
+      {name: 'variant', type: 'select', options: ['info', 'critical', 'success']},
+    ]"
+    slots='[
+    {
+      "name": "default",
+      "docs": "Banner content"
+    },
+    {
+      "name": "icon",
+      "docs": "Slot for banner icon"
+    }
+  ]'
   code="
   <go-banner variant='info' heading='Banner heading'>
     <go-icon decorative='true' slot='icon' name='lightbulb'></go-icon>
