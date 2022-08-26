@@ -22,7 +22,7 @@ Set the `content` prop to the markdown you want to render, and set `inline="true
 
 Load remote markdown file by passing the url to the `src` prop.
 
-:::tip Rendering HTML
+::: info Rendering HTML
 
 If your remote content uses html tags, you can add `md-options="{html: true}"` to enable HTML rendering.
 
@@ -40,7 +40,7 @@ If you do not trust the author, but needing to enable HTML, you can also set `sa
 
 `go-md` ships with a `sanitize` prop to enable sanitize output (default to `false`).
 
-:::tip Rule of thumb
+::: info Rule of thumb
 
 If HTML enabled, add `sanitize="true"`, otherwise it's not necessary
 

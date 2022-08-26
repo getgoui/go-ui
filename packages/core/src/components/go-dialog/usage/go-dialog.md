@@ -54,7 +54,6 @@
 </go-dialog>
 
 <script>
-  alert('yo')
   const dialog = document.querySelector('#normal');
   const persistentDialog = document.querySelector('#persistent');
 

@@ -1,9 +1,8 @@
 import { Component, Host, h, Element, Prop, Watch, Event, EventEmitter } from '@stencil/core';
 import MarkdownIt, { Options } from 'markdown-it';
-import iterator from 'markdown-it-for-inline';
-import mdContainer from 'markdown-it-container';
 import DOMPurify from 'dompurify';
 import JSON5 from 'json5';
+import { goUiPlugin } from '../../utils/go-ui-md-plugin';
 @Component({
   tag: 'go-md',
   styleUrl: 'go-md.scss',
@@ -82,35 +81,7 @@ export class GoMd {
       this.createMdInstance();
     }
     if (this.useGoUi) {
-      // add go-ui markdown renderer
-      // banner
-      const bannerOptions = ['info', 'critical', 'success'];
-      bannerOptions.forEach((type) => {
-        this.md.use(mdContainer, type, {
-          render: function (tokens, idx) {
-            const regex = new RegExp(`^${type}\\s+(.*)$`, '');
-            var m = tokens[idx].info.trim().match(regex);
-            if (tokens[idx].nesting === 1) {
-              // opening tag
-              const headingAttr = m && m[1] ? ` heading="${m[1]}"` : ``;
-              return `<go-banner variant="${type}" ${headingAttr}>\n`;
-            } else {
-              // closing tag
-              return '</go-banner>\n';
-            }
-          },
-        });
-      });
-      // links
-      this.md.use(iterator, 'go-link', 'link_open', function (tokens, idx) {
-        // Make sure link contains only text
-        if (tokens[idx + 2].type !== 'link_close' || tokens[idx + 1].type !== 'text') {
-          return;
-        }
-        // Do replacement
-        tokens[idx].tag = 'go-link';
-        tokens[idx + 2].tag = 'go-link';
-      });
+      this.md.use(goUiPlugin);
     }
   }
 
