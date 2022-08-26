@@ -12,5 +12,8 @@
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.stylelint": true
-	},
+  },
+  "cSpell.words": [
+    "Dialog"
+  ],
 }
