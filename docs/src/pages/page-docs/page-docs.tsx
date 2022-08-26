@@ -1,9 +1,10 @@
-import { Component, Prop, State, h } from '@stencil/core';
+import { Component, Prop, State, h, Watch } from '@stencil/core';
 import MarkdownIt from 'markdown-it';
 import meta from 'markdown-it-meta';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { getDocsPrefix, siteUrl, buildSidebar } from '../../utils/helpers';
+import Router from '../../router';
 
 const md = new MarkdownIt({
   html: true,
@@ -32,7 +33,13 @@ export class PageDocs {
   private meta = null;
 
   async componentWillLoad() {
+    await this.init();
+  }
+
+  @Watch('params')
+  async init() {
     let url = this.params[0];
+    console.log({ url });
     if (url.endsWith('/')) {
       url = url.substring(0, url.length - 1);
     }
@@ -47,7 +54,7 @@ export class PageDocs {
     const compDocs = docs.components.find(comp => comp.tag === this.pageName);
     if (compDocs) {
       this.result = md.render(compDocs.readme);
-      this.meta = md.meta;
+      this.meta = (md as any).meta;
       return;
     }
 
@@ -62,20 +69,20 @@ export class PageDocs {
       this.notfound = false;
       let text = await response.text();
       this.result = md.render(text);
-      this.meta = md.meta;
+      this.meta = (md as any).meta;
     } catch (error) {
       this.notfound = true;
     }
   }
 
   async loadSidebarNav() {
-    this.sidebarNavItems = buildSidebar();
+    this.sidebarNavItems = buildSidebar(Router);
   }
 
   render() {
     const { result, sidebarNavItems, meta } = this;
     return [
-      <seo-tags pageTitle={meta.title}></seo-tags>,
+      <seo-tags pageTitle={meta?.title}></seo-tags>,
       <div class="sidebar-layout">
         <aside>
           <div class="sidebar">

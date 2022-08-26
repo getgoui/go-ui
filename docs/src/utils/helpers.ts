@@ -2,6 +2,7 @@ import { Env } from '@stencil/core';
 import siteConfig from '../../config';
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
+import { href } from 'stencil-router-v2';
 
 export function getDocsPrefix() {
   return siteConfig?.docsRoutePrefix ? siteConfig.docsRoutePrefix : 'docs/';
@@ -38,14 +39,20 @@ export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true):
   return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix() : '');
 }
 
-export function buildSidebar(): INavItem[] {
+setTimeout(() => {}, 1000);
+
+export function buildSidebar(router): INavItem[] {
   return docs.components.map((comp: JsonDocsComponent) => {
     const path = buildSidebarItemUrl(comp, false);
     const parents = path.split('/');
     parents.pop();
+    const url = siteUrl(getDocsPrefix() + path);
     return {
-      url: siteUrl(getDocsPrefix() + path),
+      url,
       label: siteConfig.sidebar.tagToLabel(comp.tag),
+      linkAttrs: {
+        ...href(url, router),
+      },
       path,
       parents,
       parentKey: parents.join('.'),

@@ -9,9 +9,10 @@ import Router from '../../router';
 })
 export class AppRoot {
   render() {
+    const activePath = Router.activePath;
     return (
       <Host>
-        <app-header></app-header>
+        <app-header active-path={activePath}></app-header>
         <main>
           <Router.Switch>
             <Route path="/">

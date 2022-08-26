@@ -1,4 +1,6 @@
 import { Component, h } from '@stencil/core';
+import { href } from 'stencil-router-v2';
+import router from '../../router';
 
 @Component({
   tag: 'page-home',
@@ -10,13 +12,13 @@ export class PageHome {
     return (
       <div class="container">
         <p>
-          Welcome to the Stencil App Starter. You can use this starter to build entire apps all with web components using Stencil! Check out our docs on{' '}
+          Welcome to the Stencil App Starter. You can use this starter to build entire apps all with web components using Stencil! Check out our docs on
           <a href="https://stenciljs.com">stenciljs.com</a> to get started.
         </p>
 
-        <stencil-route-link url="/profile/stencil">
-          <button>Profile page</button>
-        </stencil-route-link>
+        <a {...href('/docs/components/', router)}>
+          <span>Profile page</span>
+        </a>
       </div>
     );
   }

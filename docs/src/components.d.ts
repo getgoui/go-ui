@@ -11,6 +11,7 @@ export namespace Components {
     interface AppFooter {
     }
     interface AppHeader {
+        "activePath": string;
         "inline": boolean;
     }
     interface AppRoot {
@@ -178,6 +179,7 @@ declare namespace LocalJSX {
     interface AppFooter {
     }
     interface AppHeader {
+        "activePath"?: string;
         "inline"?: boolean;
     }
     interface AppRoot {

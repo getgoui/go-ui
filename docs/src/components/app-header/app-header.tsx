@@ -1,4 +1,5 @@
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
+import { href } from 'stencil-router-v2';
 import { Build, Component, Prop, State, Watch, h } from '@stencil/core';
 
 import siteConfig from '../../../config';
@@ -20,6 +21,8 @@ export class AppHeader {
 
   @State() navItems: INavItem[] = [];
 
+  @Prop() activePath: string = '/';
+
   componentWillLoad() {
     // match OS preference
     this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -27,9 +30,13 @@ export class AppHeader {
     this.checkLocalStorage();
 
     this.navItems = siteConfig.navbar.main.map(item => {
-      const cleanPathname = removeLeadingSlash(window.location.pathname);
+      const cleanPathname = removeLeadingSlash(this.activePath);
       const cleanUrl = removeLeadingSlash(item.url);
-      return { ...item, isCurrent: cleanPathname.includes(cleanUrl) };
+      return {
+        ...item,
+        linkAttrs: { ...href(item.url) },
+        isCurrent: cleanPathname.includes(cleanUrl),
+      };
     });
   }
 
@@ -48,6 +55,18 @@ export class AppHeader {
   @Watch('isDark')
   darkModeChanged(newValue: boolean) {
     document.documentElement.setAttribute('data-theme', newValue ? 'dark' : 'light');
+  }
+
+  @Watch('activePath')
+  setActivePath(newValue: string) {
+    this.navItems = this.navItems.map(item => {
+      const cleanPathname = removeLeadingSlash(newValue);
+      const cleanUrl = removeLeadingSlash(item.url);
+      return {
+        ...item,
+        isCurrent: cleanPathname.includes(cleanUrl),
+      };
+    });
   }
 
   mobileMenu: HTMLGoNavDrawerElement;
@@ -85,7 +104,7 @@ export class AppHeader {
             <span id="menu-label">Menu</span>
           </go-button>
 
-          <go-gov-au-logo href="/" slot="logo">
+          <go-gov-au-logo {...href('/')} slot="logo">
             <img slot="main-brand" src={siteConfig.logo} alt={siteConfig.name} />
             <img slot="main-brand-on-dark" src={siteConfig.logoDark} alt={siteConfig.name} />
             <div slot="co-brand">
@@ -101,7 +120,14 @@ export class AppHeader {
               <go-icon size="1.5rem" icon-set="bxl" name="github"></go-icon>
             </go-button>
             {siteConfig.darkThemeSwitch && (
-              <go-button variant="text" icon round flat compact onClick={() => this.toggleDarkMode()}>
+              <go-button
+                aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+                variant="text"
+                icon
+                round
+                flat
+                compact
+                onClick={() => this.toggleDarkMode()}>
                 <go-icon size="1.5rem" icon-set="bx" name={isDark ? 'moon' : 'sun'}></go-icon>
               </go-button>
             )}
