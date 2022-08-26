@@ -4,7 +4,6 @@ import meta from 'markdown-it-meta';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { getDocsPrefix, siteUrl, buildSidebar } from '../../utils/helpers';
-import Router from '../../router';
 
 const md = new MarkdownIt({
   html: true,
@@ -76,7 +75,7 @@ export class PageDocs {
   }
 
   async loadSidebarNav() {
-    this.sidebarNavItems = buildSidebar(Router);
+    this.sidebarNavItems = buildSidebar();
   }
 
   render() {

@@ -117,30 +117,6 @@ wc-playground {
       resize: vertical;
     }
   }
-  .usage {
-    .panel-wrapper {
-      --body-max-height: 50vh !important;
-    }
-    .panel {
-      position: relative;
-    }
-    .output {
-      min-height: 5rem;
-      height: auto;
-    }
-    .output-controls {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-    }
-    pre {
-      code {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: var(--go-size-0);
-        font-style: italic;
-      }
-    }
-  }
   .control-panel-opener {
     position: absolute;
     top: 1rem;

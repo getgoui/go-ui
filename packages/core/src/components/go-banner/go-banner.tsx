@@ -56,7 +56,7 @@ export class GoBanner {
         </section>
         {dismissible ? (
           <div class="dismissible-col">
-            <go-button class="dismissible-btn" flat={true} icon={true} onClick={() => this.handleClose()} color="tertiary" round={true}>
+            <go-button variant="text" class="dismissible-btn" flat={true} icon={true} onClick={() => this.handleClose()} round={true}>
               <span class="visually-hidden">Dismiss</span>
               <svg
                 aria-hidden="true"

@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, Event, EventEmitter, State } from '@stencil/core';
 import JSON5 from 'json5';
-import copy from 'copy-text-to-clipboard';
+import pretty from 'pretty';
 import kebabCase from 'lodash.kebabcase';
 import { IProp } from './prop.type';
 import { ISlot } from './slot.type';
@@ -178,13 +178,10 @@ export class WcPlayground {
     const slotOutputs = this.getSlotContents(this.slotsArray);
 
     const tagName = this.tag;
-    return `<${tagName}${propOutputs.length ? glue : ''}${propOutputs.join(glue)}${propOutputs.length ? glue : ''}>
-  ${slotOutputs.length ? slotOutputs.join('\n  ') : ''}
-</${tagName}>`;
-  }
 
-  copyUsage() {
-    copy(this.getUsage());
+    return pretty(`<${tagName}${propOutputs.length ? glue : ''}${propOutputs.join(glue)}${propOutputs.length ? glue : ''}>
+  ${slotOutputs.length ? slotOutputs.join('\n  ') : ''}
+</${tagName}>`);
   }
 
   @State() showConfigPanel = true;
@@ -227,8 +224,7 @@ export class WcPlayground {
                   class={{ 'control-panel-opener': true }}
                   variant="success"
                   onClick={() => this.openConfigPanel()}
-                  aria-label="Open configuration panel"
-                >
+                  aria-label="Open configuration panel">
                   Configure
                 </go-button>
               ) : null}
@@ -237,19 +233,10 @@ export class WcPlayground {
               class={{
                 'control-panel': true,
                 'show': this.showConfigPanel,
-              }}
-            >
+              }}>
               <div class="control-header">
                 <span>Configuration</span>
-                <go-button
-                  round
-                  compact
-                  variant="text"
-                  flat
-                  icon
-                  onClick={() => this.closeConfigPanel()}
-                  aria-label="Close configuration panel"
-                >
+                <go-button round compact variant="text" flat icon onClick={() => this.closeConfigPanel()} aria-label="Close configuration panel">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -257,32 +244,23 @@ export class WcPlayground {
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    viewBox="0 0 24 24"
-                  >
+                    viewBox="0 0 24 24">
                     <path d="M18 6 6 18M6 6l12 12" />
                   </svg>
                 </go-button>
               </div>
               <go-accordion class="props" multiple={true}>
                 <go-accordion-item heading="Props" active>
-                  <props-panel
-                    debug={debug}
-                    values={this.propsArray}
-                    onPropChange={e => this.handlePropsChange(e)}
-                  ></props-panel>
+                  <props-panel debug={debug} values={this.propsArray} onPropChange={e => this.handlePropsChange(e)}></props-panel>
                 </go-accordion-item>
                 <go-accordion-item heading="Slots" active>
-                  <slots-panel
-                    debug={debug}
-                    values={this.slotsArray}
-                    onSlotDisplayChange={e => this.handleSlotsChange(e)}
-                  ></slots-panel>
+                  <slots-panel debug={debug} values={this.slotsArray} onSlotDisplayChange={e => this.handleSlotsChange(e)}></slots-panel>
                 </go-accordion-item>
               </go-accordion>
               <slot name="controls" />
             </div>
           </div>
-          <wc-output onCopyCode={() => this.copyUsage()} usage={this.getUsage()}></wc-output>
+          <wc-output usage={this.getUsage()}></wc-output>
         </div>
       </Host>
     );

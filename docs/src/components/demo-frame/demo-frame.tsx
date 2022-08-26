@@ -2,6 +2,7 @@ import { Component, h, Host, Prop, State } from '@stencil/core';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import pretty from 'pretty';
 import hljs from 'highlight.js';
+import { executeScriptElements } from '../../utils/helpers';
 
 @Component({
   tag: 'demo-frame',
@@ -15,6 +16,9 @@ export class DemoFrame {
   @Prop() hideSource: boolean = false;
 
   @State() demoSource: string;
+
+  private demoContainerEl: HTMLElement;
+
   componentWillLoad() {
     if (!this.component || !this.demo) {
       console.warn('demo-frame need both component and demo props to be specified.');
@@ -26,8 +30,10 @@ export class DemoFrame {
     const target = docs.components.find(comp => comp.tag === component);
     this.demoSource = pretty(target?.usage[demo]);
   }
-
   componentDidLoad() {
+    this.demoContainerEl.innerHTML = this.demoSource;
+    executeScriptElements(this.demoContainerEl);
+
     hljs.configure({ ignoreUnescapedHTML: true });
     hljs.highlightAll();
   }
@@ -40,8 +46,8 @@ export class DemoFrame {
     return (
       <Host>
         <div class="demo-frame">
-          <div class="demo-container">
-            <div innerHTML={demoSource}></div>
+          <div ref={el => (this.demoContainerEl = el)} class="demo-container">
+            <progress></progress>
           </div>
           {!hideSource && (
             <go-accordion>

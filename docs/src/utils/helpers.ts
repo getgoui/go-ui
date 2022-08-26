@@ -41,7 +41,7 @@ export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true):
 
 setTimeout(() => {}, 1000);
 
-export function buildSidebar(router): INavItem[] {
+export function buildSidebar(): INavItem[] {
   return docs.components.map((comp: JsonDocsComponent) => {
     const path = buildSidebarItemUrl(comp, false);
     const parents = path.split('/');
@@ -51,11 +51,28 @@ export function buildSidebar(router): INavItem[] {
       url,
       label: siteConfig.sidebar.tagToLabel(comp.tag),
       linkAttrs: {
-        ...href(url, router),
+        ...href(url),
       },
       path,
       parents,
       parentKey: parents.join('.'),
     };
+  });
+}
+
+// code helper
+export function executeScriptElements(containerElement) {
+  const scriptElements = containerElement.querySelectorAll('script') as NodeListOf<HTMLScriptElement>;
+
+  Array.from(scriptElements).forEach(scriptElement => {
+    const clonedElement = document.createElement('script');
+
+    Array.from(scriptElement.attributes).forEach(attribute => {
+      clonedElement.setAttribute(attribute.name, attribute.value);
+    });
+
+    clonedElement.text = scriptElement.text;
+
+    scriptElement.parentNode.replaceChild(clonedElement, scriptElement);
   });
 }

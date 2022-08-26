@@ -72,10 +72,6 @@ export interface SlotsPanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSlotsPanelElement;
 }
-export interface WcOutputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLWcOutputElement;
-}
 export interface WcPlaygroundCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLWcPlaygroundElement;
@@ -218,7 +214,6 @@ declare namespace LocalJSX {
         "values"?: ISlot[];
     }
     interface WcOutput {
-        "onCopyCode"?: (event: WcOutputCustomEvent<any>) => void;
         "usage"?: string;
     }
     interface WcPlayground {
