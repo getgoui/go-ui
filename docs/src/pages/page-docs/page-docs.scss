@@ -13,7 +13,7 @@
     position: sticky;
     top: var(--header-height);
     bottom: 0;
-    padding: 2rem 0.5rem;
+    padding: 2rem 1rem;
   }
   main {
     padding: 2rem 0;
@@ -27,9 +27,4 @@
       }
     }
   }
-}
-
-html {
-  --header-height: 150px;
-  scroll-margin-top: 250px;
 }

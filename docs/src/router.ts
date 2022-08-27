@@ -1,5 +1,5 @@
 import { createRouter } from 'stencil-router-v2';
 
-const router = createRouter();
+const Router = createRouter();
 
-export default router;
+export default Router;

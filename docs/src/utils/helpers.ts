@@ -9,7 +9,7 @@ export function getDocsPrefix() {
 }
 
 export function removeLeadingSlash(str: string): string {
-  if (str.startsWith('/')) {
+  if (str && str.startsWith('/')) {
     return str.substring(1);
   }
   return str;
@@ -74,5 +74,19 @@ export function executeScriptElements(containerElement) {
     clonedElement.text = scriptElement.text;
 
     scriptElement.parentNode.replaceChild(clonedElement, scriptElement);
+  });
+}
+
+export function prepareNavItems(items: INavItem[], activePath: string): INavItem[] {
+  return items.map(item => {
+    const cleanPathname = removeLeadingSlash(activePath);
+    const cleanUrl = removeLeadingSlash(item?.url);
+    const isCurrent = cleanPathname.includes(cleanUrl);
+    console.log(cleanPathname, cleanUrl, isCurrent);
+    return {
+      ...item,
+      linkAttrs: { ...href(item.url) },
+      isCurrent,
+    };
   });
 }

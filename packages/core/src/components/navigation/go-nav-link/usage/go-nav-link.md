@@ -1,5 +1,5 @@
 <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
-<demo-playground
+<wc-playground
   tag="go-nav-link"
   props="[
   {
@@ -22,4 +22,4 @@
 ]"
 >
   <go-nav-link></go-nav-link>
-</demo-playground>
+</wc-playground>

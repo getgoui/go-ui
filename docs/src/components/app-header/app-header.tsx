@@ -3,7 +3,7 @@ import { href } from 'stencil-router-v2';
 import { Build, Component, Prop, State, Watch, h } from '@stencil/core';
 
 import siteConfig from '../../../config';
-import { removeLeadingSlash } from '../../utils/helpers';
+import { prepareNavItems, removeLeadingSlash } from '../../utils/helpers';
 
 declare global {
   var docsearch: any;
@@ -29,15 +29,7 @@ export class AppHeader {
     // check if there's any local storage override
     this.checkLocalStorage();
 
-    this.navItems = siteConfig.navbar.main.map(item => {
-      const cleanPathname = removeLeadingSlash(this.activePath);
-      const cleanUrl = removeLeadingSlash(item.url);
-      return {
-        ...item,
-        linkAttrs: { ...href(item.url) },
-        isCurrent: cleanPathname.includes(cleanUrl),
-      };
-    });
+    this.navItems = prepareNavItems(siteConfig.navbar.main, this.activePath);
   }
 
   checkLocalStorage() {

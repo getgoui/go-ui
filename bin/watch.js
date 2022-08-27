@@ -14,7 +14,8 @@ export default async function watch(args) {
 
   const rebuildCoreComps = file => {
     console.log(chalk.green(`🐌 Core file [${file}] changed, rebuilding core`));
-    exec('pnpm build.core').stdout.pipe(process.stdout);
+    const buildProcess = exec('pnpm build.core');
+    buildProcess.stdout.pipe(process.stdout);
   };
 
   const srcPath = `${rootPath}/docs/content/`;

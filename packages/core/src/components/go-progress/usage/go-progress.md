@@ -5,8 +5,8 @@
   <p id="progress-2-label">Progress bar that shows percentage</p>
   <go-progress class="determinate-progress" labelledby="progress-2-label" value="10" max="100" label="10%" show-percentage></go-progress>
   <go-button-group class="center" connected>
-    <go-button round type="button" id="add-btn">+10%</go-button>
-    <go-button round outline-fill type="button" id="remove-btn">-10%</go-button>
+    <go-button variant="primary" round type="button" id="add-btn">+10%</go-button>
+    <go-button variant="primary" round outline-fill type="button" id="remove-btn">-10%</go-button>
   </go-button-group>
 
   <h3>Indeterminate</h3>

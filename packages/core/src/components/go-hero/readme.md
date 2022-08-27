@@ -8,7 +8,7 @@ title: Hero
 
 <div class="text-size-1">Hero is a prominent visual element, usually placed at the top of the page.</div>
 
-:::tip Self contained
+::: info Self contained
 
 `go-hero` is a self-contained element, do not put it inside an element with `.container` class.
 

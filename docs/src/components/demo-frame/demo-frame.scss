@@ -3,22 +3,13 @@
   border-radius: var(--radius-2) var(--radius-2) 0 0;
   .demo-container {
     padding: 1rem;
+    max-height: 100vh;
+    overflow: auto;
   }
 
   go-accordion {
     --heading-radius: 0;
     --panel-padding-y: 4px;
     --panel-padding-x: 1rem;
-    pre.code-block {
-      padding: 0;
-      background-color: transparent;
-      margin: 0;
-      position: relative;
-      copy-code-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-      }
-    }
   }
 }

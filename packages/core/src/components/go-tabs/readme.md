@@ -1,91 +1,42 @@
-## go-tabs API
+---
+title: Tabs
+---
+
+# Tabs <span class="text-size-0">`go-tabs`</span>
+
+<!-- Description -->
+
+<div class="text-size-1">Tabs are used commonly to organise related content and switch between different views.</div>
+
+## When to use
+
+Tabs are a great way to organize content and make it easy for users to move between related sections or views at the same level of hierarchy. Tabs facilitate user interaction with specific content while maintaining a clear understanding of the overall context of the screen.
+
+References:
+
+- [Tabs](https://digitalnsw.github.io/nsw-design-system/components/tabs/index.html) - NSW Digital Design System
+- [Tabs, Used Right](https://www.nngroup.com/articles/tabs-used-right/) - Nielsen Norman Group
+
+## Accessibility
+
+- `go-tabs` and `go-tab` components are built based on the [W3C tabs design pattern](https://www.w3.org/TR/wai-aria-practices/#tabpanel).
+- By default, the [Tabs With Automatic Activation](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html) pattern is used, where a tab is automatically activated and its associated panel is displayed when the tab receives focus.
+- If the panel content cannot be displayed instantly, add `manual="true"` attribute to adopt the [Tabs With Manual Activation](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html) pattern.
+
+References:
+
+- [Tabs design pattern](https://www.w3.org/TR/wai-aria-practices/#tabpanel) - WAI-ARIA
+
+## Demo
+
+<demo-frame component="go-tabs" demo="go-tabs"></demo-frame>
+
+## Vertical tabs
+
+<demo-frame component="go-tabs" demo="go-tabs-vertical"></demo-frame>
+
+## Manual activation
+
+<demo-frame component="go-tabs" demo="go-tabs-manual"></demo-frame>
 
 <!-- Auto Generated Below -->
-
-
-## Usage
-
-### Go-tabs
-
-<div class="container">
-  <go-tabs>
-    <go-tab label="First tab">
-      <p>Tab 1 content</p>
-    </go-tab>
-    <go-tab label="Second tab">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, esse laboriosam tempore vel, deserunt nulla, corporis eaque dolore ad laudantium
-        animi minima reprehenderit aliquam voluptate minus dolorem nobis fugiat molestiae.
-      </p>
-    </go-tab>
-    <go-tab label="Third tab">
-      <p>Tab 3 content</p>
-    </go-tab>
-  </go-tabs>
-</div>
-
-
-### Go-tabs-manual
-
-<div class="container">
-  <go-tabs manual="true" id="tabs">
-    <go-tab label="First tab">Loading...</go-tab>
-    <go-tab label="Second tab">Loading...</go-tab>
-    <go-tab label="Third tab">Loading...</go-tab>
-  </go-tabs>
-</div>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var tabs = document.querySelector('#tabs');
-    tabs.addEventListener('tabChange', function (e) {
-      const { index, tabEl, panelEl } = e.detail;
-      console.log(`Tab ${index + 1} activated.`);
-      panelEl.innerHTML = `Loading...`;
-      setTimeout(() => {
-        panelEl.innerHTML = 'Dynamic tab ' + (index + 1) + ' content ';
-      }, 1500);
-    });
-  });
-</script>
-
-
-### Go-tabs-vertical
-
-<div class="container">
-  <go-tabs vertical="true">
-    <go-tab label="First tab">
-      <p>Tab 1 content</p>
-    </go-tab>
-    <go-tab label="Second tab">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, esse laboriosam tempore vel, deserunt nulla, corporis eaque dolore ad laudantium
-        animi minima reprehenderit aliquam voluptate minus dolorem nobis fugiat molestiae.
-      </p>
-    </go-tab>
-    <go-tab label="Third tab">
-      <p>Tab 3 content</p>
-    </go-tab>
-  </go-tabs>
-</div>
-
-
-
-## Properties
-
-| Property        | Attribute         | Description                                                                                                                                                                              | Type      | Default     |
-| --------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `manual`        | `manual`          | By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key. | `boolean` | `false`     |
-| `tabGroupLabel` | `tab-group-label` | Provides a label that describes the purpose of the set of tabs.                                                                                                                          | `string`  | `undefined` |
-| `vertical`      | `vertical`        | Set tabs orientation to vertical                                                                                                                                                         | `boolean` | `false`     |
-
-
-## Events
-
-| Event       | Description      | Type                        |
-| ----------- | ---------------- | --------------------------- |
-| `tabChange` | tab change event | `CustomEvent<ActivatedTab>` |
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

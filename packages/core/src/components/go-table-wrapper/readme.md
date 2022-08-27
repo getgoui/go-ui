@@ -1,80 +1,25 @@
-## go-table-wrapper API
+---
+title: Table
+---
 
-<!-- Auto Generated Below -->
+# Table <span class="text-size-0">`go-table-wrapper`</span>
 
+<!-- Description -->
+
+<div class="text-size-1">Table component displays tabular data.</div>
 
 ## Usage
 
-### Go-table-wrapper
+The usage of this component is just wrapping the `go-table-wrapper` tag around the normal use of the `table` element.
 
-<div class="container">
-<go-table-wrapper striped hoverable bordered>
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>name</th>
-        <th>email</th>
-        <th>region</th>
-        <th>country</th>
-        <th>address</th>
-      </tr>
-    </thead>
-      <tr>
-        <th scope="row">1</th>
-        <td>Lewis Walters</td>
-        <td>ut.semper@icloud.ca</td>
-        <td>North Island</td>
-        <td>Norway</td>
-        <td>703-5421 Massa. St.</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Damon Guthrie</td>
-        <td>vitae.mauris@hotmail.ca</td>
-        <td>Antofagasta</td>
-        <td>Poland</td>
-        <td>119-9093 Phasellus Rd.</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Harriet Hicks</td>
-        <td>sagittis.augue.eu@yahoo.couk</td>
-        <td>Minas Gerais</td>
-        <td>Nigeria</td>
-        <td>264-7272 Facilisis, Rd.</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Shay Hill</td>
-        <td>ultricies@outlook.org</td>
-        <td>Cajamarca</td>
-        <td>Australia</td>
-        <td>193-3393 Duis Street</td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td>Richard Gay</td>
-        <td>sed@protonmail.org</td>
-        <td colspan="2">Gyeonggi Peru</td>
-        <td>Ap #542-9534 Mauris Avenue</td>
-      </tr>
-    </tbody>
-  </table>
-</go-table-wrapper>
-</div>
+Why do a `go-table-wrapper` rather than a `go-table` component that replaces/enhances the HTML `table` element?
 
+Due to the [HTML table standards](https://html.spec.whatwg.org/multipage/tables.html#the-table-element) the table elements such as `tbody` `thead` `tr` `td` `th` are meant to be used together and if used in a `table` equivalent custom element with the use of slots, the browsers will simply refuse to treat it as valid HTML.
 
+## Accessibility
 
-## Properties
+## Demo
 
-| Property    | Attribute   | Description    | Type      | Default |
-| ----------- | ----------- | -------------- | --------- | ------- |
-| `bordered`  | `bordered`  | Bordered table | `boolean` | `false` |
-| `hoverable` | `hoverable` | Hoverable rows | `boolean` | `false` |
-| `striped`   | `striped`   | Striped rows   | `boolean` | `false` |
+<demo-frame component="go-table-wrapper" demo="go-table-wrapper"></demo-frame>
 
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+<!-- Auto Generated Below -->

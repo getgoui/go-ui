@@ -1,43 +1,31 @@
-## go-skip-link API
+---
+title: Skip link
+---
+
+
+# Skip link <span class="text-size-0">`go-skip-link`</span>
+
+<!-- Description -->
+
+<div class="text-size-1">Skip link is a control that helps keyboard and screen-reader users to navigate to the main content of the page quickly.</div>
+
+## Accessibility
+
+Keyboard and screen-reader users may have difficulties navigating through a long list of links, skip link helps them to quickly jump to the main content of the page. Skip link is visually hidden until it receives focus.
+
+:::info
+The target element specified in `go-skip-link` will receive a `tabindex="-1"` in order to receive the tab focus programmatically.
+:::
+
+### References
+
+- [Skip Navigation Links](https://webaim.org/techniques/skipnav/)
+
+<!-- Demos, tips, variations, use cases -->
+
+## Demo
+
+<demo-frame component="go-skip-link" demo="go-skip-link"></demo-frame>
 
 <!-- Auto Generated Below -->
 
-
-## Usage
-
-### Go-skip-link
-
-<go-skip-link target="[data-example='target']">Skip to target</go-skip-link>
-
-<ul>
-  <li><a href="#">Link to skip</a></li>
-  <li><a href="#">Link to skip</a></li>
-  <li><a href="#">Link to skip</a></li>
-  <li><a href="#">Link to skip</a></li>
-</ul>
-
-<div data-example="target">
-  <p>This is a <a href="#">test</a></p>
-</div>
-
-
-
-## Properties
-
-| Property | Attribute | Description                                                         | Type     | Default  |
-| -------- | --------- | ------------------------------------------------------------------- | -------- | -------- |
-| `target` | `target`  | Tell skip link which element to focus (supports any query selector) | `string` | `'main'` |
-
-
-## CSS Custom Properties
-
-| Name                     | Description                                                                                |
-| ------------------------ | ------------------------------------------------------------------------------------------ |
-| `--skip-link-bg-color`   | Background color for the skip link focusable area - default: var(--go-color-secondary-700) |
-| `--skip-link-padding`    | Padding to apply to the skip link focusable area - default: 1rem 2rem                      |
-| `--skip-link-text-color` | Text color for the skip link focusable area - default: var(--go-color-lightest)            |
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

@@ -25,10 +25,6 @@ go-nav-link {
     }
   }
 
-  &.current {
-    border-left-color: var(--nav-link-current-bar-color);
-  }
-
   .nav-item-link {
     display: inline-flex;
     align-items: center;
@@ -37,6 +33,10 @@ go-nav-link {
     border-left: var(--nav-link-current-bar-width) solid transparent;
     line-height: 1.5;
     text-decoration: none;
+
+    &.current {
+      border-left-color: var(--nav-link-current-bar-color);
+    }
 
     go-icon {
       text-decoration: none;

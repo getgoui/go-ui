@@ -4,7 +4,8 @@ import meta from 'markdown-it-meta';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { goUiPlugin } from '@go-ui/core';
-import { getDocsPrefix, siteUrl, buildSidebar } from '../../utils/helpers';
+import { getDocsPrefix, siteUrl, buildSidebar, prepareNavItems } from '../../utils/helpers';
+import Router from '../../router';
 
 const md = new MarkdownIt({
   html: true,
@@ -82,7 +83,6 @@ export class PageDocs {
 
   @Watch('result')
   refreshToc() {
-    console.log('docs result changed');
     if (!this.tocEl) {
       return;
     }
@@ -96,7 +96,7 @@ export class PageDocs {
       <div class="sidebar-layout">
         <aside>
           <div class="sidebar">
-            <go-nav-list items={sidebarNavItems}></go-nav-list>
+            <go-nav-list items={prepareNavItems(sidebarNavItems, Router.activePath)}></go-nav-list>
           </div>
         </aside>
         <main>
