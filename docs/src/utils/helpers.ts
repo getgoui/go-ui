@@ -2,6 +2,7 @@ import { Env } from '@stencil/core';
 import siteConfig from '../../config';
 import MarkdownIt from 'markdown-it';
 import meta from 'markdown-it-meta';
+import MarkdownItTitle from 'markdown-it-title';
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
@@ -15,6 +16,7 @@ export const md = new MarkdownIt({
   typographer: true,
 })
   .use(meta)
+  .use(MarkdownItTitle)
   .use(goUiPlugin);
 
 export function getDocsPrefix() {

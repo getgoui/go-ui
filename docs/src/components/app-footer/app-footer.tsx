@@ -7,6 +7,10 @@ import siteConfig from '../../../config';
 export class AppFooter {
   render() {
     const { footer } = siteConfig;
-    return <go-footer dark={footer.isDark} links={footer.links}></go-footer>;
+    return (
+      <go-footer dark={footer.isDark} links={footer.links}>
+        {footer.copyright && <div class="text-center" slot="copyright" innerHTML={footer.copyright}></div>}
+      </go-footer>
+    );
   }
 }

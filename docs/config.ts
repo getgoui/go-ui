@@ -68,7 +68,7 @@ const siteConfig = {
       },
       {
         label: 'Community',
-        items: [
+        children: [
           {
             label: 'Discord',
             url: 'https://discord.gg/g7cuQAdPfS',
@@ -81,11 +81,7 @@ const siteConfig = {
       },
       {
         label: 'More',
-        items: [
-          {
-            label: 'Blog',
-            url: '/blog',
-          },
+        children: [
           {
             label: 'GitHub',
             url: 'https://github.com/getgoui/go-ui',
@@ -94,9 +90,8 @@ const siteConfig = {
       },
     ] as INavItem[],
     copyright: `
-    <small>Built with <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a></small>
-    <br />
-    <small>Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target="_blank" rel="noopener noreferrer">Icons 8</a> from <a href="https://icons8.com/illustrations" target="_blank" rel="noopener noreferrer">Ouch!</a></small>
+    <div>Built with <go-link href="https://stenciljs.com/" target="_blank" rel="noopener noreferrer">Stencil</go-link></div>
+    <div>Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target="_blank" rel="noopener noreferrer">Icons 8</a> from <a href="https://icons8.com/illustrations" target="_blank" rel="noopener noreferrer">Ouch!</a></div>
     `,
     bottom: ``,
   },
