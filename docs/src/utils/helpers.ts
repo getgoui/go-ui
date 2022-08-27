@@ -3,6 +3,8 @@ import siteConfig from '../../config';
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
+import Router from '../router';
+import { uniqBy } from 'lodash-es';
 
 export function getDocsPrefix() {
   return siteConfig?.docsRoutePrefix ? siteConfig.docsRoutePrefix : 'docs/';
@@ -39,25 +41,33 @@ export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true):
   return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix() : '');
 }
 
-setTimeout(() => {}, 1000);
-
 export function buildSidebar(): INavItem[] {
-  return docs.components.map((comp: JsonDocsComponent) => {
-    const path = buildSidebarItemUrl(comp, false);
-    const parents = path.split('/');
-    parents.pop();
-    const url = siteUrl(getDocsPrefix() + path);
-    return {
-      url,
-      label: siteConfig.sidebar.tagToLabel(comp.tag),
-      linkAttrs: {
-        ...href(url),
-      },
-      path,
-      parents,
-      parentKey: parents.join('.'),
-    };
-  });
+  const prefix = getDocsPrefix();
+  const activePath = Router.activePath.replace(prefix, '');
+  let sidebar = docs.components
+    .map((comp: JsonDocsComponent) => {
+      const path = buildSidebarItemUrl(comp, false);
+      const parents = path.split('/');
+      parents.pop();
+      const category = parents[0]; // patterns/components
+
+      const url = siteUrl(prefix + path);
+      return {
+        url,
+        label: siteConfig.sidebar.tagToLabel(comp.tag),
+        linkAttrs: {
+          ...href(url),
+        },
+        category,
+        path,
+        parents,
+        parentKey: parents.join('.'),
+      };
+    })
+    .filter(item => activePath.includes(item.category)); //only relevant to current category
+
+  sidebar = uniqBy(sidebar, 'url'); // no duplicated urls
+  return sidebar;
 }
 
 // code helper
@@ -82,7 +92,6 @@ export function prepareNavItems(items: INavItem[], activePath: string): INavItem
     const cleanPathname = removeLeadingSlash(activePath);
     const cleanUrl = removeLeadingSlash(item?.url);
     const isCurrent = cleanPathname.includes(cleanUrl);
-    console.log(cleanPathname, cleanUrl, isCurrent);
     return {
       ...item,
       linkAttrs: { ...href(item.url) },

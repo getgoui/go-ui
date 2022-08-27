@@ -31,6 +31,7 @@ export class PageDocs {
   private sidebarNavItems = [] as INavItem[];
 
   private currentPath = '';
+  private pathParts = [] as string[];
   private meta = null;
 
   private tocEl: HTMLGoTocElement;
@@ -41,13 +42,14 @@ export class PageDocs {
 
   @Watch('params')
   async init() {
+    window.scrollTo({ top: 0 });
     let url = this.params[0];
     if (url.endsWith('/')) {
       url = url.substring(0, url.length - 1);
     }
     this.currentPath = url.replace(getDocsPrefix(), '');
-    const pathParts = this.currentPath.split('/');
-    this.pageName = pathParts.pop();
+    this.pathParts = this.currentPath.split('/');
+    this.pageName = this.pathParts.pop();
     await this.loadPage();
     await this.loadSidebarNav();
   }
@@ -96,7 +98,7 @@ export class PageDocs {
       <div class="sidebar-layout">
         <aside>
           <div class="sidebar">
-            <go-nav-list items={prepareNavItems(sidebarNavItems, Router.activePath)}></go-nav-list>
+            <go-nav-list block items={prepareNavItems(sidebarNavItems, Router.activePath)}></go-nav-list>
           </div>
         </aside>
         <main>

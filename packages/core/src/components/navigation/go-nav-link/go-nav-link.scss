@@ -36,6 +36,7 @@ go-nav-link {
 
     &.current {
       border-left-color: var(--nav-link-current-bar-color);
+      padding-left: 0.5rem;
     }
 
     go-icon {
