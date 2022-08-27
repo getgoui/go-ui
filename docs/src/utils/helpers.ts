@@ -1,10 +1,21 @@
 import { Env } from '@stencil/core';
 import siteConfig from '../../config';
+import MarkdownIt from 'markdown-it';
+import meta from 'markdown-it-meta';
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
 import Router from '../router';
 import { uniqBy } from 'lodash-es';
+import { goUiPlugin } from '@go-ui/core';
+
+export const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true,
+})
+  .use(meta)
+  .use(goUiPlugin);
 
 export function getDocsPrefix() {
   return siteConfig?.docsRoutePrefix ? siteConfig.docsRoutePrefix : 'docs/';

@@ -1,62 +1,38 @@
-## go-switch API
+---
+title: Switch
+---
+
+
+# Switch <span class="text-size-0">`go-switch`</span>
+
+<!-- Description -->
+
+<div class="text-size-1">
+  Switch is a widget that allows users to quickly choose between "on" and "off" values. Switch does not provide indeterminate state.
+</div>
+
+## Accessibility
+
+Following checkpoints come from W3C's [ARIA Authoring Practice Guide](https://www.w3.org/WAI/ARIA/apg/patterns/switch/):
+
+> - [x] The switch has role switch.
+> - [x] The switch has an accessible label provided by one of the following:
+>   - Visible text content contained within the element with role switch.
+>   - A visible label referenced by the value of aria-labelledby set on the element with role switch.
+>   - aria-label set on the element with role switch.
+> - [x] If the switch element is an HTML input[type="checkbox"], it uses the HTML checked attribute instead of the aria-checked property.
+
+**_To be implemented with fieldset_**
+
+> - [ ] If a set of switches is presented as a logical group with a visible label, either:
+>   - The switches are included in an element with role group that has the property aria-labelledby set to the ID of the element containing the group label.
+>   - The set is contained in an HTML fieldset and the label for the set is contained in an HTML legend element.
+
+<!-- Demos, tips, variations, use cases -->
+
+## Demo
+
+<demo-frame component="go-switch" demo="go-switch"></demo-frame>
 
 <!-- Auto Generated Below -->
 
-
-## Usage
-
-### Go-switch
-
-<div class="container">
-  <go-switch checked name="switch1" label="Switch"></go-switch>
-  <br />
-  <go-switch checked name="switch2" label="Stacked switch" stack></go-switch>
-  <br />
-  <go-switch checked name="switch3" label="Full-width switch" full-width></go-switch>
-  <br />
-  <go-switch checked name="switch4" label="On off switch" show-on-off></go-switch>
-  <br />
-  <go-switch checked name="switch5" label="Yes no switch" show-on-off active-label="Yes" inactive-label="No"></go-switch>
-  <br />
-  <go-switch checked name="switch5" label="On off outside switch" show-on-off-outside active-label="Yes" inactive-label="No"></go-switch>
-</div>
-
-
-
-## Properties
-
-| Property           | Attribute             | Description                                          | Type      | Default     |
-| ------------------ | --------------------- | ---------------------------------------------------- | --------- | ----------- |
-| `activeLabel`      | `active-label`        | "on" label to show when `showOnOff*` is set to true  | `string`  | `'On'`      |
-| `checked`          | `checked`             |                                                      | `boolean` | `undefined` |
-| `disabled`         | `disabled`            |                                                      | `boolean` | `undefined` |
-| `fullWidth`        | `full-width`          | make this field full width                           | `boolean` | `false`     |
-| `inactiveLabel`    | `inactive-label`      | "off" label to show when `showOnOff*` is set to true | `string`  | `'Off'`     |
-| `label`            | `label`               |                                                      | `string`  | `undefined` |
-| `name`             | `name`                |                                                      | `string`  | `undefined` |
-| `showOnOff`        | `show-on-off`         | show on/off text in switch toggle                    | `boolean` | `false`     |
-| `showOnOffOutside` | `show-on-off-outside` | show on/off text next to the switch toggle           | `boolean` | `false`     |
-| `stack`            | `stack`               | Display label on top of switch                       | `boolean` | `false`     |
-| `value`            | `value`               |                                                      | `any`     | `undefined` |
-
-
-## CSS Custom Properties
-
-| Name                        | Description                                                                            |
-| --------------------------- | -------------------------------------------------------------------------------------- |
-| `--switch-bg-color`         | default background color of switch control - default: var(--go-color-neutral-500)      |
-| `--switch-bg-color-checked` | background color of switch control when checked - default: var(--go-color-primary-600) |
-| `--switch-handle-color`     | color of the switch handle - default: #fff                                             |
-| `--switch-handle-gap`       | gap between handle circle and the edge of the switch - default: 4px                    |
-| `--switch-handle-shadow`    | box shadow for the handle circle - default: var(--shadow-2)                            |
-| `--switch-height`           | height of switch control - default: 2rem                                               |
-| `--switch-label-gap`        | gap between label and switch control - default: 1rem                                   |
-| `--switch-radius`           | border radius of switch control - default: var(--radius-round)                         |
-| `--switch-shadow`           | shadow on the switch track - default: var(--inner-shadow-1)                            |
-| `--switch-text-color`       | Text color for on off label - default: #fff                                            |
-| `--switch-width`            | width of switch control - default: 4rem                                                |
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

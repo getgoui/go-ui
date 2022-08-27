@@ -1,13 +1,13 @@
 import { Component, Prop, State, h, Watch } from '@stencil/core';
-import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { getDocsPrefix, siteUrl, buildSidebar, prepareNavItems, md } from '../../utils/helpers';
+import { buildSidebar, md, prepareNavItems, removeLeadingSlash, siteUrl } from '../../utils/helpers';
 import Router from '../../router';
+
 @Component({
-  tag: 'page-docs',
-  styleUrl: 'page-docs.scss',
+  tag: 'page-standard',
+  styleUrl: 'page-standard.scss',
 })
-export class PageDocs {
+export class PageStandard {
   @Prop() params: {
     [param: string]: string;
   };
@@ -16,11 +16,9 @@ export class PageDocs {
   @State() result = '';
 
   // private source = '';
-  private pageName = '';
   private sidebarNavItems = [] as INavItem[];
 
   private currentPath = '';
-  private pathParts = [] as string[];
   private meta = null;
 
   private tocEl: HTMLGoTocElement;
@@ -36,25 +34,16 @@ export class PageDocs {
     if (url.endsWith('/')) {
       url = url.substring(0, url.length - 1);
     }
-    this.currentPath = url.replace(getDocsPrefix(), '');
-    this.pathParts = this.currentPath.split('/');
-    this.pageName = this.pathParts.pop();
+    this.currentPath = removeLeadingSlash(url);
     await this.loadPage();
     await this.loadSidebarNav();
   }
 
   async loadPage() {
-    const compDocs = docs.components.find(comp => comp.tag === this.pageName);
-    if (compDocs) {
-      this.result = md.render(compDocs.readme);
-      this.meta = (md as any).meta;
-      return;
-    }
-
-    // not found, fetch content dir
+    // fetch content dir
+    console.log(this.currentPath);
     try {
-      console.log('doc not found, looking for content pages' + `/assets/content/docs/${this.currentPath}.md`);
-      let response = await fetch(siteUrl('/assets/content/docs/' + this.currentPath + '.md'));
+      let response = await fetch(siteUrl('/assets/content/' + this.currentPath + '.md'));
       if (response.status !== 200) {
         throw new Error("Page doesn't exist");
       }

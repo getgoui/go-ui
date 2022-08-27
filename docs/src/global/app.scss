@@ -6,14 +6,34 @@ html {
   scroll-padding-top: var(--header-height);
 }
 
-pre {
+.sidebar-layout {
+  --sidebar-width: 15rem;
   padding: 0;
-  background-color: transparent;
-  margin: 1rem 0;
+  display: flex;
   position: relative;
-  copy-code-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+  aside {
+    width: var(--sidebar-width);
+  }
+  .sidebar {
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    overflow: auto;
+    position: sticky;
+    top: var(--header-height);
+    bottom: 0;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--go-color-border);
+  }
+  main {
+    padding: 2rem 0;
+    width: calc(100% - var(--sidebar-width));
+    flex-grow: 1;
+    .toc {
+      position: sticky;
+      top: var(--header-height);
+      .go-link {
+        font-size: 14px;
+      }
+    }
   }
 }

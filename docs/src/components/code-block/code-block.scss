@@ -1,0 +1,11 @@
+pre.code-block {
+  padding: 0;
+  background-color: transparent;
+  margin: 1rem 0;
+  position: relative;
+  copy-code-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}

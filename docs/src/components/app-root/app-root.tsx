@@ -21,9 +21,7 @@ export class AppRoot {
 
             <Route path={/docs\/.*/} render={params => <page-docs params={params}></page-docs>}></Route>
 
-            <Route path={/.*/}>
-              <page-notfound></page-notfound>
-            </Route>
+            <Route path={/.*/} render={params => <page-standard params={params}></page-standard>}></Route>
           </Router.Switch>
         </main>
 

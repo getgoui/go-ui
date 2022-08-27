@@ -15,10 +15,10 @@ const siteConfig = {
   darkThemeSwitch: true,
   navbar: {
     main: [
-      // {
-      //   url: '/docs/guides/getting-started',
-      //   label: 'Guides',
-      // },
+      {
+        url: '/guides/getting-started',
+        label: 'Guides',
+      },
       {
         url: '/docs/patterns',
         label: 'Patterns',
@@ -27,10 +27,10 @@ const siteConfig = {
         url: '/docs/components',
         label: 'Components',
       },
-      // {
-      //   url: '/docs/get-involved/introduction',
-      //   label: 'Get involved',
-      // },
+      {
+        url: '/get-involved/introduction',
+        label: 'Get involved',
+      },
     ] as INavItem[],
   },
   footer: {

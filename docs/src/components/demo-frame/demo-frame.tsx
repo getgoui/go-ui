@@ -1,7 +1,6 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import pretty from 'pretty';
-import hljs from 'highlight.js';
 import { executeScriptElements } from '../../utils/helpers';
 
 @Component({
@@ -33,9 +32,6 @@ export class DemoFrame {
   componentDidLoad() {
     this.demoContainerEl.innerHTML = this.demoSource;
     executeScriptElements(this.demoContainerEl);
-
-    hljs.configure({ ignoreUnescapedHTML: true });
-    hljs.highlightAll();
   }
 
   render() {
@@ -52,10 +48,7 @@ export class DemoFrame {
           {!hideSource && (
             <go-accordion>
               <go-accordion-item heading="Source">
-                <pre class="code-block">
-                  <copy-code-btn code={demoSource}></copy-code-btn>
-                  <code class="language-html">{demoSource}</code>
-                </pre>
+                <code-block language="html" code={demoSource}></code-block>
               </go-accordion-item>
             </go-accordion>
           )}

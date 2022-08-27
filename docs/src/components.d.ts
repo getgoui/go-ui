@@ -16,6 +16,10 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface CodeBlock {
+        "code": string;
+        "language": string;
+    }
     interface CopyCodeBtn {
         "code": string;
     }
@@ -32,6 +36,11 @@ export namespace Components {
     interface PageHome {
     }
     interface PageNotfound {
+    }
+    interface PageStandard {
+        "params": {
+    [param: string]: string;
+  };
     }
     interface PropsPanel {
         "debug": boolean;
@@ -95,6 +104,12 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLCodeBlockElement extends Components.CodeBlock, HTMLStencilElement {
+    }
+    var HTMLCodeBlockElement: {
+        prototype: HTMLCodeBlockElement;
+        new (): HTMLCodeBlockElement;
+    };
     interface HTMLCopyCodeBtnElement extends Components.CopyCodeBtn, HTMLStencilElement {
     }
     var HTMLCopyCodeBtnElement: {
@@ -124,6 +139,12 @@ declare global {
     var HTMLPageNotfoundElement: {
         prototype: HTMLPageNotfoundElement;
         new (): HTMLPageNotfoundElement;
+    };
+    interface HTMLPageStandardElement extends Components.PageStandard, HTMLStencilElement {
+    }
+    var HTMLPageStandardElement: {
+        prototype: HTMLPageStandardElement;
+        new (): HTMLPageStandardElement;
     };
     interface HTMLPropsPanelElement extends Components.PropsPanel, HTMLStencilElement {
     }
@@ -159,11 +180,13 @@ declare global {
         "app-footer": HTMLAppFooterElement;
         "app-header": HTMLAppHeaderElement;
         "app-root": HTMLAppRootElement;
+        "code-block": HTMLCodeBlockElement;
         "copy-code-btn": HTMLCopyCodeBtnElement;
         "demo-frame": HTMLDemoFrameElement;
         "page-docs": HTMLPageDocsElement;
         "page-home": HTMLPageHomeElement;
         "page-notfound": HTMLPageNotfoundElement;
+        "page-standard": HTMLPageStandardElement;
         "props-panel": HTMLPropsPanelElement;
         "seo-tags": HTMLSeoTagsElement;
         "slots-panel": HTMLSlotsPanelElement;
@@ -179,6 +202,10 @@ declare namespace LocalJSX {
         "inline"?: boolean;
     }
     interface AppRoot {
+    }
+    interface CodeBlock {
+        "code"?: string;
+        "language"?: string;
     }
     interface CopyCodeBtn {
         "code"?: string;
@@ -197,6 +224,11 @@ declare namespace LocalJSX {
     interface PageHome {
     }
     interface PageNotfound {
+    }
+    interface PageStandard {
+        "params"?: {
+    [param: string]: string;
+  };
     }
     interface PropsPanel {
         "debug"?: boolean;
@@ -231,11 +263,13 @@ declare namespace LocalJSX {
         "app-footer": AppFooter;
         "app-header": AppHeader;
         "app-root": AppRoot;
+        "code-block": CodeBlock;
         "copy-code-btn": CopyCodeBtn;
         "demo-frame": DemoFrame;
         "page-docs": PageDocs;
         "page-home": PageHome;
         "page-notfound": PageNotfound;
+        "page-standard": PageStandard;
         "props-panel": PropsPanel;
         "seo-tags": SeoTags;
         "slots-panel": SlotsPanel;
@@ -250,11 +284,13 @@ declare module "@stencil/core" {
             "app-footer": LocalJSX.AppFooter & JSXBase.HTMLAttributes<HTMLAppFooterElement>;
             "app-header": LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "code-block": LocalJSX.CodeBlock & JSXBase.HTMLAttributes<HTMLCodeBlockElement>;
             "copy-code-btn": LocalJSX.CopyCodeBtn & JSXBase.HTMLAttributes<HTMLCopyCodeBtnElement>;
             "demo-frame": LocalJSX.DemoFrame & JSXBase.HTMLAttributes<HTMLDemoFrameElement>;
             "page-docs": LocalJSX.PageDocs & JSXBase.HTMLAttributes<HTMLPageDocsElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-notfound": LocalJSX.PageNotfound & JSXBase.HTMLAttributes<HTMLPageNotfoundElement>;
+            "page-standard": LocalJSX.PageStandard & JSXBase.HTMLAttributes<HTMLPageStandardElement>;
             "props-panel": LocalJSX.PropsPanel & JSXBase.HTMLAttributes<HTMLPropsPanelElement>;
             "seo-tags": LocalJSX.SeoTags & JSXBase.HTMLAttributes<HTMLSeoTagsElement>;
             "slots-panel": LocalJSX.SlotsPanel & JSXBase.HTMLAttributes<HTMLSlotsPanelElement>;

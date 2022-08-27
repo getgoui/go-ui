@@ -50,7 +50,7 @@ export class GoToc implements TocProps {
   async init() {
     const items = document.querySelectorAll(this.selector);
     if (!items.length) {
-      warning('TOC selector (' + this.selector + ') yield no result.');
+      // warning('TOC selector (' + this.selector + ') yield no result.');
       return;
     }
     this.setupItems(items);
