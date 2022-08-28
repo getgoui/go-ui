@@ -1,5 +1,5 @@
 go-nav-link {
-  --nav-link-padding: var(--go-base-spacing) 0;
+  --nav-link-padding: 0.25em 0;
   --nav-link-current-bar-width: var(--go-base-spacing);
   --nav-link-current-bar-color: currentColor;
   --nav-link-hover-fg-color: var(--go-color-link-hover);
@@ -8,6 +8,7 @@ go-nav-link {
   --nav-link-arrow-color: currentColor;
   --nav-link-arrow-color-hover: currentColor;
   --nav-link-align-y: center;
+  --nav-link-radius: var(--radius-1);
 
   display: inline-flex;
   align-items: var(--nav-link-align-y);
@@ -30,6 +31,7 @@ go-nav-link {
     align-items: center;
     gap: 0.5rem;
     padding: var(--nav-link-padding);
+    border-radius: var(--nav-link-radius);
     border-left: var(--nav-link-current-bar-width) solid transparent;
     line-height: 1.5;
     text-decoration: none;

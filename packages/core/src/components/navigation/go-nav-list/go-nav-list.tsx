@@ -46,6 +46,7 @@ export class GoNavList {
   componentWillLoad() {
     this.navItems = parseItems(this.items);
     this.navHeading = parseItems(this.headingItem);
+    console.log({ navItems: this.navItems });
   }
 
   render() {
@@ -68,9 +69,17 @@ export class GoNavList {
 
         {navItems?.length > 0 ? (
           <ul class="nav-list">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <li>
-                <go-nav-link block={block} item={item}></go-nav-link>
+                {item.children?.length ? (
+                  <go-accordion>
+                    <go-accordion-item heading={item.label}>
+                      <go-nav-list headingItem={navHeading} heading={heading} block={block} items={item.children}></go-nav-list>
+                    </go-accordion-item>
+                  </go-accordion>
+                ) : (
+                  <go-nav-link block={block} item={item}></go-nav-link>
+                )}
               </li>
             ))}
           </ul>

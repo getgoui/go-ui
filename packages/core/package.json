@@ -17,7 +17,7 @@
   "homepage": "https://go-ui.com/",
   "scripts": {
     "build": "stencil build",
-    "serve": "stencil build --dev --watch --serve",
+    "start": "stencil build --dev --watch --serve",
     "watch.components": "stencil build --dev --watch",
     "test.spec": "stencil test --spec",
     "test.spec.watch": "stencil test --spec --watchAll",

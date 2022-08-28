@@ -13,12 +13,10 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
     },
-    // {
-    //   type: 'www',
-    //   dir: '../../docs/static/demo-assets',
-    //   serviceWorker: null, // disable service workers
-    //   copy: [{ src: 'demo.html', dest: 'demo.html' }],
-    // },
+    {
+      type: 'www',
+      serviceWorker: false,
+    },
     {
       type: 'docs-json',
       file: 'dist/docs/go-ui.json',

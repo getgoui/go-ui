@@ -26,9 +26,28 @@ go-nav-list {
     padding: 0;
     margin: 0;
 
+    .nav-list {
+      padding-left: 0.5rem;
+    }
+
     .nav-item-link {
       font-size: 1rem;
-      margin: 0.25rem 0;
+      line-height: 1.5;
+    }
+
+    go-accordion {
+      --heading-bg-color: transparent;
+      --heading-bg-color-hover: var(--go-color-link-hover-bg);
+      --heading-padding-x: 0;
+      --heading-padding-y: 0.25em;
+      --panel-padding-x: var(--go-base-spacing);
+      --panel-padding-y: 0;
+      --heading-radius: var(--radius-1);
+
+      .heading-control {
+        border-left: var(--go-base-spacing) solid transparent;
+        line-height: 1.5;
+      }
     }
   }
 }
