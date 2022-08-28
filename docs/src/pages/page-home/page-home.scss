@@ -1,9 +1,20 @@
+@import '~@go-ui/core/src/global/scss/utils';
+
 page-home {
   .hero {
     flex-direction: column;
-    padding: 6rem;
     text-align: center;
     background: transparent;
+    padding: 1rem;
+    @include tablet {
+      padding: 2rem 4rem;
+    }
+    @include desktop {
+      padding: 4rem 8rem;
+    }
+    pre code.hljs {
+      padding: 1.5rem;
+    }
     .hero__logo {
       width: 12rem;
     }

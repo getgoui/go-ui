@@ -13,18 +13,18 @@ export class PageHome {
   componentWillLoad() {
     this.featureList = [
       {
-        title: 'Pattern first',
-        description: `Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use. Allowing both design and development teams to focus on delivering the product.`,
-        img: '/assets/img/hero/patterns.png',
-        link: '/docs/patterns',
-        linkText: 'See our patterns',
-      },
-      {
         title: 'Framework agnostic',
         description: `Have multiple front-end stack in your organisation and need a consistent look and feel? Go UI utilise modern browser features such as Web Components and CSS custom properties so that they can be used in any front-end tech stack.`,
         img: '/assets/img/hero/dev.png',
         link: '/docs/guides/integration/web-components',
         linkText: 'See framework integration',
+      },
+      {
+        title: 'Pattern first',
+        description: `Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use. Allowing both design and development teams to focus on delivering the product.`,
+        img: '/assets/img/hero/patterns.png',
+        link: '/docs/patterns',
+        linkText: 'See our patterns',
       },
       {
         title: 'Accessibility focused',

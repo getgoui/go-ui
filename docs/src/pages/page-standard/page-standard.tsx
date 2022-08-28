@@ -1,7 +1,8 @@
 import { Component, Prop, State, h, Watch } from '@stencil/core';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { buildSidebar, md, prepareNavItems, removeLeadingSlash, siteUrl } from '../../utils/helpers';
+import { md, prepareNavItems, removeLeadingSlash, siteUrl } from '../../utils/helpers';
 import Router from '../../router';
+import ia from '../../generated-ia';
 
 @Component({
   tag: 'page-standard',
@@ -41,7 +42,6 @@ export class PageStandard {
 
   async loadPage() {
     // fetch content dir
-    console.log(this.currentPath);
     try {
       let response = await fetch(siteUrl('/assets/content/' + this.currentPath + '.md'));
       if (response.status !== 200) {
@@ -58,7 +58,8 @@ export class PageStandard {
   }
 
   async loadSidebarNav() {
-    this.sidebarNavItems = buildSidebar();
+    const category = this.currentPath.split('/')[0];
+    this.sidebarNavItems = ia[category];
   }
 
   @Watch('result')
