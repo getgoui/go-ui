@@ -1,6 +1,6 @@
 import { Component, Prop, State, h, Watch } from '@stencil/core';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { loadContentByPath, md, prepareNavItems, removeLeadingSlash, siteUrl } from '../../utils/helpers';
+import { buildContentPageSidebar, loadContentByPath, prepareNavItems, removeLeadingSlash } from '../../utils/helpers';
 import Router from '../../router';
 import ia from '../../generated-ia';
 
@@ -55,7 +55,7 @@ export class PageStandard {
   }
 
   async loadSidebarNav() {
-    this.sidebarNavItems = ia[this.category]?.children || [];
+    this.sidebarNavItems = ia[this.category]?.children ? buildContentPageSidebar(ia[this.category].children) : [];
   }
 
   @Watch('result')

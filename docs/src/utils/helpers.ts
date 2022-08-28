@@ -115,6 +115,22 @@ export function prepareNavItems(items: INavItem[], activePath: string): INavItem
   });
 }
 
+export function buildContentPageSidebar(iaItems: INavItem[]): INavItem[] {
+  return iaItems.map(item => {
+    if (item.children) {
+      return {
+        ...item,
+        linkAttrs: { ...href(item.url) },
+        children: buildContentPageSidebar(item.children),
+      };
+    }
+    return {
+      ...item,
+      linkAttrs: { ...href(item.url) },
+    };
+  });
+}
+
 export function loadContentByPath(path: string): any {
   let cleanPath = removeLeadingSlash(path);
   let parts = cleanPath.split('/');
