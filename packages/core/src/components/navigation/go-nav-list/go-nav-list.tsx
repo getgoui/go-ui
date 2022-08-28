@@ -46,7 +46,6 @@ export class GoNavList {
   componentWillLoad() {
     this.navItems = parseItems(this.items);
     this.navHeading = parseItems(this.headingItem);
-    console.log({ navItems: this.navItems });
   }
 
   render() {

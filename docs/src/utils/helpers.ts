@@ -7,8 +7,9 @@ import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
 import Router from '../router';
-import { uniqBy } from 'lodash-es';
+import { uniqBy, tail } from 'lodash-es';
 import { goUiPlugin } from '@go-ui/core';
+import ia from '../generated-ia';
 
 export const md = new MarkdownIt({
   html: true,
@@ -107,8 +108,28 @@ export function prepareNavItems(items: INavItem[], activePath: string): INavItem
     const isCurrent = cleanPathname.includes(cleanUrl);
     return {
       ...item,
+      label: item.label,
       linkAttrs: { ...href(item.url) },
       isCurrent,
     };
   });
+}
+
+export function loadContentByPath(path: string): any {
+  let cleanPath = removeLeadingSlash(path);
+  let parts = cleanPath.split('/');
+  if (parts.length < 1) {
+    return;
+  }
+  let targetItem = ia[parts[0]];
+  let targetGroup = targetItem.children;
+
+  for (let i = 1; i < parts.length; i++) {
+    const key = parts[i];
+    targetItem = targetGroup.find(item => item.id === key);
+    if (targetItem.children) {
+      targetGroup = targetItem.children;
+    }
+  }
+  return targetItem;
 }

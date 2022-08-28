@@ -1,6 +1,6 @@
 import { Component, Prop, State, h, Watch } from '@stencil/core';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { md, prepareNavItems, removeLeadingSlash, siteUrl } from '../../utils/helpers';
+import { loadContentByPath, md, prepareNavItems, removeLeadingSlash, siteUrl } from '../../utils/helpers';
 import Router from '../../router';
 import ia from '../../generated-ia';
 
@@ -15,16 +15,18 @@ export class PageStandard {
 
   @State() notfound: boolean = false;
   @State() result = '';
+  @State() sidebarNavItems = [] as INavItem[];
 
   // private source = '';
-  private sidebarNavItems = [] as INavItem[];
 
   private currentPath = '';
+  private category = '';
   private meta = null;
 
   private tocEl: HTMLGoTocElement;
 
   async componentWillLoad() {
+    console.log('Standard page');
     await this.init();
   }
 
@@ -36,6 +38,8 @@ export class PageStandard {
       url = url.substring(0, url.length - 1);
     }
     this.currentPath = removeLeadingSlash(url);
+    this.category = this.currentPath.split('/')[0];
+
     await this.loadPage();
     await this.loadSidebarNav();
   }
@@ -43,23 +47,15 @@ export class PageStandard {
   async loadPage() {
     // fetch content dir
     try {
-      let response = await fetch(siteUrl('/assets/content/' + this.currentPath + '.md'));
-      if (response.status !== 200) {
-        throw new Error("Page doesn't exist");
-      }
-
-      this.notfound = false;
-      let text = await response.text();
-      this.result = md.render(text);
-      this.meta = (md as any).meta;
+      const content = loadContentByPath(this.currentPath);
+      this.result = content.content;
     } catch (error) {
       this.notfound = true;
     }
   }
 
   async loadSidebarNav() {
-    const category = this.currentPath.split('/')[0];
-    this.sidebarNavItems = ia[category];
+    this.sidebarNavItems = ia[this.category]?.children || [];
   }
 
   @Watch('result')

@@ -1,8 +1,8 @@
 {
   "scripts": {
     "build": "nx run-many --target=build",
-    "build.affected": "nx affected:build",
-    "watch": "node ./bin/index.js watch",
+    "dev.affected": "nx affected:build",
+    "dev": "node ./bin/index.js dev",
     "build.core": "nx build @go-ui/core",
     "dev.docs": "nx start @go-ui/docs"
   },
@@ -15,6 +15,7 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.6",
+    "nanospinner": "^1.1.0",
     "nx": "14.5.10",
     "prompts": "^2.4.2"
   }

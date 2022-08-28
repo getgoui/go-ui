@@ -1,8 +1,9 @@
 import { Component, Prop, State, h, Watch } from '@stencil/core';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { getDocsPrefix, siteUrl, buildSidebar, prepareNavItems, md } from '../../utils/helpers';
+import { getDocsPrefix, buildSidebar, prepareNavItems, md, loadContentByPath } from '../../utils/helpers';
 import Router from '../../router';
+
 @Component({
   tag: 'page-docs',
   styleUrl: 'page-docs.scss',
@@ -14,29 +15,31 @@ export class PageDocs {
 
   @State() notfound: boolean = false;
   @State() result = '';
+  @State() sidebarNavItems = [] as INavItem[];
 
   // private source = '';
   private pageName = '';
-  private sidebarNavItems = [] as INavItem[];
 
   private currentPath = '';
+  private currentUrl = '';
   private pathParts = [] as string[];
   private meta = null;
 
   private tocEl: HTMLGoTocElement;
 
   async componentWillLoad() {
+    console.log('Docs page');
     await this.init();
   }
 
   @Watch('params')
   async init() {
     window.scrollTo({ top: 0 });
-    let url = this.params[0];
-    if (url.endsWith('/')) {
-      url = url.substring(0, url.length - 1);
+    this.currentUrl = this.params[0];
+    if (this.currentUrl.endsWith('/')) {
+      this.currentUrl = this.currentUrl.substring(0, this.currentUrl.length - 1);
     }
-    this.currentPath = url.replace(getDocsPrefix(), '');
+    this.currentPath = this.currentUrl.replace(getDocsPrefix(), '');
     this.pathParts = this.currentPath.split('/');
     this.pageName = this.pathParts.pop();
     await this.loadPage();
@@ -50,22 +53,8 @@ export class PageDocs {
       this.meta = (md as any).meta;
       return;
     }
-
-    // not found, fetch content dir
-    try {
-      console.log('doc not found, looking for content pages' + `/assets/content/docs/${this.currentPath}.md`);
-      let response = await fetch(siteUrl('/assets/content/docs/' + this.currentPath + '.md'));
-      if (response.status !== 200) {
-        throw new Error("Page doesn't exist");
-      }
-
-      this.notfound = false;
-      let text = await response.text();
-      this.result = md.render(text);
-      this.meta = (md as any).meta;
-    } catch (error) {
-      this.notfound = true;
-    }
+    const content = loadContentByPath(this.currentUrl);
+    this.result = content.content;
   }
 
   async loadSidebarNav() {
@@ -81,10 +70,7 @@ export class PageDocs {
   }
 
   render() {
-    const { result, sidebarNavItems, meta, notfound } = this;
-    if (notfound) {
-      return <page-notfound></page-notfound>;
-    }
+    const { result, sidebarNavItems, meta } = this;
     return [
       <seo-tags pageTitle={meta?.title}></seo-tags>,
       <div class="sidebar-layout">

@@ -28,7 +28,7 @@ const siteConfig = {
         label: 'Components',
       },
       {
-        url: '/get-involved/introduction',
+        url: '/get-involved',
         label: 'Get involved',
       },
     ] as INavItem[],

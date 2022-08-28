@@ -52,6 +52,7 @@ async function generateIA(): Promise<void> {
       (item as any).url = url;
 
       const str = fs.readFileSync(path, 'utf8');
+      md['meta'] = null; // reset meta for each file
       let env = { title: '', excerpt: [] };
       const content = md.render(str, env);
       const meta = (md as any).meta;
@@ -59,6 +60,7 @@ async function generateIA(): Promise<void> {
       (item as any).label = meta?.title || env.title;
       (item as any).description = env.excerpt[0];
       (item as any).content = content;
+      (item as any).id = item.name.substring(0, item.name.lastIndexOf('.'));
     },
   );
 
@@ -77,6 +79,7 @@ function toNavItems(array) {
   return array.map(item => {
     if (item.type === 'file') {
       return {
+        id: item.id,
         label: item['label'],
         url: item['url'],
         meta: item['meta'],
@@ -84,10 +87,22 @@ function toNavItems(array) {
         content: item['content'],
       };
     }
+
+    // dir
+    const dirName = item.name;
+    const rootContent = item.children.find(item => item.id === 'index');
+    const trueChildren = item.children.filter(child => child.id !== 'index');
+    if (!rootContent) {
+      return {
+        id: dirName,
+        label: startCase(dirName),
+        children: toNavItems(trueChildren),
+      };
+    }
     return {
-      dirKey: item.name,
-      label: startCase(item.name),
-      children: toNavItems(item.children),
+      ...rootContent,
+      id: dirName,
+      children: toNavItems(trueChildren),
     };
   });
 }
@@ -95,7 +110,7 @@ function toNavItems(array) {
 function categorise(navItems) {
   let results = {};
   navItems.forEach(rootItem => {
-    results[rootItem.dirKey] = rootItem.children;
+    results[rootItem.id] = rootItem;
   });
   return results;
 }
