@@ -20,6 +20,6 @@
   },
   {name: 'showArrow', type: 'boolean', value: false},
 ]"
+code="<go-nav-link></go-nav-link>"
 >
-  <go-nav-link></go-nav-link>
 </wc-playground>

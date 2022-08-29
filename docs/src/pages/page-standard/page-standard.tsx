@@ -3,6 +3,7 @@ import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { buildContentPageSidebar, loadContentByPath, prepareNavItems, removeLeadingSlash } from '../../utils/helpers';
 import Router from '../../router';
 import ia from '../../generated-ia';
+import { IAItem } from '../../ia.interface';
 
 @Component({
   tag: 'page-standard',
@@ -24,6 +25,8 @@ export class PageStandard {
   private meta = null;
 
   private tocEl: HTMLGoTocElement;
+
+  private iAItem: IAItem;
 
   async componentWillLoad() {
     console.log('Standard page');
@@ -47,8 +50,8 @@ export class PageStandard {
   async loadPage() {
     // fetch content dir
     try {
-      const content = loadContentByPath(this.currentPath);
-      this.result = content.content;
+      this.iAItem = loadContentByPath(this.currentPath);
+      this.result = this.iAItem.content;
     } catch (error) {
       this.notfound = true;
     }

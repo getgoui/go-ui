@@ -8,7 +8,7 @@ There are 2 ways of customising your stylesheet for Go Components.
 
 ## Overriding variables
 
-We use both [Sass variables](./sass.md) and [CSS variables](./css-variables.md) in our design system to strive to optimal balance between functionality, flexibility and maintainability.
+We use both [Sass variables](./sass) and [CSS variables](./css-variables) in our design system to strive to optimal balance between functionality, flexibility and maintainability.
 
 ## Writing your own CSS
 

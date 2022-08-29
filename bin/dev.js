@@ -7,6 +7,7 @@ import util from 'util';
 import readline from 'readline';
 
 const execPromise = util.promisify(exec);
+const killPromise = util.promisify(process.kill);
 
 const buildCore = async file => {
   const spinner = createSpinner('📦 Building core components').start();
@@ -27,8 +28,8 @@ function startDevDocsServer() {
   return docsServeProcess;
 }
 
-function killDocsServer(process) {
-  process.kill();
+async function killDocsServer(p) {
+  p.kill();
   console.log(chalk.red('🗡️ Docs server killed'));
 }
 
@@ -69,7 +70,7 @@ export default async function dev(args) {
     [`${rootPath}/docs/content/**/*`]: buildIa,
     [`${rootPath}/packages/core/src/**/*`]: async () => {
       // stop current server
-      serverProcess.kill();
+      await killDocsServer(serverProcess);
       await buildCore();
       serverProcess = exec('pnpm dev.docs');
       serverProcess.stdout.pipe(process.stdout);

@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 import hljs from 'highlight.js';
 
 @Component({
@@ -10,6 +10,11 @@ export class CodeBlock {
   @Prop() language = 'html';
 
   componentDidLoad() {
+    this.highlight();
+  }
+
+  @Watch('code')
+  highlight() {
     hljs.configure({ ignoreUnescapedHTML: true });
     hljs.highlightAll();
   }

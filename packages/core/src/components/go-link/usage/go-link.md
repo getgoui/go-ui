@@ -1,4 +1,4 @@
-<demo-playground
+<wc-playground
   tag="go-link"
   props="[
     {name: 'href', value:'#', type: 'string'},
@@ -6,4 +6,4 @@
   ]"
 >
   <go-link href="#">Almost before we knew it, we had left the ground.</go-link>
-</demo-playground>
+</wc-playground>

@@ -52,6 +52,7 @@ importers:
       lodash-es: ^4.17.21
       lodash.groupby: ^4.6.0
       lodash.kebabcase: ^4.1.1
+      lodash.sortby: ^4.7.0
       lodash.startcase: ^4.4.0
       lodash.uniqueid: ^4.0.1
       markdown-it: ^13.0.1
@@ -68,7 +69,6 @@ importers:
       workbox-build: ^6.5.4
     dependencies:
       copy-text-to-clipboard: 3.0.1
-      highlight.js: 11.6.0
       json5: 2.2.1
       lodash-es: 4.17.21
       lodash.kebabcase: 4.1.1
@@ -93,9 +93,11 @@ importers:
       cpr: 3.0.1
       directory-tree: 3.3.0
       esm: 3.2.25
+      highlight.js: 11.6.0
       jest: 27.5.1_ts-node@10.9.1
       jest-cli: 27.5.1_ts-node@10.9.1
       lodash.groupby: 4.6.0
+      lodash.sortby: 4.7.0
       minimist: 1.2.6
       nanospinner: 1.1.0
       puppeteer: 10.4.0
@@ -6521,7 +6523,7 @@ packages:
   /highlight.js/11.6.0:
     resolution: {integrity: sha512-ig1eqDzJaB0pqEvlPVIpSSyMaO92bH1N2rJpLMN/nX396wTpDA4Eq0uK+7I/2XG17pFaaKE0kjV/XPeGt7Evjw==}
     engines: {node: '>=12.0.0'}
-    dev: false
+    dev: true
 
   /home-or-tmp/2.0.0:
     resolution: {integrity: sha512-ycURW7oUxE2sNiPVw1HVEFsW+ecOpJ5zaj7eC0RlwhibhRBod20muUN8qu/gzx956YrLolVvs1MTXwKgC2rVEg==}

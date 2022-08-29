@@ -5,9 +5,9 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "scripts": {
-    "build": "stencil build --prerender",
+    "build": "pnpm run build.ia && stencil build --prerender",
     "build.ia": "ts-node --esm ./bin/build-ia.ts",
-    "start": "stencil build  --dev --watch --serve",
+    "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
@@ -25,9 +25,11 @@
     "cpr": "^3.0.1",
     "directory-tree": "^3.3.0",
     "esm": "^3.2.25",
+    "highlight.js": "^11.6.0",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
     "lodash.groupby": "^4.6.0",
+    "lodash.sortby": "^4.7.0",
     "minimist": "^1.2.6",
     "nanospinner": "^1.1.0",
     "puppeteer": "^10.4.0",
@@ -38,7 +40,6 @@
   "license": "MIT",
   "dependencies": {
     "copy-text-to-clipboard": "^3.0.1",
-    "highlight.js": "^11.6.0",
     "json5": "^2.2.1",
     "lodash-es": "^4.17.21",
     "lodash.kebabcase": "^4.1.1",

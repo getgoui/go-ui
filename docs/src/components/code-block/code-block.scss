@@ -5,7 +5,10 @@ pre.code-block {
   position: relative;
   copy-code-btn {
     position: absolute;
-    top: 1rem;
+    top: 0.5rem;
     right: 1rem;
+  }
+  .hljs {
+    padding: 1.5rem 1rem;
   }
 }

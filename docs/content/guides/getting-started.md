@@ -7,7 +7,7 @@ sidebar_position: 1
 
 ### NPM package
 
-```bash
+```shell
 npm i @go-ui/core
 ```
 
@@ -21,10 +21,10 @@ npm i @go-ui/core
 
 You can use our patterns and components within your preferred JavaScript framework or *no framework at all* 
 
-- [Angular](./integration/angular.md)
-- [React](./integration/react.md)
-- [Vue](./integration/vue.md)
-- [No framework](./integration/no-framework.md)
+- [Angular](./integration/angular)
+- [React](./integration/react)
+- [Vue](./integration/vue)
+- [No framework](./integration/no-framework)
 <!-- [Suggest another integration] -->
 
 ## Browser support

@@ -10,6 +10,7 @@ import Router from '../router';
 import { uniqBy } from 'lodash-es';
 import { goUiPlugin } from '@go-ui/core';
 import ia from '../generated-ia';
+import { IAItem } from '../ia.interface';
 
 export const md = new MarkdownIt({
   html: true,
@@ -144,7 +145,7 @@ export function buildContentPageSidebar(iaItems: INavItem[]): INavItem[] {
   });
 }
 
-export function loadContentByPath(path: string): any {
+export function loadContentByPath(path: string): IAItem {
   let cleanPath = removeLeadingSlash(path);
   let parts = cleanPath.split('/');
   if (parts.length < 1) {

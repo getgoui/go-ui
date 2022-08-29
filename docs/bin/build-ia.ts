@@ -8,23 +8,22 @@ import MarkdownItTitle from 'markdown-it-title';
 import { goUiPlugin } from '@go-ui/core';
 
 import fs from 'fs';
-import { INavItem } from '@go-ui/core/dist/types/interfaces';
+import { IA, IAItem } from '../src/ia.interface';
 import dirTree from 'directory-tree';
-
 import startCase from 'lodash.startcase';
+import sortBy from 'lodash.sortby';
 
 const md = new MarkdownIt({
   html: true,
   linkify: true,
   typographer: true,
+  highlight: function(str, lang) {
+    return '<pre class="d-none"></pre><code-block code="' + md.utils.escapeHtml(str) + '" language="' + lang + '"></code-block>';
+  },
 })
   .use(meta)
   .use(goUiPlugin)
   .use(MarkdownItTitle);
-
-interface IA {
-  [category: string]: INavItem[];
-}
 
 /**
  * go through content folder and generate sidebar based on frontmatter
@@ -65,7 +64,7 @@ async function generateIA(): Promise<void> {
     },
   );
 
-  const ia = categorise(toNavItems(contentDir.children));
+  const ia = categorise(sortNavItems(toNavItems(contentDir.children)));
 
   try {
     const content = `export default ${JSON.stringify(ia, null, 2)}`;
@@ -76,8 +75,11 @@ async function generateIA(): Promise<void> {
   }
 }
 
-function toNavItems(array) {
+const isIndexItem = (item: IAItem): boolean => item.id === 'index';
+
+function toNavItems(array): IAItem[] {
   return array.map(item => {
+    const isIndex = isIndexItem(item);
     if (item.type === 'file') {
       return {
         id: item.id,
@@ -86,13 +88,14 @@ function toNavItems(array) {
         meta: item['meta'],
         description: item['description'],
         content: item['content'],
+        isIndex: isIndex,
       };
     }
 
     // dir
     const dirName = item.name;
-    const rootContent = item.children.find(item => item.id === 'index');
-    const trueChildren = item.children.filter(child => child.id !== 'index');
+    const rootContent = item.children.find(isIndexItem);
+    const trueChildren = item.children.filter(item => !isIndexItem(item));
     if (!rootContent) {
       return {
         id: dirName,
@@ -108,7 +111,19 @@ function toNavItems(array) {
   });
 }
 
-function categorise(navItems) {
+function sortNavItems(array: IAItem[]): IAItem[] {
+  let result = sortBy(array, [item => !item.isIndex, 'meta.order', 'label']);
+  return result.map(item =>
+    item.children?.length > 0
+      ? {
+          ...item,
+          children: sortNavItems(item.children),
+        }
+      : item,
+  );
+}
+
+function categorise(navItems: IAItem[]): IA {
   let results = {};
   navItems.forEach(rootItem => {
     results[rootItem.id] = rootItem;
