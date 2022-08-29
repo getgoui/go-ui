@@ -7,12 +7,13 @@
     "dev.docs": "nx start @go-ui/docs"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.24.2",
+    "@changesets/cli": "^2.24.3",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "cpr": "^3.0.1",
     "esm": "^3.2.25",
     "lodash.camelcase": "^4.3.0",
+    "lodash.debounce": "^4.0.8",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.6",
     "nanospinner": "^1.1.0",

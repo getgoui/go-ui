@@ -13,12 +13,12 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@go-ui/core": "workspace:*",
-    "@stencil/core": "2.17.3",
+    "@go-ui/core": "workspace:0.0.0-development",
+    "@stencil/core": "^2.17.4",
     "@stencil/helmet": "^0.3.3",
     "@stencil/sass": "^1.5.2",
     "@types/jest": "^27.5.2",
-    "@types/node": "^18.7.6",
+    "@types/node": "^18.7.13",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "concurrently": "^6.5.1",
@@ -32,7 +32,7 @@
     "nanospinner": "^1.1.0",
     "puppeteer": "^10.4.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7.4",
+    "typescript": "^4.8.2",
     "workbox-build": "^6.5.4"
   },
   "license": "MIT",

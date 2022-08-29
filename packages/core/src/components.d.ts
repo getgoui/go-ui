@@ -468,6 +468,10 @@ export namespace Components {
          */
         "block": boolean;
         /**
+          * Make all sub lists (if any) expanded by default
+         */
+        "expandSubLists": boolean;
+        /**
           * Heading text
          */
         "heading": string;
@@ -476,7 +480,7 @@ export namespace Components {
          */
         "headingItem": INavItem | string;
         /**
-          * list of navigation items to be displayed
+          * list of navigation items to be displayed uuuuuu
          */
         "items": INavItem[] | string;
     }
@@ -1423,6 +1427,10 @@ declare namespace LocalJSX {
          */
         "block"?: boolean;
         /**
+          * Make all sub lists (if any) expanded by default
+         */
+        "expandSubLists"?: boolean;
+        /**
           * Heading text
          */
         "heading"?: string;
@@ -1431,7 +1439,7 @@ declare namespace LocalJSX {
          */
         "headingItem"?: INavItem | string;
         /**
-          * list of navigation items to be displayed
+          * list of navigation items to be displayed uuuuuu
          */
         "items"?: INavItem[] | string;
     }

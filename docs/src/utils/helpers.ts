@@ -7,7 +7,7 @@ import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
 import Router from '../router';
-import { uniqBy, tail } from 'lodash-es';
+import { uniqBy } from 'lodash-es';
 import { goUiPlugin } from '@go-ui/core';
 import ia from '../generated-ia';
 
@@ -57,7 +57,9 @@ export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true):
 
 export function buildSidebar(): INavItem[] {
   const prefix = getDocsPrefix();
-  const activePath = Router.activePath.replace(prefix, '');
+  const activePath = removeLeadingSlash(Router.activePath.replace(prefix, ''));
+  const activeCategory = activePath.split('/')[0]; // patterns/components
+
   let sidebar = docs.components
     .map((comp: JsonDocsComponent) => {
       const path = buildSidebarItemUrl(comp, false);
@@ -81,7 +83,9 @@ export function buildSidebar(): INavItem[] {
     .filter(item => activePath.includes(item.category)); //only relevant to current category
 
   sidebar = uniqBy(sidebar, 'url'); // no duplicated urls
-  return sidebar;
+  // concat with ia content
+  const iaSidebar = (ia['docs'].children as { id: string; children?: any[] }[]).find(category => category.id === activeCategory).children;
+  return sidebar.concat(iaSidebar);
 }
 
 // code helper
@@ -106,6 +110,15 @@ export function prepareNavItems(items: INavItem[], activePath: string): INavItem
     const cleanPathname = removeLeadingSlash(activePath);
     const cleanUrl = removeLeadingSlash(item?.url);
     const isCurrent = cleanPathname.includes(cleanUrl);
+    if (item.children?.length > 0) {
+      return {
+        ...item,
+        label: item.label,
+        linkAttrs: { ...href(item.url) },
+        isCurrent,
+        children: prepareNavItems(item.children, activePath),
+      };
+    }
     return {
       ...item,
       label: item.label,

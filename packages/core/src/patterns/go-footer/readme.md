@@ -1,272 +1,67 @@
-## footer API
+---
+title: Footer
+tags:
+  - Layout
+  - Navigation
+---
 
-<!-- Auto Generated Below -->
+# Footer <span class="text-size-0">`go-footer`</span>
 
+<!-- Description -->
 
-## Usage
+::: info Self contained
 
-### Custom
+`go-footer` is a self-contained pattern, do not put it inside a `.container`
 
-<go-footer>
-  <div class="container" style="padding: var(--footer-section-padding)">
-    <div class="row">
-      <div class="col-tablet-6">
-        <div class="footer-logo">
-          <img src="https://via.placeholder.com/150" alt="logo" />
-        </div>
-        <h3>hello world</h3>
-      </div>
-      <div class="col-tablet-6">
-        <ul>
-          <li>
-            <a href="#">Privacy policies</a>
-          </li>
-          <li>
-            <a href="#">Terms and conditions</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+:::
 
-  <div slot="copyright">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente sed dolorum nemo facere neque eveniet modi accusantium fuga placeat expedita. Eius minus
-    non vero id neque. Id a expedita atque.
-  </div>
-</go-footer>
+Footer is located at the bottom of the page to provide supplementary information such as copyright, contact information and links to help users find what they need.
 
+## Accessibility
 
-### Dark
+`<footer>` landmark is used to help assistive technology to quickly identify and navigate to the appropriate section.
 
-<!-- material icons -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<go-footer
-  dark
-  links="[
-{
-label: 'Features',
-url: '#',
-icon: 'star',
-children: [
-  {
-    label: 'Home',
-    url: '#',
-    icon: 'home'
-  },
-  {
-    label: 'About',
-    url: '#',
-    icon: 'info'
-  },
-  {
-    label: 'Contact',
-    url: '#',
-    icon: 'contact_mail'
-  }
-]
-},
-{
-label: 'Get involved',
-url: '#',
-children: [
-  {
-    label: 'Bug report',
-    url: '#',
-  },
-  {
-    label: 'Feature request',
-    url: '#',
-  },
-  {
-    label: 'Development guide',
-    url: '#',
-  },
-],
-},
-{
-label: 'Community',
-icon: 'people',
-children: [
-  {
-    label: 'Discord',
-    url: 'https://discord.gg/g7cuQAdPfS',
-    linkAttr: {
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    }
-  },
-  {
-    label: 'Twitter',
-    url: 'https://twitter.com/go-components',
-    linkAttr: {
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    }
-  },
-],
-},
-]"
->
-  <div slot="copyright">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente sed dolorum nemo facere neque eveniet modi accusantium fuga placeat expedita. Eius minus
-    non vero id neque. Id a expedita atque.
-  </div>
+Each page should only have one `<footer>` landmark hence only one `go-footer` element.
 
-  <div slot="footer-bottom">
-    <style>
-      .link-list {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        gap: 1rem;
-        font-size: var(--go-size--1);
-      }
-    </style>
-    <ul class="link-list">
-      <li>
-        <a href="#">Privacy policies</a>
-      </li>
-      <li>
-        <a href="#">Terms and conditions</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>
-    </ul>
-  </div>
-</go-footer>
+https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/contentinfo_role
 
+## Related components
 
-### Footer
+- [go-nav-list](../components/navigation/go-nav-list)
 
-<!-- material icons -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<go-footer
-  links="[
-{
-  label: 'Features',
-  icon: 'star',
-  children: [
-    {
-      label: 'Home',
-      url: '#',
-      icon: 'home'
-    },
-    {
-      label: 'About',
-      url: '#',
-      icon: 'info'
-    },
-    {
-      label: 'Contact',
-      url: '#',
-      icon: 'contact_mail'
-    }
-  ]
-},
-{
-  label: 'Get involved',
-  url: '#',
-  children: [
-    {
-      label: 'Bug report',
-      url: '#',
-    },
-    {
-      label: 'Feature request',
-      url: '#',
-    },
-    {
-      label: 'Development guide',
-      url: '#',
-    },
-  ],
-},
-{
-  label: 'Community',
-  icon: 'people',
-  children: [
-    {
-      label: 'Discord',
-      url: 'https://discord.gg/g7cuQAdPfS',
-      linkAttr: {
-        target: '_blank',
-        rel: 'noopener noreferrer'
-      }
-    },
-    {
-      label: 'Twitter',
-      url: 'https://twitter.com/go-components',
-      linkAttr: {
-        target: '_blank',
-        rel: 'noopener noreferrer'
-      }
-    },
-  ],
-},
-]"
->
-  <div slot="copyright">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente sed dolorum nemo facere neque eveniet modi accusantium fuga placeat expedita. Eius minus
-    non vero id neque. Id a expedita atque.
-  </div>
+<!-- Demos, tips, variations, use cases -->
 
-  <div slot="footer-bottom">
-    <style>
-      .link-list {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        gap: 1rem;
-        font-size: var(--go-size--1);
-      }
-    </style>
-    <ul class="link-list">
-      <li>
-        <a href="#">Privacy policies</a>
-      </li>
-      <li>
-        <a href="#">Terms and conditions</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>
-    </ul>
-  </div>
-</go-footer>
+## Demo
 
+<demo-frame component="go-footer" demo="footer"></demo-frame>
 
+## Dark variant
 
-## Properties
+`<go-footer>` not only self adjust based on the user's `prefer-color-scheme` setting, but also comes with a `dark` variant out of the box. This dark variant will _not_ change based on user's `prefer-color-scheme` setting.
 
-| Property         | Attribute          | Description                                     | Type                   | Default               |
-| ---------------- | ------------------ | ----------------------------------------------- | ---------------------- | --------------------- |
-| `dark`           | `dark`             | Dark theme footer                               | `boolean`              | `false`               |
-| `links`          | `links`            | Navigation links to be displayed.               | `INavItem[] \| string` | `undefined`           |
-| `navCols`        | `nav-cols`         | Number of navigation columns                    | `number`               | `1`                   |
-| `navColsDesktop` | `nav-cols-desktop` | Number of navigation columns for desktop and up | `number`               | `4`                   |
-| `navColsTablet`  | `nav-cols-tablet`  | Number of navigation columns for tablet and up  | `number`               | `3`                   |
-| `navLabel`       | `nav-label`        | Label for navigation                            | `string`               | `'Footer navigation'` |
+<demo-frame component="go-footer" demo="dark"></demo-frame>
 
+### Custom colours
 
-## Dependencies
+You can customise the footer colours by overriding these CSS variables:
 
-### Depends on
+(snippet below shows the default values.)
 
-- [go-nav-list](../../components/navigation/go-nav-list)
-
-### Graph
-```mermaid
-graph TD;
-  go-footer --> go-nav-list
-  go-nav-list --> go-nav-link
-  go-nav-link --> go-icon
-  style go-footer fill:#f9f,stroke:#333,stroke-width:4px
+```css
+go-footer {
+  // colours
+  --footer-bg-color: var(--go-color-lightest);
+  --footer-text-color: var(--go-color-text);
+  --footer-link-color: var(--footer-text-color);
+  --footer-link-color-hover: var(--go-color-success-900);
+  --footer-link-bg-color-hover: transparent;
+}
 ```
 
-----------------------------------------------
+## Custom slots
 
-*Built with [StencilJS](https://stenciljs.com/)*
+You can also custom build the entire footer html structure by omitting the `links` property and just write your own html inside the `<go-footer>` component.
+
+<demo-frame component="go-footer" demo="custom"></demo-frame>
+
+<!-- Auto Generated Below -->

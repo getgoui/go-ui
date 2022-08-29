@@ -50,6 +50,7 @@ async function generateIA(): Promise<void> {
       }
 
       (item as any).url = url;
+      const id = item.name.substring(0, item.name.lastIndexOf('.'));
 
       const str = fs.readFileSync(path, 'utf8');
       md['meta'] = null; // reset meta for each file
@@ -57,10 +58,10 @@ async function generateIA(): Promise<void> {
       const content = md.render(str, env);
       const meta = (md as any).meta;
       (item as any).meta = meta;
-      (item as any).label = meta?.title || env.title;
+      (item as any).label = meta?.title || env.title || startCase(id);
       (item as any).description = env.excerpt[0];
       (item as any).content = content;
-      (item as any).id = item.name.substring(0, item.name.lastIndexOf('.'));
+      (item as any).id = id;
     },
   );
 

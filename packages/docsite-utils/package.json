@@ -28,25 +28,25 @@
     "deploy": "npm version patch && npm publish --access public"
   },
   "dependencies": {
-    "@go-ui/core": "workspace:*",
-    "@stencil/core": "^2.17.3",
+    "@go-ui/core": "workspace:0.0.0-development",
+    "@stencil/core": "^2.17.4",
     "copy-text-to-clipboard": "^3.0.1",
-    "json5": "^2.2.0",
+    "json5": "^2.2.1",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
-    "postcss": "8",
-    "prismjs": "^1.26.0"
+    "postcss": "^8.4.16",
+    "prismjs": "^1.29.0"
   },
   "devDependencies": {
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^1.5.2",
-    "@types/jest": "^27.0.3",
-    "autoprefixer": "^10.4.2",
-    "cssnano": "^5.0.16",
-    "jest": "^27.4.5",
-    "jest-cli": "^27.4.5",
+    "@types/jest": "^27.5.2",
+    "autoprefixer": "^10.4.8",
+    "cssnano": "^5.1.13",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
     "postcss-pxtorem": "^6.0.0",
-    "puppeteer": "^10.0.0"
+    "puppeteer": "^10.4.0"
   },
   "license": "MIT"
 }
