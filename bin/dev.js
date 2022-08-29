@@ -5,7 +5,6 @@ import { exec } from 'child_process';
 import { createSpinner } from 'nanospinner';
 import util from 'util';
 import readline from 'readline';
-import { exit } from 'process';
 
 const execPromise = util.promisify(exec);
 
@@ -70,10 +69,10 @@ export default async function dev(args) {
     [`${rootPath}/docs/content/**/*`]: buildIa,
     [`${rootPath}/packages/core/src/**/*`]: async () => {
       // stop current server
-      docsServeProcess.kill();
+      serverProcess.kill();
       await buildCore();
-      docsServeProcess = exec('pnpm dev.docs');
-      docsServeProcess.stdout.pipe(process.stdout);
+      serverProcess = exec('pnpm dev.docs');
+      serverProcess.stdout.pipe(process.stdout);
     },
   };
 
