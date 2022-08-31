@@ -1,5 +1,6 @@
 ---
-sidebar_position: 5
+order: 1
+title: Vanilla JS
 ---
 
-# Use without a framework
+# Vanilla JS

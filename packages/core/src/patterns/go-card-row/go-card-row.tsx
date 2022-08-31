@@ -89,8 +89,7 @@ export class GoCardRow {
 
     // initialise intersection observer
     this.inViewObserver = new IntersectionObserver(
-      (entries) => {
-        console.log(entries);
+      entries => {
         entries.forEach((entry, i) => {
           if (!entry.isIntersecting) {
             return;
@@ -179,7 +178,7 @@ export class GoCardRow {
             'no-stretch': noStretch,
             'stagger': !!stagger,
           }}
-          ref={(el) => (this.rowEl = el)}>
+          ref={el => (this.rowEl = el)}>
           <slot></slot>
         </div>
       </section>

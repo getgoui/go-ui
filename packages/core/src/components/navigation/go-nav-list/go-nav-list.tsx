@@ -55,7 +55,6 @@ export class GoNavList {
 
   render() {
     const { navItems, navHeading, heading, block, expandSubLists } = this;
-    console.log({ expandSubLists });
     return (
       <div>
         {navHeading ? (

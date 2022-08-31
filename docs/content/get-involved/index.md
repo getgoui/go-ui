@@ -1,3 +1,7 @@
+---
+title: Get involved
+---
+
 # Get involved
 
 The goal of this project is to make it easier to develop accessible products with a good user experience. In order to achieve this goal, the project needs input and support from the web community, this includes developers, designers, content creators and business owners.
@@ -7,7 +11,7 @@ The goal of this project is to make it easier to develop accessible products wit
 Getting involved helps the community to build better products and services for the general public, and depending on your role, you also get these benefits:
 ### as a developer
 
-- Work on a great tech stack ([Stencil](https://stenciljs.com/), [Docusaurus](https://docusaurus.io/), [Puppeteer](https://pptr.dev/), [axe-core](https://github.com/dequelabs/axe-core)) and custom-built tools for a nicer [developer experience](./development-guide).
+- Work with great tools like ([Stencil](https://stenciljs.com/), [Puppeteer](https://pptr.dev/), [axe-core](https://github.com/dequelabs/axe-core)). Read more about the [developer experience](./development-guide).
 - Learn how to build components that can be [used everywhere](../guides/web-components) by everyone.
 - Get recognised as an awesome OSS contributor (see [Contributors section](https://github.com/getgoui/go-ui#contributors-) on our GitHub page)
 - Spend less time repeating the same implementation

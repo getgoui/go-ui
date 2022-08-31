@@ -3,7 +3,7 @@ import { href } from 'stencil-router-v2';
 import { Build, Component, Prop, State, Watch, h } from '@stencil/core';
 
 import siteConfig from '../../../config';
-import { prepareNavItems, removeLeadingSlash } from '../../utils/helpers';
+import { prepareNavItems } from '../../utils/helpers';
 
 declare global {
   var docsearch: any;
@@ -29,7 +29,7 @@ export class AppHeader {
     // check if there's any local storage override
     this.checkLocalStorage();
 
-    this.navItems = prepareNavItems(siteConfig.navbar.main, this.activePath);
+    this.navItems = prepareNavItems(siteConfig.navbar.main, '');
   }
 
   checkLocalStorage() {
@@ -49,17 +49,17 @@ export class AppHeader {
     document.documentElement.setAttribute('data-theme', newValue ? 'dark' : 'light');
   }
 
-  @Watch('activePath')
-  setActivePath(newValue: string) {
-    this.navItems = this.navItems.map(item => {
-      const cleanPathname = removeLeadingSlash(newValue);
-      const cleanUrl = removeLeadingSlash(item.url);
-      return {
-        ...item,
-        isCurrent: cleanPathname.includes(cleanUrl),
-      };
-    });
-  }
+  // @Watch('activePath')
+  // setActivePath(newValue: string) {
+  //   this.navItems = this.navItems.map(item => {
+  //     const cleanPathname = removeLeadingSlash(newValue);
+  //     const cleanUrl = removeLeadingSlash(item.url);
+  //     return {
+  //       ...item,
+  //       isCurrent: cleanPathname.includes(cleanUrl),
+  //     };
+  //   });
+  // }
 
   mobileMenu: HTMLGoNavDrawerElement;
 

@@ -5,10 +5,6 @@ tags:
   - Navigation
 ---
 
-import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/patterns/go-card-row/demo/go-card-row.html';
-import demoSourceDynamic from '!!raw-loader!@/go-ui/patterns/go-card-row/demo/go-card-row-dynamic.html';
-
 # Card row
 
 <!-- Description -->
@@ -20,6 +16,8 @@ Card row is a layout pattern to provide a consistent way of displaying a group o
 <demo-frame component="go-card-row" demo="go-card-row"></demo-frame>
 
 ## Load cards dynamically
+
+The following demo has the cards loaded in dynamically after the initial page load.
 
 <demo-frame component="go-card-row" demo="go-card-row-dynamic"></demo-frame>
 

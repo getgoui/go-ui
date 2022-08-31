@@ -8,10 +8,13 @@ import MarkdownItTitle from 'markdown-it-title';
 import { goUiPlugin } from '@go-ui/core';
 
 import fs from 'fs';
-import { IA, IAItem } from '../src/ia.interface';
 import dirTree from 'directory-tree';
 import startCase from 'lodash.startcase';
 import sortBy from 'lodash.sortby';
+
+import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
+import { IA, IAItem } from '../src/ia.interface';
+import siteConfig from '../config';
 
 const md = new MarkdownIt({
   html: true,
@@ -32,48 +35,6 @@ const rootPath = path.resolve(__dirname, '..');
 const contentPath = path.resolve(`${rootPath}/content`);
 const srcPath = path.resolve(`${rootPath}/src`);
 const iAFile = `${srcPath}/generated-ia.ts`;
-
-async function generateIA(): Promise<void> {
-  const spinner = createSpinner('Reading content folder').start();
-  const contentDir = dirTree(
-    contentPath,
-    {
-      extensions: /\.(md)$/,
-      attributes: ['type'],
-    },
-    (item, path) => {
-      let url = path.replace(contentPath, '').replace(/\\/g, '/');
-      url = url.substring(0, url.lastIndexOf('.')); // remove file extensions
-      if (url.endsWith('/index')) {
-        url = url.substring(0, url.lastIndexOf('/')); // remove /index
-      }
-
-      (item as any).url = url;
-      const id = item.name.substring(0, item.name.lastIndexOf('.'));
-
-      const str = fs.readFileSync(path, 'utf8');
-      md['meta'] = null; // reset meta for each file
-      let env = { title: '', excerpt: [] };
-      const content = md.render(str, env);
-      const meta = (md as any).meta;
-      (item as any).meta = meta;
-      (item as any).label = meta?.title || env.title || startCase(id);
-      (item as any).description = env.excerpt[0];
-      (item as any).content = content;
-      (item as any).id = id;
-    },
-  );
-
-  const ia = categorise(sortNavItems(toNavItems(contentDir.children)));
-
-  try {
-    const content = `export default ${JSON.stringify(ia, null, 2)}`;
-    fs.writeFileSync(iAFile, content);
-    spinner.success();
-  } catch (err) {
-    spinner.error();
-  }
-}
 
 const isIndexItem = (item: IAItem): boolean => item.id === 'index';
 
@@ -131,4 +92,53 @@ function categorise(navItems: IAItem[]): IA {
   return results;
 }
 
+export function getDocsPrefix() {
+  return siteConfig?.docsRoutePrefix ? siteConfig.docsRoutePrefix : 'docs/';
+}
+
+export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true): string {
+  return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix() : '');
+}
+
+async function generateIA(): Promise<void> {
+  const spinner = createSpinner('Reading content folder').start();
+  const contentDir = dirTree(
+    contentPath,
+    {
+      extensions: /\.(md)$/,
+      attributes: ['type'],
+    },
+    (item, path) => {
+      let url = path.replace(contentPath, '').replace(/\\/g, '/');
+      url = url.substring(0, url.lastIndexOf('.')); // remove file extensions
+      if (url.endsWith('/index')) {
+        url = url.substring(0, url.lastIndexOf('/')); // remove /index
+      }
+
+      (item as any).url = url;
+      const id = item.name.substring(0, item.name.lastIndexOf('.'));
+
+      const str = fs.readFileSync(path, 'utf8');
+      md['meta'] = null; // reset meta for each file
+      let env = { title: '', excerpt: [] };
+      const content = md.render(str, env);
+      const meta = (md as any).meta;
+      (item as any).meta = meta;
+      (item as any).label = meta?.title || env.title || startCase(id);
+      (item as any).description = env.excerpt[0];
+      (item as any).content = content;
+      (item as any).id = id;
+    },
+  );
+
+  const ia = categorise(sortNavItems(toNavItems(contentDir.children)));
+
+  try {
+    const content = `export default ${JSON.stringify(ia, null, 2)}`;
+    fs.writeFileSync(iAFile, content);
+    spinner.success();
+  } catch (err) {
+    spinner.error();
+  }
+}
 generateIA();

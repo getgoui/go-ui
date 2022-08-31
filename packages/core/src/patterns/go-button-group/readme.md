@@ -15,7 +15,7 @@ Make buttons nicely grouped.
 
 ## Components
 
-::: warning go-button dependency
+::: critical go-button dependency
 Only `go-button` components are optimised as child components, use them as direct children of `go-button-group`.
 :::
 

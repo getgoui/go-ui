@@ -5,6 +5,7 @@
     padding: 1rem;
     max-height: 100vh;
     overflow: auto;
+    border-bottom: var(--go-border-thin) solid var(--go-color-border);
   }
 
   go-accordion {

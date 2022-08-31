@@ -52,6 +52,7 @@ export class PageStandard {
     try {
       this.iAItem = loadContentByPath(this.currentPath);
       this.result = this.iAItem.content;
+      this.meta = this.iAItem.meta;
     } catch (error) {
       this.notfound = true;
     }

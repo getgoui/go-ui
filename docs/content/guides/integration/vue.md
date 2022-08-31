@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+order: 2
 ---
 
 # Vue integration

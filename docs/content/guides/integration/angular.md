@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+order: 3
 ---
 
 # Angular integration

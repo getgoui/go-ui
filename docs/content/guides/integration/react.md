@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+order: 4
 ---
 
 # React integration
