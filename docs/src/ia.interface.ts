@@ -8,8 +8,8 @@ export interface IAItem extends INavItem {
   id: string;
   meta?: Metadata;
   description?: string;
-  content: string;
-  isIndex: boolean;
+  content?: string;
+  isIndex?: boolean;
   children?: IAItem[];
 }
 

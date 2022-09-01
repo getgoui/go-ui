@@ -37,3 +37,8 @@ html {
     }
   }
 }
+
+// docsearch a11y
+:root {
+  --docsearch-muted-color: var(--go-color-neutral-800);
+}

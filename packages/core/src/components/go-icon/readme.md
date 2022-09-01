@@ -11,7 +11,7 @@ title: Icon
   Icons serve multiple purposes in a UI, they can convey information (e.g. icon button, icon tab) or they can be used as a visual representation.
 </div>
 
-:::tip Icon font CSS
+::: info Icon font CSS
 
 Before using the `go-icon` component, you need to have the icon font CSS available in your application.
 

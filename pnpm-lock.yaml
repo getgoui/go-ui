@@ -50,10 +50,12 @@ importers:
       jest-cli: ^27.5.1
       json5: ^2.2.1
       lodash-es: ^4.17.21
+      lodash.clonedeep: ^4.5.0
       lodash.groupby: ^4.6.0
       lodash.kebabcase: ^4.1.1
       lodash.sortby: ^4.7.0
       lodash.startcase: ^4.4.0
+      lodash.uniqby: ^4.7.0
       lodash.uniqueid: ^4.0.1
       markdown-it: ^13.0.1
       markdown-it-include: ^2.0.0
@@ -96,8 +98,10 @@ importers:
       highlight.js: 11.6.0
       jest: 27.5.1_ts-node@10.9.1
       jest-cli: 27.5.1_ts-node@10.9.1
+      lodash.clonedeep: 4.5.0
       lodash.groupby: 4.6.0
       lodash.sortby: 4.7.0
+      lodash.uniqby: 4.7.0
       minimist: 1.2.6
       nanospinner: 1.1.0
       puppeteer: 10.4.0
@@ -8575,6 +8579,10 @@ packages:
 
   /lodash.capitalize/4.2.1:
     resolution: {integrity: sha512-kZzYOKspf8XVX5AvmQF94gQW0lejFVgb80G85bU4ZWzoJ6C03PQg3coYAUpSTpQWelrZELd3XWgHzw4Ck5kaIw==}
+    dev: true
+
+  /lodash.clonedeep/4.5.0:
+    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
     dev: true
 
   /lodash.debounce/4.0.8:

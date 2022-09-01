@@ -1,6 +1,6 @@
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
-import { Build, Component, Prop, State, Watch, h } from '@stencil/core';
+import { Build, Component, Prop, State, h } from '@stencil/core';
 
 import siteConfig from '../../../config';
 import { prepareNavItems } from '../../utils/helpers';
@@ -24,29 +24,35 @@ export class AppHeader {
   @Prop() activePath: string = '/';
 
   componentWillLoad() {
-    // match OS preference
-    this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // check if there's any local storage override
-    this.checkLocalStorage();
+    this.loadTheme();
 
     this.navItems = prepareNavItems(siteConfig.navbar.main, '');
   }
 
-  checkLocalStorage() {
-    if (localStorage.getItem('theme') === 'dark') {
-      this.isDark = true;
-    } else {
-      this.isDark = false;
+  /**
+   * load either light/dark theme according to
+   * - operating system preference
+   * - localStorage override
+   */
+  loadTheme() {
+    // check if there's any local storage override
+    // match OS preference
+    this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('go-ui-theme');
+    if (storedTheme) {
+      this.isDark = storedTheme === 'dark';
     }
+    this.setHtmlAttribute();
+  }
+
+  setHtmlAttribute() {
+    document.documentElement.setAttribute('data-theme', this.isDark ? 'dark' : 'light');
   }
 
   toggleDarkMode() {
     this.isDark = !this.isDark;
-  }
-
-  @Watch('isDark')
-  darkModeChanged(newValue: boolean) {
-    document.documentElement.setAttribute('data-theme', newValue ? 'dark' : 'light');
+    this.setHtmlAttribute();
+    localStorage.setItem('go-ui-theme', this.isDark ? 'dark' : 'light');
   }
 
   // @Watch('activePath')

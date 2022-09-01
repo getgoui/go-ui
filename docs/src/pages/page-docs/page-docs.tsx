@@ -1,7 +1,6 @@
 import { Component, Prop, State, h, Watch } from '@stencil/core';
-import docs from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { getDocsPrefix, buildSidebar, prepareNavItems, md, loadContentByPath } from '../../utils/helpers';
+import { buildSidebar, prepareNavItems, loadContentByPath } from '../../utils/helpers';
 import Router from '../../router';
 
 @Component({
@@ -18,11 +17,8 @@ export class PageDocs {
   @State() sidebarNavItems = [] as INavItem[];
 
   // private source = '';
-  private pageName = '';
 
-  private currentPath = '';
   private currentUrl = '';
-  private pathParts = [] as string[];
   private meta = null;
 
   private tocEl: HTMLGoTocElement;
@@ -39,20 +35,11 @@ export class PageDocs {
     if (this.currentUrl.endsWith('/')) {
       this.currentUrl = this.currentUrl.substring(0, this.currentUrl.length - 1);
     }
-    this.currentPath = this.currentUrl.replace(getDocsPrefix(), '');
-    this.pathParts = this.currentPath.split('/');
-    this.pageName = this.pathParts.pop();
     await this.loadPage();
     await this.loadSidebarNav();
   }
 
   async loadPage() {
-    const compDocs = docs.components.find(comp => comp.tag === this.pageName);
-    if (compDocs) {
-      this.result = md.render(compDocs.readme);
-      this.meta = (md as any).meta;
-      return;
-    }
     const content = loadContentByPath(this.currentUrl);
     this.result = content.content;
   }

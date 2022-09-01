@@ -3,11 +3,10 @@ import siteConfig from '../../config';
 import MarkdownIt from 'markdown-it';
 import meta from 'markdown-it-meta';
 import MarkdownItTitle from 'markdown-it-title';
-import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
+import { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
 import Router from '../router';
-import { uniqBy } from 'lodash-es';
 import { goUiPlugin } from '@go-ui/core';
 import ia from '../generated-ia';
 import { IAItem } from '../ia.interface';
@@ -56,37 +55,25 @@ export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true):
   return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix() : '');
 }
 
-export function buildSidebar(): INavItem[] {
+export function buildSidebar(): IAItem[] {
   const prefix = getDocsPrefix();
   const activePath = removeLeadingSlash(Router.activePath.replace(prefix, ''));
   const activeCategory = activePath.split('/')[0]; // patterns/components
 
-  let sidebar = docs.components
-    .map((comp: JsonDocsComponent) => {
-      const path = buildSidebarItemUrl(comp, false);
-      const parents = path.split('/');
-      parents.pop();
-      const category = parents[0]; // patterns/components
+  const cat = ia.docs.children.find(category => category.id === activeCategory);
+  console.log(cat);
+  const sidebar = cat.children as IAItem[];
+  return applyRouterLink(sidebar);
+}
 
-      const url = siteUrl(prefix + path);
-      return {
-        url,
-        label: siteConfig.sidebar.tagToLabel(comp.tag),
-        linkAttrs: {
-          ...href(url),
-        },
-        category,
-        path,
-        parents,
-        parentKey: parents.join('.'),
-      };
-    })
-    .filter(item => activePath.includes(item.category)); //only relevant to current category
-
-  sidebar = uniqBy(sidebar, 'url'); // no duplicated urls
-  // concat with ia content
-  const iaSidebar = (ia['docs'].children as { id: string; children?: any[] }[]).find(category => category.id === activeCategory).children;
-  return sidebar.concat(iaSidebar);
+function applyRouterLink(iaItems: IAItem[]) {
+  return iaItems.map(item => ({
+    ...item,
+    linkAttrs: {
+      ...href(item.url),
+    },
+    children: item.children?.length > 0 ? applyRouterLink(item.children) : null,
+  }));
 }
 
 // code helper
@@ -152,13 +139,14 @@ export function loadContentByPath(path: string): IAItem {
     return;
   }
   let targetItem = ia[parts[0]];
-  let targetGroup = targetItem.children;
-
-  for (let i = 1; i < parts.length; i++) {
-    const key = parts[i];
-    targetItem = targetGroup.find(item => item.id === key);
-    if (targetItem.children) {
-      targetGroup = targetItem.children;
+  let targetGroup = targetItem?.children;
+  if (targetGroup) {
+    for (let i = 1; i < parts.length; i++) {
+      const key = parts[i];
+      targetItem = targetGroup.find(item => item.id === key);
+      if (targetItem?.children) {
+        targetGroup = targetItem.children;
+      }
     }
   }
   return targetItem;

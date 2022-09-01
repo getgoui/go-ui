@@ -11,8 +11,10 @@ import fs from 'fs';
 import dirTree from 'directory-tree';
 import startCase from 'lodash.startcase';
 import sortBy from 'lodash.sortby';
+import groupBy from 'lodash.groupby';
+import uniqBy from 'lodash.uniqby';
 
-import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
+import docs, { JsonDocs, JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { IA, IAItem } from '../src/ia.interface';
 import siteConfig from '../config';
 
@@ -92,16 +94,38 @@ function categorise(navItems: IAItem[]): IA {
   return results;
 }
 
+function removeExt(filename: string): string {
+  return filename.substring(0, filename.lastIndexOf('.'));
+}
+
 export function getDocsPrefix() {
   return siteConfig?.docsRoutePrefix ? siteConfig.docsRoutePrefix : 'docs/';
 }
 
-export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true): string {
+function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true): string {
   return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix() : '');
 }
+function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
+  const iaItems = components.map(comp => {
+    let url = '/' + buildSidebarItemUrl(comp);
+    md['meta'] = null; // reset meta for each file
+    let env = { title: '', excerpt: [] };
+    const content = md.render(comp.readme, env);
+    const meta = md.meta;
+    return {
+      url: url,
+      meta: meta,
+      label: meta?.title || env.title || siteConfig.sidebar.tagToLabel(comp.tag),
+      description: env.excerpt[0],
+      content: content,
+      id: comp.tag,
+    } as IAItem;
+  });
 
-async function generateIA(): Promise<void> {
-  const spinner = createSpinner('Reading content folder').start();
+  return uniqBy(iaItems, 'url');
+}
+
+function parseContents() {
   const contentDir = dirTree(
     contentPath,
     {
@@ -110,13 +134,13 @@ async function generateIA(): Promise<void> {
     },
     (item, path) => {
       let url = path.replace(contentPath, '').replace(/\\/g, '/');
-      url = url.substring(0, url.lastIndexOf('.')); // remove file extensions
+      url = removeExt(url); // remove file extensions
       if (url.endsWith('/index')) {
         url = url.substring(0, url.lastIndexOf('/')); // remove /index
       }
 
       (item as any).url = url;
-      const id = item.name.substring(0, item.name.lastIndexOf('.'));
+      const id = removeExt(item.name);
 
       const str = fs.readFileSync(path, 'utf8');
       md['meta'] = null; // reset meta for each file
@@ -130,8 +154,53 @@ async function generateIA(): Promise<void> {
       (item as any).id = id;
     },
   );
+  return toNavItems(contentDir.children);
+}
 
-  const ia = categorise(sortNavItems(toNavItems(contentDir.children)));
+function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
+  const categorisedComps = componentDocs.map(comp => {
+    const category = comp.url.split('/')[2];
+    return {
+      ...comp,
+      category,
+    };
+  });
+  const groups = groupBy(categorisedComps, 'category');
+
+  let docsIndex = contentItems.findIndex(item => item.id === 'docs');
+  if (docsIndex === -1) {
+    contentItems.push({
+      id: 'docs',
+      label: 'Docs',
+      content: '',
+      children: [],
+    });
+  }
+  docsIndex = contentItems.findIndex(item => item.id === 'docs');
+  Object.keys(groups).forEach(category => {
+    const docs = groups[category];
+    let categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
+    if (categoryIndex === -1) {
+      contentItems[docsIndex].children.push({
+        id: category,
+        label: startCase(category),
+        content: '',
+        children: [],
+      });
+    }
+    categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
+    contentItems[docsIndex].children[categoryIndex].children = docs.concat(contentItems[docsIndex].children[categoryIndex].children);
+  });
+
+  return contentItems;
+}
+
+async function generateIA(): Promise<void> {
+  const spinner = createSpinner('Reading content folder').start();
+  const content = parseContents();
+  const componentDocs = parseCompDocs(docs.components);
+  const combinedItems = mergeDocs(content, componentDocs);
+  const ia = categorise(sortNavItems(combinedItems));
 
   try {
     const content = `export default ${JSON.stringify(ia, null, 2)}`;
