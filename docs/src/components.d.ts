@@ -29,9 +29,6 @@ export namespace Components {
         "demo": string;
         "hideSource": boolean;
     }
-    interface FadeIn {
-        "activePath": string;
-    }
     interface PageDocs {
         "params": {
     [param: string]: string;
@@ -45,6 +42,9 @@ export namespace Components {
         "params": {
     [param: string]: string;
   };
+    }
+    interface PageTransition {
+        "activePath": string;
     }
     interface PropsPanel {
         "debug": boolean;
@@ -130,12 +130,6 @@ declare global {
         prototype: HTMLDemoFrameElement;
         new (): HTMLDemoFrameElement;
     };
-    interface HTMLFadeInElement extends Components.FadeIn, HTMLStencilElement {
-    }
-    var HTMLFadeInElement: {
-        prototype: HTMLFadeInElement;
-        new (): HTMLFadeInElement;
-    };
     interface HTMLPageDocsElement extends Components.PageDocs, HTMLStencilElement {
     }
     var HTMLPageDocsElement: {
@@ -159,6 +153,12 @@ declare global {
     var HTMLPageStandardElement: {
         prototype: HTMLPageStandardElement;
         new (): HTMLPageStandardElement;
+    };
+    interface HTMLPageTransitionElement extends Components.PageTransition, HTMLStencilElement {
+    }
+    var HTMLPageTransitionElement: {
+        prototype: HTMLPageTransitionElement;
+        new (): HTMLPageTransitionElement;
     };
     interface HTMLPropsPanelElement extends Components.PropsPanel, HTMLStencilElement {
     }
@@ -203,11 +203,11 @@ declare global {
         "code-block": HTMLCodeBlockElement;
         "copy-code-btn": HTMLCopyCodeBtnElement;
         "demo-frame": HTMLDemoFrameElement;
-        "fade-in": HTMLFadeInElement;
         "page-docs": HTMLPageDocsElement;
         "page-home": HTMLPageHomeElement;
         "page-notfound": HTMLPageNotfoundElement;
         "page-standard": HTMLPageStandardElement;
+        "page-transition": HTMLPageTransitionElement;
         "props-panel": HTMLPropsPanelElement;
         "seo-tags": HTMLSeoTagsElement;
         "sidebar-layout": HTMLSidebarLayoutElement;
@@ -238,9 +238,6 @@ declare namespace LocalJSX {
         "demo"?: string;
         "hideSource"?: boolean;
     }
-    interface FadeIn {
-        "activePath"?: string;
-    }
     interface PageDocs {
         "params"?: {
     [param: string]: string;
@@ -254,6 +251,9 @@ declare namespace LocalJSX {
         "params"?: {
     [param: string]: string;
   };
+    }
+    interface PageTransition {
+        "activePath"?: string;
     }
     interface PropsPanel {
         "debug"?: boolean;
@@ -295,11 +295,11 @@ declare namespace LocalJSX {
         "code-block": CodeBlock;
         "copy-code-btn": CopyCodeBtn;
         "demo-frame": DemoFrame;
-        "fade-in": FadeIn;
         "page-docs": PageDocs;
         "page-home": PageHome;
         "page-notfound": PageNotfound;
         "page-standard": PageStandard;
+        "page-transition": PageTransition;
         "props-panel": PropsPanel;
         "seo-tags": SeoTags;
         "sidebar-layout": SidebarLayout;
@@ -318,11 +318,11 @@ declare module "@stencil/core" {
             "code-block": LocalJSX.CodeBlock & JSXBase.HTMLAttributes<HTMLCodeBlockElement>;
             "copy-code-btn": LocalJSX.CopyCodeBtn & JSXBase.HTMLAttributes<HTMLCopyCodeBtnElement>;
             "demo-frame": LocalJSX.DemoFrame & JSXBase.HTMLAttributes<HTMLDemoFrameElement>;
-            "fade-in": LocalJSX.FadeIn & JSXBase.HTMLAttributes<HTMLFadeInElement>;
             "page-docs": LocalJSX.PageDocs & JSXBase.HTMLAttributes<HTMLPageDocsElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-notfound": LocalJSX.PageNotfound & JSXBase.HTMLAttributes<HTMLPageNotfoundElement>;
             "page-standard": LocalJSX.PageStandard & JSXBase.HTMLAttributes<HTMLPageStandardElement>;
+            "page-transition": LocalJSX.PageTransition & JSXBase.HTMLAttributes<HTMLPageTransitionElement>;
             "props-panel": LocalJSX.PropsPanel & JSXBase.HTMLAttributes<HTMLPropsPanelElement>;
             "seo-tags": LocalJSX.SeoTags & JSXBase.HTMLAttributes<HTMLSeoTagsElement>;
             "sidebar-layout": LocalJSX.SidebarLayout & JSXBase.HTMLAttributes<HTMLSidebarLayoutElement>;

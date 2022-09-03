@@ -1,10 +1,10 @@
 import { Component, h, Host, Element, Prop, Watch } from '@stencil/core';
 
 @Component({
-  tag: 'fade-in',
-  styleUrl: 'fade-in.scss',
+  tag: 'page-transition',
+  styleUrl: 'page-transition.scss',
 })
-export class FadeIn {
+export class PageTransition {
   @Element() el: HTMLElement;
 
   @Prop() activePath: string;

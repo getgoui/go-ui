@@ -430,6 +430,10 @@ export namespace Components {
     }
     interface GoNavDrawer {
         "active": boolean;
+        /**
+          * if true, clicking on nav item will close the drawer automatically
+         */
+        "autoClose": boolean;
         "close": () => Promise<void>;
         /**
           * Initialise the menu
@@ -1389,6 +1393,10 @@ declare namespace LocalJSX {
     interface GoNavDrawer {
         "active"?: boolean;
         /**
+          * if true, clicking on nav item will close the drawer automatically
+         */
+        "autoClose"?: boolean;
+        /**
           * Navigation items to be rendered
          */
         "items"?: INavItem[] | string;
@@ -1397,6 +1405,10 @@ declare namespace LocalJSX {
           * Emitted when the nav drawer is closed
          */
         "onClose"?: (event: GoNavDrawerCustomEvent<void>) => void;
+        /**
+          * Emitted when the nav item is clicked
+         */
+        "onNavItemClick"?: (event: GoNavDrawerCustomEvent<INavItem>) => void;
         /**
           * Emitted when the nav drawer is opened
          */

@@ -4,7 +4,6 @@ import { Build, Component, Prop, State, h } from '@stencil/core';
 
 import siteConfig from '../../../config';
 import { prepareNavItems } from '../../utils/helpers';
-
 declare global {
   var docsearch: any;
 }
@@ -95,7 +94,7 @@ export class AppHeader {
     };
     return (
       <header>
-        <go-nav-drawer ref={el => (this.mobileMenu = el)} label="Menu" items={navItems}></go-nav-drawer>
+        <go-nav-drawer ref={el => (this.mobileMenu = el)} label="Menu" items={navItems} autoClose={true}></go-nav-drawer>
         <go-header-bar breakpoint="tablet">
           <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack variant="text" onClick={() => this.handleMobileTriggerClick()}>
             <go-icon icon-set="bx" name="menu" size="1.5rem" slot="prefix"></go-icon>

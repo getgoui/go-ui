@@ -1,4 +1,5 @@
 import JSON5 from 'json5';
+import { warning } from './helper';
 
 /**
  * parse items prop passed into the navigation component
@@ -8,6 +9,6 @@ export function parseItems<T>(items: T | string): T {
   try {
     return typeof items === 'string' ? JSON5.parse(items) : items;
   } catch (e) {
-    console.warn('Could not parse items', e);
+    warning('Could not parse items', e);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
 
 import { inheritAttributes } from '../../../utils/helper';
 import { INavItem } from '../../../interfaces';
@@ -30,6 +30,11 @@ export class GoNavDrawer {
 
   @Prop() label = 'Menu';
 
+  /**
+   * if true, clicking on nav item will close the drawer automatically
+   */
+  @Prop() autoClose = false;
+
   // keep track of open submenus
   @State() currentSubMenus: HTMLElement[] = [];
 
@@ -38,6 +43,7 @@ export class GoNavDrawer {
    * @param items {INavItem[]} menu items to be rendered
    */
   @Method()
+  @Watch('items')
   async init(newItems: INavItem[] | string) {
     this.navItems = parseItems(newItems);
   }
@@ -67,6 +73,16 @@ export class GoNavDrawer {
     bubbles: true,
   })
   closeEvent: EventEmitter<void>;
+
+  /**
+   * Emitted when the nav item is clicked
+   */
+  @Event({
+    eventName: 'navItemClick',
+    cancelable: true,
+    bubbles: true,
+  })
+  navItemClickEvent: EventEmitter<INavItem>;
 
   @Method()
   async close() {
@@ -118,6 +134,16 @@ export class GoNavDrawer {
 
   subMenus: { string: INavItem[] } = null;
 
+  handleNavItemClick(e, item: INavItem) {
+    if (item.linkAttrs?.onClick) {
+      item.linkAttrs.onClick(e);
+    }
+    if (this.autoClose) {
+      this.close();
+    }
+    this.navItemClickEvent.emit(item);
+  }
+
   renderNavItems(items: INavItem[], parentItem?: INavItem) {
     const isSubNav = !!parentItem;
 
@@ -167,7 +193,7 @@ export class GoNavDrawer {
           <nav aria-label={isSubNav ? parentItem.label : this.label}>
             {isSubNav && parentItem.url ? (
               <div class="parent-link">
-                <a href={parentItem.url} {...parentItem.linkAttrs}>
+                <go-link href={parentItem.url} {...parentItem.linkAttrs} onClick={e => this.handleNavItemClick(e, parentItem)}>
                   <span class="nav-item-label">
                     {parentItem.icon && <go-icon name={parentItem.icon}></go-icon>}
                     <span>{parentItem.label}</span>
@@ -182,10 +208,10 @@ export class GoNavDrawer {
                     viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
-                </a>
+                </go-link>
               </div>
             ) : null}
-            <ul>{items.map((item) => this.renderNavItem(item))}</ul>
+            <ul>{items.map(item => this.renderNavItem(item))}</ul>
           </nav>
         ) : null}
       </div>
@@ -205,14 +231,18 @@ export class GoNavDrawer {
     let attrs = null;
 
     if (Tag === 'a') {
-      attrs = { href: item.url, ...item.linkAttrs };
+      attrs = {
+        href: item.url,
+        ...item.linkAttrs,
+        onClick: e => this.handleNavItemClick(e, item),
+      };
     }
     if (Tag === 'button') {
       attrs = {
         'type': 'button',
         'aria-haspopup': 'true',
         'aria-expanded': 'false',
-        'onClick': (e) => this.openSubMenu(e),
+        'onClick': e => this.openSubMenu(e),
       };
     }
     return (
@@ -242,7 +272,6 @@ export class GoNavDrawer {
 
   render() {
     let { navItems, active, position, inheritedAttrs } = this;
-
     return (
       <go-overlay active={active} {...inheritedAttrs} onOverlayClose={() => this.close()}>
         <div class={{ 'nav-drawer': true, 'open': active, [position]: !!position }}>

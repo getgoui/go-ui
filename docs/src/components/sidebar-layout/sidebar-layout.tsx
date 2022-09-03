@@ -1,5 +1,5 @@
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, State } from '@stencil/core';
 import Router from '../../router';
 
 @Component({
@@ -11,6 +11,8 @@ export class SidebarLayout {
 
   @Prop() result: string;
 
+  @State() isMobileSidebarOpen = false;
+
   private tocEl: HTMLGoTocElement;
 
   @Watch('result')
@@ -21,14 +23,40 @@ export class SidebarLayout {
     this.tocEl.init();
   }
 
+  openMobileSidebar() {
+    this.isMobileSidebarOpen = true;
+  }
+  closeMobileSidebar() {
+    this.isMobileSidebarOpen = false;
+  }
+
   render() {
     const { activePath } = Router;
-    const { sidebarItems, result } = this;
+    const { sidebarItems, result, isMobileSidebarOpen } = this;
     return (
-      <fade-in activePath={activePath}>
+      <page-transition activePath={activePath}>
         <div class="sidebar-layout">
           <aside>
-            <div class="sidebar">
+            <go-nav-drawer
+              active={isMobileSidebarOpen}
+              label="Sidebar navigation"
+              items={sidebarItems}
+              autoClose={true}
+              onClose={() => this.closeMobileSidebar()}></go-nav-drawer>
+            <div class="container d-none-tablet">
+              <go-button
+                class="mobile-sidebar-trigger"
+                aria-label="Open sidebar navigation"
+                compact
+                flat
+                variant="text"
+                type="button"
+                onClick={() => this.openMobileSidebar()}>
+                <go-icon iconSet="bx" name="chevrons-right" size="1.5rem"></go-icon>
+                Open sidebar
+              </go-button>
+            </div>
+            <div class="d-none d-block-tablet sidebar">
               <go-nav-list block items={sidebarItems}></go-nav-list>
             </div>
           </aside>
@@ -43,9 +71,11 @@ export class SidebarLayout {
                 </div>
               </div>
             </div>
+
+            <go-to-top></go-to-top>
           </main>
         </div>
-      </fade-in>
+      </page-transition>
     );
   }
 }

@@ -1,9 +1,9 @@
-fade-in {
+page-transition {
   display: block;
 
   &.loaded {
     main {
-      animation: fade-in-up var(--go-duration-normal) ease-out forwards;
+      animation: fade-in-up var(--go-duration-normal) ease forwards;
     }
   }
 }

@@ -1,0 +1,46 @@
+@import '~@go-ui/core/src/global/scss/utils';
+
+.sidebar-layout {
+  --sidebar-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  @include tablet() {
+    --sidebar-width: 15rem;
+    padding: 0;
+    flex-direction: row;
+    position: relative;
+  }
+  .mobile-sidebar-trigger {
+    margin-top: 1rem;
+  }
+  aside {
+    width: var(--sidebar-width);
+  }
+  .sidebar {
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    overflow: auto;
+    position: sticky;
+    top: var(--header-height);
+    bottom: 0;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--go-color-border);
+  }
+  main {
+    padding: 2rem 0;
+    flex-grow: 1;
+    width: 100%;
+    @include tablet {
+      width: calc(100% - var(--sidebar-width));
+    }
+    .toc {
+      position: sticky;
+      top: var(--header-height);
+      .go-link {
+        font-size: 14px;
+      }
+    }
+  }
+}
