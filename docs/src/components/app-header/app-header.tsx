@@ -98,7 +98,7 @@ export class AppHeader {
         <go-nav-drawer ref={el => (this.mobileMenu = el)} label="Menu" items={navItems}></go-nav-drawer>
         <go-header-bar breakpoint="tablet">
           <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack variant="text" onClick={() => this.handleMobileTriggerClick()}>
-            <go-icon name="menu" slot="prefix"></go-icon>
+            <go-icon icon-set="bx" name="menu" size="1.5rem" slot="prefix"></go-icon>
             <span id="menu-label">Menu</span>
           </go-button>
 

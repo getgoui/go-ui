@@ -13,7 +13,7 @@ export class AppRoot {
     return (
       <Host>
         <app-header active-path={activePath}></app-header>
-        <main>
+        <main class="page-main">
           <Router.Switch>
             <Route path="/">
               <page-home></page-home>

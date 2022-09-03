@@ -21,8 +21,6 @@ export class PageDocs {
   private currentUrl = '';
   private meta = null;
 
-  private tocEl: HTMLGoTocElement;
-
   async componentWillLoad() {
     console.log('Docs page');
     await this.init();
@@ -48,37 +46,11 @@ export class PageDocs {
     this.sidebarNavItems = buildSidebar();
   }
 
-  @Watch('result')
-  refreshToc() {
-    if (!this.tocEl) {
-      return;
-    }
-    this.tocEl.init();
-  }
-
   render() {
     const { result, sidebarNavItems, meta } = this;
     return [
       <seo-tags pageTitle={meta?.title}></seo-tags>,
-      <div class="sidebar-layout">
-        <aside>
-          <div class="sidebar">
-            <go-nav-list block items={prepareNavItems(sidebarNavItems, Router.activePath)}></go-nav-list>
-          </div>
-        </aside>
-        <main>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-desktop-9">
-                <div class="content-container" innerHTML={result}></div>
-              </div>
-              <div class="d-none d-block-desktop col-desktop-3">
-                <go-toc ref={el => (this.tocEl = el)} class="toc" selector=".content-container h2" label-class="h6"></go-toc>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>,
+      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result}></sidebar-layout>,
     ];
   }
 }

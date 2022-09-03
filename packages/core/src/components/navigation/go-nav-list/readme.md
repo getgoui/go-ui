@@ -1,24 +1,28 @@
 ---
-title: Nav link
+title: Nav list
 ---
 
-# Nav link <span class="text-size-0">`go-nav-link`</span>
+# Nav list <span class="text-size-0">`go-nav-list`</span>
 
 <!-- Description -->
 
-<div class="text-size-1">Nav link is a link component used in navigation patterns.</div>
+<div class="text-size-1">Navigation list is a group of nav links in the native nav landmark.</div>
 
-`go-nav-link` provides a data-driven interface for defining navigation links. It is used in the following components:
+A navigation list can have multiple groups inside.
 
-- [Nav list](./go-nav-list)
-- [Nav drawer](./go-nav-drawer)
-- [Main navigation](./go-main-navigation)
+## Accessibility
+
+`go-nav-list` will render the native `nav` element which tells assistive technologies that it has a aria role of `navigation`.
+
+::: info
+It is important to distinguish each navigation list by providing a unique label for each list.
+:::
+
 
 <!-- Demos, tips, variations, use cases -->
 
 ## Demo
 
-<demo-frame component="go-nav-link" demo="go-nav-link"></demo-frame>
-
+<demo-frame component="go-nav-list" demo="go-nav-list"></demo-frame>
 
 <!-- Auto Generated Below -->

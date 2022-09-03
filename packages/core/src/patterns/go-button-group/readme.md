@@ -25,11 +25,11 @@ Only `go-button` components are optimised as child components, use them as direc
 
 ## Demo
 
-<demo-frame component="go-button-group" demo="go-button-group"></demo-frame>
+<demo-frame component="go-button-group" demo="button-group"></demo-frame>
 
 Remove gap between buttons by adding `connected` attribute.
 
-<demo-frame component="go-button-group" demo="go-button-group-connected"></demo-frame>
+<demo-frame component="go-button-group" demo="button-group-connected"></demo-frame>
 
 
 <!-- Auto Generated Below -->

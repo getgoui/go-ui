@@ -8,7 +8,7 @@ title: Spinner
 
 <div class="text-size-1">A spinner is a visual indication that a background process is running.</div>
 
-:::warning Always in DOM
+::: info Always in DOM
 
 In order to have assistive technologies pick up the loading state changes, `go-spinner` should be in the DOM from the beginning.
 You can set the `loading` property to either `true` or `false` to control the visibility of the spinner.

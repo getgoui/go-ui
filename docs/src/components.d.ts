@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IProp } from "./components/demo-playground/prop.type";
+import { INavItem } from "@go-ui/core/dist/types/interfaces";
 import { ISlot } from "./components/demo-playground/slot.type";
 export namespace Components {
     interface AppFooter {
@@ -27,6 +28,9 @@ export namespace Components {
         "component": string;
         "demo": string;
         "hideSource": boolean;
+    }
+    interface FadeIn {
+        "activePath": string;
     }
     interface PageDocs {
         "params": {
@@ -50,6 +54,10 @@ export namespace Components {
         "description": string;
         "image": string;
         "pageTitle": string;
+    }
+    interface SidebarLayout {
+        "result": string;
+        "sidebarItems": INavItem[];
     }
     interface SlotsPanel {
         "debug": boolean;
@@ -122,6 +130,12 @@ declare global {
         prototype: HTMLDemoFrameElement;
         new (): HTMLDemoFrameElement;
     };
+    interface HTMLFadeInElement extends Components.FadeIn, HTMLStencilElement {
+    }
+    var HTMLFadeInElement: {
+        prototype: HTMLFadeInElement;
+        new (): HTMLFadeInElement;
+    };
     interface HTMLPageDocsElement extends Components.PageDocs, HTMLStencilElement {
     }
     var HTMLPageDocsElement: {
@@ -158,6 +172,12 @@ declare global {
         prototype: HTMLSeoTagsElement;
         new (): HTMLSeoTagsElement;
     };
+    interface HTMLSidebarLayoutElement extends Components.SidebarLayout, HTMLStencilElement {
+    }
+    var HTMLSidebarLayoutElement: {
+        prototype: HTMLSidebarLayoutElement;
+        new (): HTMLSidebarLayoutElement;
+    };
     interface HTMLSlotsPanelElement extends Components.SlotsPanel, HTMLStencilElement {
     }
     var HTMLSlotsPanelElement: {
@@ -183,12 +203,14 @@ declare global {
         "code-block": HTMLCodeBlockElement;
         "copy-code-btn": HTMLCopyCodeBtnElement;
         "demo-frame": HTMLDemoFrameElement;
+        "fade-in": HTMLFadeInElement;
         "page-docs": HTMLPageDocsElement;
         "page-home": HTMLPageHomeElement;
         "page-notfound": HTMLPageNotfoundElement;
         "page-standard": HTMLPageStandardElement;
         "props-panel": HTMLPropsPanelElement;
         "seo-tags": HTMLSeoTagsElement;
+        "sidebar-layout": HTMLSidebarLayoutElement;
         "slots-panel": HTMLSlotsPanelElement;
         "wc-output": HTMLWcOutputElement;
         "wc-playground": HTMLWcPlaygroundElement;
@@ -216,6 +238,9 @@ declare namespace LocalJSX {
         "demo"?: string;
         "hideSource"?: boolean;
     }
+    interface FadeIn {
+        "activePath"?: string;
+    }
     interface PageDocs {
         "params"?: {
     [param: string]: string;
@@ -239,6 +264,10 @@ declare namespace LocalJSX {
         "description"?: string;
         "image"?: string;
         "pageTitle"?: string;
+    }
+    interface SidebarLayout {
+        "result"?: string;
+        "sidebarItems"?: INavItem[];
     }
     interface SlotsPanel {
         "debug"?: boolean;
@@ -266,12 +295,14 @@ declare namespace LocalJSX {
         "code-block": CodeBlock;
         "copy-code-btn": CopyCodeBtn;
         "demo-frame": DemoFrame;
+        "fade-in": FadeIn;
         "page-docs": PageDocs;
         "page-home": PageHome;
         "page-notfound": PageNotfound;
         "page-standard": PageStandard;
         "props-panel": PropsPanel;
         "seo-tags": SeoTags;
+        "sidebar-layout": SidebarLayout;
         "slots-panel": SlotsPanel;
         "wc-output": WcOutput;
         "wc-playground": WcPlayground;
@@ -287,12 +318,14 @@ declare module "@stencil/core" {
             "code-block": LocalJSX.CodeBlock & JSXBase.HTMLAttributes<HTMLCodeBlockElement>;
             "copy-code-btn": LocalJSX.CopyCodeBtn & JSXBase.HTMLAttributes<HTMLCopyCodeBtnElement>;
             "demo-frame": LocalJSX.DemoFrame & JSXBase.HTMLAttributes<HTMLDemoFrameElement>;
+            "fade-in": LocalJSX.FadeIn & JSXBase.HTMLAttributes<HTMLFadeInElement>;
             "page-docs": LocalJSX.PageDocs & JSXBase.HTMLAttributes<HTMLPageDocsElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-notfound": LocalJSX.PageNotfound & JSXBase.HTMLAttributes<HTMLPageNotfoundElement>;
             "page-standard": LocalJSX.PageStandard & JSXBase.HTMLAttributes<HTMLPageStandardElement>;
             "props-panel": LocalJSX.PropsPanel & JSXBase.HTMLAttributes<HTMLPropsPanelElement>;
             "seo-tags": LocalJSX.SeoTags & JSXBase.HTMLAttributes<HTMLSeoTagsElement>;
+            "sidebar-layout": LocalJSX.SidebarLayout & JSXBase.HTMLAttributes<HTMLSidebarLayoutElement>;
             "slots-panel": LocalJSX.SlotsPanel & JSXBase.HTMLAttributes<HTMLSlotsPanelElement>;
             "wc-output": LocalJSX.WcOutput & JSXBase.HTMLAttributes<HTMLWcOutputElement>;
             "wc-playground": LocalJSX.WcPlayground & JSXBase.HTMLAttributes<HTMLWcPlaygroundElement>;

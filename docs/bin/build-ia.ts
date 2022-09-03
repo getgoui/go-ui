@@ -157,6 +157,14 @@ function parseContents() {
   return toNavItems(contentDir.children);
 }
 
+function mergeTree(to: IAItem[], from: IAItem[]): IAItem[] {
+  console.log('===============FROM==================');
+  console.log(JSON.stringify(from, null, 2));
+  console.log('===============TO==================');
+  console.log(JSON.stringify(to, null, 2));
+  return to.concat(from);
+}
+
 function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
   const categorisedComps = componentDocs.map(comp => {
     const category = comp.url.split('/')[2];
@@ -178,7 +186,7 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
   }
   docsIndex = contentItems.findIndex(item => item.id === 'docs');
   Object.keys(groups).forEach(category => {
-    const docs = groups[category];
+    const subDocs = groups[category];
     let categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
     if (categoryIndex === -1) {
       contentItems[docsIndex].children.push({
@@ -189,7 +197,8 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
       });
     }
     categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
-    contentItems[docsIndex].children[categoryIndex].children = docs.concat(contentItems[docsIndex].children[categoryIndex].children);
+    // TODO: Tree merge replace array concat
+    contentItems[docsIndex].children[categoryIndex].children = mergeTree(contentItems[docsIndex].children[categoryIndex].children, subDocs);
   });
 
   return contentItems;

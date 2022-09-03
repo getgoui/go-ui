@@ -35,9 +35,13 @@ export class DemoFrame {
   }
 
   render() {
-    const { demoSource, hideSource } = this;
+    const { demoSource, hideSource, demo, component } = this;
     if (!demoSource) {
-      return null;
+      return (
+        <p>
+          No demo source found for demo <em>{demo}</em> in component <em>{component}</em>.
+        </p>
+      );
     }
     return (
       <Host>

@@ -61,7 +61,6 @@ export function buildSidebar(): IAItem[] {
   const activeCategory = activePath.split('/')[0]; // patterns/components
 
   const cat = ia.docs.children.find(category => category.id === activeCategory);
-  console.log(cat);
   const sidebar = cat.children as IAItem[];
   return applyRouterLink(sidebar);
 }
