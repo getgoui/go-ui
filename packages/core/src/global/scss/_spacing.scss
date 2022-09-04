@@ -1,0 +1,49 @@
+// Spacing (margin + padding) utilities
+$directions: (
+  't': 'top',
+  'l': 'left',
+  'r': 'right',
+  'b': 'bottom',
+  '': '',
+);
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+@mixin make-space($dir-name, $dir, $spacer, $spacing-type) {
+  @if $dir-name == '' {
+    #{$spacing-type}: $spacer !important;
+  } @else {
+    #{$spacing-type}-#{$dir}: $spacer !important;
+  }
+}
+
+@each $device, $width in $breakpoints {
+  @include min-query($device) {
+    @each $dir-name, $dir in $directions {
+      @each $spacer-name, $spacer in $spacers {
+        @if $device == mobile {
+          .p#{$dir-name}-#{$spacer-name} {
+            @include make-space($dir-name, $dir, $spacer, padding);
+          }
+          .m#{$dir-name}-#{$spacer-name} {
+            @include make-space($dir-name, $dir, $spacer, margin);
+          }
+        } @else {
+          .p#{$dir-name}-#{$spacer-name}-#{$device} {
+            @include make-space($dir-name, $dir, $spacer, padding);
+          }
+          .m#{$dir-name}-#{$spacer-name}-#{$device} {
+            @include make-space($dir-name, $dir, $spacer, margin);
+          }
+        }
+      }
+    }
+  }
+}

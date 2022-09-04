@@ -18,53 +18,6 @@
 
     <!-- #region demo start -->
 
-    <go-nav-drawer
-      id="drawer"
-      label="Menu"
-      items="[
-    {
-      label: 'Home',
-      icon: 'home',
-      url: '/',
-    },
-    {
-      label: 'Components',
-      icon: 'view_module',
-      url: '/',
-      children: [
-        {
-          label: 'Typography',
-          icon: 'text_fields',
-          url: '/',
-        },
-        {
-          label: 'Colors',
-          icon: 'color_lens',
-          url: '/',
-        },
-        {
-          label: 'Icons',
-          icon: 'image',
-          url: '/',
-        },
-      ],
-    },
-    {
-      label: 'About',
-      icon: 'info',
-      url: '/',
-    },
-  ]"
-      auto-close
-    ></go-nav-drawer>
-    <go-button id="button">TEST</go-button>
-    <script>
-      const drawer = document.querySelector('#drawer');
-      const button = document.querySelector('#button');
-      button.addEventListener('click', () => {
-        drawer.open();
-      });
-    </script>
     <!-- #endregion demo finish -->
 
     <aside>

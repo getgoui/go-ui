@@ -56,6 +56,7 @@ export namespace Components {
         "pageTitle": string;
     }
     interface SidebarLayout {
+        "editUrl"?: string;
         "result": string;
         "sidebarItems": INavItem[];
     }
@@ -266,6 +267,7 @@ declare namespace LocalJSX {
         "pageTitle"?: string;
     }
     interface SidebarLayout {
+        "editUrl"?: string;
         "result"?: string;
         "sidebarItems"?: INavItem[];
     }

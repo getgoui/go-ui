@@ -15,7 +15,7 @@ export class PageDocs {
   @State() notfound: boolean = false;
   @State() result = '';
   @State() sidebarNavItems = [] as INavItem[];
-
+  @State() editUrl = '';
   // private source = '';
 
   private currentUrl = '';
@@ -40,6 +40,8 @@ export class PageDocs {
   async loadPage() {
     const content = loadContentByPath(this.currentUrl);
     this.result = content.content;
+    this.meta = content.meta;
+    this.editUrl = content.editUrl;
   }
 
   async loadSidebarNav() {
@@ -47,10 +49,10 @@ export class PageDocs {
   }
 
   render() {
-    const { result, sidebarNavItems, meta } = this;
+    const { result, sidebarNavItems, meta, editUrl } = this;
     return [
       <seo-tags pageTitle={meta?.title}></seo-tags>,
-      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result}></sidebar-layout>,
+      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result} editUrl={editUrl}></sidebar-layout>,
     ];
   }
 }

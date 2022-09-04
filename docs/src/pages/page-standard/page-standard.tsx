@@ -17,6 +17,7 @@ export class PageStandard {
   @State() notfound: boolean = false;
   @State() result = '';
   @State() sidebarNavItems = [] as INavItem[];
+  @State() iAItem: IAItem;
 
   // private source = '';
 
@@ -25,8 +26,6 @@ export class PageStandard {
   private meta = null;
 
   private tocEl: HTMLGoTocElement;
-
-  private iAItem: IAItem;
 
   async componentWillLoad() {
     console.log('Standard page');
@@ -71,13 +70,13 @@ export class PageStandard {
   }
 
   render() {
-    const { result, sidebarNavItems, meta, notfound } = this;
+    const { result, sidebarNavItems, meta, notfound, iAItem } = this;
     if (notfound) {
       return <page-notfound></page-notfound>;
     }
     return [
       <seo-tags pageTitle={meta?.title}></seo-tags>,
-      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result}></sidebar-layout>,
+      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result} editUrl={iAItem.editUrl}></sidebar-layout>,
     ];
   }
 }

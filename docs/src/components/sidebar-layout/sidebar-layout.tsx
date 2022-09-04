@@ -11,6 +11,8 @@ export class SidebarLayout {
 
   @Prop() result: string;
 
+  @Prop() editUrl?: string;
+
   @State() isMobileSidebarOpen = false;
 
   private tocEl: HTMLGoTocElement;
@@ -32,7 +34,7 @@ export class SidebarLayout {
 
   render() {
     const { activePath } = Router;
-    const { sidebarItems, result, isMobileSidebarOpen } = this;
+    const { sidebarItems, result, isMobileSidebarOpen, editUrl } = this;
     return (
       <page-transition activePath={activePath}>
         <div class="sidebar-layout">
@@ -43,7 +45,7 @@ export class SidebarLayout {
               items={sidebarItems}
               autoClose={true}
               onClose={() => this.closeMobileSidebar()}></go-nav-drawer>
-            <div class="container d-none-tablet">
+            <div class="container d-none-desktop">
               <go-button
                 class="mobile-sidebar-trigger"
                 aria-label="Open sidebar navigation"
@@ -56,7 +58,7 @@ export class SidebarLayout {
                 Open sidebar
               </go-button>
             </div>
-            <div class="d-none d-block-tablet sidebar">
+            <div class="d-none d-block-desktop sidebar">
               <go-nav-list block items={sidebarItems}></go-nav-list>
             </div>
           </aside>
@@ -70,6 +72,8 @@ export class SidebarLayout {
                   <go-toc ref={el => (this.tocEl = el)} class="toc" selector=".content-container h2" label-class="h6"></go-toc>
                 </div>
               </div>
+
+              <div class="pt-5">{editUrl && <go-link href={editUrl}>Edit this page</go-link>}</div>
             </div>
 
             <go-to-top></go-to-top>

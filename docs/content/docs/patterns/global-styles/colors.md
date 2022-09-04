@@ -30,7 +30,7 @@ Color tokens are used to define colors in the theme. We use CSS variables to def
 One advantage of using color tokens is that if we need dark theme, we can just reverse the usage of the color tokens.
 When light theme (default) is used, 100 means lightest shade of this color, while 900 means darkest shade; in dark theme the opposite is true.
 
-:::tip
+::: info
 Use the theme switcher in demo "browser" to toggle between light and dark theme and see how the components change.
 :::
 

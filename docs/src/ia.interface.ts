@@ -10,6 +10,7 @@ export interface IAItem extends INavItem {
   description?: string;
   content?: string;
   isIndex?: boolean;
+  editUrl?: string;
   children?: IAItem[];
 }
 

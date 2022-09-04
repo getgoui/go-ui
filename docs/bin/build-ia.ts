@@ -14,7 +14,7 @@ import sortBy from 'lodash.sortby';
 import groupBy from 'lodash.groupby';
 import uniqBy from 'lodash.uniqby';
 
-import docs, { JsonDocs, JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
+import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { IA, IAItem } from '../src/ia.interface';
 import siteConfig from '../config';
 
@@ -39,7 +39,7 @@ const srcPath = path.resolve(`${rootPath}/src`);
 const iAFile = `${srcPath}/generated-ia.ts`;
 
 const isIndexItem = (item: IAItem): boolean => item.id === 'index';
-
+const getContentEditUrl = item => siteConfig.repoLink.url + '/blob/main/docs/content' + item.url + '.md';
 function toNavItems(array): IAItem[] {
   return array.map(item => {
     const isIndex = isIndexItem(item);
@@ -52,6 +52,7 @@ function toNavItems(array): IAItem[] {
         description: item['description'],
         content: item['content'],
         isIndex: isIndex,
+        editUrl: item['editUrl'],
       };
     }
 
@@ -112,6 +113,7 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
     let env = { title: '', excerpt: [] };
     const content = md.render(comp.readme, env);
     const meta = md.meta;
+    const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
     return {
       url: url,
       meta: meta,
@@ -119,6 +121,7 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
       description: env.excerpt[0],
       content: content,
       id: comp.tag,
+      editUrl,
     } as IAItem;
   });
 
@@ -152,16 +155,17 @@ function parseContents() {
       (item as any).description = env.excerpt[0];
       (item as any).content = content;
       (item as any).id = id;
+      (item as any).editUrl = getContentEditUrl(item);
     },
   );
   return toNavItems(contentDir.children);
 }
 
 function mergeTree(to: IAItem[], from: IAItem[]): IAItem[] {
-  console.log('===============FROM==================');
-  console.log(JSON.stringify(from, null, 2));
-  console.log('===============TO==================');
-  console.log(JSON.stringify(to, null, 2));
+  // console.log('===============FROM==================');
+  // console.log(JSON.stringify(from, null, 2));
+  // console.log('===============TO==================');
+  // console.log(JSON.stringify(to, null, 2));
   return to.concat(from);
 }
 
@@ -197,7 +201,6 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
       });
     }
     categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
-    // TODO: Tree merge replace array concat
     contentItems[docsIndex].children[categoryIndex].children = mergeTree(contentItems[docsIndex].children[categoryIndex].children, subDocs);
   });
 

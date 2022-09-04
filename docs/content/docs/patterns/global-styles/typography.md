@@ -35,7 +35,7 @@ Fluid typography means the font size changes depending on the screen size. The b
 
 Go UI uses the [CSS clamp](<https://developer.mozilla.org/en-US/docs/Web/CSS/clamp()>) function to give the fluid font sizes a minimum and a maximum limit. By default, on _mobile_ screens (`<768px`), the base font size is set to the minimum value (`16px/1rem`), from _tablet_ to _large_ sizes (`>=768px, <1400px`), they fluidly increases, then from _large_ screens (`>1400px`) onwards the base font size is set to the maximum value.
 
-:::tip
+::: info
 We used the [utopia type calculator](https://utopia.fyi/type/calculator/?c=768,16,1.2,1440,16,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l) to produce our default font sizes, use it to find the best fit for your project and remember to replace the css variable names `--step-*` with `--go-size-*`.
 :::
 
@@ -82,7 +82,7 @@ You can use the following utility classes to style non-heading elements as headi
 
 `.h1`, `.h2`, `.h3`, `.h4`, `.h5`, `.h6`
 
-:::tip
+::: info
 Some times you might want an "extra large" heading. You can use the `.text-display-1` and `.text-display-2` utility classes to enlarge the font size. Notice these 2 classes are not coupled with any heading tag.
 :::
 
