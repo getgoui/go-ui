@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: flex-start;
   flex: 1;
-  @include tablet() {
+  @include desktop() {
     --sidebar-width: 15rem;
     padding: 0;
     flex-direction: row;
@@ -32,7 +32,7 @@
     padding: 2rem 0;
     flex-grow: 1;
     width: 100%;
-    @include tablet {
+    @include desktop {
       width: calc(100% - var(--sidebar-width));
     }
     .toc {

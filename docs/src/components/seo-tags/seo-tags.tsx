@@ -29,8 +29,7 @@ export class SeoTags {
 
         <meta property="og:image" content={image} />
         <meta property="og:description" content={description} />
-        <meta property="og:site_name" content="Sean Wu" />
-        <meta property="og:locale" content="en_AU" />
+        <meta property="og:site_name" content={siteConfig.name} />
       </Helmet>
     );
   }

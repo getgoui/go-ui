@@ -42,41 +42,44 @@ export class PageHome {
   render() {
     return (
       <Host>
-        {/* hero */}
-        <div class="container">
-          <div class="hero">
-            <img class="hero__logo" src="/assets/img/logo.svg" alt="Go UI logo" />
-            <div class="hero__text">
-              <h1 class="hero__title">{siteConfig.name}</h1>
-              <div class="hero__subtitle">{siteConfig.tagline}</div>
-              <div>
-                <code-block language="shell" code="npm i @go-ui/core"></code-block>
+        <main>
+          {/* hero */}
+          <div class="container">
+            <div class="hero">
+              <img class="hero__logo" src="/assets/img/logo.svg" alt="Go UI logo" />
+              <div class="hero__text">
+                <h1 class="hero__title">{siteConfig.name}</h1>
+                <div class="hero__subtitle">{siteConfig.tagline}</div>
+                <div>
+                  <code-block language="shell" code="npm i @go-ui/core"></code-block>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* features */}
-        {this.featureList?.length && (
-          <section class="features">
-            <div class="container">
-              {this.featureList.map(({ title, description, img, link, linkText }, i) => (
-                <div key={i} class={`feature ${i % 2 == 0 ? 'feature-alt' : ''}`}>
-                  {img && (
-                    <div class="feature__img">
-                      <img src={img} alt={`${title} illustration`} loading="lazy" />
+          {/* features */}
+          {this.featureList?.length && (
+            <section class="features">
+              <div class="container">
+                {this.featureList.map(({ title, description, img, link, linkText }, i) => (
+                  <div key={i} class={`feature ${i % 2 == 0 ? 'feature-alt' : ''}`}>
+                    {img && (
+                      <div class="feature__img">
+                        <img src={img} alt={`${title} illustration`} loading="lazy" />
+                      </div>
+                    )}
+                    <div class="feature__text">
+                      <h2>{title}</h2>
+                      <p>{description}</p>
+                      <br />
+                      {link && <go-link {...href(link)}>{linkText}</go-link>}
                     </div>
-                  )}
-                  <div class="feature__text">
-                    <h2>{title}</h2>
-                    <p>{description}</p>
-                    <br />
-                    {link && <go-link {...href(link)}>{linkText}</go-link>}
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+                ))}
+              </div>
+            </section>
+          )}
+          {/* call to action */}
+        </main>
       </Host>
     );
   }
