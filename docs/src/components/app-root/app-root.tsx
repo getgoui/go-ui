@@ -13,7 +13,7 @@ export class AppRoot {
     return (
       <Host>
         <app-header active-path={activePath}></app-header>
-        <main class="page-main">
+        <div class="page-main">
           <Router.Switch>
             <Route path="/">
               <page-transition activePath={activePath}>
@@ -25,7 +25,7 @@ export class AppRoot {
 
             <Route path={/.*/} render={params => <page-standard params={params}></page-standard>}></Route>
           </Router.Switch>
-        </main>
+        </div>
 
         <app-footer></app-footer>
       </Host>
