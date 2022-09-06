@@ -1,12 +1,12 @@
-name: Release
 on:
-  push:
-    branches: [main]
+  pull_request:
+    types:
+      - opened
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
   release:
-    name: Release
+    name: PR Testing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,14 +24,8 @@ jobs:
       - name: Install dependencies
         run: pnpm -r install --no-frozen-lockfile
 
-      - name: Unit Test
+      - name: Unit Test Core Components
         run: pnpm test.unit.core
 
-      - name: E2E Test
+      - name: E2E Test Core Components
         run: pnpm test.e2e.core
-
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpx semantic-release

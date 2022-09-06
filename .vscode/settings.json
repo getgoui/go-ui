@@ -1,14 +1,12 @@
 {
   "conventionalCommits.scopes": [
-    "test",
     "docs",
-    "cli",
-    "pattern",
-    "component",
+    "core",
+    "react",
+    "vue",
     "utils",
-    "go-card"
+    "global"
   ],
-  "stylelint.validate": ["css", "scss"],
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.stylelint": true

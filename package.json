@@ -3,11 +3,12 @@
     "build": "nx run-many --target=build",
     "dev.affected": "nx affected:build",
     "dev": "node ./bin/index.js dev",
+    "test.unit.core": "nx test.spec @go-ui/core",
+    "test.e2e.core": "nx test.e2e @go-ui/core",
     "build.core": "nx build @go-ui/core",
     "dev.docs": "nx start @go-ui/docs"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.24.3",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "cpr": "^3.0.1",
@@ -18,6 +19,9 @@
     "minimist": "^1.2.6",
     "nanospinner": "^1.1.0",
     "nx": "14.5.10",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "semantic-release": "^19.0.5",
+    "semantic-release-cli": "^5.4.4",
+    "semantic-release-monorepo": "^7.0.5"
   }
 }
