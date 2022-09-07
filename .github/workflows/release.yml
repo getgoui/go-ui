@@ -30,8 +30,8 @@ jobs:
       - name: E2E Test
         run: pnpm test.e2e.core
 
-      - name: Release
+      - name: Releases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpx semantic-release
+        run: pnpm -r semantic-release
