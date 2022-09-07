@@ -6,7 +6,7 @@ describe('go-main-nav', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/go-main-nav.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/go-main-nav.md'), 'utf8');
   });
 
   it('renders', async () => {

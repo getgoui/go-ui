@@ -6,7 +6,7 @@ describe('go-accordion', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/single.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/single.md'), 'utf8');
   });
 
   it('renders', async () => {
@@ -43,7 +43,7 @@ describe('go-accordion', () => {
   it('supports multiple mode', async () => {
     const fs = require('fs');
     const path = require('path');
-    const html = fs.readFileSync(path.resolve(__dirname, '../demo/multiple.html'), 'utf8');
+    const html = fs.readFileSync(path.resolve(__dirname, '../usage/multiple.md'), 'utf8');
 
     const page = await newE2EPage({ html });
     let firstItem = (await page.findAll('go-accordion-item'))[0];

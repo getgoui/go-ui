@@ -6,15 +6,14 @@ describe('go-card-row', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/go-card-row.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/go-card-row.md'), 'utf8');
   });
 
   it('renders', async () => {
-    const page = await newE2EPage({html});
+    const page = await newE2EPage({ html });
     const element = await page.find('go-card-row');
-    expect(element).toHaveClass("hydrated");
+    expect(element).toHaveClass('hydrated');
   });
-
 
   it('passes automated a11y test', async () => {
     const page = await newE2EPage({ html });

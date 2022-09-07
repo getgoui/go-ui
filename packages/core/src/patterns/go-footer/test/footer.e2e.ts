@@ -6,7 +6,7 @@ describe('footer', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/footer.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/footer.md'), 'utf8');
   });
 
   it('renders', async () => {

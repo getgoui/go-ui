@@ -6,15 +6,14 @@ describe('go-content-layout', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/go-content-layout.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/go-content-layout.md'), 'utf8');
   });
 
   it('renders', async () => {
-    const page = await newE2EPage({html});
+    const page = await newE2EPage({ html });
     const element = await page.find('go-content-layout');
-    expect(element).toHaveClass("hydrated");
+    expect(element).toHaveClass('hydrated');
   });
-
 
   it('passes automated a11y test', async () => {
     const page = await newE2EPage({ html });

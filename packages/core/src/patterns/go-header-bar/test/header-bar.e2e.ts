@@ -6,7 +6,7 @@ describe('go-header-bar', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/header-bar.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/header-bar.md'), 'utf8');
   });
 
   it('renders', async () => {

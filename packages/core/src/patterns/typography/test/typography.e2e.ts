@@ -6,7 +6,7 @@ describe('typography', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/typography.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/typography.md'), 'utf8');
   });
 
   it('passes automated a11y test', async () => {
