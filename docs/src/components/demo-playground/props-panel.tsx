@@ -82,10 +82,10 @@ export class PropsPanel {
         <div class="prop-control">
           <label htmlFor={name}>{name}</label>
           <select class="input" id={name} onInput={e => this.updatePropValue(e, propObject)}>
-            {options.map(option => {
+            {options.map((option, i) => {
               if (option === null) {
                 return (
-                  <option value={null} selected={!value}>
+                  <option value={null} selected={!value} key={i}>
                     null
                   </option>
                 );

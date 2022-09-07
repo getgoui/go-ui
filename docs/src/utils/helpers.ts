@@ -131,7 +131,7 @@ export function buildContentPageSidebar(iaItems: INavItem[]): INavItem[] {
   });
 }
 
-export function loadContentByPath(path: string): IAItem {
+export async function loadContentByPath(path: string): Promise<IAItem> {
   let cleanPath = removeLeadingSlash(path);
   let parts = cleanPath.split('/');
   if (parts.length < 1) {

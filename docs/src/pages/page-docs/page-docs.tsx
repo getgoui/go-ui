@@ -38,7 +38,7 @@ export class PageDocs {
   }
 
   async loadPage() {
-    const content = loadContentByPath(this.currentUrl);
+    const content = await loadContentByPath(this.currentUrl);
     this.result = content.content;
     this.meta = content.meta;
     this.editUrl = content.editUrl;

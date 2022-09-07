@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, Build } from '@stencil/core';
 import hljs from 'highlight.js';
 
 @Component({
@@ -10,7 +10,9 @@ export class CodeBlock {
   @Prop() language = 'html';
 
   componentDidLoad() {
-    this.highlight();
+    if (Build.isBrowser) {
+      this.highlight();
+    }
   }
 
   @Watch('code')
@@ -21,7 +23,7 @@ export class CodeBlock {
   render() {
     const { code, language } = this;
     if (!code) {
-      return;
+      return null;
     }
     return (
       <pre class="code-block">

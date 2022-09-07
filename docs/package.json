@@ -5,7 +5,8 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "scripts": {
-    "build": "pnpm run build.ia && stencil build --prerender",
+    "prerender": "stencil build --prerender",
+    "build": "pnpm run build.ia && pnpm run prerender",
     "build.ia": "ts-node --esm ./bin/build-ia.ts",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",

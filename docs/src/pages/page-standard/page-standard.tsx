@@ -49,7 +49,7 @@ export class PageStandard {
   async loadPage() {
     // fetch content dir
     try {
-      this.iAItem = loadContentByPath(this.currentPath);
+      this.iAItem = await loadContentByPath(this.currentPath);
       this.result = this.iAItem.content;
       this.meta = this.iAItem.meta;
     } catch (error) {
