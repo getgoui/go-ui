@@ -25,7 +25,7 @@
     "test.e2e.watch": "stencil test --e2e --watchAll",
     "test.e2e.screenshot": "stencil test --e2e --screenshot",
     "stylelint": "stylelint src/**/*.{css,scss}",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release -e semantic-release-monorepo"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.1",
