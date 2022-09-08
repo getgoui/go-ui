@@ -24,11 +24,13 @@ jobs:
       - name: Install dependencies
         run: pnpm -r install --no-frozen-lockfile
 
-      - name: Unit Test
-        run: pnpm test.unit.core
+      - name: Unit Test Core Components
+        run: pnpm test.spec
+        working-directory: packages/core
 
-      - name: E2E Test
-        run: pnpm test.e2e.core
+      - name: E2E Test Core Components
+        run: pnpm test.e2e
+        working-directory: packages/core
 
       - name: Releases
         env:
