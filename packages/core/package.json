@@ -24,7 +24,8 @@
     "test.e2e": "stencil test --e2e",
     "test.e2e.watch": "stencil test --e2e --watchAll",
     "test.e2e.screenshot": "stencil test --e2e --screenshot",
-    "stylelint": "stylelint src/**/*.{css,scss}"
+    "stylelint": "stylelint src/**/*.{css,scss}",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.1",
