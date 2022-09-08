@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Demo components for Go UI</title>
+
+    <!-- material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="/build/go-utils.css" />
+    <script type="module" src="/build/go-utils.esm.js"></script>
+    <script nomodule src="/build/go-utils.js"></script>
+  </head>
+  <body>
+    <wc-playground
+      tag="go-card"
+      props="[
+{name: 'cardTitle', attr: 'card-title', type: 'string'},
+{name: 'cardSubtitle', attr: 'card-subtitle', type: 'string'},
+{name: 'mediaPosition', attr: 'media-position', type: 'select', options: ['top', 'left', 'right', 'bottom']},
+]"
+      slots="[
+      {
+        'name': 'custom-title',
+        'docs': 'Slot for custom card title',
+      },
+      {
+        'name': 'default',
+        'docs': 'Card content'
+      },
+      {
+        'name': 'footer',
+        'docs': 'Slot for card footer markup'
+      },
+      {
+        'name': 'media',
+        'docs': 'Slot for media markup for media card',
+      },
+      {
+        'name': 'pre-title',
+        'docs': 'Slot for content above the card title'
+      }
+      ]"
+      code="
+        <go-card card-title='Card' card-subtitle='I am normal card' media-position='left'>
+          Hello world
+          <img src='https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=600&h=600&q=80' alt='Photo' slot='media' />
+          <div slot='footer'>
+            <h3>Custom footer</h3>
+            <hr />
+            😆😆😆
+          </div>
+        </go-card>"
+    >
+    </wc-playground>
+
+    <demo-controls></demo-controls>
+  </body>
+</html>

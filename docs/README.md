@@ -1,41 +1,41 @@
-# Website
+# Stencil App Starter
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Stencil is a compiler for building fast web apps using Web Components.
 
-### Installation
+Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
 
-```
-$ yarn
-```
+Stencil components are just Web Components, so they work in any major framework or with no framework at all. In many cases, Stencil can be used as a drop in replacement for traditional frontend frameworks given the capabilities now available in the browser, though using it as such is certainly not required.
 
-### Local Development
+Stencil also enables a number of key capabilities on top of Web Components, in particular Server Side Rendering (SSR) without the need to run a headless browser, pre-rendering, and objects-as-properties (instead of just strings).
 
-```
-$ yarn start
-```
+## Getting Started
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+To start a new project using Stencil, clone this repo to a new directory:
 
-### Build
-
-```
-$ yarn build
+```bash
+npm init stencil app
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+and run:
 
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
+```bash
+npm start
 ```
 
-Not using SSH:
+To build the app for production, run:
+
+```bash
+npm run build
+```
+
+To run the unit tests once, run:
 
 ```
-$ GIT_USER=<Your GitHub username> yarn deploy
+npm test
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+To run the unit tests and watch for file changes during development, run:
+
+```
+npm run test.watch
+```

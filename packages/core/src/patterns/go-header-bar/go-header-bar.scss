@@ -1,0 +1,34 @@
+go-header-bar {
+  --header-bar-bg-color: var(--go-color-bg);
+  --header-bar-text-color: var(--go-color-text);
+  --header-bar-padding-y: 1rem;
+  --header-bar-padding-x: 0;
+  --header-bar-section-gap: 1rem;
+  --header-bar-border-color: var(--go-color-border);
+  --header-bar-border-bottom: 1px solid var(--header-bar-border-color);
+
+  display: block;
+  background: var(--header-bar-bg-color);
+  color: var(--header-bar-text-color);
+  border-bottom: var(--header-bar-border-bottom);
+  .header-bar {
+    display: grid;
+    grid-template-columns: auto 1fr auto; // stylelint-disable-line
+    align-items: center;
+    position: relative;
+    gap: var(--header-bar-section-gap);
+    padding: var(--header-bar-padding-y) var(--header-bar-padding-x);
+
+    // allow responsiveness at different breakpoints
+    @each $device, $width in $breakpoints {
+      &.responsive-#{$device} {
+        @include min-query($device) {
+          grid-template-columns: 1fr auto; // stylelint-disable-line
+          .logo {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

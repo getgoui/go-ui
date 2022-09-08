@@ -22,19 +22,16 @@ jobs:
           cache: 'pnpm'
       # Install deps and cache
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Stylelint
-        run: pnpm stylelint
+        run: pnpm -r install --no-frozen-lockfile
 
       - name: Unit Test
-        run: pnpm test.spec
+        run: pnpm test.unit.core
 
       - name: E2E Test
-        run: pnpm test.e2e
+        run: pnpm test.e2e.core
 
-      - name: Release
+      - name: Releases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpx semantic-release
+        run: pnpm -r semantic-release

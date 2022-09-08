@@ -1,0 +1,31 @@
+on:
+  pull_request:
+    types:
+      - opened
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  release:
+    name: PR Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # setup pnpm for faster npm install
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7.0.0-rc.8
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: 'pnpm'
+      # Install deps and cache
+      - name: Install dependencies
+        run: pnpm -r install --no-frozen-lockfile
+
+      - name: Unit Test Core Components
+        run: pnpm test.unit.core
+
+      - name: E2E Test Core Components
+        run: pnpm test.e2e.core

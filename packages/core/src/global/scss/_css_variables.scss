@@ -1,0 +1,85 @@
+/*********************
+Default Go UI CSS variables
+*********************/
+
+// load color tokens
+@import './themes/tokens';
+
+// @see https://utopia.fyi/type/calculator?c=768,16,1.2,1440,16,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+
+:root {
+  //////////////////////
+  // Font sizes
+  //////////////////////
+  /* stylelint-disable-next-line custom-property-pattern */
+  --go-size--1: clamp(0.83rem, 0.87rem + -0.08vw, 0.8rem);
+  --go-size-0: clamp(1rem, 1rem + 0vw, 1rem);
+  --go-size-1: clamp(1.2rem, 1.14rem + 0.12vw, 1.25rem);
+  --go-size-2: clamp(1.44rem, 1.3rem + 0.29vw, 1.56rem);
+  --go-size-3: clamp(1.73rem, 1.47rem + 0.54vw, 1.95rem);
+  --go-size-4: clamp(2.07rem, 1.65rem + 0.88vw, 2.44rem);
+  --go-size-5: clamp(2.49rem, 1.84rem + 1.34vw, 3.05rem);
+  --go-size-6: clamp(2.99rem, 2.04rem + 1.97vw, 3.82rem);
+  --go-size-7: clamp(3.58rem, 2.23rem + 2.82vw, 4.77rem);
+  --go-size-8: clamp(4.3rem, 2.4rem + 3.95vw, 5.96rem);
+
+  //////////////////////
+  // Grid
+  //////////////////////
+  --go-outer-gutter: 0.5rem; // Container gutter
+  --go-col-gap: 1rem; // Gap between columns
+
+  //////////////////////
+  // Font family
+  //////////////////////
+  --go-heading-font-family: 'Noto Sans', sans-serif;
+  --go-body-font-family: 'Noto Sans', sans-serif;
+
+  //////////////////////
+  // Focus
+  //////////////////////
+  --go-focus-outline-width: 2px;
+  --go-focus-outline-offset: 2px;
+
+  // Colours (other than tokens)
+  --go-color-bg: var(--go-color-lightest);
+  --go-color-text: var(--go-color-darkest);
+  --go-color-link: var(--go-color-primary-500);
+  --go-color-link-bg: transparent;
+  --go-color-link-hover: var(--go-color-primary-300);
+  --go-color-link-hover-bg: var(--go-color-neutral-100);
+  --go-color-code-bg: var(--go-color-neutral-100);
+  --go-color-code-fg: var(--go-color-neutral-800);
+
+  //////////////////////
+  // Transitions
+  //////////////////////
+  --go-duration-fast: 0.1s;
+  --go-duration-normal: 0.25s;
+  --go-duration-slow: 0.5s;
+  --go-timing-function: ease-in-out;
+  --stagger-delay: 100ms;
+
+  //////////////////////
+  // Spacing
+  //////////////////////
+  --go-base-spacing: 0.25rem; // 4px
+
+  //////////////////////
+  // Border
+  //////////////////////
+  --go-border-thin: 1px;
+  --go-border-thick: 4px;
+  --go-color-border: var(--go-color-neutral-200);
+
+  // Table
+  --go-table-cell-padding: 1rem;
+  --go-table-border-width-thin: 1px;
+  --go-table-header-border: 2px solid var(--go-color-neutral-500);
+  --go-color-table-border: var(--go-color-neutral-200);
+  --go-color-table-striped-bg: var(--go-color-neutral-100);
+  --go-color-table-hover-bg: var(--go-color-primary-100);
+
+  // Form variables
+  --form-label-gap: 4px;
+}

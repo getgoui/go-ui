@@ -1,0 +1,99 @@
+go-accordion {
+  /**
+    @prop --heading-padding-x:
+      Horizontal padding for item heading
+      - default: 1rem
+  */
+  --heading-padding-x: 1rem;
+
+  /**
+    @prop --heading-padding-y:
+      Vertical padding for item heading
+      - default: 0.5rem
+  */
+  --heading-padding-y: var(--go-size--1);
+
+  /**
+    @prop --panel-padding-x:
+      Horizontal padding for inner content
+      - default: 2rem
+  */
+  --panel-padding-x: 1rem;
+
+  /**
+    @prop --panel-padding-y:
+      Vertical padding for inner content
+      - default: 2rem
+  */
+  --panel-padding-y: 1rem;
+
+  /**
+    @prop --panel-max-height:
+      Inner content max height. This values is also used for CSS animation
+      - default: 100vh
+  */
+  --panel-max-height: 100vh;
+
+  /**
+    @prop --heading-text-color:
+      Heading text colour
+      - default: var(--go-color-text, #333333)
+  */
+  --heading-text-color: var(--go-color-text, #333);
+
+  /**
+    @prop --heading-bg-color:
+      Heading background colour
+      - default: var(--go-color-neutral-100)
+  */
+  --heading-bg-color: var(--go-color-neutral-100);
+
+  /**
+    @prop --heading-font-size:
+      Heading font size
+      - default: var(--go-size-0, 1rem)
+  */
+  --heading-font-size: var(--go-size-0, 1rem);
+
+  /**
+    @prop --heading-font-weight:
+      Heading font weight
+      - default: 700
+  */
+  --heading-font-weight: 700;
+
+  /**
+    @prop --panel-bg-color:
+      Content background colour
+      - default: var(--go-color-bg)
+  */
+  --panel-bg-color: var(--go-color-bg);
+
+  /**
+    @prop --heading-border-bottom:
+      Bottom border applied to the heading element to better separate the heading and panel, especially useful when content is scrollable.
+      - default: var(--go-border-thin) solid var(--go-color-border)
+  */
+  --heading-border-bottom: var(--go-border-thin) solid var(--go-color-border);
+
+  /**
+    @prop --heading-bg-color-hover:
+      Bg color for hover state
+      - default: var(--go-color-neutral-200)
+  */
+  --heading-bg-color-hover: var(--go-color-neutral-200);
+
+  /**
+    @prop --heading-fg-color-hover:
+      Foreground color for hover state
+      - default: var(--go-color-text)
+  */
+  --heading-fg-color-hover: var(--go-color-text);
+
+  /**
+    @prop --heading-radius:
+      Border radius of heading button
+      - default: var(--radius-2)
+  */
+  --heading-radius: var(--radius-2);
+}

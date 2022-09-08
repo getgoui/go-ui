@@ -1,0 +1,43 @@
+{
+  "extends": "nx/presets/npm.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "test",
+          "test.watch",
+          "generate",
+          "prebuild",
+          "watch.content",
+          "watch.site",
+          "watch.components",
+          "watch.docs",
+          "watch.others",
+          "docs.build",
+          "test.spec",
+          "test.spec.watch",
+          "test.e2e",
+          "test.e2e.watch",
+          "test.e2e.screenshot",
+          "stylelint",
+          "release",
+          "semantic-release",
+          "predeploy",
+          "deploy"
+        ]
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

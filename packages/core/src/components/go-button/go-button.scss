@@ -1,0 +1,281 @@
+go-button {
+  // default colours
+
+  /**
+    @prop --go-btn-bg-color:
+      Background colour for the button.
+      - default: transparent
+  */
+  --go-btn-bg-color: var(--go-color-neutral-600);
+  --go-btn-bg-color-hover: var(--go-color-neutral-500);
+  --go-btn-text-color: #fff;
+  --go-btn-text-color-hover: #fff;
+  --go-focus-outline-color: var(--go-btn-bg-color);
+  --go-btn-outline-text-color: #000;
+  --go-btn-outline-text-color-hover: #000;
+  --go-btn-disabled-opacity: 0.5;
+
+  // shadow
+  --go-btn-shadow: var(--shadow-2);
+
+  // default sizing
+  --go-btn-padding-y: 0.5em;
+  --go-btn-padding-x: 1.5em;
+  --go-btn-inner-gap: 0.5rem;
+  --go-btn-radius: var(--radius-2, 0.25rem);
+
+  /**
+    @prop --go-btn-icon-size:
+      Outer size of the icon button.
+      - default: 3rem
+  */
+  --go-btn-icon-size: 3rem;
+
+  /**
+    @prop --go-btn-inline-icon-size:
+      Size of the icon inside the button.
+      - default: calc(var(--go-btn-icon-size) / 2)
+  */
+  --go-btn-inline-icon-size: calc(var(--go-btn-icon-size) / 2);
+
+  // outline fill color
+  --go-btn-outline-fill-color: var(--go-color-bg);
+
+  display: inline-block;
+
+  &.block-all {
+    display: block;
+    width: 100%;
+  }
+
+  &.block-desktop {
+    display: block;
+    width: 100%;
+    @include min-query(large) {
+      display: inline-block;
+      width: auto;
+    }
+  }
+  &.block-tablet {
+    display: block;
+    width: 100%;
+    @include min-query(desktop) {
+      display: inline-block;
+      width: auto;
+    }
+  }
+  &.block-mobile {
+    display: block;
+    width: 100%;
+    @include min-query(tablet) {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+  &.outline {
+    .inner-button {
+      background: transparent;
+      border-color: var(--go-btn-bg-color);
+      color: var(--go-btn-outline-text-color);
+      &:hover,
+      &:focus-visible {
+        background: var(--go-btn-bg-color);
+        color: var(--go-btn-outline-text-color-hover);
+      }
+    }
+    &[variant='text'] {
+      --go-btn-bg-color: var(--go-color-neutral-700);
+      .inner-button {
+        border-color: transparent;
+      }
+    }
+  }
+
+  &.outline-fill {
+    .inner-button {
+      background: var(--go-btn-outline-fill-color);
+    }
+  }
+
+  &[flat] {
+    .inner-button {
+      box-shadow: none;
+      &:hover,
+      &:focus-visible {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &[round] {
+    .inner-button {
+      border-radius: var(--radius-round);
+    }
+  }
+
+  &[icon] {
+    .inner-button {
+      width: var(--go-btn-icon-size);
+      height: var(--go-btn-icon-size);
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  &[stack] {
+    .inner-button {
+      flex-direction: column;
+    }
+  }
+
+  &[compact] {
+    --go-btn-padding-y: 0.25em;
+    --go-btn-padding-x: 0.5em;
+    --go-btn-inner-gap: 0.125em;
+    --go-btn-icon-size: 2rem;
+    .inner-button {
+      font-size: var(--go-size--1);
+      line-height: 1.5em;
+    }
+  }
+
+  &[disabled] {
+    .inner-button {
+      /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: var(--go-btn-disabled-opacity);
+      &:hover,
+      &:focus {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
+
+  .inner-button {
+    // reset button style
+    @include reset-btn;
+
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    gap: var(--go-btn-inner-gap);
+    width: 100%;
+    text-align: center;
+    line-height: 1.5;
+    background: var(--go-btn-bg-color);
+    color: var(--go-btn-text-color);
+    border: 2px solid transparent;
+    border-radius: var(--go-btn-radius);
+    padding: var(--go-btn-padding-y, 0.5rem) var(--go-btn-padding-x, 1rem);
+    box-shadow: var(--go-btn-shadow);
+    text-underline-offset: 4px; // optimise for browsers that support it
+    font-weight: 400;
+    @include clickable;
+
+    &:hover,
+    &:focus-visible {
+      --go-btn-bg-color: var(--go-btn-bg-color-hover);
+      --go-btn-text-color: var(--go-btn-text-color-hover);
+    }
+
+    svg {
+      width: var(--go-btn-inline-icon-size);
+      height: var(--go-btn-inline-icon-size);
+      margin: 0;
+    }
+  }
+
+  &[variant='text'] {
+    --go-focus-outline-color: var(--go-color-primary-600);
+    --go-btn-bg-color: transparent;
+    --go-btn-bg-color-hover: var(--go-color-neutral-300);
+    --go-btn-text-color: currentColor;
+    --go-btn-text-color-hover: currentColor;
+    .inner-button {
+      text-decoration: underline;
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@mixin btn-light-overrides {
+  go-button {
+    // Colour variants
+    --go-btn-bg-color: var(--go-color-neutral-600);
+    --go-btn-bg-color-hover: var(--go-color-neutral-500);
+    &[variant='primary'] {
+      --go-btn-bg-color: var(--go-color-primary-600);
+      --go-btn-bg-color-hover: var(--go-color-primary-500);
+    }
+    &[variant='secondary'] {
+      --go-btn-bg-color: var(--go-color-secondary-600);
+      --go-btn-bg-color-hover: var(--go-color-secondary-500);
+    }
+    &[variant='success'] {
+      --go-btn-bg-color: var(--go-color-success-600);
+      --go-btn-bg-color-hover: var(--go-color-success-500);
+    }
+    &[variant='critical'] {
+      --go-btn-bg-color: var(--go-color-critical-600);
+      --go-btn-bg-color-hover: var(--go-color-critical-500);
+    }
+    &.outline {
+      --go-btn-outline-text-color: var(--go-btn-bg-color);
+      --go-btn-outline-text-color-hover: var(--go-color-lightest);
+    }
+  }
+}
+@mixin btn-dark-overrides {
+  go-button {
+    // Colour variants
+    --go-btn-bg-color: var(--go-color-neutral-400);
+    --go-btn-bg-color-hover: var(--go-color-neutral-500);
+    &[variant='primary'] {
+      --go-btn-bg-color: var(--go-color-primary-400);
+      --go-btn-bg-color-hover: var(--go-color-primary-500);
+    }
+    &[variant='secondary'] {
+      --go-btn-bg-color: var(--go-color-secondary-400);
+      --go-btn-bg-color-hover: var(--go-color-secondary-500);
+    }
+    &[variant='success'] {
+      --go-btn-bg-color: var(--go-color-success-400);
+      --go-btn-bg-color-hover: var(--go-color-success-500);
+    }
+    &[variant='critical'] {
+      --go-btn-bg-color: var(--go-color-critical-400);
+      --go-btn-bg-color-hover: var(--go-color-critical-500);
+    }
+    &.outline {
+      --go-btn-outline-text-color: var(--go-color-darkest);
+      --go-btn-outline-text-color-hover: var(--go-color-darkest);
+    }
+  }
+}
+
+// defualt light
+// mq prefer light
+// mq prefer dark
+// light theme
+// dark theme
+
+@include prefer-light {
+  @include btn-light-overrides;
+}
+@include prefer-dark {
+  @include btn-dark-overrides;
+}
+@include theme-light {
+  @include btn-light-overrides;
+}
+@include theme-dark {
+  @include btn-dark-overrides;
+}

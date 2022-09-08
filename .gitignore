@@ -24,5 +24,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 
-# Demo assets should be available during build
-docs/static/demo-assets
+.custom-docs
