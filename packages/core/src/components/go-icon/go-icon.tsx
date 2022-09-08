@@ -60,9 +60,9 @@ export class GoIcon {
           '--icon-size': size ? size : null,
           '--icon-color': color ? color : null,
         }}>
-        {iconSet.startsWith('material') ? <span class={`${iconSet} go-icon${customClasses ? customClasses : ''}`}>{name}</span> : null}
-        {iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon${customClasses ? customClasses : ''}`}></i> : null}
-        {iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon${customClasses ? customClasses : ''}`}></i> : null}
+        {iconSet.startsWith('material') ? <span class={`${iconSet} go-icon ${customClasses ? customClasses : ''}`}>{name}</span> : null}
+        {iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}
+        {iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}
       </Host>
     );
   }
