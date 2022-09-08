@@ -25,7 +25,7 @@
     "test.e2e.watch": "stencil test --e2e --watchAll",
     "test.e2e.screenshot": "stencil test --e2e --screenshot",
     "stylelint": "stylelint src/**/*.{css,scss}",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release -e semantic-release-monorepo"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.1",
@@ -66,6 +66,8 @@
     "postcss-pxtorem": "^6.0.0",
     "prompts": "^2.4.2",
     "puppeteer": "^5.5.0",
+    "semantic-release": "^19.0.5",
+    "semantic-release-monorepo": "^7.0.5",
     "stylelint": "^14.11.0",
     "stylelint-a11y": "^1.2.3",
     "stylelint-config-prettier": "^8.0.2",
