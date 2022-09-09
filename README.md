@@ -3,30 +3,26 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-A design system that focuses on:
-- Patterns
-- Flexibility (framework agnostic)
-- A11y
-
+A design system for everyone.
 
 ## Pattern-first
 
-Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design patterns and make them easy to use. Allowing both design and development teams to focus on delivering the product.
+Teams spend a lot of time on enhancing the end user experience. We encapsulate many of the common web design best practices and make them easy to use with our patterns. Allowing both design and development teams to focus on delivering the product.
 
 
 ## Framework-agnostic
 
-Have multiple front-end stack in your organisation and need a consistent look and feel? Go UI utilise modern browser features such as Web Components and CSS custom properties so that they can be used in any front-end tech stack.
+Have multiple front-end stack in your organisation and need a consistent look and feel? Go UI utilise modern browser features such as Web Components and CSS custom properties so that the components and patterns can be used in any JavaScript framework, or no framework at all.
 
-## Adaptive
+## Adaptable
 
 Go UI makes it easy for developers to build adaptive web applications, this means out-of-the-box, your application support dark mode and reduced motion preferences from the user's operating system.
 
 
 
-## A11y
+## Accessibility
 
-Accessibility (a11y) is one of the most important criteria that enterprise web applications need to pay attention to. We hope to address this by providing accessible patterns and components that developers can take and reuse. Here are the things we do to ensure a11y of our design system.
+Accessibility (a11y) is one of the most important criteria that enterprise web applications need to pay attention to. We hope to address this by providing accessible patterns and components that developers can take and reuse. Here are the things we do to ensure a high quality of a11y from the Go UI library.
 
 - Automated a11y testing for each component.
 - Use semantic HTML elements under the hood.
@@ -36,19 +32,20 @@ Accessibility (a11y) is one of the most important criteria that enterprise web a
 
 ## Sponsors
 
-Become a sponsor to: 
+Building and maintaining a design system is a lot of work. If this library does help you with producing your work, please consider sponsoring the project. 
+
+Become a sponsor gives your these added benefits: 
 - Support the high quality standard of this design system, hence the apps and websites that uses it.
 - Have your organisation's logo and link featured here and on our home page.
 - Gain high-priority issue support.
 
-Contact getgoui@gmail.com to get started, we look forward to hearing from you.
+Please contact getgoui@gmail.com to get started, we look forward to hearing from you.
 
 
 ## Tech stack
 
 - Component engine - [Stencil](https://stenciljs.com/)
-- Documentation site - [Docusaurus](https://docusaurus.io/)
-- Documentation site hosting - [Netlify](https://www.netlify.com/)
+- Documentation site hosting - [Vercel](https://vercel.com/)
 - Automated testing - [Jest](https://jestjs.io/) + [Puppeteer](https://pptr.dev/)
 - A11y testing - [axe-core](https://github.com/dequelabs/axe-core)
 
