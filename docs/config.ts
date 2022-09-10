@@ -41,11 +41,11 @@ const siteConfig = {
         children: [
           {
             label: 'Patterns',
-            url: '/patterns/introduction',
+            url: '/docs/patterns',
           },
           {
             label: 'Components',
-            url: '/components/introduction',
+            url: '/docs/components',
           },
         ],
       },
