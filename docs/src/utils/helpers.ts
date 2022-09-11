@@ -41,12 +41,7 @@ export function siteUrl(relativePath: string): string {
 }
 
 export function escapeHtml(unsafe) {
-  return unsafe
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+  return unsafe.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 
 // sidebar helpers
@@ -60,13 +55,13 @@ export function buildSidebar(): IAItem[] {
   const activePath = removeLeadingSlash(Router.activePath.replace(prefix, ''));
   const activeCategory = activePath.split('/')[0]; // patterns/components
 
-  const cat = ia.docs.children.find(category => category.id === activeCategory);
+  const cat = ia.docs.children.find((category) => category.id === activeCategory);
   const sidebar = cat.children as IAItem[];
   return applyRouterLink(sidebar);
 }
 
 function applyRouterLink(iaItems: IAItem[]) {
-  return iaItems.map(item => ({
+  return iaItems.map((item) => ({
     ...item,
     linkAttrs: {
       ...href(item.url),
@@ -79,10 +74,10 @@ function applyRouterLink(iaItems: IAItem[]) {
 export function executeScriptElements(containerElement) {
   const scriptElements = containerElement.querySelectorAll('script') as NodeListOf<HTMLScriptElement>;
 
-  Array.from(scriptElements).forEach(scriptElement => {
+  Array.from(scriptElements).forEach((scriptElement) => {
     const clonedElement = document.createElement('script');
 
-    Array.from(scriptElement.attributes).forEach(attribute => {
+    Array.from(scriptElement.attributes).forEach((attribute) => {
       clonedElement.setAttribute(attribute.name, attribute.value);
     });
 
@@ -93,7 +88,7 @@ export function executeScriptElements(containerElement) {
 }
 
 export function prepareNavItems(items: INavItem[], activePath: string): INavItem[] {
-  return items.map(item => {
+  return items.map((item) => {
     const cleanPathname = removeLeadingSlash(activePath);
     const cleanUrl = removeLeadingSlash(item?.url);
     const isCurrent = cleanPathname.includes(cleanUrl);
@@ -116,7 +111,7 @@ export function prepareNavItems(items: INavItem[], activePath: string): INavItem
 }
 
 export function buildContentPageSidebar(iaItems: INavItem[]): INavItem[] {
-  return iaItems.map(item => {
+  return iaItems.map((item) => {
     if (item.children) {
       return {
         ...item,
@@ -142,11 +137,22 @@ export async function loadContentByPath(path: string): Promise<IAItem> {
   if (targetGroup) {
     for (let i = 1; i < parts.length; i++) {
       const key = parts[i];
-      targetItem = targetGroup.find(item => item.id === key);
+      targetItem = targetGroup.find((item) => item.id === key);
       if (targetItem?.children) {
         targetGroup = targetItem.children;
       }
     }
   }
   return targetItem;
+}
+
+export type Theme = 'light' | 'dark';
+
+export function getCurrentTheme(): Theme {
+  let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const storedTheme = localStorage.getItem('go-ui-theme');
+  if (storedTheme) {
+    isDark = storedTheme === 'dark';
+  }
+  return isDark ? 'dark' : 'light';
 }

@@ -43,7 +43,7 @@ There is no default gap between columns, you can add it by changing the `--go-gr
 
 ## Demo
 
-<Demo code={demoSource} />
+<demo-frame code=""></demo-frame>
 
 ## Offset
 

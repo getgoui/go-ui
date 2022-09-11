@@ -25,6 +25,10 @@ export namespace Components {
         "code": string;
     }
     interface DemoFrame {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code": string;
         "component": string;
         "demo": string;
         "hideSource": boolean;
@@ -235,6 +239,10 @@ declare namespace LocalJSX {
         "onCopyCode"?: (event: CopyCodeBtnCustomEvent<any>) => void;
     }
     interface DemoFrame {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code"?: string;
         "component"?: string;
         "demo"?: string;
         "hideSource"?: boolean;

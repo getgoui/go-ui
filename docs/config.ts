@@ -112,6 +112,20 @@ const siteConfig = {
       return startCase(tag.replace(this.componentPrefix, ''));
     },
   },
+  demo: {
+    head: `<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />`,
+    styles: ['/assets/demo/build/go-ui.css'],
+    scripts: [
+      {
+        src: '/assets/demo/build/go-ui.esm.js',
+        attrs: 'type="module"',
+      },
+      {
+        src: '/assets/demo/build/go-ui.js',
+        attrs: 'nomodule',
+      },
+    ],
+  },
 };
 
 export type SiteConfig = typeof siteConfig;
