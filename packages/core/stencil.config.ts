@@ -16,6 +16,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: false,
+      dir: '../../docs/src/assets/demo/',
     },
     {
       type: 'docs-json',
