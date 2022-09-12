@@ -41,11 +41,11 @@ const siteConfig = {
         children: [
           {
             label: 'Patterns',
-            url: '/patterns/introduction',
+            url: '/docs/patterns',
           },
           {
             label: 'Components',
-            url: '/components/introduction',
+            url: '/docs/components',
           },
         ],
       },
@@ -111,6 +111,20 @@ const siteConfig = {
     tagToLabel(tag: string): string {
       return startCase(tag.replace(this.componentPrefix, ''));
     },
+  },
+  demo: {
+    head: `<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />`,
+    styles: ['/assets/demo/build/go-ui.css'],
+    scripts: [
+      {
+        src: '/assets/demo/build/go-ui.esm.js',
+        attrs: 'type="module"',
+      },
+      {
+        src: '/assets/demo/build/go-ui.js',
+        attrs: 'nomodule',
+      },
+    ],
   },
 };
 

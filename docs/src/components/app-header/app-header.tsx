@@ -4,6 +4,8 @@ import { Build, Component, Prop, State, h } from '@stencil/core';
 
 import siteConfig from '../../../config';
 import { prepareNavItems } from '../../utils/helpers';
+import themeStore from '../../stores/theme.store';
+
 declare global {
   var docsearch: any;
 }
@@ -14,8 +16,6 @@ declare global {
   shadow: false,
 })
 export class AppHeader {
-  @State() isDark = false;
-
   @Prop() inline = false;
 
   @State() navItems: INavItem[] = [];
@@ -36,22 +36,17 @@ export class AppHeader {
   loadTheme() {
     // check if there's any local storage override
     // match OS preference
-    this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const storedTheme = localStorage.getItem('go-ui-theme');
-    if (storedTheme) {
-      this.isDark = storedTheme === 'dark';
-    }
     this.setHtmlAttribute();
   }
 
   setHtmlAttribute() {
-    document.documentElement.setAttribute('data-theme', this.isDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', themeStore.state.currentTheme);
   }
 
   toggleDarkMode() {
-    this.isDark = !this.isDark;
+    themeStore.state.currentTheme = themeStore.state.currentTheme === 'light' ? 'dark' : 'light';
     this.setHtmlAttribute();
-    localStorage.setItem('go-ui-theme', this.isDark ? 'dark' : 'light');
+    localStorage.setItem('go-ui-theme', themeStore.state.currentTheme);
   }
 
   // @Watch('activePath')
@@ -86,15 +81,19 @@ export class AppHeader {
   }
 
   render() {
-    const { isDark, navItems } = this;
+    const { navItems } = this;
     const repoLinkProps = {
       target: '_blank',
       href: siteConfig.repoLink.url,
       rel: 'noopener noreferrer nofollow',
     };
+    const themeIcons = {
+      light: 'sun',
+      dark: 'moon',
+    };
     return (
       <header>
-        <go-nav-drawer ref={el => (this.mobileMenu = el)} label="Menu" items={navItems} autoClose={true}></go-nav-drawer>
+        <go-nav-drawer ref={(el) => (this.mobileMenu = el)} label="Menu" items={navItems} autoClose={true}></go-nav-drawer>
         <go-header-bar breakpoint="tablet">
           <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack variant="text" onClick={() => this.handleMobileTriggerClick()}>
             <go-icon icon-set="bx" name="menu" size="1.5rem" slot="prefix"></go-icon>
@@ -118,14 +117,14 @@ export class AppHeader {
             </go-button>
             {siteConfig.darkThemeSwitch && (
               <go-button
-                aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+                aria-label={`Switch to ${themeStore.state.currentTheme} mode`}
                 variant="text"
                 icon
                 round
                 flat
                 compact
                 onClick={() => this.toggleDarkMode()}>
-                <go-icon size="1.5rem" icon-set="bx" name={isDark ? 'moon' : 'sun'}></go-icon>
+                <go-icon size="1.5rem" icon-set="bx" name={themeIcons[themeStore.state.currentTheme]}></go-icon>
               </go-button>
             )}
             {siteConfig?.algolia ? <div id="algolia-search" class="algolia"></div> : null}

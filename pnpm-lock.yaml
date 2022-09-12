@@ -40,6 +40,7 @@ importers:
       '@stencil/core': ^2.17.4
       '@stencil/helmet': ^0.3.3
       '@stencil/sass': ^1.5.2
+      '@stencil/store': ^2.0.0
       '@types/jest': ^27.5.2
       '@types/node': ^18.7.13
       chalk: ^4.1.2
@@ -91,6 +92,7 @@ importers:
       '@stencil/core': 2.17.4
       '@stencil/helmet': 0.3.3
       '@stencil/sass': 1.5.2_@stencil+core@2.17.4
+      '@stencil/store': 2.0.0_@stencil+core@2.17.4
       '@types/jest': 27.5.2
       '@types/node': 18.7.13
       chalk: 4.1.2
@@ -2509,6 +2511,14 @@ packages:
     dependencies:
       '@stencil/core': 2.17.4
     dev: false
+
+  /@stencil/store/2.0.0_@stencil+core@2.17.4:
+    resolution: {integrity: sha512-F3aGa3TOBJnra4UUxGO01CE2tutxaHEp5T/rbOeTFzLBbbh6/zsHRTrQCm70uCodeXrDkd/2vdu8Jqr+KLXrIg==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0'
+    dependencies:
+      '@stencil/core': 2.17.4
+    dev: true
 
   /@surma/rollup-plugin-off-main-thread/2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}

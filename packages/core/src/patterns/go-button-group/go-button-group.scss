@@ -15,6 +15,7 @@ go-button-group {
     flex-wrap: nowrap;
     gap: 0;
     go-button {
+      margin-inline-end: -1px;
       &:first-of-type {
         .inner-button {
           border-top-right-radius: 0;

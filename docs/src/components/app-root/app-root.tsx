@@ -1,7 +1,6 @@
 import { Component, Host, h } from '@stencil/core';
 import { Route } from 'stencil-router-v2';
 import Router from '../../router';
-
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.scss',
@@ -21,9 +20,9 @@ export class AppRoot {
               </page-transition>
             </Route>
 
-            <Route path={/docs\/.*/} render={params => <page-docs params={params}></page-docs>}></Route>
+            <Route path={/docs\/.*/} render={(params) => <page-docs params={params}></page-docs>}></Route>
 
-            <Route path={/.*/} render={params => <page-standard params={params}></page-standard>}></Route>
+            <Route path={/.*/} render={(params) => <page-standard params={params}></page-standard>}></Route>
           </Router.Switch>
         </div>
 
