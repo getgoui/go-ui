@@ -56,6 +56,7 @@
     height: 100%;
     background: var(--go-color-bg);
     margin-bottom: var(--browser-resize-handle-size);
+    max-height: 100vh;
     z-index: 1;
     .resize-handle {
       position: absolute;
@@ -107,12 +108,10 @@
     }
 
     iframe {
-      max-height: 100vh;
       height: 100%;
       width: var(--iframe-width);
       overflow: auto;
       border: none;
-      border-bottom: var(--go-border-thin) solid var(--go-color-border);
     }
   }
 

@@ -16,7 +16,7 @@ A banner draws the users' attention to the content. The banner can be used to di
 
 ## Demo
 
-<demo-frame component="go-banner" demo="go-banner" />
+<demo-frame component="go-banner" demo="go-banner" hide-source />
 
 <!-- Auto Generated Below -->
 

@@ -3,7 +3,7 @@ import docs from '@go-ui/core/dist/docs/go-ui';
 import pretty from 'pretty';
 import siteConfig from '../../../config';
 import themeStore from '../../stores/theme.store';
-
+import { uniqueId } from 'lodash-es';
 @Component({
   tag: 'demo-frame',
   styleUrl: 'demo-frame.scss',
@@ -23,6 +23,8 @@ export class DemoFrame {
   @State() demoSource: string;
 
   private iframe: HTMLIFrameElement;
+
+  private demoId: string = uniqueId('demo-');
 
   componentWillLoad() {
     if (!this.code && (!this.component || !this.demo)) {
@@ -45,6 +47,25 @@ export class DemoFrame {
       themeStore.onChange('currentTheme', () => this.updateIframeRootAttr('data-theme', themeStore.state.currentTheme));
       this.setDemoContent(this.iframe.contentWindow, this.demoSource);
     }
+  }
+
+  startMonitoringFrame(iframe) {
+    const docRoot = iframe.contentDocument.documentElement;
+    const observer = new MutationObserver((entries) => {
+      entries.map((entry) => {
+        const htmlEl = entry.target as HTMLElement;
+        if (htmlEl.classList.contains('hydrated')) {
+          const height = htmlEl.getBoundingClientRect().height;
+          if (height > this.minFrameHeight) {
+            this.frameHeight = Math.round(height) + 'px';
+          }
+        }
+      });
+    });
+    observer.observe(docRoot, {
+      attributes: true,
+      attributeOldValue: true,
+    });
   }
 
   updateIframeRootAttr(key: string, value: string) {
@@ -92,11 +113,20 @@ ${code}
     doc.open();
     doc.write(html);
     doc.close();
+    if (this.iframe) {
+      this.startMonitoringFrame(this.iframe);
+    }
+  }
+
+  reload() {
+    this.setDemoContent(this.iframe.contentWindow, this.demoSource);
   }
 
   openNewWindow() {
-    alert('not implemented yet');
+    var win = window.open('', 'Demo');
+    this.setDemoContent(win, this.demoSource);
   }
+
   resizeToDevice(device) {
     const widthMap = {
       mobile: '375px',
@@ -157,7 +187,7 @@ ${code}
   }
 
   render() {
-    const { demoSource, hideSource, frameWidth, frameHeight, resizingX, resizingY, isFullScreen } = this;
+    const { demoSource, hideSource, frameWidth, frameHeight, resizingX, resizingY, isFullScreen, demoId } = this;
     if (!demoSource) {
       return (
         <p class="text-size--1">
@@ -179,12 +209,45 @@ ${code}
               <div class="dot" />
             </div>
             <div class="controls">
+              {/* reload */}
+              <go-button id={`${demoId}-reload`} flat variant="secondary" icon compact aria-label="Reload demo" type="button" onClick={() => this.reload()}>
+                {/* prettier-ignore */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-refresh-cw" viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              </go-button>
+
+              <go-tooltip arrow trigger-id={`${demoId}-reload`}>
+                Reload demo
+              </go-tooltip>
+
               <go-button-group connected>
-                <go-button flat variant="secondary" icon compact aria-label="Open in new window" type="button" onClick={() => this.openNewWindow()}>
+                {/* new window */}
+                <go-button
+                  id={`${demoId}-new-window`}
+                  flat
+                  variant="secondary"
+                  icon
+                  compact
+                  aria-label="Open in new window"
+                  type="button"
+                  onClick={() => this.openNewWindow()}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                 </go-button>
-                <go-button flat variant="secondary" icon compact aria-label="Expand demo to fullscreen" type="button" onClick={() => this.toggleFullScreen()}>
+
+                <go-tooltip arrow trigger-id={`${demoId}-new-window`}>
+                  Open in new tab
+                </go-tooltip>
+
+                {/* full screen */}
+                <go-button
+                  id={`${demoId}-fullscreen`}
+                  flat
+                  variant="secondary"
+                  icon
+                  compact
+                  aria-label="Expand demo to fullscreen"
+                  type="button"
+                  onClick={() => this.toggleFullScreen()}>
                   {
                     /* prettier-ignore */
                     isFullScreen ? (
@@ -194,12 +257,17 @@ ${code}
                     )
                   }
                 </go-button>
+
+                <go-tooltip arrow trigger-id={`${demoId}-fullscreen`}>
+                  Fullscreen
+                </go-tooltip>
               </go-button-group>
               <go-button-group connected>
                 <go-button flat variant="secondary" icon compact aria-label="Mobile view" type="button" onClick={() => this.resizeToDevice('mobile')}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-2 20h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z"/></svg>
                 </go-button>
+
                 <go-button flat variant="secondary" icon compact aria-label="Tablet view" type="button" onClick={() => this.resizeToDevice('tablet')}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M18,0H6C4.34,0,3,1.34,3,3v18c0,1.66,1.34,3,3,3h12c1.66,0,3-1.34,3-3V3C21,1.34,19.66,0,18,0z M14,22h-4v-1h4V22z M19.25,19H4.75V3h14.5V19z"/></g></g></g></svg>
