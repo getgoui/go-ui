@@ -72,7 +72,7 @@ export class DemoFrame {
     this.iframe?.contentDocument?.documentElement.setAttribute(key, value);
   }
 
-  setDemoContent(window, code) {
+  setDemoContent(window: Window, code) {
     const doc = window.document;
     const dir: 'ltr' | 'rtl' = 'ltr';
     const lang = 'en';
@@ -113,6 +113,7 @@ ${code}
     doc.open();
     doc.write(html);
     doc.close();
+    // doc.documentElement.innerHTML = html;
     if (this.iframe) {
       this.startMonitoringFrame(this.iframe);
     }

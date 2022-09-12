@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, Build } from '@stencil/core';
+import { Component, h, Prop, Watch, Build, State } from '@stencil/core';
 import hljs from 'highlight.js';
 
 @Component({
@@ -9,7 +9,9 @@ export class CodeBlock {
   @Prop() code = '';
   @Prop() language = 'html';
 
-  componentDidLoad() {
+  @State() result = '';
+
+  componentWillLoad() {
     if (Build.isBrowser) {
       this.highlight();
     }
@@ -17,18 +19,18 @@ export class CodeBlock {
 
   @Watch('code')
   highlight() {
-    hljs.configure({ ignoreUnescapedHTML: true });
-    hljs.highlightAll();
+    console.log('running highlighter');
+    this.result = hljs.highlight(this.code, { language: this.language }).value;
   }
   render() {
-    const { code, language } = this;
+    const { code, language, result } = this;
     if (!code) {
       return null;
     }
     return (
       <pre class="code-block">
         <copy-code-btn code={code}></copy-code-btn>
-        <code class={`language-${language}`}>{code}</code>
+        <code class={`hljs language-${language}`} innerHTML={result}></code>
       </pre>
     );
   }
