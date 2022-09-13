@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Build, Component, h, Prop } from '@stencil/core';
 import Helmet from '@stencil/helmet';
 import siteConfig from '../../../config';
 @Component({
@@ -11,7 +11,10 @@ export class SeoTags {
 
   render() {
     const { pageTitle, description, image } = this;
-    const imgUrl = window.location.protocol + '//' + window.location.host + image;
+    let imgUrl = image;
+    if (Build.isBrowser) {
+      imgUrl = window.location.protocol + '//' + window.location.host + image;
+    }
     return (
       <Helmet>
         <title>{pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.name}</title>
