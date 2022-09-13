@@ -15,9 +15,7 @@ export class AppRoot {
         <div class="page-main">
           <Router.Switch>
             <Route path="/">
-              <page-transition activePath={activePath}>
-                <page-home></page-home>
-              </page-transition>
+              <page-home></page-home>
             </Route>
 
             <Route path={/docs\/.*/} render={(params) => <page-docs params={params}></page-docs>}></Route>

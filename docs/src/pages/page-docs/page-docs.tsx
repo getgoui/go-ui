@@ -2,6 +2,7 @@ import { Component, Prop, State, h, Watch } from '@stencil/core';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { buildSidebar, prepareNavItems, loadContentByPath } from '../../utils/helpers';
 import Router from '../../router';
+import siteConfig from '../../../config';
 
 @Component({
   tag: 'page-docs',
@@ -51,7 +52,7 @@ export class PageDocs {
   render() {
     const { result, sidebarNavItems, meta, editUrl } = this;
     return [
-      <seo-tags pageTitle={meta?.title}></seo-tags>,
+      <seo-tags pageTitle={meta?.title} image={siteConfig.logo}></seo-tags>,
       <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result} editUrl={editUrl}></sidebar-layout>,
     ];
   }

@@ -4,6 +4,7 @@ import { buildContentPageSidebar, loadContentByPath, prepareNavItems, removeLead
 import Router from '../../router';
 import ia from '../../generated-ia';
 import { IAItem } from '../../ia.interface';
+import siteConfig from '../../../config';
 
 @Component({
   tag: 'page-standard',
@@ -75,7 +76,7 @@ export class PageStandard {
       return <page-notfound></page-notfound>;
     }
     return [
-      <seo-tags pageTitle={meta?.title}></seo-tags>,
+      <seo-tags pageTitle={meta?.title} image={siteConfig.logo}></seo-tags>,
       <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result} editUrl={iAItem.editUrl}></sidebar-layout>,
     ];
   }
