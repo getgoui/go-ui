@@ -42,7 +42,7 @@ export class PageHome {
   render() {
     return (
       <Host>
-        <seo-tags pageTitle="Home" description={siteConfig.tagline} image={siteConfig.logo}></seo-tags>
+        <seo-tags pageTitle="Home"></seo-tags>
         <main>
           {/* hero */}
           <div class="container">

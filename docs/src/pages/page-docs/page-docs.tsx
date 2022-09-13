@@ -52,7 +52,7 @@ export class PageDocs {
   render() {
     const { result, sidebarNavItems, meta, editUrl } = this;
     return [
-      <seo-tags pageTitle={meta?.title} image={siteConfig.logo}></seo-tags>,
+      <seo-tags pageTitle={meta?.title}></seo-tags>,
       <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result} editUrl={editUrl}></sidebar-layout>,
     ];
   }

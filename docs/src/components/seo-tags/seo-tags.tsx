@@ -7,7 +7,7 @@ import siteConfig from '../../../config';
 export class SeoTags {
   @Prop() pageTitle: string;
   @Prop() description: string = siteConfig.tagline;
-  @Prop() image: string = siteConfig.logo;
+  @Prop() image: string = siteConfig.logoSocial;
 
   render() {
     const { pageTitle, description, image } = this;
@@ -17,8 +17,8 @@ export class SeoTags {
         <title>{pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.name}</title>
         <meta name="description" content={description} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@seanwuapps" />
-        <meta name="twitter:creator" content="@seanwuapps" />
+        <meta name="twitter:site" content={siteConfig.social.twitter} />
+        <meta name="twitter:creator" content={siteConfig.social.twitter} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={imgUrl} />
