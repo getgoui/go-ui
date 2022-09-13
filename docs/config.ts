@@ -6,6 +6,7 @@ const siteConfig = {
   tagline: 'A design system for everyone.',
   logo: '/assets/img/logo.svg',
   logoDark: '/assets/img/logo.svg',
+  logoSocial: '/assets/img/logo-padded.png',
   baseUrl: 'https://go-ui.com/',
   docsRoutePrefix: 'docs/',
   repoLink: {
@@ -125,6 +126,9 @@ const siteConfig = {
         attrs: 'nomodule',
       },
     ],
+  },
+  social: {
+    twitter: '@getgoui',
   },
 };
 
