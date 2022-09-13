@@ -31,6 +31,7 @@ export class SeoTags {
         <meta property="og:image" content={imgUrl} />
         <meta property="og:image:url" content={imgUrl} />
         <meta property="og:image:secure_url" content={imgUrl} />
+        <meta property="og:image:alt" content={siteConfig.name + ' logo'} />
         <meta property="og:description" content={description} />
         <meta property="og:site_name" content={siteConfig.name} />
       </Helmet>
