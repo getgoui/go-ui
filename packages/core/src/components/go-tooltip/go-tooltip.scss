@@ -39,6 +39,8 @@ go-tooltip {
   border-radius: var(--tooltip-radius);
   box-shadow: var(--shadow-1);
   pointer-events: none;
+  font-size: var(--go-size-0);
+  z-index: var(--layer-important);
 
   &.is-active {
     visibility: visible;

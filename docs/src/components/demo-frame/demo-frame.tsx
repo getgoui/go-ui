@@ -57,7 +57,7 @@ export class DemoFrame {
         if (htmlEl.classList.contains('hydrated')) {
           const height = htmlEl.getBoundingClientRect().height;
           if (height > this.minFrameHeight) {
-            this.frameHeight = Math.round(height) + 'px';
+            this.frameHeight = Math.round(height + 50) + 'px';
           }
         }
       });
