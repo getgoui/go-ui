@@ -2,7 +2,6 @@ import { Component, Prop, State, h, Watch } from '@stencil/core';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { buildSidebar, prepareNavItems, loadContentByPath } from '../../utils/helpers';
 import Router from '../../router';
-import siteConfig from '../../../config';
 
 @Component({
   tag: 'page-docs',
