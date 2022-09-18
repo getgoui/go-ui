@@ -47,3 +47,13 @@ export function trapFocus(parent: HTMLElement): void {
   // focus on first focusable element
   setTimeout(() => firstFocusableEl?.focus(), 50);
 }
+
+export function focusFirstWithin(parent: HTMLElement): void {
+  const focusableChildren = getFocusableChildren(parent);
+  const firstFocusableEl = focusableChildren[0];
+  if (firstFocusableEl) {
+    setTimeout(() => firstFocusableEl?.focus(), 50);
+  }
+}
+
+// export function onFocusOut

@@ -1,0 +1,30 @@
+go-dropdown {
+  --dropdown-shadow: var(--shadow-2);
+  --dropdown-bg-color: transparent;
+  --dropdown-width: 14rem;
+  --dropdown-transition-duration: var(--go-duration-fast);
+
+  @include transition(opacity var(--dropdown-transition-duration), visibility, transform var(--dropdown-transition-duration));
+  position: absolute;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--dropdown-bg-color);
+  box-shadow: var(--dropdown-shadow);
+  pointer-events: none;
+  z-index: 1;
+  width: var(--dropdown-width);
+  transform-origin: top;
+  transform: scaleY(0.5);
+
+  &.flip {
+    transform-origin: bottom;
+  }
+
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: inherit;
+    transform: scaleY(1);
+  }
+}

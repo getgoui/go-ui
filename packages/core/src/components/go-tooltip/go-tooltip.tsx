@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, State } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Method } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
 import debounce from 'lodash.debounce';
 import { computePosition, flip, shift, arrow, offset, autoUpdate, inline } from '@floating-ui/dom';
@@ -12,7 +12,7 @@ export class GoTooltip {
   @Element() el: HTMLElement;
 
   /**
-   * Query selector string for the element inside the slot that triggers the tooltip.
+   * Query selector string for the trigger element
    */
   @Prop() triggerId: string;
 
@@ -43,6 +43,8 @@ export class GoTooltip {
     this.triggerEl = document.querySelector(`#${this.triggerId}`) as HTMLElement;
   }
 
+  private cleanUpAutoUpdate;
+
   componentDidLoad() {
     if (!this.triggerEl) {
       return;
@@ -50,15 +52,15 @@ export class GoTooltip {
 
     this.triggerEl.setAttribute('aria-describedby', this.el.id);
     // add event handlers to triggerEl
-    this.triggerEl.addEventListener('mouseenter', () => this.showTooltip());
-    document.addEventListener('mousemove', e => this.debouncedDetermineMouseOut(e));
-    this.triggerEl.addEventListener('focusin', () => this.showTooltip());
-    this.triggerEl.addEventListener('focusout', () => this.hideTooltip());
+    this.triggerEl.addEventListener('mouseenter', () => this.show());
+    document.addEventListener('mousemove', (e) => this.debouncedDetermineMouseOut(e));
+    this.triggerEl.addEventListener('focusin', () => this.show());
+    this.triggerEl.addEventListener('focusout', () => this.hide());
 
     this.arrowEl = this.el.querySelector('.tooltip-tail') as HTMLElement;
     this.initialiseTooltip(this.triggerEl, this.el, this.arrowEl);
     // keep watching for changes to the tooltip position
-    autoUpdate(
+    this.cleanUpAutoUpdate = autoUpdate(
       this.triggerEl,
       this.el,
       debounce(() => this.initialiseTooltip(this.triggerEl, this.el, this.arrowEl), 300),
@@ -66,9 +68,9 @@ export class GoTooltip {
     );
 
     // press esc to hide tooltip
-    document.addEventListener('keydown', e => {
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        this.hideTooltip();
+        this.hide();
       }
     });
   }
@@ -115,10 +117,19 @@ export class GoTooltip {
 
   @State() isActive: boolean = false;
 
-  showTooltip() {
+  /**
+   * show tooltip
+   */
+  @Method()
+  async show() {
     this.isActive = true;
   }
-  hideTooltip() {
+
+  /**
+   * hide tooltip
+   */
+  @Method()
+  async hide() {
     this.isActive = false;
   }
   debouncedDetermineMouseOut = debounce(this.determineMouseOut, 150);
@@ -133,8 +144,12 @@ export class GoTooltip {
     const isOutside = x < left || x > right || y < top || y > bottom;
     const isOutsideTrigger = x < triggerLeft || x > triggerRight || y < triggerTop || y > triggerBottom;
     if (isOutside && isOutsideTrigger) {
-      this.hideTooltip();
+      this.hide();
     }
+  }
+
+  disconnectedCallback() {
+    this.cleanUpAutoUpdate && this.cleanUpAutoUpdate();
   }
 
   render() {
