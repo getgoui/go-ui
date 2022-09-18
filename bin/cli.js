@@ -1,12 +1,12 @@
 import minimist from 'minimist';
-import component from './gen-component';
-import pattern from './gen-pattern';
+import generate from './gen-component';
+// import pattern from './gen-pattern';
 import dev from './dev';
 import help from './help';
 
 const commands = {
-  component,
-  pattern,
+  generate,
+  // pattern,
   dev,
   help,
 };

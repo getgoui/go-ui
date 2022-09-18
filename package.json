@@ -11,6 +11,9 @@
     "build.docs": "nx build @go-ui/docs",
     "release.core": "nx semantic-release @go-ui/core"
   },
+  "bin": {
+    "gg": "./bin/index.js"
+  },
   "devDependencies": {
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",

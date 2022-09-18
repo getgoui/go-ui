@@ -24,28 +24,32 @@ export default async function component(args) {
   await writeBoilerplate(tagname, inheritAttrs);
 }
 
+function createComponentFolders(dir) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+  // Create the demo directory if it doesn't exist.
+  const usageDir = path.resolve(`${dir}/usage/`);
+  if (!fs.existsSync(usageDir)) {
+    fs.mkdirSync(usageDir);
+  }
+  // Create the test directory if it doesn't exist.
+  const testDir = path.resolve(`${dir}/test/`);
+  if (!fs.existsSync(testDir)) {
+    fs.mkdirSync(testDir);
+  }
+}
+
 /**
  * Get the boilerplate content and write them to the file.
  * @param {string} tagName  The tag name of the component.
  * @param {boolean} inheritAttrs  Whether to inherit attributes from the host element.
  */
 function writeBoilerplate(tagName, inheritAttrs) {
-  const rootPath = path.resolve(__dirname, '../');
-  const dir = `${rootPath}/src/components/${tagName}/`;
-  const docsDir = `${rootPath}/docs/docs/components/`;
+  const rootPath = '../packages/core';
+  const dir = path.resolve(__dirname, `${rootPath}/src/components/${tagName}/`);
   // Create the directory if it doesn't exist.
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-    // Create the demo directory if it doesn't exist.
-    fs.mkdirSync(`${dir}demo/`);
-    // Create the test directory if it doesn't exist.
-    fs.mkdirSync(`${dir}test/`);
-  }
-
-  // create docs directory if it doesn't exist
-  if (!fs.existsSync(docsDir)) {
-    fs.mkdirSync(docsDir);
-  }
+  createComponentFolders(dir);
 
   const fileContent = getComponentFileContent(tagName, inheritAttrs);
   // write the component file
@@ -89,20 +93,10 @@ function writeBoilerplate(tagName, inheritAttrs) {
 
   // write the demo html file
   const demoHtmlContent = getDemoHtmlContent(tagName);
-  const demoHtmlPath = path.resolve(`${dir}/demo/`, `${tagName}.html`);
+  const demoHtmlPath = path.resolve(`${dir}/usage/`, `${tagName}.md`);
   try {
     fs.writeFileSync(demoHtmlPath, demoHtmlContent);
-    console.log(chalk.green('√ Demo html file generated'));
-  } catch (err) {
-    console.error(chalk.red(err));
-  }
-
-  // write the docs file
-  const docsContent = getDocsContent(tagName);
-  const docsPath = path.resolve(docsDir, `${tagName}.mdx`);
-  try {
-    fs.writeFileSync(docsPath, docsContent);
-    console.log(chalk.green('√ Docs file generated'));
+    console.log(chalk.green('√ Demo usage file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -113,7 +107,12 @@ function writeBoilerplate(tagName, inheritAttrs) {
  */
 function getComponentFileContent(tagName, inheritAttrs) {
   return `import { Component, Host, h, Element } from '@stencil/core';
-  import { inheritAttributes } from '../../utils/helper';
+  ${
+    inheritAttrs
+      ? `
+  import { inheritAttributes } from '../../utils/helper';`
+      : ''
+  }
 
   @Component({
     tag: '${tagName}',
@@ -176,55 +175,36 @@ const getDemoHtmlContent = (name) => `
 <${name}></${name}>
 `;
 
-const getReadmeContent = (tagname) => `## ${tagname} API
-
-<!-- Auto Generated Below -->`;
-
-const getDocsContent = (tagname) => {
+const getReadmeContent = (tagname) => {
   const title = sentenseCase(tagname.replace('go-', ''));
   return `---
 title: ${title}
-hide_title: true
-hide_table_of_contents: true
 ---
 
-import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/components/${tagname}/demo/${tagname}.html';
-
-# ${title} <span className="text-size-0">\`${tagname}\`</span>
+# ${title} <span class="text-size-0">\`${tagname}\`</span>
 
 <!-- Description -->
-<div className="text-size-1">
-  ${title} is a component in Go UI.
+<div class="text-size-1">
+  ${title} is a Go UI component.
 </div>
 
-## When to use
-
--
--
-
-## A11y
-
-(Provide relevant a11y information here.)
+## Overview
 
 
 
-## Related patterns
+## Accessibility
 
-<!-- Patterns that uses this component -->
+<!-- Provide relevant a11y information here. -->
 
-- [Pattern 1](#)
-- [Pattern 2](#)
+
 
 <!-- Demos, tips, variations, use cases -->
 
 
 ## Demo
 
-<Demo code={demoSource} />
+<demo-frame component="${tagname}" demo="${tagname}"></demo-frame>
 
-<!-- API -->
-
-{@include: ../../../src/components/${tagname}/readme.md}
+<!-- Auto Generated Below -->
 `;
 };
