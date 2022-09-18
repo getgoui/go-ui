@@ -2,6 +2,7 @@
   "scripts": {
     "build": "nx run-many --target=build",
     "build.affected": "nx affected:build",
+    "dev.core": "nx start @go-ui/core",
     "build.core": "nx build @go-ui/core",
     "dev": "node ./bin/index.js dev",
     "test.unit.core": "nx test.spec @go-ui/core",

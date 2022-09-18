@@ -3,11 +3,17 @@
  * @param el target element
  * @param callback handler
  */
-export function onClickOutside(el: HTMLElement, callback: (event: MouseEvent) => void) {
-  document.addEventListener('click', (e: MouseEvent) => {
+export function onClickOutside(el: HTMLElement, callback: (event: MouseEvent) => void): (e: MouseEvent) => void {
+  const handler = (e: MouseEvent) => {
     if (el.contains(e.target as HTMLElement)) return;
     callback(e);
-  });
+  };
+  document.addEventListener('click', handler);
+  return handler;
+}
+
+export function removeClickOutsideListener(handler) {
+  document.removeEventListener('click', handler);
 }
 
 /**
@@ -38,3 +44,8 @@ export function fadeOutRemove(el: HTMLElement, callback?: () => void) {
 export function moveEl(el: HTMLElement, to: HTMLElement) {
   to.appendChild(el);
 }
+
+export const tabIndexes = {
+  disabled: '-1',
+  tabbable: '0',
+};

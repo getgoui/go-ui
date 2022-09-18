@@ -294,6 +294,25 @@ export namespace Components {
          */
         "role": 'dialog' | 'alertdialog';
     }
+    interface GoDropdown {
+        /**
+          * closes dropdown
+         */
+        "close": () => Promise<void>;
+        "init": () => Promise<void>;
+        /**
+          * keep track of active state
+         */
+        "isActive": boolean;
+        /**
+          * opens dropdown
+         */
+        "open": () => Promise<void>;
+        /**
+          * Query selector string for the trigger element.
+         */
+        "triggerId": string;
+    }
     interface GoFooter {
         /**
           * Dark theme footer
@@ -672,6 +691,10 @@ export namespace Components {
          */
         "arrow": boolean;
         /**
+          * hide tooltip
+         */
+        "hide": () => Promise<void>;
+        /**
           * Improve positioning for inline trigger elements that span over multiple lines. Reference: https://floating-ui.com/docs/inline
          */
         "inline": boolean;
@@ -680,7 +703,11 @@ export namespace Components {
          */
         "placement": 'top' | 'bottom' | 'left' | 'right';
         /**
-          * Query selector string for the element inside the slot that triggers the tooltip.
+          * show tooltip
+         */
+        "show": () => Promise<void>;
+        /**
+          * Query selector string for the trigger element
          */
         "triggerId": string;
     }
@@ -793,6 +820,12 @@ declare global {
     var HTMLGoDialogElement: {
         prototype: HTMLGoDialogElement;
         new (): HTMLGoDialogElement;
+    };
+    interface HTMLGoDropdownElement extends Components.GoDropdown, HTMLStencilElement {
+    }
+    var HTMLGoDropdownElement: {
+        prototype: HTMLGoDropdownElement;
+        new (): HTMLGoDropdownElement;
     };
     interface HTMLGoFooterElement extends Components.GoFooter, HTMLStencilElement {
     }
@@ -945,6 +978,7 @@ declare global {
         "go-chip": HTMLGoChipElement;
         "go-content-layout": HTMLGoContentLayoutElement;
         "go-dialog": HTMLGoDialogElement;
+        "go-dropdown": HTMLGoDropdownElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
@@ -1257,6 +1291,16 @@ declare namespace LocalJSX {
           * Accessible role of the dialog, can be dialog or alertdialog
          */
         "role"?: 'dialog' | 'alertdialog';
+    }
+    interface GoDropdown {
+        /**
+          * keep track of active state
+         */
+        "isActive"?: boolean;
+        /**
+          * Query selector string for the trigger element.
+         */
+        "triggerId"?: string;
     }
     interface GoFooter {
         /**
@@ -1651,7 +1695,7 @@ declare namespace LocalJSX {
          */
         "placement"?: 'top' | 'bottom' | 'left' | 'right';
         /**
-          * Query selector string for the element inside the slot that triggers the tooltip.
+          * Query selector string for the trigger element
          */
         "triggerId"?: string;
     }
@@ -1668,6 +1712,7 @@ declare namespace LocalJSX {
         "go-chip": GoChip;
         "go-content-layout": GoContentLayout;
         "go-dialog": GoDialog;
+        "go-dropdown": GoDropdown;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
@@ -1709,6 +1754,7 @@ declare module "@stencil/core" {
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
+            "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;

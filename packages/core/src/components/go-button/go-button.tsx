@@ -108,6 +108,7 @@ export class GoButton {
       'stack',
       'compact',
       'href',
+      'id',
     ]);
   }
 
