@@ -1,21 +1,12 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
 import { inheritAttributes } from '../../utils/helper';
-export type MaterialIconVariants = `material-icons` | `material-icons-outlined` | `material-icons-round` | `material-icons-sharp`;
-/**
- * https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use
- */
-export type FontAwesomeVariants = 'fas' | 'far' | 'fal' | 'fad' | 'fab';
-/**
- * https://boxicons.com/usage @see type
- */
-export type BoxiconVariants = 'bx' | 'bxs' | 'bxl';
-
+import { BoxiconVariants, FontAwesomeVariants, IconProps, MaterialIconVariants } from '../../interfaces/icon';
 @Component({
   tag: 'go-icon',
   styleUrl: 'go-icon.scss',
   shadow: false,
 })
-export class GoIcon {
+export class GoIcon implements IconProps {
   @Element() el: HTMLElement;
   /**
    * Specify the icon set being referenced.
@@ -43,7 +34,7 @@ export class GoIcon {
   /**
    * Mark this icon to be hidden from screen reader
    */
-  @Prop() decorative: boolean = false;
+  @Prop() decorative?: boolean = false;
 
   private attrs = {} as any;
   componentWillLoad() {
