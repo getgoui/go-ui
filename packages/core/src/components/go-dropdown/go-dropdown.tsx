@@ -1,6 +1,6 @@
-import { Component, Host, h, Element, Prop, Method, Watch } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Method, Watch, EventEmitter, Event } from '@stencil/core';
 import uniqueId from 'lodash.uniqueid';
-import { computePosition, offset, flip, autoUpdate } from '@floating-ui/dom';
+import { computePosition, offset, flip, autoUpdate, Placement } from '@floating-ui/dom';
 import { focusFirstWithin, onClickOutside } from '../../utils';
 import debounce from 'lodash.debounce';
 
@@ -22,6 +22,16 @@ export class GoDropdown {
   @Prop({ reflect: true, mutable: true }) isActive: boolean = false;
 
   /**
+   * Placement of dropdown relative to the trigger element
+   */
+  @Prop() placement?: Placement = 'bottom-start';
+
+  /**
+   * Id of the reference element which the position calculation will be done against,
+   * if this is not provided or not found in DOM, the trigger element will be used.
+   */
+  @Prop() referenceId?: string = null;
+  /**
    * opens dropdown
    */
   @Method()
@@ -37,7 +47,19 @@ export class GoDropdown {
     this.isActive = false;
   }
 
+  /**
+   * Toggles dropdown
+   */
+  @Method()
+  async toggle() {
+    this.isActive = !this.isActive;
+  }
+
+  @Event() opened: EventEmitter<void>;
+  @Event() closed: EventEmitter<void>;
+
   private triggerEl: HTMLElement;
+  private referenceEl: HTMLElement;
 
   componentWillLoad() {
     // if id attribute is not provided, generate a unique id for the dropdown
@@ -45,13 +67,19 @@ export class GoDropdown {
       this.el.id = uniqueId('go-dropdown-');
     }
     this.triggerEl = document.querySelector(`#${this.triggerId}`) as HTMLElement;
+    const refEl = document.querySelector(`#${this.referenceId}`);
+    if (refEl) {
+      this.referenceEl = refEl as HTMLElement;
+    } else {
+      this.referenceEl = this.triggerEl;
+    }
   }
 
   private escapeHandler;
   private focusOutHandler;
 
   componentDidLoad() {
-    if (!this.triggerEl) {
+    if (!this.triggerEl || !this.referenceEl) {
       return;
     }
     this.init();
@@ -63,7 +91,7 @@ export class GoDropdown {
       }
     };
     this.focusOutHandler = (e: FocusEvent) => {
-      if (e.relatedTarget && !this.el.contains(e.relatedTarget as Node)) {
+      if (e.relatedTarget && !this.el.contains(e.relatedTarget as Node) && !this.triggerEl.contains(e.relatedTarget as Node)) {
         this.close();
       }
     };
@@ -83,6 +111,7 @@ export class GoDropdown {
 
   @Method()
   async init() {
+    const { placement } = this;
     this.triggerEl.setAttribute('aria-haspopup', 'true');
     this.setTriggerExpanded(this.isActive);
 
@@ -91,11 +120,11 @@ export class GoDropdown {
      */
     const middleware = [offset(4), flip()];
     autoUpdate(
-      this.triggerEl,
+      this.referenceEl,
       this.el,
       debounce(() => {
-        computePosition(this.triggerEl, this.el, {
-          placement: 'bottom-start',
+        computePosition(this.referenceEl, this.el, {
+          placement,
           middleware,
         }).then(({ x, y, middlewareData }) => {
           Object.assign(this.el.style, {
@@ -127,10 +156,10 @@ export class GoDropdown {
     this.setTriggerExpanded(isActive);
     if (isActive) {
       focusFirstWithin(this.el);
-      this.el.style.display = 'inherit';
+      this.opened.emit();
     } else {
       this.triggerEl.focus();
-      this.el.style.display = 'none';
+      this.closed.emit();
     }
   }
 
