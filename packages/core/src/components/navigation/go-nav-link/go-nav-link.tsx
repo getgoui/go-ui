@@ -46,7 +46,7 @@ export class GoNavLink {
         </a>
       );
     }
-    const { isCurrent, url, icon, label } = this.item;
+    const { isCurrent, url, icon, label, iconProps } = this.item;
 
     let Tag = isCurrent || !url ? 'span' : 'go-link';
     let attrs = {
@@ -67,7 +67,8 @@ export class GoNavLink {
     return (
       <Host>
         <Tag {...attrs}>
-          {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
+          {icon && <go-icon decorative name={icon}></go-icon>}
+          {iconProps && <go-icon decorative {...iconProps}></go-icon>}
           <span class="nav-link-text">{label}</span>
           {url && this.showArrow ? (
             <svg

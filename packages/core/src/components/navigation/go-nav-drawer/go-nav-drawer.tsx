@@ -193,9 +193,10 @@ export class GoNavDrawer {
           <nav aria-label={isSubNav ? parentItem.label : this.label}>
             {isSubNav && parentItem.url ? (
               <div class="parent-link">
-                <go-link href={parentItem.url} {...parentItem.linkAttrs} onClick={e => this.handleNavItemClick(e, parentItem)}>
+                <go-link href={parentItem.url} {...parentItem.linkAttrs} onClick={(e) => this.handleNavItemClick(e, parentItem)}>
                   <span class="nav-item-label">
-                    {parentItem.icon && <go-icon name={parentItem.icon}></go-icon>}
+                    {parentItem.icon && <go-icon decorative name={parentItem.icon}></go-icon>}
+                    {parentItem.iconProps && <go-icon decorative {...parentItem.iconProps}></go-icon>}
                     <span>{parentItem.label}</span>
                   </span>
                   <svg
@@ -211,7 +212,7 @@ export class GoNavDrawer {
                 </go-link>
               </div>
             ) : null}
-            <ul>{items.map(item => this.renderNavItem(item))}</ul>
+            <ul>{items.map((item) => this.renderNavItem(item))}</ul>
           </nav>
         ) : null}
       </div>
@@ -234,7 +235,7 @@ export class GoNavDrawer {
       attrs = {
         href: item.url,
         ...item.linkAttrs,
-        onClick: e => this.handleNavItemClick(e, item),
+        onClick: (e) => this.handleNavItemClick(e, item),
       };
     }
     if (Tag === 'button') {
@@ -242,7 +243,7 @@ export class GoNavDrawer {
         'type': 'button',
         'aria-haspopup': 'true',
         'aria-expanded': 'false',
-        'onClick': e => this.openSubMenu(e),
+        'onClick': (e) => this.openSubMenu(e),
       };
     }
     return (

@@ -1,9 +1,7 @@
 import { Component, Element, h, Method, Prop, State, Host, EventEmitter, Event, Watch } from '@stencil/core';
 import { INavItem } from '../../../interfaces';
-import { onClickOutside } from '../../../utils/dom';
-import { inheritAttributes } from '../../../utils/helper';
 import { parseItems } from '../../../utils/nav';
-
+import uniqueId from 'lodash.uniqueid';
 @Component({
   tag: 'go-main-nav',
   styleUrl: 'go-main-nav.scss',
@@ -20,21 +18,14 @@ export class GoMainNav {
 
   @State() navItems: INavItem[] = null;
 
+  @State() activeSubMenuId: string = '';
+
+  private mainNavId = '';
+
   // Store attributes inherited from the host element
-  private inheritedAttrs = {};
   async componentWillLoad() {
-    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position']);
+    this.mainNavId = uniqueId('main-nav-');
     this.navItems = parseItems(this.items);
-    // click outside to close menus
-    onClickOutside(this.el, () => {
-      this.closeAllSubMenus();
-    });
-    // esc to close menus
-    this.el.addEventListener('keydown', (e) => {
-      if (e.code === 'Escape') {
-        this.closeAllSubMenus();
-      }
-    });
   }
 
   /**
@@ -49,32 +40,6 @@ export class GoMainNav {
   @Watch('items')
   async watchItems(newItems: INavItem[] | string) {
     this.navItems = parseItems(newItems);
-  }
-
-  private closeAllSubMenus() {
-    this.el.querySelectorAll('.nav-menu-root > li.active').forEach((item) => {
-      this.closeSubMenu(item as HTMLElement);
-    });
-  }
-
-  private toggleSubMenu(e: MouseEvent) {
-    const triggerBtn = e.currentTarget as HTMLElement;
-    const menuItem = triggerBtn.closest('.nav-item.has-children') as HTMLElement;
-
-    if (menuItem.classList.contains('active')) {
-      this.closeSubMenu(menuItem);
-    } else {
-      // close any open menus
-      this.closeAllSubMenus();
-      menuItem.classList.add('active');
-      triggerBtn.setAttribute('aria-expanded', 'true');
-    }
-  }
-
-  private closeSubMenu(menuItem: HTMLElement) {
-    const triggerBtn = menuItem.querySelector('.nav-item-inner');
-    menuItem.classList.remove('active');
-    triggerBtn.setAttribute('aria-expanded', 'false');
   }
 
   @Event({
@@ -99,7 +64,7 @@ export class GoMainNav {
     attrs.class = `${attrs.class ? attrs.class : ''} nav-item-link${item.isCurrent ? ' current' : ''}`;
     return (
       <Tag {...attrs}>
-        {item.icon && <go-icon name={item.icon}></go-icon>}
+        {item.icon && <go-icon decorative={true} name={item.icon}></go-icon>}
         <span>{item.label}</span>
         {isSubmenuParentLink ? (
           <svg
@@ -109,7 +74,8 @@ export class GoMainNav {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            viewBox="0 0 24 24">
+            viewBox="0 0 24 24"
+            aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         ) : null}
@@ -145,6 +111,7 @@ export class GoMainNav {
 
   renderRootNavItem(item: INavItem) {
     let Tag = 'a';
+    let submenuId = `submenu-${item.label.toLowerCase().trim().replace(/\s/g, '-')}`;
     const hasChildren = item?.children?.length > 0;
     if (item.isCurrent) {
       Tag = 'span';
@@ -159,7 +126,6 @@ export class GoMainNav {
       attrs = {
         href: item.url,
         onClick: (event) => {
-          console.log('clicked');
           this.navEvent.emit({ event, item });
         },
         ...item.linkAttrs,
@@ -169,14 +135,23 @@ export class GoMainNav {
       attrs = {
         'type': 'button',
         'aria-expanded': 'false',
-        'onClick': (e) => this.toggleSubMenu(e),
+        'aria-haspopup': 'true',
+        'aria-controls': submenuId,
+        'id': uniqueId('submenu-trigger-'),
+        'onClick': () => {
+          if (this.activeSubMenuId === submenuId) {
+            this.activeSubMenuId = '';
+            return;
+          }
+          this.activeSubMenuId = submenuId;
+        },
       };
     }
     return (
       <li class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item.isCurrent }}>
         <Tag class="nav-item-inner" {...attrs}>
           <span class="nav-item-label">
-            {item.icon && <go-icon name={item.icon}></go-icon>}
+            {item.icon && <go-icon decorative={true} name={item.icon}></go-icon>}
             <span>{item.label}</span>
           </span>
           {hasChildren ? (
@@ -193,17 +168,25 @@ export class GoMainNav {
           ) : null}
         </Tag>
         {item.children ? (
-          <div class="submenu-container">
+          <go-dropdown
+            placement="bottom"
+            class="submenu-container"
+            id={submenuId}
+            isActive={this.activeSubMenuId === submenuId}
+            triggerId={attrs.id}
+            referenceId={this.mainNavId}
+            onClosed={() => (this.activeSubMenuId = '')}>
             <div class="submenu-header">
               <go-nav-link block item={item} showArrow></go-nav-link>
               {item?.description ? <p class="description">{item.description}</p> : null}
             </div>
             <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
-          </div>
+          </go-dropdown>
         ) : null}
       </li>
     );
   }
+
   /**
    * render top level nav items
    */
@@ -218,11 +201,12 @@ export class GoMainNav {
   }
 
   render() {
-    let { navItems, inheritedAttrs } = this;
-
+    let { navItems, mainNavId } = this;
     return (
-      <Host {...inheritedAttrs}>
-        <nav aria-label="Main navigation">{navItems ? this.renderRootNav(navItems) : <slot></slot>}</nav>
+      <Host>
+        <nav id={mainNavId} aria-label="Main navigation">
+          {navItems ? this.renderRootNav(navItems) : <slot></slot>}
+        </nav>
       </Host>
     );
   }

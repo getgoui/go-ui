@@ -86,16 +86,7 @@ go-main-nav {
 
       // new structure
       .submenu-container {
-        @include transition(opacity, visibility);
-
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        box-shadow: var(--nav-shadow);
+        --dropdown-width: 100%;
         padding: var(--submenu-padding-y) var(--submenu-padding-x);
         background: var(--submenu-bg-color);
         > .submenu-header {
@@ -124,7 +115,7 @@ go-main-nav {
           overflow-y: auto;
         }
       }
-      &.active {
+      &.is-active {
         background: var(--nav-item-active-bg-color);
         .nav-item-inner {
           svg {
