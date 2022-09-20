@@ -24,6 +24,7 @@ html,
 body {
   font-family: var(--go-body-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif);
   font-size: var(--go-size-0, 1rem);
+  line-height: 1.5;
 }
 
 // ----------------------------------
@@ -55,21 +56,16 @@ blockquote {
   margin: 0;
   padding-left: 2rem;
 }
-p {
-  line-height: 1.5;
-}
 code {
   padding: 0 0.4em;
   border-radius: var(--radius-2);
   background-color: var(--go-color-code-bg);
   color: var(--go-color-code-fg);
-  line-height: 1.5;
 }
 pre {
   padding: 1rem;
   border-radius: var(--radius-2);
   background-color: var(--go-color-code-bg);
-  line-height: 1.5;
   code {
     padding: 0;
     background-color: transparent;
