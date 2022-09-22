@@ -1,8 +1,7 @@
 go-main-nav {
-  --nav-border-top: 1px solid var(--go-color-neutral-200);
-  --nav-border-bottom: 1px solid var(--go-color-neutral-200);
+  --nav-border: 1px solid var(--go-color-neutral-200);
   --nav-bg-color: var(--go-color-bg);
-  --nav-shadow: var(--shadow-2);
+  --nav-shadow: none;
   --nav-item-text-color: var(--go-color-darkest);
   --nav-item-bg-color: var(--nav-bg-color);
   --nav-item-hover-bg-color: var(--go-color-lightest);
@@ -21,7 +20,7 @@ go-main-nav {
 
   display: block;
   box-shadow: var(--nav-shadow);
-  border-top: var(--nav-border-top);
+  border: var(--nav-border);
   ul {
     list-style: none;
   }
@@ -125,7 +124,6 @@ go-main-nav {
         .submenu-container {
           visibility: visible;
           opacity: 1;
-          box-shadow: var(--shadow-2);
         }
       }
     }

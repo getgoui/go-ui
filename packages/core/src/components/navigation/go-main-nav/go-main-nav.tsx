@@ -111,7 +111,9 @@ export class GoMainNav {
 
   renderRootNavItem(item: INavItem) {
     let Tag = 'a';
-    let submenuId = `submenu-${item.label.toLowerCase().trim().replace(/\s/g, '-')}`;
+    const slug = item.label.toLowerCase().trim().replace(/\s/g, '-');
+    let submenuId = `submenu-${slug}`;
+    let submenuTriggerId = `submenu-${slug}-trigger`;
     const hasChildren = item?.children?.length > 0;
     if (item.isCurrent) {
       Tag = 'span';
@@ -131,13 +133,14 @@ export class GoMainNav {
         ...item.linkAttrs,
       };
     }
+    let isActive = false;
     if (Tag === 'button') {
       attrs = {
         'type': 'button',
         'aria-expanded': 'false',
         'aria-haspopup': 'true',
         'aria-controls': submenuId,
-        'id': uniqueId('submenu-trigger-'),
+        'id': submenuTriggerId,
         'onClick': () => {
           if (this.activeSubMenuId === submenuId) {
             this.activeSubMenuId = '';
@@ -146,9 +149,10 @@ export class GoMainNav {
           this.activeSubMenuId = submenuId;
         },
       };
+      isActive = this.activeSubMenuId === submenuId;
     }
     return (
-      <li class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item.isCurrent }}>
+      <li class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item.isCurrent, 'is-active': isActive }}>
         <Tag class="nav-item-inner" {...attrs}>
           <span class="nav-item-label">
             {item.icon && <go-icon decorative={true} name={item.icon}></go-icon>}
@@ -156,6 +160,7 @@ export class GoMainNav {
           </span>
           {hasChildren ? (
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               stroke="currentColor"
@@ -172,9 +177,10 @@ export class GoMainNav {
             placement="bottom"
             class="submenu-container"
             id={submenuId}
-            isActive={this.activeSubMenuId === submenuId}
+            isActive={isActive}
             triggerId={attrs.id}
             referenceId={this.mainNavId}
+            offset={1}
             onClosed={() => (this.activeSubMenuId = '')}>
             <div class="submenu-header">
               <go-nav-link block item={item} showArrow></go-nav-link>

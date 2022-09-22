@@ -31,6 +31,12 @@ export class GoDropdown {
    * if this is not provided or not found in DOM, the trigger element will be used.
    */
   @Prop() referenceId?: string = null;
+
+  /**
+   * Offset between dropdown and reference element for position calculation.
+   */
+  @Prop() offset?: number = 4;
+
   /**
    * opens dropdown
    */
@@ -118,7 +124,7 @@ export class GoDropdown {
     /**
      * Calculate position of dropdown
      */
-    const middleware = [offset(4), flip()];
+    const middleware = [offset(this.offset), flip()];
     autoUpdate(
       this.referenceEl,
       this.el,

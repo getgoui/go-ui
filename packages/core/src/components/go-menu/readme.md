@@ -6,7 +6,7 @@ title: Menu
 
 <!-- Description -->
 <div class="text-size-1">
-  Menu is a Go UI component.
+Menu component provides a list of selectable options for user to interact with. This component is not to be used for navigational purpose, for that please see <go-link href="/docs/components/navigation/go-main-nav">go-main-nav</go-link>.
 </div>
 
 ## Overview

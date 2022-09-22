@@ -9,7 +9,8 @@ import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./interfac
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
-import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+import { Placement } from "@floating-ui/dom";
+import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./interfaces/icon";
 import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
@@ -305,9 +306,25 @@ export namespace Components {
          */
         "isActive": boolean;
         /**
+          * Offset between dropdown and reference element for position calculation.
+         */
+        "offset"?: number;
+        /**
           * opens dropdown
          */
         "open": () => Promise<void>;
+        /**
+          * Placement of dropdown relative to the trigger element
+         */
+        "placement"?: Placement;
+        /**
+          * Id of the reference element which the position calculation will be done against, if this is not provided or not found in DOM, the trigger element will be used.
+         */
+        "referenceId"?: string;
+        /**
+          * Toggles dropdown
+         */
+        "toggle": () => Promise<void>;
         /**
           * Query selector string for the trigger element.
          */
@@ -385,7 +402,7 @@ export namespace Components {
         /**
           * Mark this icon to be hidden from screen reader
          */
-        "decorative": boolean;
+        "decorative"?: boolean;
         /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
@@ -446,6 +463,8 @@ export namespace Components {
           * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
          */
         "useGoUi"?: boolean;
+    }
+    interface GoMenu {
     }
     interface GoNavDrawer {
         "active": boolean;
@@ -724,6 +743,10 @@ export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
 }
+export interface GoDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoDropdownElement;
+}
 export interface GoMainNavCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoMainNavElement;
@@ -875,6 +898,12 @@ declare global {
         prototype: HTMLGoMdElement;
         new (): HTMLGoMdElement;
     };
+    interface HTMLGoMenuElement extends Components.GoMenu, HTMLStencilElement {
+    }
+    var HTMLGoMenuElement: {
+        prototype: HTMLGoMenuElement;
+        new (): HTMLGoMenuElement;
+    };
     interface HTMLGoNavDrawerElement extends Components.GoNavDrawer, HTMLStencilElement {
     }
     var HTMLGoNavDrawerElement: {
@@ -987,6 +1016,7 @@ declare global {
         "go-link": HTMLGoLinkElement;
         "go-main-nav": HTMLGoMainNavElement;
         "go-md": HTMLGoMdElement;
+        "go-menu": HTMLGoMenuElement;
         "go-nav-drawer": HTMLGoNavDrawerElement;
         "go-nav-link": HTMLGoNavLinkElement;
         "go-nav-list": HTMLGoNavListElement;
@@ -1298,6 +1328,20 @@ declare namespace LocalJSX {
          */
         "isActive"?: boolean;
         /**
+          * Offset between dropdown and reference element for position calculation.
+         */
+        "offset"?: number;
+        "onClosed"?: (event: GoDropdownCustomEvent<void>) => void;
+        "onOpened"?: (event: GoDropdownCustomEvent<void>) => void;
+        /**
+          * Placement of dropdown relative to the trigger element
+         */
+        "placement"?: Placement;
+        /**
+          * Id of the reference element which the position calculation will be done against, if this is not provided or not found in DOM, the trigger element will be used.
+         */
+        "referenceId"?: string;
+        /**
           * Query selector string for the trigger element.
          */
         "triggerId"?: string;
@@ -1433,6 +1477,8 @@ declare namespace LocalJSX {
           * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
          */
         "useGoUi"?: boolean;
+    }
+    interface GoMenu {
     }
     interface GoNavDrawer {
         "active"?: boolean;
@@ -1721,6 +1767,7 @@ declare namespace LocalJSX {
         "go-link": GoLink;
         "go-main-nav": GoMainNav;
         "go-md": GoMd;
+        "go-menu": GoMenu;
         "go-nav-drawer": GoNavDrawer;
         "go-nav-link": GoNavLink;
         "go-nav-list": GoNavList;
@@ -1763,6 +1810,7 @@ declare module "@stencil/core" {
             "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-md": LocalJSX.GoMd & JSXBase.HTMLAttributes<HTMLGoMdElement>;
+            "go-menu": LocalJSX.GoMenu & JSXBase.HTMLAttributes<HTMLGoMenuElement>;
             "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;
