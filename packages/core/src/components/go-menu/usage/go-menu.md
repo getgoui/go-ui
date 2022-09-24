@@ -1,2 +1,0 @@
-
-<go-menu></go-menu>

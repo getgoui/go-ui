@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GoMenu } from '../go-menu';
-describe('go-menu', () => {
+import { GoActionMenu } from '../go-action-menu';
+describe('go-action-menu', () => {
  it('renders', async () => {
    const page = await newSpecPage({
-     components: [GoMenu],
-     html: `<go-menu></go-menu>`,
+     components: [GoActionMenu],
+     html: `<go-action-menu></go-action-menu>`,
    });
    expect(page.root).toBeTruthy();
  });
