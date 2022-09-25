@@ -181,9 +181,10 @@ export class GoMainNav {
             triggerId={attrs.id}
             referenceId={this.mainNavId}
             offset={1}
-            onClosed={() => (this.activeSubMenuId = '')}>
+            onClosed={() => (this.activeSubMenuId = '')}
+            role="menu">
             <div class="submenu-header">
-              <go-nav-link block item={item} showArrow></go-nav-link>
+              <go-nav-link role="menuitem" block item={item} showArrow></go-nav-link>
               {item?.description ? <p class="description">{item.description}</p> : null}
             </div>
             <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
