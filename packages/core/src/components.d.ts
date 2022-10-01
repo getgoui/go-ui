@@ -464,6 +464,8 @@ export namespace Components {
          */
         "useGoUi"?: boolean;
     }
+    interface GoMenu {
+    }
     interface GoNavDrawer {
         "active": boolean;
         /**
@@ -896,6 +898,12 @@ declare global {
         prototype: HTMLGoMdElement;
         new (): HTMLGoMdElement;
     };
+    interface HTMLGoMenuElement extends Components.GoMenu, HTMLStencilElement {
+    }
+    var HTMLGoMenuElement: {
+        prototype: HTMLGoMenuElement;
+        new (): HTMLGoMenuElement;
+    };
     interface HTMLGoNavDrawerElement extends Components.GoNavDrawer, HTMLStencilElement {
     }
     var HTMLGoNavDrawerElement: {
@@ -1008,6 +1016,7 @@ declare global {
         "go-link": HTMLGoLinkElement;
         "go-main-nav": HTMLGoMainNavElement;
         "go-md": HTMLGoMdElement;
+        "go-menu": HTMLGoMenuElement;
         "go-nav-drawer": HTMLGoNavDrawerElement;
         "go-nav-link": HTMLGoNavLinkElement;
         "go-nav-list": HTMLGoNavListElement;
@@ -1469,6 +1478,8 @@ declare namespace LocalJSX {
          */
         "useGoUi"?: boolean;
     }
+    interface GoMenu {
+    }
     interface GoNavDrawer {
         "active"?: boolean;
         /**
@@ -1756,6 +1767,7 @@ declare namespace LocalJSX {
         "go-link": GoLink;
         "go-main-nav": GoMainNav;
         "go-md": GoMd;
+        "go-menu": GoMenu;
         "go-nav-drawer": GoNavDrawer;
         "go-nav-link": GoNavLink;
         "go-nav-list": GoNavList;
@@ -1798,6 +1810,7 @@ declare module "@stencil/core" {
             "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-md": LocalJSX.GoMd & JSXBase.HTMLAttributes<HTMLGoMdElement>;
+            "go-menu": LocalJSX.GoMenu & JSXBase.HTMLAttributes<HTMLGoMenuElement>;
             "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;

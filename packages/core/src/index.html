@@ -14,7 +14,28 @@
     <!-- keep this sandbox empty before pushing changes -->
 
     <!-- #region demo start -->
-    <go-menu items=""></go-menu>
+    <!-- <go-button>toggle</go-button> -->
+    <go-menu>
+      <go-menu-item>
+        <go-nav-link block>Item</go-nav-link>
+      </go-menu-item>
+      <go-menu-item>
+        <go-nav-link block>Item</go-nav-link>
+      </go-menu-item>
+      <go-menu-item>
+        <go-nav-link block item='{label: "Item", url:"#"}'>Item</go-nav-link>
+      </go-menu-item>
+    </go-menu>
+    <p>Selected <code id="result"></code></p>
+    <script>
+      const menuItems = document.querySelectorAll('go-menu-item');
+      const result = document.querySelector('#result');
+      menuItems.forEach((item) => {
+        item.addEventListener('select', (e) => {
+          console.log(e);
+        });
+      });
+    </script>
     <!-- #endregion demo finish -->
   </body>
 </html>

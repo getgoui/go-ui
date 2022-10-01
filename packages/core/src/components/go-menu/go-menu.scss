@@ -1,0 +1,18 @@
+go-menu {
+  /**
+    @prop --menu-width:
+      default width of menu
+      - default: default
+  */
+  --menu-width: default;
+
+  /**
+    @prop --menu-divider-color:
+      Color of menu item divider
+      - default: var(--go-color-neutral-300)
+  */
+  --menu-divider-color: var(--go-color-neutral-300);
+
+  display: block;
+  width: var(--menu-width);
+}
