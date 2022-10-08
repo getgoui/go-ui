@@ -1,0 +1,78 @@
+{
+  "name": "@go-ui/gopress",
+  "version": "0.0.1",
+  "description": "Doc site generator using Go UI",
+  "main": "./dist/index.js",
+  "bin": {
+    "gopress": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "site/**"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf sample/*",
+    "gopress": "node ./dist/index.js"
+  },
+  "devDependencies": {
+    "@go-ui/core": "workspace:*",
+    "@stencil/core": "^2.17.4",
+    "@stencil/helmet": "^0.3.3",
+    "@stencil/sass": "^1.5.2",
+    "@stencil/store": "^2.0.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^18.7.13",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
+    "concurrently": "^6.5.1",
+    "cpr": "^3.0.1",
+    "directory-tree": "^3.3.0",
+    "esm": "^3.2.25",
+    "highlight.js": "^11.6.0",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.groupby": "^4.6.0",
+    "lodash.sortby": "^4.7.0",
+    "lodash.uniqby": "^4.7.0",
+    "minimist": "^1.2.6",
+    "nanospinner": "^1.1.0",
+    "puppeteer": "^10.4.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "ts-node": "^10.9.1",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.2",
+    "workbox-build": "^6.5.4"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "copy-text-to-clipboard": "^3.0.1",
+    "fast-glob": "^3.2.12",
+    "figlet-promised": "^1.0.0",
+    "fs-extra": "^10.1.0",
+    "json5": "^2.2.1",
+    "lodash-es": "^4.17.21",
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.startcase": "^4.4.0",
+    "lodash.uniqueid": "^4.0.1",
+    "markdown-it": "^13.0.1",
+    "markdown-it-include": "^2.0.0",
+    "markdown-it-meta": "^0.0.1",
+    "markdown-it-title": "^4.0.0",
+    "pretty": "^2.0.0",
+    "prompts": "^2.4.2",
+    "stencil-router-v2": "^0.6.0"
+  },
+  "tsup": {
+    "clean": true,
+    "entry": [
+      "./bin/index.ts"
+    ],
+    "outDir": "./dist",
+    "sourcemap": false,
+    "target": "es2020",
+    "minify": false
+  }
+}

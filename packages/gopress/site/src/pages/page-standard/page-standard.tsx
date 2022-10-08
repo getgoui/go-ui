@@ -3,7 +3,7 @@ import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { buildContentPageSidebar, loadContentByPath, prepareNavItems, removeLeadingSlash } from '../../utils/helpers';
 import Router from '../../router';
 import ia from '../../generated-ia';
-import { IAItem } from '../../ia.interface';
+import { IAItem } from '../../../interfaces/ia.type';
 import siteConfig from '../../../config';
 
 @Component({

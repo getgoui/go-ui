@@ -15,14 +15,16 @@ import groupBy from 'lodash.groupby';
 import uniqBy from 'lodash.uniqby';
 
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
-import { IA, IAItem } from '../src/ia.interface';
-import siteConfig from '../config';
+import { IA, IAItem } from '../../site/interfaces/ia.type';
+import { SiteConfig } from 'site/interfaces/config.type';
+import { getContentDir } from 'bin/utils/paths';
+import { getTimestamp } from 'bin/utils/timestamp';
 
 const md = new MarkdownIt({
   html: true,
   linkify: true,
   typographer: true,
-  highlight: function(str, lang) {
+  highlight: function (str, lang) {
     return '<pre class="d-none"></pre><code-block code="' + md.utils.escapeHtml(str) + '" language="' + lang + '"></code-block>';
   },
 })
@@ -33,15 +35,11 @@ const md = new MarkdownIt({
 /**
  * go through content folder and generate sidebar based on frontmatter
  */
-const rootPath = path.resolve(__dirname, '..');
-const contentPath = path.resolve(`${rootPath}/content`);
-const srcPath = path.resolve(`${rootPath}/src`);
-const iAFile = `${srcPath}/generated-ia.ts`;
 
 const isIndexItem = (item: IAItem): boolean => item.id === 'index';
-const getContentEditUrl = item => siteConfig.repoLink.url + '/blob/main/docs/content' + item.url + '.md';
+const getContentEditUrl = (siteConfig: SiteConfig, item) => siteConfig.repoLink.url + '/blob/main/docs/content' + item.url + '.md';
 function toNavItems(array): IAItem[] {
-  return array.map(item => {
+  return array.map((item) => {
     const isIndex = isIndexItem(item);
     if (item.type === 'file') {
       return {
@@ -59,7 +57,7 @@ function toNavItems(array): IAItem[] {
     // dir
     const dirName = item.name;
     const rootContent = item.children.find(isIndexItem);
-    const trueChildren = item.children.filter(item => !isIndexItem(item));
+    const trueChildren = item.children.filter((item) => !isIndexItem(item));
     if (!rootContent) {
       return {
         id: dirName,
@@ -76,8 +74,8 @@ function toNavItems(array): IAItem[] {
 }
 
 function sortNavItems(array: IAItem[]): IAItem[] {
-  let result = sortBy(array, [item => !item.isIndex, 'meta.order', 'label']);
-  return result.map(item =>
+  let result = sortBy(array, [(item) => !item.isIndex, 'meta.order', 'label']);
+  return result.map((item) =>
     item.children?.length > 0
       ? {
           ...item,
@@ -89,7 +87,7 @@ function sortNavItems(array: IAItem[]): IAItem[] {
 
 function categorise(navItems: IAItem[]): IA {
   let results = {};
-  navItems.forEach(rootItem => {
+  navItems.forEach((rootItem) => {
     results[rootItem.id] = rootItem;
   });
   return results;
@@ -99,21 +97,25 @@ function removeExt(filename: string): string {
   return filename.substring(0, filename.lastIndexOf('.'));
 }
 
-export function getDocsPrefix() {
+export function getDocsPrefix(siteConfig: SiteConfig) {
   return siteConfig?.docsRoutePrefix ? siteConfig.docsRoutePrefix : 'docs/';
 }
 
-function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true): string {
-  return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix() : '');
+function buildSidebarItemUrl(siteConfig: SiteConfig, comp: JsonDocsComponent, withPrefix = true): string {
+  return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix(siteConfig) : '');
 }
-function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
-  const iaItems = components.map(comp => {
-    let url = '/' + buildSidebarItemUrl(comp);
+function parseCompDocs(siteConfig: SiteConfig): IAItem[] {
+  if (!siteConfig.componentDocs) {
+    return [];
+  }
+
+  const iaItems = siteConfig.componentDocs.map((comp) => {
+    let url = '/' + buildSidebarItemUrl(siteConfig, comp);
     md['meta'] = null; // reset meta for each file
     let env = { title: '', excerpt: [] };
     const content = md.render(comp.readme, env);
     const meta = md.meta;
-    const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
+    const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(siteConfig, comp, false) + '/readme.md';
     return {
       url: url,
       meta: meta,
@@ -128,7 +130,7 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
   return uniqBy(iaItems, 'url');
 }
 
-function parseContents() {
+function parseContents(siteConfig: SiteConfig, contentPath: string) {
   const contentDir = dirTree(
     contentPath,
     {
@@ -155,22 +157,25 @@ function parseContents() {
       (item as any).description = env.excerpt[0];
       (item as any).content = content;
       (item as any).id = id;
-      (item as any).editUrl = getContentEditUrl(item);
+      (item as any).editUrl = getContentEditUrl(siteConfig, item);
     },
   );
   return toNavItems(contentDir.children);
 }
 
 function mergeTree(to: IAItem[], from: IAItem[]): IAItem[] {
-  // console.log('===============FROM==================');
-  // console.log(JSON.stringify(from, null, 2));
-  // console.log('===============TO==================');
-  // console.log(JSON.stringify(to, null, 2));
   return to.concat(from);
 }
 
 function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
-  const categorisedComps = componentDocs.map(comp => {
+  if (!contentItems?.length) {
+    return componentDocs;
+  }
+  if (!componentDocs?.length) {
+    return contentItems;
+  }
+
+  const categorisedComps = componentDocs.map((comp) => {
     const category = comp.url.split('/')[2];
     return {
       ...comp,
@@ -179,7 +184,7 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
   });
   const groups = groupBy(categorisedComps, 'category');
 
-  let docsIndex = contentItems.findIndex(item => item.id === 'docs');
+  let docsIndex = contentItems.findIndex((item) => item.id === 'docs');
   if (docsIndex === -1) {
     contentItems.push({
       id: 'docs',
@@ -188,10 +193,10 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
       children: [],
     });
   }
-  docsIndex = contentItems.findIndex(item => item.id === 'docs');
-  Object.keys(groups).forEach(category => {
+  docsIndex = contentItems.findIndex((item) => item.id === 'docs');
+  Object.keys(groups).forEach((category) => {
     const subDocs = groups[category];
-    let categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
+    let categoryIndex = contentItems[docsIndex].children.findIndex((item) => item.id === category);
     if (categoryIndex === -1) {
       contentItems[docsIndex].children.push({
         id: category,
@@ -200,26 +205,30 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
         children: [],
       });
     }
-    categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
+    categoryIndex = contentItems[docsIndex].children.findIndex((item) => item.id === category);
     contentItems[docsIndex].children[categoryIndex].children = mergeTree(contentItems[docsIndex].children[categoryIndex].children, subDocs);
   });
 
   return contentItems;
 }
 
-async function generateIA(): Promise<void> {
+export async function buildIa(siteConfig: SiteConfig, dir?: string): Promise<void> {
+  const rootPath = `${dir || process.cwd()}/.gopress`;
+  const contentPath = getContentDir(dir);
+  const srcPath = path.resolve(`${rootPath}/src`);
+  const iAFile = `${srcPath}/generated-ia.ts`;
+
   const spinner = createSpinner('Reading content folder').start();
-  const content = parseContents();
-  const componentDocs = parseCompDocs(docs.components);
+  const content = parseContents(siteConfig, contentPath);
+  const componentDocs = parseCompDocs(siteConfig);
   const combinedItems = mergeDocs(content, componentDocs);
   const ia = categorise(sortNavItems(combinedItems));
 
   try {
     const content = `export default ${JSON.stringify(ia, null, 2)}`;
     fs.writeFileSync(iAFile, content);
-    spinner.success();
+    spinner.success({ mark: '📃', text: `${getTimestamp()} Content loaded.` });
   } catch (err) {
     spinner.error();
   }
 }
-generateIA();

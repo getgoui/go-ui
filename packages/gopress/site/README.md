@@ -1,0 +1,1 @@
+gopress is a static site generator built with [Go UI](https://go-ui.com)
