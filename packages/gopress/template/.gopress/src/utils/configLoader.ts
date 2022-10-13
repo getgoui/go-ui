@@ -1,9 +1,8 @@
-// TODO make this non-cli
 import minimist from 'minimist';
 import fs from 'fs';
 import path from 'path';
 import { pathToFileURL } from 'url';
-import { SiteConfig } from 'site/interfaces/config.type';
+import { SiteConfig } from '../../interfaces/config.type';
 import chalk from 'chalk';
 import startCase from 'lodash.startcase';
 

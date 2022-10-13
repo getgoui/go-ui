@@ -1,6 +1,9 @@
 import path from 'path';
 
+export function getGoPressDir(dir) {
+  return `${dir || process.cwd()}/.gopress`;
+}
+
 export function getContentDir(dir) {
-  const rootPath = `${dir || process.cwd()}/.gopress`;
-  return path.resolve(`${rootPath}/../content`);
+  return path.resolve(`${getGoPressDir(dir)}/../content`);
 }

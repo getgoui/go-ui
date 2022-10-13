@@ -3,13 +3,13 @@ import siteConfig from '../../config';
 import MarkdownIt from 'markdown-it';
 import meta from 'markdown-it-meta';
 import MarkdownItTitle from 'markdown-it-title';
-import { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { href } from 'stencil-router-v2';
 import Router from '../router';
 import { goUiPlugin } from '@go-ui/core';
 import ia from '../generated-ia';
-import { IAItem } from '../ia.interface';
+import { IAItem } from '../../interfaces/ia.type';
+import JsonDocsComponent from '../../interfaces/component.type';
 
 export const md = new MarkdownIt({
   html: true,
@@ -51,11 +51,14 @@ export function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true):
 }
 
 export function buildSidebar(): IAItem[] {
+  if (!ia['docs']) {
+    return [];
+  }
   const prefix = getDocsPrefix();
   const activePath = removeLeadingSlash(Router.activePath.replace(prefix, ''));
-  const activeCategory = activePath.split('/')[0]; // patterns/components
 
-  const cat = ia.docs.children.find((category) => category.id === activeCategory);
+  const activeCategory = activePath.split('/')[0]; // patterns/components
+  const cat = ia['docs'].children.find((category) => category.id === activeCategory);
   const sidebar = cat.children as IAItem[];
   return applyRouterLink(sidebar);
 }

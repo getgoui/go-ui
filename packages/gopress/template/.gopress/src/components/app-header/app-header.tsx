@@ -68,8 +68,8 @@ export class AppHeader {
   }
 
   componentDidLoad() {
-    if (Build.isBrowser && siteConfig.algolia) {
-      const { appId, apiKey, indexName } = siteConfig.algolia;
+    if (Build.isBrowser && siteConfig['algolia']) {
+      const { appId, apiKey, indexName } = siteConfig['algolia'];
       docsearch({
         appId,
         apiKey,
@@ -127,7 +127,7 @@ export class AppHeader {
                 <go-icon size="1.5rem" icon-set="bx" name={themeIcons[themeStore.state.currentTheme]}></go-icon>
               </go-button>
             )}
-            {siteConfig?.algolia ? <div id="algolia-search" class="algolia"></div> : null}
+            {siteConfig['algolia'] ? <div id="algolia-search" class="algolia"></div> : null}
           </div>
 
           <go-main-nav slot="main-nav" items={navItems}></go-main-nav>

@@ -1,13 +1,10 @@
 {
-  "name": "@go-ui/docs",
   "version": "0.0.1",
-  "description": "Go UI documentation site",
+  "description": "GoPress template site",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "scripts": {
     "prerender": "stencil build --prerender",
-    "build": "pnpm run build.ia && pnpm run prerender",
-    "build.ia": "ts-node --esm ./bin/build-ia.ts",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",

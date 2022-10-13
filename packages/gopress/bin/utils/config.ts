@@ -2,9 +2,8 @@ import minimist from 'minimist';
 import fs from 'fs';
 import path from 'path';
 import { pathToFileURL } from 'url';
-import { SiteConfig } from 'site/interfaces/config.type';
+import { SiteConfig } from '../../template/.gopress/interfaces/config.type';
 import chalk from 'chalk';
-import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import startCase from 'lodash.startcase';
 
 const defaultConfig = {

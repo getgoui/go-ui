@@ -17,7 +17,7 @@ import uniqBy from 'lodash.uniqby';
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { IA, IAItem } from '../../site/interfaces/ia.type';
 import { SiteConfig } from 'site/interfaces/config.type';
-import { getContentDir } from 'bin/utils/paths';
+import { getContentDir, getGoPressDir } from 'bin/utils/paths';
 import { getTimestamp } from 'bin/utils/timestamp';
 
 const md = new MarkdownIt({
@@ -160,6 +160,9 @@ function parseContents(siteConfig: SiteConfig, contentPath: string) {
       (item as any).editUrl = getContentEditUrl(siteConfig, item);
     },
   );
+  if (!contentDir || !contentDir?.children) {
+    return [];
+  }
   return toNavItems(contentDir.children);
 }
 
@@ -213,7 +216,7 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
 }
 
 export async function buildIa(siteConfig: SiteConfig, dir?: string): Promise<void> {
-  const rootPath = `${dir || process.cwd()}/.gopress`;
+  const rootPath = getGoPressDir(dir);
   const contentPath = getContentDir(dir);
   const srcPath = path.resolve(`${rootPath}/src`);
   const iAFile = `${srcPath}/generated-ia.ts`;
