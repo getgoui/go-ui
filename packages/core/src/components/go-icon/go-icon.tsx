@@ -1,4 +1,5 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { IconProps } from '../../interfaces';
 import { inheritAttributes } from '../../utils/helper';
 export type MaterialIconVariants = `material-icons` | `material-icons-outlined` | `material-icons-round` | `material-icons-sharp`;
 /**
@@ -15,7 +16,7 @@ export type BoxiconVariants = 'bx' | 'bxs' | 'bxl';
   styleUrl: 'go-icon.scss',
   shadow: false,
 })
-export class GoIcon {
+export class GoIcon implements IconProps {
   @Element() el: HTMLElement;
   /**
    * Specify the icon set being referenced.

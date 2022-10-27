@@ -4,6 +4,7 @@ import { inheritAttributes } from '../../../utils/helper';
 import { INavItem } from '../../../interfaces';
 import { trapFocus } from '../../../utils/trap-focus';
 import { parseItems } from '../../../utils/nav';
+import { renderIcon } from '../nav-helpers';
 
 @Component({
   tag: 'go-nav-drawer',
@@ -193,9 +194,9 @@ export class GoNavDrawer {
           <nav aria-label={isSubNav ? parentItem.label : this.label}>
             {isSubNav && parentItem.url ? (
               <div class="parent-link">
-                <go-link href={parentItem.url} {...parentItem.linkAttrs} onClick={e => this.handleNavItemClick(e, parentItem)}>
+                <go-link href={parentItem.url} {...parentItem.linkAttrs} onClick={(e) => this.handleNavItemClick(e, parentItem)}>
                   <span class="nav-item-label">
-                    {parentItem.icon && <go-icon name={parentItem.icon}></go-icon>}
+                    {renderIcon(parentItem.icon)}
                     <span>{parentItem.label}</span>
                   </span>
                   <svg
@@ -211,7 +212,7 @@ export class GoNavDrawer {
                 </go-link>
               </div>
             ) : null}
-            <ul>{items.map(item => this.renderNavItem(item))}</ul>
+            <ul>{items.map((item) => this.renderNavItem(item))}</ul>
           </nav>
         ) : null}
       </div>
@@ -234,7 +235,7 @@ export class GoNavDrawer {
       attrs = {
         href: item.url,
         ...item.linkAttrs,
-        onClick: e => this.handleNavItemClick(e, item),
+        onClick: (e) => this.handleNavItemClick(e, item),
       };
     }
     if (Tag === 'button') {
@@ -242,14 +243,14 @@ export class GoNavDrawer {
         'type': 'button',
         'aria-haspopup': 'true',
         'aria-expanded': 'false',
-        'onClick': e => this.openSubMenu(e),
+        'onClick': (e) => this.openSubMenu(e),
       };
     }
     return (
       <li class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item.isCurrent }}>
         <Tag class="nav-item-inner" {...attrs}>
           <span class="nav-item-label">
-            {item.icon && <go-icon name={item.icon}></go-icon>}
+            {renderIcon(item.icon)}
             <span>{item.label}</span>
           </span>
           {hasChildren ? (

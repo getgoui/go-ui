@@ -123,7 +123,7 @@ importers:
       '@commitlint/cli': ^13.2.1
       '@commitlint/config-conventional': ^13.2.0
       '@floating-ui/dom': ^1.0.1
-      '@stencil/core': ^2.17.4
+      '@stencil/core': ^2.18.1
       '@stencil/postcss': ^2.1.0
       '@stencil/sass': ^1.5.2
       '@types/jest': ^26.0.24
@@ -179,9 +179,9 @@ importers:
       '@axe-core/puppeteer': 4.4.4_puppeteer@5.5.0
       '@commitlint/cli': 13.2.1
       '@commitlint/config-conventional': 13.2.0
-      '@stencil/core': 2.17.4
-      '@stencil/postcss': 2.1.0_@stencil+core@2.17.4
-      '@stencil/sass': 1.5.2_@stencil+core@2.17.4
+      '@stencil/core': 2.18.1
+      '@stencil/postcss': 2.1.0_@stencil+core@2.18.1
+      '@stencil/sass': 1.5.2_@stencil+core@2.18.1
       '@types/jest': 26.0.24
       '@types/markdown-it': 12.2.3
       '@types/node': 18.7.13
@@ -2484,6 +2484,12 @@ packages:
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
 
+  /@stencil/core/2.18.1:
+    resolution: {integrity: sha512-/fXkh1lwZ+X9JQCw50mPjhBogzEHOBvVC5pLoDLZqodVYK0DGWILM2YLV4dcIUBNEK8/HMDpO/Rq81/rS3mNOw==}
+    engines: {node: '>=12.10.0', npm: '>=6.0.0'}
+    hasBin: true
+    dev: true
+
   /@stencil/helmet/0.3.3:
     resolution: {integrity: sha512-CAOsX+mmzozSWOSeUiCZAGHfEo8B2brE+bKJgZJLzs7c3EnX6GBDwn1k1oFamC5PMTxV7PtSib5OcvXTy602DA==}
     dev: true
@@ -2498,12 +2504,30 @@ packages:
       postcss: 8.3.11
     dev: true
 
+  /@stencil/postcss/2.1.0_@stencil+core@2.18.1:
+    resolution: {integrity: sha512-/e4TYEXErGaHxH0ocg620YqEMLuMLpK/Wg4MJsiJglrLZCZhU4XCX1N0SwxaIOUbEZ1Zh+AqQ++yMI92ilndEA==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0'
+    dependencies:
+      '@stencil/core': 2.18.1
+      autoprefixer: 10.4.8_postcss@8.3.11
+      postcss: 8.3.11
+    dev: true
+
   /@stencil/sass/1.5.2_@stencil+core@2.17.4:
     resolution: {integrity: sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==}
     peerDependencies:
       '@stencil/core': '>=1.0.2'
     dependencies:
       '@stencil/core': 2.17.4
+    dev: true
+
+  /@stencil/sass/1.5.2_@stencil+core@2.18.1:
+    resolution: {integrity: sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==}
+    peerDependencies:
+      '@stencil/core': '>=1.0.2'
+    dependencies:
+      '@stencil/core': 2.18.1
     dev: true
 
   /@stencil/store/1.5.0_@stencil+core@2.17.4:
@@ -5951,7 +5975,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.0
+      uglify-js: 3.17.3
     dev: true
 
   /har-schema/2.0.0:
@@ -11807,8 +11831,8 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: false
 
-  /uglify-js/3.17.0:
-    resolution: {integrity: sha512-aTeNPVmgIMPpm1cxXr2Q/nEbvkmV8yq66F3om7X3P/cvOXQ0TMQ64Wk63iyT1gPlmdmGzjGpyLh1f3y8MZWXGg==}
+  /uglify-js/3.17.3:
+    resolution: {integrity: sha512-JmMFDME3iufZnBpyKL+uS78LRiC+mK55zWfM5f/pWBJfpOttXAqYfdDGRukYhJuyRinvPVAtUhvy7rlDybNtFg==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true

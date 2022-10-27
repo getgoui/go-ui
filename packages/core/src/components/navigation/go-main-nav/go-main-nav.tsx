@@ -3,6 +3,7 @@ import { INavItem } from '../../../interfaces';
 import { onClickOutside } from '../../../utils/dom';
 import { inheritAttributes } from '../../../utils/helper';
 import { parseItems } from '../../../utils/nav';
+import { renderIcon } from '../nav-helpers';
 
 @Component({
   tag: 'go-main-nav',
@@ -99,7 +100,7 @@ export class GoMainNav {
     attrs.class = `${attrs.class ? attrs.class : ''} nav-item-link${item.isCurrent ? ' current' : ''}`;
     return (
       <Tag {...attrs}>
-        {item.icon && <go-icon name={item.icon}></go-icon>}
+        {renderIcon(item.icon)}
         <span>{item.label}</span>
         {isSubmenuParentLink ? (
           <svg
@@ -176,7 +177,7 @@ export class GoMainNav {
       <li class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item.isCurrent }}>
         <Tag class="nav-item-inner" {...attrs}>
           <span class="nav-item-label">
-            {item.icon && <go-icon name={item.icon}></go-icon>}
+            {renderIcon(item.icon)}
             <span>{item.label}</span>
           </span>
           {hasChildren ? (

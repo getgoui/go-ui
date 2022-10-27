@@ -63,7 +63,7 @@ export const isDarkMode = () => {
  * @return {Array}           The matching direct descendants
  */
 export function selectDirectChildren(elem: HTMLElement, selector: string): HTMLElement[] {
-  return Array.prototype.filter.call(elem.children, function(child) {
+  return Array.prototype.filter.call(elem.children, function (child) {
     return child.matches(selector);
   });
 }

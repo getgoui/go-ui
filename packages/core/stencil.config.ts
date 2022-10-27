@@ -8,10 +8,9 @@ export const config: Config = {
   namespace: 'go-ui',
   outputTargets: [
     {
-      type: 'dist',
-    },
-    {
       type: 'dist-custom-elements',
+      autoDefineCustomElements: true,
+      generateTypeDeclarations: true,
     },
     {
       type: 'www',
