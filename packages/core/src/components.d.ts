@@ -399,6 +399,8 @@ export namespace Components {
          */
         "size"?: string;
     }
+    interface GoInput {
+    }
     interface GoLink {
         "expandClickableArea"?: boolean;
         /**
@@ -857,6 +859,12 @@ declare global {
         prototype: HTMLGoIconElement;
         new (): HTMLGoIconElement;
     };
+    interface HTMLGoInputElement extends Components.GoInput, HTMLStencilElement {
+    }
+    var HTMLGoInputElement: {
+        prototype: HTMLGoInputElement;
+        new (): HTMLGoInputElement;
+    };
     interface HTMLGoLinkElement extends Components.GoLink, HTMLStencilElement {
     }
     var HTMLGoLinkElement: {
@@ -984,6 +992,7 @@ declare global {
         "go-header-bar": HTMLGoHeaderBarElement;
         "go-hero": HTMLGoHeroElement;
         "go-icon": HTMLGoIconElement;
+        "go-input": HTMLGoInputElement;
         "go-link": HTMLGoLinkElement;
         "go-main-nav": HTMLGoMainNavElement;
         "go-md": HTMLGoMdElement;
@@ -1388,6 +1397,8 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface GoInput {
+    }
     interface GoLink {
         "expandClickableArea"?: boolean;
         /**
@@ -1718,6 +1729,7 @@ declare namespace LocalJSX {
         "go-header-bar": GoHeaderBar;
         "go-hero": GoHero;
         "go-icon": GoIcon;
+        "go-input": GoInput;
         "go-link": GoLink;
         "go-main-nav": GoMainNav;
         "go-md": GoMd;
@@ -1760,6 +1772,7 @@ declare module "@stencil/core" {
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-hero": LocalJSX.GoHero & JSXBase.HTMLAttributes<HTMLGoHeroElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
+            "go-input": LocalJSX.GoInput & JSXBase.HTMLAttributes<HTMLGoInputElement>;
             "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-md": LocalJSX.GoMd & JSXBase.HTMLAttributes<HTMLGoMdElement>;
