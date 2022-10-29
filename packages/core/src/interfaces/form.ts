@@ -7,8 +7,13 @@ export interface FormBaseProps {
   label: string;
   disabled?: boolean;
   value: any;
+  hint?: string;
 }
 
-export interface FormCheckboxProps extends FormBaseProps {
+export interface CheckboxProps extends FormBaseProps {
   checked?: boolean;
+}
+
+export interface InputProps extends FormBaseProps {
+  error?: string | boolean;
 }

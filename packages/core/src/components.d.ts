@@ -400,6 +400,30 @@ export namespace Components {
         "size"?: string;
     }
     interface GoInput {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * Value of the input
+         */
+        "value": any;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;
@@ -1398,6 +1422,30 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface GoInput {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * Value of the input
+         */
+        "value"?: any;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;

@@ -1,0 +1,24 @@
+go-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--input-gap-inner);
+  margin: var(--input-gap-outer);
+  &.error {
+    .control {
+      --input-border-color: var(--input-error-color);
+      border-color: var(--input-error-color);
+    }
+  }
+  label {
+    line-height: 1.5;
+  }
+  .error-msg {
+    color: var(--input-error-color);
+  }
+  .control {
+    padding: var(--input-control-padding);
+    border-radius: var(--input-radius);
+    border: var(--input-border);
+    outline-color: var(--input-border-color);
+  }
+}

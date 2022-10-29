@@ -23,11 +23,13 @@
       }
     </style>
     <!-- keep this sandbox empty before pushing changes -->
-
-    <div class="frame container">
+    <header>
+      <h1>Demo</h1>
+    </header>
+    <main class="frame container">
       <!-- #region demo start -->
-      <go-input type="text" label="Input field" hint="Please enter some text"></go-input>
-      <go-input type="text" label="Error state" hint="Please enter some text" error="Error message"></go-input>
+      <go-input id="test" type="text" label="Input field" hint="Please enter some text"></go-input>
+      <go-input type="text" label="Input field" hint="Please enter some text" error="This is an error"></go-input>
       <!-- #endregion demo finish -->
     </div>
   </body>

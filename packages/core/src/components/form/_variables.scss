@@ -1,0 +1,60 @@
+:root {
+  /**
+    @prop --input-gap-inner:
+      Inner immediately above and below input control
+      - default: 0.5rem
+  */
+  --input-gap-inner: 0.5rem;
+
+  /**
+    @prop --input-control-padding:
+      Padding for input control
+      - default: 0.75rem 0.5rem
+  */
+  --input-control-padding: 0.75rem 0.5rem;
+
+  /**
+    @prop --input-radius:
+      Border radius for the control
+      - default: var(--radius-2)
+  */
+  --input-radius: var(--radius-2);
+
+  /**
+    @prop --input-border-color:
+      border color of the input
+      - default: var(--go-color-neutral-400)
+  */
+  --input-border-color: var(--go-color-neutral-400);
+  /**
+    @prop --input-border:
+      Border style of input control
+      - default: 1px solid var(--input-border-color)
+  */
+  --input-border: 1px solid var(--input-border-color);
+
+  /**
+    @prop --input-gap-outer:
+      Outer margin of form field
+      - default: 1rem
+  */
+  --input-gap-outer: 1rem;
+
+  /**
+    @prop --input-error-color:
+      Error state color
+      - default: var(--go-color-critical-600)
+  */
+  --input-error-color: var(--go-color-critical-600);
+}
+
+@include prefer-dark {
+  :root {
+    --input-error-color: var(--go-color-critical-600);
+  }
+}
+@include theme-dark {
+  :root {
+    --input-error-color: var(--go-color-critical-600);
+  }
+}
