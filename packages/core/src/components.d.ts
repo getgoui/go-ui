@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -383,13 +383,13 @@ export namespace Components {
          */
         "color"?: string;
         /**
-          * Mark this icon to be hidden from screen reader
-         */
-        "decorative": boolean;
-        /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
         "iconSet": MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
+        /**
+          * provide label for screen reader
+         */
+        "label"?: string;
         /**
           * Name of the icon
          */
@@ -420,6 +420,14 @@ export namespace Components {
           * Name of the input field
          */
         "name": string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
+         */
+        "type"?: InputType;
         /**
           * Value of the input
          */
@@ -1405,13 +1413,13 @@ declare namespace LocalJSX {
          */
         "color"?: string;
         /**
-          * Mark this icon to be hidden from screen reader
-         */
-        "decorative"?: boolean;
-        /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
         "iconSet"?: MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
+        /**
+          * provide label for screen reader
+         */
+        "label"?: string;
         /**
           * Name of the icon
          */
@@ -1442,6 +1450,14 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
+         */
+        "type"?: InputType;
         /**
           * Value of the input
          */

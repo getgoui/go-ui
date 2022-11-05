@@ -1,0 +1,18 @@
+@mixin field-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--input-gap-inner);
+  margin: var(--input-gap-outer);
+  line-height: 1.5;
+  &.error {
+    .control {
+      --input-border-color: var(--input-error-color);
+      border-color: var(--input-error-color);
+    }
+    .error-msg {
+      color: var(--input-error-color);
+    }
+  }
+}
+@mixin field-control {
+}

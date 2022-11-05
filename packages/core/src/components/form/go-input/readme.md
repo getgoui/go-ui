@@ -1,3 +1,12 @@
-## go-input API
+---
+title: Input
+---
 
-<!-- Auto Generated Below -->
+
+# Input <span class="text-size-0">`go-input`</span>
+
+<!-- Description -->
+
+<div class="text-size-1">
+  Single-line input field for text, number, email, telephone, url.  
+</div>

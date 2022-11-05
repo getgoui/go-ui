@@ -8,6 +8,7 @@ export interface FormBaseProps {
   disabled?: boolean;
   value: any;
   hint?: string;
+  readonly?: boolean;
 }
 
 export interface CheckboxProps extends FormBaseProps {
@@ -16,4 +17,7 @@ export interface CheckboxProps extends FormBaseProps {
 
 export interface InputProps extends FormBaseProps {
   error?: string | boolean;
+  type?: InputType;
 }
+
+export type InputType = 'email' | 'number' | 'password' | 'search' | 'tel' | 'text';
