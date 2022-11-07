@@ -1,5 +1,4 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
-import { spawn } from 'child_process';
 import { IconProps } from '../../interfaces';
 import { inheritAttributes } from '../../utils/helper';
 export type MaterialIconVariants = `material-icons` | `material-icons-outlined` | `material-icons-round` | `material-icons-sharp`;
@@ -56,17 +55,13 @@ export class GoIcon implements IconProps {
     const { iconSet, name, size, color, label, attrs } = this;
     const { class: customClasses } = attrs;
     return (
+      // prettier-ignore
       <Host
         aria-hidden={label ? 'false' : 'true'}
         style={{
           '--icon-size': size ? size : null,
           '--icon-color': color ? color : null,
-        }}>
-        {label ? <span class="visually-hidden">{label}</span> : null}
-        {iconSet.startsWith('material') ? <span class={`${iconSet} go-icon ${customClasses ? customClasses : ''}`}>{name}</span> : null}
-        {iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}
-        {iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}
-      </Host>
+        }}>{label ? <span class="visually-hidden">{label}</span> : null}{iconSet.startsWith('material') ? <span class={`${iconSet} go-icon ${customClasses ? customClasses : ''}`}>{name}</span> : null}{iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}{iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}</Host>
     );
   }
 }

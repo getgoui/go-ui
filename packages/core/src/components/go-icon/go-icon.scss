@@ -5,7 +5,6 @@ go-icon {
   &[icon-set^='material'] {
     --icon-size: 1.5em;
     .go-icon {
-      vertical-align: middle;
       transform: rotate(0.03deg); // https://github.com/google/material-design-icons/issues/648
       line-height: 1em;
       display: inherit;

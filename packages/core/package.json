@@ -66,6 +66,7 @@
     "postcss-pxtorem": "^6.0.0",
     "prompts": "^2.4.2",
     "puppeteer": "^5.5.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.5",
     "stylelint": "^14.11.0",

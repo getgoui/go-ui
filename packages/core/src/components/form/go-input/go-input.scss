@@ -1,131 +1,6 @@
+// form variables and mixins
+@import '../variables';
 @import '../mixins';
-
-:root {
-  /**
-    @prop --input-gap-inner:
-      Inner immediately above and below input control
-      - default: 0.5rem
-  */
-  --input-gap-inner: 0.5rem;
-
-  /**
-    @prop --input-padding-y:
-      Vertical padding of input control
-      - default: 0.75rem
-  */
-  --input-padding-y: 0.75rem;
-
-  /**
-    @prop --input-padding-x:
-      Horizontal padding of input control
-      - default: 0.5rem
-  */
-  --input-padding-x: 0.5rem;
-
-  /**
-    @prop --input-control-padding:
-      Padding for input control
-      - default: 0.75rem 0.5rem
-  */
-  --input-control-padding: var(--input-padding-y) var(--input-padding-x);
-
-  /**
-    @prop --input-radius:
-      Border radius for the control
-      - default: var(--radius-2)
-  */
-  --input-radius: var(--radius-2);
-
-  /**
-    @prop --input-border-color:
-      border color of the input
-      - default: var(--go-color-neutral-400)
-  */
-  --input-border-color: var(--go-color-neutral-400);
-  /**
-    @prop --input-border:
-      Border style of input control
-      - default: 1px solid var(--input-border-color)
-  */
-  --input-border: 1px solid var(--input-border-color);
-
-  /**
-    @prop --input-gap-outer:
-      Outer margin of form field
-      - default: 1rem
-  */
-  --input-gap-outer: 1rem;
-
-  /**
-    @prop --input-error-color:
-      Error state color
-      - default: var(--go-color-critical-600)
-  */
-  --input-error-color: var(--go-color-critical-600);
-
-  /**
-    @prop --input-focus-shadow:
-      Shadow on focus
-      - default: var(--inner-shadow-2)
-  */
-  --input-focus-shadow: var(--inner-shadow-2);
-
-  /**
-    @prop --input-icon-size:
-      Icon size for input control
-      - default: 1.5rem
-  */
-  --input-icon-size: 1.5rem;
-
-  /**
-    @prop --input-text-disabled-color:
-      Text color for disabled
-      - default: var(--go-color-neutral-700)
-  */
-  --input-text-disabled-color: var(--go-color-neutral-700);
-  /**
-    @prop --input-bg-disabled-color:
-      Background color for disabled input control
-      - default: rgba(var(--go-token-neutral-200), 0.3)
-  */
-  --input-bg-disabled-color: rgba(var(--go-token-neutral-200), 0.3);
-
-  /**
-    @prop --input-text-readonly-color:
-      Text color for readonly input
-      - default: var(--go-color-neutral-700)
-  */
-  --input-text-readonly-color: var(--go-color-neutral-700);
-  /**
-    @prop --input-bg-readonly-color:
-      Background color for readonly input control
-      - default: rgba(var(--go-token-neutral-200), 0.3)
-  */
-  --input-bg-readonly-color: rgba(var(--go-token-neutral-200), 0.3);
-  /**
-    @prop --input-prefix-bg:
-      Background for prefix area
-      - default: var(--go-color-neutral-100)
-  */
-  --input-prefix-bg: var(--go-color-neutral-100);
-  /**
-    @prop --input-prefix-text-color:
-      Text color on prefix area
-      - default: var(--go-color-neutral-800)
-  */
-  --input-prefix-text-color: var(--go-color-neutral-800);
-}
-
-@include prefer-dark {
-  :root {
-    --input-error-color: var(--go-color-critical-700);
-  }
-}
-@include theme-dark {
-  :root {
-    --input-error-color: var(--go-color-critical-700);
-  }
-}
 
 go-input {
   display: flex;
@@ -135,6 +10,7 @@ go-input {
   line-height: 1.5rem;
   &.error {
     color: var(--input-error-color);
+    --input-hint-color: var(--input-error-color);
 
     .control {
       --input-border-color: var(--input-error-color);
@@ -177,18 +53,35 @@ go-input {
       display: flex;
       flex-direction: column;
     }
+    .presuf {
+      display: block;
+      background: var(--input-presuf-bg);
+      color: var(--input-presuf-text-color);
+      padding: var(--input-presuf-padding);
+      border: var(--input-border);
+      line-height: 1;
+    }
+    .control-icon {
+      top: auto;
+      bottom: var(--input-padding-y);
+      transform: none;
+      @include tablet {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+      }
+    }
     @include tablet {
       .control-wrapper {
         flex-direction: row;
         flex-wrap: nowrap;
         width: 100%;
       }
-      .prefix,
-      .suffix {
+      .presuf {
         flex: 1;
-        min-width: 10rem;
         width: auto;
         max-width: 45%;
+        white-space: nowrap;
       }
       .control {
         min-width: 55%;
@@ -206,11 +99,6 @@ go-input {
       }
     }
     .prefix {
-      display: block;
-      background: var(--input-prefix-bg);
-      color: var(--input-prefix-text-color);
-      padding: var(--input-control-padding);
-      border: var(--input-border);
       border-top-left-radius: var(--input-radius);
       border-top-right-radius: var(--input-radius);
       border-bottom: none;
@@ -219,6 +107,38 @@ go-input {
         border-right: none;
         border-top-right-radius: 0;
         border-bottom-left-radius: var(--input-radius);
+      }
+    }
+  }
+  &.has-suffix {
+    .control {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
+      @include tablet {
+        border-bottom-left-radius: var(--input-radius);
+        border-top-right-radius: 0;
+      }
+    }
+    .suffix {
+      border-bottom-left-radius: var(--input-radius);
+      border-bottom-right-radius: var(--input-radius);
+      border-top: none;
+      @include tablet {
+        border: var(--input-border);
+        border-left: none;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: var(--input-radius);
+      }
+    }
+    .control-icon {
+      top: var(--input-padding-y);
+      bottom: auto;
+      transform: none;
+      @include tablet {
+        top: auto;
+        bottom: 50%;
+        transform: translateY(50%);
       }
     }
   }
@@ -256,5 +176,11 @@ go-input {
         width: 100%;
       }
     }
+  }
+
+  :where(.hint) {
+    color: var(--input-hint-color);
+    line-height: 1;
+    font-size: var(--go-size--1);
   }
 }

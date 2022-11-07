@@ -3,9 +3,13 @@ import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 export const config: Config = {
   namespace: 'go-ui',
+  rollupPlugins: {
+    after: [nodePolyfills()],
+  },
   outputTargets: [
     {
       type: 'dist-custom-elements',

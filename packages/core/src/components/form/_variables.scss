@@ -1,0 +1,138 @@
+:root {
+  /**
+    @prop --input-gap-inner:
+      Inner immediately above and below input control
+      - default: 0.25rem
+  */
+  --input-gap-inner: 0.25rem;
+
+  /**
+    @prop --input-padding-y:
+      Vertical padding of input control
+      - default: 0.75rem
+  */
+  --input-padding-y: 0.75rem;
+
+  /**
+    @prop --input-padding-x:
+      Horizontal padding of input control
+      - default: 0.5rem
+  */
+  --input-padding-x: 0.5rem;
+
+  /**
+    @prop --input-control-padding:
+      Padding for input control
+      - default: 0.75rem 0.5rem
+  */
+  --input-control-padding: var(--input-padding-y) var(--input-padding-x);
+
+  /**
+    @prop --input-radius:
+      Border radius for the control
+      - default: var(--radius-2)
+  */
+  --input-radius: var(--radius-2);
+
+  /**
+    @prop --input-border-color:
+      border color of the input
+      - default: var(--go-color-neutral-400)
+  */
+  --input-border-color: var(--go-color-neutral-400);
+  /**
+    @prop --input-border:
+      Border style of input control
+      - default: 1px solid var(--input-border-color)
+  */
+  --input-border: 1px solid var(--input-border-color);
+
+  /**
+    @prop --input-gap-outer:
+      Outer margin of form field
+      - default: 1rem
+  */
+  --input-gap-outer: 1rem;
+
+  /**
+    @prop --input-error-color:
+      Error state color
+      - default: var(--go-color-critical-600)
+  */
+  --input-error-color: var(--go-color-critical-600);
+
+  /**
+    @prop --input-focus-shadow:
+      Shadow on focus
+      - default: var(--inner-shadow-2)
+  */
+  --input-focus-shadow: var(--inner-shadow-2);
+
+  /**
+    @prop --input-icon-size:
+      Icon size for input control
+      - default: 1.5rem
+  */
+  --input-icon-size: 1.5rem;
+
+  /**
+    @prop --input-text-disabled-color:
+      Text color for disabled
+      - default: var(--go-color-neutral-700)
+  */
+  --input-text-disabled-color: var(--go-color-neutral-700);
+  /**
+    @prop --input-bg-disabled-color:
+      Background color for disabled input control
+      - default: rgba(var(--go-token-neutral-200), 0.3)
+  */
+  --input-bg-disabled-color: rgba(var(--go-token-neutral-200), 0.3);
+
+  /**
+    @prop --input-text-readonly-color:
+      Text color for readonly input
+      - default: var(--go-color-neutral-700)
+  */
+  --input-text-readonly-color: var(--go-color-neutral-700);
+  /**
+    @prop --input-bg-readonly-color:
+      Background color for readonly input control
+      - default: rgba(var(--go-token-neutral-200), 0.3)
+  */
+  --input-bg-readonly-color: rgba(var(--go-token-neutral-200), 0.3);
+  /**
+    @prop --input-presuf-bg:
+      Background for prefix/suffix area
+      - default: var(--go-color-neutral-100)
+  */
+  --input-presuf-bg: var(--go-color-neutral-100);
+  /**
+    @prop --input-presuf-text-color:
+      Text color on prefix/suffix area
+      - default: var(--go-color-neutral-800)
+  */
+  --input-presuf-text-color: var(--go-color-neutral-800);
+  /**
+    @prop --input-presuf-padding:
+      Padding for prefix/suffix area
+      - default: var(--input-control-padding)
+  */
+  --input-presuf-padding: var(--input-control-padding);
+  /**
+    @prop --input-hint-color:
+      Hint text color
+      - default: var(--go-color-neutral-600)
+  */
+  --input-hint-color: var(--go-color-neutral-600);
+}
+
+@include prefer-dark {
+  :root {
+    --input-error-color: var(--go-color-critical-700);
+  }
+}
+@include theme-dark {
+  :root {
+    --input-error-color: var(--go-color-critical-700);
+  }
+}
