@@ -119,10 +119,10 @@ export class GoInput implements InputProps {
           'error': !!error,
           'readonly': !!readonly,
           'disabled': !!disabled,
-          'has-icon-after': hasIconAfter,
-          'has-icon-before': hasIconBefore,
           'has-prefix': hasPrefix,
           'has-suffix': hasSuffix,
+          'has-icon-after': hasIconAfter && !hasSuffix,
+          'has-icon-before': hasIconBefore && !hasPrefix,
         }}>
         <label htmlFor={id} id={labelId}>
           {label}

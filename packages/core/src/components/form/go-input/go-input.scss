@@ -3,37 +3,13 @@
 @import '../mixins';
 
 go-input {
-  display: flex;
-  flex-direction: column;
-  gap: var(--input-gap-inner);
-  margin: var(--input-gap-outer);
-  line-height: 1.5rem;
+  @include field-container;
   &.error {
-    color: var(--input-error-color);
-    --input-hint-color: var(--input-error-color);
-
-    .control {
-      --input-border-color: var(--input-error-color);
-      border-color: var(--input-error-color);
-    }
+    @include error-state;
   }
 
   // apply padding on right
-  &.has-icon-after,
-  &.readonly {
-    .control-wrapper {
-      .control {
-        padding-right: calc(var(--input-icon-size) + (2 * var(--input-gap-inner)));
-      }
-    }
-  }
-  &.has-icon-before {
-    .control-wrapper {
-      .control {
-        padding-left: calc(var(--input-icon-size) + (2 * var(--input-gap-inner)));
-      }
-    }
-  }
+  @include icon-paddings;
 
   &.readonly {
     .lock-icon {
@@ -41,146 +17,33 @@ go-input {
     }
   }
   &.disabled {
-    .control {
-      color: var(--input-text-disabled-color);
-      background-color: var(--input-bg-disabled-color);
-    }
+    @include disabled-state;
   }
 
   &.has-prefix,
   &.has-suffix {
-    .control-wrapper {
-      display: flex;
-      flex-direction: column;
-    }
-    .presuf {
-      display: block;
-      background: var(--input-presuf-bg);
-      color: var(--input-presuf-text-color);
-      padding: var(--input-presuf-padding);
-      border: var(--input-border);
-      line-height: 1;
-    }
-    .control-icon {
-      top: auto;
-      bottom: var(--input-padding-y);
-      transform: none;
-      @include tablet {
-        top: 50%;
-        bottom: auto;
-        transform: translateY(-50%);
-      }
-    }
-    @include tablet {
-      .control-wrapper {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        width: 100%;
-      }
-      .presuf {
-        flex: 1;
-        width: auto;
-        max-width: 45%;
-        white-space: nowrap;
-      }
-      .control {
-        min-width: 55%;
-      }
-    }
+    @include presuf-common;
   }
   &.has-prefix {
-    .control {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-
-      @include tablet {
-        border-top-right-radius: var(--input-radius);
-        border-bottom-left-radius: 0;
-      }
-    }
-    .prefix {
-      border-top-left-radius: var(--input-radius);
-      border-top-right-radius: var(--input-radius);
-      border-bottom: none;
-      @include tablet {
-        border-bottom: var(--input-border);
-        border-right: none;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: var(--input-radius);
-      }
-    }
+    @include prefix;
   }
   &.has-suffix {
-    .control {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-
-      @include tablet {
-        border-bottom-left-radius: var(--input-radius);
-        border-top-right-radius: 0;
-      }
-    }
-    .suffix {
-      border-bottom-left-radius: var(--input-radius);
-      border-bottom-right-radius: var(--input-radius);
-      border-top: none;
-      @include tablet {
-        border: var(--input-border);
-        border-left: none;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: var(--input-radius);
-      }
-    }
-    .control-icon {
-      top: var(--input-padding-y);
-      bottom: auto;
-      transform: none;
-      @include tablet {
-        top: auto;
-        bottom: 50%;
-        transform: translateY(50%);
-      }
-    }
+    @include suffix;
   }
 
-  :where(.control-wrapper) {
+  .control-wrapper {
     position: relative;
-    .control {
-      width: 100%;
-      padding: var(--input-control-padding);
-      border-radius: var(--input-radius);
-      border: var(--input-border);
-      outline-color: var(--input-border-color);
-      overflow: hidden;
-      &:focus-visible {
-        @include focus-outline;
-        box-shadow: var(--input-focus-shadow);
-      }
-    }
+  }
 
-    .control-icon {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: var(--input-gap-inner);
-      width: var(--input-icon-size);
-      height: var(--input-icon-size);
-      &.icon-before {
-        right: auto;
-        left: var(--input-gap-inner);
-      }
-      svg {
-        fill: currentColor;
-      }
-      > * {
-        width: 100%;
-      }
-    }
+  .control {
+    @include field-control;
+  }
+
+  .control-icon {
+    @include control-icon;
   }
 
   :where(.hint) {
-    color: var(--input-hint-color);
-    line-height: 1;
-    font-size: var(--go-size--1);
+    @include hint;
   }
 }
