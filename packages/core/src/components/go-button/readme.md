@@ -122,24 +122,20 @@ Buttons and links may feel similar but they serve different purposes and have di
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <div class="container">
   <p>Additional icon font CSS required, see source code for details.</p>
-  <go-button icon aria-label="Search button" variant="primary">
-    <go-icon decorative name="search"></go-icon>
-    <span class="visually-hidden">Search</span>
+  <go-button icon variant="primary">
+    <go-icon label="Search" name="search"></go-icon>
   </go-button>
 
-  <go-button icon aria-label="Search button" outline variant="primary">
-    <go-icon decorative name="search"></go-icon>
-    <span class="visually-hidden">Search</span>
+  <go-button icon outline variant="primary">
+    <go-icon label="Search" name="search"></go-icon>
   </go-button>
 
-  <go-button icon aria-label="Search button" outline round variant="primary">
-    <go-icon decorative name="search"></go-icon>
-    <span class="visually-hidden">Search</span>
+  <go-button icon outline round variant="primary">
+    <go-icon label="Search" name="search"></go-icon>
   </go-button>
 
-  <go-button icon aria-label="Search button" flat variant="primary">
-    <go-icon decorative name="search"></go-icon>
-    <span class="visually-hidden">Search</span>
+  <go-button icon flat variant="primary">
+    <go-icon label="Search" name="search"></go-icon>
   </go-button>
 </div>
 
