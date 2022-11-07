@@ -10,3 +10,7 @@ title: Input
 <div class="text-size-1">
   Single-line input field for text, number, email, telephone, url.  
 </div>
+
+
+## Demo
+<demo-frame component="go-input" demo="go-input"></demo-frame>
