@@ -14,3 +14,6 @@ title: Input
 
 ## Demo
 <demo-frame component="go-input" demo="go-input"></demo-frame>
+
+
+<!-- Auto Generated Below -->

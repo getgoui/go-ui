@@ -22,7 +22,7 @@ const md = new MarkdownIt({
   html: true,
   linkify: true,
   typographer: true,
-  highlight: function(str, lang) {
+  highlight: function (str, lang) {
     return '<pre class="d-none"></pre><code-block code="' + md.utils.escapeHtml(str) + '" language="' + lang + '"></code-block>';
   },
 })
@@ -39,9 +39,9 @@ const srcPath = path.resolve(`${rootPath}/src`);
 const iAFile = `${srcPath}/generated-ia.ts`;
 
 const isIndexItem = (item: IAItem): boolean => item.id === 'index';
-const getContentEditUrl = item => siteConfig.repoLink.url + '/blob/main/docs/content' + item.url + '.md';
+const getContentEditUrl = (item) => siteConfig.repoLink.url + '/blob/main/docs/content' + item.url + '.md';
 function toNavItems(array): IAItem[] {
-  return array.map(item => {
+  return array.map((item) => {
     const isIndex = isIndexItem(item);
     if (item.type === 'file') {
       return {
@@ -59,7 +59,7 @@ function toNavItems(array): IAItem[] {
     // dir
     const dirName = item.name;
     const rootContent = item.children.find(isIndexItem);
-    const trueChildren = item.children.filter(item => !isIndexItem(item));
+    const trueChildren = item.children.filter((item) => !isIndexItem(item));
     if (!rootContent) {
       return {
         id: dirName,
@@ -76,8 +76,8 @@ function toNavItems(array): IAItem[] {
 }
 
 function sortNavItems(array: IAItem[]): IAItem[] {
-  let result = sortBy(array, [item => !item.isIndex, 'meta.order', 'label']);
-  return result.map(item =>
+  let result = sortBy(array, [(item) => !item.isIndex, 'meta.order', 'label']);
+  return result.map((item) =>
     item.children?.length > 0
       ? {
           ...item,
@@ -89,7 +89,7 @@ function sortNavItems(array: IAItem[]): IAItem[] {
 
 function categorise(navItems: IAItem[]): IA {
   let results = {};
-  navItems.forEach(rootItem => {
+  navItems.forEach((rootItem) => {
     results[rootItem.id] = rootItem;
   });
   return results;
@@ -107,22 +107,27 @@ function buildSidebarItemUrl(comp: JsonDocsComponent, withPrefix = true): string
   return comp.filePath.substring(0, comp.filePath.lastIndexOf('/')).replace('./src/', withPrefix ? getDocsPrefix() : '');
 }
 function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
-  const iaItems = components.map(comp => {
+  const iaItems = components.map((comp) => {
     let url = '/' + buildSidebarItemUrl(comp);
     md['meta'] = null; // reset meta for each file
     let env = { title: '', excerpt: [] };
-    const content = md.render(comp.readme, env);
-    const meta = md.meta;
-    const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
-    return {
-      url: url,
-      meta: meta,
-      label: meta?.title || env.title || siteConfig.sidebar.tagToLabel(comp.tag),
-      description: env.excerpt[0],
-      content: content,
-      id: comp.tag,
-      editUrl,
-    } as IAItem;
+    try {
+      const content = md.render(comp?.readme || `---\ntitle: ${comp.tag}\n---\n\n`, env);
+      const meta = md.meta;
+      const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
+      return {
+        url: url,
+        meta: meta,
+        label: meta?.title || env.title || siteConfig.sidebar.tagToLabel(comp.tag),
+        description: env.excerpt[0],
+        content: content,
+        id: comp.tag,
+        editUrl,
+      } as IAItem;
+    } catch (error) {
+      console.log('error parsing component docs');
+      console.log(comp.readme);
+    }
   });
 
   return uniqBy(iaItems, 'url');
@@ -170,7 +175,7 @@ function mergeTree(to: IAItem[], from: IAItem[]): IAItem[] {
 }
 
 function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
-  const categorisedComps = componentDocs.map(comp => {
+  const categorisedComps = componentDocs.map((comp) => {
     const category = comp.url.split('/')[2];
     return {
       ...comp,
@@ -179,7 +184,7 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
   });
   const groups = groupBy(categorisedComps, 'category');
 
-  let docsIndex = contentItems.findIndex(item => item.id === 'docs');
+  let docsIndex = contentItems.findIndex((item) => item.id === 'docs');
   if (docsIndex === -1) {
     contentItems.push({
       id: 'docs',
@@ -188,10 +193,10 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
       children: [],
     });
   }
-  docsIndex = contentItems.findIndex(item => item.id === 'docs');
-  Object.keys(groups).forEach(category => {
+  docsIndex = contentItems.findIndex((item) => item.id === 'docs');
+  Object.keys(groups).forEach((category) => {
     const subDocs = groups[category];
-    let categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
+    let categoryIndex = contentItems[docsIndex].children.findIndex((item) => item.id === category);
     if (categoryIndex === -1) {
       contentItems[docsIndex].children.push({
         id: category,
@@ -200,7 +205,7 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
         children: [],
       });
     }
-    categoryIndex = contentItems[docsIndex].children.findIndex(item => item.id === category);
+    categoryIndex = contentItems[docsIndex].children.findIndex((item) => item.id === category);
     contentItems[docsIndex].children[categoryIndex].children = mergeTree(contentItems[docsIndex].children[categoryIndex].children, subDocs);
   });
 
