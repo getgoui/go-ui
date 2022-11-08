@@ -43,7 +43,7 @@ go-input {
     @include control-icon;
   }
 
-  :where(.hint) {
+  .hint {
     @include hint;
   }
 }
