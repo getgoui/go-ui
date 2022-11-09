@@ -1,6 +1,6 @@
 go-hero {
-  --hero-padding-top: 2rem;
-  --hero-padding-bottom: 2rem;
+  --hero-padding-top: 0;
+  --hero-padding-bottom: 0;
   --hero-breadcrumb-gap: 2rem;
   --hero-pre-heading-gap: 0;
   --hero-bg-color: var(--go-color-primary-100);
@@ -9,12 +9,100 @@ go-hero {
   --hero-image-flex-basis: 40%;
   --hero-container-gap: 2rem;
 
+  /**
+    @prop --hero-text-bg-blur-on-img:
+      Blur effect for hero text when `full-width-bg` slot is used.
+      - default: 10px
+  */
+  --hero-text-bg-blur-on-img: 10px;
+
+  /**
+    @prop --hero-text-box-padding:
+      Padding on hero text
+      - default: 2rem
+  */
+  --hero-text-box-padding: 2rem;
+
+  /**
+    @prop --hero-img-aspect-ratio:
+      Aspect ratio of hero image (e.g. 16/9 or 4/3)
+      - default: 4/3
+  */
+  --hero-img-aspect-ratio: 4/3;
+
+  /**
+    @prop --hero-img-fit:
+      object-fit for image (e.g. cover/contain/etc)
+      - default: cover
+  */
+  --hero-img-fit: cover;
+  /**
+    @prop --hero-img-position:
+      object-position for hero image
+      - default: center
+  */
+  --hero-img-position: center;
+
+  /**
+    @prop --hero-full-width-bg-padding:
+      Padding for outer hero section (from go-hero top to text box top) when `full-width-bg` is slotted
+      - default: 4rem 0
+  */
+  --hero-full-width-bg-padding: 4rem 0;
+
+  /**
+    @prop --hero-bg-opacity-on-img:
+      Opacity of background on hero text box when `full-width-bg` is slotted
+      - default: 0.5
+  */
+  --hero-bg-opacity-on-img: 0.5;
+
   display: block;
   background-color: var(--hero-bg-color);
   color: var(--hero-fg-color);
   position: relative;
+  overflow: hidden;
+
+  .full-width-bg {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.has-full-width-bg {
+    .hero-container {
+      padding: var(--hero-full-width-bg-padding);
+    }
+    .hero-text {
+      position: relative;
+      backdrop-filter: blur(var(--hero-text-bg-blur-on-img));
+    }
+    .hero-text-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: var(--hero-bg-color);
+      opacity: var(--hero-bg-opacity-on-img);
+    }
+  }
+
+  &.hide-img-on-mobile {
+    .hero-image {
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
+  }
 
   .hero-container {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     padding-top: var(--hero-padding-top);
@@ -26,6 +114,7 @@ go-hero {
   }
 
   .hero-text {
+    padding: var(--hero-text-box-padding);
     go-breadcrumb {
       margin-bottom: var(--hero-breadcrumb-gap);
     }
@@ -34,16 +123,19 @@ go-hero {
     }
 
     @include desktop {
-      flex: 0 0 var(--hero-text-flex-basis);
+      flex: 0 1 var(--hero-text-flex-basis);
     }
   }
   .hero-image {
     @include desktop {
-      flex: 0 0 var(--hero-image-flex-basis);
+      flex: 0 1 var(--hero-image-flex-basis);
     }
     .featured-img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: var(--hero-img-fit);
+      object-position: var(--hero-img-position);
+      aspect-ratio: var(--hero-img-aspect-ratio);
     }
   }
 }

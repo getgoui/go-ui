@@ -359,11 +359,15 @@ export namespace Components {
         /**
           * Breadcrumb navigation items
          */
-        "breadcrumb"?: INavItem[] | string;
+        "breadcrumbs"?: INavItem[] | string;
         /**
           * Hero heading (h1)
          */
         "heading": string;
+        /**
+          * if we should hide hero img on mobile(`full-width-bg` slot not affected)
+         */
+        "hideImgOnMobile": boolean;
         /**
           * hero image alt text (requires img-src attribute to be present to render)
          */
@@ -1389,11 +1393,15 @@ declare namespace LocalJSX {
         /**
           * Breadcrumb navigation items
          */
-        "breadcrumb"?: INavItem[] | string;
+        "breadcrumbs"?: INavItem[] | string;
         /**
           * Hero heading (h1)
          */
         "heading"?: string;
+        /**
+          * if we should hide hero img on mobile(`full-width-bg` slot not affected)
+         */
+        "hideImgOnMobile"?: boolean;
         /**
           * hero image alt text (requires img-src attribute to be present to render)
          */

@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
 import { INavItem } from '../../interfaces';
-import { warning } from '../../utils/helper';
+import { hasSlot, warning } from '../../utils/helper';
 
 export interface HeroProps {
   heading: string;
@@ -34,7 +34,7 @@ export class GoHero implements HeroProps {
   /**
    * Breadcrumb navigation items
    */
-  @Prop() breadcrumb?: INavItem[] | string;
+  @Prop() breadcrumbs?: INavItem[] | string;
   /**
    * hero image src url
    * (requires img-alt attribute to be present to render)
@@ -46,6 +46,11 @@ export class GoHero implements HeroProps {
    * (requires img-src attribute to be present to render)
    */
   @Prop() imgAlt?: string;
+
+  /**
+   * if we should hide hero img on mobile(`full-width-bg` slot not affected)
+   */
+  @Prop() hideImgOnMobile: boolean = false;
 
   @Watch('imgSrc')
   watchImgSrc(value: string) {
@@ -61,23 +66,42 @@ export class GoHero implements HeroProps {
     }
   }
 
+  hasFullWidthBg = false;
+
+  componentWillLoad() {
+    this.hasFullWidthBg = hasSlot(this.el, 'full-width-bg');
+  }
+
   render() {
-    const { heading, preHeading, breadcrumb, imgAlt, imgSrc } = this;
+    const { heading, preHeading, breadcrumbs, imgAlt, imgSrc, hasFullWidthBg, hideImgOnMobile } = this;
     return (
-      <Host>
-        <div class="container">
-          <div class="hero-container">
-            <div class="hero-text">
-              <go-breadcrumb items={breadcrumb}></go-breadcrumb>
-              <div class="pre-heading text-size-2">{preHeading}</div>
-              <h1 class="text-display-2">{heading}</h1>
-              <slot></slot>
+      <Host
+        class={{
+          'has-full-width-bg': hasFullWidthBg,
+          'hide-img-on-mobile': !!hideImgOnMobile,
+        }}>
+        <div>
+          {hasFullWidthBg ? (
+            <div class="full-width-bg">
+              <slot name="full-width-bg"></slot>
             </div>
-            {imgSrc && imgAlt ? (
-              <div class="hero-image">
-                <img src={imgSrc} alt={imgAlt} class="featured-img" />
+          ) : null}
+
+          <div class="container">
+            <div class="hero-container">
+              <div class="hero-text">
+                {hasFullWidthBg ? <div class="hero-text-bg"></div> : null}
+                {breadcrumbs ? <go-breadcrumb items={breadcrumbs}></go-breadcrumb> : null}
+                <div class="pre-heading text-size-2">{preHeading}</div>
+                <h1 class="text-display-2">{heading}</h1>
+                <slot></slot>
               </div>
-            ) : null}
+              {imgSrc && imgAlt ? (
+                <div class="hero-image">
+                  <img src={imgSrc} alt={imgAlt} class="featured-img" />
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </Host>

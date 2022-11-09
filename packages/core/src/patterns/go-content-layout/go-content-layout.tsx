@@ -76,7 +76,7 @@ export class GoContentLayout implements ContentLayoutProps {
   async componentWillLoad() {
     this.hasSidebar = hasSlot(this.el, 'sidebar');
     // add resize observer to toggle between mobile and desktop
-    watchDevice(device => {
+    watchDevice((device) => {
       const { sidebarMobilePosition, sidebarDesktopPosition } = this;
       const deviceSidebarPosition = {
         mobile: sidebarMobilePosition,
@@ -132,14 +132,14 @@ export class GoContentLayout implements ContentLayoutProps {
 
     return (
       <Host>
-        <div ref={el => (this.sidebarTemplate = el)} id="sidebar-template" aria-hidden={true} style={{ display: 'none' }}>
+        <div ref={(el) => (this.sidebarTemplate = el)} id="sidebar-template" aria-hidden={true} style={{ display: 'none' }}>
           <div class={{ 'content-sidebar': true, sticky }}>
-            {toc && <go-toc {...tocProps} ref={el => (this.tocEl = el)}></go-toc>}
+            {toc && <go-toc {...tocProps} ref={(el) => (this.tocEl = el)}></go-toc>}
             <slot name="sidebar"></slot>
           </div>
         </div>
         {!noHero && (
-          <go-hero breadcrumb={breadcrumbs} preHeading={preHeading} heading={pageHeading}>
+          <go-hero breadcrumbs={breadcrumbs} preHeading={preHeading} heading={pageHeading}>
             <slot name="intro">
               <p>{intro}</p>
             </slot>
@@ -147,16 +147,16 @@ export class GoContentLayout implements ContentLayoutProps {
         )}
         <div class="container content-container">
           <div class="row">
-            {hasSidebar && <aside ref={el => (this.sidebarContainerStart = el)} class={classes.start}></aside>}
+            {hasSidebar && <aside ref={(el) => (this.sidebarContainerStart = el)} class={classes.start}></aside>}
             <main
               class={{
                 'col-12 col-desktop-8 content-main': true,
                 'offset-desktop-1': hasSidebar && computedSidebarPosition === 'start',
               }}>
-              {!hasSidebar && toc && <go-toc {...tocProps} ref={el => (this.tocEl = el)}></go-toc>}
+              {!hasSidebar && toc && <go-toc {...tocProps} ref={(el) => (this.tocEl = el)}></go-toc>}
               <slot></slot>
             </main>
-            {hasSidebar && <aside ref={el => (this.sidebarContainerEnd = el)} class={classes.end}></aside>}
+            {hasSidebar && <aside ref={(el) => (this.sidebarContainerEnd = el)} class={classes.end}></aside>}
           </div>
         </div>
       </Host>
