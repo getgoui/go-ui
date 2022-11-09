@@ -12,6 +12,9 @@ export const config: Config = {
   },
   outputTargets: [
     {
+      type: 'dist',
+    },
+    {
       type: 'dist-custom-elements',
       autoDefineCustomElements: true,
       generateTypeDeclarations: true,
