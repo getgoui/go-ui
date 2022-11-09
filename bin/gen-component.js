@@ -30,9 +30,9 @@ export default async function component(args) {
  * @param {boolean} inheritAttrs  Whether to inherit attributes from the host element.
  */
 function writeBoilerplate(tagName, inheritAttrs) {
-  const rootPath = path.resolve(__dirname, '../');
+  const rootPath = path.resolve(__dirname, '../packages/core/');
   const dir = `${rootPath}/src/components/${tagName}/`;
-  const docsDir = `${rootPath}/docs/docs/components/`;
+  // const docsDir = `${rootPath}/docs/docs/components/`;
   // Create the directory if it doesn't exist.
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
@@ -43,9 +43,9 @@ function writeBoilerplate(tagName, inheritAttrs) {
   }
 
   // create docs directory if it doesn't exist
-  if (!fs.existsSync(docsDir)) {
-    fs.mkdirSync(docsDir);
-  }
+  // if (!fs.existsSync(docsDir)) {
+  //   fs.mkdirSync(docsDir);
+  // }
 
   const fileContent = getComponentFileContent(tagName, inheritAttrs);
   // write the component file
@@ -98,14 +98,14 @@ function writeBoilerplate(tagName, inheritAttrs) {
   }
 
   // write the docs file
-  const docsContent = getDocsContent(tagName);
-  const docsPath = path.resolve(docsDir, `${tagName}.mdx`);
-  try {
-    fs.writeFileSync(docsPath, docsContent);
-    console.log(chalk.green('√ Docs file generated'));
-  } catch (err) {
-    console.error(chalk.red(err));
-  }
+  // const docsContent = getDocsContent(tagName);
+  // const docsPath = path.resolve(docsDir, `${tagName}.mdx`);
+  // try {
+  //   fs.writeFileSync(docsPath, docsContent);
+  //   console.log(chalk.green('√ Docs file generated'));
+  // } catch (err) {
+  //   console.error(chalk.red(err));
+  // }
 }
 
 /**

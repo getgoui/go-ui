@@ -1,36 +1,36 @@
-import prompts from "prompts";
-import fs from "fs";
-import path, { dirname } from "path";
-import chalk from "chalk";
-import kebabCase from "lodash.kebabcase";
-import { pascalCase, sentenseCase } from "./utils";
-import { PATTERN_PREFIX } from "./const.js";
+import prompts from 'prompts';
+import fs from 'fs';
+import path, { dirname } from 'path';
+import chalk from 'chalk';
+import kebabCase from 'lodash.kebabcase';
+import { pascalCase, sentenseCase } from './utils';
+import { PATTERN_PREFIX } from './const.js';
 
 export default async function pattern(args) {
   const questions = [
     {
-      type: "text",
-      name: "patternName",
-      message: "Pattern name (dash-case):",
+      type: 'text',
+      name: 'patternName',
+      message: 'Pattern name (dash-case):',
     },
     {
-      type: "confirm",
-      name: "createElement",
-      message: "Do you wish to encapsulate this pattern in a custom element?",
+      type: 'confirm',
+      name: 'createElement',
+      message: 'Do you wish to encapsulate this pattern in a custom element?',
       initial: true,
     },
     {
-      type: "multiselect",
-      name: "tags",
-      message: "Pick tags for this pattern.",
-      hint: "- Space to select. Return to submit",
+      type: 'multiselect',
+      name: 'tags',
+      message: 'Pick tags for this pattern.',
+      hint: '- Space to select. Return to submit',
       choices: [
-        { title: "Layout", value: "Layout" },
-        { title: "Navigation", value: "Navigation" },
-        { title: "Form", value: "Form" },
-        { title: "A11y", value: "A11y" },
-        { title: "Utility", value: "Utility" },
-        { title: "Global styles", value: "Global styles" },
+        { title: 'Layout', value: 'Layout' },
+        { title: 'Navigation', value: 'Navigation' },
+        { title: 'Form', value: 'Form' },
+        { title: 'A11y', value: 'A11y' },
+        { title: 'Utility', value: 'Utility' },
+        { title: 'Global styles', value: 'Global styles' },
       ],
     },
   ];
@@ -46,9 +46,9 @@ export default async function pattern(args) {
  */
 function writeBoilerplate(patternName, createElement, tags) {
   const tagName = getTagName(patternName);
-  const rootPath = path.resolve(__dirname, "../");
+  const rootPath = path.resolve(__dirname, '../packages/core/');
   const dir = `${rootPath}/src/patterns/${patternName}/`;
-  const docsDir = `${rootPath}/docs/docs/patterns/`;
+  // const docsDir = `${rootPath}/docs/docs/patterns/`;
   // Create the directory if it doesn't exist.
   if (!fs.existsSync(dir)) {
     try {
@@ -65,15 +65,15 @@ function writeBoilerplate(patternName, createElement, tags) {
   }
 
   // create docs directory if it doesn't exist
-  if (!fs.existsSync(docsDir)) {
-    try {
-      fs.mkdirSync(docsDir);
-    } catch (e) {
-      console.log(chalk.red(`Could not create new directory ${docsDir}`));
-      console.error(e);
-      return;
-    }
-  }
+  // if (!fs.existsSync(docsDir)) {
+  //   try {
+  //     fs.mkdirSync(docsDir);
+  //   } catch (e) {
+  //     console.log(chalk.red(`Could not create new directory ${docsDir}`));
+  //     console.error(e);
+  //     return;
+  //   }
+  // }
 
   if (createElement) {
     const fileContent = getComponentFileContent(tagName);
@@ -81,7 +81,7 @@ function writeBoilerplate(patternName, createElement, tags) {
     const filePath = path.resolve(dir, `${tagName}.tsx`);
     try {
       fs.writeFileSync(filePath, fileContent);
-      console.log(chalk.green("√ Component file generated"));
+      console.log(chalk.green('√ Component file generated'));
     } catch (err) {
       console.error(chalk.red(err));
     }
@@ -91,7 +91,7 @@ function writeBoilerplate(patternName, createElement, tags) {
     const stylePath = path.resolve(dir, `${tagName}.scss`);
     try {
       fs.writeFileSync(stylePath, styleContent);
-      console.log(chalk.green("√ Style file generated"));
+      console.log(chalk.green('√ Style file generated'));
     } catch (err) {
       console.error(chalk.red(err));
     }
@@ -101,7 +101,7 @@ function writeBoilerplate(patternName, createElement, tags) {
     const readmePath = path.resolve(dir, `readme.md`);
     try {
       fs.writeFileSync(readmePath, readmeContent);
-      console.log(chalk.green("√ README file generated"));
+      console.log(chalk.green('√ README file generated'));
     } catch (err) {
       console.error(chalk.red(err));
     }
@@ -112,7 +112,7 @@ function writeBoilerplate(patternName, createElement, tags) {
   const e2eTestPath = path.resolve(`${dir}/test/`, `${patternName}.e2e.ts`);
   try {
     fs.writeFileSync(e2eTestPath, e2eTestContent);
-    console.log(chalk.green("√ E2E test file generated"));
+    console.log(chalk.green('√ E2E test file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -122,20 +122,20 @@ function writeBoilerplate(patternName, createElement, tags) {
   const demoHtmlPath = path.resolve(`${dir}/demo/`, `${patternName}.html`);
   try {
     fs.writeFileSync(demoHtmlPath, demoHtmlContent);
-    console.log(chalk.green("√ Demo html file generated"));
+    console.log(chalk.green('√ Demo html file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
 
   // write the docs file
-  const docsContent = getDocsContent(patternName, tags, createElement);
-  const docsPath = path.resolve(docsDir, `${patternName}.mdx`);
-  try {
-    fs.writeFileSync(docsPath, docsContent);
-    console.log(chalk.green("√ Docs file generated"));
-  } catch (err) {
-    console.error(chalk.red(err));
-  }
+  // const docsContent = getDocsContent(patternName, tags, createElement);
+  // const docsPath = path.resolve(docsDir, `${patternName}.mdx`);
+  // try {
+  //   fs.writeFileSync(docsPath, docsContent);
+  //   console.log(chalk.green('√ Docs file generated'));
+  // } catch (err) {
+  //   console.error(chalk.red(err));
+  // }
 }
 
 // get dash-case tag name from given pattern name
@@ -199,14 +199,8 @@ describe('${name}', () => {
 
   it('renders', async () => {
     const page = await newE2EPage({html});
-    const element = await page.find('${
-      createElement ? name : ".random-target"
-    }');
-    ${
-      createElement
-        ? 'expect(element).toHaveClass("hydrated");'
-        : "expect(element).toBeTruthy();"
-    }
+    const element = await page.find('${createElement ? name : '.random-target'}');
+    ${createElement ? 'expect(element).toHaveClass("hydrated");' : 'expect(element).toBeTruthy();'}
   });
 
 
@@ -230,10 +224,10 @@ const getReadmeContent = (tagname) => `## ${tagname} API
 
 const getTagsFrontmatter = (tags) => {
   if (!tags.length) {
-    return "";
+    return '';
   }
   return `tags:
-  - ${tags.join("\n  - ")}`;
+  - ${tags.join('\n  - ')}`;
 };
 
 const getDocsContent = (patternName, tags, createElement) => {
@@ -281,7 +275,7 @@ ${
 
 {@include: ../../../src/patterns/${patternName}/readme.md}
 `
-    : ""
+    : ''
 }
 `;
 };

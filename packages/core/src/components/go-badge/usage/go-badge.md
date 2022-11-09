@@ -18,7 +18,7 @@
   code='
   <go-badge label="You have 9 unread messages" count="9" min="1" max="1000">
     <go-button variant="primary" icon aria-label="Example Button">
-      <go-icon decorative name="favorite"></go-icon>
+      <go-icon name="favorite"></go-icon>
     </go-button>
   </go-badge>'
 >

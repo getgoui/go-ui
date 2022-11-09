@@ -1,0 +1,49 @@
+// form variables and mixins
+@import '../variables';
+@import '../mixins';
+
+go-input {
+  @include field-container;
+  &.error {
+    @include error-state;
+  }
+
+  // apply padding on right
+  @include icon-paddings;
+
+  &.readonly {
+    .lock-icon {
+      fill: var(--input-text-readonly-color);
+    }
+  }
+  &.disabled {
+    @include disabled-state;
+  }
+
+  &.has-prefix,
+  &.has-suffix {
+    @include presuf-common;
+  }
+  &.has-prefix {
+    @include prefix;
+  }
+  &.has-suffix {
+    @include suffix;
+  }
+
+  .control-wrapper {
+    position: relative;
+  }
+
+  .control {
+    @include field-control;
+  }
+
+  .control-icon {
+    @include control-icon;
+  }
+
+  .hint {
+    @include hint;
+  }
+}

@@ -20,7 +20,7 @@
   ]'
   code="
   <go-banner variant='info' heading='Banner heading'>
-    <go-icon decorative='true' slot='icon' name='lightbulb'></go-icon>
+    <go-icon slot='icon' name='lightbulb'></go-icon>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis voluptatum commodi, earum laudantium dolorem deleniti animi, natus sed aperiam.
   </go-banner>
 "

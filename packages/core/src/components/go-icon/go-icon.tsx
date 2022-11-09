@@ -42,9 +42,9 @@ export class GoIcon implements IconProps {
   @Prop() color?: string;
 
   /**
-   * Mark this icon to be hidden from screen reader
+   * provide label for screen reader
    */
-  @Prop() decorative: boolean = false;
+  @Prop() label?: string;
 
   private attrs = {} as any;
   componentWillLoad() {
@@ -52,19 +52,16 @@ export class GoIcon implements IconProps {
   }
 
   render() {
-    const { iconSet, name, size, color, decorative, attrs } = this;
+    const { iconSet, name, size, color, label, attrs } = this;
     const { class: customClasses } = attrs;
     return (
+      // prettier-ignore
       <Host
-        aria-hidden={decorative ? 'true' : 'false'}
+        aria-hidden={label ? 'false' : 'true'}
         style={{
           '--icon-size': size ? size : null,
           '--icon-color': color ? color : null,
-        }}>
-        {iconSet.startsWith('material') ? <span class={`${iconSet} go-icon ${customClasses ? customClasses : ''}`}>{name}</span> : null}
-        {iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}
-        {iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}
-      </Host>
+        }}>{label ? <span class="visually-hidden">{label}</span> : null}{iconSet.startsWith('material') ? <span class={`${iconSet} go-icon ${customClasses ? customClasses : ''}`}>{name}</span> : null}{iconSet.startsWith('fa') ? <i class={`${iconSet} fa-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}{iconSet.startsWith('bx') ? <i class={`bx ${iconSet}-${name} go-icon ${customClasses ? customClasses : ''}`}></i> : null}</Host>
     );
   }
 }

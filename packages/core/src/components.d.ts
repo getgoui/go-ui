@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -383,13 +383,13 @@ export namespace Components {
          */
         "color"?: string;
         /**
-          * Mark this icon to be hidden from screen reader
-         */
-        "decorative": boolean;
-        /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
         "iconSet": MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
+        /**
+          * provide label for screen reader
+         */
+        "label"?: string;
         /**
           * Name of the icon
          */
@@ -398,6 +398,40 @@ export namespace Components {
           * Size of the icon, supports CSS units and variables. Default: 1.5em for material icons, 1em for other icon sets.
          */
         "size"?: string;
+    }
+    interface GoInput {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
+         */
+        "type"?: InputType;
+        /**
+          * Value of the input
+         */
+        "value": any;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;
@@ -857,6 +891,12 @@ declare global {
         prototype: HTMLGoIconElement;
         new (): HTMLGoIconElement;
     };
+    interface HTMLGoInputElement extends Components.GoInput, HTMLStencilElement {
+    }
+    var HTMLGoInputElement: {
+        prototype: HTMLGoInputElement;
+        new (): HTMLGoInputElement;
+    };
     interface HTMLGoLinkElement extends Components.GoLink, HTMLStencilElement {
     }
     var HTMLGoLinkElement: {
@@ -984,6 +1024,7 @@ declare global {
         "go-header-bar": HTMLGoHeaderBarElement;
         "go-hero": HTMLGoHeroElement;
         "go-icon": HTMLGoIconElement;
+        "go-input": HTMLGoInputElement;
         "go-link": HTMLGoLinkElement;
         "go-main-nav": HTMLGoMainNavElement;
         "go-md": HTMLGoMdElement;
@@ -1372,13 +1413,13 @@ declare namespace LocalJSX {
          */
         "color"?: string;
         /**
-          * Mark this icon to be hidden from screen reader
-         */
-        "decorative"?: boolean;
-        /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
          */
         "iconSet"?: MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
+        /**
+          * provide label for screen reader
+         */
+        "label"?: string;
         /**
           * Name of the icon
          */
@@ -1387,6 +1428,40 @@ declare namespace LocalJSX {
           * Size of the icon, supports CSS units and variables. Default: 1.5em for material icons, 1em for other icon sets.
          */
         "size"?: string;
+    }
+    interface GoInput {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
+         */
+        "type"?: InputType;
+        /**
+          * Value of the input
+         */
+        "value"?: any;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;
@@ -1718,6 +1793,7 @@ declare namespace LocalJSX {
         "go-header-bar": GoHeaderBar;
         "go-hero": GoHero;
         "go-icon": GoIcon;
+        "go-input": GoInput;
         "go-link": GoLink;
         "go-main-nav": GoMainNav;
         "go-md": GoMd;
@@ -1760,6 +1836,7 @@ declare module "@stencil/core" {
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
             "go-hero": LocalJSX.GoHero & JSXBase.HTMLAttributes<HTMLGoHeroElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
+            "go-input": LocalJSX.GoInput & JSXBase.HTMLAttributes<HTMLGoInputElement>;
             "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-md": LocalJSX.GoMd & JSXBase.HTMLAttributes<HTMLGoMdElement>;

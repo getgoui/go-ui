@@ -13,37 +13,17 @@
   <body>
     <style>
       body {
-        display: grid;
-        place-items: center;
-        height: 100vh;
+        padding-top: 20vh;
       }
-      #test {
-        margin-top: 90vh;
+      .frame {
+        border: 1px dashed var(--go-color-neutral-500);
+        min-height: 50vh;
       }
     </style>
     <!-- keep this sandbox empty before pushing changes -->
-
-    <!-- #region demo start -->
-    <a href="#">asdf</a>
-    <go-button id="test">Toggle Dropdown</go-button>
-    <go-dropdown id="dd" trigger-id="test">
-      <ul>
-        <li><a href="#1">Test 1</a></li>
-        <li><a href="#2">Test 2</a></li>
-        <li><a href="#3">Test 3</a></li>
-      </ul>
-    </go-dropdown>
-    <a href="#">asdf</a>
-
-    <div style="background: blue; height: 120vh; width: 100%"></div>
-    <script>
-      const button = document.querySelector('#test');
-      const dd = document.querySelector('#dd');
-      button.addEventListener('click', () => {
-        console.log({ dd });
-        dd.isActive = !dd.isActive;
-      });
-    </script>
-    <!-- #endregion demo finish -->
+    <main class="frame container">
+      <!-- #region demo start -->
+      <!-- #endregion demo finish -->
+    </div>
   </body>
 </html>
