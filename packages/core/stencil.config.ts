@@ -4,6 +4,7 @@ import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
+import { reactOutputTarget as react } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'go-ui',
@@ -11,6 +12,11 @@ export const config: Config = {
     after: [nodePolyfills()],
   },
   outputTargets: [
+    react({
+      componentCorePackage: '@go-ui/core',
+      proxiesFile: '../react/src/components/stencil-generated/index.ts',
+      includeDefineCustomElements: true,
+    }),
     {
       type: 'dist',
     },
