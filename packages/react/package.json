@@ -8,11 +8,12 @@
     "url": "https://github.com/getgoui/go-ui"
   },
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "pnpm run clean && pnpm run compile && pnpm run cpyCss",
     "clean": "rm -rf dist",
-    "compile": "npm run tsc",
+    "compile": "pnpm run tsc",
     "tsc": "tsc -p .",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "cpyCss": "cpy \"node_modules/@go-ui/core/dist/go-ui/go-ui.css\" \"dist\" --flat"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -26,6 +27,7 @@
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
+    "cpy-cli": "^4.2.0",
     "jest": "^23.0.0",
     "jest-dom": "^3.0.2",
     "np": "^3.1.0",
@@ -33,7 +35,6 @@
     "react-dom": "^17.0.2",
     "typescript": "^4.8.2"
   },
-  "dependencies": {},
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

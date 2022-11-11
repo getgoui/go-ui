@@ -1,14 +1,15 @@
 {
   "scripts": {
-    "build": "nx run-many --target=build",
-    "build.affected": "nx affected:build",
-    "dev.core": "nx start @go-ui/core",
-    "build.core": "nx build @go-ui/core",
     "dev": "node ./bin/index.js dev",
+    "dev.core": "nx start @go-ui/core",
+    "dev.docs": "nx start @go-ui/docs",
+    "dev.react.app": "nx start @go-ui/react-vite-template",
+    "build": "nx run-many --target=build",
+    "build.core": "nx build @go-ui/core",
+    "build.docs": "nx build @go-ui/docs",
+    "build.affected": "nx affected:build",
     "test.unit.core": "nx test.spec @go-ui/core",
     "test.e2e.core": "nx test.e2e @go-ui/core",
-    "dev.docs": "nx start @go-ui/docs",
-    "build.docs": "nx build @go-ui/docs",
     "release.core": "nx semantic-release @go-ui/core",
     "gg": "node ./bin/index.js"
   },

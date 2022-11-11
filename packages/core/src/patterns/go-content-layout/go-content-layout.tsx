@@ -140,6 +140,7 @@ export class GoContentLayout implements ContentLayoutProps {
         </div>
         {!noHero && (
           <go-hero breadcrumbs={breadcrumbs} preHeading={preHeading} heading={pageHeading}>
+            <slot name="full-width-bg"></slot>
             <slot name="intro">
               <p>{intro}</p>
             </slot>
