@@ -4,13 +4,15 @@
     "dev.core": "nx start @go-ui/core",
     "dev.docs": "nx start @go-ui/docs",
     "dev.react.app": "nx start @go-ui/react-vite-template",
-    "build": "nx run-many --target=build",
+    "build": "nx run-many --target=build --exclude=@go-ui/react-vite-template",
     "build.core": "nx build @go-ui/core",
     "build.docs": "nx build @go-ui/docs",
+    "build.react": "nx build @go-ui/react",
     "build.affected": "nx affected:build",
     "test.unit.core": "nx test.spec @go-ui/core",
     "test.e2e.core": "nx test.e2e @go-ui/core",
     "release.core": "nx semantic-release @go-ui/core",
+    "release.react": "nx semantic-release @go-ui/react",
     "gg": "node ./bin/index.js"
   },
   "devDependencies": {
