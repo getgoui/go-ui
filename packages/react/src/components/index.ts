@@ -1,1 +1,2 @@
-export * from "./stencil-generated/index";
+// export all
+export * from './stencil-generated/index';
