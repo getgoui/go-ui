@@ -22,8 +22,10 @@
   "files": [
     "dist/"
   ],
+  "dependencies": {
+    "@go-ui/core": "workspace:0.0.0-development"
+  },
   "devDependencies": {
-    "@go-ui/core": "workspace:0.0.0-development",
     "@types/jest": "23.3.9",
     "@types/node": "^15.14.9",
     "@types/react": "^17.0.52",
