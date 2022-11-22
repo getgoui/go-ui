@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div>
+      <div class="container">
+        <h1>Hello Go UI</h1>
+        <go-card card-title="Counter example">
+          <p>You're looking at custom elements from Go UI</p>
+          <go-button block="mobile" id="counter-btn" type="button" variant="primary" slot="footer">Counter is <span id="count">0</span></go-button>
+        </go-card>
+        <p>
+          <go-link href="https://www.go-ui.com">Learn more about Go UI</go-link>
+        </p>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
