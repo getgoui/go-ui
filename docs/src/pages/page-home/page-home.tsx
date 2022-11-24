@@ -40,6 +40,11 @@ export class PageHome {
   }
 
   render() {
+    const repoLinkProps = {
+      target: '_blank',
+      href: siteConfig.repoLink.url,
+      rel: 'noopener noreferrer nofollow',
+    };
     return (
       <Host>
         <seo-tags pageTitle="Home"></seo-tags>
@@ -50,13 +55,24 @@ export class PageHome {
               <img class="hero__logo" src="/assets/img/logo.svg" alt="Go UI logo" />
               <div class="hero__text">
                 <h1 class="hero__title">{siteConfig.name}</h1>
-                <div class="hero__subtitle">{siteConfig.tagline}</div>
-                <div>
-                  <code-block language="shell" code="npm i @go-ui/core"></code-block>
+                <div class="hero__subtitle text-size-1">{siteConfig.tagline}</div>
+                <p>Go UI provides a toolkit for teams to build beautiful web applications that are responsive, adaptive and accessible.</p>
+                <div class="mt-4">
+                  <go-button variant="primary" {...href('/guides/getting-started')}>
+                    Get started <go-icon icon-set="bx" size="1.5rem" name="right-arrow-alt"></go-icon>
+                  </go-button>
+
+                  <go-button {...repoLinkProps} variant="secondary" outline-fill class="ml-4">
+                    <go-icon size="1.5rem" icon-set="bxl" name="github"></go-icon>
+                    Github
+                  </go-button>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="container"></div>
+
           {/* features */}
           {this.featureList?.length && (
             <section class="features">

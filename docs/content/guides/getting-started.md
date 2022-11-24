@@ -5,13 +5,19 @@ sidebar_position: 1
 
 ## Installation
 
-### NPM package
+Depending on your use case, you may want to install different packages under the `@go-ui/` namespace. 
 
-```shell
+### Vanilla JS 
+
+If you're not using any JS framework and just want to use the Go UI goodness with the power of the browser platform, you can absolutely do so!
+
+Installation can be done with the `@go-ui/core` package which includes our component loaders and global stylesheet.
+
+```bash
 npm i @go-ui/core
 ```
 
-### CDN
+Other packages are just wrappers for this with framework-friendly syntax.
 
 
 

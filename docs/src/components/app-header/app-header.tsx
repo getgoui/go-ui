@@ -107,7 +107,7 @@ export class AppHeader {
               <div class="text-size-1">
                 <b>{siteConfig.name}</b>
               </div>
-              {siteConfig.tagline && <div class="text-size-0 d-none d-block-desktop">{siteConfig.tagline}</div>}
+              {siteConfig.tagline && <div class="text-size-0 d-none d-block-tablet">{siteConfig.tagline}</div>}
             </div>
           </go-gov-au-logo>
 
