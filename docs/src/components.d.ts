@@ -33,6 +33,17 @@ export namespace Components {
         "demo": string;
         "hideSource": boolean;
     }
+    interface GoDemoBox {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code": string;
+        /**
+          * Custom head html inside iframe
+         */
+        "head": string;
+        "hideSource": boolean;
+    }
     interface PageDocs {
         "params": {
     [param: string]: string;
@@ -135,6 +146,12 @@ declare global {
         prototype: HTMLDemoFrameElement;
         new (): HTMLDemoFrameElement;
     };
+    interface HTMLGoDemoBoxElement extends Components.GoDemoBox, HTMLStencilElement {
+    }
+    var HTMLGoDemoBoxElement: {
+        prototype: HTMLGoDemoBoxElement;
+        new (): HTMLGoDemoBoxElement;
+    };
     interface HTMLPageDocsElement extends Components.PageDocs, HTMLStencilElement {
     }
     var HTMLPageDocsElement: {
@@ -208,6 +225,7 @@ declare global {
         "code-block": HTMLCodeBlockElement;
         "copy-code-btn": HTMLCopyCodeBtnElement;
         "demo-frame": HTMLDemoFrameElement;
+        "go-demo-box": HTMLGoDemoBoxElement;
         "page-docs": HTMLPageDocsElement;
         "page-home": HTMLPageHomeElement;
         "page-notfound": HTMLPageNotfoundElement;
@@ -245,6 +263,17 @@ declare namespace LocalJSX {
         "code"?: string;
         "component"?: string;
         "demo"?: string;
+        "hideSource"?: boolean;
+    }
+    interface GoDemoBox {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code"?: string;
+        /**
+          * Custom head html inside iframe
+         */
+        "head"?: string;
         "hideSource"?: boolean;
     }
     interface PageDocs {
@@ -305,6 +334,7 @@ declare namespace LocalJSX {
         "code-block": CodeBlock;
         "copy-code-btn": CopyCodeBtn;
         "demo-frame": DemoFrame;
+        "go-demo-box": GoDemoBox;
         "page-docs": PageDocs;
         "page-home": PageHome;
         "page-notfound": PageNotfound;
@@ -328,6 +358,7 @@ declare module "@stencil/core" {
             "code-block": LocalJSX.CodeBlock & JSXBase.HTMLAttributes<HTMLCodeBlockElement>;
             "copy-code-btn": LocalJSX.CopyCodeBtn & JSXBase.HTMLAttributes<HTMLCopyCodeBtnElement>;
             "demo-frame": LocalJSX.DemoFrame & JSXBase.HTMLAttributes<HTMLDemoFrameElement>;
+            "go-demo-box": LocalJSX.GoDemoBox & JSXBase.HTMLAttributes<HTMLGoDemoBoxElement>;
             "page-docs": LocalJSX.PageDocs & JSXBase.HTMLAttributes<HTMLPageDocsElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-notfound": LocalJSX.PageNotfound & JSXBase.HTMLAttributes<HTMLPageNotfoundElement>;
