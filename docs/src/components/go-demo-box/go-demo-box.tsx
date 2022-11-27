@@ -1,7 +1,7 @@
-import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import pretty from 'pretty';
-import themeStore from '../../stores/theme.store';
 import { uniqueId } from 'lodash-es';
+import { getCurrentTheme, Theme } from '../../utils/helpers';
 @Component({
   tag: 'go-demo-box',
   styleUrl: 'go-demo-box.scss',
@@ -21,6 +21,10 @@ export class GoDemoBox {
    */
   @Prop() head: string = '';
 
+  @Prop() darkModeSwitch: boolean = false;
+
+  @State() currentTheme: Theme = 'light';
+
   private iframe: HTMLIFrameElement;
 
   private demoId: string = uniqueId('go-demo-');
@@ -30,12 +34,22 @@ export class GoDemoBox {
       this.demoSource = pretty(this.code);
       return;
     }
+    this.currentTheme = getCurrentTheme();
   }
+
   componentDidLoad() {
-    if (this.iframe) {
-      themeStore.onChange('currentTheme', () => this.updateIframeRootAttr('data-theme', themeStore.state.currentTheme));
+    if (this.iframe?.contentWindow) {
       this.setDemoContent(this.iframe.contentWindow, this.demoSource);
     }
+  }
+
+  updateIframeRootAttr(key: string, value: string) {
+    this.iframe?.contentDocument?.documentElement.setAttribute(key, value);
+  }
+
+  @Watch('currentTheme')
+  handleThemeChange(value) {
+    this.updateIframeRootAttr('data-theme', value);
   }
 
   startMonitoringFrame(iframe) {
@@ -57,18 +71,14 @@ export class GoDemoBox {
     });
   }
 
-  updateIframeRootAttr(key: string, value: string) {
-    this.iframe?.contentDocument?.documentElement.setAttribute(key, value);
-  }
-
   setDemoContent(window: Window, code) {
     const doc = window.document;
     const dir: 'ltr' | 'rtl' = 'ltr';
     const lang = 'en';
 
-    const { head } = this;
+    const { head, currentTheme } = this;
     const html = `<!DOCTYPE html>
-<html dir="${dir}" lang="${lang}" data-theme="${themeStore.state.currentTheme}">
+<html dir="${dir}" lang="${lang}" data-theme="${currentTheme}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -117,6 +127,10 @@ ${code}
   toggleFullScreen() {
     this.isFullScreen = !this.isFullScreen;
     this.frameWidth = '100%';
+  }
+
+  toggleDarkTheme() {
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
   }
 
   @State() resizingX = false;
@@ -184,6 +198,16 @@ ${code}
               <div class="dot" />
             </div>
             <div class="controls">
+              {/* theme switcher */}
+              {this.darkModeSwitch ? (
+                <go-switch
+                  onChange={() => this.toggleDarkTheme()}
+                  checked={this.currentTheme === 'dark'}
+                  name="dark-theme-switch"
+                  show-on-off
+                  label="Dark mode"></go-switch>
+              ) : null}
+
               {/* reload */}
               <go-button id={`${demoId}-reload`} flat variant="secondary" icon compact aria-label="Reload demo" type="button" onClick={() => this.reload()}>
                 {/* prettier-ignore */}
@@ -260,7 +284,10 @@ ${code}
           </div>
 
           <div
-            class="frame-wrapper"
+            class={{
+              'frame-wrapper': true,
+              'no-transition': resizingX || resizingY,
+            }}
             ref={(el) => (this.frameWrapperEl = el)}
             style={{
               width: frameWidth,
