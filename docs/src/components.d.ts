@@ -38,6 +38,7 @@ export namespace Components {
           * custom code to be injected into demo frame
          */
         "code": string;
+        "darkModeSwitch": boolean;
         /**
           * Custom head html inside iframe
          */
@@ -270,6 +271,7 @@ declare namespace LocalJSX {
           * custom code to be injected into demo frame
          */
         "code"?: string;
+        "darkModeSwitch"?: boolean;
         /**
           * Custom head html inside iframe
          */

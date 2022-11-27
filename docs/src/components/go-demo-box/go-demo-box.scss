@@ -59,6 +59,10 @@ go-demo-box {
       margin-bottom: var(--browser-resize-handle-size);
       max-height: 100vh;
       z-index: 1;
+      @include transition(width, height);
+      &.no-transition {
+        transition: none;
+      }
       .resize-handle {
         position: absolute;
         display: flex;

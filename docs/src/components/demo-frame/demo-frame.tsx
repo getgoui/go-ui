@@ -54,6 +54,7 @@ export class DemoFrame {
     <script nomodule src="/build/app.js"></script>
     <link href="/build/app.css" rel="stylesheet" />
         `}
+          darkModeSwitch={true}
           code={demoSource}
           hideSource={hideSource}></go-demo-box>
       </Host>
