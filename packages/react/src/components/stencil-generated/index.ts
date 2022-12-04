@@ -18,6 +18,7 @@ export const GoButtonGroup = /*@__PURE__*/createReactComponent<JSX.GoButtonGroup
 export const GoCard = /*@__PURE__*/createReactComponent<JSX.GoCard, HTMLGoCardElement>('go-card');
 export const GoCardRow = /*@__PURE__*/createReactComponent<JSX.GoCardRow, HTMLGoCardRowElement>('go-card-row');
 export const GoChip = /*@__PURE__*/createReactComponent<JSX.GoChip, HTMLGoChipElement>('go-chip');
+export const GoContent = /*@__PURE__*/createReactComponent<JSX.GoContent, HTMLGoContentElement>('go-content');
 export const GoContentLayout = /*@__PURE__*/createReactComponent<JSX.GoContentLayout, HTMLGoContentLayoutElement>('go-content-layout');
 export const GoDialog = /*@__PURE__*/createReactComponent<JSX.GoDialog, HTMLGoDialogElement>('go-dialog');
 export const GoDropdown = /*@__PURE__*/createReactComponent<JSX.GoDropdown, HTMLGoDropdownElement>('go-dropdown');

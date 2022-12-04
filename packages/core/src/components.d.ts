@@ -256,6 +256,8 @@ export namespace Components {
          */
         "variant": ChipVariants;
     }
+    interface GoContent {
+    }
     interface GoContentLayout {
         "breadcrumbs"?: INavItem[] | string;
         "heroImgAlt"?: string;
@@ -847,6 +849,12 @@ declare global {
         prototype: HTMLGoChipElement;
         new (): HTMLGoChipElement;
     };
+    interface HTMLGoContentElement extends Components.GoContent, HTMLStencilElement {
+    }
+    var HTMLGoContentElement: {
+        prototype: HTMLGoContentElement;
+        new (): HTMLGoContentElement;
+    };
     interface HTMLGoContentLayoutElement extends Components.GoContentLayout, HTMLStencilElement {
     }
     var HTMLGoContentLayoutElement: {
@@ -1020,6 +1028,7 @@ declare global {
         "go-card": HTMLGoCardElement;
         "go-card-row": HTMLGoCardRowElement;
         "go-chip": HTMLGoChipElement;
+        "go-content": HTMLGoContentElement;
         "go-content-layout": HTMLGoContentLayoutElement;
         "go-dialog": HTMLGoDialogElement;
         "go-dropdown": HTMLGoDropdownElement;
@@ -1301,6 +1310,8 @@ declare namespace LocalJSX {
           * Colour variant of the chip
          */
         "variant"?: ChipVariants;
+    }
+    interface GoContent {
     }
     interface GoContentLayout {
         "breadcrumbs"?: INavItem[] | string;
@@ -1793,6 +1804,7 @@ declare namespace LocalJSX {
         "go-card": GoCard;
         "go-card-row": GoCardRow;
         "go-chip": GoChip;
+        "go-content": GoContent;
         "go-content-layout": GoContentLayout;
         "go-dialog": GoDialog;
         "go-dropdown": GoDropdown;
@@ -1836,6 +1848,7 @@ declare module "@stencil/core" {
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
             "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
+            "go-content": LocalJSX.GoContent & JSXBase.HTMLAttributes<HTMLGoContentElement>;
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;

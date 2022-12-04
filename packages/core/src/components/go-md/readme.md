@@ -58,38 +58,6 @@ If HTML enabled, add `sanitize="true"`, otherwise it's not necessary
 
 If `use-go-ui` is set to `true`, `go-md` will render the markdown with extended support for Go UI components.
 
-### Links
-
-Links (and linkified link-like text) are rendered with `go-link` component.
-
-### Banners
-
-#### Syntax
-
-```
-::: info Heading
-
-Content
-
-:::
-```
-
-```
-::: critical Heading
-
-Content
-
-:::
-```
-
-```
-::: success Heading
-
-Content
-
-:::
-```
-
 <demo-frame component="go-md" demo="use-go-ui"></demo-frame>
 
 <!-- Auto Generated Below -->

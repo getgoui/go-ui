@@ -1,0 +1,27 @@
+go-content {
+  /**
+    @prop --iframe-embed-aspect-ratio:
+      Aspect ratio for iframe content
+      - default: 16/9
+  */
+  --iframe-embed-aspect-ratio: 16/9;
+  > * + *,
+  go-md > * + * {
+    margin-top: 1.5em;
+  }
+  figure {
+    margin: 0;
+  }
+  figcaption {
+    text-align: center;
+  }
+  img,
+  video {
+    max-width: 100%;
+  }
+  iframe {
+    width: 100%;
+    height: unset;
+    aspect-ratio: var(--iframe-embed-aspect-ratio);
+  }
+}
