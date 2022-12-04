@@ -8,12 +8,12 @@
 // heading font-sizes
 @each $type-level, $details in $typography {
   @if map-get($details, 'tag') {
-    #{$type-level},
-    .#{$type-level} {
+    :where(#{$type-level}),
+    :where(.#{$type-level}) {
       @include typo($type-level, $details);
     }
   } @else {
-    .text-#{$type-level} {
+    :where(.text-#{$type-level}) {
       @include typo($type-level, $details);
     }
   }
@@ -66,7 +66,7 @@ code {
   line-height: 1.5;
 }
 pre {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   border-radius: var(--radius-2);
   background-color: var(--go-color-code-bg);
   line-height: 1.5;
