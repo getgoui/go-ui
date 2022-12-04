@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "node ./bin/index.js dev",
     "dev.core": "nx start @go-ui/core",
-    "dev.docs": "nx start @go-ui/docs",
+    "dev.docs": "nx build @go-ui/core && nx start @go-ui/docs",
     "dev.react.app": "nx start @go-ui/react-vite-template",
     "build": "nx run-many --target=build --exclude=@go-ui/react-vite-template",
     "build.core": "nx build @go-ui/core",

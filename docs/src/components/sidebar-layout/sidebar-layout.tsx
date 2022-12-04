@@ -66,10 +66,10 @@ export class SidebarLayout {
             <div class="container">
               <div class="row">
                 <div class="col-12 col-desktop-9">
-                  <div class="content-container" innerHTML={result}></div>
+                  <go-content class="content-container" innerHTML={result}></go-content>
                 </div>
                 <div class="d-none d-block-desktop col-desktop-3">
-                  <go-toc ref={el => (this.tocEl = el)} class="toc" selector=".content-container h2" label-class="h6"></go-toc>
+                  <go-toc ref={(el) => (this.tocEl = el)} class="toc" selector=".content-container h2" label-class="h6"></go-toc>
                 </div>
               </div>
 
