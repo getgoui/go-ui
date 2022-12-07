@@ -89,10 +89,10 @@ function writeBoilerplate(tagName, inheritAttrs) {
 
   // write the demo html file
   const demoHtmlContent = getDemoHtmlContent(tagName);
-  const demoHtmlPath = path.resolve(`${dir}/demo/`, `${tagName}.html`);
+  const demoHtmlPath = path.resolve(`${dir}/usage/`, `${tagName}.md`);
   try {
     fs.writeFileSync(demoHtmlPath, demoHtmlContent);
-    console.log(chalk.green('√ Demo html file generated'));
+    console.log(chalk.green('√ Usage file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -112,37 +112,41 @@ function writeBoilerplate(tagName, inheritAttrs) {
  * Get a component file boilerplate.
  */
 function getComponentFileContent(tagName, inheritAttrs) {
-  return `import { Component, Host, h, Element } from '@stencil/core';
-  import { inheritAttributes } from '../../utils/helper';
-
-  @Component({
-    tag: '${tagName}',
-    styleUrl: '${tagName}.scss',
-    shadow: false,
-  })
-  export class ${pascalCase(tagName)} {
-    @Element() el: HTMLElement;
-
-   ${
-     inheritAttrs
-       ? `
-    // Store attributes inherited from the host element
-    private inheritedAttrs = {};
-    componentWillLoad() {
-      this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style'], false);
-    }
-    `
-       : ''
-   }
-    render() {
-      return (
-        <Host>
-          <slot></slot>
-        </Host>
-      );
-    }
-
+  return `import { Component, Host, h, Element } from '@stencil/core';${
+    inheritAttrs
+      ? `
+import { inheritAttributes } from '../../utils/helper';`
+      : ''
   }
+
+@Component({
+  tag: '${tagName}',
+  styleUrl: '${tagName}.scss',
+  shadow: false,
+})
+export class ${pascalCase(tagName)} {
+  @Element() el: HTMLElement;
+
+  ${
+    inheritAttrs
+      ? `
+  // Store attributes inherited from the host element
+  private inheritedAttrs = {};
+  componentWillLoad() {
+    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style'], false);
+  }
+  `
+      : ''
+  }
+  render() {
+    return (
+      <Host>
+        <slot></slot>
+      </Host>
+    );
+  }
+
+}
 `;
 }
 
@@ -176,55 +180,29 @@ const getDemoHtmlContent = (name) => `
 <${name}></${name}>
 `;
 
-const getReadmeContent = (tagname) => `## ${tagname} API
-
-<!-- Auto Generated Below -->`;
-
-const getDocsContent = (tagname) => {
+const getReadmeContent = (tagname) => {
   const title = sentenseCase(tagname.replace('go-', ''));
   return `---
 title: ${title}
-hide_title: true
-hide_table_of_contents: true
 ---
 
-import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/components/${tagname}/demo/${tagname}.html';
-
-# ${title} <span className="text-size-0">\`${tagname}\`</span>
+# ${title} <span class="text-size-0">\`${tagname}\`</span>
 
 <!-- Description -->
-<div className="text-size-1">
+<div class="text-size-1">
   ${title} is a component in Go UI.
 </div>
 
-## When to use
+## Usage
 
--
--
-
-## A11y
-
-(Provide relevant a11y information here.)
-
-
-
-## Related patterns
-
-<!-- Patterns that uses this component -->
-
-- [Pattern 1](#)
-- [Pattern 2](#)
-
-<!-- Demos, tips, variations, use cases -->
-
+## Accessibility
 
 ## Demo
 
-<Demo code={demoSource} />
+<demo-frame component="${tagname}" demo="${tagname}"></demo-frame>
 
-<!-- API -->
 
-{@include: ../../../src/components/${tagname}/readme.md}
+
+<!-- Auto Generated Below -->
 `;
 };
