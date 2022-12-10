@@ -119,18 +119,22 @@ export class GoMainNav {
   }
 
   renderSubMenu(parent: INavItem) {
-    const hasChildren = parent?.children?.length > 0;
+    if (!parent) {
+      return;
+    }
     // if submenu item has children, render the current item and its children
-    if (hasChildren) {
+    if (parent.children?.length > 0) {
       return (
         <div class="submenu">
           <div class="submenu-header">
             <go-nav-link block item={parent}></go-nav-link>
+            {parent.description ? <p class="description">{parent.description}</p> : null}
           </div>
           <ul>
             {parent.children.map((child) => (
               <li>
                 <go-nav-link block item={child}></go-nav-link>
+                {child.description ? <p class="description">{child.description}</p> : null}
               </li>
             ))}
           </ul>
@@ -194,13 +198,15 @@ export class GoMainNav {
           ) : null}
         </Tag>
         {item.children ? (
-          <div class="submenu-container">
-            <div class="submenu-header">
-              <go-nav-link block item={item} showArrow></go-nav-link>
-              {item?.description ? <p class="description">{item.description}</p> : null}
+          <slot name="submenu">
+            <div class="submenu-container">
+              <div class="submenu-header">
+                <go-nav-link block item={item} showArrow></go-nav-link>
+                {item?.description ? <p class="description">{item.description}</p> : null}
+              </div>
+              <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
             </div>
-            <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
-          </div>
+          </slot>
         ) : null}
       </li>
     );

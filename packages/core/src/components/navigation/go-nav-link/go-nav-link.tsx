@@ -48,12 +48,14 @@ export class GoNavLink {
     }
     const { isCurrent, url, icon, label } = this.item;
 
-    let Tag = isCurrent || !url ? 'span' : 'go-link';
+    const isSpan = isCurrent || !url;
+
+    let Tag = isSpan ? 'span' : 'go-link';
     let attrs = {
       ...this.item?.linkAttrs,
       ...inheritedAttrs,
     };
-    attrs = url
+    attrs = !isSpan
       ? {
           href: url,
           onClick: (event) => {
@@ -62,7 +64,6 @@ export class GoNavLink {
           ...attrs,
         }
       : { ...attrs };
-
     attrs['class'] = ` nav-item-link ${attrs['class'] ? attrs['class'] : ''}${isCurrent ? ' current' : ''}`;
     return (
       <Host>

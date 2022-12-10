@@ -1,7 +1,7 @@
 go-main-nav {
   --nav-border-top: 1px solid var(--go-color-neutral-200);
   --nav-border-bottom: 1px solid var(--go-color-neutral-200);
-  --nav-bg-color: var(--go-color-bg);
+  --nav-bg-color: transparent;
   --nav-shadow: var(--shadow-2);
   --nav-item-text-color: var(--go-color-darkest);
   --nav-item-bg-color: var(--nav-bg-color);
@@ -15,9 +15,21 @@ go-main-nav {
   --submenu-bg-color: var(--nav-item-active-bg-color);
   --submenu-padding-y: var(--go-size-0);
   --submenu-padding-x: var(--go-size-1);
-  --submenu-max-height: 10rem;
   --submenu-link-padding: 8px;
   --submenu-link-hover-bg-color: var(--go-color-neutral-200);
+  /**
+    @prop --submenu-description-color:
+      text color for submenu description text
+      - default: var(--go-color-neutral-700)
+  */
+  --submenu-description-color: var(--go-color-neutral-700);
+
+  /**
+    @prop --submenu-separator-color:
+      border color separator between submenu header and list
+      - default: var(--go-color-neutral-200)
+  */
+  --submenu-separator-color: var(--go-color-neutral-200);
 
   display: block;
   box-shadow: var(--nav-shadow);
@@ -92,14 +104,13 @@ go-main-nav {
         opacity: 0;
         position: absolute;
         top: 100%;
-        left: 0;
-        right: 0;
+        max-width: 100%;
         z-index: 1;
         box-shadow: var(--nav-shadow);
         padding: var(--submenu-padding-y) var(--submenu-padding-x);
         background: var(--submenu-bg-color);
-        > .submenu-header {
-          border-bottom: 1px solid var(--go-color-neutral-200);
+        .submenu-header {
+          border-bottom: 1px solid var(--submenu-separator-color);
           padding: 0.5rem 0;
           margin-bottom: var(--submenu-padding-y);
           svg {
@@ -112,7 +123,9 @@ go-main-nav {
             gap: 0.5em;
           }
           .description {
-            color: var(--go-color-neutral-700);
+            margin: 0;
+            padding: 0.5rem;
+            color: var(--submenu-description-color);
           }
         }
         .submenu-list {
@@ -120,8 +133,6 @@ go-main-nav {
           flex-direction: column;
           flex-wrap: wrap;
           gap: 0.75rem;
-          max-height: var(--submenu-max-height);
-          overflow-y: auto;
         }
       }
       &.active {
