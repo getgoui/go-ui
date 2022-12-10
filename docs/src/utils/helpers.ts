@@ -54,8 +54,10 @@ export function buildSidebar(): IAItem[] {
   const prefix = getDocsPrefix();
   const activePath = removeLeadingSlash(Router.activePath.replace(prefix, ''));
   const activeCategory = activePath.split('/')[0]; // patterns/components
-
   const cat = ia.docs.children.find((category) => category.id === activeCategory);
+  if (!cat?.children) {
+    return [];
+  }
   const sidebar = cat.children as IAItem[];
   return applyRouterLink(sidebar);
 }
@@ -88,6 +90,7 @@ export function executeScriptElements(containerElement) {
 }
 
 export function prepareNavItems(items: INavItem[], activePath: string): INavItem[] {
+  console.log({ items });
   return items.map((item) => {
     const cleanPathname = removeLeadingSlash(activePath);
     const cleanUrl = removeLeadingSlash(item?.url);

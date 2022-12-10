@@ -238,8 +238,9 @@ if (process.argv.includes('--watch')) {
     .watch([path.resolve(__dirname + '/../node_modules/@go-ui/core/dist/docs/go-ui.json'), path.resolve(__dirname + '/../content/**/*')], {
       ignored: /(^|[\/\\])\../, // ignore dotfiles
       persistent: true,
+      ignoreInitial: true,
     })
-    .on('change', (event, file) => {
+    .on('all', (event, file) => {
       generateIA();
     });
   process.on('SIGINT', function () {
