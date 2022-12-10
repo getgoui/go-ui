@@ -7,19 +7,15 @@ tags:
   - Utility
 ---
 
-import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/patterns/grid/demo/grid.html';
-import offsetDemoSource from '!!raw-loader!@/go-ui/patterns/grid/demo/grid-offset.html';
-
 # Grid
 
 <!-- Description -->
 
-Go Components provides a familar 12-column grid system, with a few key differences to simplify the usage:
+Go Components provides a familiar 12-column grid system, with a few key differences to simplify the usage:
 
 ## breakpoints
 
-There are less breakpoints in GO than other popular CSS frameworks, as we often realise we used 50% of the breakpoints for most of our usecases. Hence, we've reduced the number of breakpoints to 4:
+There are less breakpoints in GO than other popular CSS frameworks, as we often realise we used 50% of the breakpoints for most of our use cases. Hence, we've reduced the number of breakpoints to 4:
 
 - `mobile` (< 768px)
 - `tablet` (768px - 1199px)
@@ -28,7 +24,6 @@ There are less breakpoints in GO than other popular CSS frameworks, as we often 
 
 The reason for naming them based on device types is that we often find teams communicate easier with these names than with arbitrary numbers or T-shirt sizes.
 
-You can add more breakpoints by overriding the `$breakpoints` sass variable. [See how to override sass variables](../../guides/theming/sass#overriding-sass-variables).
 
 ## Media query modifiers
 

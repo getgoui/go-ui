@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "concurrently --kill-others \"npm:watch.*\"",
     "watch.core": "nx build @go-ui/core -- --watch",
+    "watch.ia": "nx watch.ia @go-ui/docs",
     "watch.docs": "nx start @go-ui/docs",
     "dev.core": "nx start @go-ui/core",
     "dev.docs": "nx build @go-ui/core && nx start @go-ui/docs",

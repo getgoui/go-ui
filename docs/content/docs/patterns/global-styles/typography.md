@@ -6,10 +6,6 @@ tags:
   - Utility
 ---
 
-import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/patterns/typography/demo/typography.html';
-import headingDemo from '!!raw-loader!@/go-ui/patterns/typography/demo/headings.html';
-import positionDemo from '!!raw-loader!@/go-ui/patterns/typography/demo/positions.html';
 
 # Typography
 

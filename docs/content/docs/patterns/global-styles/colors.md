@@ -6,11 +6,6 @@ tags:
   - Global styles
 ---
 
-import ColorDisplay from '@/components/color/ColorDisplay';
-import ColorGenerator from '@/components/color/ColorGenerator';
-import Demo from '@/components/Demo';
-import BrowserOnly from '@docusaurus/BrowserOnly';
-
 # Colors
 
 We found that the most common colors used in the web can be categorised in these groups:
@@ -34,8 +29,8 @@ When light theme (default) is used, 100 means lightest shade of this color, whil
 Use the theme switcher in demo "browser" to toggle between light and dark theme and see how the components change.
 :::
 
-<BrowserOnly>{() => <ColorDisplay />}</BrowserOnly>
+<!-- display default colors -->
 
 ## Color Generator
 
-<BrowserOnly>{() => <ColorGenerator />}</BrowserOnly>
+<!-- color generator -->

@@ -13,6 +13,8 @@ import startCase from 'lodash.startcase';
 import sortBy from 'lodash.sortby';
 import groupBy from 'lodash.groupby';
 import uniqBy from 'lodash.uniqby';
+import chokidar from 'chokidar';
+import chalk from 'chalk';
 
 import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { IA, IAItem } from '../src/ia.interface';
@@ -222,9 +224,26 @@ async function generateIA(): Promise<void> {
   try {
     const content = `export default ${JSON.stringify(ia, null, 2)}`;
     fs.writeFileSync(iAFile, content);
-    spinner.success();
+    spinner.success({ text: 'IA generated!', mark: '✅' });
   } catch (err) {
     spinner.error();
   }
 }
+
 generateIA();
+
+if (process.argv.includes('--watch')) {
+  console.log(chalk.green('Start watching IA...'));
+  const watcher = chokidar
+    .watch([path.resolve(__dirname + '/../node_modules/@go-ui/core/dist/docs/go-ui.json'), path.resolve(__dirname + '/../content/**/*')], {
+      ignored: /(^|[\/\\])\../, // ignore dotfiles
+      persistent: true,
+    })
+    .on('change', (event, file) => {
+      generateIA();
+    });
+  process.on('SIGINT', function () {
+    watcher.close();
+    console.log(chalk.green('Stopped watching IA...'));
+  });
+}
