@@ -90,7 +90,6 @@ export function executeScriptElements(containerElement) {
 }
 
 export function prepareNavItems(items: INavItem[], activePath: string): INavItem[] {
-  console.log({ items });
   return items.map((item) => {
     const cleanPathname = removeLeadingSlash(activePath);
     const cleanUrl = removeLeadingSlash(item?.url);

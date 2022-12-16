@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+order: 1
 ---
 # Getting started
 
@@ -17,11 +17,16 @@ Installation can be done with the `@go-ui/core` package which includes our compo
 npm i @go-ui/core
 ```
 
-Other packages are just wrappers for this with framework-friendly syntax.
+Other packages are wrappers for this with framework-friendly syntax.
 
 
+## Importing components into your app
 
-## Insert global styles
+```js
+import '@go-ui/core/dist/go-ui/go-ui.css';
+import { defineCustomElements } from '@go-ui/core/dist/loader';
+defineCustomElements();
+```
 
 ## Framework setup
 

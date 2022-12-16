@@ -117,6 +117,7 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
       const content = md.render(comp?.readme || `---\ntitle: ${comp.tag}\n---\n\n`, env);
       const meta = md.meta;
       const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
+      const splitter = '\n';
       return {
         url: url,
         meta: meta,
@@ -125,6 +126,12 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
         content: content,
         id: comp.tag,
         editUrl,
+        slots: comp.slots,
+        props: comp.props,
+        styles: comp.styles,
+        methods: comp.methods,
+        events: comp.events,
+        listeners: comp.listeners,
       } as IAItem;
     } catch (error) {
       console.log('error parsing component docs');

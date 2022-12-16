@@ -72,8 +72,8 @@ export namespace Components {
         "pageTitle": string;
     }
     interface SidebarLayout {
+        "content": string;
         "editUrl"?: string;
-        "result": string;
         "sidebarItems": INavItem[];
     }
     interface SlotsPanel {
@@ -306,8 +306,8 @@ declare namespace LocalJSX {
         "pageTitle"?: string;
     }
     interface SidebarLayout {
+        "content"?: string;
         "editUrl"?: string;
-        "result"?: string;
         "sidebarItems"?: INavItem[];
     }
     interface SlotsPanel {

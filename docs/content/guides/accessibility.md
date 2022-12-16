@@ -1,12 +1,29 @@
 ---
 title: Accessibility
+order: 3
 ---
 
 # Accessibility
 
 There are plenty of information on the internet about what accessibility is and why it is important.
 
-Having accessible "building blocks" of your product means you get a good foundation to work with. Although it does not guarantee an accessible website overall, it helps prevent many common accessibility issues and reduces the engineering (and emotional) effort to maintain an accessible product.
+## Benefits of having an accessible design system 
+
+Having accessible "building blocks" of your product means you get a good foundation to work with, this makes developing an accessible website or application easier and more achievable than building from scratch or an non-accessible DS.
+
+::: info
+Although it does not guarantee an accessible website overall, it helps prevent many common accessibility issues and reduces the engineering (and emotional) effort to maintain an accessible product.
+:::
+
+## How do we approach accessibility
+
+Go UI's approach to testing accessibility has 2 steps:
+
+1. Automated testing - Our end to end testing loads demo pages into a headless chrome browser, and run [axe accessibility checker](https://www.deque.com/axe/) script against the loaded page. 
+2. Human review - Through building our patterns and internal applications, we manually review the site with NVDA screen reader and Chrome dev tools to see if the end result pages make sense and are easy to use.
+
+
+## What does AI tell us
 
 ChatGPT gave a good answer to "write an article about the importance of accessibility in design systems":
 
