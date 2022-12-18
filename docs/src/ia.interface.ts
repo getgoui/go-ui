@@ -7,6 +7,7 @@ export interface IA {
 
 export interface IAItem extends INavItem {
   id: string;
+  directory?: string;
   meta?: Metadata;
   description?: string;
   content?: string;
@@ -14,7 +15,9 @@ export interface IAItem extends INavItem {
   editUrl?: string;
   children?: IAItem[];
   // component only
-  props?: JsonDocsProp[];
+  props?: {
+    [tag: string]: JsonDocsProp[];
+  };
   methods?: JsonDocsMethod[];
   events?: JsonDocsEvent[];
   listeners?: JsonDocsListener[];

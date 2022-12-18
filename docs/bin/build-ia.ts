@@ -120,6 +120,7 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
       const splitter = '\n';
       return {
         url: url,
+        directory: path.dirname(comp.filePath),
         meta: meta,
         label: meta?.title || env.title || siteConfig.sidebar.tagToLabel(comp.tag),
         description: env.excerpt[0],
@@ -127,7 +128,9 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
         id: comp.tag,
         editUrl,
         slots: comp.slots,
-        props: comp.props,
+        props: {
+          [comp.tag]: comp.props,
+        },
         styles: comp.styles,
         methods: comp.methods,
         events: comp.events,
@@ -139,7 +142,19 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
     }
   });
 
-  return uniqBy(iaItems, 'url');
+  const result = [] as IAItem[];
+  iaItems.forEach((iaItem) => {
+    // check if component with same directory exists
+    // if so, add props, slots etc to parent
+    const parentItem = result.find((item) => item.directory === iaItem.directory);
+    if (parentItem) {
+      // map props into parent item
+      parentItem.props[iaItem.id] = iaItem.props[iaItem.id];
+      return;
+    }
+    result.push(iaItem);
+  });
+  return result;
 }
 
 function parseContents() {

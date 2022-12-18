@@ -1,4 +1,5 @@
 import { Component, Prop, State, h, Watch } from '@stencil/core';
+import { isEmpty } from 'lodash-es';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { buildSidebar, prepareNavItems, loadContentByPath } from '../../utils/helpers';
 import Router from '../../router';
@@ -46,40 +47,55 @@ export class PageDocs {
     this.sidebarNavItems = buildSidebar();
   }
 
-  renderProps(props: JsonDocsProp[]) {
+  renderProps(props: { [tag: string]: JsonDocsProp[] }) {
+    if (!props || isEmpty(props)) {
+      return;
+    }
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Attribute</th>
-            <th>Description</th>
-            <th>Default</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.map((prop) => {
-            return (
-              <tr>
-                <td>
-                  <code>
-                    <b>{prop.name}</b>
-                  </code>
-                </td>
-                <td>
-                  <code>{prop.attr}</code>
-                </td>
-                <td>
-                  <go-md content={prop.docs}></go-md>
-                </td>
-                <td>
-                  <code>{prop.default}</code>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div>
+        {Object.keys(props).map((tag) => {
+          const compProps = props[tag];
+          return (
+            <section>
+              <h2 id={`${tag}-props`}>
+                Props <code class="text-size-1">{tag}</code>
+              </h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compProps.map((prop) => {
+                    return (
+                      <tr>
+                        <td>
+                          <code>
+                            <b>{prop.name}</b>
+                          </code>
+                        </td>
+                        <td>
+                          <code>{prop.attr}</code>
+                        </td>
+                        <td>
+                          <go-md content={prop.docs}></go-md>
+                        </td>
+                        <td>
+                          <code>{prop.default}</code>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </section>
+          );
+        })}
+      </div>
     );
   }
 
@@ -89,9 +105,7 @@ export class PageDocs {
     return [
       <seo-tags pageTitle={meta?.title}></seo-tags>,
       <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} content={content} editUrl={editUrl}>
-        <h2>Props</h2>
         {this.renderProps(props)}
-        <h2>Slots</h2>
       </sidebar-layout>,
     ];
   }

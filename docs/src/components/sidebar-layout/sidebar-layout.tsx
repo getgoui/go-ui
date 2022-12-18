@@ -62,7 +62,7 @@ export class SidebarLayout {
               <go-nav-list block items={sidebarItems}></go-nav-list>
             </div>
           </aside>
-          <section>
+          <section class="main">
             <div class="container">
               <div class="row">
                 <div class="col-12 col-desktop-9 content-container">

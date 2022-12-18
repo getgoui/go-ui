@@ -8,6 +8,7 @@
     "dev.docs": "nx build @go-ui/core && nx start @go-ui/docs",
     "dev.react.app": "nx start @go-ui/react-vite-template",
     "build": "nx run-many --target=build --exclude=@go-ui/react-vite-template",
+    "build.ia": "nx build.ia @go-ui/docs",
     "build.core": "nx build @go-ui/core",
     "build.docs": "nx build @go-ui/docs",
     "build.react": "nx build @go-ui/react",
