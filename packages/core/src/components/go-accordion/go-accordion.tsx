@@ -1,6 +1,9 @@
 import { Component, Host, h, Prop, Element, Listen } from '@stencil/core';
 import { selectDirectChildren } from '../../utils/helper';
 
+/**
+ *
+ */
 @Component({
   tag: 'go-accordion',
   styleUrl: 'go-accordion.scss',
@@ -9,7 +12,7 @@ import { selectDirectChildren } from '../../utils/helper';
 export class GoAccordion {
   @Element() el: HTMLElement;
   /**
-   * If multiple `<go-accordion-item>`s can open at the same time
+   * If true, multiple `<go-accordion-item>`s can be opened at the same time
    */
   @Prop() multiple?: boolean = false;
 
@@ -42,7 +45,7 @@ export class GoAccordion {
   }
 
   closeNonActive() {
-    this.items.forEach(item => {
+    this.items.forEach((item) => {
       if (!item.isSameNode(this.activeItem)) {
         item.close();
       }

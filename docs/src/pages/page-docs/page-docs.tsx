@@ -4,7 +4,7 @@ import { INavItem } from '@go-ui/core/dist/types/interfaces';
 import { buildSidebar, prepareNavItems, loadContentByPath } from '../../utils/helpers';
 import Router from '../../router';
 import { IAItem } from '../../ia.interface';
-import { JsonDocsProp } from '@go-ui/core/dist/docs/go-ui';
+import { JsonDocsProp, JsonDocsSlot } from '@go-ui/core/dist/docs/go-ui';
 
 @Component({
   tag: 'page-docs',
@@ -23,7 +23,6 @@ export class PageDocs {
   private currentUrl = '';
 
   async componentWillLoad() {
-    console.log('Docs page');
     await this.init();
   }
 
@@ -51,61 +50,113 @@ export class PageDocs {
     if (!props || isEmpty(props)) {
       return;
     }
-    return (
-      <div>
-        {Object.keys(props).map((tag) => {
-          const compProps = props[tag];
-          return (
-            <section>
-              <h2 id={`${tag}-props`}>
-                Props <code class="text-size-1">{tag}</code>
-              </h2>
-              <table>
-                <thead>
+    return Object.keys(props).map((tag) => {
+      const compProps = props[tag];
+      if (isEmpty(compProps)) {
+        return;
+      }
+      return (
+        <section>
+          <h2 id={`${tag}-props`}>
+            Props <code class="text-size-1">{tag}</code>
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Attribute</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compProps.map((prop) => {
+                return (
                   <tr>
-                    <th>Name</th>
-                    <th>Attribute</th>
-                    <th>Description</th>
-                    <th>Default</th>
+                    <td>
+                      <code>
+                        <b>{prop.name}</b>
+                      </code>
+                    </td>
+                    <td>
+                      <code>{prop.attr}</code>
+                    </td>
+                    <td>
+                      <go-md content={prop.docs}></go-md>
+                    </td>
+                    <td>
+                      <code>{prop.default}</code>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {compProps.map((prop) => {
-                    return (
-                      <tr>
-                        <td>
-                          <code>
-                            <b>{prop.name}</b>
-                          </code>
-                        </td>
-                        <td>
-                          <code>{prop.attr}</code>
-                        </td>
-                        <td>
-                          <go-md content={prop.docs}></go-md>
-                        </td>
-                        <td>
-                          <code>{prop.default}</code>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </section>
-          );
-        })}
-      </div>
-    );
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
+      );
+    });
+  }
+
+  renderSlots(slots: { [tag: string]: JsonDocsSlot[] }) {
+    if (!slots || isEmpty(slots)) {
+      return;
+    }
+    return Object.keys(slots).map((tag) => {
+      const compSlots = slots[tag];
+      if (!compSlots || !compSlots.length) {
+        return;
+      }
+      return (
+        <section>
+          <h2 id={`${tag}-slots`}>
+            Slots <code class="text-size-1">{tag}</code>
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compSlots.map((prop) => {
+                return (
+                  <tr>
+                    <td>
+                      <code>
+                        <b>{prop.name}</b>
+                      </code>
+                    </td>
+                    <td>
+                      <go-md content={prop.docs}></go-md>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
+      );
+    });
   }
 
   render() {
     const { doc, sidebarNavItems } = this;
-    const { meta, editUrl, content, props } = doc;
+    if (!doc) {
+      return;
+    }
+    const { meta, editUrl, content, component } = doc;
     return [
       <seo-tags pageTitle={meta?.title}></seo-tags>,
-      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} content={content} editUrl={editUrl}>
-        {this.renderProps(props)}
+      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} content={content}>
+        <div class="mb-5">
+          <go-link href={editUrl}>Edit this page</go-link>
+        </div>
+        <hr aria-label="Auto generated below" />
+        <go-content class="d-block mt-4">
+          {this.renderProps(component?.props)}
+          {this.renderSlots(component?.slots)}
+        </go-content>
       </sidebar-layout>,
     ];
   }

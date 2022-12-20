@@ -12,18 +12,18 @@ export class GoAccordionItem {
 
   /**
    * Heading text.
-   * This will be overwritten by `heading` slot
+   * This can be overwritten by `heading` slot
    */
   @Prop() heading?: string = null;
 
   /**
    * The HTML tag to be applied to the heading text.
-   * This will be overwritten by `heading` slot
+   * This can be overwritten by `heading` slot
    */
   @Prop() headingTag?: string = 'h3';
 
   /**
-   * If expanded height should be automatically calculated. If set, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
+   * If expanded height should be automatically calculated. If true, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
    */
   @Prop() autoHeight?: boolean = true;
 

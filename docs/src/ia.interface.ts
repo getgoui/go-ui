@@ -15,14 +15,14 @@ export interface IAItem extends INavItem {
   editUrl?: string;
   children?: IAItem[];
   // component only
-  props?: {
-    [tag: string]: JsonDocsProp[];
+  component?: {
+    props?: { [tag: string]: JsonDocsProp[] };
+    slots?: { [tag: string]: JsonDocsSlot[] };
+    methods?: JsonDocsMethod[];
+    events?: JsonDocsEvent[];
+    listeners?: JsonDocsListener[];
+    styles?: JsonDocsStyle[];
   };
-  methods?: JsonDocsMethod[];
-  events?: JsonDocsEvent[];
-  listeners?: JsonDocsListener[];
-  styles?: JsonDocsStyle[];
-  slots?: JsonDocsSlot[];
 }
 
 export interface SlotDoc {

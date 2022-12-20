@@ -15,7 +15,7 @@ import { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
         /**
-          * If multiple `<go-accordion-item>`s can open at the same time
+          * If true, multiple `<go-accordion-item>`s can be opened at the same time
          */
         "multiple"?: boolean;
     }
@@ -25,7 +25,7 @@ export namespace Components {
          */
         "active"?: boolean;
         /**
-          * If expanded height should be automatically calculated. If set, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
+          * If expanded height should be automatically calculated. If true, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
          */
         "autoHeight"?: boolean;
         /**
@@ -37,11 +37,11 @@ export namespace Components {
          */
         "focusOnControl": () => Promise<void>;
         /**
-          * Heading text. This will be overwritten by `heading` slot
+          * Heading text. This can be overwritten by `heading` slot
          */
         "heading"?: string;
         /**
-          * The HTML tag to be applied to the heading text. This will be overwritten by `heading` slot
+          * The HTML tag to be applied to the heading text. This can be overwritten by `heading` slot
          */
         "headingTag"?: string;
         /**
@@ -1061,7 +1061,7 @@ declare global {
 declare namespace LocalJSX {
     interface GoAccordion {
         /**
-          * If multiple `<go-accordion-item>`s can open at the same time
+          * If true, multiple `<go-accordion-item>`s can be opened at the same time
          */
         "multiple"?: boolean;
     }
@@ -1071,15 +1071,15 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
-          * If expanded height should be automatically calculated. If set, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
+          * If expanded height should be automatically calculated. If true, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
          */
         "autoHeight"?: boolean;
         /**
-          * Heading text. This will be overwritten by `heading` slot
+          * Heading text. This can be overwritten by `heading` slot
          */
         "heading"?: string;
         /**
-          * The HTML tag to be applied to the heading text. This will be overwritten by `heading` slot
+          * The HTML tag to be applied to the heading text. This can be overwritten by `heading` slot
          */
         "headingTag"?: string;
         /**

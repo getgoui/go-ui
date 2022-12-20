@@ -8,6 +8,7 @@ import MarkdownItTitle from 'markdown-it-title';
 import { goUiPlugin } from '@go-ui/core';
 
 import fs from 'fs';
+import util from 'util';
 import dirTree from 'directory-tree';
 import startCase from 'lodash.startcase';
 import sortBy from 'lodash.sortby';
@@ -16,7 +17,7 @@ import uniqBy from 'lodash.uniqby';
 import chokidar from 'chokidar';
 import chalk from 'chalk';
 
-import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
+import { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { IA, IAItem } from '../src/ia.interface';
 import siteConfig from '../config';
 
@@ -116,8 +117,7 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
     try {
       const content = md.render(comp?.readme || `---\ntitle: ${comp.tag}\n---\n\n`, env);
       const meta = md.meta;
-      const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
-      const splitter = '\n';
+      const editUrl = siteConfig.repoLink.url + '/edit/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
       return {
         url: url,
         directory: path.dirname(comp.filePath),
@@ -127,14 +127,18 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
         content: content,
         id: comp.tag,
         editUrl,
-        slots: comp.slots,
-        props: {
-          [comp.tag]: comp.props,
+        component: {
+          slots: {
+            [comp.tag]: comp.slots,
+          },
+          props: {
+            [comp.tag]: comp.props,
+          },
+          styles: comp.styles,
+          methods: comp.methods,
+          events: comp.events,
+          listeners: comp.listeners,
         },
-        styles: comp.styles,
-        methods: comp.methods,
-        events: comp.events,
-        listeners: comp.listeners,
       } as IAItem;
     } catch (error) {
       console.log('error parsing component docs');
@@ -149,7 +153,7 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
     const parentItem = result.find((item) => item.directory === iaItem.directory);
     if (parentItem) {
       // map props into parent item
-      parentItem.props[iaItem.id] = iaItem.props[iaItem.id];
+      parentItem.component.props[iaItem.id] = iaItem.component.props[iaItem.id];
       return;
     }
     result.push(iaItem);
@@ -236,9 +240,15 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
   return contentItems;
 }
 
+const docsFile = path.resolve(__dirname + '/../node_modules/@go-ui/core/dist/docs/go-ui.json');
+
+const readFile = util.promisify(fs.readFile);
+
 async function generateIA(): Promise<void> {
   const spinner = createSpinner('Reading content folder').start();
   const content = parseContents();
+  const docsRaw = await readFile(docsFile, 'utf8');
+  const docs = JSON.parse(docsRaw.toString());
   const componentDocs = parseCompDocs(docs.components);
   const combinedItems = mergeDocs(content, componentDocs);
   const ia = categorise(sortNavItems(combinedItems));
@@ -263,6 +273,7 @@ if (process.argv.includes('--watch')) {
       ignoreInitial: true,
     })
     .on('all', (event, file) => {
+      console.log(chalk.yellow(`${file} changed`));
       generateIA();
     });
   process.on('SIGINT', function () {
