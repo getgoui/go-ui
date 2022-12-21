@@ -110,9 +110,8 @@ go-main-nav {
         padding: var(--submenu-padding-y) var(--submenu-padding-x);
         background: var(--submenu-bg-color);
         .submenu-header {
-          border-bottom: 1px solid var(--submenu-separator-color);
           padding: 0.5rem 0;
-          margin-bottom: var(--submenu-padding-y);
+          margin-bottom: 0;
           svg {
             width: 1.5em;
             height: 1.5em;
@@ -152,7 +151,7 @@ go-main-nav {
 
     .submenu {
       ul {
-        border-top: 1px solid var(--go-color-secondary-100);
+        border-top: 1px solid var(--submenu-separator-color);
       }
       go-nav-link {
         display: block;

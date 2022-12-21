@@ -25,10 +25,10 @@ export function getDocsPrefix() {
 }
 
 export function removeLeadingSlash(str: string): string {
-  if (str && str.startsWith('/')) {
-    return str.substring(1);
+  if (!str) {
+    return str;
   }
-  return str;
+  return str.replace(/^\/+/, '');
 }
 
 export function siteUrl(relativePath: string): string {
@@ -54,8 +54,10 @@ export function buildSidebar(): IAItem[] {
   const prefix = getDocsPrefix();
   const activePath = removeLeadingSlash(Router.activePath.replace(prefix, ''));
   const activeCategory = activePath.split('/')[0]; // patterns/components
-
   const cat = ia.docs.children.find((category) => category.id === activeCategory);
+  if (!cat?.children) {
+    return [];
+  }
   const sidebar = cat.children as IAItem[];
   return applyRouterLink(sidebar);
 }
@@ -132,18 +134,43 @@ export async function loadContentByPath(path: string): Promise<IAItem> {
   if (parts.length < 1) {
     return;
   }
-  let targetItem = ia[parts[0]];
-  let targetGroup = targetItem?.children;
-  if (targetGroup) {
-    for (let i = 1; i < parts.length; i++) {
-      const key = parts[i];
-      targetItem = targetGroup.find((item) => item.id === key);
-      if (targetItem?.children) {
-        targetGroup = targetItem.children;
+  const rootIaItem = ia[parts[0]];
+
+  return findMatchingItem(rootIaItem, `/${cleanPath}`);
+}
+
+function findMatchingItem(obj, url) {
+  if (!obj) return null; // Return null if the object is falsy (e.g. null, undefined)
+  if (obj.url === url) return obj; // Return the object if the url property matches
+
+  // If the object has children, search for a match in each child
+  if (obj.children) {
+    for (const child of obj.children) {
+      const result = findMatchingItem(child, url);
+      if (result) {
+        return result; // Return the result if a match was found
       }
     }
   }
-  return targetItem;
+
+  // Return null if no match was found in this object or its children
+  return null;
+}
+
+export function findIaItemByPath(iaCategory, path) {
+  if (!iaCategory) return null; // Return null if the iaCategoryect is falsy (e.g. null, undefined)
+  if (iaCategory.url === path) return iaCategory; // Return the iaCategoryect if the url property matches
+
+  // If the iaCategoryect has children, search for a match in each child
+  if (iaCategory.children) {
+    for (const child of iaCategory.children) {
+      const result = findIaItemByPath(child, path);
+      if (result) return result; // Return the result if a match was found
+    }
+  }
+
+  // Return null if no match was found in this object or its children
+  return null;
 }
 
 export type Theme = 'light' | 'dark';

@@ -9,7 +9,7 @@ import Router from '../../router';
 export class SidebarLayout {
   @Prop() sidebarItems: INavItem[];
 
-  @Prop() result: string;
+  @Prop() content: string;
 
   @Prop() editUrl?: string;
 
@@ -17,7 +17,7 @@ export class SidebarLayout {
 
   private tocEl: HTMLGoTocElement;
 
-  @Watch('result')
+  @Watch('content')
   refreshToc() {
     if (!this.tocEl) {
       return;
@@ -34,7 +34,7 @@ export class SidebarLayout {
 
   render() {
     const { activePath } = Router;
-    const { sidebarItems, result, isMobileSidebarOpen, editUrl } = this;
+    const { sidebarItems, content, isMobileSidebarOpen, editUrl } = this;
     return (
       <page-transition activePath={activePath}>
         <div class="sidebar-layout">
@@ -62,22 +62,22 @@ export class SidebarLayout {
               <go-nav-list block items={sidebarItems}></go-nav-list>
             </div>
           </aside>
-          <main>
+          <section class="main">
             <div class="container">
               <div class="row">
-                <div class="col-12 col-desktop-9">
-                  <go-content class="content-container" innerHTML={result}></go-content>
+                <div class="col-12 col-desktop-9 content-container">
+                  <go-content innerHTML={content}></go-content>
+                  <slot></slot>
+                  <div class="pt-5">{editUrl && <go-link href={editUrl}>Edit this page</go-link>}</div>
                 </div>
                 <div class="d-none d-block-desktop col-desktop-3">
                   <go-toc ref={(el) => (this.tocEl = el)} class="toc" selector=".content-container h2" label-class="h6"></go-toc>
                 </div>
               </div>
-
-              <div class="pt-5">{editUrl && <go-link href={editUrl}>Edit this page</go-link>}</div>
             </div>
 
             <go-to-top></go-to-top>
-          </main>
+          </section>
         </div>
       </page-transition>
     );

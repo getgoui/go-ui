@@ -8,13 +8,16 @@ import MarkdownItTitle from 'markdown-it-title';
 import { goUiPlugin } from '@go-ui/core';
 
 import fs from 'fs';
+import util from 'util';
 import dirTree from 'directory-tree';
 import startCase from 'lodash.startcase';
 import sortBy from 'lodash.sortby';
 import groupBy from 'lodash.groupby';
 import uniqBy from 'lodash.uniqby';
+import chokidar from 'chokidar';
+import chalk from 'chalk';
 
-import docs, { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
+import { JsonDocsComponent } from '@go-ui/core/dist/docs/go-ui';
 import { IA, IAItem } from '../src/ia.interface';
 import siteConfig from '../config';
 
@@ -114,15 +117,34 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
     try {
       const content = md.render(comp?.readme || `---\ntitle: ${comp.tag}\n---\n\n`, env);
       const meta = md.meta;
-      const editUrl = siteConfig.repoLink.url + '/blob/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
+      const editUrl = siteConfig.repoLink.url + '/edit/main/packages/core/src/' + buildSidebarItemUrl(comp, false) + '/readme.md';
       return {
         url: url,
+        directory: path.dirname(comp.filePath),
         meta: meta,
         label: meta?.title || env.title || siteConfig.sidebar.tagToLabel(comp.tag),
         description: env.excerpt[0],
         content: content,
         id: comp.tag,
         editUrl,
+        component: {
+          slots: {
+            [comp.tag]: comp.slots,
+          },
+          props: {
+            [comp.tag]: comp.props,
+          },
+          events: {
+            [comp.tag]: comp.events,
+          },
+          methods: {
+            [comp.tag]: comp.methods,
+          },
+          styles: {
+            [comp.tag]: comp.styles,
+          },
+          listeners: comp.listeners,
+        },
       } as IAItem;
     } catch (error) {
       console.log('error parsing component docs');
@@ -130,7 +152,19 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
     }
   });
 
-  return uniqBy(iaItems, 'url');
+  const result = [] as IAItem[];
+  iaItems.forEach((iaItem) => {
+    // check if component with same directory exists
+    // if so, add props, slots etc to parent
+    const parentItem = result.find((item) => item.directory === iaItem.directory);
+    if (parentItem) {
+      // map props into parent item
+      parentItem.component.props[iaItem.id] = iaItem.component.props[iaItem.id];
+      return;
+    }
+    result.push(iaItem);
+  });
+  return result;
 }
 
 function parseContents() {
@@ -212,9 +246,15 @@ function mergeDocs(contentItems: IAItem[], componentDocs: IAItem[]): IAItem[] {
   return contentItems;
 }
 
+const docsFile = path.resolve(__dirname + '/../node_modules/@go-ui/core/dist/docs/go-ui.json');
+
+const readFile = util.promisify(fs.readFile);
+
 async function generateIA(): Promise<void> {
   const spinner = createSpinner('Reading content folder').start();
   const content = parseContents();
+  const docsRaw = await readFile(docsFile, 'utf8');
+  const docs = JSON.parse(docsRaw.toString());
   const componentDocs = parseCompDocs(docs.components);
   const combinedItems = mergeDocs(content, componentDocs);
   const ia = categorise(sortNavItems(combinedItems));
@@ -222,9 +262,28 @@ async function generateIA(): Promise<void> {
   try {
     const content = `export default ${JSON.stringify(ia, null, 2)}`;
     fs.writeFileSync(iAFile, content);
-    spinner.success();
+    spinner.success({ text: 'IA generated!', mark: '✅' });
   } catch (err) {
     spinner.error();
   }
 }
+
 generateIA();
+
+if (process.argv.includes('--watch')) {
+  console.log(chalk.green('Start watching IA...'));
+  const watcher = chokidar
+    .watch([path.resolve(__dirname + '/../node_modules/@go-ui/core/dist/docs/go-ui.json'), path.resolve(__dirname + '/../content/**/*')], {
+      ignored: /(^|[\/\\])\../, // ignore dotfiles
+      persistent: true,
+      ignoreInitial: true,
+    })
+    .on('all', (event, file) => {
+      console.log(chalk.yellow(`${file} changed`));
+      generateIA();
+    });
+  process.on('SIGINT', function () {
+    watcher.close();
+    console.log(chalk.green('Stopped watching IA...'));
+  });
+}

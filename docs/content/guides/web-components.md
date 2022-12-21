@@ -1,5 +1,6 @@
 ---
 title: Web Components
+order: 4
 ---
 
 # Web Components

@@ -91,7 +91,7 @@ const siteConfig = {
       },
     ] as INavItem[],
     copyright: `
-    <div>Built with <go-link href="https://stenciljs.com/" target="_blank" rel="noopener noreferrer">Stencil</go-link></div>
+    <div>Components built with <go-link href="https://stenciljs.com/" target="_blank" rel="noopener noreferrer">Stencil</go-link></div>
     <div>Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target="_blank" rel="noopener noreferrer">Icons 8</a> from <a href="https://icons8.com/illustrations" target="_blank" rel="noopener noreferrer">Ouch!</a></div>
     `,
     bottom: ``,

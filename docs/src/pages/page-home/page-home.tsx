@@ -16,7 +16,7 @@ export class PageHome {
         title: 'Framework agnostic',
         description: `Have multiple front-end stack in your organisation and need a consistent look and feel? Go UI utilise modern browser features such as Web Components and CSS custom properties so that they can be used in any front-end tech stack.`,
         img: '/assets/img/hero/dev.png',
-        link: '/docs/guides/integration/web-components',
+        link: '/guides/web-components',
         linkText: 'See framework integration',
       },
       {

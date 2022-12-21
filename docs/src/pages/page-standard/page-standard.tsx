@@ -77,7 +77,7 @@ export class PageStandard {
     }
     return [
       <seo-tags pageTitle={meta?.title} image={siteConfig.logo}></seo-tags>,
-      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} result={result} editUrl={iAItem.editUrl}></sidebar-layout>,
+      <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} content={result} editUrl={iAItem.editUrl}></sidebar-layout>,
     ];
   }
 }
