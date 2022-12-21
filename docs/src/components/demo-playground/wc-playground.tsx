@@ -22,7 +22,7 @@ export class WcPlayground {
 
   @State() propsArray: IProp[] = [];
 
-  @Prop() slots: ISlot[] | string;
+  @Prop() slots?: ISlot[] | string;
 
   @State() slotsArray: ISlot[] = [];
 
@@ -53,15 +53,18 @@ export class WcPlayground {
   }
 
   initiateData() {
-    this.propsArray = typeof this.props === 'string' ? JSON5.parse(this.props) : this.props;
-    this.slotsArray = typeof this.slots === 'string' ? JSON5.parse(this.slots) : this.slots;
-
+    if (this.props) {
+      this.propsArray = typeof this.props === 'string' ? JSON5.parse(this.props) : this.props;
+    }
+    if (this.slots) {
+      this.slotsArray = typeof this.slots === 'string' ? JSON5.parse(this.slots) : this.slots;
+    }
+    console.log(this.code);
     // extract props from code
     const tempPropsHolder = document.createElement('div');
 
     // parse the code prop and store the initial html for slot usage rendering
     tempPropsHolder.innerHTML = this.code;
-
     const { tag } = this;
     const tempEl = tempPropsHolder.querySelector(tag) as HTMLElement;
     if (!tempEl) {
@@ -70,7 +73,7 @@ export class WcPlayground {
     }
 
     // apply props to target element
-    this.propsArray = this.propsArray.map(prop => {
+    this.propsArray = this.propsArray.map((prop) => {
       const attribute = prop.attr ? prop.attr : kebabCase(prop.name);
       return {
         ...prop,
@@ -83,17 +86,13 @@ export class WcPlayground {
     const patternTagStart = `<${tag}(.*)>`;
     const patternTagEnd = `</${tag}>`;
     const pattern = `${patternTagStart}(.|\n)*?${patternTagEnd}`;
-
     const matches = this.code.match(new RegExp(pattern, 'gi'));
     if (!matches) {
       console.error('[WebComponent Playground] Tag ' + tag + ' not found in code');
       return;
     }
     const outerString = matches[0];
-    const innerString = outerString
-      .replace(new RegExp(patternTagStart, 'gi'), '')
-      .replace(new RegExp(patternTagEnd, 'gi'), '')
-      .trim();
+    const innerString = outerString.replace(new RegExp(patternTagStart, 'gi'), '').replace(new RegExp(patternTagEnd, 'gi'), '').trim();
 
     const tempSlotsHolder = document.createElement('div');
     tempSlotsHolder.innerHTML = innerString;
@@ -113,7 +112,7 @@ export class WcPlayground {
     });
     // if tempslotsholder is not empty, its innerHtml gets set to the default slot.
     if (tempSlotsHolder.innerHTML.trim()) {
-      tempSlotArray = tempSlotArray.map(slot => {
+      tempSlotArray = tempSlotArray.map((slot) => {
         if (slot.name === 'default') {
           return {
             ...slot,
@@ -251,10 +250,10 @@ export class WcPlayground {
               </div>
               <go-accordion class="props" multiple={true}>
                 <go-accordion-item heading="Props" active>
-                  <props-panel debug={debug} values={this.propsArray} onPropChange={e => this.handlePropsChange(e)}></props-panel>
+                  <props-panel debug={debug} values={this.propsArray} onPropChange={(e) => this.handlePropsChange(e)}></props-panel>
                 </go-accordion-item>
                 <go-accordion-item heading="Slots" active>
-                  <slots-panel debug={debug} values={this.slotsArray} onSlotDisplayChange={e => this.handleSlotsChange(e)}></slots-panel>
+                  <slots-panel debug={debug} values={this.slotsArray} onSlotDisplayChange={(e) => this.handleSlotsChange(e)}></slots-panel>
                 </go-accordion-item>
               </go-accordion>
               <slot name="controls" />

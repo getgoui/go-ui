@@ -149,10 +149,9 @@ export class PageDocs {
     return [
       <seo-tags pageTitle={meta?.title}></seo-tags>,
       <sidebar-layout sidebarItems={prepareNavItems(sidebarNavItems, Router.activePath)} content={content}>
-        <div class="mb-5">
+        <div class="mt-5 mb-5">
           <go-link href={editUrl}>Edit this page</go-link>
         </div>
-        <hr aria-label="Auto generated below" />
         <go-content class="d-block mt-4">
           {this.renderProps(component?.props)}
           {this.renderSlots(component?.slots)}

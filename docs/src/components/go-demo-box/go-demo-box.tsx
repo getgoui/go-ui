@@ -209,7 +209,7 @@ ${code}
               ) : null}
 
               {/* reload */}
-              <go-button id={`${demoId}-reload`} flat variant="secondary" icon compact aria-label="Reload demo" type="button" onClick={() => this.reload()}>
+              <go-button id={`${demoId}-reload`} flat icon compact aria-label="Reload demo" type="button" onClick={() => this.reload()}>
                 {/* prettier-ignore */}
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-refresh-cw" viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
               </go-button>
@@ -220,15 +220,7 @@ ${code}
 
               <go-button-group connected>
                 {/* new window */}
-                <go-button
-                  id={`${demoId}-new-window`}
-                  flat
-                  variant="secondary"
-                  icon
-                  compact
-                  aria-label="Open in new window"
-                  type="button"
-                  onClick={() => this.openNewWindow()}>
+                <go-button id={`${demoId}-new-window`} flat icon compact aria-label="Open in new window" type="button" onClick={() => this.openNewWindow()}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                 </go-button>
@@ -241,7 +233,6 @@ ${code}
                 <go-button
                   id={`${demoId}-fullscreen`}
                   flat
-                  variant="secondary"
                   icon
                   compact
                   aria-label="Expand demo to fullscreen"
@@ -262,20 +253,20 @@ ${code}
                 </go-tooltip>
               </go-button-group>
               <go-button-group connected>
-                <go-button flat variant="secondary" icon compact aria-label="Mobile view" type="button" onClick={() => this.resizeToDevice('mobile')}>
+                <go-button flat icon compact aria-label="Mobile view" type="button" onClick={() => this.resizeToDevice('mobile')}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-2 20h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z"/></svg>
                 </go-button>
 
-                <go-button flat variant="secondary" icon compact aria-label="Tablet view" type="button" onClick={() => this.resizeToDevice('tablet')}>
+                <go-button flat icon compact aria-label="Tablet view" type="button" onClick={() => this.resizeToDevice('tablet')}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M18,0H6C4.34,0,3,1.34,3,3v18c0,1.66,1.34,3,3,3h12c1.66,0,3-1.34,3-3V3C21,1.34,19.66,0,18,0z M14,22h-4v-1h4V22z M19.25,19H4.75V3h14.5V19z"/></g></g></g></svg>
                 </go-button>
-                <go-button flat variant="secondary" icon compact aria-label="Desktop view" type="button" onClick={() => this.resizeToDevice('desktop')}>
+                <go-button flat icon compact aria-label="Desktop view" type="button" onClick={() => this.resizeToDevice('desktop')}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><g><path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></g></g></g></svg>
                 </go-button>
-                <go-button flat variant="secondary" icon compact aria-label="Large view" type="button" onClick={() => this.resizeToDevice('large')}>
+                <go-button flat icon compact aria-label="Large view" type="button" onClick={() => this.resizeToDevice('large')}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
                 </go-button>

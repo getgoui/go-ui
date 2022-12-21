@@ -87,7 +87,7 @@ export namespace Components {
         "block": boolean;
         "code": string;
         "props": IProp[] | string;
-        "slots": ISlot[] | string;
+        "slots"?: ISlot[] | string;
         /**
           * query selector for the component to apply props to
          */
