@@ -18,8 +18,8 @@ export interface IAItem extends INavItem {
   component?: {
     props?: { [tag: string]: JsonDocsProp[] };
     slots?: { [tag: string]: JsonDocsSlot[] };
+    events?: { [tag: string]: JsonDocsEvent[] };
     methods?: JsonDocsMethod[];
-    events?: JsonDocsEvent[];
     listeners?: JsonDocsListener[];
     styles?: JsonDocsStyle[];
   };
