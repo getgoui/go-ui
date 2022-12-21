@@ -137,8 +137,10 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
           events: {
             [comp.tag]: comp.events,
           },
+          methods: {
+            [comp.tag]: comp.methods,
+          },
           styles: comp.styles,
-          methods: comp.methods,
           listeners: comp.listeners,
         },
       } as IAItem;

@@ -1,3 +1,4 @@
+<div class="container">
 <go-content>
   <go-md sanitise="true" md-options="{html: true}" src="//raw.githubusercontent.com/getgoui/go-ui/main/README.md">Fallback content.</go-md>
   <h2>Multimedia</h2>
@@ -36,3 +37,4 @@
     Your browser does not support the video tag.
   </video>
 </go-content>
+</div>
