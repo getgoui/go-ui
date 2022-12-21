@@ -21,7 +21,7 @@ export interface IAItem extends INavItem {
     events?: { [tag: string]: JsonDocsEvent[] };
     methods?: { [tag: string]: JsonDocsMethod[] };
     listeners?: JsonDocsListener[];
-    styles?: JsonDocsStyle[];
+    styles?: { [tag: string]: JsonDocsStyle[] };
   };
 }
 

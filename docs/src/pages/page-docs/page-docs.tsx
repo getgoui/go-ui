@@ -252,6 +252,60 @@ export class PageDocs {
     });
   }
 
+  /**
+   * Render Styles table
+   */
+  renderStyles(styles: { [tag: string]: JsonDocsSlot[] }) {
+    if (!styles || isEmpty(styles)) {
+      return;
+    }
+    return Object.keys(styles).map((tag) => {
+      const compStyles = styles[tag];
+      if (!compStyles || !compStyles.length) {
+        return;
+      }
+      return (
+        <section>
+          <h2 id={`${tag}-styles`}>
+            Styles <code class="text-size-1">{tag}</code>
+          </h2>
+          <go-table-wrapper striped hoverable bordered>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Default value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {compStyles.map((prop) => {
+                  const [desc, defaultValue] = prop.docs.split('- default:');
+
+                  return (
+                    <tr>
+                      <td>
+                        <code>
+                          <b>{prop.name}</b>
+                        </code>
+                      </td>
+                      <td>
+                        <go-md content={desc}></go-md>
+                      </td>
+                      <td>
+                        <code>{defaultValue}</code>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </go-table-wrapper>
+        </section>
+      );
+    });
+  }
+
   render() {
     const { doc, sidebarNavItems } = this;
     if (!doc) {
@@ -269,6 +323,7 @@ export class PageDocs {
           {this.renderSlots(component?.slots)}
           {this.renderEvents(component?.events)}
           {this.renderMethods(component?.methods)}
+          {this.renderStyles(component?.styles)}
         </go-content>
       </sidebar-layout>,
     ];
