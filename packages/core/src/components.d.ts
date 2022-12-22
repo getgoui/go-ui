@@ -460,6 +460,10 @@ export namespace Components {
           * Navigation items to be rendered if provided, slot content will not be rendered.
          */
         "items"?: INavItem[] | string;
+        /**
+          * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
+         */
+        "label": string;
     }
     interface GoMd {
         /**
@@ -488,6 +492,9 @@ export namespace Components {
         "useGoUi"?: boolean;
     }
     interface GoNavDrawer {
+        /**
+          * keep track of open state of drawer
+         */
         "active": boolean;
         /**
           * if true, clicking on nav item will close the drawer automatically
@@ -503,6 +510,9 @@ export namespace Components {
           * Navigation items to be rendered
          */
         "items"?: INavItem[] | string;
+        /**
+          * label for screen readers
+         */
         "label": string;
         "open": () => Promise<void>;
         /**
@@ -1498,6 +1508,10 @@ declare namespace LocalJSX {
           * Navigation items to be rendered if provided, slot content will not be rendered.
          */
         "items"?: INavItem[] | string;
+        /**
+          * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
+         */
+        "label"?: string;
         "onNavigate"?: (event: GoMainNavCustomEvent<any>) => void;
     }
     interface GoMd {
@@ -1529,6 +1543,9 @@ declare namespace LocalJSX {
         "useGoUi"?: boolean;
     }
     interface GoNavDrawer {
+        /**
+          * keep track of open state of drawer
+         */
         "active"?: boolean;
         /**
           * if true, clicking on nav item will close the drawer automatically
@@ -1538,6 +1555,9 @@ declare namespace LocalJSX {
           * Navigation items to be rendered
          */
         "items"?: INavItem[] | string;
+        /**
+          * label for screen readers
+         */
         "label"?: string;
         /**
           * Emitted when the nav drawer is closed

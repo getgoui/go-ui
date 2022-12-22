@@ -93,7 +93,7 @@ export class AppHeader {
     };
     return (
       <header>
-        <go-nav-drawer ref={(el) => (this.mobileMenu = el)} label="Menu" items={navItems} autoClose={true}></go-nav-drawer>
+        <go-nav-drawer ref={(el) => (this.mobileMenu = el)} label="Mobile" items={navItems} autoClose={true}></go-nav-drawer>
         <go-header-bar breakpoint="tablet">
           <go-button slot="mobile-menu-trigger" aria-labelledby="menu-label" compact flat stack variant="text" onClick={() => this.handleMobileTriggerClick()}>
             <go-icon icon-set="bx" name="menu" size="1.5rem" slot="prefix"></go-icon>

@@ -18,7 +18,7 @@ export class GoFooter {
   /**
    * Label for navigation
    */
-  @Prop() navLabel?: string = 'Footer navigation';
+  @Prop() navLabel?: string = 'Footer';
 
   /**
    * Dark theme footer

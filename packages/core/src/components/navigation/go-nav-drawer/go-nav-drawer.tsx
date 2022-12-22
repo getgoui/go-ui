@@ -26,10 +26,15 @@ export class GoNavDrawer {
 
   @State() navItems: INavItem[] = null;
 
-  // keep track of open state of drawer
+  /**
+   * keep track of open state of drawer
+   */
   @Prop({ mutable: true, reflect: true }) active = false;
 
-  @Prop() label = 'Menu';
+  /**
+   * label for screen readers
+   */
+  @Prop() label = 'Drawer';
 
   /**
    * if true, clicking on nav item will close the drawer automatically

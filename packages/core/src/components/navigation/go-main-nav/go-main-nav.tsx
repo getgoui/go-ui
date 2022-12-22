@@ -21,6 +21,12 @@ export class GoMainNav {
 
   @State() navItems: INavItem[] = null;
 
+  /**
+   * Label for the navigation.
+   * This helps screen reader users to quickly navigate to teh correct nav landmark
+   */
+  @Prop() label = 'Main';
+
   // Store attributes inherited from the host element
   private inheritedAttrs = {};
   async componentWillLoad() {
@@ -225,11 +231,11 @@ export class GoMainNav {
   }
 
   render() {
-    let { navItems, inheritedAttrs } = this;
+    let { label, navItems, inheritedAttrs } = this;
 
     return (
       <Host {...inheritedAttrs}>
-        <nav aria-label="Main navigation">{navItems ? this.renderRootNav(navItems) : <slot></slot>}</nav>
+        <nav aria-label={label}>{navItems ? this.renderRootNav(navItems) : <slot></slot>}</nav>
       </Host>
     );
   }
