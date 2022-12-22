@@ -1,0 +1,34 @@
+{
+  "name": "@go-ui/vue",
+  "version": "0.0.0-development",
+  "description": "React wrapper for @go-ui/core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/getgoui/go-ui"
+  },
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "pnpm run clean && pnpm run compile && pnpm run cpyCss",
+    "clean": "rm -rf dist",
+    "compile": "pnpm run tsc",
+    "tsc": "tsc -p .",
+    "rollup": "rollup -c",
+    "cpyCss": "cpy \"node_modules/@go-ui/core/dist/go-ui/go-ui.css\" \"dist\" --flat",
+    "semantic-release": "semantic-release -e semantic-release-monorepo"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@go-ui/core": "workspace:0.0.0-development"
+  },
+  "devDependencies": {
+    "@types/node": "^15.14.9",
+    "cpy-cli": "^4.2.0",
+    "semantic-release": "^19.0.5",
+    "semantic-release-monorepo": "^7.0.5",
+    "vue": "^3.2.45",
+    "typescript": "^4.8.4"
+  }
+}
