@@ -1,5 +1,16 @@
 go-hero {
+  /**
+    @prop --hero-padding-top:
+      Top padding of hero container
+      - default: 0
+  */
   --hero-padding-top: 0;
+
+  /**
+    @prop --hero-padding-bottom:
+      Bottom padding of hero container
+      - default: 0
+  */
   --hero-padding-bottom: 0;
   --hero-breadcrumb-gap: 2rem;
   --hero-pre-heading-gap: 0;

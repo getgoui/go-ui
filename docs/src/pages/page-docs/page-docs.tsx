@@ -309,7 +309,7 @@ export class PageDocs {
   render() {
     const { doc, sidebarNavItems } = this;
     if (!doc) {
-      return;
+      return <page-notfound></page-notfound>;
     }
     const { meta, editUrl, content, component } = doc;
     return [
