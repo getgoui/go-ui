@@ -52,7 +52,7 @@ function writeBoilerplate(tagName, inheritAttrs) {
   const filePath = path.resolve(dir, `${tagName}.tsx`);
   try {
     fs.writeFileSync(filePath, fileContent);
-    console.log(chalk.green('√ Component file generated'));
+    console.log(chalk.green('✅ Component file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -62,7 +62,7 @@ function writeBoilerplate(tagName, inheritAttrs) {
   const stylePath = path.resolve(dir, `${tagName}.scss`);
   try {
     fs.writeFileSync(stylePath, styleContent);
-    console.log(chalk.green('√ Style file generated'));
+    console.log(chalk.green('✅ Style file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -72,7 +72,7 @@ function writeBoilerplate(tagName, inheritAttrs) {
   const readmePath = path.resolve(dir, `readme.md`);
   try {
     fs.writeFileSync(readmePath, readmeContent);
-    console.log(chalk.green('√ README file generated'));
+    console.log(chalk.green('✅ README file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -82,17 +82,17 @@ function writeBoilerplate(tagName, inheritAttrs) {
   const specTestPath = path.resolve(`${dir}/test/`, `${tagName}.spec.tsx`);
   try {
     fs.writeFileSync(specTestPath, specTestContent);
-    console.log(chalk.green('√ Spec test file generated'));
+    console.log(chalk.green('✅ Spec test file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
 
   // write the demo html file
   const demoHtmlContent = getDemoHtmlContent(tagName);
-  const demoHtmlPath = path.resolve(`${dir}/demo/`, `${tagName}.html`);
+  const demoHtmlPath = path.resolve(`${dir}/usage/`, `${tagName}.md`);
   try {
     fs.writeFileSync(demoHtmlPath, demoHtmlContent);
-    console.log(chalk.green('√ Demo html file generated'));
+    console.log(chalk.green('✅ Usage file generated'));
   } catch (err) {
     console.error(chalk.red(err));
   }
@@ -102,7 +102,7 @@ function writeBoilerplate(tagName, inheritAttrs) {
   // const docsPath = path.resolve(docsDir, `${tagName}.mdx`);
   // try {
   //   fs.writeFileSync(docsPath, docsContent);
-  //   console.log(chalk.green('√ Docs file generated'));
+  //   console.log(chalk.green('✅ Docs file generated'));
   // } catch (err) {
   //   console.error(chalk.red(err));
   // }
@@ -176,55 +176,23 @@ const getDemoHtmlContent = (name) => `
 <${name}></${name}>
 `;
 
-const getReadmeContent = (tagname) => `## ${tagname} API
-
-<!-- Auto Generated Below -->`;
-
-const getDocsContent = (tagname) => {
+const getReadmeContent = (tagname) => {
   const title = sentenseCase(tagname.replace('go-', ''));
   return `---
 title: ${title}
-hide_title: true
-hide_table_of_contents: true
 ---
 
-import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/components/${tagname}/demo/${tagname}.html';
-
-# ${title} <span className="text-size-0">\`${tagname}\`</span>
+# ${title} <span class="text-size-0">\`${tagname}\`</span>
 
 <!-- Description -->
-<div className="text-size-1">
+
+<div class="text-size-1">
   ${title} is a component in Go UI.
 </div>
-
-## When to use
-
--
--
-
-## A11y
-
-(Provide relevant a11y information here.)
-
-
-
-## Related patterns
-
-<!-- Patterns that uses this component -->
-
-- [Pattern 1](#)
-- [Pattern 2](#)
-
-<!-- Demos, tips, variations, use cases -->
-
-
 ## Demo
 
-<Demo code={demoSource} />
+<demo-frame component="${tagname}" demo="${tagname}"></demo-frame>
 
-<!-- API -->
-
-{@include: ../../../src/components/${tagname}/readme.md}
+<!-- Auto Generated Below -->
 `;
 };
