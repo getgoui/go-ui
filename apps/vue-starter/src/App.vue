@@ -1,31 +1,40 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue';
+import { ref } from 'vue';
+import { GoButton, GoCard, GoHero, GoLink } from '@go-ui/vue';
+import vitelogo from './assets/vite.svg';
+import vuelogo from './assets/vue.svg';
+let count = ref(0);
 </script>
 
 <template>
-  <div class="text-center">
-    <div>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo" alt="Vite logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
+  <div>
+    <GoHero
+      :breadcrumbs="[
+        {
+          label: 'Home',
+          url: '#',
+        },
+      ]"
+      preHeading="Vite + Vue + GoUI"
+      heading="Develop with happiness">
+      <img
+        src="https://images.unsplash.com/photo-1599811392833-a39014faf967?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        alt="Beach"
+        slot="full-width-bg" />
+      <p>Check out the full documentation of Go UI at <GoLink href="https://go-ui.com">go-ui.com</GoLink></p>
+    </GoHero>
+
+    <div className="container pt-5">
+      <GoCard border cardTitle="Counter example" media-position="left">
+        <div class="d-flex" slot="media">
+          <img :src="vuelogo" alt="vue logo" />
+          <img :src="vitelogo" alt="vite logo" />
+        </div>
+        <p>Edit <code>src/App.jsx</code> and save to test HMR</p>
+        <div slot="footer">
+          <GoButton block="all" variant="primary" @click="count++"> count is {{ count }} </GoButton>
+        </div>
+      </GoCard>
     </div>
-    <HelloWorld msg="Vite + Vue" />
   </div>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

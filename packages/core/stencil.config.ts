@@ -16,12 +16,14 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
-      includeDefineCustomElements: true,
+      includeImportCustomElements: true,
+      customElementsDir: 'dist/components',
     }),
     vueOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../vue/src/components.ts',
-      includeDefineCustomElements: true,
+      includeImportCustomElements: true,
+      customElementsDir: 'dist/components',
     }),
     {
       type: 'dist',
