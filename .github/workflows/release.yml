@@ -32,15 +32,21 @@ jobs:
         run: pnpm test.e2e
         working-directory: packages/core
 
-      - name: Releases
+      - name: Release Core
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm release.core
 
-      - name: Releases
+      - name: Release React
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm release.react
+
+      - name: Release Vue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm release.vue
 

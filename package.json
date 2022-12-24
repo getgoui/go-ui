@@ -17,6 +17,7 @@
     "test.e2e.core": "nx test.e2e @go-ui/core",
     "release.core": "nx semantic-release @go-ui/core",
     "release.react": "nx semantic-release @go-ui/react",
+    "release.vue": "nx semantic-release @go-ui/vue",
     "gg": "node ./bin/index.js"
   },
   "devDependencies": {
