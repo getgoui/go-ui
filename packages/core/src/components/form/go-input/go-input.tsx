@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
+import { uniqueId } from 'lodash-es';
 import { InputProps, InputType } from '../../../interfaces';
 import { hasSlot } from '../../../utils/helper';
 

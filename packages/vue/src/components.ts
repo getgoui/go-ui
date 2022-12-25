@@ -14,6 +14,7 @@ import { defineCustomElement as defineGoButton } from '@go-ui/core/dist/componen
 import { defineCustomElement as defineGoButtonGroup } from '@go-ui/core/dist/components/go-button-group.js';
 import { defineCustomElement as defineGoCard } from '@go-ui/core/dist/components/go-card.js';
 import { defineCustomElement as defineGoCardRow } from '@go-ui/core/dist/components/go-card-row.js';
+import { defineCustomElement as defineGoCheckbox } from '@go-ui/core/dist/components/go-checkbox.js';
 import { defineCustomElement as defineGoChip } from '@go-ui/core/dist/components/go-chip.js';
 import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/components/go-content.js';
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
@@ -130,6 +131,9 @@ export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-r
   'moreLinkHref',
   'moreLinkText'
 ]);
+
+
+export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-checkbox', defineGoCheckbox);
 
 
 export const GoChip = /*@__PURE__*/ defineContainer<JSX.GoChip>('go-chip', defineGoChip, [

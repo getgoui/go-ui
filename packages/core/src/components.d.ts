@@ -237,6 +237,8 @@ export namespace Components {
          */
         "stagger"?: number;
     }
+    interface GoCheckbox {
+    }
     interface GoChip {
         /**
           * Make chip clickable, `chipClick` event will be emitted on click
@@ -853,6 +855,12 @@ declare global {
         prototype: HTMLGoCardRowElement;
         new (): HTMLGoCardRowElement;
     };
+    interface HTMLGoCheckboxElement extends Components.GoCheckbox, HTMLStencilElement {
+    }
+    var HTMLGoCheckboxElement: {
+        prototype: HTMLGoCheckboxElement;
+        new (): HTMLGoCheckboxElement;
+    };
     interface HTMLGoChipElement extends Components.GoChip, HTMLStencilElement {
     }
     var HTMLGoChipElement: {
@@ -1037,6 +1045,7 @@ declare global {
         "go-button-group": HTMLGoButtonGroupElement;
         "go-card": HTMLGoCardElement;
         "go-card-row": HTMLGoCardRowElement;
+        "go-checkbox": HTMLGoCheckboxElement;
         "go-chip": HTMLGoChipElement;
         "go-content": HTMLGoContentElement;
         "go-content-layout": HTMLGoContentLayoutElement;
@@ -1293,6 +1302,8 @@ declare namespace LocalJSX {
           * If set, cards will fade in one by one with the specified delay in milliseconds when they are in the viewport. uses `IntersectionObserver`, [see browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
          */
         "stagger"?: number;
+    }
+    interface GoCheckbox {
     }
     interface GoChip {
         /**
@@ -1823,6 +1834,7 @@ declare namespace LocalJSX {
         "go-button-group": GoButtonGroup;
         "go-card": GoCard;
         "go-card-row": GoCardRow;
+        "go-checkbox": GoCheckbox;
         "go-chip": GoChip;
         "go-content": GoContent;
         "go-content-layout": GoContentLayout;
@@ -1867,6 +1879,7 @@ declare module "@stencil/core" {
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
             "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
+            "go-checkbox": LocalJSX.GoCheckbox & JSXBase.HTMLAttributes<HTMLGoCheckboxElement>;
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-content": LocalJSX.GoContent & JSXBase.HTMLAttributes<HTMLGoContentElement>;
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;

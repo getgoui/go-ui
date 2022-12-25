@@ -1,8 +1,7 @@
 import { Component, Host, h, Element, Prop, Method, Watch } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
+import { uniqueId, debounce } from 'lodash-es';
 import { computePosition, offset, flip, autoUpdate } from '@floating-ui/dom';
 import { focusFirstWithin, onClickOutside } from '../../utils';
-import debounce from 'lodash.debounce';
 
 @Component({
   tag: 'go-dropdown',

@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
+import { uniqueId } from 'lodash-es';
 
 export interface TabChild {
   tabId: string;
