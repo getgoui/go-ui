@@ -36,7 +36,7 @@ importers:
       semantic-release-cli: 5.4.4
       semantic-release-monorepo: 7.0.5_semantic-release@19.0.5
 
-  apps/react:
+  apps/react-starter:
     specifiers:
       '@go-ui/react': workspace:0.0.0-development
       '@types/react': ^18.0.24

@@ -1,0 +1,10 @@
+html,
+body {
+  scroll-behavior: smooth;
+  @include reduced-motion {
+    scroll-behavior: auto;
+  }
+}
+* {
+  box-sizing: border-box;
+}

@@ -1,3 +1,65 @@
 go-checkbox {
- display: block;
+  /**
+    @prop --cb-border-color:
+      Default border color
+      - default: var(--go-color-neutral-600)
+  */
+  --cb-border-color: var(--go-color-neutral-600);
+
+  /**
+    @prop --cb-border-width:
+      Default border width
+      - default: 2px
+  */
+  --cb-border-width: 2px;
+
+  /**
+    @prop --cb-border:
+      Checkbox default border
+      - default: var(--cb-border-width) solid var(--cb-border-color)
+  */
+  --cb-border: var(--cb-border-width) solid var(--cb-border-color);
+
+  /**
+    @prop --cb-border-color-hover:
+      Checkbox hover state color
+      - default: var(--go-color-neutral-900)
+  */
+  --cb-border-color-hover: var(--go-color-neutral-900);
+
+  /**
+    @prop --cb-size:
+      Size of checkbox
+      - default: 2rem
+  */
+  --cb-size: 2rem;
+
+  /**
+    @prop --cb-radius:
+      Checkbox border radius
+      - default: var(--input-radius)
+  */
+  --cb-radius: var(--input-radius);
+
+  display: inline-flex;
+
+  .box {
+    position: relative;
+    border: var(--cb-border);
+    border-radius: var(--cb-radius);
+    width: var(--cb-size);
+    height: var(--cb-size);
+
+    .mark {
+      opacity: 0;
+      @include transition(opacity var(--go-duration-fast));
+    }
+    input {
+      &:checked {
+        ~ .mark {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }

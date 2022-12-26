@@ -29,6 +29,16 @@ export const inheritAttributes = (el: HTMLElement, excludes: string[] = [], remo
 
   return attributeObject;
 };
+/**
+ * Extract the `id` from target element, then remove the original id attribute
+ * @param el target element
+ * @returns id specified in target element
+ */
+export function extractId(el: HTMLElement) {
+  const id = el.id;
+  el.removeAttribute('id');
+  return id;
+}
 
 export function hasShadowDom(el: HTMLElement): boolean {
   return !!el.shadowRoot && !!(el as any).attachShadow;

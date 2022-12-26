@@ -238,6 +238,14 @@ export namespace Components {
         "stagger"?: number;
     }
     interface GoCheckbox {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "error"?: string;
+        "hint"?: string;
+        "hintId"?: string;
+        "label": string;
+        "name": string;
+        "value": any;
     }
     interface GoChip {
         /**
@@ -1304,6 +1312,14 @@ declare namespace LocalJSX {
         "stagger"?: number;
     }
     interface GoCheckbox {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "error"?: string;
+        "hint"?: string;
+        "hintId"?: string;
+        "label"?: string;
+        "name"?: string;
+        "value"?: any;
     }
     interface GoChip {
         /**

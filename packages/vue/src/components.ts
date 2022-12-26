@@ -133,7 +133,17 @@ export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-r
 ]);
 
 
-export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-checkbox', defineGoCheckbox);
+export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-checkbox', defineGoCheckbox, [
+  'id',
+  'checked',
+  'name',
+  'label',
+  'disabled',
+  'value',
+  'hint',
+  'readonly',
+  'error'
+]);
 
 
 export const GoChip = /*@__PURE__*/ defineContainer<JSX.GoChip>('go-chip', defineGoChip, [

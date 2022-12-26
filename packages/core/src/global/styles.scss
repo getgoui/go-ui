@@ -17,6 +17,7 @@
 
 @import './scss/css_variables';
 @import './scss/colors';
+@import './scss/base';
 @import './scss/grid';
 @import './scss/typography';
 @import './scss/display';
@@ -26,13 +27,5 @@
 @import './scss/misc';
 @import './scss/animation';
 
-html,
-body {
-  scroll-behavior: smooth;
-  @include reduced-motion {
-    scroll-behavior: auto;
-  }
-}
-* {
-  box-sizing: border-box;
-}
+// form
+@import './scss/form/field';

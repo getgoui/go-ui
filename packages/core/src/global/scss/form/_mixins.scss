@@ -53,6 +53,7 @@
     padding: var(--input-presuf-padding);
     border: var(--input-border);
     line-height: 1;
+    word-break: break-word;
   }
   .control-icon {
     top: auto;
@@ -105,6 +106,17 @@
   }
 }
 
+@mixin prefix-icon {
+  .prefix {
+    @include tablet {
+      padding-inline-start: calc(2 * var(--input-gap-inner) + 1.5em);
+    }
+  }
+  .control {
+    padding-inline-start: var(--input-gap-inner);
+  }
+}
+
 @mixin suffix {
   .control {
     border-bottom-left-radius: 0;
@@ -135,6 +147,17 @@
       bottom: 50%;
       transform: translateY(50%);
     }
+  }
+}
+
+@mixin suffix-icon {
+  .suffix {
+    @include tablet {
+      padding-inline-end: calc(2 * var(--input-gap-inner) + 1.5em);
+    }
+  }
+  .control {
+    padding-inline-end: var(--input-gap-inner);
   }
 }
 

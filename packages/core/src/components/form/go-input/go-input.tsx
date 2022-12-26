@@ -5,7 +5,6 @@ import { hasSlot } from '../../../utils/helper';
 
 @Component({
   tag: 'go-input',
-  styleUrl: 'go-input.scss',
   shadow: false,
 })
 export class GoInput implements InputProps {
@@ -116,13 +115,14 @@ export class GoInput implements InputProps {
     return (
       <Host
         class={{
+          'go-field': true,
           'error': !!error,
           'readonly': !!readonly,
           'disabled': !!disabled,
           'has-prefix': hasPrefix,
           'has-suffix': hasSuffix,
-          'has-icon-after': hasIconAfter && !hasSuffix,
-          'has-icon-before': hasIconBefore && !hasPrefix,
+          'has-icon-before': hasIconBefore,
+          'has-icon-after': hasIconAfter,
         }}>
         <label htmlFor={id} id={labelId}>
           {label}
@@ -138,7 +138,9 @@ export class GoInput implements InputProps {
             <span class="prefix presuf" aria-hidden="true" id={prefixId}>
               <slot name="prefix"></slot>
             </span>
-          ) : hasIconBefore ? (
+          ) : null}
+
+          {hasIconBefore ? (
             <span class="control-icon icon-before">
               <slot name="icon-before"></slot>
             </span>
@@ -150,7 +152,9 @@ export class GoInput implements InputProps {
             <span class="suffix presuf" aria-hidden="true" id={suffixId}>
               <slot name="suffix"></slot>
             </span>
-          ) : readonly || hasIconAfter ? (
+          ) : null}
+
+          {readonly || hasIconAfter ? (
             <span class="control-icon icon-after">
               {readonly ? (
                 // prettier-ignore

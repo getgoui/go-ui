@@ -1,8 +1,8 @@
 // form variables and mixins
-@import '../variables';
-@import '../mixins';
+@import 'variables';
+@import 'mixins';
 
-go-input {
+.go-field {
   @include field-container;
   &.error {
     @include error-state;
@@ -26,9 +26,15 @@ go-input {
   }
   &.has-prefix {
     @include prefix;
+    &.has-icon-before {
+      @include prefix-icon;
+    }
   }
   &.has-suffix {
     @include suffix;
+    &.has-icon-before {
+      @include suffix-icon;
+    }
   }
 
   .control-wrapper {
@@ -46,4 +52,17 @@ go-input {
   .hint {
     @include hint;
   }
+}
+
+// hidden native control, such as checkbox, radio
+.hidden-control {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
