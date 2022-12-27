@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "predev": "pnpm build.core",
     "dev": "concurrently --kill-others \"npm:watch.*\"",
     "watch.core": "nx build @go-ui/core -- --watch",
     "watch.ia": "nx watch.ia @go-ui/docs",

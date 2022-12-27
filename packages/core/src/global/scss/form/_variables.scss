@@ -126,6 +126,13 @@
   --input-hint-color: var(--go-color-neutral-600);
 
   /**
+    @prop --input-hint-font-size:
+      Font size of hint text
+      - default: var(--go-size--1)
+  */
+  --input-hint-font-size: var(--go-size--1);
+
+  /**
     @prop --control-selected-bg-color:
       Background color of checkbox or radio button when selected
       - default: var(--go-color-primary-500)
@@ -137,6 +144,20 @@
       - default: rgb(var(--go-token-lightest))
   */
   --control-selected-fg-color: rgb(var(--go-token-lightest));
+
+  /**
+    @prop --input-label-font-size:
+      Font size of label
+      - default: 1rem
+  */
+  --input-label-font-size: 1rem;
+
+  /**
+    @prop --input-label-font-weight:
+      Font weight of label
+      - default: 700
+  */
+  --input-label-font-weight: 700;
 }
 
 @include prefer-dark {

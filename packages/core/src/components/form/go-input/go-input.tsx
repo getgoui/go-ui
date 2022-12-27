@@ -124,7 +124,7 @@ export class GoInput implements InputProps {
           'has-icon-before': hasIconBefore,
           'has-icon-after': hasIconAfter,
         }}>
-        <label htmlFor={id} id={labelId}>
+        <label class="label" htmlFor={id} id={labelId}>
           {label}
         </label>
         {hasHintSlot || hint ? (

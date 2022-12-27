@@ -16,7 +16,7 @@ export class GoCheckbox implements CheckboxProps {
   @Prop() label: string;
   @Prop() hint?: string;
   @Prop() hintId?: string;
-  @Prop() error?: string;
+  @Prop({ reflect: true }) error?: string;
 
   @Element() el: HTMLElement;
 

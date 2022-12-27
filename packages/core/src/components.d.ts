@@ -326,6 +326,20 @@ export namespace Components {
          */
         "triggerId": string;
     }
+    interface GoFieldset {
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+    }
     interface GoFooter {
         /**
           * Dark theme footer
@@ -900,6 +914,12 @@ declare global {
         prototype: HTMLGoDropdownElement;
         new (): HTMLGoDropdownElement;
     };
+    interface HTMLGoFieldsetElement extends Components.GoFieldset, HTMLStencilElement {
+    }
+    var HTMLGoFieldsetElement: {
+        prototype: HTMLGoFieldsetElement;
+        new (): HTMLGoFieldsetElement;
+    };
     interface HTMLGoFooterElement extends Components.GoFooter, HTMLStencilElement {
     }
     var HTMLGoFooterElement: {
@@ -1060,6 +1080,7 @@ declare global {
         "go-content-layout": HTMLGoContentLayoutElement;
         "go-dialog": HTMLGoDialogElement;
         "go-dropdown": HTMLGoDropdownElement;
+        "go-fieldset": HTMLGoFieldsetElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
@@ -1396,6 +1417,20 @@ declare namespace LocalJSX {
           * Query selector string for the trigger element.
          */
         "triggerId"?: string;
+    }
+    interface GoFieldset {
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
     }
     interface GoFooter {
         /**
@@ -1858,6 +1893,7 @@ declare namespace LocalJSX {
         "go-content-layout": GoContentLayout;
         "go-dialog": GoDialog;
         "go-dropdown": GoDropdown;
+        "go-fieldset": GoFieldset;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
@@ -1903,6 +1939,7 @@ declare module "@stencil/core" {
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;
+            "go-fieldset": LocalJSX.GoFieldset & JSXBase.HTMLAttributes<HTMLGoFieldsetElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;

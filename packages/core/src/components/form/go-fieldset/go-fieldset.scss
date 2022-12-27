@@ -1,0 +1,12 @@
+go-fieldset {
+  display: block;
+  fieldset {
+    padding: 0;
+    border: none;
+    .control-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--input-gap-inner);
+    }
+  }
+}

@@ -7,11 +7,12 @@ title: Checkbox
 <!-- Description -->
 
 <div class="text-size-1">
-  Checkbox is a component in Go UI.
+Checkboxes allow users to select one or more options.
 </div>
 
 
 ## Accessibility
+
 
 
 ## Demo

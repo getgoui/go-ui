@@ -65,7 +65,7 @@ go-checkbox {
   label {
     cursor: pointer;
   }
-  &.error {
+  &[error] {
     @include error-state;
     --cb-border-color: var(--input-error-color);
     input {
@@ -160,7 +160,8 @@ go-checkbox {
         &:active {
           ~ .mark {
             box-shadow: var(--input-focus-shadow);
-            border-width: calc(var(--cb-border-width) + 2px);
+            border-color: var(--cb-checked-bg);
+            border-width: calc(var(--cb-border-width) + 1px);
             outline-offset: 0;
           }
         }

@@ -1,9 +1,10 @@
 @mixin field-container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--input-gap-inner);
+  display: block;
   margin: var(--input-gap-outer);
   line-height: 1.5rem;
+  * {
+    display: block;
+  }
 }
 
 @mixin error-state {
@@ -183,7 +184,21 @@
 @mixin hint {
   color: var(--input-hint-color);
   line-height: 1;
-  font-size: var(--go-size--1);
+  font-size: var(--input-hint-font-size);
+  margin-bottom: var(--input-gap-inner);
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin label {
+  font-size: var(--input-label-font-size);
+  font-weight: var(--input-label-font-weight);
+  margin-bottom: var(--input-gap-inner);
+}
+
+@mixin error-msg {
+  margin-top: var(--input-gap-inner);
 }
 
 @mixin field-control {

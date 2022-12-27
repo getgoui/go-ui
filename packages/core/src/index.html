@@ -43,9 +43,8 @@
         <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
         <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
       </go-input>
-
-      <hr />
-<go-checkbox label="Checkbox" hint="This is a hint message"></go-checkbox>
+      <hr>
+      <go-checkbox label="Checkbox" hint="This is a hint message"></go-checkbox>
 <go-checkbox label="Checked" checked></go-checkbox>
 <go-checkbox label="Indeterminate" checked indeterminate></go-checkbox>
 <go-checkbox label="Checked" checked>
@@ -57,6 +56,20 @@
 <go-checkbox label="Error checked" error="This is an error" checked></go-checkbox>
 <go-checkbox label="Error disabled" error="This is an error" disabled></go-checkbox>
 
+      <go-fieldset label="What fruit do you like?" hint="Select one or more">
+        <go-checkbox name="fruit" label="Apple" value="apple" hint="Not the company"></go-checkbox>
+        <go-checkbox name="fruit" label="Banana" value="banana"></go-checkbox>
+        <go-checkbox name="fruit" label="Orange" value="orange"></go-checkbox>
+        <go-checkbox name="fruit" label="Kiwi" value="kiwi"></go-checkbox>
+        <go-checkbox name="fruit" label="Water melon" value="watermelon"></go-checkbox>
+      </go-fieldset>
+      <go-fieldset label="Fieldset with error" error="This is an error message." hint="Select one or more">
+        <go-checkbox error name="fruit" label="Apple" value="apple" hint="Not the company"></go-checkbox>
+        <go-checkbox error name="fruit" label="Banana" value="banana"></go-checkbox>
+        <go-checkbox error name="fruit" label="Orange" value="orange"></go-checkbox>
+        <go-checkbox error name="fruit" label="Kiwi" value="kiwi"></go-checkbox>
+        <go-checkbox error name="fruit" label="Water melon" value="watermelon"></go-checkbox>
+      </go-fieldset>
       <!-- #endregion demo finish -->
     </div>
   </body>

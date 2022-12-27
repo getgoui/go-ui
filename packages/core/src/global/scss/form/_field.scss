@@ -52,6 +52,13 @@
   .hint {
     @include hint;
   }
+
+  .label {
+    @include label;
+  }
+  .error-msg {
+    @include error-msg;
+  }
 }
 
 // hidden native control, such as checkbox, radio
