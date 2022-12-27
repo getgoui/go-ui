@@ -14,6 +14,7 @@ export interface FormBaseProps {
 
 export interface CheckboxProps extends FormBaseProps {
   checked?: boolean;
+  indeterminate?: boolean;
 }
 
 export interface InputProps extends FormBaseProps {

@@ -124,15 +124,28 @@
       - default: var(--go-color-neutral-600)
   */
   --input-hint-color: var(--go-color-neutral-600);
+
+  /**
+    @prop --control-selected-bg-color:
+      Background color of checkbox or radio button when selected
+      - default: var(--go-color-primary-500)
+  */
+  --control-selected-bg-color: var(--go-color-primary-500);
+  /**
+    @prop --control-selected-fg-color:
+      Foreground color of checkbox or radio button when selected
+      - default: rgb(var(--go-token-lightest))
+  */
+  --control-selected-fg-color: rgb(var(--go-token-lightest));
 }
 
 @include prefer-dark {
   :root {
-    --input-error-color: var(--go-color-critical-700);
+    --control-selected-bg-color: var(--go-color-primary-400);
   }
 }
 @include theme-dark {
   :root {
-    --input-error-color: var(--go-color-critical-700);
+    --control-selected-bg-color: var(--go-color-primary-400);
   }
 }

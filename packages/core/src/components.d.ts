@@ -243,6 +243,7 @@ export namespace Components {
         "error"?: string;
         "hint"?: string;
         "hintId"?: string;
+        "indeterminate"?: boolean;
         "label": string;
         "name": string;
         "value": any;
@@ -1317,6 +1318,7 @@ declare namespace LocalJSX {
         "error"?: string;
         "hint"?: string;
         "hintId"?: string;
+        "indeterminate"?: boolean;
         "label"?: string;
         "name"?: string;
         "value"?: any;

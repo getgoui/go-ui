@@ -1,10 +1,12 @@
+@import '../../../global/scss/form/mixins';
+
 go-checkbox {
   /**
     @prop --cb-border-color:
       Default border color
-      - default: var(--go-color-neutral-600)
+      - default: var(--input-border-color)
   */
-  --cb-border-color: var(--go-color-neutral-600);
+  --cb-border-color: var(--input-border-color);
 
   /**
     @prop --cb-border-width:
@@ -23,9 +25,9 @@ go-checkbox {
   /**
     @prop --cb-border-color-hover:
       Checkbox hover state color
-      - default: var(--go-color-neutral-900)
+      - default: var(--go-color-neutral-700)
   */
-  --cb-border-color-hover: var(--go-color-neutral-900);
+  --cb-border-color-hover: var(--go-color-neutral-700);
 
   /**
     @prop --cb-size:
@@ -41,25 +43,132 @@ go-checkbox {
   */
   --cb-radius: var(--input-radius);
 
-  display: inline-flex;
+  /**
+    @prop --cb-checked-bg:
+      Checkbox background color when checked
+      - default: var(--control-selected-bg-color)
+  */
+  --cb-checked-bg: var(--control-selected-bg-color);
+  /**
+    @prop --cb-checked-text:
+      Foreground color of checked checkbox
+      - default: var(--control-selected-fg-color)
+  */
+  --cb-checked-text: var(--control-selected-fg-color);
 
+  .control-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--input-gap-inner);
+  }
+  input,
+  label {
+    cursor: pointer;
+  }
+  &.error {
+    @include error-state;
+    --cb-border-color: var(--input-error-color);
+    input {
+      &:checked {
+        ~ .mark {
+          --cb-checked-bg: var(--input-error-color);
+        }
+      }
+    }
+    .error-msg {
+      margin: var(--input-gap-inner) 0;
+    }
+  }
+  &.disabled {
+    input,
+    label {
+      cursor: not-allowed;
+    }
+    .box {
+      .mark {
+        opacity: 0.5;
+        background: var(--input-bg-disabled-color);
+      }
+    }
+  }
+  label {
+    @include typography(body);
+    line-height: var(--cb-size);
+  }
   .box {
     position: relative;
-    border: var(--cb-border);
-    border-radius: var(--cb-radius);
     width: var(--cb-size);
     height: var(--cb-size);
 
     .mark {
-      opacity: 0;
-      @include transition(opacity var(--go-duration-fast));
+      display: block;
+      stroke: var(--cb-checked-text);
+      border: var(--cb-border);
+      border-radius: var(--cb-radius);
+      stroke-dasharray: 24;
+      stroke-dashoffset: -24;
+      @include transition(background-color var(--go-duration-fast) ease var(--go-duration-fast), stroke-dashoffset var(--go-duration-fast));
     }
     input {
+      ~ .mark.minus {
+        display: none;
+      }
       &:checked {
         ~ .mark {
-          opacity: 1;
+          @include transition(background-color var(--go-duration-fast), stroke-dashoffset var(--go-duration-fast) ease var(--go-duration-fast));
+          stroke-dashoffset: 0;
+          background: var(--cb-checked-bg);
+          border-color: var(--cb-checked-bg);
+          path {
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+          }
+          &.minus {
+            display: none;
+          }
+          &.tick {
+            display: block;
+          }
+        }
+      }
+      &:indeterminate {
+        ~ .mark {
+          background: var(--cb-checked-bg);
+          border-color: var(--cb-checked-bg);
+          stroke-dashoffset: 0;
+          path {
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+          }
+          &.minus {
+            display: block;
+          }
+          &.tick {
+            display: none;
+          }
+        }
+      }
+      &:not(:disabled) {
+        &:hover {
+          ~ .mark {
+            border-color: var(--cb-border-color-hover);
+          }
+        }
+        &:focus-visible {
+          ~ .mark {
+            @include focus-outline;
+          }
+        }
+        &:active {
+          ~ .mark {
+            box-shadow: var(--input-focus-shadow);
+            border-width: calc(var(--cb-border-width) + 2px);
+            outline-offset: 0;
+          }
         }
       }
     }
+  }
+
+  .hint {
+    @include hint;
   }
 }
