@@ -54,7 +54,7 @@ export const config: Config = {
         pxtorem({
           propList: ['*'],
           selectorBlackList: [':root', 'html', 'body'],
-          replace: false,
+          replace: true,
         }),
       ],
     }),

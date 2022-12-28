@@ -23,7 +23,7 @@
     <!-- keep this sandbox empty before pushing changes -->
     <main class="frame container">
       <!-- #region demo start -->
-      <go-input id="test" type="text" label="Input field" hint="Please enter some text"></go-input>
+      <go-input type="text" label="Input field" hint="Please enter some text"></go-input>
       <go-input type="text" label="Error state" hint="Please enter some text" error="This is an error"></go-input>
       <go-input type="text" label="Disabled state" value="I'm not editable" disabled></go-input>
       <go-input type="text" label="Readonly state" value="I'm not editable" readonly></go-input>
@@ -47,7 +47,8 @@
       <go-checkbox label="Checkbox" hint="This is a hint message"></go-checkbox>
 <go-checkbox label="Checked" checked></go-checkbox>
 <go-checkbox label="Indeterminate" checked indeterminate></go-checkbox>
-<go-checkbox label="Checked" checked>
+<go-button id="btn">Make next one indeterminate</go-button>
+<go-checkbox id="cb" label="Checked" checked>
   <div slot="hint">This is a <go-link href="/">slotted</go-link> hint</div>
 </go-checkbox>
 <go-checkbox label="Disabled" disabled></go-checkbox>
@@ -69,8 +70,15 @@
         <go-checkbox error name="fruit" label="Orange" value="orange"></go-checkbox>
         <go-checkbox error name="fruit" label="Kiwi" value="kiwi"></go-checkbox>
         <go-checkbox error name="fruit" label="Water melon" value="watermelon"></go-checkbox>
-      </go-fieldset>
+    </go-fieldset>
       <!-- #endregion demo finish -->
     </div>
+
+
+<script>
+  window.btn.addEventListener('click', () => {
+    window.cb.indeterminate = true
+})
+</script>
   </body>
 </html>

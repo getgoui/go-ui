@@ -32,9 +32,9 @@ go-checkbox {
   /**
     @prop --cb-size:
       Size of checkbox
-      - default: 2rem
+      - default: 1.5rem
   */
-  --cb-size: 2rem;
+  --cb-size: 1.5rem;
 
   /**
     @prop --cb-radius:
@@ -79,23 +79,27 @@ go-checkbox {
       margin: var(--input-gap-inner) 0;
     }
   }
-  &.disabled {
+  &[disabled] {
     input,
     label {
       cursor: not-allowed;
     }
     .box {
       .mark {
-        opacity: 0.5;
         background: var(--input-bg-disabled-color);
+        stroke: var(--input-text-disabled-color);
+        border-color: var(--input-text-disabled-color);
       }
     }
   }
   label {
     @include typography(body);
     line-height: var(--cb-size);
+    & ~ .hint {
+      margin-top: 4px;
+    }
   }
-  .box {
+  :where(.box) {
     position: relative;
     width: var(--cb-size);
     height: var(--cb-size);
@@ -160,8 +164,6 @@ go-checkbox {
         &:active {
           ~ .mark {
             box-shadow: var(--input-focus-shadow);
-            border-color: var(--cb-checked-bg);
-            border-width: calc(var(--cb-border-width) + 1px);
             outline-offset: 0;
           }
         }

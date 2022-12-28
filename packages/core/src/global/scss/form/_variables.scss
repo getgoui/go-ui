@@ -50,9 +50,9 @@
   /**
     @prop --input-gap-outer:
       Outer margin of form field
-      - default: 1rem
+      - default: 1rem 0
   */
-  --input-gap-outer: 1rem;
+  --input-gap-outer: 1rem 0;
 
   /**
     @prop --input-error-color:

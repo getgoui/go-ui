@@ -35,6 +35,7 @@ export class GoFieldset {
           <div class="control-list">
             <slot></slot>
           </div>
+          {typeof error === 'string' ? <div class="error-msg">{error}</div> : null}
         </fieldset>
       </Host>
     );
