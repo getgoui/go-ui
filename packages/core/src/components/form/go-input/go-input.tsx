@@ -1,7 +1,6 @@
 import { Component, Host, h, Element, Prop, Watch, State } from '@stencil/core';
-import { uniqueId } from 'lodash-es';
 import { InputProps, InputType } from '../../../interfaces';
-import { hasSlot } from '../../../utils/helper';
+import { hasSlot, initIdProps } from '../../../utils/helper';
 
 @Component({
   tag: 'go-input',
@@ -10,36 +9,36 @@ import { hasSlot } from '../../../utils/helper';
 export class GoInput implements InputProps {
   @Element() el: HTMLElement;
 
-  @Prop()
-  id: string = uniqueId('go-input-');
+  id: string;
 
   /**
    * DOM id for label
    */
-  @Prop()
-  labelId = `${this.id}-label`;
+  @Prop({ mutable: true })
+  labelId?: string;
 
   /**
    * DOM id for prefix
    */
-  @Prop()
-  prefixId = `${this.id}-prefix`;
+  @Prop({ mutable: true })
+  prefixId?: string;
 
   /**
    * DOM id for suffix
    */
-  @Prop()
-  suffixId = `${this.id}-suffix`;
+  @Prop({ mutable: true })
+  suffixId?: string;
   /**
    * DOM id for hint message
    */
-  @Prop()
-  hintId = `${this.id}-hint`;
+  @Prop({ mutable: true })
+  hintId?: string;
 
   /**
    * DOM id for error
    */
-  errorId = `${this.id}-error`;
+  @Prop({ mutable: true })
+  errorId?: string;
 
   /**
    * Name of the input field
@@ -101,6 +100,7 @@ export class GoInput implements InputProps {
     this.hasPrefix = hasSlot(this.el, 'prefix');
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
+    initIdProps(this, this.el, ['label', 'prefix', 'suffix', 'hint', 'error'], 'go-input-');
     this.updateErrorState();
   }
 

@@ -1,13 +1,15 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import { CheckboxProps } from '../../../interfaces';
-import { extractId, hasSlot } from '../../../utils';
+import { hasSlot } from '../../../utils';
 @Component({
   tag: 'go-checkbox',
   styleUrl: 'go-checkbox.scss',
   shadow: false,
 })
 export class GoCheckbox implements CheckboxProps {
+  @Element() el: HTMLElement;
+
   @Prop() checked?: boolean;
   @Prop() indeterminate?: boolean;
   @Prop() name: string;
@@ -15,27 +17,41 @@ export class GoCheckbox implements CheckboxProps {
   @Prop() value: any;
   @Prop() label: string;
   @Prop() hint?: string;
-  @Prop() hintId?: string;
   @Prop({ reflect: true }) error?: string;
 
-  @Element() el: HTMLElement;
+  @Prop()
+  id: string = uniqueId('go-checkbox-');
 
-  // Store attributes inherited from the host element
-  id: string;
+  /**
+   * DOM id for hint message
+   */
+  @Prop()
+  hintId? = `${this.id}-hint`;
+
+  /**
+   * DOM id for error
+   */
+  @Prop()
+  errorId? = `${this.id}-error`;
+
+  /**
+   * Allow empty value for `error` attribute and show error state
+   */
+  @State() hasError = false;
+
+  @Watch('error')
+  updateErrorState() {
+    this.hasError = typeof this.error !== 'undefined';
+  }
+
   hasHintSlot: boolean;
   componentWillLoad() {
-    this.id = extractId(this.el);
-    if (!this.id) {
-      this.id = uniqueId('go-checkbox-');
-    }
-    if (!this.hintId) {
-      this.hintId = this.id + '-hint';
-    }
     this.hasHintSlot = hasSlot(this.el, 'hint');
+    this.updateErrorState();
   }
 
   render() {
-    const { label, error, id, hint, hintId, hasHintSlot, checked, indeterminate, name, disabled, value } = this;
+    const { label, error, id, hint, hintId, hasHintSlot, checked, indeterminate, name, disabled, value, hasError, errorId } = this;
     const props = {
       id,
       checked,
@@ -47,7 +63,7 @@ export class GoCheckbox implements CheckboxProps {
     return (
       <Host
         class={{
-          error: !!error,
+          error: hasError,
           disabled: !!disabled,
           indeterminate: !!indeterminate,
         }}>
@@ -86,7 +102,11 @@ export class GoCheckbox implements CheckboxProps {
             ) : null}
           </div>
         </div>
-        {typeof error === 'string' ? <div class="error-msg">{error}</div> : null}
+        {hasError ? (
+          <div class="error-msg" id={errorId}>
+            {error}
+          </div>
+        ) : null}
       </Host>
     );
   }

@@ -1,7 +1,7 @@
 <go-checkbox label="Checkbox" hint="This is a hint message"></go-checkbox>
 <go-checkbox label="Checked" checked></go-checkbox>
 <go-checkbox label="Indeterminate" checked indeterminate></go-checkbox>
-<go-checkbox label="Checked" checked>
+<go-checkbox id="cb" label="Checked" checked>
   <div slot="hint">This is a <go-link href="/">slotted</go-link> hint</div>
 </go-checkbox>
 <go-checkbox label="Disabled" disabled></go-checkbox>

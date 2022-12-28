@@ -241,8 +241,16 @@ export namespace Components {
         "checked"?: boolean;
         "disabled"?: boolean;
         "error"?: string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
         "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
         "hintId"?: string;
+        "id": string;
         "indeterminate"?: boolean;
         "label": string;
         "name": string;
@@ -332,13 +340,29 @@ export namespace Components {
          */
         "error"?: boolean | string;
         /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
         /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Wrap direct DOM children in an unordered list so they are announced by screen readers, good for checkboxes and radio buttons
+         */
+        "isList"?: boolean;
+        /**
           * Label of the input field
          */
         "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
     }
     interface GoFooter {
         /**
@@ -440,14 +464,17 @@ export namespace Components {
          */
         "error"?: boolean | string;
         /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
         /**
           * DOM id for hint message
          */
-        "hintId": string;
-        "id": string;
+        "hintId"?: string;
         /**
           * Label of the input field
          */
@@ -455,7 +482,7 @@ export namespace Components {
         /**
           * DOM id for label
          */
-        "labelId": string;
+        "labelId"?: string;
         /**
           * Name of the input field
          */
@@ -463,7 +490,7 @@ export namespace Components {
         /**
           * DOM id for prefix
          */
-        "prefixId": string;
+        "prefixId"?: string;
         /**
           * If this input is read-only
          */
@@ -471,7 +498,7 @@ export namespace Components {
         /**
           * DOM id for suffix
          */
-        "suffixId": string;
+        "suffixId"?: string;
         /**
           * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
          */
@@ -1354,8 +1381,16 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "disabled"?: boolean;
         "error"?: string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
         "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
         "hintId"?: string;
+        "id"?: string;
         "indeterminate"?: boolean;
         "label"?: string;
         "name"?: string;
@@ -1441,13 +1476,29 @@ declare namespace LocalJSX {
          */
         "error"?: boolean | string;
         /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
         /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Wrap direct DOM children in an unordered list so they are announced by screen readers, good for checkboxes and radio buttons
+         */
+        "isList"?: boolean;
+        /**
           * Label of the input field
          */
         "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
     }
     interface GoFooter {
         /**
@@ -1549,6 +1600,10 @@ declare namespace LocalJSX {
          */
         "error"?: boolean | string;
         /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
@@ -1556,7 +1611,6 @@ declare namespace LocalJSX {
           * DOM id for hint message
          */
         "hintId"?: string;
-        "id"?: string;
         /**
           * Label of the input field
          */
