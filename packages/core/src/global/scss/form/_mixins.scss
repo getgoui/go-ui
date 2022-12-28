@@ -108,13 +108,13 @@
 }
 
 @mixin prefix-icon {
-  .prefix {
-    @include tablet {
+  @include tablet {
+    .prefix {
       padding-inline-start: calc(2 * var(--input-gap-inner) + 1.5em);
     }
-  }
-  .control {
-    padding-inline-start: var(--input-gap-inner);
+    .control {
+      padding-inline-start: var(--input-gap-inner);
+    }
   }
 }
 
@@ -152,13 +152,13 @@
 }
 
 @mixin suffix-icon {
-  .suffix {
-    @include tablet {
+  @include tablet {
+    .suffix {
       padding-inline-end: calc(2 * var(--input-gap-inner) + 1.5em);
     }
-  }
-  .control {
-    padding-inline-end: var(--input-gap-inner);
+    .control {
+      padding-inline-end: var(--input-gap-inner);
+    }
   }
 }
 
