@@ -444,17 +444,34 @@ export namespace Components {
          */
         "hint"?: string;
         /**
+          * DOM id for hint message
+         */
+        "hintId": string;
+        "id": string;
+        /**
           * Label of the input field
          */
         "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId": string;
         /**
           * Name of the input field
          */
         "name": string;
         /**
+          * DOM id for prefix
+         */
+        "prefixId": string;
+        /**
           * If this input is read-only
          */
         "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId": string;
         /**
           * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
          */
@@ -1536,17 +1553,34 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        "id"?: string;
+        /**
           * Label of the input field
          */
         "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
         /**
           * Name of the input field
          */
         "name"?: string;
         /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
           * If this input is read-only
          */
         "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
         /**
           * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
          */

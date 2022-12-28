@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Watch, State } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import { InputProps, InputType } from '../../../interfaces';
 import { hasSlot } from '../../../utils/helper';
@@ -10,15 +10,36 @@ import { hasSlot } from '../../../utils/helper';
 export class GoInput implements InputProps {
   @Element() el: HTMLElement;
 
-  id = uniqueId('go-input-');
+  @Prop()
+  id: string = uniqueId('go-input-');
 
-  labelId = uniqueId('go-input-label-');
+  /**
+   * DOM id for label
+   */
+  @Prop()
+  labelId = `${this.id}-label`;
 
-  prefixId = uniqueId('go-input-prefix-');
+  /**
+   * DOM id for prefix
+   */
+  @Prop()
+  prefixId = `${this.id}-prefix`;
 
-  suffixId = uniqueId('go-input-suffix-');
+  /**
+   * DOM id for suffix
+   */
+  @Prop()
+  suffixId = `${this.id}-suffix`;
+  /**
+   * DOM id for hint message
+   */
+  @Prop()
+  hintId = `${this.id}-hint`;
 
-  hintId = uniqueId('go-input-hint-');
+  /**
+   * DOM id for error
+   */
+  errorId = `${this.id}-error`;
 
   /**
    * Name of the input field
@@ -58,6 +79,16 @@ export class GoInput implements InputProps {
    */
   @Prop() type?: InputType = 'text';
 
+  /**
+   * Allow empty value for `error` attribute and show error state
+   */
+  @State() hasError = false;
+
+  @Watch('error')
+  updateErrorState() {
+    this.hasError = typeof this.error !== 'undefined';
+  }
+
   hasIconBefore: boolean;
   hasIconAfter: boolean;
   hasPrefix: boolean;
@@ -70,6 +101,7 @@ export class GoInput implements InputProps {
     this.hasPrefix = hasSlot(this.el, 'prefix');
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
+    this.updateErrorState();
   }
 
   render() {
@@ -80,6 +112,7 @@ export class GoInput implements InputProps {
       hint,
       disabled,
       value,
+      hasError,
       error,
       readonly,
       type,
@@ -92,6 +125,7 @@ export class GoInput implements InputProps {
       hintId,
       prefixId,
       suffixId,
+      errorId,
     } = this;
 
     const attrs = {
@@ -112,11 +146,19 @@ export class GoInput implements InputProps {
       labelledByIds.push(suffixId);
     }
 
+    const describedByIds = [];
+    if (hasHintSlot || hint) {
+      describedByIds.push(hintId);
+    }
+    if (hasError) {
+      describedByIds.push(errorId);
+    }
+
     return (
       <Host
         class={{
           'go-field': true,
-          'error': !!error,
+          'error': hasError,
           'readonly': !!readonly,
           'disabled': !!disabled,
           'has-prefix': hasPrefix,
@@ -146,7 +188,14 @@ export class GoInput implements InputProps {
             </span>
           ) : null}
 
-          <input class="control" {...attrs} aria-disabled={disabled ? 'true' : 'false'} aria-labelledby={labelledByIds.join(' ')} />
+          <input
+            class="control"
+            {...attrs}
+            aria-disabled={disabled ? 'true' : 'false'}
+            aria-labelledby={labelledByIds.join(' ')}
+            aria-invalid={String(hasError)}
+            aria-describedby={describedByIds.join(' ')}
+          />
 
           {hasSuffix ? (
             <span class="suffix presuf" aria-hidden="true" id={suffixId}>
@@ -165,7 +214,11 @@ export class GoInput implements InputProps {
             </span>
           ) : null}
         </div>
-        {typeof error === 'string' ? <div class="error-msg">{error}</div> : null}
+        {hasError ? (
+          <div id={errorId} class="error-msg">
+            {error}
+          </div>
+        ) : null}
       </Host>
     );
   }
