@@ -1,7 +1,6 @@
 import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
-import { uniqueId } from 'lodash-es';
 import { CheckboxProps } from '../../../interfaces';
-import { hasSlot } from '../../../utils';
+import { hasSlot, initIdProps } from '../../../utils';
 @Component({
   tag: 'go-checkbox',
   styleUrl: 'go-checkbox.scss',
@@ -19,20 +18,19 @@ export class GoCheckbox implements CheckboxProps {
   @Prop() hint?: string;
   @Prop({ reflect: true }) error?: string;
 
-  @Prop()
-  id: string = uniqueId('go-checkbox-');
+  id: string;
 
   /**
    * DOM id for hint message
    */
-  @Prop()
-  hintId? = `${this.id}-hint`;
+  @Prop({ mutable: true })
+  hintId?: string;
 
   /**
    * DOM id for error
    */
-  @Prop()
-  errorId? = `${this.id}-error`;
+  @Prop({ mutable: true })
+  errorId?: string;
 
   /**
    * Allow empty value for `error` attribute and show error state
@@ -47,11 +45,20 @@ export class GoCheckbox implements CheckboxProps {
   hasHintSlot: boolean;
   componentWillLoad() {
     this.hasHintSlot = hasSlot(this.el, 'hint');
+    initIdProps(this, this.el, ['hint', 'error'], 'go-checkbox-');
     this.updateErrorState();
   }
 
   render() {
     const { label, error, id, hint, hintId, hasHintSlot, checked, indeterminate, name, disabled, value, hasError, errorId } = this;
+
+    const describedByIds = [];
+    if (hasHintSlot || hint) {
+      describedByIds.push(hintId);
+    }
+    if (hasError) {
+      describedByIds.push(errorId);
+    }
     const props = {
       id,
       checked,
@@ -69,7 +76,7 @@ export class GoCheckbox implements CheckboxProps {
         }}>
         <div class="control-wrapper">
           <div class="box">
-            <input class="hidden-control" type="checkbox" {...props} />
+            <input class="hidden-control" type="checkbox" {...props} aria-invalid={String(hasError)} aria-describedby={describedByIds.join(' ')} />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

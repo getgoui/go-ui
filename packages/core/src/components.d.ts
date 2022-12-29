@@ -250,7 +250,6 @@ export namespace Components {
           * DOM id for hint message
          */
         "hintId"?: string;
-        "id": string;
         "indeterminate"?: boolean;
         "label": string;
         "name": string;
@@ -1390,7 +1389,6 @@ declare namespace LocalJSX {
           * DOM id for hint message
          */
         "hintId"?: string;
-        "id"?: string;
         "indeterminate"?: boolean;
         "label"?: string;
         "name"?: string;

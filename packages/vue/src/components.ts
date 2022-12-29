@@ -20,6 +20,7 @@ import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/compone
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
 import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
+import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
 import { defineCustomElement as defineGoHeaderBar } from '@go-ui/core/dist/components/go-header-bar.js';
@@ -141,8 +142,9 @@ export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-chec
   'value',
   'label',
   'hint',
+  'error',
   'hintId',
-  'error'
+  'errorId'
 ]);
 
 
@@ -189,6 +191,17 @@ export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-drop
 ]);
 
 
+export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fieldset', defineGoFieldset, [
+  'label',
+  'hint',
+  'error',
+  'labelId',
+  'hintId',
+  'errorId',
+  'isList'
+]);
+
+
 export const GoFooter = /*@__PURE__*/ defineContainer<JSX.GoFooter>('go-footer', defineGoFooter, [
   'links',
   'navLabel',
@@ -230,6 +243,11 @@ export const GoIcon = /*@__PURE__*/ defineContainer<JSX.GoIcon>('go-icon', defin
 
 
 export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput>('go-input', defineGoInput, [
+  'labelId',
+  'prefixId',
+  'suffixId',
+  'hintId',
+  'errorId',
   'name',
   'label',
   'disabled',
