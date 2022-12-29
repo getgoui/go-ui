@@ -16,6 +16,8 @@ html {
 }
 
 // docsearch a11y
-:root {
+.DocSearch-Button {
+  --docsearch-searchbox-background: var(--go-color-secondary-200);
   --docsearch-muted-color: var(--go-color-neutral-800);
+  @include transition(background-color);
 }
