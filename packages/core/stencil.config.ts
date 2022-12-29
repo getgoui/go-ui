@@ -66,5 +66,8 @@ export const config: Config = {
      */
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
+    moduleNameMapper: {
+      'lodash-es': 'lodash',
+    },
   },
 };
