@@ -14,11 +14,13 @@ import { defineCustomElement as defineGoButton } from '@go-ui/core/dist/componen
 import { defineCustomElement as defineGoButtonGroup } from '@go-ui/core/dist/components/go-button-group.js';
 import { defineCustomElement as defineGoCard } from '@go-ui/core/dist/components/go-card.js';
 import { defineCustomElement as defineGoCardRow } from '@go-ui/core/dist/components/go-card-row.js';
+import { defineCustomElement as defineGoCheckbox } from '@go-ui/core/dist/components/go-checkbox.js';
 import { defineCustomElement as defineGoChip } from '@go-ui/core/dist/components/go-chip.js';
 import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/components/go-content.js';
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
 import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
+import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
 import { defineCustomElement as defineGoHeaderBar } from '@go-ui/core/dist/components/go-header-bar.js';
@@ -132,6 +134,20 @@ export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-r
 ]);
 
 
+export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-checkbox', defineGoCheckbox, [
+  'checked',
+  'indeterminate',
+  'name',
+  'disabled',
+  'value',
+  'label',
+  'hint',
+  'error',
+  'hintId',
+  'errorId'
+]);
+
+
 export const GoChip = /*@__PURE__*/ defineContainer<JSX.GoChip>('go-chip', defineGoChip, [
   'variant',
   'outline',
@@ -172,6 +188,17 @@ export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog',
 export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-dropdown', defineGoDropdown, [
   'triggerId',
   'isActive'
+]);
+
+
+export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fieldset', defineGoFieldset, [
+  'label',
+  'hint',
+  'error',
+  'labelId',
+  'hintId',
+  'errorId',
+  'isList'
 ]);
 
 
@@ -216,6 +243,11 @@ export const GoIcon = /*@__PURE__*/ defineContainer<JSX.GoIcon>('go-icon', defin
 
 
 export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput>('go-input', defineGoInput, [
+  'labelId',
+  'prefixId',
+  'suffixId',
+  'hintId',
+  'errorId',
   'name',
   'label',
   'disabled',

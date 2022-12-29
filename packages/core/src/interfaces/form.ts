@@ -9,14 +9,15 @@ export interface FormBaseProps {
   value: any;
   hint?: string;
   readonly?: boolean;
+  error?: boolean | string;
 }
 
 export interface CheckboxProps extends FormBaseProps {
   checked?: boolean;
+  indeterminate?: boolean;
 }
 
 export interface InputProps extends FormBaseProps {
-  error?: string | boolean;
   type?: InputType;
 }
 

@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, State, Element, Method, Event, EventEmitter } from '@stencil/core';
 import { hasSlot } from '../../utils/helper';
-import uniqueId from 'lodash.uniqueid';
+import { uniqueId } from 'lodash-es';
 
 @Component({
   tag: 'go-accordion-item',

@@ -1,0 +1,179 @@
+@import '../../../global/scss/form/mixins';
+
+go-checkbox {
+  /**
+    @prop --cb-border-color:
+      Default border color
+      - default: var(--input-border-color)
+  */
+  --cb-border-color: var(--input-border-color);
+
+  /**
+    @prop --cb-border-width:
+      Default border width
+      - default: 2px
+  */
+  --cb-border-width: 2px;
+
+  /**
+    @prop --cb-border:
+      Checkbox default border
+      - default: var(--cb-border-width) solid var(--cb-border-color)
+  */
+  --cb-border: var(--cb-border-width) solid var(--cb-border-color);
+
+  /**
+    @prop --cb-border-color-hover:
+      Checkbox hover state color
+      - default: var(--go-color-neutral-700)
+  */
+  --cb-border-color-hover: var(--go-color-neutral-700);
+
+  /**
+    @prop --cb-size:
+      Size of checkbox
+      - default: 1.5rem
+  */
+  --cb-size: 1.5rem;
+
+  /**
+    @prop --cb-radius:
+      Checkbox border radius
+      - default: var(--input-radius)
+  */
+  --cb-radius: var(--input-radius);
+
+  /**
+    @prop --cb-checked-bg:
+      Checkbox background color when checked
+      - default: var(--control-selected-bg-color)
+  */
+  --cb-checked-bg: var(--control-selected-bg-color);
+  /**
+    @prop --cb-checked-text:
+      Foreground color of checked checkbox
+      - default: var(--control-selected-fg-color)
+  */
+  --cb-checked-text: var(--control-selected-fg-color);
+
+  .control-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--input-gap-inner);
+  }
+  input,
+  label {
+    cursor: pointer;
+  }
+  &[error] {
+    @include error-state;
+    --cb-border-color: var(--input-error-color);
+    input {
+      &:checked {
+        ~ .mark {
+          --cb-checked-bg: var(--input-error-color);
+        }
+      }
+    }
+    .error-msg {
+      margin: var(--input-gap-inner) 0;
+    }
+  }
+  &[disabled] {
+    input,
+    label {
+      cursor: not-allowed;
+    }
+    .box {
+      .mark {
+        background: var(--input-bg-disabled-color);
+        stroke: var(--input-text-disabled-color);
+        border-color: var(--input-text-disabled-color);
+      }
+    }
+  }
+  label {
+    @include typography(body);
+    line-height: var(--cb-size);
+    & ~ .hint {
+      margin-top: 4px;
+    }
+  }
+  :where(.box) {
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+    width: var(--cb-size);
+    height: var(--cb-size);
+
+    .mark {
+      display: block;
+      stroke: var(--cb-checked-text);
+      border: var(--cb-border);
+      border-radius: var(--cb-radius);
+      stroke-dasharray: 24;
+      stroke-dashoffset: -24;
+      @include transition(background-color var(--go-duration-fast) ease var(--go-duration-fast), stroke-dashoffset var(--go-duration-fast));
+    }
+    input {
+      ~ .mark.minus {
+        display: none;
+      }
+      &:checked {
+        ~ .mark {
+          @include transition(background-color var(--go-duration-fast), stroke-dashoffset var(--go-duration-fast) ease var(--go-duration-fast));
+          stroke-dashoffset: 0;
+          background: var(--cb-checked-bg);
+          border-color: var(--cb-checked-bg);
+          path {
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+          }
+          &.minus {
+            display: none;
+          }
+          &.tick {
+            display: block;
+          }
+        }
+      }
+      &:indeterminate {
+        ~ .mark {
+          background: var(--cb-checked-bg);
+          border-color: var(--cb-checked-bg);
+          stroke-dashoffset: 0;
+          path {
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+          }
+          &.minus {
+            display: block;
+          }
+          &.tick {
+            display: none;
+          }
+        }
+      }
+      &:not(:disabled) {
+        &:hover {
+          ~ .mark {
+            border-color: var(--cb-border-color-hover);
+          }
+        }
+        &:focus-visible {
+          ~ .mark {
+            @include focus-outline;
+          }
+        }
+        &:active {
+          ~ .mark {
+            box-shadow: var(--input-focus-shadow);
+            outline-offset: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .hint {
+    @include hint;
+  }
+}

@@ -14,11 +14,13 @@ import { defineCustomElement as defineGoButton } from '@go-ui/core/dist/componen
 import { defineCustomElement as defineGoButtonGroup } from '@go-ui/core/dist/components/go-button-group.js';
 import { defineCustomElement as defineGoCard } from '@go-ui/core/dist/components/go-card.js';
 import { defineCustomElement as defineGoCardRow } from '@go-ui/core/dist/components/go-card-row.js';
+import { defineCustomElement as defineGoCheckbox } from '@go-ui/core/dist/components/go-checkbox.js';
 import { defineCustomElement as defineGoChip } from '@go-ui/core/dist/components/go-chip.js';
 import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/components/go-content.js';
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
 import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
+import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
 import { defineCustomElement as defineGoHeaderBar } from '@go-ui/core/dist/components/go-header-bar.js';
@@ -53,11 +55,13 @@ export const GoButton = /*@__PURE__*/createReactComponent<JSX.GoButton, HTMLGoBu
 export const GoButtonGroup = /*@__PURE__*/createReactComponent<JSX.GoButtonGroup, HTMLGoButtonGroupElement>('go-button-group', undefined, undefined, defineGoButtonGroup);
 export const GoCard = /*@__PURE__*/createReactComponent<JSX.GoCard, HTMLGoCardElement>('go-card', undefined, undefined, defineGoCard);
 export const GoCardRow = /*@__PURE__*/createReactComponent<JSX.GoCardRow, HTMLGoCardRowElement>('go-card-row', undefined, undefined, defineGoCardRow);
+export const GoCheckbox = /*@__PURE__*/createReactComponent<JSX.GoCheckbox, HTMLGoCheckboxElement>('go-checkbox', undefined, undefined, defineGoCheckbox);
 export const GoChip = /*@__PURE__*/createReactComponent<JSX.GoChip, HTMLGoChipElement>('go-chip', undefined, undefined, defineGoChip);
 export const GoContent = /*@__PURE__*/createReactComponent<JSX.GoContent, HTMLGoContentElement>('go-content', undefined, undefined, defineGoContent);
 export const GoContentLayout = /*@__PURE__*/createReactComponent<JSX.GoContentLayout, HTMLGoContentLayoutElement>('go-content-layout', undefined, undefined, defineGoContentLayout);
 export const GoDialog = /*@__PURE__*/createReactComponent<JSX.GoDialog, HTMLGoDialogElement>('go-dialog', undefined, undefined, defineGoDialog);
 export const GoDropdown = /*@__PURE__*/createReactComponent<JSX.GoDropdown, HTMLGoDropdownElement>('go-dropdown', undefined, undefined, defineGoDropdown);
+export const GoFieldset = /*@__PURE__*/createReactComponent<JSX.GoFieldset, HTMLGoFieldsetElement>('go-fieldset', undefined, undefined, defineGoFieldset);
 export const GoFooter = /*@__PURE__*/createReactComponent<JSX.GoFooter, HTMLGoFooterElement>('go-footer', undefined, undefined, defineGoFooter);
 export const GoGovAuLogo = /*@__PURE__*/createReactComponent<JSX.GoGovAuLogo, HTMLGoGovAuLogoElement>('go-gov-au-logo', undefined, undefined, defineGoGovAuLogo);
 export const GoHeaderBar = /*@__PURE__*/createReactComponent<JSX.GoHeaderBar, HTMLGoHeaderBarElement>('go-header-bar', undefined, undefined, defineGoHeaderBar);

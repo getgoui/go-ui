@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop, State } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
+import { uniqueId } from 'lodash-es';
 import { warning } from '../../utils/helper';
 
 @Component({

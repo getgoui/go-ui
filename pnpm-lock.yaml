@@ -36,7 +36,7 @@ importers:
       semantic-release-cli: 5.4.4
       semantic-release-monorepo: 7.0.5_semantic-release@19.0.5
 
-  apps/react:
+  apps/react-starter:
     specifiers:
       '@go-ui/react': workspace:0.0.0-development
       '@types/react': ^18.0.24
@@ -187,10 +187,8 @@ importers:
       jest: ^26.6.3
       jest-cli: ^26.6.3
       json5: ^2.2.1
+      lodash-es: ^4.17.21
       lodash.camelcase: ^4.3.0
-      lodash.debounce: ^4.0.8
-      lodash.kebabcase: ^4.1.1
-      lodash.uniqueid: ^4.0.1
       markdown-it: ^13.0.1
       markdown-it-container: ^3.0.0
       markdown-it-for-inline: ^0.1.1
@@ -214,9 +212,7 @@ importers:
       body-scroll-lock: 4.0.0-beta.0
       dompurify: 2.4.0
       json5: 2.2.1
-      lodash.debounce: 4.0.8
-      lodash.kebabcase: 4.1.1
-      lodash.uniqueid: 4.0.1
+      lodash-es: 4.17.21
       markdown-it: 13.0.1
       markdown-it-container: 3.0.0
       markdown-it-for-inline: 0.1.1
@@ -10357,6 +10353,7 @@ packages:
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: true
 
   /lodash.escaperegexp/4.1.2:
     resolution: {integrity: sha512-TM9YBvyC84ZxE3rgfefxUWiQKLilstD6k7PTGt6wfbtXF8ixIJLOL3VYyV/z+ZiPLsVxAsKAFVwWlWeb2Y8Yyw==}

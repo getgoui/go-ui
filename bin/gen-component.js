@@ -37,7 +37,7 @@ function writeBoilerplate(tagName, inheritAttrs) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
     // Create the demo directory if it doesn't exist.
-    fs.mkdirSync(`${dir}demo/`);
+    fs.mkdirSync(`${dir}usage/`);
     // Create the test directory if it doesn't exist.
     fs.mkdirSync(`${dir}test/`);
   }
@@ -189,6 +189,11 @@ title: ${title}
 <div class="text-size-1">
   ${title} is a component in Go UI.
 </div>
+
+
+## Accessibility
+
+
 ## Demo
 
 <demo-frame component="${tagname}" demo="${tagname}"></demo-frame>

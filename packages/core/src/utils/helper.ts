@@ -1,4 +1,5 @@
 import { prefersDark } from './match-media';
+import { uniqueId } from 'lodash-es';
 
 declare const __zone_symbol__requestAnimationFrame: any;
 declare const requestAnimationFrame: any;
@@ -29,6 +30,16 @@ export const inheritAttributes = (el: HTMLElement, excludes: string[] = [], remo
 
   return attributeObject;
 };
+/**
+ * Extract the `id` from target element, then remove the original id attribute
+ * @param el target element
+ * @returns id specified in target element
+ */
+export function extractId(el: HTMLElement) {
+  const id = el.id;
+  el.removeAttribute('id');
+  return id;
+}
 
 export function hasShadowDom(el: HTMLElement): boolean {
   return !!el.shadowRoot && !!(el as any).attachShadow;
@@ -71,4 +82,24 @@ export function selectDirectChildren(elem: HTMLElement, selector: string): HTMLE
 export function warning(...args: any[]) {
   console.log(`%c[Go UI warning]`, 'background: #e63a34; color: #fff; font-size: 24px;padding: 8px;');
   console.warn(...args);
+}
+
+/**
+ * Initialise id props (such as `labelId`, `hintId` etc) in stencil component
+ * @param instance stencil component instance
+ * @param rootEl stencil `@Element()` prop
+ * @param idProps array of prop names such as `labelId` without the `Id` suffix, this array will be used to generate ids and assign them back to the class' props
+ * @param prefix prefix for generated ids
+ */
+export function initIdProps(instance: any, rootEl: HTMLElement, idProps: string[], prefix: string) {
+  let id = extractId(rootEl);
+  if (!id) {
+    id = uniqueId(prefix);
+  }
+  instance.id = id;
+  idProps.forEach((key) => {
+    if (!instance[`${key}Id`]) {
+      instance[`${key}Id`] = `${id}-${key}`;
+    }
+  });
 }

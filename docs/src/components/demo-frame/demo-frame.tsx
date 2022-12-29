@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
+import siteConfig from '../../../config';
 import docs from '@go-ui/core/dist/docs/go-ui';
 import pretty from 'pretty';
 @Component({
@@ -49,6 +50,7 @@ export class DemoFrame {
       <Host>
         <go-demo-box
           head={`
+    ${siteConfig.demo.head}
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <script type="module" src="/build/app.esm.js"></script>
     <script nomodule src="/build/app.js"></script>

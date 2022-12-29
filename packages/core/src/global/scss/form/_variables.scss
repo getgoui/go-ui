@@ -2,9 +2,9 @@
   /**
     @prop --input-gap-inner:
       Inner immediately above and below input control
-      - default: 0.25rem
+      - default: 0.5rem
   */
-  --input-gap-inner: 0.25rem;
+  --input-gap-inner: 0.5rem;
 
   /**
     @prop --input-padding-y:
@@ -50,9 +50,9 @@
   /**
     @prop --input-gap-outer:
       Outer margin of form field
-      - default: 1rem
+      - default: 1rem 0
   */
-  --input-gap-outer: 1rem;
+  --input-gap-outer: 1rem 0;
 
   /**
     @prop --input-error-color:
@@ -124,15 +124,49 @@
       - default: var(--go-color-neutral-600)
   */
   --input-hint-color: var(--go-color-neutral-600);
+
+  /**
+    @prop --input-hint-font-size:
+      Font size of hint text
+      - default: var(--go-size--1)
+  */
+  --input-hint-font-size: var(--go-size--1);
+
+  /**
+    @prop --control-selected-bg-color:
+      Background color of checkbox or radio button when selected
+      - default: var(--go-color-primary-500)
+  */
+  --control-selected-bg-color: var(--go-color-primary-500);
+  /**
+    @prop --control-selected-fg-color:
+      Foreground color of checkbox or radio button when selected
+      - default: rgb(var(--go-token-lightest))
+  */
+  --control-selected-fg-color: rgb(var(--go-token-lightest));
+
+  /**
+    @prop --input-label-font-size:
+      Font size of label
+      - default: 1rem
+  */
+  --input-label-font-size: 1rem;
+
+  /**
+    @prop --input-label-font-weight:
+      Font weight of label
+      - default: 700
+  */
+  --input-label-font-weight: 700;
 }
 
 @include prefer-dark {
   :root {
-    --input-error-color: var(--go-color-critical-700);
+    --control-selected-bg-color: var(--go-color-primary-400);
   }
 }
 @include theme-dark {
   :root {
-    --input-error-color: var(--go-color-critical-700);
+    --control-selected-bg-color: var(--go-color-primary-400);
   }
 }

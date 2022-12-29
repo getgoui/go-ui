@@ -237,6 +237,24 @@ export namespace Components {
          */
         "stagger"?: number;
     }
+    interface GoCheckbox {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "error"?: string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        "indeterminate"?: boolean;
+        "label": string;
+        "name": string;
+        "value": any;
+    }
     interface GoChip {
         /**
           * Make chip clickable, `chipClick` event will be emitted on click
@@ -314,6 +332,36 @@ export namespace Components {
           * Query selector string for the trigger element.
          */
         "triggerId": string;
+    }
+    interface GoFieldset {
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Wrap direct DOM children in an unordered list so they are announced by screen readers, good for checkboxes and radio buttons
+         */
+        "isList"?: boolean;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
     }
     interface GoFooter {
         /**
@@ -415,21 +463,41 @@ export namespace Components {
          */
         "error"?: boolean | string;
         /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
         /**
           * Label of the input field
          */
         "label": string;
         /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
           * Name of the input field
          */
         "name": string;
         /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
           * If this input is read-only
          */
         "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
         /**
           * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
          */
@@ -853,6 +921,12 @@ declare global {
         prototype: HTMLGoCardRowElement;
         new (): HTMLGoCardRowElement;
     };
+    interface HTMLGoCheckboxElement extends Components.GoCheckbox, HTMLStencilElement {
+    }
+    var HTMLGoCheckboxElement: {
+        prototype: HTMLGoCheckboxElement;
+        new (): HTMLGoCheckboxElement;
+    };
     interface HTMLGoChipElement extends Components.GoChip, HTMLStencilElement {
     }
     var HTMLGoChipElement: {
@@ -882,6 +956,12 @@ declare global {
     var HTMLGoDropdownElement: {
         prototype: HTMLGoDropdownElement;
         new (): HTMLGoDropdownElement;
+    };
+    interface HTMLGoFieldsetElement extends Components.GoFieldset, HTMLStencilElement {
+    }
+    var HTMLGoFieldsetElement: {
+        prototype: HTMLGoFieldsetElement;
+        new (): HTMLGoFieldsetElement;
     };
     interface HTMLGoFooterElement extends Components.GoFooter, HTMLStencilElement {
     }
@@ -1037,11 +1117,13 @@ declare global {
         "go-button-group": HTMLGoButtonGroupElement;
         "go-card": HTMLGoCardElement;
         "go-card-row": HTMLGoCardRowElement;
+        "go-checkbox": HTMLGoCheckboxElement;
         "go-chip": HTMLGoChipElement;
         "go-content": HTMLGoContentElement;
         "go-content-layout": HTMLGoContentLayoutElement;
         "go-dialog": HTMLGoDialogElement;
         "go-dropdown": HTMLGoDropdownElement;
+        "go-fieldset": HTMLGoFieldsetElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
@@ -1294,6 +1376,24 @@ declare namespace LocalJSX {
          */
         "stagger"?: number;
     }
+    interface GoCheckbox {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "error"?: string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        "indeterminate"?: boolean;
+        "label"?: string;
+        "name"?: string;
+        "value"?: any;
+    }
     interface GoChip {
         /**
           * Make chip clickable, `chipClick` event will be emitted on click
@@ -1367,6 +1467,36 @@ declare namespace LocalJSX {
           * Query selector string for the trigger element.
          */
         "triggerId"?: string;
+    }
+    interface GoFieldset {
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Wrap direct DOM children in an unordered list so they are announced by screen readers, good for checkboxes and radio buttons
+         */
+        "isList"?: boolean;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
     }
     interface GoFooter {
         /**
@@ -1468,21 +1598,41 @@ declare namespace LocalJSX {
          */
         "error"?: boolean | string;
         /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
         /**
           * Label of the input field
          */
         "label"?: string;
         /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
           * Name of the input field
          */
         "name"?: string;
         /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
           * If this input is read-only
          */
         "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
         /**
           * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
          */
@@ -1823,11 +1973,13 @@ declare namespace LocalJSX {
         "go-button-group": GoButtonGroup;
         "go-card": GoCard;
         "go-card-row": GoCardRow;
+        "go-checkbox": GoCheckbox;
         "go-chip": GoChip;
         "go-content": GoContent;
         "go-content-layout": GoContentLayout;
         "go-dialog": GoDialog;
         "go-dropdown": GoDropdown;
+        "go-fieldset": GoFieldset;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
@@ -1867,11 +2019,13 @@ declare module "@stencil/core" {
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
             "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
+            "go-checkbox": LocalJSX.GoCheckbox & JSXBase.HTMLAttributes<HTMLGoCheckboxElement>;
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-content": LocalJSX.GoContent & JSXBase.HTMLAttributes<HTMLGoContentElement>;
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;
+            "go-fieldset": LocalJSX.GoFieldset & JSXBase.HTMLAttributes<HTMLGoFieldsetElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;

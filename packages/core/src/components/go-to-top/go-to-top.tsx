@@ -1,6 +1,5 @@
 import { Component, Host, h, Element, State, Prop } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
-import debounce from 'lodash.debounce';
+import { uniqueId, debounce } from 'lodash-es';
 @Component({
   tag: 'go-to-top',
   styleUrl: 'go-to-top.scss',

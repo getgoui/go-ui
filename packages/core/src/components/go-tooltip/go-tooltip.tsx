@@ -1,6 +1,5 @@
 import { Component, Host, h, Element, Prop, State, Method } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
-import debounce from 'lodash.debounce';
+import { uniqueId, debounce } from 'lodash-es';
 import { computePosition, flip, shift, arrow, offset, autoUpdate, inline } from '@floating-ui/dom';
 
 @Component({

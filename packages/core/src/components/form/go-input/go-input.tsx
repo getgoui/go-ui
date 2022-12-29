@@ -1,25 +1,44 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
-import uniqueId from 'lodash.uniqueid';
+import { Component, Host, h, Element, Prop, Watch, State } from '@stencil/core';
 import { InputProps, InputType } from '../../../interfaces';
-import { hasSlot } from '../../../utils/helper';
+import { hasSlot, initIdProps } from '../../../utils/helper';
 
 @Component({
   tag: 'go-input',
-  styleUrl: 'go-input.scss',
   shadow: false,
 })
 export class GoInput implements InputProps {
   @Element() el: HTMLElement;
 
-  id = uniqueId('go-input-');
+  id: string;
 
-  labelId = uniqueId('go-input-label-');
+  /**
+   * DOM id for label
+   */
+  @Prop({ mutable: true })
+  labelId?: string;
 
-  prefixId = uniqueId('go-input-prefix-');
+  /**
+   * DOM id for prefix
+   */
+  @Prop({ mutable: true })
+  prefixId?: string;
 
-  suffixId = uniqueId('go-input-suffix-');
+  /**
+   * DOM id for suffix
+   */
+  @Prop({ mutable: true })
+  suffixId?: string;
+  /**
+   * DOM id for hint message
+   */
+  @Prop({ mutable: true })
+  hintId?: string;
 
-  hintId = uniqueId('go-input-hint-');
+  /**
+   * DOM id for error
+   */
+  @Prop({ mutable: true })
+  errorId?: string;
 
   /**
    * Name of the input field
@@ -59,6 +78,16 @@ export class GoInput implements InputProps {
    */
   @Prop() type?: InputType = 'text';
 
+  /**
+   * Allow empty value for `error` attribute and show error state
+   */
+  @State() hasError = false;
+
+  @Watch('error')
+  updateErrorState() {
+    this.hasError = typeof this.error !== 'undefined';
+  }
+
   hasIconBefore: boolean;
   hasIconAfter: boolean;
   hasPrefix: boolean;
@@ -71,6 +100,8 @@ export class GoInput implements InputProps {
     this.hasPrefix = hasSlot(this.el, 'prefix');
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
+    initIdProps(this, this.el, ['label', 'prefix', 'suffix', 'hint', 'error'], 'go-input-');
+    this.updateErrorState();
   }
 
   render() {
@@ -81,6 +112,7 @@ export class GoInput implements InputProps {
       hint,
       disabled,
       value,
+      hasError,
       error,
       readonly,
       type,
@@ -93,6 +125,7 @@ export class GoInput implements InputProps {
       hintId,
       prefixId,
       suffixId,
+      errorId,
     } = this;
 
     const attrs = {
@@ -113,18 +146,27 @@ export class GoInput implements InputProps {
       labelledByIds.push(suffixId);
     }
 
+    const describedByIds = [];
+    if (hasHintSlot || hint) {
+      describedByIds.push(hintId);
+    }
+    if (hasError) {
+      describedByIds.push(errorId);
+    }
+
     return (
       <Host
         class={{
-          'error': !!error,
+          'go-field': true,
+          'error': hasError,
           'readonly': !!readonly,
           'disabled': !!disabled,
           'has-prefix': hasPrefix,
           'has-suffix': hasSuffix,
-          'has-icon-after': hasIconAfter && !hasSuffix,
-          'has-icon-before': hasIconBefore && !hasPrefix,
+          'has-icon-before': hasIconBefore,
+          'has-icon-after': hasIconAfter,
         }}>
-        <label htmlFor={id} id={labelId}>
+        <label class="label" htmlFor={id} id={labelId}>
           {label}
         </label>
         {hasHintSlot || hint ? (
@@ -138,19 +180,30 @@ export class GoInput implements InputProps {
             <span class="prefix presuf" aria-hidden="true" id={prefixId}>
               <slot name="prefix"></slot>
             </span>
-          ) : hasIconBefore ? (
+          ) : null}
+
+          {hasIconBefore ? (
             <span class="control-icon icon-before">
               <slot name="icon-before"></slot>
             </span>
           ) : null}
 
-          <input class="control" {...attrs} aria-disabled={disabled ? 'true' : 'false'} aria-labelledby={labelledByIds.join(' ')} />
+          <input
+            class="control"
+            {...attrs}
+            aria-disabled={disabled ? 'true' : 'false'}
+            aria-labelledby={labelledByIds.join(' ')}
+            aria-invalid={String(hasError)}
+            aria-describedby={describedByIds.join(' ')}
+          />
 
           {hasSuffix ? (
             <span class="suffix presuf" aria-hidden="true" id={suffixId}>
               <slot name="suffix"></slot>
             </span>
-          ) : readonly || hasIconAfter ? (
+          ) : null}
+
+          {readonly || hasIconAfter ? (
             <span class="control-icon icon-after">
               {readonly ? (
                 // prettier-ignore
@@ -161,7 +214,11 @@ export class GoInput implements InputProps {
             </span>
           ) : null}
         </div>
-        {typeof error === 'string' ? <div class="error-msg">{error}</div> : null}
+        {hasError ? (
+          <div id={errorId} class="error-msg">
+            {error}
+          </div>
+        ) : null}
       </Host>
     );
   }

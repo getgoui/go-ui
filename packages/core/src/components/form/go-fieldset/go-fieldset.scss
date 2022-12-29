@@ -1,0 +1,15 @@
+go-fieldset {
+  display: block;
+  fieldset {
+    padding: 0;
+    border: none;
+    ul.fieldset-content {
+      padding: 0;
+      margin: 0;
+      li {
+        margin: 0;
+        margin-bottom: var(--input-gap-inner);
+      }
+    }
+  }
+}
