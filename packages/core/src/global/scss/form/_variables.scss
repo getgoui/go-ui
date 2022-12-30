@@ -84,9 +84,9 @@
   /**
     @prop --input-bg-disabled-color:
       Background color for disabled input control
-      - default: rgba(var(--go-token-neutral-200), 0.3)
+      - default: rgba(var(--go-token-neutral-200), 0.4)
   */
-  --input-bg-disabled-color: rgba(var(--go-token-neutral-200), 0.3);
+  --input-bg-disabled-color: rgba(var(--go-token-neutral-200), 0.4);
 
   /**
     @prop --input-text-readonly-color:
@@ -135,9 +135,9 @@
   /**
     @prop --control-selected-bg-color:
       Background color of checkbox or radio button when selected
-      - default: var(--go-color-primary-500)
+      - default: var(--go-color-primary-600)
   */
-  --control-selected-bg-color: var(--go-color-primary-500);
+  --control-selected-bg-color: var(--go-color-primary-600);
   /**
     @prop --control-selected-fg-color:
       Foreground color of checkbox or radio button when selected
@@ -158,15 +158,4 @@
       - default: 700
   */
   --input-label-font-weight: 700;
-}
-
-@include prefer-dark {
-  :root {
-    --control-selected-bg-color: var(--go-color-primary-400);
-  }
-}
-@include theme-dark {
-  :root {
-    --control-selected-bg-color: var(--go-color-primary-400);
-  }
 }

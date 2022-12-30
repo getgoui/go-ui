@@ -1,0 +1,172 @@
+@import '../../../global/scss/form/mixins';
+
+go-radio {
+  /**
+    @prop --radio-border-color:
+      Default border color
+      - default: var(--input-border-color)
+  */
+  --radio-border-color: var(--input-border-color);
+
+  /**
+    @prop --radio-border-width:
+      Default border width
+      - default: 2px
+  */
+  --radio-border-width: 2px;
+
+  /**
+    @prop --radio-border:
+      radio default border
+      - default: var(--radio-border-width) solid var(--radio-border-color)
+  */
+  --radio-border: var(--radio-border-width) solid var(--radio-border-color);
+
+  /**
+    @prop --radio-border-color-hover:
+      radio hover state color
+      - default: var(--go-color-neutral-700)
+  */
+  --radio-border-color-hover: var(--go-color-neutral-700);
+
+  /**
+    @prop --radio-size:
+      Size of radio
+      - default: 1.5em
+  */
+  --radio-size: 1.5em;
+
+  /**
+    @prop --radio-dot-size:
+      inside circle size
+      - default: 0.7em
+  */
+  --radio-dot-size: 0.7em;
+
+  /**
+    @prop --radio-checked-bg:
+      radio button background color when checked
+      - default: var(--control-selected-bg-color)
+  */
+  --radio-checked-bg: var(--control-selected-bg-color);
+  /**
+    @prop --radio-checked-fg:
+      radio button foreground color when checked
+      - default: var(--control-selected-fg-color)
+  */
+  --radio-checked-fg: var(--control-selected-fg-color);
+
+  /**
+    @prop --radio-mark-shadow-inner:
+      drop shadow for selected mark
+      - default: var(--shadow-2)
+  */
+  --radio-mark-shadow-inner: var(--shadow-2);
+
+  .control-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--input-gap-inner);
+  }
+  input,
+  label {
+    cursor: pointer;
+  }
+  &[error] {
+    @include error-state;
+    --radio-border-color: var(--input-error-color);
+    input {
+      &:checked {
+        ~ .mark {
+          --radio-checked-bg: var(--input-error-color);
+        }
+      }
+    }
+    .error-msg {
+      margin: var(--input-gap-inner) 0;
+    }
+  }
+  &[disabled] {
+    input,
+    label {
+      cursor: not-allowed;
+    }
+    .box {
+      .mark {
+        background: var(--input-bg-disabled-color);
+        border-color: var(--input-text-disabled-color);
+      }
+      input:checked ~ .mark {
+        .dot {
+          background: var(--input-text-disabled-color);
+        }
+      }
+    }
+  }
+  label {
+    @include typography(body);
+    line-height: var(--radio-size);
+    & ~ .hint {
+      margin-top: 4px;
+    }
+  }
+  .box {
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+  }
+
+  .mark {
+    display: block;
+    width: var(--radio-size);
+    height: var(--radio-size);
+    border: var(--radio-border);
+    border-radius: 50%;
+    @include transition(background-color);
+
+    .dot {
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--radio-dot-size);
+      height: var(--radio-dot-size);
+      @include transition(background-color);
+    }
+  }
+  input {
+    &:checked {
+      ~ .mark {
+        background: var(--radio-checked-bg);
+        border-color: var(--radio-checked-bg);
+        .dot {
+          background: var(--radio-checked-fg);
+          box-shadow: var(--radio-mark-shadow-inner);
+        }
+      }
+    }
+
+    &:not(:disabled) {
+      &:hover {
+        ~ .mark {
+          border-color: var(--radio-border-color-hover);
+        }
+      }
+      &:focus-visible {
+        ~ .mark {
+          @include focus-outline;
+        }
+      }
+      &:active {
+        ~ .mark {
+          box-shadow: var(--input-focus-shadow);
+          outline-offset: 0;
+        }
+      }
+    }
+  }
+  .hint {
+    @include hint;
+  }
+}

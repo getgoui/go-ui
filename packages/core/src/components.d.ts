@@ -664,6 +664,24 @@ export namespace Components {
          */
         "value"?: number;
     }
+    interface GoRadio {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "error"?: string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        "indeterminate"?: boolean;
+        "label": string;
+        "name": string;
+        "value": any;
+    }
     interface GoSearchBar {
         "closeSearchForm": () => Promise<void>;
         "openSearchForm": () => Promise<void>;
@@ -1047,6 +1065,12 @@ declare global {
         prototype: HTMLGoProgressElement;
         new (): HTMLGoProgressElement;
     };
+    interface HTMLGoRadioElement extends Components.GoRadio, HTMLStencilElement {
+    }
+    var HTMLGoRadioElement: {
+        prototype: HTMLGoRadioElement;
+        new (): HTMLGoRadioElement;
+    };
     interface HTMLGoSearchBarElement extends Components.GoSearchBar, HTMLStencilElement {
     }
     var HTMLGoSearchBarElement: {
@@ -1138,6 +1162,7 @@ declare global {
         "go-nav-list": HTMLGoNavListElement;
         "go-overlay": HTMLGoOverlayElement;
         "go-progress": HTMLGoProgressElement;
+        "go-radio": HTMLGoRadioElement;
         "go-search-bar": HTMLGoSearchBarElement;
         "go-skip-link": HTMLGoSkipLinkElement;
         "go-spinner": HTMLGoSpinnerElement;
@@ -1808,6 +1833,24 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    interface GoRadio {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "error"?: string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        "indeterminate"?: boolean;
+        "label"?: string;
+        "name"?: string;
+        "value"?: any;
+    }
     interface GoSearchBar {
     }
     interface GoSkipLink {
@@ -1994,6 +2037,7 @@ declare namespace LocalJSX {
         "go-nav-list": GoNavList;
         "go-overlay": GoOverlay;
         "go-progress": GoProgress;
+        "go-radio": GoRadio;
         "go-search-bar": GoSearchBar;
         "go-skip-link": GoSkipLink;
         "go-spinner": GoSpinner;
@@ -2040,6 +2084,7 @@ declare module "@stencil/core" {
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-progress": LocalJSX.GoProgress & JSXBase.HTMLAttributes<HTMLGoProgressElement>;
+            "go-radio": LocalJSX.GoRadio & JSXBase.HTMLAttributes<HTMLGoRadioElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
             "go-spinner": LocalJSX.GoSpinner & JSXBase.HTMLAttributes<HTMLGoSpinnerElement>;

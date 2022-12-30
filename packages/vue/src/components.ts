@@ -35,6 +35,7 @@ import { defineCustomElement as defineGoNavLink } from '@go-ui/core/dist/compone
 import { defineCustomElement as defineGoNavList } from '@go-ui/core/dist/components/go-nav-list.js';
 import { defineCustomElement as defineGoOverlay } from '@go-ui/core/dist/components/go-overlay.js';
 import { defineCustomElement as defineGoProgress } from '@go-ui/core/dist/components/go-progress.js';
+import { defineCustomElement as defineGoRadio } from '@go-ui/core/dist/components/go-radio.js';
 import { defineCustomElement as defineGoSearchBar } from '@go-ui/core/dist/components/go-search-bar.js';
 import { defineCustomElement as defineGoSkipLink } from '@go-ui/core/dist/components/go-skip-link.js';
 import { defineCustomElement as defineGoSpinner } from '@go-ui/core/dist/components/go-spinner.js';
@@ -330,6 +331,20 @@ export const GoProgress = /*@__PURE__*/ defineContainer<JSX.GoProgress>('go-prog
   'labelledby',
   'indeterminate',
   'showPercentage'
+]);
+
+
+export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio>('go-radio', defineGoRadio, [
+  'checked',
+  'indeterminate',
+  'name',
+  'disabled',
+  'value',
+  'label',
+  'hint',
+  'error',
+  'hintId',
+  'errorId'
 ]);
 
 

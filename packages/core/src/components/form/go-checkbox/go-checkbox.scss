@@ -56,6 +56,11 @@ go-checkbox {
   */
   --cb-checked-text: var(--control-selected-fg-color);
 
+  /**:
+    drop shadow for selected mark
+    - default: 1px 1px 2px rgba(0, 0, 0, 0.4)
+*/
+  --cb-mark-shadow-inner: 1px 1px 2px rgba(0, 0, 0, 0.4);
   .control-wrapper {
     display: flex;
     align-items: flex-start;
@@ -126,7 +131,7 @@ go-checkbox {
           background: var(--cb-checked-bg);
           border-color: var(--cb-checked-bg);
           path {
-            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(var(--cb-mark-shadow-inner));
           }
           &.minus {
             display: none;
@@ -142,7 +147,7 @@ go-checkbox {
           border-color: var(--cb-checked-bg);
           stroke-dashoffset: 0;
           path {
-            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(var(--cb-mark-shadow-inner));
           }
           &.minus {
             display: block;
