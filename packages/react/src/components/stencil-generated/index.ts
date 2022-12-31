@@ -35,6 +35,7 @@ import { defineCustomElement as defineGoNavLink } from '@go-ui/core/dist/compone
 import { defineCustomElement as defineGoNavList } from '@go-ui/core/dist/components/go-nav-list.js';
 import { defineCustomElement as defineGoOverlay } from '@go-ui/core/dist/components/go-overlay.js';
 import { defineCustomElement as defineGoProgress } from '@go-ui/core/dist/components/go-progress.js';
+import { defineCustomElement as defineGoRadio } from '@go-ui/core/dist/components/go-radio.js';
 import { defineCustomElement as defineGoSearchBar } from '@go-ui/core/dist/components/go-search-bar.js';
 import { defineCustomElement as defineGoSkipLink } from '@go-ui/core/dist/components/go-skip-link.js';
 import { defineCustomElement as defineGoSpinner } from '@go-ui/core/dist/components/go-spinner.js';
@@ -76,6 +77,7 @@ export const GoNavLink = /*@__PURE__*/createReactComponent<JSX.GoNavLink, HTMLGo
 export const GoNavList = /*@__PURE__*/createReactComponent<JSX.GoNavList, HTMLGoNavListElement>('go-nav-list', undefined, undefined, defineGoNavList);
 export const GoOverlay = /*@__PURE__*/createReactComponent<JSX.GoOverlay, HTMLGoOverlayElement>('go-overlay', undefined, undefined, defineGoOverlay);
 export const GoProgress = /*@__PURE__*/createReactComponent<JSX.GoProgress, HTMLGoProgressElement>('go-progress', undefined, undefined, defineGoProgress);
+export const GoRadio = /*@__PURE__*/createReactComponent<JSX.GoRadio, HTMLGoRadioElement>('go-radio', undefined, undefined, defineGoRadio);
 export const GoSearchBar = /*@__PURE__*/createReactComponent<JSX.GoSearchBar, HTMLGoSearchBarElement>('go-search-bar', undefined, undefined, defineGoSearchBar);
 export const GoSkipLink = /*@__PURE__*/createReactComponent<JSX.GoSkipLink, HTMLGoSkipLinkElement>('go-skip-link', undefined, undefined, defineGoSkipLink);
 export const GoSpinner = /*@__PURE__*/createReactComponent<JSX.GoSpinner, HTMLGoSpinnerElement>('go-spinner', undefined, undefined, defineGoSpinner);

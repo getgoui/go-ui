@@ -27,4 +27,8 @@ A common use case is to group checkboxes together in a `fieldset` along with a `
 
 <demo-frame component="go-checkbox" demo="go-checkbox"></demo-frame>
 
+### Usage in a fieldset
+
+<demo-frame component="go-checkbox" demo="checkbox-fieldset"></demo-frame>
+
 <!-- Auto Generated Below -->
