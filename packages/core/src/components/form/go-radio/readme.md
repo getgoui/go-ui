@@ -1,5 +1,5 @@
 ---
-title: Radio
+title: Radio button
 ---
 
 # Radio <span class="text-size-0">`go-radio`</span>
