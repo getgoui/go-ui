@@ -18,11 +18,14 @@ The main purpose of using the `go-dropdown` component is to solve these problems
 
 A `go-dropdown` can be used in a few different scenarios:
 
-- Menus - display a list of choices inside the popup (see also [`go-menu`](#))
+- Menus - display a list of choices inside the popup
 - Select/combobox - form elements that allow users to select an option from a list.
 
 
 ## Accessibility
+
+- The trigger element will have `aria-haspopup` and `aria-expanded` attributes automatically applied.
+- 
 
 See [menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) WAI-ARIA for details on recommended Roles, States, and Properties for menu button (button that opens a menu). 
 

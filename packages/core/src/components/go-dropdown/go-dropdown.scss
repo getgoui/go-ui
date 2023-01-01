@@ -6,25 +6,25 @@ go-dropdown {
 
   @include transition(opacity var(--dropdown-transition-duration), visibility, transform var(--dropdown-transition-duration));
   position: absolute;
-  display: block;
   visibility: hidden;
   opacity: 0;
-  background-color: var(--dropdown-bg-color);
   box-shadow: var(--dropdown-shadow);
   pointer-events: none;
   z-index: 1;
+  transform: translateY(-5px);
   width: var(--dropdown-width);
-  transform-origin: top;
-  transform: scaleY(0.5);
+  .dropdown-content {
+    background-color: var(--dropdown-bg-color);
+  }
 
   &.flip {
-    transform-origin: bottom;
+    transform: translateY(5px);
   }
 
   &.is-active {
     visibility: visible;
     opacity: 1;
     pointer-events: inherit;
-    transform: scaleY(1);
+    transform: translateY(0);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { inheritAttributes } from '../../utils/helper';
-import { trapFocus } from '../../utils/trap-focus';
+import { trapFocus } from '../../utils';
 
 @Component({
   tag: 'go-overlay',

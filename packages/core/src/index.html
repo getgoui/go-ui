@@ -24,48 +24,29 @@
     <main class="frame container">
       <!-- #region demo start -->
 
-      <go-checkbox label="Checkbox" hint="This is a hint message"></go-checkbox>
-      <go-checkbox label="Checked" checked></go-checkbox>
-      <go-checkbox label="Indeterminate" checked indeterminate></go-checkbox>
-      <go-checkbox id="cb" label="Checked" checked>
-        <div slot="hint">This is a <go-link href="/">slotted</go-link> hint</div>
-      </go-checkbox>
-      <go-checkbox label="Disabled" disabled></go-checkbox>
-      <go-checkbox label="Disabled checked" checked disabled></go-checkbox>
-      <go-checkbox label="Error" hint="This is a hint message" error="This is an error"></go-checkbox>
-      <go-checkbox label="Error checked" error="This is an error" checked></go-checkbox>
-      <go-checkbox label="Error disabled" error="This is an error" disabled></go-checkbox>
+      <style>
+        body {
+          display: grid;
+          place-items: center;
+          height: 100vh;
+        }
+        #test {
+          margin-top: 90vh;
+        }
+      </style>
+      <!-- keep this sandbox empty before pushing changes -->
 
-
-      <hr>
-
-      <go-radio label="radio" hint="This is a hint message"></go-radio>
-      <go-radio label="Checked" checked></go-radio>
-      <go-radio id="cb" label="Checked" checked>
-        <div slot="hint">This is a <go-link href="/">slotted</go-link> hint</div>
-      </go-radio>
-      <go-radio label="Disabled" disabled></go-radio>
-      <go-radio label="Disabled checked" checked disabled></go-radio>
-      <go-radio label="Error" hint="This is a hint message" error="This is an error"></go-radio>
-      <go-radio label="Error checked" error="This is an error" checked></go-radio>
-      <go-radio label="Error disabled" error="This is an error" disabled></go-radio>
-
-      <go-fieldset label="What fruit do you like?" hint="Select one" is-list>
-        <go-radio name="fruit" label="Apple" value="apple" hint="Not the company"></go-radio>
-        <go-radio name="fruit" label="Banana" value="banana"></go-radio>
-        <go-radio name="fruit" label="Orange" value="orange"></go-radio>
-        <go-radio name="fruit" label="Kiwi" value="kiwi"></go-radio>
-        <go-radio name="fruit" label="Watermelon" value="watermelon"></go-radio>
-      </go-fieldset>
-
-      <p>Error state</p>
-      <go-fieldset label="What fruit do you like?" error="[This is an error message]" hint="Select one" is-list>
-        <go-radio name="fruit2" label="Apple" value="apple" hint="Not the company"></go-radio>
-        <go-radio name="fruit2" label="Banana" value="banana"></go-radio>
-        <go-radio name="fruit2" label="Orange" value="orange"></go-radio>
-        <go-radio name="fruit2" label="Kiwi" value="kiwi"></go-radio>
-        <go-radio name="fruit2" label="Watermelon" value="watermelon"></go-radio>
-      </go-fieldset>
+      <!-- #region demo start -->
+      <a href="#">link</a>
+      <go-button id="test">Toggle Dropdown</go-button>
+      <go-dropdown id="dd" trigger-selector="#test">
+        <ul>
+          <li><a href="#1">Test 1</a></li>
+          <li><a href="#2">Test 2</a></li>
+          <li><a href="#3">Test 3</a></li>
+        </ul>
+      </go-dropdown>
+      <a href="#">link</a>
 
       <!-- #endregion demo finish -->
     </div>

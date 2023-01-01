@@ -1,9 +1,7 @@
 import { Component, h, Element, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
 
-import { inheritAttributes } from '../../../utils/helper';
 import { INavItem } from '../../../interfaces';
-import { trapFocus } from '../../../utils/trap-focus';
-import { parseItems } from '../../../utils/nav';
+import { inheritAttributes, trapFocus, parseItems } from '../../../utils';
 import { renderIcon } from '../nav-helpers';
 
 @Component({
