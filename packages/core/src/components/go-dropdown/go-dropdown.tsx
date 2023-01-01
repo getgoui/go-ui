@@ -148,8 +148,16 @@ export class GoDropdown {
   handleActiveChange(isActive) {
     this.setTriggerExpanded(isActive);
     if (isActive) {
+      this.el.style.display = 'block';
       focusFirstWithin(this.el);
     } else {
+      this.el.addEventListener(
+        'transitionend',
+        () => {
+          this.el.style.display = 'none';
+        },
+        { once: true },
+      );
       this.triggerEl.focus();
     }
   }

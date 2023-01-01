@@ -1,8 +1,15 @@
 go-dropdown {
   --dropdown-shadow: var(--shadow-2);
-  --dropdown-bg-color: transparent;
+  --dropdown-bg-color: var(--go-color-neutral-100);
   --dropdown-width: 14rem;
-  --dropdown-transition-duration: var(--go-duration-fast);
+  --dropdown-transition-duration: var(--go-duration-normal);
+
+  /**
+    @prop --dropdown-radius:
+      Border radius of dropdown
+      - default: var(--radius-2)
+  */
+  --dropdown-radius: var(--radius-2);
 
   @include transition(opacity var(--dropdown-transition-duration), visibility, transform var(--dropdown-transition-duration));
   position: absolute;
@@ -12,12 +19,12 @@ go-dropdown {
   pointer-events: none;
   z-index: 1;
   transform: translateY(-5px);
+  transform-origin: top;
   width: var(--dropdown-width);
-  .dropdown-content {
-    background-color: var(--dropdown-bg-color);
-  }
-
+  background-color: var(--dropdown-bg-color);
+  border-radius: var(--dropdown-radius);
   &.flip {
+    transform-origin: bottom;
     transform: translateY(5px);
   }
 
