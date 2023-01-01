@@ -329,9 +329,17 @@ export namespace Components {
          */
         "open": () => Promise<void>;
         /**
+          * toggles dropdown
+         */
+        "toggle": () => Promise<void>;
+        /**
           * Query selector string for the trigger element.
          */
-        "triggerId": string;
+        "triggerSelector": string;
+        /**
+          * Width of the dropdown, any CSS width values can be used.
+         */
+        "width"?: string;
     }
     interface GoFieldset {
         /**
@@ -1491,7 +1499,11 @@ declare namespace LocalJSX {
         /**
           * Query selector string for the trigger element.
          */
-        "triggerId"?: string;
+        "triggerSelector"?: string;
+        /**
+          * Width of the dropdown, any CSS width values can be used.
+         */
+        "width"?: string;
     }
     interface GoFieldset {
         /**

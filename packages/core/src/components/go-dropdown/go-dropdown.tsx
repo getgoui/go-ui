@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, Method, Watch } from '@stencil/core';
 import { uniqueId, debounce } from 'lodash-es';
 import { computePosition, offset, flip, autoUpdate } from '@floating-ui/dom';
-import { focusFirstWithin, onClickOutside } from '../../utils';
+import { focusFirstWithin, onClickOutside, removeClickOutsideListener } from '../../utils';
 
 @Component({
   tag: 'go-dropdown',
@@ -13,12 +13,17 @@ export class GoDropdown {
   /**
    * Query selector string for the trigger element.
    */
-  @Prop() triggerId: string;
+  @Prop() triggerSelector: string;
 
   /**
    * keep track of active state
    */
   @Prop({ reflect: true, mutable: true }) isActive: boolean = false;
+
+  /**
+   * Width of the dropdown, any CSS width values can be used.
+   */
+  @Prop() width? = '200px';
 
   /**
    * opens dropdown
@@ -36,6 +41,14 @@ export class GoDropdown {
     this.isActive = false;
   }
 
+  /**
+   * toggles dropdown
+   */
+  @Method()
+  async toggle() {
+    this.isActive = !this.isActive;
+  }
+
   private triggerEl: HTMLElement;
 
   componentWillLoad() {
@@ -43,11 +56,12 @@ export class GoDropdown {
     if (!this.el.id) {
       this.el.id = uniqueId('go-dropdown-');
     }
-    this.triggerEl = document.querySelector(`#${this.triggerId}`) as HTMLElement;
+    this.triggerEl = document.querySelector(`${this.triggerSelector}`) as HTMLElement;
   }
 
   private escapeHandler;
   private focusOutHandler;
+  private clickOutHandler;
 
   componentDidLoad() {
     if (!this.triggerEl) {
@@ -62,6 +76,9 @@ export class GoDropdown {
       }
     };
     this.focusOutHandler = (e: FocusEvent) => {
+      if (this.triggerEl.contains(e.relatedTarget as Node)) {
+        return;
+      }
       if (e.relatedTarget && !this.el.contains(e.relatedTarget as Node)) {
         this.close();
       }
@@ -78,6 +95,9 @@ export class GoDropdown {
     if (this.focusOutHandler) {
       this.el.removeEventListener('focusout', this.focusOutHandler);
     }
+    if (this.clickOutHandler) {
+      removeClickOutsideListener(this.clickOutHandler);
+    }
   }
 
   @Method()
@@ -85,6 +105,15 @@ export class GoDropdown {
     this.triggerEl.setAttribute('aria-haspopup', 'true');
     this.setTriggerExpanded(this.isActive);
 
+    // add click event listener
+    this.triggerEl.addEventListener('click', () => this.toggle());
+
+    this.clickOutHandler = onClickOutside(this.el, (e) => {
+      if (!this.triggerEl.contains(e.target as Node) && this.isActive) {
+        console.log('click outside');
+        this.close();
+      }
+    });
     /**
      * Calculate position of dropdown
      */
@@ -109,12 +138,6 @@ export class GoDropdown {
         });
       }, 100),
     );
-
-    onClickOutside(this.el, (e) => {
-      if (!this.triggerEl.contains(e.target as Node) && this.isActive) {
-        this.close();
-      }
-    });
   }
 
   setTriggerExpanded(expanded: boolean) {
@@ -125,19 +148,27 @@ export class GoDropdown {
   handleActiveChange(isActive) {
     this.setTriggerExpanded(isActive);
     if (isActive) {
+      this.el.style.display = 'block';
       focusFirstWithin(this.el);
-      this.el.style.display = 'inherit';
     } else {
+      this.el.addEventListener(
+        'transitionend',
+        () => {
+          this.el.style.display = 'none';
+        },
+        { once: true },
+      );
       this.triggerEl.focus();
-      this.el.style.display = 'none';
     }
   }
 
   render() {
-    const { isActive } = this;
+    const { isActive, width } = this;
     return (
-      <Host class={{ 'is-active': isActive }} aria-hidden={isActive ? 'false' : 'true'}>
-        <slot></slot>
+      <Host class={{ 'is-active': isActive }} aria-hidden={isActive ? 'false' : 'true'} style={{ '--dropdown-width': width }}>
+        <div class="dropdown-content">
+          <slot></slot>
+        </div>
       </Host>
     );
   }
