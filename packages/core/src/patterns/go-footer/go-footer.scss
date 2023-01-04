@@ -18,7 +18,7 @@ go-footer {
 
   &.dark {
     // dark theme, use tokens to fix colours regardless of user OS preference.
-    --footer-bg-color: rgb(var(--go-token-primary-900));
+    --footer-bg-color: rgb(var(--go-token-secondary-900));
     --footer-text-color: rgb(var(--go-token-lightest));
     --footer-link-color: var(--footer-text-color);
     --footer-link-color-hover: rgb(var(--go-token-success-200));

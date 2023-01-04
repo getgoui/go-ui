@@ -187,8 +187,9 @@ export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog',
 
 
 export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-dropdown', defineGoDropdown, [
-  'triggerId',
-  'isActive'
+  'triggerSelector',
+  'isActive',
+  'width'
 ]);
 
 
