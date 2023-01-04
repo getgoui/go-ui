@@ -32,6 +32,9 @@ jobs:
         run: pnpm test.e2e
         working-directory: packages/core
 
+      - name: Build
+        run: pnpm run build
+
       - name: Release Core
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
