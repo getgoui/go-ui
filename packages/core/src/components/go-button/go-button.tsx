@@ -80,7 +80,7 @@ export class GoButton {
 
   @State() blockClasses: string;
 
-  private inheritedAttributes = {} as any;
+  @State() inheritedAttributes = {} as any;
   componentWillLoad() {
     // a11y check
     if (this.icon) {
@@ -92,24 +92,41 @@ export class GoButton {
     if (this.block) {
       this.handleBlockChange(this.block);
     }
+    this.updateInnerButtonAttributes();
+    // watch attribute change in case they're modified by after initial load
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes') {
+          this.updateInnerButtonAttributes();
+        }
+      });
+    });
+    observer.observe(this.root, {
+      attributes: true,
+    });
+  }
 
-    this.inheritedAttributes = inheritAttributes(this.root, [
-      'block',
-      'variant',
-      'class',
-      'disabled',
-      'style',
-      'invert',
-      'outline',
-      'outline-fill',
-      'flat',
-      'round',
-      'icon',
-      'stack',
-      'compact',
-      'href',
-      'id',
-    ]);
+  updateInnerButtonAttributes() {
+    this.inheritedAttributes = {
+      ...this.inheritedAttributes,
+      ...inheritAttributes(this.root, [
+        'block',
+        'variant',
+        'class',
+        'disabled',
+        'style',
+        'invert',
+        'outline',
+        'outline-fill',
+        'flat',
+        'round',
+        'icon',
+        'stack',
+        'compact',
+        'href',
+        'id',
+      ]),
+    };
   }
 
   @Watch('block')
