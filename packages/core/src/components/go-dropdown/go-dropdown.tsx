@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, Method, Watch } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Method, Watch, Event, EventEmitter } from '@stencil/core';
 import { uniqueId, debounce } from 'lodash-es';
 import { computePosition, offset, flip, autoUpdate } from '@floating-ui/dom';
 import { focusFirstWithin, onClickOutside, removeClickOutsideListener } from '../../utils';
@@ -26,12 +26,22 @@ export class GoDropdown {
   @Prop() width? = '200px';
 
   /**
+   * Emitted when dropdown is opened
+   */
+  @Event() opened: EventEmitter<void>;
+
+  /**
    * opens dropdown
    */
   @Method()
   async open() {
     this.isActive = true;
+    this.opened.emit();
   }
+  /**
+   * Emitted when dropdown is opened
+   */
+  @Event() closed: EventEmitter<void>;
 
   /**
    * closes dropdown
@@ -39,6 +49,7 @@ export class GoDropdown {
   @Method()
   async close() {
     this.isActive = false;
+    this.closed.emit();
   }
 
   /**
@@ -46,7 +57,11 @@ export class GoDropdown {
    */
   @Method()
   async toggle() {
-    this.isActive = !this.isActive;
+    if (this.isActive) {
+      this.close();
+    } else {
+      this.open();
+    }
   }
 
   private triggerEl: HTMLElement;

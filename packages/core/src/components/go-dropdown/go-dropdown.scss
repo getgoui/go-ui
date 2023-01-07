@@ -28,6 +28,7 @@ go-dropdown {
 
   @include transition(opacity var(--dropdown-duration), visibility, transform var(--dropdown-duration));
   position: absolute;
+  display: none;
   visibility: hidden;
   opacity: 0;
   box-shadow: var(--dropdown-shadow);
