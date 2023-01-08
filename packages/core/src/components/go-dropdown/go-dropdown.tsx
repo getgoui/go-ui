@@ -23,7 +23,7 @@ export class GoDropdown {
   /**
    * Width of the dropdown, any CSS width values can be used.
    */
-  @Prop() width? = '200px';
+  @Prop() width? = 'auto';
 
   /**
    * If set, trigger click event will need to be handled manually.

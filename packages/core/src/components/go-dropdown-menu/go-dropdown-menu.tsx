@@ -1,6 +1,6 @@
-import { Component, h, Element, Prop, Method } from '@stencil/core';
+import { Component, h, Element, Prop, Method, Listen } from '@stencil/core';
 import { DropdownProps } from '../../interfaces';
-import { trapFocus } from '../../utils';
+import { trapFocus, warning } from '../../utils';
 import { uniqueId } from 'lodash-es';
 
 @Component({
@@ -98,7 +98,6 @@ export class GoDropdownMenu implements DropdownProps {
   addMenuItemEventListeners() {
     if (!this.menuItemEls) {
       this.menuItemEls = Array.from(this.menuEl.querySelectorAll('go-dropdown-item'));
-      console.log(this.menuItemEls);
     }
     if (!this.menuItemEls.length) {
       // no `go-dropdown-item` found
@@ -114,7 +113,6 @@ export class GoDropdownMenu implements DropdownProps {
           if (this.focusedMenuItemIndex > this.menuItemEls.length - 1) {
             this.focusedMenuItemIndex = 0;
           }
-          console.log('add index', this.focusedMenuItemIndex);
           this.focusMenuItem();
         }
 
@@ -124,23 +122,22 @@ export class GoDropdownMenu implements DropdownProps {
           if (this.focusedMenuItemIndex < 0) {
             this.focusedMenuItemIndex = this.menuItemEls.length - 1;
           }
-          console.log('minus index', this.focusedMenuItemIndex);
           this.focusMenuItem();
         }
       });
     });
   }
 
-  syncActiveState(isActive: boolean) {
-    this.isActive = isActive;
-  }
   focusMenuItem() {
-    console.log(this.focusedMenuItemIndex);
-    console.log(this.menuItemEls[this.focusedMenuItemIndex]);
     const dropdownItem = this.menuItemEls[this.focusedMenuItemIndex] as HTMLGoDropdownItemElement;
+    if (!dropdownItem) {
+      warning('No `go-dropdown-item` found inside', this.dropdownEl);
+      return;
+    }
     dropdownItem.focusOnControl();
   }
   handleDropdownOpened() {
+    this.isActive = true;
     trapFocus(this.menuEl, false);
     if (this.focusLastOnNextOpen) {
       this.focusedMenuItemIndex = this.menuItemEls.length - 1;
@@ -150,6 +147,13 @@ export class GoDropdownMenu implements DropdownProps {
     }
 
     this.focusMenuItem();
+  }
+
+  @Listen('selected')
+  handleItemSelected() {
+    if (!this.persistent) {
+      this.close();
+    }
   }
 
   render() {
@@ -166,7 +170,7 @@ export class GoDropdownMenu implements DropdownProps {
         }}
         noTriggerClickHandler={true}
         onOpened={() => this.handleDropdownOpened()}
-        onClosed={() => this.syncActiveState(false)}
+        onClosed={() => (this.isActive = false)}
         {...dropdownProps}>
         <div
           role="menu"

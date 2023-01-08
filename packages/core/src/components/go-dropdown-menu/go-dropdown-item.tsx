@@ -10,10 +10,13 @@ export class GoDropdownItem {
   /**
    * Emitted when a menu item is selected
    */
-  @Event() selected: EventEmitter<HTMLElement>;
+  @Event({
+    bubbles: true,
+  })
+  selected: EventEmitter<HTMLElement>;
 
   @Method()
-  focusOnControl() {
+  async focusOnControl() {
     this.controlEl?.focus();
   }
 

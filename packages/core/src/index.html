@@ -30,21 +30,22 @@
           place-items: center;
           height: 100vh;
         }
-        #test {
-          margin-top: 20vh;
-        }
       </style>
       <!-- keep this sandbox empty before pushing changes -->
 
       <!-- #region demo start -->
       <a href="#">link</a>
-      <go-button id="test">Toggle Dropdown</go-button>
-      <go-dropdown-menu id="dd" trigger-selector="#test">
-        <go-dropdown-item>Item 1</go-dropdown-item>
-        <go-dropdown-item>Item 2</go-dropdown-item>
-        <go-dropdown-item>Item 3</go-dropdown-item>
-      </go-dropdown-menu>
-      <code id="selected"></code>
+      <div>
+        <go-button id="test">Toggle Dropdown</go-button>
+        <go-dropdown-menu id="dd" trigger-selector="#test">
+          <go-dropdown-item>Item 1</go-dropdown-item>
+          <go-dropdown-item>Item 2</go-dropdown-item>
+          <go-dropdown-item>Item 3</go-dropdown-item>
+        </go-dropdown-menu>
+        <div id="selected">
+          Select a dropdown item
+        </div>
+      </div>
       <script>
         const menuItems = document.querySelectorAll('#dd go-dropdown-item');
         const result = document.querySelector('#selected');
