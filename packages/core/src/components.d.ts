@@ -325,6 +325,10 @@ export namespace Components {
          */
         "isActive": boolean;
         /**
+          * If set, trigger click event will need to be handled manually.
+         */
+        "noTriggerClickHandler": boolean;
+        /**
           * opens dropdown
          */
         "open": () => Promise<void>;
@@ -339,6 +343,34 @@ export namespace Components {
         /**
           * Width of the dropdown, any CSS width values can be used.
          */
+        "width"?: string;
+    }
+    interface GoDropdownItem {
+        "focusOnControl": () => Promise<void>;
+    }
+    interface GoDropdownMenu {
+        "close": () => Promise<void>;
+        /**
+          * keep track of active state
+         */
+        "isActive": boolean;
+        /**
+          * DOM id for menu
+         */
+        "menuId"?: string;
+        /**
+          * open menu
+          * @param focusFirst if auto focus on first item
+         */
+        "open": () => Promise<void>;
+        /**
+          * If persistent, the dropdown will not close by itself on interaction with elements inside the menu.
+         */
+        "persistent"?: boolean;
+        /**
+          * @see [go-dropdown](go-dropdown#props)
+         */
+        "triggerSelector": string;
         "width"?: string;
     }
     interface GoFieldset {
@@ -868,6 +900,14 @@ export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
 }
+export interface GoDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoDropdownElement;
+}
+export interface GoDropdownItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoDropdownItemElement;
+}
 export interface GoMainNavCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoMainNavElement;
@@ -982,6 +1022,18 @@ declare global {
     var HTMLGoDropdownElement: {
         prototype: HTMLGoDropdownElement;
         new (): HTMLGoDropdownElement;
+    };
+    interface HTMLGoDropdownItemElement extends Components.GoDropdownItem, HTMLStencilElement {
+    }
+    var HTMLGoDropdownItemElement: {
+        prototype: HTMLGoDropdownItemElement;
+        new (): HTMLGoDropdownItemElement;
+    };
+    interface HTMLGoDropdownMenuElement extends Components.GoDropdownMenu, HTMLStencilElement {
+    }
+    var HTMLGoDropdownMenuElement: {
+        prototype: HTMLGoDropdownMenuElement;
+        new (): HTMLGoDropdownMenuElement;
     };
     interface HTMLGoFieldsetElement extends Components.GoFieldset, HTMLStencilElement {
     }
@@ -1155,6 +1207,8 @@ declare global {
         "go-content-layout": HTMLGoContentLayoutElement;
         "go-dialog": HTMLGoDialogElement;
         "go-dropdown": HTMLGoDropdownElement;
+        "go-dropdown-item": HTMLGoDropdownItemElement;
+        "go-dropdown-menu": HTMLGoDropdownMenuElement;
         "go-fieldset": HTMLGoFieldsetElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
@@ -1497,12 +1551,49 @@ declare namespace LocalJSX {
          */
         "isActive"?: boolean;
         /**
+          * If set, trigger click event will need to be handled manually.
+         */
+        "noTriggerClickHandler"?: boolean;
+        /**
+          * Emitted when dropdown is opened
+         */
+        "onClosed"?: (event: GoDropdownCustomEvent<void>) => void;
+        /**
+          * Emitted when dropdown is opened
+         */
+        "onOpened"?: (event: GoDropdownCustomEvent<void>) => void;
+        /**
           * Query selector string for the trigger element.
          */
         "triggerSelector"?: string;
         /**
           * Width of the dropdown, any CSS width values can be used.
          */
+        "width"?: string;
+    }
+    interface GoDropdownItem {
+        /**
+          * Emitted when a menu item is selected
+         */
+        "onSelected"?: (event: GoDropdownItemCustomEvent<HTMLElement>) => void;
+    }
+    interface GoDropdownMenu {
+        /**
+          * keep track of active state
+         */
+        "isActive"?: boolean;
+        /**
+          * DOM id for menu
+         */
+        "menuId"?: string;
+        /**
+          * If persistent, the dropdown will not close by itself on interaction with elements inside the menu.
+         */
+        "persistent"?: boolean;
+        /**
+          * @see [go-dropdown](go-dropdown#props)
+         */
+        "triggerSelector"?: string;
         "width"?: string;
     }
     interface GoFieldset {
@@ -2034,6 +2125,8 @@ declare namespace LocalJSX {
         "go-content-layout": GoContentLayout;
         "go-dialog": GoDialog;
         "go-dropdown": GoDropdown;
+        "go-dropdown-item": GoDropdownItem;
+        "go-dropdown-menu": GoDropdownMenu;
         "go-fieldset": GoFieldset;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
@@ -2081,6 +2174,8 @@ declare module "@stencil/core" {
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;
+            "go-dropdown-item": LocalJSX.GoDropdownItem & JSXBase.HTMLAttributes<HTMLGoDropdownItemElement>;
+            "go-dropdown-menu": LocalJSX.GoDropdownMenu & JSXBase.HTMLAttributes<HTMLGoDropdownMenuElement>;
             "go-fieldset": LocalJSX.GoFieldset & JSXBase.HTMLAttributes<HTMLGoFieldsetElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;

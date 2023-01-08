@@ -81,6 +81,9 @@ export class GoButton {
   @State() blockClasses: string;
 
   @State() inheritedAttributes = {} as any;
+
+  public nativeEl: HTMLElement = null;
+
   componentWillLoad() {
     // a11y check
     if (this.icon) {
@@ -150,6 +153,9 @@ export class GoButton {
           type={href ? null : type}
           aria-disabled={disabled ? 'true' : null}
           disabled={disabled}
+          ref={(el) => {
+            this.nativeEl = el;
+          }}
           class="inner-button"
           {...inheritedAttributes}>
           <slot name="prefix"></slot>

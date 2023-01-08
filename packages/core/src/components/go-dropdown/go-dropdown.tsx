@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, Method, Watch, Event, EventEmitter } from '@stencil/core';
 import { uniqueId, debounce } from 'lodash-es';
 import { computePosition, offset, flip, autoUpdate } from '@floating-ui/dom';
-import { focusFirstWithin, onClickOutside, removeClickOutsideListener } from '../../utils';
+import { onClickOutside, removeClickOutsideListener } from '../../utils';
 
 @Component({
   tag: 'go-dropdown',
@@ -26,15 +26,24 @@ export class GoDropdown {
   @Prop() width? = '200px';
 
   /**
+   * If set, trigger click event will need to be handled manually.
+   */
+  @Prop() noTriggerClickHandler = false;
+
+  /**
    * Emitted when dropdown is opened
    */
   @Event() opened: EventEmitter<void>;
+
+  // keep track of where the focus was before the dropdown opens
+  originEl: HTMLElement;
 
   /**
    * opens dropdown
    */
   @Method()
   async open() {
+    this.originEl = document.activeElement as HTMLElement;
     this.isActive = true;
     this.opened.emit();
   }
@@ -50,6 +59,9 @@ export class GoDropdown {
   async close() {
     this.isActive = false;
     this.closed.emit();
+    if (this.originEl) {
+      this.originEl.focus();
+    }
   }
 
   /**
@@ -121,7 +133,9 @@ export class GoDropdown {
     this.setTriggerExpanded(this.isActive);
 
     // add click event listener
-    this.triggerEl.addEventListener('click', () => this.toggle());
+    if (!this.noTriggerClickHandler) {
+      this.triggerEl.addEventListener('click', () => this.toggle());
+    }
 
     this.clickOutHandler = onClickOutside(this.el, (e) => {
       if (!this.triggerEl.contains(e.target as Node) && this.isActive) {
@@ -164,7 +178,7 @@ export class GoDropdown {
     this.setTriggerExpanded(isActive);
     if (isActive) {
       this.el.style.display = 'block';
-      focusFirstWithin(this.el);
+      // focusFirstWithin(this.el);
     } else {
       this.el.addEventListener(
         'transitionend',
