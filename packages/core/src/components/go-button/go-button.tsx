@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Host, Watch, State } from '@stencil/core';
+import { Component, h, Prop, Element, Host, Watch, State, Build } from '@stencil/core';
 import { Breakpoints, ColorVariants } from '../../interfaces';
 import { inheritAttributes, warning } from '../../utils/helper';
 
@@ -96,17 +96,20 @@ export class GoButton {
       this.handleBlockChange(this.block);
     }
     this.updateInnerButtonAttributes();
-    // watch attribute change in case they're modified by after initial load
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes') {
-          this.updateInnerButtonAttributes();
-        }
+
+    if (Build.isBrowser) {
+      // watch attribute change in case they're modified by after initial load
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes') {
+            this.updateInnerButtonAttributes();
+          }
+        });
       });
-    });
-    observer.observe(this.root, {
-      attributes: true,
-    });
+      observer.observe(this.root, {
+        attributes: true,
+      });
+    }
   }
 
   updateInnerButtonAttributes() {

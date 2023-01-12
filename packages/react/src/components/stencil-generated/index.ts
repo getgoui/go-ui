@@ -20,6 +20,8 @@ import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/compone
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
 import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
+import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
+import { defineCustomElement as defineGoDropdownMenu } from '@go-ui/core/dist/components/go-dropdown-menu.js';
 import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
@@ -62,6 +64,8 @@ export const GoContent = /*@__PURE__*/createReactComponent<JSX.GoContent, HTMLGo
 export const GoContentLayout = /*@__PURE__*/createReactComponent<JSX.GoContentLayout, HTMLGoContentLayoutElement>('go-content-layout', undefined, undefined, defineGoContentLayout);
 export const GoDialog = /*@__PURE__*/createReactComponent<JSX.GoDialog, HTMLGoDialogElement>('go-dialog', undefined, undefined, defineGoDialog);
 export const GoDropdown = /*@__PURE__*/createReactComponent<JSX.GoDropdown, HTMLGoDropdownElement>('go-dropdown', undefined, undefined, defineGoDropdown);
+export const GoDropdownItem = /*@__PURE__*/createReactComponent<JSX.GoDropdownItem, HTMLGoDropdownItemElement>('go-dropdown-item', undefined, undefined, defineGoDropdownItem);
+export const GoDropdownMenu = /*@__PURE__*/createReactComponent<JSX.GoDropdownMenu, HTMLGoDropdownMenuElement>('go-dropdown-menu', undefined, undefined, defineGoDropdownMenu);
 export const GoFieldset = /*@__PURE__*/createReactComponent<JSX.GoFieldset, HTMLGoFieldsetElement>('go-fieldset', undefined, undefined, defineGoFieldset);
 export const GoFooter = /*@__PURE__*/createReactComponent<JSX.GoFooter, HTMLGoFooterElement>('go-footer', undefined, undefined, defineGoFooter);
 export const GoGovAuLogo = /*@__PURE__*/createReactComponent<JSX.GoGovAuLogo, HTMLGoGovAuLogoElement>('go-gov-au-logo', undefined, undefined, defineGoGovAuLogo);

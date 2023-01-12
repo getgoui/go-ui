@@ -20,6 +20,8 @@ import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/compone
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
 import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
+import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
+import { defineCustomElement as defineGoDropdownMenu } from '@go-ui/core/dist/components/go-dropdown-menu.js';
 import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
@@ -189,7 +191,25 @@ export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog',
 export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-dropdown', defineGoDropdown, [
   'triggerSelector',
   'isActive',
-  'width'
+  'width',
+  'noTriggerClickHandler',
+  'opened',
+  'closed'
+]);
+
+
+export const GoDropdownItem = /*@__PURE__*/ defineContainer<JSX.GoDropdownItem>('go-dropdown-item', defineGoDropdownItem, [
+  'width',
+  'selected'
+]);
+
+
+export const GoDropdownMenu = /*@__PURE__*/ defineContainer<JSX.GoDropdownMenu>('go-dropdown-menu', defineGoDropdownMenu, [
+  'triggerSelector',
+  'isActive',
+  'width',
+  'menuId',
+  'persistent'
 ]);
 
 
