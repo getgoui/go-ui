@@ -318,7 +318,7 @@ export namespace Components {
         /**
           * closes dropdown
          */
-        "close": () => Promise<void>;
+        "close": (focusBackToTrigger?: boolean) => Promise<void>;
         "init": () => Promise<void>;
         /**
           * keep track of active state
@@ -353,7 +353,7 @@ export namespace Components {
         "width"?: string;
     }
     interface GoDropdownMenu {
-        "close": () => Promise<void>;
+        "close": (focusBackToTrigger?: boolean) => Promise<void>;
         /**
           * keep track of active state
          */

@@ -34,6 +34,7 @@ export class GoDropdownItem {
       <button
         type="button"
         role="menuitem"
+        tabindex="-1"
         ref={(el) => (this.controlEl = el)}
         onClick={() => {
           this.selected.emit(this.el);

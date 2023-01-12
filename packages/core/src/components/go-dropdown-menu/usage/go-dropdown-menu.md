@@ -10,12 +10,10 @@
   </div>
 </div>
 <script>
-  const menuItems = document.querySelectorAll('#dd go-dropdown-item');
+  const menu = document.querySelector('#dd');
   const result = document.querySelector('#result');
-  menuItems.forEach((item, i) => {
-    item.addEventListener('selected', (e) => {
-      const text = e.detail.innerText;
-      result.innerHTML = `selected: ${text}`
-    })
+  menu.addEventListener('selected', (e) => {
+    const text = e.detail.innerText;
+    result.innerHTML = `selected: ${text}`
   })
 </script>

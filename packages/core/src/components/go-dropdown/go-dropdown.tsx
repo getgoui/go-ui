@@ -56,10 +56,10 @@ export class GoDropdown {
    * closes dropdown
    */
   @Method()
-  async close() {
+  async close(focusBackToTrigger = false) {
     this.isActive = false;
     this.closed.emit();
-    if (this.originEl) {
+    if (this.originEl && focusBackToTrigger) {
       this.originEl.focus();
     }
   }

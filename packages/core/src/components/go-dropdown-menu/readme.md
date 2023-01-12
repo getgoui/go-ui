@@ -32,10 +32,23 @@ WAI [Menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) pattern 
 
 
 #### Keyboard
+When trigger button has focus:
+- <kbd>Enter</kbd>: opens the menu and places focus on the first menu item.
+- <kbd>Space</kbd>: opens the menu and places focus on the first menu item.
+- <kbd>Down Arrow</kbd>: opens the menu and moves focus to the first menu item.
+- <kbd>Up Arrow</kbd>: opens the menu and moves focus to the last menu item.
 
-### Menu
+When focus is inside the dropdown menu:
+- <kbd>Down Arrow</kbd>: move focus to the next menu item, if current item is the last one, move focus to the first menu item.
+- <kbd>Up Arrow</kbd>: move focus to the previous menu item, if current item is the first one, move focus to the last menu item.
+- <kbd>Esc</kbd>: closes the menu.
 
-#### Keyboard
+::: info Note
+
+The keyboard interaction of the menu follows the WAI guideline for [Keyboard navigation inside components](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_general_within), which means <kbd>Tab</kbd> and <kbd>Shift + Tab</kbd> do not move focus between menu items, instead, they are only used to focus in and out of the dropdown menu.
+
+:::
+
 
 ## Demo
 

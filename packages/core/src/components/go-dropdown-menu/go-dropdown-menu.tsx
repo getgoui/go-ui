@@ -55,8 +55,8 @@ export class GoDropdownMenu implements DropdownProps {
   }
 
   @Method()
-  async close() {
-    this.dropdownEl.close();
+  async close(focusBackToTrigger = false) {
+    this.dropdownEl.close(focusBackToTrigger);
   }
 
   componentWillLoad() {
@@ -111,7 +111,10 @@ export class GoDropdownMenu implements DropdownProps {
     // up down arrow keys move focus between menu items
     this.menuItemEls.forEach((item) => {
       item.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown' || (!e.shiftKey && e.key === 'Tab')) {
+        if (e.key === 'Tab') {
+          this.close();
+        }
+        if (e.key === 'ArrowDown') {
           e.preventDefault();
           this.focusedMenuItemIndex += 1;
           if (this.focusedMenuItemIndex > this.menuItemEls.length - 1) {
@@ -120,7 +123,7 @@ export class GoDropdownMenu implements DropdownProps {
           this.focusMenuItem();
         }
 
-        if (e.key === 'ArrowUp' || (e.shiftKey && e.key === 'Tab')) {
+        if (e.key === 'ArrowUp') {
           e.preventDefault();
           this.focusedMenuItemIndex -= 1;
           if (this.focusedMenuItemIndex < 0) {
