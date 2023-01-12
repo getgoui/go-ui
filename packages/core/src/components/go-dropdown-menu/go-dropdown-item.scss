@@ -1,5 +1,69 @@
 go-dropdown-item {
-  &:focus {
-    border: 1px solid red;
+  /**
+    @prop --dd-item-padding:
+      Padding for dropdown item
+      - default: 0.5rem 1rem
+  */
+  --dd-item-padding: 0.5rem 1rem;
+
+  /**
+    @prop --dd-item-radius:
+      Border radius for dropdown item
+      - default: var(--radius-1)
+  */
+  --dd-item-radius: var(--radius-1);
+
+  /**
+    @prop --dd-item-bg:
+      Background of dropdown item
+      - default: var(--go-color-neutral-100)
+  */
+  --dd-item-bg: var(--go-color-neutral-100);
+
+  /**
+    @prop --dd-item-bg-hover:
+      Hover background for dropdown item
+      - default: var(--go-color-neutral-200)
+  */
+  --dd-item-bg-hover: var(--go-color-neutral-200);
+
+  /**
+    @prop --dd-item-fg:
+      Foreground of dropdown item
+      - default: var(--go-color-neutral-900)
+  */
+  --dd-item-fg: var(--go-color-neutral-900);
+
+  /**
+    @prop --dd-item-fg-hover:
+      Hover foreground of dropdown item
+      - default: var(--go-color-darkest)
+  */
+  --dd-item-fg-hover: var(--go-color-darkest);
+
+  /**
+    @prop --dd-item-width:
+      Width of dropdown item
+      - default: 100%
+  */
+  --dd-item-width: 100%;
+
+  [role='menuitem'] {
+    @include reset-btn;
+    display: block;
+    padding: var(--dd-item-padding);
+    border-radius: var(--dd-item-radius);
+    background: var(--dd-item-bg);
+    color: var(--dd-item-fg);
+    width: var(--dd-item-width);
+    &:hover {
+      background: var(--dd-item-bg-hover);
+      color: var(--dd-item-fg-hover);
+    }
+    &:focus-visible {
+      position: relative;
+      z-index: 1;
+      @include focus-outline(false);
+    }
   }
 }

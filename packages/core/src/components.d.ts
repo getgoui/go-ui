@@ -347,6 +347,10 @@ export namespace Components {
     }
     interface GoDropdownItem {
         "focusOnControl": () => Promise<void>;
+        /**
+          * customise width of the dropdown item
+         */
+        "width"?: string;
     }
     interface GoDropdownMenu {
         "close": () => Promise<void>;
@@ -371,6 +375,9 @@ export namespace Components {
           * @see [go-dropdown](go-dropdown#props)
          */
         "triggerSelector": string;
+        /**
+          * customise width of dropdown menu
+         */
         "width"?: string;
     }
     interface GoFieldset {
@@ -1576,6 +1583,10 @@ declare namespace LocalJSX {
           * Emitted when a menu item is selected
          */
         "onSelected"?: (event: GoDropdownItemCustomEvent<HTMLElement>) => void;
+        /**
+          * customise width of the dropdown item
+         */
+        "width"?: string;
     }
     interface GoDropdownMenu {
         /**
@@ -1594,6 +1605,9 @@ declare namespace LocalJSX {
           * @see [go-dropdown](go-dropdown#props)
          */
         "triggerSelector"?: string;
+        /**
+          * customise width of dropdown menu
+         */
         "width"?: string;
     }
     interface GoFieldset {

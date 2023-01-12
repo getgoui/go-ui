@@ -1,2 +1,13 @@
 go-dropdown-menu {
+  /**
+    @prop --dd-item-gap:
+      Gap between dropdown items
+      - default: 0
+  */
+  --dd-item-gap: 0;
+  .dropdown-menu-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dd-item-gap);
+  }
 }

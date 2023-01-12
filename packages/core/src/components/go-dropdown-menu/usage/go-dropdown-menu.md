@@ -14,8 +14,8 @@
   const result = document.querySelector('#result');
   menuItems.forEach((item, i) => {
     item.addEventListener('selected', (e) => {
-      console.log('selected element', e.detail)
-      result.innerHTML = `selected index: ${i}`
+      const text = e.detail.innerText;
+      result.innerHTML = `selected: ${text}`
     })
   })
 </script>

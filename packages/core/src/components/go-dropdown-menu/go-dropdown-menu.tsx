@@ -19,6 +19,10 @@ export class GoDropdownMenu implements DropdownProps {
    * keep track of active state
    */
   @Prop({ reflect: true, mutable: true }) isActive: boolean = false;
+
+  /**
+   * customise width of dropdown menu
+   */
   @Prop() width?: string;
 
   /**
@@ -174,7 +178,7 @@ export class GoDropdownMenu implements DropdownProps {
         {...dropdownProps}>
         <div
           role="menu"
-          class="dropdown-menu"
+          class="dropdown-menu-inner"
           id={menuId}
           ref={(el) => {
             this.menuEl = el;

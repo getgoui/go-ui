@@ -1,4 +1,4 @@
-import { Component, h, Event, EventEmitter, Element, Method } from '@stencil/core';
+import { Component, h, Event, EventEmitter, Element, Method, Prop } from '@stencil/core';
 
 @Component({
   tag: 'go-dropdown-item',
@@ -6,6 +6,11 @@ import { Component, h, Event, EventEmitter, Element, Method } from '@stencil/cor
 })
 export class GoDropdownItem {
   @Element() el: HTMLElement;
+
+  /**
+   * customise width of the dropdown item
+   */
+  @Prop() width?: string = '100%';
 
   /**
    * Emitted when a menu item is selected
@@ -23,6 +28,8 @@ export class GoDropdownItem {
   controlEl: HTMLElement;
 
   render() {
+    const { width } = this;
+
     return (
       <button
         type="button"
@@ -30,7 +37,8 @@ export class GoDropdownItem {
         ref={(el) => (this.controlEl = el)}
         onClick={() => {
           this.selected.emit(this.el);
-        }}>
+        }}
+        style={{ '--dd-item-width': width }}>
         <slot></slot>
       </button>
     );

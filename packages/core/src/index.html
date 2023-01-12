@@ -34,41 +34,6 @@
       <!-- keep this sandbox empty before pushing changes -->
 
       <!-- #region demo start -->
-      <a href="#">link</a>
-      <div>
-        <go-button id="test">Toggle Dropdown</go-button>
-        <go-dropdown-menu id="dd" trigger-selector="#test">
-          <go-dropdown-item>Item 1</go-dropdown-item>
-          <go-dropdown-item>Item 2</go-dropdown-item>
-          <go-dropdown-item>Item 3</go-dropdown-item>
-        </go-dropdown-menu>
-        <div id="selected">
-          Select a dropdown item
-        </div>
-      </div>
-      <script>
-        const menuItems = document.querySelectorAll('#dd go-dropdown-item');
-        const result = document.querySelector('#selected');
-        menuItems.forEach((item, i) => {
-          item.addEventListener('selected', (e) => {
-            console.log('selected element', e.detail)
-            result.innerHTML = `selected index: ${i}`
-          })
-        })
-      </script>
-
-
-      <go-button id="reftrigger">Reference</go-button>
-
-      <go-dropdown id="dd2" trigger-selector="#reftrigger">
-        <ul>
-          <li><a href="#1">Test 1</a></li>
-          <li><a href="#2">Test 2</a></li>
-          <li><a href="#3">Test 3</a></li>
-        </ul>
-      </go-dropdown>
-      <a href="#">link</a>
-
       <!-- #endregion demo finish -->
     </div>
   </body>
