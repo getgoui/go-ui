@@ -1,3 +1,4 @@
+export const AUTO_FOCUS_TIMEOUT = 50;
 /**
  * handle click outside of element
  * @param el target element
@@ -55,9 +56,9 @@ export const tabIndexes = {
  * @param parent container element
  * @returns
  */
-export function getFocusableChildren(parent: HTMLElement): NodeListOf<HTMLElement> {
+export function getFocusableChildren(parent: HTMLElement): HTMLElement[] {
   const selectors = ['button', '[href]', 'input', 'select', 'textarea', '[tabindex]:not([tabindex="-1"])'];
-  return parent.querySelectorAll(selectors.join(','));
+  return Array.from(parent.querySelectorAll(selectors.join(',')));
 }
 
 /**
@@ -78,8 +79,14 @@ export function getLastFocusableChild(parent: HTMLElement): HTMLElement {
   const list = getFocusableChildren(parent);
   return list[list.length - 1];
 }
-
-export function trapFocus(parent: HTMLElement): void {
+/**
+ * Trap focus
+ * @param parent parent element that we trap focus within
+ * @param focusOnFirst if true, automatically focus on first focusable element (default = true)
+ *
+ * @returns list of focusable child elements
+ */
+export function trapFocus(parent: HTMLElement, focusOnFirst = true): HTMLElement[] {
   const focusableChildren = getFocusableChildren(parent);
   const firstFocusableEl = focusableChildren[0];
   const lastFocusableEl = focusableChildren[focusableChildren.length - 1];
@@ -96,15 +103,30 @@ export function trapFocus(parent: HTMLElement): void {
       lastFocusableEl?.focus();
     }
   });
-  // focus on first focusable element
-  setTimeout(() => firstFocusableEl?.focus(), 50);
+  // focus on first focusable element automatically
+  if (focusOnFirst) {
+    setTimeout(() => firstFocusableEl?.focus(), AUTO_FOCUS_TIMEOUT);
+  }
+
+  return focusableChildren;
 }
 
 export function focusFirstWithin(parent: HTMLElement): void {
   const focusableChildren = getFocusableChildren(parent);
   const firstFocusableEl = focusableChildren[0];
   if (firstFocusableEl) {
-    setTimeout(() => firstFocusableEl?.focus(), 50);
+    setTimeout(() => {
+      firstFocusableEl.focus();
+    }, AUTO_FOCUS_TIMEOUT);
+  }
+}
+
+export function focusLastWithin(parent: HTMLElement): void {
+  const lastFocusableChild = getLastFocusableChild(parent);
+  if (lastFocusableChild) {
+    setTimeout(() => {
+      lastFocusableChild.focus();
+    }, AUTO_FOCUS_TIMEOUT);
   }
 }
 

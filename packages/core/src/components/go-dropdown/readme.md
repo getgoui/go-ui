@@ -16,16 +16,17 @@ The main purpose of using the `go-dropdown` component is to solve these problems
 2. focus on first focusable element inside dropdown
 3. trap focus inside dropdown
 
-A `go-dropdown` can be used in a few different scenarios:
+The `go-dropdown` provides a generic dropdown mechanism that can be used by patterns like menu, select, multi-select etc.
 
-- Menus - display a list of choices inside the popup
-- Select/combobox - form elements that allow users to select an option from a list.
+:::info Dropdown menu
 
+[`go-dropdown-menu`](go-dropdown-menu) provides an easy way to make accessible dropdown menus.
+
+:::
 
 ## Accessibility
 
 - The trigger element will have `aria-haspopup` and `aria-expanded` attributes automatically applied.
-- 
 
 See [menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) WAI-ARIA for details on recommended Roles, States, and Properties for menu button (button that opens a menu). 
 

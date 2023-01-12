@@ -136,9 +136,11 @@
   }
 }
 
-@mixin focus-outline {
+@mixin focus-outline($has-offset: true) {
   outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
-  outline-offset: var(--go-focus-outline-offset);
+  @if $has-offset {
+    outline-offset: var(--go-focus-outline-offset);
+  }
 }
 
 @mixin underline {

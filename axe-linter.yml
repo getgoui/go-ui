@@ -1,0 +1,2 @@
+rules:
+  list: false # turn off list rule as some components break lists structure

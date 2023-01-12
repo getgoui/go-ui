@@ -15,9 +15,9 @@ go-dropdown {
   /**
     @prop --dropdown-duration:
       Duration for dropdown open/close transition
-      - default: var(--go-duration-normal)
+      - default: var(--go-duration-fast)
   */
-  --dropdown-duration: var(--go-duration-normal);
+  --dropdown-duration: var(--go-duration-fast);
 
   /**
     @prop --dropdown-radius:
@@ -28,6 +28,7 @@ go-dropdown {
 
   @include transition(opacity var(--dropdown-duration), visibility, transform var(--dropdown-duration));
   position: absolute;
+  display: none;
   visibility: hidden;
   opacity: 0;
   box-shadow: var(--dropdown-shadow);
