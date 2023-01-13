@@ -1,4 +1,4 @@
-import { Component, h, Event, EventEmitter, Element, Method, Prop } from '@stencil/core';
+import { Component, h, Event, EventEmitter, Element, Method, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'go-dropdown-item',
@@ -13,6 +13,11 @@ export class GoDropdownItem {
   @Prop() width?: string = '100%';
 
   /**
+   * if this item is disabled, according to the [menu pattern] https://www.w3.org/WAI/ARIA/apg/patterns/menu/#issue-container-generatedID-17 disabled menu item should be focusable but cannot be activated
+   */
+  @Prop({ reflect: true }) disabled?: boolean = false;
+
+  /**
    * Emitted when a menu item is selected
    */
   @Event({
@@ -20,22 +25,36 @@ export class GoDropdownItem {
   })
   selected: EventEmitter<HTMLElement>;
 
+  @State() hasFocus = false;
+
   @Method()
-  async focusOnControl() {
+  async focusInControl() {
     this.controlEl?.focus();
+    this.controlEl.tabIndex = 0;
+  }
+
+  @Method()
+  async focusOutControl() {
+    this.controlEl.tabIndex = -1;
   }
 
   controlEl: HTMLElement;
 
   render() {
-    const { width } = this;
+    const { width, hasFocus } = this;
 
     return (
       <button
         type="button"
         role="menuitem"
+        tabindex={hasFocus ? '0' : '-1'}
         ref={(el) => (this.controlEl = el)}
-        onClick={() => {
+        aria-disabled={this.disabled}
+        onClick={(e) => {
+          if (this.disabled) {
+            e.preventDefault();
+            return;
+          }
           this.selected.emit(this.el);
         }}
         style={{ '--dd-item-width': width }}>

@@ -32,4 +32,11 @@ go-content {
   table {
     width: 100%;
   }
+  kbd {
+    padding: 0.25em 0.5em;
+    border-radius: var(--radius-2);
+    background-color: var(--go-color-code-bg);
+    color: var(--go-color-code-fg);
+    box-shadow: var(--shadow-1);
+  }
 }

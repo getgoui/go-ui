@@ -1,0 +1,13 @@
+go-dropdown-separator {
+  /**
+    @prop --dd-separator-line-color:
+      Separator line color
+      - default: var(--go-color-neutral-300)
+  */
+  --dd-separator-line-color: var(--go-color-neutral-300);
+  display: block;
+  hr {
+    border: none;
+    border-top: 1px solid var(--dd-separator-line-color);
+  }
+}
