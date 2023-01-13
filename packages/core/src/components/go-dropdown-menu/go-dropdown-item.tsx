@@ -49,6 +49,7 @@ export class GoDropdownItem {
         role="menuitem"
         tabindex={hasFocus ? '0' : '-1'}
         ref={(el) => (this.controlEl = el)}
+        aria-disabled={this.disabled}
         onClick={(e) => {
           if (this.disabled) {
             e.preventDefault();

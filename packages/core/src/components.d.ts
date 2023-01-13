@@ -385,6 +385,8 @@ export namespace Components {
          */
         "width"?: string;
     }
+    interface GoDropdownSeparator {
+    }
     interface GoFieldset {
         /**
           * Error state of input, text provided will be shown as error message
@@ -1047,6 +1049,12 @@ declare global {
         prototype: HTMLGoDropdownMenuElement;
         new (): HTMLGoDropdownMenuElement;
     };
+    interface HTMLGoDropdownSeparatorElement extends Components.GoDropdownSeparator, HTMLStencilElement {
+    }
+    var HTMLGoDropdownSeparatorElement: {
+        prototype: HTMLGoDropdownSeparatorElement;
+        new (): HTMLGoDropdownSeparatorElement;
+    };
     interface HTMLGoFieldsetElement extends Components.GoFieldset, HTMLStencilElement {
     }
     var HTMLGoFieldsetElement: {
@@ -1221,6 +1229,7 @@ declare global {
         "go-dropdown": HTMLGoDropdownElement;
         "go-dropdown-item": HTMLGoDropdownItemElement;
         "go-dropdown-menu": HTMLGoDropdownMenuElement;
+        "go-dropdown-separator": HTMLGoDropdownSeparatorElement;
         "go-fieldset": HTMLGoFieldsetElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
@@ -1618,6 +1627,8 @@ declare namespace LocalJSX {
           * customise width of dropdown menu
          */
         "width"?: string;
+    }
+    interface GoDropdownSeparator {
     }
     interface GoFieldset {
         /**
@@ -2150,6 +2161,7 @@ declare namespace LocalJSX {
         "go-dropdown": GoDropdown;
         "go-dropdown-item": GoDropdownItem;
         "go-dropdown-menu": GoDropdownMenu;
+        "go-dropdown-separator": GoDropdownSeparator;
         "go-fieldset": GoFieldset;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
@@ -2199,6 +2211,7 @@ declare module "@stencil/core" {
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;
             "go-dropdown-item": LocalJSX.GoDropdownItem & JSXBase.HTMLAttributes<HTMLGoDropdownItemElement>;
             "go-dropdown-menu": LocalJSX.GoDropdownMenu & JSXBase.HTMLAttributes<HTMLGoDropdownMenuElement>;
+            "go-dropdown-separator": LocalJSX.GoDropdownSeparator & JSXBase.HTMLAttributes<HTMLGoDropdownSeparatorElement>;
             "go-fieldset": LocalJSX.GoFieldset & JSXBase.HTMLAttributes<HTMLGoFieldsetElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;

@@ -16,9 +16,9 @@ go-dropdown-item {
   /**
     @prop --dd-item-bg:
       Background of dropdown item
-      - default: var(--go-color-neutral-100)
+      - default: var(--dropdown-bg-color)
   */
-  --dd-item-bg: var(--go-color-neutral-100);
+  --dd-item-bg: var(--dropdown-bg-color);
 
   /**
     @prop --dd-item-bg-hover:
