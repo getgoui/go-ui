@@ -9,7 +9,7 @@ export class GoDropdownSeparator {
   render() {
     return (
       <Host>
-        <hr role="separator" />
+        <hr />
       </Host>
     );
   }
