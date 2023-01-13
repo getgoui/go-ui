@@ -346,6 +346,10 @@ export namespace Components {
         "width"?: string;
     }
     interface GoDropdownItem {
+        /**
+          * if this item is disabled, according to the [menu pattern] https://www.w3.org/WAI/ARIA/apg/patterns/menu/#issue-container-generatedID-17 disabled menu item should be focusable but cannot be activated
+         */
+        "disabled"?: boolean;
         "focusInControl": () => Promise<void>;
         "focusOutControl": () => Promise<void>;
         /**
@@ -1580,6 +1584,10 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface GoDropdownItem {
+        /**
+          * if this item is disabled, according to the [menu pattern] https://www.w3.org/WAI/ARIA/apg/patterns/menu/#issue-container-generatedID-17 disabled menu item should be focusable but cannot be activated
+         */
+        "disabled"?: boolean;
         /**
           * Emitted when a menu item is selected
          */

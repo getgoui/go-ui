@@ -43,11 +43,13 @@ When focus is inside the dropdown menu:
 - <kbd>Up Arrow</kbd>: move focus to the previous menu item, if current item is the first one, move focus to the last menu item.
 - <kbd>Esc</kbd>: closes the menu.
 
-::: info Note
+#### Tab sequence
 
 The keyboard interaction of the menu follows the WAI guideline for [Keyboard navigation inside components](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_general_within), which means <kbd>Tab</kbd> and <kbd>Shift + Tab</kbd> do not move focus between menu items, instead, they are only used to focus in and out of the dropdown menu.
 
-:::
+> the tab sequence should include only one focusable element of a composite UI component. Once a composite contains focus, keys other than <kbd>Tab</kbd> and <kbd>Shift + Tab</kbd> enable the user to move focus among its focusable elements
+> - [Developing a Keyboard Interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_general_within) by WAI APG
+
 
 
 ## Demo

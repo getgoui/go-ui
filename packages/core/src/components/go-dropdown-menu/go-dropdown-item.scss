@@ -42,6 +42,20 @@ go-dropdown-item {
   --dd-item-fg-hover: var(--go-color-darkest);
 
   /**
+    @prop --dd-item-bg-disabled:
+      Disabled background color
+      - default: transparent
+  */
+  --dd-item-bg-disabled: transparent;
+
+  /**
+    @prop --dd-item-fg-disabled:
+      Disabled foreground color
+      - default: var(--go-color-neutral-600)
+  */
+  --dd-item-fg-disabled: var(--go-color-neutral-600);
+
+  /**
     @prop --dd-item-width:
       Width of dropdown item
       - default: 100%
@@ -64,6 +78,13 @@ go-dropdown-item {
       position: relative;
       z-index: 1;
       @include focus-outline(false);
+    }
+  }
+
+  &[disabled] {
+    [role='menuitem'] {
+      background: var(--dd-item-bg-disabled);
+      color: var(--dd-item-fg-disabled);
     }
   }
 }
