@@ -1,4 +1,4 @@
-import { Component, h, Event, EventEmitter, Element, Method, Prop } from '@stencil/core';
+import { Component, h, Event, EventEmitter, Element, Method, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'go-dropdown-item',
@@ -20,21 +20,29 @@ export class GoDropdownItem {
   })
   selected: EventEmitter<HTMLElement>;
 
+  @State() hasFocus = false;
+
   @Method()
-  async focusOnControl() {
+  async focusInControl() {
     this.controlEl?.focus();
+    this.controlEl.tabIndex = 0;
+  }
+
+  @Method()
+  async focusOutControl() {
+    this.controlEl.tabIndex = -1;
   }
 
   controlEl: HTMLElement;
 
   render() {
-    const { width } = this;
+    const { width, hasFocus } = this;
 
     return (
       <button
         type="button"
         role="menuitem"
-        tabindex="-1"
+        tabindex={hasFocus ? '0' : '-1'}
         ref={(el) => (this.controlEl = el)}
         onClick={() => {
           this.selected.emit(this.el);

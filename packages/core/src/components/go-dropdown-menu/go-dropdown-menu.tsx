@@ -1,6 +1,5 @@
 import { Component, h, Element, Prop, Method, Listen } from '@stencil/core';
 import { DropdownProps } from '../../interfaces';
-import { trapFocus, warning } from '../../utils';
 import { uniqueId } from 'lodash-es';
 
 @Component({
@@ -136,16 +135,16 @@ export class GoDropdownMenu implements DropdownProps {
   }
 
   focusMenuItem() {
-    const dropdownItem = this.menuItemEls[this.focusedMenuItemIndex] as HTMLGoDropdownItemElement;
-    if (!dropdownItem) {
-      warning('No `go-dropdown-item` found inside', this.dropdownEl);
-      return;
-    }
-    dropdownItem.focusOnControl();
+    this.menuItemEls.forEach((dropdownItem: HTMLGoDropdownItemElement, i) => {
+      if (i === this.focusedMenuItemIndex) {
+        dropdownItem.focusInControl();
+      } else {
+        dropdownItem.focusOutControl();
+      }
+    });
   }
   handleDropdownOpened() {
     this.isActive = true;
-    trapFocus(this.menuEl, false);
     if (this.focusLastOnNextOpen) {
       this.focusedMenuItemIndex = this.menuItemEls.length - 1;
       this.focusLastOnNextOpen = false;
@@ -154,6 +153,10 @@ export class GoDropdownMenu implements DropdownProps {
     }
 
     this.focusMenuItem();
+  }
+
+  handleDropdownClosed() {
+    this.isActive = false;
   }
 
   @Listen('selected')
@@ -177,7 +180,7 @@ export class GoDropdownMenu implements DropdownProps {
         }}
         noTriggerClickHandler={true}
         onOpened={() => this.handleDropdownOpened()}
-        onClosed={() => (this.isActive = false)}
+        onClosed={() => this.handleDropdownClosed()}
         {...dropdownProps}>
         <div
           role="menu"

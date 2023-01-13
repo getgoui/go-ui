@@ -346,7 +346,8 @@ export namespace Components {
         "width"?: string;
     }
     interface GoDropdownItem {
-        "focusOnControl": () => Promise<void>;
+        "focusInControl": () => Promise<void>;
+        "focusOutControl": () => Promise<void>;
         /**
           * customise width of the dropdown item
          */
