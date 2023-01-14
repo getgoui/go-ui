@@ -3,9 +3,33 @@ order: 1
 ---
 # Getting started
 
-## Installation
+## CDN
 
-Depending on your use case, you may want to install different packages under the `@go-ui/` namespace. 
+Easiest way to start playing with go-ui, just add these tags into your html.
+
+```html
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@go-ui/core/dist/go-ui/go-ui.css" />
+<script type="module" src='https://cdn.jsdelivr.net/npm/@go-ui/core/dist/go-ui/go-ui.esm.js'></script>
+
+```
+
+You can then start using any component or pattern, they will be lazy-loaded onto the page, for example:
+
+```html
+
+<go-md sanitise="true" md-options="{html: true}" src="//raw.githubusercontent.com/getgoui/go-ui/main/README.md">Fallback content.</go-md>
+
+```
+
+
+## Installation via package manager
+
+::: info
+
+Depending on your use case, you may want to install different packages under the `@go-ui/` namespace. See [integration](integration) docs for more details
+
+:::
 
 ### Vanilla JS 
 
@@ -16,9 +40,6 @@ Installation can be done with the `@go-ui/core` package which includes our compo
 ```bash
 npm i @go-ui/core
 ```
-
-Other packages are wrappers for this with framework-friendly syntax.
-
 
 ## Importing components into your app
 

@@ -22,6 +22,7 @@ import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/componen
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
 import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
 import { defineCustomElement as defineGoDropdownMenu } from '@go-ui/core/dist/components/go-dropdown-menu.js';
+import { defineCustomElement as defineGoDropdownSeparator } from '@go-ui/core/dist/components/go-dropdown-separator.js';
 import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
@@ -66,6 +67,7 @@ export const GoDialog = /*@__PURE__*/createReactComponent<JSX.GoDialog, HTMLGoDi
 export const GoDropdown = /*@__PURE__*/createReactComponent<JSX.GoDropdown, HTMLGoDropdownElement>('go-dropdown', undefined, undefined, defineGoDropdown);
 export const GoDropdownItem = /*@__PURE__*/createReactComponent<JSX.GoDropdownItem, HTMLGoDropdownItemElement>('go-dropdown-item', undefined, undefined, defineGoDropdownItem);
 export const GoDropdownMenu = /*@__PURE__*/createReactComponent<JSX.GoDropdownMenu, HTMLGoDropdownMenuElement>('go-dropdown-menu', undefined, undefined, defineGoDropdownMenu);
+export const GoDropdownSeparator = /*@__PURE__*/createReactComponent<JSX.GoDropdownSeparator, HTMLGoDropdownSeparatorElement>('go-dropdown-separator', undefined, undefined, defineGoDropdownSeparator);
 export const GoFieldset = /*@__PURE__*/createReactComponent<JSX.GoFieldset, HTMLGoFieldsetElement>('go-fieldset', undefined, undefined, defineGoFieldset);
 export const GoFooter = /*@__PURE__*/createReactComponent<JSX.GoFooter, HTMLGoFooterElement>('go-footer', undefined, undefined, defineGoFooter);
 export const GoGovAuLogo = /*@__PURE__*/createReactComponent<JSX.GoGovAuLogo, HTMLGoGovAuLogoElement>('go-gov-au-logo', undefined, undefined, defineGoGovAuLogo);

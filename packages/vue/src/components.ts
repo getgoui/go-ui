@@ -22,6 +22,7 @@ import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/componen
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
 import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
 import { defineCustomElement as defineGoDropdownMenu } from '@go-ui/core/dist/components/go-dropdown-menu.js';
+import { defineCustomElement as defineGoDropdownSeparator } from '@go-ui/core/dist/components/go-dropdown-separator.js';
 import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
@@ -200,6 +201,7 @@ export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-drop
 
 export const GoDropdownItem = /*@__PURE__*/ defineContainer<JSX.GoDropdownItem>('go-dropdown-item', defineGoDropdownItem, [
   'width',
+  'disabled',
   'selected'
 ]);
 
@@ -211,6 +213,9 @@ export const GoDropdownMenu = /*@__PURE__*/ defineContainer<JSX.GoDropdownMenu>(
   'menuId',
   'persistent'
 ]);
+
+
+export const GoDropdownSeparator = /*@__PURE__*/ defineContainer<JSX.GoDropdownSeparator>('go-dropdown-separator', defineGoDropdownSeparator);
 
 
 export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fieldset', defineGoFieldset, [
