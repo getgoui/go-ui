@@ -31,33 +31,77 @@ Depending on your use case, you may want to install different packages under the
 
 :::
 
-### Vanilla JS 
-
 If you're not using any JS framework and just want to use the Go UI goodness with the power of the browser platform, you can absolutely do so!
 
 Installation can be done with the `@go-ui/core` package which includes our component loaders and global stylesheet.
 
+<go-tabs>
+  <go-tab label="npm">
+
 ```bash
 npm i @go-ui/core
 ```
+  
+  </go-tab>
+  <go-tab label="pnpm">
 
-## Importing components into your app
+```bash
+pnpm add @go-ui/core
+```
+  
+  </go-tab>
+  <go-tab label="yarn">
+
+```bash
+yarn add @go-ui/core
+```
+  
+  </go-tab>
+</go-tabs>
+
+
+## Importing Go UI
+
+### Step 1. Import CSS
+
+You need the global CSS file to provide the components with base CSS variables such as colors, shadows, spacings etc. 
+
+This can be done via linking stylesheet (as shown above in CDN section) or various import methods depending on your build tools.
+
+<go-tabs>
+
+<go-tab label="JS">
 
 ```js
 import '@go-ui/core/dist/go-ui/go-ui.css';
+```
+
+</go-tab>
+
+<go-tab label="Sass/Scss">
+
+```scss
+@import '@go-ui/core/dist/go-ui/go-ui.css';
+```
+
+With Sass you get some options to choose what to import and overwrite, check out [Sass import options](theming/sass).
+
+</go-tab>
+</go-tabs>
+
+
+### Step 2. Register components
+
+Next we need to register our components for browsers to recognise them.
+
+The following script will register all `go-*` custom elements in one go.
+
+```js
 import { defineCustomElements } from '@go-ui/core/dist/loader';
 defineCustomElements();
 ```
 
-## Framework setup
-
-You can use our patterns and components within your preferred JavaScript framework or *no framework at all* 
-
-- [Angular](./integration/angular)
-- [React](./integration/react)
-- [Vue](./integration/vue)
-- [No framework](./integration/no-framework)
-<!-- [Suggest another integration] -->
+<!-- @todo add example of registering single component -->
 
 ## Browser support
 
