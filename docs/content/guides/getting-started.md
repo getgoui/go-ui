@@ -97,11 +97,17 @@ Next we need to register our components for browsers to recognise them.
 The following script will register all `go-*` custom elements in one go.
 
 ```js
-import { defineCustomElements } from '@go-ui/core/dist/loader';
-defineCustomElements();
+import '@go-ui/core';
 ```
 
+<!-- @todo test how tree shaking works in starter apps -->
 <!-- @todo add example of registering single component -->
+
+
+## Usage
+
+At this point the go-ui components are available to be consumed. Check out our docs on [patterns](/docs/patterns) and [components](/docs/components) for code examples, demos and APIs.
+
 
 ## Browser support
 
