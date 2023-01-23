@@ -158,11 +158,12 @@ go-checkbox {
         }
       }
       &:not(:disabled) {
-        &:hover {
+        &:hover:not(:checked) {
           ~ .mark {
             border-color: var(--cb-border-color-hover);
           }
         }
+        &:hover:checked,
         &:focus-visible {
           ~ .mark {
             @include focus-outline;
