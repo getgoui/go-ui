@@ -309,10 +309,6 @@ export namespace Components {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent": boolean;
-        /**
-          * Accessible role of the dialog, can be dialog or alertdialog
-         */
-        "role": 'dialog' | 'alertdialog';
     }
     interface GoDropdown {
         /**
@@ -1561,10 +1557,6 @@ declare namespace LocalJSX {
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
         "persistent"?: boolean;
-        /**
-          * Accessible role of the dialog, can be dialog or alertdialog
-         */
-        "role"?: 'dialog' | 'alertdialog';
     }
     interface GoDropdown {
         /**

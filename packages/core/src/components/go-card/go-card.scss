@@ -121,6 +121,7 @@ go-card {
     padding: var(--go-card-outer-padding);
     overflow: auto;
     display: flex;
+    height: 100%;
     flex: 1;
     flex-direction: column;
     gap: var(--go-card-inner-gap);

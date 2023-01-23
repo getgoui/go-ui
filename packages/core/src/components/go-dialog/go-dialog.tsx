@@ -15,11 +15,6 @@ export class GoDialog {
   @Prop({ reflect: true, mutable: true }) active: boolean = false;
 
   /**
-   * Accessible role of the dialog, can be dialog or alertdialog
-   */
-  @Prop() role: 'dialog' | 'alertdialog' = 'dialog';
-
-  /**
    * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
    */
   @Prop() persistent: boolean = false;
@@ -64,12 +59,12 @@ export class GoDialog {
   }
 
   render() {
-    const { role, active, heading, persistent, headingId, inheritedAttrs } = this;
+    const { active, heading, persistent, headingId, inheritedAttrs } = this;
     return (
       <go-overlay
         class="go-dialog"
         persistent={persistent}
-        role={role}
+        role="dialog"
         aria-modal="true"
         aria-labelledby={headingId}
         active={active}

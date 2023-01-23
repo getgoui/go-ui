@@ -183,7 +183,6 @@ export const GoContentLayout = /*@__PURE__*/ defineContainer<JSX.GoContentLayout
 
 export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', defineGoDialog, [
   'active',
-  'role',
   'persistent',
   'heading'
 ]);
