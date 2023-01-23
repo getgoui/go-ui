@@ -205,7 +205,13 @@ ${code}
                   checked={this.currentTheme === 'dark'}
                   name="dark-theme-switch"
                   show-on-off
-                  label="Dark mode"></go-switch>
+                  active-label="🌙"
+                  inactive-label="☀️"
+                  label="Dark mode"
+                  style={{
+                    '--switch-bg-color': 'rgb(var(--go-token-critical-700))',
+                    '--switch-bg-color-checked': 'rgb(var(--go-token-primary-700))',
+                  }}></go-switch>
               ) : null}
 
               {/* reload */}
@@ -252,7 +258,7 @@ ${code}
                   Fullscreen
                 </go-tooltip>
               </go-button-group>
-              <go-button-group connected>
+              <go-button-group class="d-none d-block-desktop" connected>
                 <go-button flat icon compact aria-label="Mobile view" type="button" onClick={() => this.resizeToDevice('mobile')}>
                   {/* prettier-ignore */}
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-2 20h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z"/></svg>

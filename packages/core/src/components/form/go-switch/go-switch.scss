@@ -77,6 +77,13 @@ go-switch {
   --switch-text-color: #fff;
   --switch-handle-size: calc(min(var(--switch-width), var(--switch-height)) - 2 * var(--switch-handle-gap));
 
+  /**
+    @prop --switch-text-size:
+      Inner text size of switch
+      - default: max(calc(var(--switch-handle-size) / 2), 14px)
+  */
+  --switch-text-size: max(calc(var(--switch-handle-size) / 2), 14px);
+
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -121,7 +128,8 @@ go-switch {
       right: 20%;
       transform: translateY(-50%);
       color: var(--switch-text-color);
-      font-size: max(calc(var(--switch-handle-size) / 2), 12px);
+      font-size: var(--switch-text-size);
+      line-height: 1;
       font-weight: 500;
     }
   }
