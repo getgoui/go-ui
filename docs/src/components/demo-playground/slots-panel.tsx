@@ -19,25 +19,22 @@ export class SlotsPanel {
     const controlId = `slot-${name}-control`;
     return (
       <div class="slot-control">
-        <input
-          type="checkbox"
+        <go-checkbox
           name={name}
+          label={name}
           id={controlId}
           checked={show}
-          onChange={e => this.updateSlotValue(e)}
+          hint={slotObj.docs}
+          onChange={(e) => this.updateSlotValue(e)}
           style={{ marginRight: '0.5rem' }}
         />
-        <label htmlFor={controlId}>{name}</label>
-        <div>
-          <small>{slotObj.docs}</small>
-        </div>
       </div>
     );
   }
 
   updateSlotValue(e: Event) {
     const checked = (e.target as HTMLInputElement).checked;
-    const newValues = this.values.map(slot => {
+    const newValues = this.values.map((slot) => {
       if (slot.name === (e.target as HTMLInputElement).name) {
         slot.show = checked;
       }
@@ -51,7 +48,7 @@ export class SlotsPanel {
     return (
       <Host class="slots-panel">
         {this.debug ? <pre>{JSON5.stringify(this.values, undefined, 2)}</pre> : null}
-        {this.values.map(slotObj => {
+        {this.values.map((slotObj) => {
           return (
             <div class="slot" key={slotObj.name}>
               <div>{this.renderSlotControl(slotObj)}</div>

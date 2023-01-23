@@ -1,3 +1,4 @@
+import { InputType } from '@go-ui/core/dist/types/interfaces';
 import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import JSON5 from 'json5';
 import { IProp, PropType } from './prop.type';
@@ -16,7 +17,7 @@ export class PropsPanel {
   updatePropValue(e: Event, propObject: IProp) {
     const { name, type } = propObject;
     const newValues: IProp[] = this.values
-      .map(p => {
+      .map((p) => {
         let newValue = (e.target as HTMLInputElement).value as string | boolean;
         if (type === 'boolean') {
           newValue = (e.target as HTMLInputElement).checked;
@@ -47,12 +48,10 @@ export class PropsPanel {
    * @param type PropType
    * @returns type attribute for input element
    */
-  getInputFromType(type: PropType): string {
+  getInputFromType(type: PropType): InputType {
     switch (type) {
       case 'number':
         return 'number';
-      case 'boolean':
-        return 'checkbox';
       default:
         return 'text';
     }
@@ -70,7 +69,7 @@ export class PropsPanel {
           <label htmlFor={name}>
             {name} ({type})
           </label>
-          <textarea rows={5} class="input" id={name} onInput={e => this.updatePropValue(e, propObject)}>
+          <textarea rows={5} class="input" id={name} onInput={(e) => this.updatePropValue(e, propObject)}>
             {JSON5.stringify(value, undefined, 2)}
           </textarea>
         </div>
@@ -81,7 +80,7 @@ export class PropsPanel {
       return (
         <div class="prop-control">
           <label htmlFor={name}>{name}</label>
-          <select class="input" id={name} onInput={e => this.updatePropValue(e, propObject)}>
+          <select class="input" id={name} onInput={(e) => this.updatePropValue(e, propObject)}>
             {options.map((option, i) => {
               if (option === null) {
                 return (
@@ -116,17 +115,17 @@ export class PropsPanel {
       );
     }
 
+    if (type === 'boolean') {
+      return (
+        <div class="prop-control">
+          <go-checkbox id={name} label={name} value={value as string} onInput={(e) => this.updatePropValue(e, propObject)} />
+        </div>
+      );
+    }
+
     return (
       <div class="prop-control">
-        <label htmlFor={name}>{name}</label>
-        <input
-          id={name}
-          class="input"
-          type={inputType}
-          value={value as string}
-          onInput={e => this.updatePropValue(e, propObject)}
-          checked={type === 'boolean' && value !== false}
-        />
+        <go-input id={name} label={name} type={inputType} value={value as string} onInput={(e) => this.updatePropValue(e, propObject)} />
       </div>
     );
   }
@@ -135,7 +134,7 @@ export class PropsPanel {
     return (
       <Host class="props-panel">
         {this.debug ? <pre>{JSON5.stringify(this.values, undefined, 2)}</pre> : null}
-        {this.values.map(propObj => {
+        {this.values.map((propObj) => {
           return (
             <div class="prop" key={propObj.name}>
               <div>{this.renderPropControl(propObj)}</div>

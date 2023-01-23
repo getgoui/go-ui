@@ -59,7 +59,6 @@ export class WcPlayground {
     if (this.slots) {
       this.slotsArray = typeof this.slots === 'string' ? JSON5.parse(this.slots) : this.slots;
     }
-    console.log(this.code);
     // extract props from code
     const tempPropsHolder = document.createElement('div');
 
@@ -92,16 +91,17 @@ export class WcPlayground {
       return;
     }
     const outerString = matches[0];
-    const innerString = outerString.replace(new RegExp(patternTagStart, 'gi'), '').replace(new RegExp(patternTagEnd, 'gi'), '').trim();
 
     const tempSlotsHolder = document.createElement('div');
-    tempSlotsHolder.innerHTML = innerString;
+    tempSlotsHolder.innerHTML = outerString;
+    const targetEl = tempSlotsHolder.querySelector(tag);
+    const innerString = targetEl.innerHTML.trim();
     // show/hide options for slots
     let tempSlotArray = [...this.slotsArray];
     tempSlotArray = this.slotsArray.map((slot: ISlot) => {
-      const slotEl = tempSlotsHolder.querySelector(`[slot="${slot.name}"]`) as HTMLElement;
+      const slotEl = targetEl.querySelector(`[slot="${slot.name}"]`) as HTMLElement;
       if (slotEl) {
-        tempSlotsHolder.removeChild(slotEl);
+        targetEl.removeChild(slotEl);
         return {
           ...slot,
           show: true,
@@ -110,14 +110,15 @@ export class WcPlayground {
       }
       return slot;
     });
+
     // if tempslotsholder is not empty, its innerHtml gets set to the default slot.
-    if (tempSlotsHolder.innerHTML.trim()) {
+    if (innerString) {
       tempSlotArray = tempSlotArray.map((slot) => {
         if (slot.name === 'default') {
           return {
             ...slot,
             show: true,
-            content: tempSlotsHolder.innerHTML,
+            content: innerString,
           };
         }
 
@@ -183,7 +184,7 @@ export class WcPlayground {
 </${tagName}>`);
   }
 
-  @State() showConfigPanel = true;
+  @State() showConfigPanel = false;
 
   closeConfigPanel() {
     this.showConfigPanel = false;
