@@ -2,7 +2,7 @@ app-root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  main {
+  .page-main {
     flex-grow: 1;
   }
 }
