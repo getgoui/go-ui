@@ -23,24 +23,9 @@ go-demo-box {
       border-bottom: var(--go-border-thin) solid var(--go-color-border);
       position: relative;
       background-color: var(--go-color-bg);
-      .dots {
+      .left {
         display: flex;
         gap: 0.5em;
-        .dot {
-          display: block;
-          width: 0.8em;
-          height: 0.8em;
-          border-radius: 50%;
-          &:nth-child(1) {
-            background-color: #ff605c;
-          }
-          &:nth-child(2) {
-            background-color: #ffbd44;
-          }
-          &:nth-child(3) {
-            background-color: #00ca4e;
-          }
-        }
       }
       .controls {
         display: flex;

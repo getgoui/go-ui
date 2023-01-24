@@ -192,12 +192,7 @@ ${code}
             'fullscreen': isFullScreen,
           }}>
           <div class="top-bar">
-            <div class="dots">
-              <div class="dot" />
-              <div class="dot" />
-              <div class="dot" />
-            </div>
-            <div class="controls">
+            <div class="left">
               {/* theme switcher */}
               {this.darkModeSwitch ? (
                 <go-switch
@@ -213,21 +208,20 @@ ${code}
                     '--switch-bg-color-checked': 'rgb(var(--go-token-primary-700))',
                   }}></go-switch>
               ) : null}
-
-              {/* reload */}
-              <go-button id={`${demoId}-reload`} flat icon compact aria-label="Reload demo" type="button" onClick={() => this.reload()}>
-                {/* prettier-ignore */}
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-refresh-cw" viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-              </go-button>
-
-              <go-tooltip arrow trigger-id={`${demoId}-reload`}>
-                Reload demo
-              </go-tooltip>
-
               <go-button-group connected>
-                {/* new window */}
-                <go-button id={`${demoId}-new-window`} flat icon compact aria-label="Open in new window" type="button" onClick={() => this.openNewWindow()}>
+                {/* reload */}
+                <go-button id={`${demoId}-reload`} flat icon compact aria-label="Reload demo" type="button" onClick={() => this.reload()}>
                   {/* prettier-ignore */}
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-refresh-cw" viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                </go-button>
+
+                <go-tooltip arrow trigger-id={`${demoId}-reload`}>
+                  Reload demo
+                </go-tooltip>
+                {/* new window */}
+                {/* prettier-ignore */}
+
+                <go-button id={`${demoId}-new-window`} flat icon compact aria-label="Open in new window" type="button" onClick={() => this.openNewWindow()}>
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                 </go-button>
 
@@ -258,6 +252,8 @@ ${code}
                   Fullscreen
                 </go-tooltip>
               </go-button-group>
+            </div>
+            <div class="controls">
               <go-button-group class="d-none d-block-desktop" connected>
                 <go-button flat icon compact aria-label="Mobile view" type="button" onClick={() => this.resizeToDevice('mobile')}>
                   {/* prettier-ignore */}
