@@ -89,6 +89,13 @@ export namespace Components {
          */
         "variant": BannerVariants;
     }
+    interface GoBlockquote {
+        /**
+          * A URL that designates a source document or message for the information quoted. This attribute is intended to point to information explaining the context or the reference for the quote. See also: [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote#attr-cite)
+         */
+        "citeUrl"?: string;
+        "hideQuoteMark"?: boolean;
+    }
     interface GoBreadcrumb {
         /**
           * Hide current page (last item without url) from the breadcrumb
@@ -967,6 +974,12 @@ declare global {
         prototype: HTMLGoBannerElement;
         new (): HTMLGoBannerElement;
     };
+    interface HTMLGoBlockquoteElement extends Components.GoBlockquote, HTMLStencilElement {
+    }
+    var HTMLGoBlockquoteElement: {
+        prototype: HTMLGoBlockquoteElement;
+        new (): HTMLGoBlockquoteElement;
+    };
     interface HTMLGoBreadcrumbElement extends Components.GoBreadcrumb, HTMLStencilElement {
     }
     var HTMLGoBreadcrumbElement: {
@@ -1212,6 +1225,7 @@ declare global {
         "go-accordion-item": HTMLGoAccordionItemElement;
         "go-badge": HTMLGoBadgeElement;
         "go-banner": HTMLGoBannerElement;
+        "go-blockquote": HTMLGoBlockquoteElement;
         "go-breadcrumb": HTMLGoBreadcrumbElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
@@ -1331,6 +1345,13 @@ declare namespace LocalJSX {
           * Type of banner
          */
         "variant"?: BannerVariants;
+    }
+    interface GoBlockquote {
+        /**
+          * A URL that designates a source document or message for the information quoted. This attribute is intended to point to information explaining the context or the reference for the quote. See also: [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote#attr-cite)
+         */
+        "citeUrl"?: string;
+        "hideQuoteMark"?: boolean;
     }
     interface GoBreadcrumb {
         /**
@@ -2140,6 +2161,7 @@ declare namespace LocalJSX {
         "go-accordion-item": GoAccordionItem;
         "go-badge": GoBadge;
         "go-banner": GoBanner;
+        "go-blockquote": GoBlockquote;
         "go-breadcrumb": GoBreadcrumb;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
@@ -2190,6 +2212,7 @@ declare module "@stencil/core" {
             "go-accordion-item": LocalJSX.GoAccordionItem & JSXBase.HTMLAttributes<HTMLGoAccordionItemElement>;
             "go-badge": LocalJSX.GoBadge & JSXBase.HTMLAttributes<HTMLGoBadgeElement>;
             "go-banner": LocalJSX.GoBanner & JSXBase.HTMLAttributes<HTMLGoBannerElement>;
+            "go-blockquote": LocalJSX.GoBlockquote & JSXBase.HTMLAttributes<HTMLGoBlockquoteElement>;
             "go-breadcrumb": LocalJSX.GoBreadcrumb & JSXBase.HTMLAttributes<HTMLGoBreadcrumbElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
