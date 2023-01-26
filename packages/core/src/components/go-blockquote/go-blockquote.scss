@@ -1,0 +1,76 @@
+go-blockquote {
+  /**
+    @prop --blockquote-padding:
+      blockquote padding
+      - default: 1rem 2rem
+  */
+  --blockquote-padding: 1rem 2rem;
+
+  /**
+    @prop --blockquote-border:
+      Left border of blockquote
+      - default: var(--border-size-3) solid var(--go-color-neutral-400)
+  */
+  --blockquote-border: var(--border-size-3) solid var(--go-color-neutral-400);
+
+  /**
+    @prop --blockquote-caption-font-size:
+      Font size of caption
+      - default: var(--go-size-0)
+  */
+  --blockquote-caption-font-size: var(--go-size-0);
+
+  /**
+    @prop --blockquote-font-size:
+      Font size of block quote content
+      - default: var(--go-size-1)
+  */
+  --blockquote-font-size: var(--go-size-1);
+
+  /**
+    @prop --blockquote-icon-size:
+      Blockquote quote mark icon size
+      - default: 5rem
+  */
+  --blockquote-icon-size: 5rem;
+
+  /**
+    @prop --blockquote-caption-margin-top:
+      Gap between blockquote and caption
+      - default: 1rem
+  */
+  --blockquote-caption-margin-top: 1rem;
+
+  display: flex;
+  position: relative;
+  font-style: italic;
+  border-left: var(--blockquote-border);
+  align-items: center;
+  padding: var(--blockquote-padding);
+
+  &.quote-mark::before {
+    content: '\275D'/ '';
+    font-size: var(--blockquote-icon-size);
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.2;
+  }
+  figure,
+  blockquote {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  figcaption {
+    margin-top: var(--blockquote-caption-margin-top);
+    display: flex;
+    gap: 0.5em;
+    font-size: var(--blockquote-caption-font-size);
+  }
+  blockquote {
+    font-size: var(--blockquote-font-size);
+  }
+}
