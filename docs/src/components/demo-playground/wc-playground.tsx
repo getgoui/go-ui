@@ -95,9 +95,8 @@ export class WcPlayground {
     const tempSlotsHolder = document.createElement('div');
     tempSlotsHolder.innerHTML = outerString;
     const targetEl = tempSlotsHolder.querySelector(tag);
-    const innerString = targetEl.innerHTML.trim();
     // show/hide options for slots
-    let tempSlotArray = [...this.slotsArray];
+    let tempSlotArray = [];
     tempSlotArray = this.slotsArray.map((slot: ISlot) => {
       const slotEl = targetEl.querySelector(`[slot="${slot.name}"]`) as HTMLElement;
       if (slotEl) {
@@ -110,6 +109,8 @@ export class WcPlayground {
       }
       return slot;
     });
+
+    const innerString = targetEl.innerHTML.trim();
 
     // if tempslotsholder is not empty, its innerHtml gets set to the default slot.
     if (innerString) {
@@ -125,6 +126,9 @@ export class WcPlayground {
         return slot;
       });
     }
+
+    console.log({ tempSlotArray });
+
     this.slotsArray = tempSlotArray;
     tempSlotsHolder.remove();
   }

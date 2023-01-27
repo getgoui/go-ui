@@ -9,6 +9,7 @@ import { defineCustomElement as defineGoAccordion } from '@go-ui/core/dist/compo
 import { defineCustomElement as defineGoAccordionItem } from '@go-ui/core/dist/components/go-accordion-item.js';
 import { defineCustomElement as defineGoBadge } from '@go-ui/core/dist/components/go-badge.js';
 import { defineCustomElement as defineGoBanner } from '@go-ui/core/dist/components/go-banner.js';
+import { defineCustomElement as defineGoBlockquote } from '@go-ui/core/dist/components/go-blockquote.js';
 import { defineCustomElement as defineGoBreadcrumb } from '@go-ui/core/dist/components/go-breadcrumb.js';
 import { defineCustomElement as defineGoButton } from '@go-ui/core/dist/components/go-button.js';
 import { defineCustomElement as defineGoButtonGroup } from '@go-ui/core/dist/components/go-button-group.js';
@@ -54,6 +55,7 @@ export const GoAccordion = /*@__PURE__*/createReactComponent<JSX.GoAccordion, HT
 export const GoAccordionItem = /*@__PURE__*/createReactComponent<JSX.GoAccordionItem, HTMLGoAccordionItemElement>('go-accordion-item', undefined, undefined, defineGoAccordionItem);
 export const GoBadge = /*@__PURE__*/createReactComponent<JSX.GoBadge, HTMLGoBadgeElement>('go-badge', undefined, undefined, defineGoBadge);
 export const GoBanner = /*@__PURE__*/createReactComponent<JSX.GoBanner, HTMLGoBannerElement>('go-banner', undefined, undefined, defineGoBanner);
+export const GoBlockquote = /*@__PURE__*/createReactComponent<JSX.GoBlockquote, HTMLGoBlockquoteElement>('go-blockquote', undefined, undefined, defineGoBlockquote);
 export const GoBreadcrumb = /*@__PURE__*/createReactComponent<JSX.GoBreadcrumb, HTMLGoBreadcrumbElement>('go-breadcrumb', undefined, undefined, defineGoBreadcrumb);
 export const GoButton = /*@__PURE__*/createReactComponent<JSX.GoButton, HTMLGoButtonElement>('go-button', undefined, undefined, defineGoButton);
 export const GoButtonGroup = /*@__PURE__*/createReactComponent<JSX.GoButtonGroup, HTMLGoButtonGroupElement>('go-button-group', undefined, undefined, defineGoButtonGroup);

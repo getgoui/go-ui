@@ -70,6 +70,7 @@ go-dropdown-item {
     background: var(--dd-item-bg);
     color: var(--dd-item-fg);
     width: var(--dd-item-width);
+    text-align: start;
     &:hover {
       background: var(--dd-item-bg-hover);
       color: var(--dd-item-fg-hover);

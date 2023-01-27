@@ -9,6 +9,7 @@ import { defineCustomElement as defineGoAccordion } from '@go-ui/core/dist/compo
 import { defineCustomElement as defineGoAccordionItem } from '@go-ui/core/dist/components/go-accordion-item.js';
 import { defineCustomElement as defineGoBadge } from '@go-ui/core/dist/components/go-badge.js';
 import { defineCustomElement as defineGoBanner } from '@go-ui/core/dist/components/go-banner.js';
+import { defineCustomElement as defineGoBlockquote } from '@go-ui/core/dist/components/go-blockquote.js';
 import { defineCustomElement as defineGoBreadcrumb } from '@go-ui/core/dist/components/go-breadcrumb.js';
 import { defineCustomElement as defineGoButton } from '@go-ui/core/dist/components/go-button.js';
 import { defineCustomElement as defineGoButtonGroup } from '@go-ui/core/dist/components/go-button-group.js';
@@ -82,6 +83,12 @@ export const GoBanner = /*@__PURE__*/ defineContainer<JSX.GoBanner>('go-banner',
   'heading',
   'dismissible',
   'dismissed'
+]);
+
+
+export const GoBlockquote = /*@__PURE__*/ defineContainer<JSX.GoBlockquote>('go-blockquote', defineGoBlockquote, [
+  'citeUrl',
+  'hideQuoteMark'
 ]);
 
 
