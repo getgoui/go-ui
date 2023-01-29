@@ -93,7 +93,7 @@ export function prepareNavItems(items: INavItem[], activePath: string): INavItem
   return items.map((item) => {
     const cleanPathname = removeLeadingSlash(activePath);
     const cleanUrl = removeLeadingSlash(item?.url);
-    const isCurrent = cleanPathname.includes(cleanUrl);
+    const isCurrent = cleanPathname === cleanUrl;
     if (item.children?.length > 0) {
       return {
         ...item,

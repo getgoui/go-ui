@@ -16,9 +16,10 @@ wc-playground {
     flex-direction: column-reverse;
     flex: 1;
     gap: 1rem;
-    align-items: flex-start;
+    align-items: stretch;
     @media (min-width: 768px) {
       flex-direction: row;
+      align-items: flex-start;
     }
   }
   .demo {

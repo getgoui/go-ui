@@ -1,6 +1,6 @@
 go-nav-link {
   --nav-link-padding: 0.25em 0;
-  --nav-link-current-bar-width: 1px;
+  --nav-link-current-bar-width: 2px;
   --nav-link-current-bar-color: currentColor;
   --nav-link-hover-fg-color: var(--go-color-link-hover);
   --nav-link-hover-bg-color: var(--go-color-link-hover-bg);
@@ -37,6 +37,8 @@ go-nav-link {
     text-decoration: none;
 
     &.current {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
       border-left-color: var(--nav-link-current-bar-color);
       padding-left: 0.5rem;
     }
