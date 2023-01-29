@@ -20,7 +20,7 @@
   }
   .sidebar {
     width: var(--sidebar-width);
-    height: calc(100vh - var(--header-height));
+    min-height: calc(100vh - var(--header-height));
     overflow: auto;
     position: sticky;
     top: var(--header-height);

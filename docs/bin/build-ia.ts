@@ -143,7 +143,9 @@ function parseCompDocs(components: JsonDocsComponent[]): IAItem[] {
           styles: {
             [comp.tag]: comp.styles,
           },
-          listeners: comp.listeners,
+          listeners: {
+            [comp.tag]: comp.listeners,
+          },
         },
       } as IAItem;
     } catch (error) {

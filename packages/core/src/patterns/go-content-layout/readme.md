@@ -1,14 +1,14 @@
 ---
-title: Go content layout
+title: Content layout
 tags:
   - Layout
 ---
 
-# Go content layout
+# Content layout
 
 <!-- Description -->
 
-Go content layout provide built-in accessible regions and helps developers to create common layouts easily.
+Content layout provide built-in accessible regions and helps developers to create common layouts easily.
 
 ## Demo
 

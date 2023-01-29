@@ -64,7 +64,7 @@ You can use the _`.text-size-{n}`_ utility classes to set the text scale to a sp
 
 Here's what the typography looks like in action:
 
-<Demo code={demoSource} />
+<!-- <Demo code={demoSource} /> -->
 
 ## Utility classes
 
@@ -82,7 +82,7 @@ You can use the following utility classes to style non-heading elements as headi
 Some times you might want an "extra large" heading. You can use the `.text-display-1` and `.text-display-2` utility classes to enlarge the font size. Notice these 2 classes are not coupled with any heading tag.
 :::
 
-<Demo code={headingDemo} />
+<!-- <Demo code={headingDemo} /> -->
 
 ### Positioning
 
@@ -90,4 +90,4 @@ Basic positioning utility classes:
 
 `.text-start`, `.text-center`, `.text-end`, `text-justify`
 
-<Demo code={positionDemo} />
+<!-- <Demo code={positionDemo} /> -->
