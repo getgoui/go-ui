@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../../interfaces';
-import { parseItems } from '../../../utils/nav';
+import { parseItems } from '../../../utils';
 @Component({
   tag: 'go-nav-list',
   styleUrl: 'go-nav-list.scss',
@@ -73,8 +73,8 @@ export class GoNavList {
 
         {navItems?.length > 0 ? (
           <ul class="nav-list">
-            {navItems.map(item => {
-              const isCurrent = item.isCurrent || item?.children?.some(item => item.isCurrent);
+            {navItems.map((item) => {
+              const isCurrent = item.isCurrent || item?.children?.some((item) => item.isCurrent);
               return (
                 <li class={{ 'is-current': isCurrent }}>
                   {item.children?.length ? (

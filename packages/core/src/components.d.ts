@@ -11,6 +11,7 @@ import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
+import { SelectOption } from "./interfaces/form";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
@@ -743,6 +744,16 @@ export namespace Components {
         "closeSearchForm": () => Promise<void>;
         "openSearchForm": () => Promise<void>;
     }
+    interface GoSelect {
+        /**
+          * String label
+         */
+        "label": string;
+        /**
+          * Array of name/value options
+         */
+        "options": SelectOption[] | string;
+    }
     interface GoSkipLink {
         /**
           * Tell skip link which element to focus (supports any query selector)
@@ -944,6 +955,10 @@ export interface GoNavLinkCustomEvent<T> extends CustomEvent<T> {
 export interface GoOverlayCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoOverlayElement;
+}
+export interface GoSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoSelectElement;
 }
 export interface GoTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1166,6 +1181,12 @@ declare global {
         prototype: HTMLGoSearchBarElement;
         new (): HTMLGoSearchBarElement;
     };
+    interface HTMLGoSelectElement extends Components.GoSelect, HTMLStencilElement {
+    }
+    var HTMLGoSelectElement: {
+        prototype: HTMLGoSelectElement;
+        new (): HTMLGoSelectElement;
+    };
     interface HTMLGoSkipLinkElement extends Components.GoSkipLink, HTMLStencilElement {
     }
     var HTMLGoSkipLinkElement: {
@@ -1257,6 +1278,7 @@ declare global {
         "go-progress": HTMLGoProgressElement;
         "go-radio": HTMLGoRadioElement;
         "go-search-bar": HTMLGoSearchBarElement;
+        "go-select": HTMLGoSelectElement;
         "go-skip-link": HTMLGoSkipLinkElement;
         "go-spinner": HTMLGoSpinnerElement;
         "go-switch": HTMLGoSwitchElement;
@@ -2003,6 +2025,20 @@ declare namespace LocalJSX {
     }
     interface GoSearchBar {
     }
+    interface GoSelect {
+        /**
+          * String label
+         */
+        "label"?: string;
+        /**
+          * Emit a custom select event on value change
+         */
+        "onSelect"?: (event: GoSelectCustomEvent<any>) => void;
+        /**
+          * Array of name/value options
+         */
+        "options"?: SelectOption[] | string;
+    }
     interface GoSkipLink {
         /**
           * Tell skip link which element to focus (supports any query selector)
@@ -2193,6 +2229,7 @@ declare namespace LocalJSX {
         "go-progress": GoProgress;
         "go-radio": GoRadio;
         "go-search-bar": GoSearchBar;
+        "go-select": GoSelect;
         "go-skip-link": GoSkipLink;
         "go-spinner": GoSpinner;
         "go-switch": GoSwitch;
@@ -2244,6 +2281,7 @@ declare module "@stencil/core" {
             "go-progress": LocalJSX.GoProgress & JSXBase.HTMLAttributes<HTMLGoProgressElement>;
             "go-radio": LocalJSX.GoRadio & JSXBase.HTMLAttributes<HTMLGoRadioElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
+            "go-select": LocalJSX.GoSelect & JSXBase.HTMLAttributes<HTMLGoSelectElement>;
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
             "go-spinner": LocalJSX.GoSpinner & JSXBase.HTMLAttributes<HTMLGoSpinnerElement>;
             "go-switch": LocalJSX.GoSwitch & JSXBase.HTMLAttributes<HTMLGoSwitchElement>;

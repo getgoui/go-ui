@@ -208,6 +208,8 @@
   border: var(--input-border);
   outline-color: var(--input-border-color);
   overflow: hidden;
+  background: var(--input-bg);
+  color: var(--input-fg);
   &:focus-visible {
     @include focus-outline;
     box-shadow: var(--input-focus-shadow);

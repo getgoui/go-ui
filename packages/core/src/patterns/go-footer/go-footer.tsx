@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../interfaces';
 import { warning, hasSlot } from '../../utils/helper';
-import { parseItems } from '../../utils/nav';
+import { parseItems } from '../../utils';
 @Component({
   tag: 'go-footer',
   styleUrl: 'go-footer.scss',
