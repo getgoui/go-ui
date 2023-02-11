@@ -71,6 +71,7 @@
     "rollup-plugin-node-polyfills": "^0.2.1",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.5",
+    "semantic-release-workspace-dependency": "^1.0.1",
     "stylelint": "^14.16.1",
     "stylelint-a11y": "^1.2.3",
     "stylelint-config-prettier": "^8.0.2",
