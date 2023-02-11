@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@go-ui/core": "workspace:0.0.0-development"
+    "@go-ui/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^15.14.9",

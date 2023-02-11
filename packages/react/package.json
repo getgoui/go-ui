@@ -23,7 +23,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@go-ui/core": "workspace:0.0.0-development"
+    "@go-ui/core": "workspace:*"
   },
   "devDependencies": {
     "@types/jest": "23.3.9",
