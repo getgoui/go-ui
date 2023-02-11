@@ -202,7 +202,6 @@ importers:
       rollup-plugin-node-polyfills: ^0.2.1
       semantic-release: ^19.0.5
       semantic-release-monorepo: ^7.0.5
-      semantic-release-workspace-dependency: ^1.0.1
       stylelint: ^14.16.1
       stylelint-a11y: ^1.2.3
       stylelint-config-prettier: ^8.0.2
@@ -251,7 +250,6 @@ importers:
       rollup-plugin-node-polyfills: 0.2.1
       semantic-release: 19.0.5
       semantic-release-monorepo: 7.0.5_semantic-release@19.0.5
-      semantic-release-workspace-dependency: 1.0.1_semantic-release@19.0.5
       stylelint: 14.16.1
       stylelint-a11y: 1.2.3_stylelint@14.16.1
       stylelint-config-prettier: 8.0.2_stylelint@14.16.1
@@ -274,7 +272,6 @@ importers:
       react-dom: ^17.0.2
       semantic-release: ^19.0.5
       semantic-release-monorepo: ^7.0.5
-      semantic-release-workspace-dependency: ^1.0.1
       typescript: ^4.8.4
     dependencies:
       '@go-ui/core': link:../core
@@ -291,7 +288,6 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       semantic-release: 19.0.5
       semantic-release-monorepo: 7.0.5_semantic-release@19.0.5
-      semantic-release-workspace-dependency: 1.0.1_semantic-release@19.0.5
       typescript: 4.8.4
 
   packages/vue:
@@ -301,7 +297,6 @@ importers:
       cpy-cli: ^4.2.0
       semantic-release: ^19.0.5
       semantic-release-monorepo: ^7.0.5
-      semantic-release-workspace-dependency: ^1.0.1
       typescript: ^4.8.4
       vue: ^3.2.45
     dependencies:
@@ -311,7 +306,6 @@ importers:
       cpy-cli: 4.2.0
       semantic-release: 19.0.5
       semantic-release-monorepo: 7.0.5_semantic-release@19.0.5
-      semantic-release-workspace-dependency: 1.0.1_semantic-release@19.0.5
       typescript: 4.8.4
       vue: 3.2.45
 
@@ -323,14 +317,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
-    dev: true
-
-  /@antongolub/git-root/1.5.8:
-    resolution: {integrity: sha512-PH37et3EaPo0s0AScq/OKi5eWXQJ5OXZdzHEw6f4msPSgIv7NjNgZ7VTtRggAiyHSOXADowI4hEd6LXLJ7FimQ==}
-    dependencies:
-      '@qiwi/substrate': 1.20.16
-      find-up: 5.0.0
-      tslib: 2.4.1
     dev: true
 
   /@apideck/better-ajv-errors/0.3.6_ajv@8.12.0:
@@ -2591,20 +2577,6 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@npmcli/map-workspaces/2.0.4:
-    resolution: {integrity: sha512-bMo0aAfwhVwqoVM5UzX1DJnlvVvzDCHae821jv48L1EsrYwfOZChlqWYXEtto/+BkBXetPbEWgau++/brh4oVg==}
-    engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
-    dependencies:
-      '@npmcli/name-from-folder': 1.0.1
-      glob: 8.1.0
-      minimatch: 5.1.6
-      read-package-json-fast: 2.0.3
-    dev: true
-
-  /@npmcli/name-from-folder/1.0.1:
-    resolution: {integrity: sha512-qq3oEfcLFwNfEYOQ8HLimRGKlD8WSeGEdtUa7hmzpR8Sa7haL1KVQrvgO6wqMjhWFFVjgtrh1gIxDz+P8sjUaA==}
-    dev: true
-
   /@nrwl/cli/14.6.5:
     resolution: {integrity: sha512-sjT4/oMk1F4+dTpCp08IVE8hfqKsokebUECzC1hTu4pCeFo0oviIi7bQTuCIbG9w4iiHLioa6QmLRXBwVJEr9w==}
     dependencies:
@@ -2762,32 +2734,6 @@ packages:
     dependencies:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
-    dev: true
-
-  /@qiwi/substrate-abstract/1.20.10:
-    resolution: {integrity: sha512-o6lUn1qJ8/BfJGcBHbIgxdWATN+hcgLSSSznXl3e3fnStqCcqET1bzCn2T7k7nbTOyparfhivlCQSl/NPMwslQ==}
-    dependencies:
-      '@qiwi/substrate-types': 1.55.1
-    dev: true
-
-  /@qiwi/substrate-std/1.3.11:
-    resolution: {integrity: sha512-D2Exi8G1KJmZCpls+xT0PyR8biwqC9Ntu8vVLSG3//rZeiNvc67qNkrcJMJSr7e3rur+bY25jeBhGWMcT+zhtA==}
-    dependencies:
-      '@qiwi/substrate-types': 1.55.1
-      tslib: 2.4.1
-    dev: true
-
-  /@qiwi/substrate-types/1.55.1:
-    resolution: {integrity: sha512-6FldoGcL6ZTF659+9XGYMDGE5/1bVeDQ7iWT8OnXYMJfIubzaitSD2gPEJg7r3EtTtNjl1fuD1JHt4rJMW6wrg==}
-    dev: true
-
-  /@qiwi/substrate/1.20.16:
-    resolution: {integrity: sha512-njFeMFHzK8FFCZANup3VHWSbRoWIL2K/kEEMRctzS8gPrxVkKVmuiBDD5DNkqNBfjiUeT+1e88UIR/gAq0Fw2g==}
-    dependencies:
-      '@qiwi/substrate-abstract': 1.20.10
-      '@qiwi/substrate-std': 1.3.11
-      '@qiwi/substrate-types': 1.55.1
-      tslib: 2.4.1
     dev: true
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
@@ -6255,11 +6201,6 @@ packages:
       ansi-colors: 4.1.3
     dev: true
 
-  /ensure-error/3.0.1:
-    resolution: {integrity: sha512-J2e5Z3sgnA8en6+alf2VkO5cRwe75hHgSw0rJiMn5CEE4Yyw6GSgH31IBgwN9lugeCuPKHzuOF3X/RozAFsuhQ==}
-    engines: {node: '>=10'}
-    dev: true
-
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
     dev: true
@@ -7487,6 +7428,7 @@ packages:
       inherits: 2.0.4
       minimatch: 5.1.6
       once: 1.4.0
+    dev: false
 
   /global-dirs/0.1.1:
     resolution: {integrity: sha512-NknMLn7F2J7aflwFOlGdNIuCDpN3VGoSoB+aap3KABFWbHVn1TCgFC+np23J8W2BiZbjfEw3BFBycSMv1AFblg==}
@@ -11330,10 +11272,6 @@ packages:
       validate-npm-package-name: 3.0.0
     dev: true
 
-  /npm-normalize-package-bin/1.0.1:
-    resolution: {integrity: sha512-EPfafl6JL5/rU+ot6P3gRSCpPDW5VmIzX959Ob1+ySFUuuYHWHekXpwdUZcKP5C+DS4GEtdJluwBjnsNDl+fSA==}
-    dev: true
-
   /npm-package-arg/6.1.1:
     resolution: {integrity: sha512-qBpssaL3IOZWi5vEKUKW0cO7kzLeT+EQO9W8RsLOZf76KF9E/K9+wH0C7t06HXPpaH8WH5xF1MExLuCwbTqRUg==}
     dependencies:
@@ -12893,14 +12831,6 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
-  /read-package-json-fast/2.0.3:
-    resolution: {integrity: sha512-W/BKtbL+dUjTuRL2vziuYhp76s5HZ9qQhd/dKfWIZveD0O40453QNyZhC0e63lqZrAQ4jiOapVoeJ7JrszenQQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      json-parse-even-better-errors: 2.3.1
-      npm-normalize-package-bin: 1.0.1
-    dev: true
-
   /read-pkg-up/1.0.1:
     resolution: {integrity: sha512-WD9MTlNtI55IwYUS27iHh9tK3YoIVhxis8yKhLpTqWtml739uXc9NWTpxoHkfZf3+DkCCsXox94/VWZniuZm6A==}
     engines: {node: '>=0.10.0'}
@@ -13685,22 +13615,6 @@ packages:
       semantic-release: '>=11'
     dependencies:
       semantic-release: 19.0.5
-    dev: true
-
-  /semantic-release-workspace-dependency/1.0.1_semantic-release@19.0.5:
-    resolution: {integrity: sha512-BRCGd/Pl2j5NVsfRIGe1ib7SzEtAbF+Hhu8Kbby3bwduxS0mEIXPWGLjtYFi7h81fAe0NKyYt0DQD3GiPwQ8gg==}
-    peerDependencies:
-      semantic-release: '>=18'
-    dependencies:
-      '@antongolub/git-root': 1.5.8
-      '@npmcli/map-workspaces': 2.0.4
-      '@semantic-release/error': 3.0.0
-      aggregate-error: 3.1.0
-      ensure-error: 3.0.1
-      find-versions: 4.0.0
-      read-package-json-fast: 2.0.3
-      semantic-release: 19.0.5
-      semver: 7.3.8
     dev: true
 
   /semantic-release/19.0.5:
