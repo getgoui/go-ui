@@ -3,12 +3,14 @@ import component from './gen-component';
 import pattern from './gen-pattern';
 import dev from './dev';
 import help from './help';
+import releasePrep from './release-prep';
 
 const commands = {
   component,
   pattern,
   dev,
   help,
+  releasePrep,
 };
 
 export async function main(argsArray) {
