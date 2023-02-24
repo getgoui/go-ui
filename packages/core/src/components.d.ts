@@ -2033,7 +2033,7 @@ declare namespace LocalJSX {
         /**
           * Emit a custom select event on value change
          */
-        "onSelect"?: (event: GoSelectCustomEvent<any>) => void;
+        "onSelected"?: (event: GoSelectCustomEvent<any>) => void;
         /**
           * Array of name/value options
          */

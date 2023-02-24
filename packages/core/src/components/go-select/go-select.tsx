@@ -25,7 +25,7 @@ export class GoSelect {
    * Emit a custom select event on value change
    */
   @Event({
-    eventName: 'select',
+    eventName: 'selected',
   })
   selectEvent: EventEmitter;
 
@@ -118,11 +118,13 @@ export class GoSelect {
                   id={`${this.htmlId}-${i}`}
                   aria-selected={this.activeIndex === i ? 'true' : false}
                   ref={(el) => {
-                    if (this.activeIndex === i) this.activeOptionRef = el;
+                    if (this.activeIndex === i) {
+                      this.activeOptionRef = el;
+                    }
                   }}
                   role="option"
-                  onClick={(event) => {
-                    event.stopPropagation();
+                  onClick={(e) => {
+                    e.stopPropagation();
                     this.onOptionClick(i);
                   }}
                   onMouseDown={this.onOptionMouseDown.bind(this)}>
