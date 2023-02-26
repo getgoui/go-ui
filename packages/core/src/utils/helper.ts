@@ -1,5 +1,5 @@
 import { prefersDark } from './match-media';
-import { uniqueId } from 'lodash-es';
+import { uniqueId, kebabCase } from 'lodash-es';
 import JSON5 from 'json5';
 
 declare const __zone_symbol__requestAnimationFrame: any;
@@ -31,6 +31,20 @@ export const inheritAttributes = (el: HTMLElement, excludes: string[] = [], remo
 
   return attributeObject;
 };
+
+/**
+ *
+ * @param component stencil class instance
+ */
+export function inheritComponentAttrs(component) {
+  if (!component.el) {
+    warning(`root element not found in component`, component);
+  }
+  const propNames = Object.keys(component.__proto__);
+  const attributeNames = propNames.map((name) => kebabCase(name));
+  return inheritAttributes(component.el, ['class', 'style', 'id', ...attributeNames]);
+}
+
 /**
  * Extract the `id` from target element, then remove the original id attribute
  * @param el target element
