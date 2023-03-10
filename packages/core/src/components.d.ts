@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, INavItem, SelectOption } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -741,7 +741,7 @@ export namespace Components {
         "openSearchForm": () => Promise<void>;
     }
     interface GoSelect {
-        "options": { [key: string]: string }[];
+        "options": SelectOption[] | string;
     }
     interface GoSkipLink {
         /**
@@ -2015,7 +2015,7 @@ declare namespace LocalJSX {
     interface GoSearchBar {
     }
     interface GoSelect {
-        "options"?: { [key: string]: string }[];
+        "options"?: SelectOption[] | string;
     }
     interface GoSkipLink {
         /**

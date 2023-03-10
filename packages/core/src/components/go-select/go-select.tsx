@@ -1,14 +1,23 @@
-import { Component, h, Element, Prop, Host, State, Watch } from '@stencil/core';
-import { inheritComponentAttrs, initIdProps, hasSlot } from '../../utils';
+import { Component, h, Element, Prop, State } from '@stencil/core';
+import { SelectOption } from '../../interfaces';
+import { inheritComponentAttrs, hasSlot, parseItems } from '../../utils';
+import { getActionFromKey, getIndexByLetter, getUpdatedIndex, isScrollable, maintainScrollVisibility, MenuActions, uniqueId } from '../../utils/select';
+
 @Component({
   tag: 'go-select',
   styleUrl: 'go-select.scss',
+  shadow: false,
 })
 export class GoSelect {
   @Element() el: HTMLElement;
 
-  @Prop() options: { [key: string]: string }[];
+  @Prop() options: SelectOption[] | string;
 
+  @State() parsedOptions = [];
+
+  /**
+   * common form control properties
+   */
   attrs: any;
   passSlots = ['icon-before', 'icon-after', 'prefix', 'suffix', 'hint'];
   hasNamedSlot: { [key: string]: boolean } = {};
@@ -18,10 +27,23 @@ export class GoSelect {
     this.passSlots.forEach((slotName) => {
       this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
     });
+
+    const options = parseItems(this.options);
+    if (options) {
+      this.parsedOptions = options.map((option) => {
+        if (typeof option === 'string') {
+          return {
+            value: option,
+            label: option,
+          };
+        }
+        return option;
+      });
+    }
   }
 
   render() {
-    const { id, name, value, disabled, readonly, type, ...field } = this.attrs;
+    const { parsedOptions, id, name, value, disabled, readonly, type, ...field } = this.attrs;
     const controlAttrs = {
       id,
       type,
@@ -42,7 +64,7 @@ export class GoSelect {
           }
         })}
         <select class="control" {...controlAttrs}>
-          <slot></slot>
+          <slot>{parsedOptions ? parsedOptions.map(({ value, label }) => <option value={value}>{label}</option>) : null}</slot>
         </select>
       </go-field>
     );

@@ -22,7 +22,8 @@ export interface InputProps extends FormBaseProps {
 }
 
 export type InputType = 'email' | 'number' | 'password' | 'search' | 'tel' | 'text';
+
 export interface SelectOption {
-  name: string;
   value: string;
+  label: string;
 }

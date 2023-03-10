@@ -118,7 +118,7 @@ export function getUpdatedIndex(current: number, max: number, action: MenuAction
 export function filterOptions(options: SelectOption[] = [], filter: string, exclude: SelectOption[] = []): SelectOption[] {
   let filterString = filter.toLowerCase().trim();
   return options.filter((option) => {
-    const matches = option.name.toLowerCase().indexOf(filterString) === 0;
+    const matches = option.label.toLowerCase().indexOf(filterString) === 0;
     return matches && exclude.indexOf(option) < 0;
   });
 }
