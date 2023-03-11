@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../interfaces';
-import { parseItems } from '../../utils/nav';
+import { parseItems } from '../../utils';
 
 @Component({
   tag: 'go-breadcrumb',

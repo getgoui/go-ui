@@ -2,7 +2,7 @@ import { Component, Element, h, Method, Prop, State, Host, EventEmitter, Event, 
 import { INavItem } from '../../../interfaces';
 import { onClickOutside } from '../../../utils/dom';
 import { inheritAttributes } from '../../../utils/helper';
-import { parseItems } from '../../../utils/nav';
+import { parseItems } from '../../../utils';
 import { renderIcon } from '../nav-helpers';
 
 @Component({

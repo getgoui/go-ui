@@ -130,4 +130,22 @@ export function focusLastWithin(parent: HTMLElement): void {
   }
 }
 
-// export function onFocusOut
+// check if an element is currently scrollable
+export function isScrollable(element: HTMLElement): boolean {
+  return element && element.clientHeight < element.scrollHeight;
+}
+
+// ensure given child element is within the parent's visible scroll area
+export function maintainScrollVisibility(activeElement: HTMLElement, scrollParent: HTMLElement) {
+  const { offsetHeight, offsetTop } = activeElement;
+  const { offsetHeight: parentOffsetHeight, scrollTop } = scrollParent;
+
+  const isAbove = offsetTop < scrollTop;
+  const isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
+
+  if (isAbove) {
+    scrollParent.scrollTo(0, offsetTop);
+  } else if (isBelow) {
+    scrollParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
+  }
+}

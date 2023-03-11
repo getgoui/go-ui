@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType, SelectOption } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -246,20 +246,38 @@ export namespace Components {
     }
     interface GoCheckbox {
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
         "error"?: string;
         /**
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
         "hint"?: string;
         /**
           * DOM id for hint message
          */
         "hintId"?: string;
         "indeterminate"?: boolean;
+        /**
+          * Label of the input field
+         */
         "label": string;
+        /**
+          * Name of the input field
+         */
         "name": string;
+        /**
+          * Value of the input field
+         */
         "value": any;
     }
     interface GoChip {
@@ -322,6 +340,10 @@ export namespace Components {
           * closes dropdown
          */
         "close": (focusBackToTrigger?: boolean) => Promise<void>;
+        /**
+          * If set, dropdown will take full width of its parent.
+         */
+        "fullWidth"?: boolean;
         "init": () => Promise<void>;
         /**
           * keep track of active state
@@ -389,6 +411,55 @@ export namespace Components {
         "width"?: string;
     }
     interface GoDropdownSeparator {
+    }
+    interface GoField {
+        "controlElSelector": string;
+        "controlId": string;
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        "idPrefix": string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
     }
     interface GoFieldset {
         /**
@@ -560,9 +631,9 @@ export namespace Components {
          */
         "type"?: InputType;
         /**
-          * Value of the input
+          * Value of the input field
          */
-        "value": any;
+        "value"?: string;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;
@@ -743,6 +814,60 @@ export namespace Components {
         "closeSearchForm": () => Promise<void>;
         "openSearchForm": () => Promise<void>;
     }
+    interface GoSelect {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: string | boolean;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * Array of label/value options
+         */
+        "options": SelectOption[] | string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
+    }
     interface GoSkipLink {
         /**
           * Tell skip link which element to focus (supports any query selector)
@@ -785,6 +910,9 @@ export namespace Components {
          */
         "activeLabel": string;
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
         /**
           * make this field full width
@@ -794,7 +922,13 @@ export namespace Components {
           * "off" label to show when `showOnOff*` is set to true
          */
         "inactiveLabel": string;
+        /**
+          * Label of the input field
+         */
         "label": string;
+        /**
+          * Name of the input field
+         */
         "name": string;
         /**
           * show on/off text in switch toggle
@@ -808,6 +942,9 @@ export namespace Components {
           * Display label on top of switch
          */
         "stack": boolean;
+        /**
+          * Value of the input field
+         */
         "value": any;
     }
     interface GoTab {
@@ -945,6 +1082,10 @@ export interface GoOverlayCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoOverlayElement;
 }
+export interface GoSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoSelectElement;
+}
 export interface GoTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoTabsElement;
@@ -1064,6 +1205,12 @@ declare global {
         prototype: HTMLGoDropdownSeparatorElement;
         new (): HTMLGoDropdownSeparatorElement;
     };
+    interface HTMLGoFieldElement extends Components.GoField, HTMLStencilElement {
+    }
+    var HTMLGoFieldElement: {
+        prototype: HTMLGoFieldElement;
+        new (): HTMLGoFieldElement;
+    };
     interface HTMLGoFieldsetElement extends Components.GoFieldset, HTMLStencilElement {
     }
     var HTMLGoFieldsetElement: {
@@ -1166,6 +1313,12 @@ declare global {
         prototype: HTMLGoSearchBarElement;
         new (): HTMLGoSearchBarElement;
     };
+    interface HTMLGoSelectElement extends Components.GoSelect, HTMLStencilElement {
+    }
+    var HTMLGoSelectElement: {
+        prototype: HTMLGoSelectElement;
+        new (): HTMLGoSelectElement;
+    };
     interface HTMLGoSkipLinkElement extends Components.GoSkipLink, HTMLStencilElement {
     }
     var HTMLGoSkipLinkElement: {
@@ -1240,6 +1393,7 @@ declare global {
         "go-dropdown-item": HTMLGoDropdownItemElement;
         "go-dropdown-menu": HTMLGoDropdownMenuElement;
         "go-dropdown-separator": HTMLGoDropdownSeparatorElement;
+        "go-field": HTMLGoFieldElement;
         "go-fieldset": HTMLGoFieldsetElement;
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
@@ -1257,6 +1411,7 @@ declare global {
         "go-progress": HTMLGoProgressElement;
         "go-radio": HTMLGoRadioElement;
         "go-search-bar": HTMLGoSearchBarElement;
+        "go-select": HTMLGoSelectElement;
         "go-skip-link": HTMLGoSkipLinkElement;
         "go-spinner": HTMLGoSpinnerElement;
         "go-switch": HTMLGoSwitchElement;
@@ -1503,20 +1658,38 @@ declare namespace LocalJSX {
     }
     interface GoCheckbox {
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
         "error"?: string;
         /**
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
         "hint"?: string;
         /**
           * DOM id for hint message
          */
         "hintId"?: string;
         "indeterminate"?: boolean;
+        /**
+          * Label of the input field
+         */
         "label"?: string;
+        /**
+          * Name of the input field
+         */
         "name"?: string;
+        /**
+          * Value of the input field
+         */
         "value"?: any;
     }
     interface GoChip {
@@ -1581,6 +1754,10 @@ declare namespace LocalJSX {
     }
     interface GoDropdown {
         /**
+          * If set, dropdown will take full width of its parent.
+         */
+        "fullWidth"?: boolean;
+        /**
           * keep track of active state
          */
         "isActive"?: boolean;
@@ -1642,6 +1819,55 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface GoDropdownSeparator {
+    }
+    interface GoField {
+        "controlElSelector"?: string;
+        "controlId"?: string;
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        "idPrefix"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
     }
     interface GoFieldset {
         /**
@@ -1813,9 +2039,9 @@ declare namespace LocalJSX {
          */
         "type"?: InputType;
         /**
-          * Value of the input
+          * Value of the input field
          */
-        "value"?: any;
+        "value"?: string;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;
@@ -2003,6 +2229,64 @@ declare namespace LocalJSX {
     }
     interface GoSearchBar {
     }
+    interface GoSelect {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: string | boolean;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * Emit a custom select event on value change
+         */
+        "onGoChange"?: (event: GoSelectCustomEvent<any>) => void;
+        /**
+          * Array of label/value options
+         */
+        "options"?: SelectOption[] | string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
+    }
     interface GoSkipLink {
         /**
           * Tell skip link which element to focus (supports any query selector)
@@ -2045,6 +2329,9 @@ declare namespace LocalJSX {
          */
         "activeLabel"?: string;
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
         /**
           * make this field full width
@@ -2054,7 +2341,13 @@ declare namespace LocalJSX {
           * "off" label to show when `showOnOff*` is set to true
          */
         "inactiveLabel"?: string;
+        /**
+          * Label of the input field
+         */
         "label"?: string;
+        /**
+          * Name of the input field
+         */
         "name"?: string;
         /**
           * show on/off text in switch toggle
@@ -2068,6 +2361,9 @@ declare namespace LocalJSX {
           * Display label on top of switch
          */
         "stack"?: boolean;
+        /**
+          * Value of the input field
+         */
         "value"?: any;
     }
     interface GoTab {
@@ -2176,6 +2472,7 @@ declare namespace LocalJSX {
         "go-dropdown-item": GoDropdownItem;
         "go-dropdown-menu": GoDropdownMenu;
         "go-dropdown-separator": GoDropdownSeparator;
+        "go-field": GoField;
         "go-fieldset": GoFieldset;
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
@@ -2193,6 +2490,7 @@ declare namespace LocalJSX {
         "go-progress": GoProgress;
         "go-radio": GoRadio;
         "go-search-bar": GoSearchBar;
+        "go-select": GoSelect;
         "go-skip-link": GoSkipLink;
         "go-spinner": GoSpinner;
         "go-switch": GoSwitch;
@@ -2227,6 +2525,7 @@ declare module "@stencil/core" {
             "go-dropdown-item": LocalJSX.GoDropdownItem & JSXBase.HTMLAttributes<HTMLGoDropdownItemElement>;
             "go-dropdown-menu": LocalJSX.GoDropdownMenu & JSXBase.HTMLAttributes<HTMLGoDropdownMenuElement>;
             "go-dropdown-separator": LocalJSX.GoDropdownSeparator & JSXBase.HTMLAttributes<HTMLGoDropdownSeparatorElement>;
+            "go-field": LocalJSX.GoField & JSXBase.HTMLAttributes<HTMLGoFieldElement>;
             "go-fieldset": LocalJSX.GoFieldset & JSXBase.HTMLAttributes<HTMLGoFieldsetElement>;
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
@@ -2244,6 +2543,7 @@ declare module "@stencil/core" {
             "go-progress": LocalJSX.GoProgress & JSXBase.HTMLAttributes<HTMLGoProgressElement>;
             "go-radio": LocalJSX.GoRadio & JSXBase.HTMLAttributes<HTMLGoRadioElement>;
             "go-search-bar": LocalJSX.GoSearchBar & JSXBase.HTMLAttributes<HTMLGoSearchBarElement>;
+            "go-select": LocalJSX.GoSelect & JSXBase.HTMLAttributes<HTMLGoSelectElement>;
             "go-skip-link": LocalJSX.GoSkipLink & JSXBase.HTMLAttributes<HTMLGoSkipLinkElement>;
             "go-spinner": LocalJSX.GoSpinner & JSXBase.HTMLAttributes<HTMLGoSpinnerElement>;
             "go-switch": LocalJSX.GoSwitch & JSXBase.HTMLAttributes<HTMLGoSwitchElement>;

@@ -1,5 +1,19 @@
 :root {
   /**
+    @prop --input-bg:
+      Background of form field
+      - default: var(--go-color-lightest)
+  */
+  --input-bg: var(--go-color-lightest);
+
+  /**
+    @prop --input-fg:
+      Foreground (text) color of form field
+      - default: var(--go-color-darkest)
+  */
+  --input-fg: var(--go-color-darkest);
+
+  /**
     @prop --input-gap-inner:
       Inner immediately above and below input control
       - default: 0.5rem

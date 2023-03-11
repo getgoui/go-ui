@@ -31,6 +31,11 @@ export class GoDropdown {
   @Prop() noTriggerClickHandler = false;
 
   /**
+   * If set, dropdown will take full width of its parent.
+   */
+  @Prop() fullWidth? = false;
+
+  /**
    * Emitted when dropdown is opened
    */
   @Event() opened: EventEmitter<void>;
@@ -192,9 +197,9 @@ export class GoDropdown {
   }
 
   render() {
-    const { isActive, width } = this;
+    let { isActive, width, fullWidth } = this;
     return (
-      <Host class={{ 'is-active': isActive }} aria-hidden={isActive ? 'false' : 'true'} style={{ '--dropdown-width': width }}>
+      <Host class={{ 'is-active': isActive, 'full-width': fullWidth }} aria-hidden={isActive ? 'false' : 'true'} style={{ '--dropdown-width': width }}>
         <div class="dropdown-content">
           <slot></slot>
         </div>

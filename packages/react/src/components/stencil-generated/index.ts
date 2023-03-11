@@ -24,6 +24,7 @@ import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/compon
 import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
 import { defineCustomElement as defineGoDropdownMenu } from '@go-ui/core/dist/components/go-dropdown-menu.js';
 import { defineCustomElement as defineGoDropdownSeparator } from '@go-ui/core/dist/components/go-dropdown-separator.js';
+import { defineCustomElement as defineGoField } from '@go-ui/core/dist/components/go-field.js';
 import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
@@ -41,6 +42,7 @@ import { defineCustomElement as defineGoOverlay } from '@go-ui/core/dist/compone
 import { defineCustomElement as defineGoProgress } from '@go-ui/core/dist/components/go-progress.js';
 import { defineCustomElement as defineGoRadio } from '@go-ui/core/dist/components/go-radio.js';
 import { defineCustomElement as defineGoSearchBar } from '@go-ui/core/dist/components/go-search-bar.js';
+import { defineCustomElement as defineGoSelect } from '@go-ui/core/dist/components/go-select.js';
 import { defineCustomElement as defineGoSkipLink } from '@go-ui/core/dist/components/go-skip-link.js';
 import { defineCustomElement as defineGoSpinner } from '@go-ui/core/dist/components/go-spinner.js';
 import { defineCustomElement as defineGoSwitch } from '@go-ui/core/dist/components/go-switch.js';
@@ -70,6 +72,7 @@ export const GoDropdown = /*@__PURE__*/createReactComponent<JSX.GoDropdown, HTML
 export const GoDropdownItem = /*@__PURE__*/createReactComponent<JSX.GoDropdownItem, HTMLGoDropdownItemElement>('go-dropdown-item', undefined, undefined, defineGoDropdownItem);
 export const GoDropdownMenu = /*@__PURE__*/createReactComponent<JSX.GoDropdownMenu, HTMLGoDropdownMenuElement>('go-dropdown-menu', undefined, undefined, defineGoDropdownMenu);
 export const GoDropdownSeparator = /*@__PURE__*/createReactComponent<JSX.GoDropdownSeparator, HTMLGoDropdownSeparatorElement>('go-dropdown-separator', undefined, undefined, defineGoDropdownSeparator);
+export const GoField = /*@__PURE__*/createReactComponent<JSX.GoField, HTMLGoFieldElement>('go-field', undefined, undefined, defineGoField);
 export const GoFieldset = /*@__PURE__*/createReactComponent<JSX.GoFieldset, HTMLGoFieldsetElement>('go-fieldset', undefined, undefined, defineGoFieldset);
 export const GoFooter = /*@__PURE__*/createReactComponent<JSX.GoFooter, HTMLGoFooterElement>('go-footer', undefined, undefined, defineGoFooter);
 export const GoGovAuLogo = /*@__PURE__*/createReactComponent<JSX.GoGovAuLogo, HTMLGoGovAuLogoElement>('go-gov-au-logo', undefined, undefined, defineGoGovAuLogo);
@@ -87,6 +90,7 @@ export const GoOverlay = /*@__PURE__*/createReactComponent<JSX.GoOverlay, HTMLGo
 export const GoProgress = /*@__PURE__*/createReactComponent<JSX.GoProgress, HTMLGoProgressElement>('go-progress', undefined, undefined, defineGoProgress);
 export const GoRadio = /*@__PURE__*/createReactComponent<JSX.GoRadio, HTMLGoRadioElement>('go-radio', undefined, undefined, defineGoRadio);
 export const GoSearchBar = /*@__PURE__*/createReactComponent<JSX.GoSearchBar, HTMLGoSearchBarElement>('go-search-bar', undefined, undefined, defineGoSearchBar);
+export const GoSelect = /*@__PURE__*/createReactComponent<JSX.GoSelect, HTMLGoSelectElement>('go-select', undefined, undefined, defineGoSelect);
 export const GoSkipLink = /*@__PURE__*/createReactComponent<JSX.GoSkipLink, HTMLGoSkipLinkElement>('go-skip-link', undefined, undefined, defineGoSkipLink);
 export const GoSpinner = /*@__PURE__*/createReactComponent<JSX.GoSpinner, HTMLGoSpinnerElement>('go-spinner', undefined, undefined, defineGoSpinner);
 export const GoSwitch = /*@__PURE__*/createReactComponent<JSX.GoSwitch, HTMLGoSwitchElement>('go-switch', undefined, undefined, defineGoSwitch);

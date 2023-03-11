@@ -77,6 +77,8 @@
       width: auto;
       max-width: 45%;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
     }
     .control {
       min-width: 55%;
@@ -203,11 +205,14 @@
 
 @mixin field-control {
   width: 100%;
-  padding: var(--input-control-padding);
-  border-radius: var(--input-radius);
-  border: var(--input-border);
-  outline-color: var(--input-border-color);
   overflow: hidden;
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  padding: var(--input-control-padding);
+  min-height: calc(2 * var(--input-padding-y) + 1.5rem);
+  outline-color: var(--input-border-color);
+  background: var(--input-bg);
+  color: var(--input-fg);
   &:focus-visible {
     @include focus-outline;
     box-shadow: var(--input-focus-shadow);

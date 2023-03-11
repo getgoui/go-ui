@@ -1,0 +1,139 @@
+//--------------mixins for dropdown item--------------//
+@mixin dropdown-item-vars {
+  --dd-item-padding-y: 0.5rem;
+  --dd-item-padding-x: 1rem;
+  /**
+    @prop --dd-item-padding:
+      Padding for dropdown item
+      - default: 0.5rem 1rem
+  */
+  --dd-item-padding: var(--dd-item-padding-y) var(--dd-item-padding-x);
+
+  /**
+    @prop --dd-item-radius:
+      Border radius for dropdown item
+      - default: var(--radius-1)
+  */
+  --dd-item-radius: var(--radius-1);
+
+  /**
+    @prop --dd-item-bg:
+      Background of dropdown item
+      - default: var(--dropdown-bg-color)
+  */
+  --dd-item-bg: var(--dropdown-bg-color);
+
+  /**
+    @prop --dd-item-bg-hover:
+      Hover background for dropdown item
+      - default: var(--go-color-neutral-200)
+  */
+  --dd-item-bg-hover: var(--go-color-neutral-200);
+  /**
+    @prop --dd-item-bg-selected:
+      background for selected state
+      - default: var(--go-color-neutral-200)
+  */
+  --dd-item-bg-selected: var(--go-color-neutral-200);
+
+  /**
+    @prop --dd-item-fg:
+      Foreground of dropdown item
+      - default: var(--go-color-neutral-900)
+  */
+  --dd-item-fg: var(--go-color-neutral-900);
+
+  /**
+    @prop --dd-item-fg-hover:
+      Hover foreground of dropdown item
+      - default: var(--go-color-darkest)
+  */
+  --dd-item-fg-hover: var(--go-color-darkest);
+
+  /**
+    @prop --dd-item-fg-selected:
+      Selected state foreground
+      - default: var(--go-color-darkest)
+  */
+  --dd-item-fg-selected: var(--go-color-darkest);
+
+  /**
+    @prop --dd-item-bg-disabled:
+      Disabled background color
+      - default: transparent
+  */
+  --dd-item-bg-disabled: transparent;
+
+  /**
+    @prop --dd-item-fg-disabled:
+      Disabled foreground color
+      - default: var(--go-color-neutral-600)
+  */
+  --dd-item-fg-disabled: var(--go-color-neutral-600);
+
+  /**
+    @prop --dd-item-width:
+      Width of dropdown item
+      - default: 100%
+  */
+  --dd-item-width: 100%;
+
+  /**
+    @prop --dd-item-line-height:
+      line height of item
+      - default: 1.5em
+  */
+  --dd-item-line-height: 1.5em;
+}
+@mixin dropdown-item {
+  @include reset-btn;
+  display: block;
+  padding: var(--dd-item-padding);
+  border-radius: var(--dd-item-radius);
+  background: var(--dd-item-bg);
+  color: var(--dd-item-fg);
+  width: var(--dd-item-width);
+  line-height: var(--dd-item-line-height);
+  min-height: calc(2 * var(--dd-item-padding-y) + var(--dd-item-line-height));
+  text-align: start;
+  &:hover {
+    @include item-hover-state;
+  }
+  &:focus-visible {
+    @include item-focus-state;
+  }
+}
+
+@mixin item-hover-state {
+  background: var(--dd-item-bg-hover);
+  color: var(--dd-item-fg-hover);
+}
+
+@mixin item-focus-state {
+  position: relative;
+  z-index: 1;
+  @include focus-outline(false);
+}
+
+@mixin item-selected-state {
+  background: var(--dd-item-bg-selected);
+  color: var(--dd-item-fg-selected);
+  padding-right: 2rem;
+  position: relative;
+  &::after {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    content: '';
+    height: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translate(0, -50%) rotate(45deg);
+    width: 0.5rem;
+  }
+}
+
+@mixin item-disabled-state {
+  background: var(--dd-item-bg-disabled);
+  color: var(--dd-item-fg-disabled);
+}
