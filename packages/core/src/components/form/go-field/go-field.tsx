@@ -1,4 +1,5 @@
 import { Component, Host, h, Element, Prop, Watch, State } from '@stencil/core';
+import { FormFieldProps } from '../../../interfaces';
 import { hasSlot, initIdProps } from '../../../utils';
 
 @Component({
@@ -6,7 +7,7 @@ import { hasSlot, initIdProps } from '../../../utils';
   styleUrl: 'go-field.scss',
   shadow: false,
 })
-export class GoField {
+export class GoField implements FormFieldProps {
   @Element() el: HTMLElement;
 
   @Prop() idPrefix: string;

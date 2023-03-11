@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem, SelectOption } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType, SelectOption } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -246,20 +246,38 @@ export namespace Components {
     }
     interface GoCheckbox {
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
         "error"?: string;
         /**
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
         "hint"?: string;
         /**
           * DOM id for hint message
          */
         "hintId"?: string;
         "indeterminate"?: boolean;
+        /**
+          * Label of the input field
+         */
         "label": string;
+        /**
+          * Name of the input field
+         */
         "name": string;
+        /**
+          * Value of the input field
+         */
         "value": any;
     }
     interface GoChip {
@@ -564,6 +582,58 @@ export namespace Components {
         "size"?: string;
     }
     interface GoInput {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
+         */
+        "type"?: InputType;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;
@@ -746,17 +816,57 @@ export namespace Components {
     }
     interface GoSelect {
         /**
-          * String label
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: string | boolean;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
          */
         "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
         /**
           * Array of label/value options
          */
         "options": SelectOption[] | string;
         /**
-          * Value of this control
+          * DOM id for prefix
          */
-        "value": string;
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
     }
     interface GoSkipLink {
         /**
@@ -800,6 +910,9 @@ export namespace Components {
          */
         "activeLabel": string;
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
         /**
           * make this field full width
@@ -809,7 +922,13 @@ export namespace Components {
           * "off" label to show when `showOnOff*` is set to true
          */
         "inactiveLabel": string;
+        /**
+          * Label of the input field
+         */
         "label": string;
+        /**
+          * Name of the input field
+         */
         "name": string;
         /**
           * show on/off text in switch toggle
@@ -823,6 +942,9 @@ export namespace Components {
           * Display label on top of switch
          */
         "stack": boolean;
+        /**
+          * Value of the input field
+         */
         "value": any;
     }
     interface GoTab {
@@ -1536,20 +1658,38 @@ declare namespace LocalJSX {
     }
     interface GoCheckbox {
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
         "error"?: string;
         /**
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
         "hint"?: string;
         /**
           * DOM id for hint message
          */
         "hintId"?: string;
         "indeterminate"?: boolean;
+        /**
+          * Label of the input field
+         */
         "label"?: string;
+        /**
+          * Name of the input field
+         */
         "name"?: string;
+        /**
+          * Value of the input field
+         */
         "value"?: any;
     }
     interface GoChip {
@@ -1850,6 +1990,58 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface GoInput {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
+         */
+        "type"?: InputType;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
     }
     interface GoLink {
         "expandClickableArea"?: boolean;
@@ -2039,9 +2231,37 @@ declare namespace LocalJSX {
     }
     interface GoSelect {
         /**
-          * String label
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: string | boolean;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
          */
         "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
         /**
           * Emit a custom select event on value change
          */
@@ -2051,7 +2271,19 @@ declare namespace LocalJSX {
          */
         "options"?: SelectOption[] | string;
         /**
-          * Value of this control
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
          */
         "value"?: string;
     }
@@ -2097,6 +2329,9 @@ declare namespace LocalJSX {
          */
         "activeLabel"?: string;
         "checked"?: boolean;
+        /**
+          * If the input is disabled
+         */
         "disabled"?: boolean;
         /**
           * make this field full width
@@ -2106,7 +2341,13 @@ declare namespace LocalJSX {
           * "off" label to show when `showOnOff*` is set to true
          */
         "inactiveLabel"?: string;
+        /**
+          * Label of the input field
+         */
         "label"?: string;
+        /**
+          * Name of the input field
+         */
         "name"?: string;
         /**
           * show on/off text in switch toggle
@@ -2120,6 +2361,9 @@ declare namespace LocalJSX {
           * Display label on top of switch
          */
         "stack"?: boolean;
+        /**
+          * Value of the input field
+         */
         "value"?: any;
     }
     interface GoTab {

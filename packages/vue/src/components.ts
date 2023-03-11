@@ -24,6 +24,7 @@ import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/compon
 import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
 import { defineCustomElement as defineGoDropdownMenu } from '@go-ui/core/dist/components/go-dropdown-menu.js';
 import { defineCustomElement as defineGoDropdownSeparator } from '@go-ui/core/dist/components/go-dropdown-separator.js';
+import { defineCustomElement as defineGoField } from '@go-ui/core/dist/components/go-field.js';
 import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
@@ -41,6 +42,7 @@ import { defineCustomElement as defineGoOverlay } from '@go-ui/core/dist/compone
 import { defineCustomElement as defineGoProgress } from '@go-ui/core/dist/components/go-progress.js';
 import { defineCustomElement as defineGoRadio } from '@go-ui/core/dist/components/go-radio.js';
 import { defineCustomElement as defineGoSearchBar } from '@go-ui/core/dist/components/go-search-bar.js';
+import { defineCustomElement as defineGoSelect } from '@go-ui/core/dist/components/go-select.js';
 import { defineCustomElement as defineGoSkipLink } from '@go-ui/core/dist/components/go-skip-link.js';
 import { defineCustomElement as defineGoSpinner } from '@go-ui/core/dist/components/go-spinner.js';
 import { defineCustomElement as defineGoSwitch } from '@go-ui/core/dist/components/go-switch.js';
@@ -200,6 +202,7 @@ export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-drop
   'isActive',
   'width',
   'noTriggerClickHandler',
+  'fullWidth',
   'opened',
   'closed'
 ]);
@@ -222,6 +225,24 @@ export const GoDropdownMenu = /*@__PURE__*/ defineContainer<JSX.GoDropdownMenu>(
 
 
 export const GoDropdownSeparator = /*@__PURE__*/ defineContainer<JSX.GoDropdownSeparator>('go-dropdown-separator', defineGoDropdownSeparator);
+
+
+export const GoField = /*@__PURE__*/ defineContainer<JSX.GoField>('go-field', defineGoField, [
+  'idPrefix',
+  'controlId',
+  'labelId',
+  'prefixId',
+  'suffixId',
+  'hintId',
+  'errorId',
+  'name',
+  'label',
+  'disabled',
+  'hint',
+  'error',
+  'readonly',
+  'controlElSelector'
+]);
 
 
 export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fieldset', defineGoFieldset, [
@@ -276,6 +297,7 @@ export const GoIcon = /*@__PURE__*/ defineContainer<JSX.GoIcon>('go-icon', defin
 
 
 export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput>('go-input', defineGoInput, [
+  'type',
   'labelId',
   'prefixId',
   'suffixId',
@@ -284,11 +306,10 @@ export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput>('go-input', de
   'name',
   'label',
   'disabled',
-  'value',
   'hint',
   'error',
   'readonly',
-  'type'
+  'value'
 ]);
 
 
@@ -381,6 +402,24 @@ export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio>('go-radio', de
 
 
 export const GoSearchBar = /*@__PURE__*/ defineContainer<JSX.GoSearchBar>('go-search-bar', defineGoSearchBar);
+
+
+export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect>('go-select', defineGoSelect, [
+  'name',
+  'label',
+  'labelId',
+  'prefixId',
+  'suffixId',
+  'hintId',
+  'errorId',
+  'disabled',
+  'hint',
+  'error',
+  'readonly',
+  'value',
+  'options',
+  'goChange'
+]);
 
 
 export const GoSkipLink = /*@__PURE__*/ defineContainer<JSX.GoSkipLink>('go-skip-link', defineGoSkipLink, [

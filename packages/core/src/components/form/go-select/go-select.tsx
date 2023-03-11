@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
-import { SelectOption } from '../../../interfaces';
+import { SelectOption, SelectProps } from '../../../interfaces';
 import { inheritComponentAttrs, hasSlot, parseItems } from '../../../utils';
 import { getActionFromKey, getIndexByLetter, getUpdatedIndex, isScrollable, maintainScrollVisibility, MenuActions } from '../../../utils/select';
 import { uniqueId } from 'lodash-es';
@@ -9,23 +9,27 @@ import { uniqueId } from 'lodash-es';
   styleUrl: 'go-select.scss',
   shadow: false,
 })
-export class GoSelect {
-  @Element() el: HTMLElement;
-
-  /**
-   * String label
-   */
+export class GoSelect implements SelectProps {
+  @Prop() name: string;
   @Prop() label: string;
+  @Prop() labelId?: string;
+  @Prop() prefixId?: string;
+  @Prop() suffixId?: string;
+  @Prop() hintId?: string;
+  @Prop() errorId?: string;
+  @Prop() disabled?: boolean;
+  @Prop() hint?: string;
+  @Prop() error?: string | boolean;
+  @Prop() readonly?: boolean;
+  @Prop() value?: string;
+
+  @Element() el: HTMLElement;
 
   /**
    * Array of label/value options
    */
   @Prop() options: SelectOption[] | string;
 
-  /**
-   * Value of this control
-   */
-  @Prop() value: string;
   /**
    * parsed options array
    */
@@ -115,7 +119,7 @@ export class GoSelect {
   }
 
   render() {
-    const { parsedOptions, activeIndex, htmlId, label = '', open = false, value } = this;
+    const { parsedOptions, activeIndex, htmlId, label = '', open = false, value, ...props } = this;
 
     const activeId = open ? `${htmlId}-${activeIndex}` : '';
 
@@ -125,7 +129,7 @@ export class GoSelect {
       disabled,
       readonly,
       type,
-      ...field
+      ...attrs
     } = this.attrs;
     const controlAttrs = {
       id: htmlId,
@@ -137,7 +141,7 @@ export class GoSelect {
     };
     return [
       <input type="hidden" name={name} value={value} />,
-      <go-field controlId={htmlId} readonly={readonly} disabled={disabled} label={label} {...field}>
+      <go-field controlId={htmlId} readonly={readonly} disabled={disabled} label={label} {...props} {...attrs}>
         {this.passSlots.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (
