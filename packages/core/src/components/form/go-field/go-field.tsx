@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, Watch, State } from '@stencil/core';
 import { FormFieldProps } from '../../../interfaces';
-import { hasSlot, initIdProps } from '../../../utils';
+import { hasSlot, initIdProps, warning } from '../../../utils';
 
 @Component({
   tag: 'go-field',
@@ -105,6 +105,10 @@ export class GoField implements FormFieldProps {
   updateAria() {
     if (!this.controlEl) {
       this.controlEl = this.el.querySelector(this.controlElSelector);
+      if (!this.controlEl) {
+        warning(`Cannot find field control based on selector ${this.controlElSelector}. Make sure the element exists in the DOM`);
+        return;
+      }
     }
 
     const { hasPrefix, hasSuffix, prefixId, suffixId, labelId, hasHintSlot, hint, hintId, hasError, errorId } = this;
