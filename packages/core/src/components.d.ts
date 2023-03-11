@@ -753,6 +753,10 @@ export namespace Components {
           * Array of label/value options
          */
         "options": SelectOption[] | string;
+        /**
+          * Value of this control
+         */
+        "value": string;
     }
     interface GoSkipLink {
         /**
@@ -2046,6 +2050,10 @@ declare namespace LocalJSX {
           * Array of label/value options
          */
         "options"?: SelectOption[] | string;
+        /**
+          * Value of this control
+         */
+        "value"?: string;
     }
     interface GoSkipLink {
         /**

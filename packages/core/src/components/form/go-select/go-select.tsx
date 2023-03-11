@@ -21,6 +21,11 @@ export class GoSelect {
    * Array of label/value options
    */
   @Prop() options: SelectOption[] | string;
+
+  /**
+   * Value of this control
+   */
+  @Prop() value: string;
   /**
    * parsed options array
    */
@@ -33,11 +38,18 @@ export class GoSelect {
   passSlots = ['icon-before', 'icon-after', 'prefix', 'suffix', 'hint'];
   hasNamedSlot: { [key: string]: boolean } = {};
 
-  componentWillLoad() {
+  async componentWillLoad() {
     this.attrs = inheritComponentAttrs(this);
     this.passSlots.forEach((slotName) => {
       this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
     });
+    await this.loadOptions();
+    if (this.value) {
+      this.loadValue();
+    }
+  }
+
+  async loadOptions() {
     const options = parseItems(this.options);
     if (options) {
       this.parsedOptions = options.map((option) => {
@@ -50,6 +62,11 @@ export class GoSelect {
         return option;
       });
     }
+  }
+
+  loadValue() {
+    this.activeIndex = this.parsedOptions.findIndex((option) => option.value === this.value);
+    this.selectOption(this.activeIndex);
   }
 
   /**
@@ -74,7 +91,7 @@ export class GoSelect {
   @State() selectedIndex: number;
 
   // input value
-  @State() value = '';
+  @State() selectedLabel = '';
 
   // save reference to active option
   private activeOptionRef: HTMLElement;
@@ -118,7 +135,8 @@ export class GoSelect {
       disabled: typeof disabled !== 'undefined',
       readonly,
     };
-    return (
+    return [
+      <input type="hidden" name={name} value={value} />,
       <go-field controlId={htmlId} readonly={readonly} disabled={disabled} label={label} {...field}>
         {this.passSlots.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
@@ -197,8 +215,8 @@ export class GoSelect {
               })}
           </go-dropdown>
         </div>
-      </go-field>
-    );
+      </go-field>,
+    ];
   }
 
   private getSearchString(char: string) {
@@ -291,13 +309,13 @@ export class GoSelect {
       return;
     }
     const selected = this.parsedOptions[index];
-    this.value = selected.label;
+    console.log('set option', selected);
+    this.selectedLabel = selected.label;
     this.selectedIndex = index;
     this.goChange.emit(selected);
   }
 
   private updateMenuState(open: boolean, callFocus = true) {
-    console.log({ open });
     this.open = open;
     if (callFocus) {
       this.inputRef.focus();

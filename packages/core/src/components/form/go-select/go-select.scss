@@ -3,9 +3,13 @@
 go-select {
   @include dropdown-item-vars;
   --dropdown-width: 100%;
+
   .combo {
     width: 100%;
     position: relative;
+  }
+  .control-icon {
+    z-index: 1;
   }
   .control {
     cursor: pointer;
@@ -23,6 +27,7 @@ go-select {
   go-dropdown {
     max-height: 20rem;
     overflow: auto;
+    z-index: 9;
   }
 
   .combo-option {

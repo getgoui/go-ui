@@ -1,11 +1,13 @@
 //--------------mixins for dropdown item--------------//
 @mixin dropdown-item-vars {
+  --dd-item-padding-y: 0.5rem;
+  --dd-item-padding-x: 1rem;
   /**
     @prop --dd-item-padding:
       Padding for dropdown item
       - default: 0.5rem 1rem
   */
-  --dd-item-padding: 0.5rem 1rem;
+  --dd-item-padding: var(--dd-item-padding-y) var(--dd-item-padding-x);
 
   /**
     @prop --dd-item-radius:
@@ -75,6 +77,13 @@
       - default: 100%
   */
   --dd-item-width: 100%;
+
+  /**
+    @prop --dd-item-line-height:
+      line height of item
+      - default: 1.5em
+  */
+  --dd-item-line-height: 1.5em;
 }
 @mixin dropdown-item {
   @include reset-btn;
@@ -84,6 +93,8 @@
   background: var(--dd-item-bg);
   color: var(--dd-item-fg);
   width: var(--dd-item-width);
+  line-height: var(--dd-item-line-height);
+  min-height: calc(2 * var(--dd-item-padding-y) + var(--dd-item-line-height));
   text-align: start;
   &:hover {
     @include item-hover-state;
