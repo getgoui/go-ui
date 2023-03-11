@@ -1,3 +1,8 @@
+/**
+ * This file is based on the good work of @smhigley:
+ * https://github.com/microsoft/sonder-ui/blob/master/src/components/select/select.tsx
+ */
+
 import { SelectOption } from '../interfaces';
 
 export enum Keys {
@@ -30,6 +35,38 @@ export enum MenuActions {
   Select,
   Space,
   Type,
+}
+
+export enum TreeActions {
+  Close,
+  First,
+  Last,
+  Next,
+  Open,
+  Previous,
+  Select,
+  UpLevel,
+}
+
+// filter an array of options against an input string
+// returns an array of options that begin with the filter string, case-independent
+export function filterOptions(options: SelectOption[] = [], filter: string, exclude: SelectOption[] = []): SelectOption[] {
+  let filterString = filter.toLowerCase().trim();
+  return options.filter((option) => {
+    const matches = option.label.toLowerCase().indexOf(filterString) === 0;
+    return matches && exclude.indexOf(option) < 0;
+  });
+}
+
+// return an array of exact option name matches from a comma-separated string
+export function findMatches(options: SelectOption[], search: string): SelectOption[] {
+  const labels = search.split(',');
+  return labels
+    .map((label) => {
+      const match = options.filter((option) => label.trim().toLowerCase() === option.label.toLowerCase());
+      return match.length > 0 ? match[0] : null;
+    })
+    .filter((option) => option !== null);
 }
 
 // return combobox action from key press
@@ -113,12 +150,28 @@ export function getUpdatedIndex(current: number, max: number, action: MenuAction
   }
 }
 
-// filter an array of options against an input string
-// returns an array of options that begin with the filter string, case-independent
-export function filterOptions(options: SelectOption[] = [], filter: string, exclude: SelectOption[] = []): SelectOption[] {
-  let filterString = filter.toLowerCase().trim();
-  return options.filter((option) => {
-    const matches = option.label.toLowerCase().indexOf(filterString) === 0;
-    return matches && exclude.indexOf(option) < 0;
-  });
+// check if an element is currently scrollable
+export function isScrollable(element: HTMLElement): boolean {
+  return element && element.clientHeight < element.scrollHeight;
+}
+
+// ensure given child element is within the parent's visible scroll area
+export function maintainScrollVisibility(activeElement: HTMLElement, scrollParent: HTMLElement) {
+  const { offsetHeight, offsetTop } = activeElement;
+  const { offsetHeight: parentOffsetHeight, scrollTop } = scrollParent;
+
+  const isAbove = offsetTop < scrollTop;
+  const isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
+
+  if (isAbove) {
+    scrollParent.scrollTo(0, offsetTop);
+  } else if (isBelow) {
+    scrollParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
+  }
+}
+
+// generate unique ID, the quick 'n dirty way
+let idIndex = 0;
+export function uniqueId() {
+  return `sui-${++idIndex}`;
 }

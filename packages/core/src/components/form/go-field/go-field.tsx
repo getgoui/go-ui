@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Prop, Watch, State } from '@stencil/core';
-import { hasSlot, initIdProps } from '../../utils';
+import { hasSlot, initIdProps } from '../../../utils';
 
 @Component({
   tag: 'go-field',

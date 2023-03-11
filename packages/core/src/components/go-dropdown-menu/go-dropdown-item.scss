@@ -1,91 +1,15 @@
+@import '../../global/scss/dropdown/mixins';
+
 go-dropdown-item {
-  /**
-    @prop --dd-item-padding:
-      Padding for dropdown item
-      - default: 0.5rem 1rem
-  */
-  --dd-item-padding: 0.5rem 1rem;
-
-  /**
-    @prop --dd-item-radius:
-      Border radius for dropdown item
-      - default: var(--radius-1)
-  */
-  --dd-item-radius: var(--radius-1);
-
-  /**
-    @prop --dd-item-bg:
-      Background of dropdown item
-      - default: var(--dropdown-bg-color)
-  */
-  --dd-item-bg: var(--dropdown-bg-color);
-
-  /**
-    @prop --dd-item-bg-hover:
-      Hover background for dropdown item
-      - default: var(--go-color-neutral-200)
-  */
-  --dd-item-bg-hover: var(--go-color-neutral-200);
-
-  /**
-    @prop --dd-item-fg:
-      Foreground of dropdown item
-      - default: var(--go-color-neutral-900)
-  */
-  --dd-item-fg: var(--go-color-neutral-900);
-
-  /**
-    @prop --dd-item-fg-hover:
-      Hover foreground of dropdown item
-      - default: var(--go-color-darkest)
-  */
-  --dd-item-fg-hover: var(--go-color-darkest);
-
-  /**
-    @prop --dd-item-bg-disabled:
-      Disabled background color
-      - default: transparent
-  */
-  --dd-item-bg-disabled: transparent;
-
-  /**
-    @prop --dd-item-fg-disabled:
-      Disabled foreground color
-      - default: var(--go-color-neutral-600)
-  */
-  --dd-item-fg-disabled: var(--go-color-neutral-600);
-
-  /**
-    @prop --dd-item-width:
-      Width of dropdown item
-      - default: 100%
-  */
-  --dd-item-width: 100%;
+  @include dropdown-item-vars;
 
   [role='menuitem'] {
-    @include reset-btn;
-    display: block;
-    padding: var(--dd-item-padding);
-    border-radius: var(--dd-item-radius);
-    background: var(--dd-item-bg);
-    color: var(--dd-item-fg);
-    width: var(--dd-item-width);
-    text-align: start;
-    &:hover {
-      background: var(--dd-item-bg-hover);
-      color: var(--dd-item-fg-hover);
-    }
-    &:focus-visible {
-      position: relative;
-      z-index: 1;
-      @include focus-outline(false);
-    }
+    @include dropdown-item;
   }
 
   &[disabled] {
     [role='menuitem'] {
-      background: var(--dd-item-bg-disabled);
-      color: var(--dd-item-fg-disabled);
+      @include item-disabled-state;
     }
   }
 }

@@ -37,19 +37,20 @@
 
 
 <go-select label="Select">
-  <option value="1">Apple</option>
-  <option value="2">Banana</option>
+  <go-option value="1">Apple</go-option>
+  <go-option value="2">Banana</go-option>
 </go-select>
 
 <go-select label="Suffix slot" options="['Option 1', 'Option 2']">
+  <div slot="suffix">.com.au</div>
+
+  <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+  <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
 </go-select>
 
 
-  <go-select  label="Prefix slot">
-    <option value="1">Apple</option>
-    <option value="2">Banana</option>
+  <go-select label="Prefix slot" options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
     <div slot="prefix">https://go-ui.com/</div>
-
     <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
     <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
   </go-select>

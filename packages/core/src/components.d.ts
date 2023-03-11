@@ -322,6 +322,10 @@ export namespace Components {
           * closes dropdown
          */
         "close": (focusBackToTrigger?: boolean) => Promise<void>;
+        /**
+          * If set, dropdown will take full width of its parent.
+         */
+        "fullWidth"?: boolean;
         "init": () => Promise<void>;
         /**
           * keep track of active state
@@ -741,6 +745,13 @@ export namespace Components {
         "openSearchForm": () => Promise<void>;
     }
     interface GoSelect {
+        /**
+          * String label
+         */
+        "label": string;
+        /**
+          * Array of label/value options
+         */
         "options": SelectOption[] | string;
     }
     interface GoSkipLink {
@@ -944,6 +955,10 @@ export interface GoNavLinkCustomEvent<T> extends CustomEvent<T> {
 export interface GoOverlayCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoOverlayElement;
+}
+export interface GoSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoSelectElement;
 }
 export interface GoTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1595,6 +1610,10 @@ declare namespace LocalJSX {
     }
     interface GoDropdown {
         /**
+          * If set, dropdown will take full width of its parent.
+         */
+        "fullWidth"?: boolean;
+        /**
           * keep track of active state
          */
         "isActive"?: boolean;
@@ -2015,6 +2034,17 @@ declare namespace LocalJSX {
     interface GoSearchBar {
     }
     interface GoSelect {
+        /**
+          * String label
+         */
+        "label"?: string;
+        /**
+          * Emit a custom select event on value change
+         */
+        "onGoChange"?: (event: GoSelectCustomEvent<any>) => void;
+        /**
+          * Array of label/value options
+         */
         "options"?: SelectOption[] | string;
     }
     interface GoSkipLink {

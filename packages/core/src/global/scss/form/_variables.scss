@@ -2,9 +2,9 @@
   /**
     @prop --input-bg:
       Background of form field
-      - default: var(--go-color-neutral-100)
+      - default: var(--go-color-lightest)
   */
-  --input-bg: var(--go-color-neutral-100);
+  --input-bg: var(--go-color-lightest);
 
   /**
     @prop --input-fg:

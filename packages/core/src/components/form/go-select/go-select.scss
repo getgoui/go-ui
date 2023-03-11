@@ -1,0 +1,41 @@
+@import '../../../global/scss/dropdown/mixins';
+
+go-select {
+  @include dropdown-item-vars;
+  --dropdown-width: 100%;
+  .combo {
+    width: 100%;
+    position: relative;
+  }
+  .control {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .arrow {
+      height: 1.5em;
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  go-dropdown {
+    max-height: 20rem;
+    overflow: auto;
+  }
+
+  .combo-option {
+    @include dropdown-item;
+
+    &[aria-selected] {
+      @include item-selected-state;
+    }
+  }
+
+  &[disabled] {
+    .combo-option {
+      @include item-disabled-state;
+    }
+  }
+}
