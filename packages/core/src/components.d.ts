@@ -852,10 +852,6 @@ export namespace Components {
          */
         "options": SelectOption[] | string;
         /**
-          * DOM id for prefix
-         */
-        "prefixId"?: string;
-        /**
           * If this input is read-only
          */
         "readonly"?: boolean;
@@ -989,6 +985,56 @@ export namespace Components {
           * Set tabs orientation to vertical
          */
         "vertical": boolean;
+    }
+    interface GoTextarea {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
     }
     interface GoToTop {
         /**
@@ -1355,6 +1401,12 @@ declare global {
         prototype: HTMLGoTabsElement;
         new (): HTMLGoTabsElement;
     };
+    interface HTMLGoTextareaElement extends Components.GoTextarea, HTMLStencilElement {
+    }
+    var HTMLGoTextareaElement: {
+        prototype: HTMLGoTextareaElement;
+        new (): HTMLGoTextareaElement;
+    };
     interface HTMLGoToTopElement extends Components.GoToTop, HTMLStencilElement {
     }
     var HTMLGoToTopElement: {
@@ -1418,6 +1470,7 @@ declare global {
         "go-tab": HTMLGoTabElement;
         "go-table-wrapper": HTMLGoTableWrapperElement;
         "go-tabs": HTMLGoTabsElement;
+        "go-textarea": HTMLGoTextareaElement;
         "go-to-top": HTMLGoToTopElement;
         "go-toc": HTMLGoTocElement;
         "go-tooltip": HTMLGoTooltipElement;
@@ -2271,10 +2324,6 @@ declare namespace LocalJSX {
          */
         "options"?: SelectOption[] | string;
         /**
-          * DOM id for prefix
-         */
-        "prefixId"?: string;
-        /**
           * If this input is read-only
          */
         "readonly"?: boolean;
@@ -2414,6 +2463,56 @@ declare namespace LocalJSX {
          */
         "vertical"?: boolean;
     }
+    interface GoTextarea {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: boolean | string;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
+    }
     interface GoToTop {
         /**
           * how far from the top of the page the button should be shown (in px)
@@ -2497,6 +2596,7 @@ declare namespace LocalJSX {
         "go-tab": GoTab;
         "go-table-wrapper": GoTableWrapper;
         "go-tabs": GoTabs;
+        "go-textarea": GoTextarea;
         "go-to-top": GoToTop;
         "go-toc": GoToc;
         "go-tooltip": GoTooltip;
@@ -2550,6 +2650,7 @@ declare module "@stencil/core" {
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
             "go-table-wrapper": LocalJSX.GoTableWrapper & JSXBase.HTMLAttributes<HTMLGoTableWrapperElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
+            "go-textarea": LocalJSX.GoTextarea & JSXBase.HTMLAttributes<HTMLGoTextareaElement>;
             "go-to-top": LocalJSX.GoToTop & JSXBase.HTMLAttributes<HTMLGoToTopElement>;
             "go-toc": LocalJSX.GoToc & JSXBase.HTMLAttributes<HTMLGoTocElement>;
             "go-tooltip": LocalJSX.GoTooltip & JSXBase.HTMLAttributes<HTMLGoTooltipElement>;

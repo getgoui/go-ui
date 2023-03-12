@@ -169,9 +169,3 @@ export function maintainScrollVisibility(activeElement: HTMLElement, scrollParen
     scrollParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
   }
 }
-
-// generate unique ID, the quick 'n dirty way
-let idIndex = 0;
-export function uniqueId() {
-  return `sui-${++idIndex}`;
-}

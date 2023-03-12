@@ -1,21 +1,15 @@
 import { Component, h, Element, Prop } from '@stencil/core';
-import { InputProps, InputType } from '../../../interfaces';
+import { TextareaProps } from '../../../interfaces';
 import { hasSlot, inheritComponentAttrs } from '../../../utils/helper';
 import { uniqueId } from 'lodash-es';
 import { fieldSlotNames } from '../../../utils';
 @Component({
-  tag: 'go-input',
+  tag: 'go-textarea',
+  styleUrl: 'go-textarea.scss',
   shadow: false,
 })
-export class GoInput implements InputProps {
+export class GoTextarea implements TextareaProps {
   @Element() el: HTMLElement;
-  /**
-   * Type of this input field
-   * `go-input` support only the types that is considered "single-line of text"
-   * For other types, check other form components.
-   */
-  @Prop() type?: InputType = 'text';
-
   /**
    * DOM id for label
    */
@@ -72,12 +66,13 @@ export class GoInput implements InputProps {
    */
   @Prop() value?: string;
 
-  prefix = 'go-input-';
+  prefix = 'go-textarea-';
   attrs: any;
   hasNamedSlot: { [key: string]: boolean } = {};
   id = uniqueId(this.prefix);
+
   componentWillLoad() {
-    this.attrs = inheritComponentAttrs(this, ['value', 'error']);
+    this.attrs = inheritComponentAttrs(this, ['value', 'error']); // ignore dynamic/changeable props
     fieldSlotNames.forEach((slotName) => {
       this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
     });
@@ -85,6 +80,7 @@ export class GoInput implements InputProps {
 
   render() {
     const { prefix, value, id, error, attrs } = this;
+
     return (
       <go-field controlId={id} idPrefix={prefix} error={error} {...attrs}>
         {fieldSlotNames.map((slotName) => {
@@ -96,7 +92,10 @@ export class GoInput implements InputProps {
             );
           }
         })}
-        <input class="control" id={id} {...attrs} value={value} />
+
+        <textarea id={id} class="control" rows={5} {...attrs}>
+          {value}
+        </textarea>
       </go-field>
     );
   }
