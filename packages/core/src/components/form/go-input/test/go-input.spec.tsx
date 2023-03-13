@@ -10,7 +10,7 @@ describe('go-input', () => {
   });
   it('passes through attributes to native control', async () => {
     const attrs = {
-      disabled: '',
+      disabled: 'true',
       max: '123',
       maxlength: '10',
       min: '0',
@@ -18,8 +18,8 @@ describe('go-input', () => {
       name: 'test',
       pattern: 'test',
       placeholder: 'test',
-      readonly: '',
-      required: 'required',
+      readonly: 'true',
+      required: 'true',
       size: '20px',
       step: '1',
       value: '123',
@@ -35,7 +35,7 @@ describe('go-input', () => {
     const nativeControl = page.root.querySelector('input');
     const keys = Object.keys(attrs);
     keys.forEach((key) => {
-      if (key === 'required') {
+      if (key === 'required' || key === 'disabled') {
         expect(nativeControl).toEqualAttribute(key, '');
         return;
       }
