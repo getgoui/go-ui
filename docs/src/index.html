@@ -8,6 +8,14 @@
     <meta name="theme-color" content="#16161d" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+
+    <style>
+      /* prevent FOUC */
+      *:not(:defined):not(slot-fb) {
+        visibility: hidden;
+      }
+    </style>
+
     <link rel="stylesheet" href="/build/app.css" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />

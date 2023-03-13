@@ -49,6 +49,7 @@ import { defineCustomElement as defineGoSwitch } from '@go-ui/core/dist/componen
 import { defineCustomElement as defineGoTab } from '@go-ui/core/dist/components/go-tab.js';
 import { defineCustomElement as defineGoTableWrapper } from '@go-ui/core/dist/components/go-table-wrapper.js';
 import { defineCustomElement as defineGoTabs } from '@go-ui/core/dist/components/go-tabs.js';
+import { defineCustomElement as defineGoTextarea } from '@go-ui/core/dist/components/go-textarea.js';
 import { defineCustomElement as defineGoToTop } from '@go-ui/core/dist/components/go-to-top.js';
 import { defineCustomElement as defineGoToc } from '@go-ui/core/dist/components/go-toc.js';
 import { defineCustomElement as defineGoTooltip } from '@go-ui/core/dist/components/go-tooltip.js';
@@ -97,6 +98,7 @@ export const GoSwitch = /*@__PURE__*/createReactComponent<JSX.GoSwitch, HTMLGoSw
 export const GoTab = /*@__PURE__*/createReactComponent<JSX.GoTab, HTMLGoTabElement>('go-tab', undefined, undefined, defineGoTab);
 export const GoTableWrapper = /*@__PURE__*/createReactComponent<JSX.GoTableWrapper, HTMLGoTableWrapperElement>('go-table-wrapper', undefined, undefined, defineGoTableWrapper);
 export const GoTabs = /*@__PURE__*/createReactComponent<JSX.GoTabs, HTMLGoTabsElement>('go-tabs', undefined, undefined, defineGoTabs);
+export const GoTextarea = /*@__PURE__*/createReactComponent<JSX.GoTextarea, HTMLGoTextareaElement>('go-textarea', undefined, undefined, defineGoTextarea);
 export const GoToTop = /*@__PURE__*/createReactComponent<JSX.GoToTop, HTMLGoToTopElement>('go-to-top', undefined, undefined, defineGoToTop);
 export const GoToc = /*@__PURE__*/createReactComponent<JSX.GoToc, HTMLGoTocElement>('go-toc', undefined, undefined, defineGoToc);
 export const GoTooltip = /*@__PURE__*/createReactComponent<JSX.GoTooltip, HTMLGoTooltipElement>('go-tooltip', undefined, undefined, defineGoTooltip);
