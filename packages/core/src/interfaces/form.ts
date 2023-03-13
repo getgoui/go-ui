@@ -70,6 +70,10 @@ export interface SelectProps extends FormFieldProps {
   options: SelectOption[] | string;
 }
 
+export interface TextareaProps extends FormFieldProps {
+  maxLength?: number;
+}
+
 export interface SelectOption {
   value: string;
   label: string;

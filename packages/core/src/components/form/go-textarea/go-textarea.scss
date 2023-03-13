@@ -1,0 +1,19 @@
+@import '../../../global/scss/form/variables';
+@import '../../../global/scss/form/mixins';
+go-textarea {
+  display: block;
+
+  textarea {
+    overflow: auto;
+    resize: vertical;
+    &:disabled,
+    &:read-only {
+      resize: none;
+    }
+  }
+  .textarea-count {
+    @include hint;
+    margin-top: var(--input-gap-inner);
+    margin-bottom: 0;
+  }
+}

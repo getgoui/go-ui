@@ -77,7 +77,7 @@ export class GoField implements FormFieldProps {
 
   @Watch('error')
   updateErrorState() {
-    this.hasError = typeof this.error !== 'undefined';
+    this.hasError = !!this.error;
   }
 
   hasIconBefore: boolean;
@@ -85,6 +85,7 @@ export class GoField implements FormFieldProps {
   hasPrefix: boolean;
   hasSuffix: boolean;
   hasHintSlot: boolean;
+  hasPostControlSlot: boolean;
 
   componentWillLoad() {
     this.hasIconBefore = hasSlot(this.el, 'icon-before');
@@ -92,6 +93,7 @@ export class GoField implements FormFieldProps {
     this.hasPrefix = hasSlot(this.el, 'prefix');
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
+    this.hasPostControlSlot = hasSlot(this.el, 'post-control');
     initIdProps(this, this.el, ['label', 'prefix', 'suffix', 'hint', 'error'], this.idPrefix);
     this.updateErrorState();
   }
@@ -99,10 +101,13 @@ export class GoField implements FormFieldProps {
   @Prop() controlElSelector = '.control';
   controlEl: HTMLElement;
   componentDidLoad() {
-    this.updateAria();
+    this.updateAttributes();
+  }
+  componentDidUpdate() {
+    this.updateAttributes();
   }
 
-  updateAria() {
+  updateAttributes() {
     if (!this.controlEl) {
       this.controlEl = this.el.querySelector(this.controlElSelector);
       if (!this.controlEl) {
@@ -129,7 +134,13 @@ export class GoField implements FormFieldProps {
     if (hasError) {
       describedByIds.push(errorId);
     }
-    this.controlEl.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    if (this.disabled) {
+      this.controlEl.setAttribute('disabled', 'true');
+      this.controlEl.setAttribute('aria-disabled', 'true');
+    } else {
+      this.controlEl.removeAttribute('disabled');
+      this.controlEl.removeAttribute('aria-disabled');
+    }
     this.controlEl.setAttribute('aria-labelledby', labelledByIds.join(' '));
     this.controlEl.setAttribute('aria-describedby', describedByIds.join(' '));
   }

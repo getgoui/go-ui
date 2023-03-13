@@ -83,6 +83,10 @@ export class GoDropdown {
 
   private triggerEl: HTMLElement;
 
+  // reference to clean up function to autoupdate
+  // see https://floating-ui.com/docs/autoupdate
+  private cleanupAutoUpdate: () => void;
+
   componentWillLoad() {
     // if id attribute is not provided, generate a unique id for the dropdown
     if (!this.el.id) {
@@ -130,6 +134,9 @@ export class GoDropdown {
     if (this.clickOutHandler) {
       removeClickOutsideListener(this.clickOutHandler);
     }
+    if (this.cleanupAutoUpdate) {
+      this.cleanupAutoUpdate();
+    }
   }
 
   @Method()
@@ -152,11 +159,12 @@ export class GoDropdown {
      * Calculate position of dropdown
      */
     const middleware = [offset(4), flip()];
-    autoUpdate(
+    this.cleanupAutoUpdate = autoUpdate(
       this.triggerEl,
       this.el,
       debounce(() => {
         computePosition(this.triggerEl, this.el, {
+          strategy: 'fixed',
           placement: 'bottom-start',
           middleware,
         }).then(({ x, y, middlewareData }) => {

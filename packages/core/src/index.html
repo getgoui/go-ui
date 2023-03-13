@@ -9,31 +9,102 @@
     <link rel="stylesheet" href="/build/go-ui.css" />
     <script type="module" src="/build/go-ui.esm.js"></script>
     <script nomodule src="/build/go-ui.js"></script>
-  </head>
-  <body>
     <style>
-      body {
-        padding-top: 20vh;
-      }
-      .frame {
-        border: 1px dashed var(--go-color-neutral-500);
-        min-height: 50vh;
+      *:not(:defined):not(slot-fb) {
+        visibility: hidden;
       }
     </style>
+  </head>
+  <body>
     <!-- keep this sandbox empty before pushing changes -->
     <main class="frame container">
       <!-- #region demo start -->
 
-      <style>
-        body {
-          display: grid;
-          place-items: start;
-          height: 100vh;
-        }
-      </style>
       <!-- keep this sandbox empty before pushing changes -->
 
       <!-- #region demo start -->
+      <go-accordion multiple>
+        <go-accordion-item heading="Input">
+          <go-input id="test" type="text" label="Input field" hint="Please enter some text"></go-input>
+          <go-input type="text" label="Error state" hint="Please enter some text" error="This is an error"></go-input>
+          <go-input type="text" label="Disabled state" value="I'm not editable" disabled></go-input>
+          <go-input type="text" label="Readonly state" value="I'm not editable" readonly></go-input>
+          <go-input type="text" label="Custom icon">
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-input>
+
+          <go-input type="text" label="Prefix slot">
+            <div slot="prefix">https://go-ui.com/</div>
+
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-input>
+          <go-input type="text" label="Suffix slot">
+            <div slot="suffix">.com.au</div>
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-input>
+        </go-accordion-item>
+
+        <go-accordion-item heading="Select">
+          <go-select name="select-1" label="Select" hint="This is a hint message" value="Banana" options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
+          </go-select>
+
+          <go-select name="select-2" label="Set options via script" id="js-options-select">
+          </go-select>
+          <script>
+            const select = document.querySelector('#js-options-select');
+            select.options = ['', 'Apple', 'Banana', 'Blueberry Boysenberry Cherry Durian Eggplant'];
+            select.addEventListener('goChange', ({detail}) => {
+              if(detail.value === ''){
+                select.error = 'Ahh'
+              }else {
+                select.error = false
+              }
+            })
+          </script>
+
+          <go-select name="select-4" label="Prefix slot" options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
+            <div slot="prefix">https://go-ui.com/</div>
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-select>
+          <go-select name="select-3" label="Suffix slot" options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
+            <div slot="suffix">.com.au</div>
+
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-select>
+
+        </go-accordion-item>
+
+        <go-accordion-item active heading="Textarea">
+          <go-textarea id="txt-1" auto-grow label="Textarea" hint="This is a textarea field" maxlength="1000"></go-textarea>
+          <go-textarea type="text" label="Error state" hint="Please enter some text" error="This is an error" maxlength="1000"></go-textarea>
+          <go-textarea type="text" label="Disabled state" value="I'm not editable" disabled></go-textarea>
+          <go-textarea type="text" label="Readonly state" value="I'm not editable" readonly></go-textarea>
+          <go-textarea type="text" label="Custom icon">
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-textarea>
+
+          <go-textarea type="text" label="Prefix slot">
+            <div slot="prefix">https://go-ui.com/</div>
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-textarea>
+          <go-textarea type="text" label="Suffix slot">
+            <div slot="suffix">.com.au</div>
+            <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
+            <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
+          </go-textarea>
+
+
+
+
+        </go-accordion-item>
+      </go-accordion>
 
       <!-- #endregion demo finish -->
     </div>

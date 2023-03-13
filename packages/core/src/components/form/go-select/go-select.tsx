@@ -1,6 +1,6 @@
-import { Component, h, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { SelectOption, SelectProps } from '../../../interfaces';
-import { inheritComponentAttrs, hasSlot, parseItems } from '../../../utils';
+import { inheritComponentAttrs, hasSlot, parseItems, fieldSlotNames } from '../../../utils';
 import { getActionFromKey, getIndexByLetter, getUpdatedIndex, isScrollable, maintainScrollVisibility, MenuActions } from '../../../utils/select';
 import { uniqueId } from 'lodash-es';
 
@@ -10,10 +10,11 @@ import { uniqueId } from 'lodash-es';
   shadow: false,
 })
 export class GoSelect implements SelectProps {
+  @Element() el: HTMLElement;
+
   @Prop() name: string;
   @Prop() label: string;
   @Prop() labelId?: string;
-  @Prop() prefixId?: string;
   @Prop() suffixId?: string;
   @Prop() hintId?: string;
   @Prop() errorId?: string;
@@ -22,8 +23,6 @@ export class GoSelect implements SelectProps {
   @Prop() error?: string | boolean;
   @Prop() readonly?: boolean;
   @Prop() value?: string;
-
-  @Element() el: HTMLElement;
 
   /**
    * Array of label/value options
@@ -39,21 +38,22 @@ export class GoSelect implements SelectProps {
    * common form control properties
    */
   attrs: any;
-  passSlots = ['icon-before', 'icon-after', 'prefix', 'suffix', 'hint'];
   hasNamedSlot: { [key: string]: boolean } = {};
+  prefix = 'go-select-';
 
   async componentWillLoad() {
-    this.attrs = inheritComponentAttrs(this);
-    this.passSlots.forEach((slotName) => {
+    this.attrs = inheritComponentAttrs(this, ['value', 'options', 'error', 'readonly']);
+    fieldSlotNames.forEach((slotName) => {
       this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
     });
-    await this.loadOptions();
+    this.loadOptions();
     if (this.value) {
       this.loadValue();
     }
   }
 
-  async loadOptions() {
+  @Watch('options')
+  loadOptions() {
     const options = parseItems(this.options);
     if (options) {
       this.parsedOptions = options.map((option) => {
@@ -68,6 +68,7 @@ export class GoSelect implements SelectProps {
     }
   }
 
+  @Watch('value')
   loadValue() {
     this.activeIndex = this.parsedOptions.findIndex((option) => option.value === this.value);
     this.selectOption(this.activeIndex);
@@ -97,6 +98,8 @@ export class GoSelect implements SelectProps {
   // input value
   @State() selectedLabel = '';
 
+  @State() dropdownWidth = 'auto';
+
   // save reference to active option
   private activeOptionRef: HTMLElement;
 
@@ -113,36 +116,35 @@ export class GoSelect implements SelectProps {
   private listboxRef: HTMLElement;
 
   componentDidUpdate() {
-    if (this.open && isScrollable(this.listboxRef) && this.activeOptionRef) {
-      maintainScrollVisibility(this.activeOptionRef, this.listboxRef);
+    if (this.open) {
+      // adjust dropdown size
+      // - we use fixed positioning strategy to make dropdown "break out" of the clipping containers, now we need to calculate dropdown width up opening
+      // see https://floating-ui.com/docs/computePosition#strategy
+      if (this.inputRef) {
+        this.dropdownWidth = `${this.inputRef.offsetWidth}px`;
+      }
+      if (isScrollable(this.listboxRef) && this.activeOptionRef) {
+        maintainScrollVisibility(this.activeOptionRef, this.listboxRef);
+      }
     }
   }
 
   render() {
-    const { parsedOptions, activeIndex, htmlId, label = '', open = false, value, ...props } = this;
+    const { prefix, parsedOptions, error, activeIndex, htmlId, open = false, dropdownWidth, value, readonly, attrs } = this;
+    const { name } = attrs;
 
     const activeId = open ? `${htmlId}-${activeIndex}` : '';
 
-    const {
-      name,
-      // value,
-      disabled,
-      readonly,
-      type,
-      ...attrs
-    } = this.attrs;
     const controlAttrs = {
       id: htmlId,
-      type,
       name,
       value,
-      disabled: typeof disabled !== 'undefined',
-      readonly,
+      ...attrs,
     };
     return [
       <input type="hidden" name={name} value={value} />,
-      <go-field controlId={htmlId} readonly={readonly} disabled={disabled} label={label} {...props} {...attrs}>
-        {this.passSlots.map((slotName) => {
+      <go-field controlId={htmlId} idPrefix={prefix} error={error} readonly={readonly} {...attrs}>
+        {fieldSlotNames.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (
               <template slot={slotName}>
@@ -185,7 +187,7 @@ export class GoSelect implements SelectProps {
             is-active={open}
             trigger-selector={`#${htmlId}-value`}
             no-trigger-clickHandler={true}
-            full-width={true}
+            width={dropdownWidth}
             onOpened={() => {
               this.updateMenuState(true);
             }}
@@ -313,7 +315,6 @@ export class GoSelect implements SelectProps {
       return;
     }
     const selected = this.parsedOptions[index];
-    console.log('set option', selected);
     this.selectedLabel = selected.label;
     this.selectedIndex = index;
     this.goChange.emit(selected);
