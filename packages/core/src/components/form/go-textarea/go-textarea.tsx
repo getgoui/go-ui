@@ -95,7 +95,6 @@ export class GoTextarea implements TextareaProps {
 
   render() {
     const { prefix, value, id, error, attrs } = this;
-
     return (
       <go-field controlId={id} idPrefix={prefix} error={error} {...attrs}>
         {fieldSlotNames.map((slotName) => {
@@ -120,6 +119,9 @@ export class GoTextarea implements TextareaProps {
         {attrs.maxlength && attrs.maxlength > 0 ? (
           <span class="textarea-count">
             {value?.length ?? 0}/{attrs.maxlength}
+            <span class="visually-hidden" aria-live="assertive" role="alert">
+              {value?.length === Number(attrs.maxlength) ? `Limit reached, you can only enter ${attrs.maxlength} characters in this field.` : ''}
+            </span>
           </span>
         ) : null}
       </go-field>
