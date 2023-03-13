@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop } from '@stencil/core';
+import { Component, h, Element, Prop, Watch } from '@stencil/core';
 import { TextareaProps } from '../../../interfaces';
 import { hasSlot, inheritComponentAttrs } from '../../../utils/helper';
 import { uniqueId } from 'lodash-es';
@@ -64,18 +64,33 @@ export class GoTextarea implements TextareaProps {
   /**
    * Value of the input field
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
+
+  /**
+   * If set, grow textarea based on its content
+   */
+  @Prop() autoGrow?: boolean = false;
 
   prefix = 'go-textarea-';
   attrs: any;
   hasNamedSlot: { [key: string]: boolean } = {};
   id = uniqueId(this.prefix);
 
+  nativeControlEl: HTMLTextAreaElement;
+
   componentWillLoad() {
-    this.attrs = inheritComponentAttrs(this, ['value', 'error']); // ignore dynamic/changeable props
+    this.attrs = inheritComponentAttrs(this, ['value', 'auto-grow', 'error']); // ignore dynamic/changeable props
     fieldSlotNames.forEach((slotName) => {
       this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
     });
+  }
+
+  @Watch('value')
+  updateControlHeight() {
+    if (this.autoGrow && this.nativeControlEl) {
+      this.nativeControlEl.style.height = 'auto';
+      this.nativeControlEl.style.height = this.nativeControlEl.scrollHeight + 'px';
+    }
   }
 
   render() {
@@ -93,9 +108,20 @@ export class GoTextarea implements TextareaProps {
           }
         })}
 
-        <textarea id={id} class="control" rows={5} {...attrs}>
+        <textarea
+          ref={(el) => (this.nativeControlEl = el)}
+          id={id}
+          class="control"
+          rows={5}
+          {...attrs}
+          onInput={(e) => (this.value = (e.target as HTMLTextAreaElement).value)}>
           {value}
         </textarea>
+        {attrs.maxlength && attrs.maxlength > 0 ? (
+          <span class="textarea-count">
+            {value?.length ?? 0}/{attrs.maxlength}
+          </span>
+        ) : null}
       </go-field>
     );
   }

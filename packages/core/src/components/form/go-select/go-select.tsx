@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Event, EventEmitter, Method, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { SelectOption, SelectProps } from '../../../interfaces';
 import { inheritComponentAttrs, hasSlot, parseItems, fieldSlotNames } from '../../../utils';
 import { getActionFromKey, getIndexByLetter, getUpdatedIndex, isScrollable, maintainScrollVisibility, MenuActions } from '../../../utils/select';
@@ -42,7 +42,7 @@ export class GoSelect implements SelectProps {
   prefix = 'go-select-';
 
   async componentWillLoad() {
-    this.attrs = inheritComponentAttrs(this, ['value', 'options', 'error']);
+    this.attrs = inheritComponentAttrs(this, ['value', 'options', 'error', 'readonly']);
     fieldSlotNames.forEach((slotName) => {
       this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
     });
@@ -120,7 +120,7 @@ export class GoSelect implements SelectProps {
   }
 
   render() {
-    const { prefix, parsedOptions, error, activeIndex, htmlId, open = false, value, attrs } = this;
+    const { prefix, parsedOptions, error, activeIndex, htmlId, open = false, value, readonly, attrs } = this;
     const { name } = attrs;
 
     const activeId = open ? `${htmlId}-${activeIndex}` : '';
@@ -133,7 +133,7 @@ export class GoSelect implements SelectProps {
     };
     return [
       <input type="hidden" name={name} value={value} />,
-      <go-field controlId={htmlId} idPrefix={prefix} error={error} {...attrs}>
+      <go-field controlId={htmlId} idPrefix={prefix} error={error} readonly={readonly} {...attrs}>
         {fieldSlotNames.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (
@@ -305,7 +305,6 @@ export class GoSelect implements SelectProps {
       return;
     }
     const selected = this.parsedOptions[index];
-    console.log('set option', selected);
     this.selectedLabel = selected.label;
     this.selectedIndex = index;
     this.goChange.emit(selected);

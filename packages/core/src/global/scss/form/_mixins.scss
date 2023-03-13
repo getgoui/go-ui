@@ -1,7 +1,7 @@
 @mixin field-container {
   display: block;
   margin: var(--input-gap-outer);
-  line-height: 1.5rem;
+  line-height: 1.5em;
   * {
     display: block;
   }
@@ -59,11 +59,9 @@
   .control-icon {
     top: auto;
     bottom: var(--input-padding-y);
-    transform: none;
     @include tablet {
-      top: 50%;
+      top: var(--input-padding-y);
       bottom: auto;
-      transform: translateY(-50%);
     }
   }
   @include tablet {
@@ -78,7 +76,8 @@
       max-width: 45%;
       white-space: nowrap;
       display: inline-flex;
-      align-items: center;
+      align-items: flex-start;
+      line-height: 1.5em;
     }
     .control {
       min-width: 55%;
@@ -145,11 +144,6 @@
     top: var(--input-padding-y);
     bottom: auto;
     transform: none;
-    @include tablet {
-      top: auto;
-      bottom: 50%;
-      transform: translateY(50%);
-    }
   }
 }
 
@@ -166,8 +160,7 @@
 
 @mixin control-icon {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: var(--input-padding-y);
   right: var(--input-gap-inner);
   width: var(--input-icon-size);
   height: var(--input-icon-size);
@@ -209,12 +202,16 @@
   border: var(--input-border);
   border-radius: var(--input-radius);
   padding: var(--input-control-padding);
-  min-height: calc(2 * var(--input-padding-y) + 1.5rem);
+  min-height: calc(2 * var(--input-padding-y) + 1.5em);
   outline-color: var(--input-border-color);
   background: var(--input-bg);
   color: var(--input-fg);
+  @include transition(outline-offset, outline-color);
+  outline-color: transparent;
+  outline-offset: 2em;
   &:focus-visible {
-    @include focus-outline;
+    --go-focus-outline-offset: calc(-1 * var(--go-focus-outline-width));
     box-shadow: var(--input-focus-shadow);
+    @include focus-outline;
   }
 }

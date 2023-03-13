@@ -988,6 +988,10 @@ export namespace Components {
     }
     interface GoTextarea {
         /**
+          * If set, grow textarea based on its content
+         */
+        "autoGrow"?: boolean;
+        /**
           * If the input is disabled
          */
         "disabled"?: boolean;
@@ -2464,6 +2468,10 @@ declare namespace LocalJSX {
         "vertical"?: boolean;
     }
     interface GoTextarea {
+        /**
+          * If set, grow textarea based on its content
+         */
+        "autoGrow"?: boolean;
         /**
           * If the input is disabled
          */

@@ -157,6 +157,7 @@ export class GoDropdown {
       this.el,
       debounce(() => {
         computePosition(this.triggerEl, this.el, {
+          strategy: 'fixed',
           placement: 'bottom-start',
           middleware,
         }).then(({ x, y, middlewareData }) => {

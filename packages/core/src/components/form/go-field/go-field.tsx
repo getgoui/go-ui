@@ -85,6 +85,7 @@ export class GoField implements FormFieldProps {
   hasPrefix: boolean;
   hasSuffix: boolean;
   hasHintSlot: boolean;
+  hasPostControlSlot: boolean;
 
   componentWillLoad() {
     this.hasIconBefore = hasSlot(this.el, 'icon-before');
@@ -92,6 +93,7 @@ export class GoField implements FormFieldProps {
     this.hasPrefix = hasSlot(this.el, 'prefix');
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
+    this.hasPostControlSlot = hasSlot(this.el, 'post-control');
     initIdProps(this, this.el, ['label', 'prefix', 'suffix', 'hint', 'error'], this.idPrefix);
     this.updateErrorState();
   }

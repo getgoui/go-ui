@@ -26,7 +26,7 @@ go-dropdown {
   */
   --dropdown-radius: var(--radius-2);
 
-  position: absolute;
+  position: fixed;
   display: none;
   visibility: hidden;
   opacity: 0;
@@ -38,8 +38,9 @@ go-dropdown {
   width: var(--dropdown-width, 200px);
   background-color: var(--dropdown-bg-color);
   border-radius: var(--dropdown-radius);
+  @include transition(opacity var(--dropdown-duration), visibility, transform var(--dropdown-duration));
   &.full-width {
-    right: 0;
+    --dropdown-width: 100%;
   }
   &.flip {
     transform-origin: bottom;
