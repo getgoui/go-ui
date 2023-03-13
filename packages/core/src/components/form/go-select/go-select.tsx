@@ -98,6 +98,8 @@ export class GoSelect implements SelectProps {
   // input value
   @State() selectedLabel = '';
 
+  @State() dropdownWidth = 'auto';
+
   // save reference to active option
   private activeOptionRef: HTMLElement;
 
@@ -114,13 +116,21 @@ export class GoSelect implements SelectProps {
   private listboxRef: HTMLElement;
 
   componentDidUpdate() {
-    if (this.open && isScrollable(this.listboxRef) && this.activeOptionRef) {
-      maintainScrollVisibility(this.activeOptionRef, this.listboxRef);
+    if (this.open) {
+      // adjust dropdown size
+      // - we use fixed positioning strategy to make dropdown "break out" of the clipping containers, now we need to calculate dropdown width up opening
+      // see https://floating-ui.com/docs/computePosition#strategy
+      if (this.inputRef) {
+        this.dropdownWidth = `${this.inputRef.offsetWidth}px`;
+      }
+      if (isScrollable(this.listboxRef) && this.activeOptionRef) {
+        maintainScrollVisibility(this.activeOptionRef, this.listboxRef);
+      }
     }
   }
 
   render() {
-    const { prefix, parsedOptions, error, activeIndex, htmlId, open = false, value, readonly, attrs } = this;
+    const { prefix, parsedOptions, error, activeIndex, htmlId, open = false, dropdownWidth, value, readonly, attrs } = this;
     const { name } = attrs;
 
     const activeId = open ? `${htmlId}-${activeIndex}` : '';
@@ -177,7 +187,7 @@ export class GoSelect implements SelectProps {
             is-active={open}
             trigger-selector={`#${htmlId}-value`}
             no-trigger-clickHandler={true}
-            full-width={true}
+            width={dropdownWidth}
             onOpened={() => {
               this.updateMenuState(true);
             }}
