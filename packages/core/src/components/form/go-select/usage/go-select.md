@@ -5,13 +5,13 @@
 <go-select name="select-2" label="Set options via script" id="js-options-select">
 </go-select>
 <script>
-  const select = document.querySelector('#js-options-select');
-  select.options = ['', 'Apple', 'Banana', 'Blueberry Boysenberry Cherry Durian Eggplant'];
-  select.addEventListener('goChange', ({detail}) => {
+  window.select = document.querySelector('#js-options-select');
+  window.select.options = ['', 'Apple', 'Banana', 'Blueberry Boysenberry Cherry Durian Eggplant'];
+  window.select.addEventListener('goChange', ({detail}) => {
     if(detail.value === ''){
-      select.error = 'Ahh'
+      window.select.error = 'Ahh'
     }else {
-      select.error = false
+      window.select.error = false
     }
   })
 </script>
