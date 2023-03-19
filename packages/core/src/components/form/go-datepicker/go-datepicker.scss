@@ -11,7 +11,14 @@ go-datepicker {
       display: block;
       overflow: visible;
     }
+    &.disabled,
+    &.readonly {
+      .duet-date__toggle {
+        pointer-events: none;
+      }
+    }
   }
+
   duet-date-picker {
     button {
       @include clickable;

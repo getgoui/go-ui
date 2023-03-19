@@ -1,7 +1,7 @@
 import { Component, h, Prop, Element, State, Watch } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import '@duetds/date-picker';
-import { fieldSlotNames, hasSlot, parseItems } from '../../../utils';
+import { fieldSlotNames, loadFieldProps, loadFieldSlots, parseItems } from '../../../utils';
 import { FormFieldProps } from '../../../interfaces';
 import { DuetDatePickerProps } from './duet-date-picker';
 @Component({
@@ -42,12 +42,13 @@ export class GoDatepicker implements FormFieldProps {
   prefix = 'go-datepicker-';
   hasNamedSlot: { [key: string]: boolean } = {};
   id = uniqueId(this.prefix);
+  datepickerInputEl: HTMLInputElement;
+  datepickerEl: HTMLDuetDatePickerElement;
   componentWillLoad() {
     this.loadOptions();
-    fieldSlotNames.forEach((slotName) => {
-      this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
-    });
+    this.hasNamedSlot = loadFieldSlots(this.el);
 
+    this.datepickerInputEl = this.el.querySelector('.duet-date__input');
     // get parent scroll positions
     if (this.autoFlip) {
       const parent = this.el;
@@ -56,22 +57,8 @@ export class GoDatepicker implements FormFieldProps {
   }
 
   render() {
-    const { prefix: idPrefix, id, value, labelId, prefixId, suffixId, hintId, errorId, name, label, disabled, hint, error, readonly, parsedOptions } = this;
-    const fieldProps = {
-      idPrefix,
-      controlId: id,
-      labelId,
-      prefixId,
-      suffixId,
-      hintId,
-      errorId,
-      name,
-      label,
-      disabled,
-      hint,
-      error,
-      readonly,
-    };
+    const { id, value, name, disabled, parsedOptions } = this;
+    const fieldProps = loadFieldProps(this);
     return (
       <go-field {...fieldProps}>
         {fieldSlotNames.map((slotName) => {
@@ -83,7 +70,14 @@ export class GoDatepicker implements FormFieldProps {
             );
           }
         })}
-        <duet-date-picker class="control" id={id} value={value} name={name} disabled={disabled} {...parsedOptions}></duet-date-picker>
+        <duet-date-picker
+          ref={(el) => (this.datepickerEl = el)}
+          class="control"
+          identifier={id}
+          value={value}
+          name={name}
+          disabled={disabled}
+          {...parsedOptions}></duet-date-picker>
       </go-field>
     );
   }
