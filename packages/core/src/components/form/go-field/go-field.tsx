@@ -86,6 +86,7 @@ export class GoField implements FormFieldProps {
   hasSuffix: boolean;
   hasHintSlot: boolean;
   hasPostControlSlot: boolean;
+  hasLabelSlot: boolean;
 
   componentWillLoad() {
     this.hasIconBefore = hasSlot(this.el, 'icon-before');
@@ -94,6 +95,7 @@ export class GoField implements FormFieldProps {
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
     this.hasPostControlSlot = hasSlot(this.el, 'post-control');
+    this.hasLabelSlot = hasSlot(this.el, 'label');
     initIdProps(this, this.el, ['label', 'prefix', 'suffix', 'hint', 'error'], this.idPrefix);
     this.updateErrorState();
   }
@@ -149,6 +151,7 @@ export class GoField implements FormFieldProps {
     const {
       controlId,
       label,
+      hasLabelSlot,
       hint,
       disabled,
       hasError,
@@ -178,9 +181,11 @@ export class GoField implements FormFieldProps {
           'has-icon-before': hasIconBefore,
           'has-icon-after': hasIconAfter,
         }}>
-        <label class="label" htmlFor={controlId} id={labelId}>
-          {label}
-        </label>
+        {hasLabelSlot || label ? (
+          <label class="label" htmlFor={controlId} id={labelId}>
+            {label}
+          </label>
+        ) : null}
         {hasHintSlot || hint ? (
           <div class="hint" id={hintId}>
             <slot name="hint">{hint}</slot>

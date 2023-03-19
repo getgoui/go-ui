@@ -2,7 +2,8 @@
   display: block;
   margin: var(--input-gap-outer);
   line-height: 1.5em;
-  * {
+  label,
+  template {
     display: block;
   }
 }
@@ -209,9 +210,14 @@
   @include transition(outline-offset, outline-color);
   outline-color: transparent;
   outline-offset: 2em;
-  &:focus-visible {
-    --go-focus-outline-offset: calc(-1 * var(--go-focus-outline-width));
-    box-shadow: var(--input-focus-shadow);
-    @include focus-outline;
+  &:focus-visible,
+  &:focus-within {
+    @include field-control-focus;
   }
+}
+
+@mixin field-control-focus {
+  --go-focus-outline-offset: calc(-1 * var(--go-focus-outline-width));
+  box-shadow: var(--input-focus-shadow);
+  @include focus-outline;
 }
