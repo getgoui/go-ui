@@ -203,7 +203,7 @@
   border: var(--input-border);
   border-radius: var(--input-radius);
   padding: var(--input-control-padding);
-  min-height: calc(2 * var(--input-padding-y) + 1.5em);
+  min-height: calc(2 * var(--input-padding-y) + 1.5em + 2px);
   outline-color: var(--input-border-color);
   background: var(--input-bg);
   color: var(--input-fg);

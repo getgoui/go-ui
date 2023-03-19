@@ -1,8 +1,7 @@
-import { Component, h, Element, Prop } from '@stencil/core';
+import { Component, h, Element, Prop, State } from '@stencil/core';
 import { InputProps, InputType } from '../../../interfaces';
-import { hasSlot, inheritComponentAttrs } from '../../../utils/helper';
 import { uniqueId } from 'lodash-es';
-import { fieldSlotNames } from '../../../utils';
+import { loadFieldProps, fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots } from '../../../utils';
 @Component({
   tag: 'go-input',
   shadow: false,
@@ -73,20 +72,20 @@ export class GoInput implements InputProps {
   @Prop() value?: string;
 
   prefix = 'go-input-';
-  attrs: any;
+  @State() attrs: any;
   hasNamedSlot: { [key: string]: boolean } = {};
   id = uniqueId(this.prefix);
+  controlEl: HTMLElement;
   componentWillLoad() {
-    this.attrs = inheritComponentAttrs(this, ['value', 'error']);
-    fieldSlotNames.forEach((slotName) => {
-      this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
-    });
+    this.attrs = inheritNonFieldAttrs(this);
+    this.hasNamedSlot = loadFieldSlots(this.el);
   }
 
   render() {
-    const { prefix, value, id, error, attrs } = this;
+    const { attrs } = this;
+    const fieldProps = loadFieldProps(this);
     return (
-      <go-field controlId={id} idPrefix={prefix} error={error} {...attrs}>
+      <go-field {...fieldProps}>
         {fieldSlotNames.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (
@@ -96,7 +95,7 @@ export class GoInput implements InputProps {
             );
           }
         })}
-        <input class="control" id={id} {...attrs} value={value} />
+        <input {...attrs} ref={(el) => (this.controlEl = el)} class="control" id={this.id} value={this.value} />
       </go-field>
     );
   }
