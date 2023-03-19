@@ -25,6 +25,14 @@ export function loadFieldProps(compInstance) {
   fieldPropNames.forEach((propKey) => {
     props[propKey] = compInstance[propKey];
   });
+  const specialPropMap = {
+    controlId: 'id',
+    idPrefix: 'prefix',
+  };
+  Object.keys(specialPropMap).forEach((key) => {
+    const instancePropKey = specialPropMap[key];
+    props[key] = compInstance[instancePropKey];
+  });
   return props;
 }
 export function loadFieldSlots(rootEl) {
@@ -34,6 +42,6 @@ export function loadFieldSlots(rootEl) {
   });
   return result;
 }
-export function inheritNonFieldAttrs(compInstance) {
-  return inheritComponentAttrs(compInstance, fieldPropNames.map(kebabCase));
+export function inheritNonFieldAttrs(compInstance, ignoreAttrs = []) {
+  return inheritComponentAttrs(compInstance, [...fieldPropNames.map(kebabCase), ...ignoreAttrs]);
 }
