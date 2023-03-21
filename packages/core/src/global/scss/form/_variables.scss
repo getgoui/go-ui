@@ -174,4 +174,11 @@
   --input-label-font-weight: 700;
 
   --control-focus-duration: 0.3s;
+
+  /**
+    @prop --field-icon-button-size:
+      Size of icon button within go-field
+      - default: 2.25rem
+  */
+  --field-icon-button-size: 2.25rem;
 }

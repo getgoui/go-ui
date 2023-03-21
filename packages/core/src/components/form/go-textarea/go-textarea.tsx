@@ -1,8 +1,7 @@
-import { Component, h, Element, Prop, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
 import { TextareaProps } from '../../../interfaces';
-import { hasSlot, inheritComponentAttrs } from '../../../utils/helper';
 import { uniqueId } from 'lodash-es';
-import { fieldSlotNames } from '../../../utils';
+import { fieldSlotNames, inheritNonFieldAttrs, loadFieldProps, loadFieldSlots } from '../../../utils';
 @Component({
   tag: 'go-textarea',
   styleUrl: 'go-textarea.scss',
@@ -72,31 +71,33 @@ export class GoTextarea implements TextareaProps {
   @Prop() autoGrow?: boolean = false;
 
   prefix = 'go-textarea-';
-  attrs: any;
+
   hasNamedSlot: { [key: string]: boolean } = {};
   id = uniqueId(this.prefix);
-
-  nativeControlEl: HTMLTextAreaElement;
+  controlEl: HTMLTextAreaElement;
+  /**
+   * keep track of non-field attrs
+   */
+  @State() attrs: any;
 
   componentWillLoad() {
-    this.attrs = inheritComponentAttrs(this, ['value', 'auto-grow', 'error']); // ignore dynamic/changeable props
-    fieldSlotNames.forEach((slotName) => {
-      this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
-    });
+    this.attrs = inheritNonFieldAttrs(this, ['auto-grow']);
+    this.hasNamedSlot = loadFieldSlots(this.el);
   }
 
   @Watch('value')
   updateControlHeight() {
-    if (this.autoGrow && this.nativeControlEl) {
-      this.nativeControlEl.style.height = 'auto';
-      this.nativeControlEl.style.height = this.nativeControlEl.scrollHeight + 'px';
+    if (this.autoGrow && this.controlEl) {
+      this.controlEl.style.height = 'auto';
+      this.controlEl.style.height = this.controlEl.scrollHeight + 'px';
     }
   }
 
   render() {
-    const { prefix, value, id, error, attrs } = this;
+    const { value, id, attrs } = this;
+    const fieldProps = loadFieldProps(this);
     return (
-      <go-field controlId={id} idPrefix={prefix} error={error} {...attrs}>
+      <go-field {...fieldProps}>
         {fieldSlotNames.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (
@@ -108,11 +109,12 @@ export class GoTextarea implements TextareaProps {
         })}
 
         <textarea
-          ref={(el) => (this.nativeControlEl = el)}
+          {...fieldProps}
+          {...attrs}
+          ref={(el) => (this.controlEl = el)}
           id={id}
           class="control"
           rows={5}
-          {...attrs}
           onInput={(e) => (this.value = (e.target as HTMLTextAreaElement).value)}>
           {value}
         </textarea>

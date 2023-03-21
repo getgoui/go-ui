@@ -36,6 +36,11 @@ export class GoDropdown {
   @Prop() fullWidth? = false;
 
   /**
+   * if set, dropdown cannot be opened
+   */
+  @Prop() disabled? = false;
+
+  /**
    * Emitted when dropdown is opened
    */
   @Event() opened: EventEmitter<void>;
@@ -48,6 +53,9 @@ export class GoDropdown {
    */
   @Method()
   async open() {
+    if (this.disabled) {
+      return;
+    }
     this.originEl = document.activeElement as HTMLElement;
     this.isActive = true;
     this.opened.emit();
@@ -99,11 +107,11 @@ export class GoDropdown {
   private focusOutHandler;
   private clickOutHandler;
 
-  componentDidLoad() {
+  async componentDidLoad() {
     if (!this.triggerEl) {
       return;
     }
-    this.init();
+    await this.init();
 
     // press esc to close dropdown
     this.escapeHandler = (e) => {
@@ -151,7 +159,6 @@ export class GoDropdown {
 
     this.clickOutHandler = onClickOutside(this.el, (e) => {
       if (!this.triggerEl.contains(e.target as Node) && this.isActive) {
-        console.log('click outside');
         this.close();
       }
     });

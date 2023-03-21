@@ -1,0 +1,77 @@
+go-datepicker {
+  --duet-color-overlay: rgba(var(--go-token-darkest), 0.8);
+  --duet-color-surface: var(--go-color-bg);
+  --duet-z-index: var(--layer-important);
+  --duet-color-primary: var(--go-color-primary-800);
+  --duet-color-text-active: var(--go-color-lightest);
+  --duet-font-bold: 700;
+  display: block;
+  .go-field {
+    .control {
+      display: block;
+      overflow: visible;
+    }
+    &.disabled,
+    &.readonly {
+      .duet-date__toggle {
+        pointer-events: none;
+      }
+    }
+  }
+
+  duet-date-picker {
+    button {
+      @include clickable;
+      &:hover {
+        --duet-color-button: var(--input-presuf-bg);
+      }
+    }
+    .duet-date__day {
+      padding: 0;
+      width: var(--field-icon-button-size);
+      height: var(--field-icon-button-size);
+      border-radius: 50%;
+    }
+    .duet-date__toggle {
+      box-shadow: none;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--field-icon-button-size);
+      height: var(--field-icon-button-size);
+    }
+    .duet-date__input {
+      --duet-color-surface: transparent;
+      padding: 0;
+      &:focus {
+        box-shadow: none;
+      }
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    .duet-date__dialog-content {
+      box-shadow: var(--dropdown-shadow);
+      border-color: var(--input-border-color);
+      border-radius: var(--input-radius);
+    }
+    table {
+      th,
+      td {
+        padding: 0;
+        text-align: center;
+      }
+      tr.duet-date__row,
+      thead {
+        border: none;
+      }
+    }
+  }
+
+  @include desktop {
+    .duet-date__mobile {
+      display: none;
+    }
+  }
+}

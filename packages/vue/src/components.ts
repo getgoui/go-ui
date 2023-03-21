@@ -5,6 +5,7 @@ import { defineContainer } from './vue-component-lib/utils';
 
 import type { JSX } from '@go-ui/core/dist/components';
 
+import { defineCustomElement as defineDuetDatePicker } from '@go-ui/core/dist/components/duet-date-picker.js';
 import { defineCustomElement as defineGoAccordion } from '@go-ui/core/dist/components/go-accordion.js';
 import { defineCustomElement as defineGoAccordionItem } from '@go-ui/core/dist/components/go-accordion-item.js';
 import { defineCustomElement as defineGoBadge } from '@go-ui/core/dist/components/go-badge.js';
@@ -19,6 +20,7 @@ import { defineCustomElement as defineGoCheckbox } from '@go-ui/core/dist/compon
 import { defineCustomElement as defineGoChip } from '@go-ui/core/dist/components/go-chip.js';
 import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/components/go-content.js';
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
+import { defineCustomElement as defineGoDatepicker } from '@go-ui/core/dist/components/go-datepicker.js';
 import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
 import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
@@ -53,6 +55,28 @@ import { defineCustomElement as defineGoTextarea } from '@go-ui/core/dist/compon
 import { defineCustomElement as defineGoToTop } from '@go-ui/core/dist/components/go-to-top.js';
 import { defineCustomElement as defineGoToc } from '@go-ui/core/dist/components/go-toc.js';
 import { defineCustomElement as defineGoTooltip } from '@go-ui/core/dist/components/go-tooltip.js';
+
+
+export const DuetDatePicker = /*@__PURE__*/ defineContainer<JSX.DuetDatePicker>('duet-date-picker', defineDuetDatePicker, [
+  'name',
+  'identifier',
+  'disabled',
+  'role',
+  'direction',
+  'required',
+  'value',
+  'min',
+  'max',
+  'firstDayOfWeek',
+  'localization',
+  'dateAdapter',
+  'isDateDisabled',
+  'duetChange',
+  'duetBlur',
+  'duetFocus',
+  'duetOpen',
+  'duetClose'
+]);
 
 
 export const GoAccordion = /*@__PURE__*/ defineContainer<JSX.GoAccordion>('go-accordion', defineGoAccordion, [
@@ -191,6 +215,23 @@ export const GoContentLayout = /*@__PURE__*/ defineContainer<JSX.GoContentLayout
 ]);
 
 
+export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker>('go-datepicker', defineGoDatepicker, [
+  'labelId',
+  'prefixId',
+  'suffixId',
+  'hintId',
+  'errorId',
+  'name',
+  'label',
+  'disabled',
+  'hint',
+  'error',
+  'readonly',
+  'value',
+  'options'
+]);
+
+
 export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', defineGoDialog, [
   'active',
   'persistent',
@@ -204,6 +245,7 @@ export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-drop
   'width',
   'noTriggerClickHandler',
   'fullWidth',
+  'disabled',
   'opened',
   'closed'
 ]);

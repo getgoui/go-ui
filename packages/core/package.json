@@ -29,6 +29,7 @@
     "semantic-release": "semantic-release -e semantic-release-monorepo"
   },
   "dependencies": {
+    "@duetds/date-picker": "^1.4.0",
     "@floating-ui/dom": "^1.1.0",
     "body-scroll-lock": "4.0.0-beta.0",
     "dompurify": "^2.4.3",

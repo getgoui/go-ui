@@ -181,7 +181,7 @@
 
 @mixin clickable {
   cursor: pointer;
-  @include transition(background-color, color, outline-offset 20ms);
+  @include transition(background-color, color, outline-offset var(--go-duration-fast));
 
   &:focus-visible {
     @include focus-outline;

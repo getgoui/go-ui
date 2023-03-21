@@ -9,6 +9,7 @@ import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType, Select
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
+import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
@@ -319,6 +320,60 @@ export namespace Components {
         "toc"?: boolean;
         "tocProps"?: TocProps;
     }
+    interface GoDatepicker {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: string | boolean;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label": string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
+         */
+        "options"?: string | DuetDatePickerProps;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
+    }
     interface GoDialog {
         /**
           * If this dialog is active
@@ -340,6 +395,10 @@ export namespace Components {
           * closes dropdown
          */
         "close": (focusBackToTrigger?: boolean) => Promise<void>;
+        /**
+          * if set, dropdown cannot be opened
+         */
+        "disabled"?: boolean;
         /**
           * If set, dropdown will take full width of its parent.
          */
@@ -1225,6 +1284,12 @@ declare global {
         prototype: HTMLGoContentLayoutElement;
         new (): HTMLGoContentLayoutElement;
     };
+    interface HTMLGoDatepickerElement extends Components.GoDatepicker, HTMLStencilElement {
+    }
+    var HTMLGoDatepickerElement: {
+        prototype: HTMLGoDatepickerElement;
+        new (): HTMLGoDatepickerElement;
+    };
     interface HTMLGoDialogElement extends Components.GoDialog, HTMLStencilElement {
     }
     var HTMLGoDialogElement: {
@@ -1444,6 +1509,7 @@ declare global {
         "go-chip": HTMLGoChipElement;
         "go-content": HTMLGoContentElement;
         "go-content-layout": HTMLGoContentLayoutElement;
+        "go-datepicker": HTMLGoDatepickerElement;
         "go-dialog": HTMLGoDialogElement;
         "go-dropdown": HTMLGoDropdownElement;
         "go-dropdown-item": HTMLGoDropdownItemElement;
@@ -1795,6 +1861,60 @@ declare namespace LocalJSX {
         "toc"?: boolean;
         "tocProps"?: TocProps;
     }
+    interface GoDatepicker {
+        /**
+          * If the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Error state of input, text provided will be shown as error message
+         */
+        "error"?: string | boolean;
+        /**
+          * DOM id for error
+         */
+        "errorId"?: string;
+        /**
+          * Hint message for the input
+         */
+        "hint"?: string;
+        /**
+          * DOM id for hint message
+         */
+        "hintId"?: string;
+        /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * DOM id for label
+         */
+        "labelId"?: string;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
+         */
+        "options"?: string | DuetDatePickerProps;
+        /**
+          * DOM id for prefix
+         */
+        "prefixId"?: string;
+        /**
+          * If this input is read-only
+         */
+        "readonly"?: boolean;
+        /**
+          * DOM id for suffix
+         */
+        "suffixId"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: string;
+    }
     interface GoDialog {
         /**
           * If this dialog is active
@@ -1810,6 +1930,10 @@ declare namespace LocalJSX {
         "persistent"?: boolean;
     }
     interface GoDropdown {
+        /**
+          * if set, dropdown cannot be opened
+         */
+        "disabled"?: boolean;
         /**
           * If set, dropdown will take full width of its parent.
          */
@@ -2574,6 +2698,7 @@ declare namespace LocalJSX {
         "go-chip": GoChip;
         "go-content": GoContent;
         "go-content-layout": GoContentLayout;
+        "go-datepicker": GoDatepicker;
         "go-dialog": GoDialog;
         "go-dropdown": GoDropdown;
         "go-dropdown-item": GoDropdownItem;
@@ -2628,6 +2753,7 @@ declare module "@stencil/core" {
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-content": LocalJSX.GoContent & JSXBase.HTMLAttributes<HTMLGoContentElement>;
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
+            "go-datepicker": LocalJSX.GoDatepicker & JSXBase.HTMLAttributes<HTMLGoDatepickerElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;
             "go-dropdown-item": LocalJSX.GoDropdownItem & JSXBase.HTMLAttributes<HTMLGoDropdownItemElement>;

@@ -15,6 +15,9 @@
     .lock-icon {
       fill: var(--input-text-readonly-color);
     }
+    [slot='icon-after'] {
+      display: none;
+    }
   }
   &.disabled {
     @include disabled-state;

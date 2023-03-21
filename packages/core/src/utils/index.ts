@@ -1,4 +1,4 @@
-export * from './const';
+export * from './form';
 export * from './dom';
 export * from './go-ui-md-plugin';
 export * from './helper';
