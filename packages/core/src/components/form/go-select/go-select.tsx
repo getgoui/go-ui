@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { SelectOption, SelectProps } from '../../../interfaces';
-import { inheritComponentAttrs, hasSlot, parseItems, fieldSlotNames } from '../../../utils';
+import { parseItems, fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots, loadFieldProps } from '../../../utils';
 import { getActionFromKey, getIndexByLetter, getUpdatedIndex, isScrollable, maintainScrollVisibility, MenuActions } from '../../../utils/select';
 import { uniqueId } from 'lodash-es';
 
@@ -37,15 +37,15 @@ export class GoSelect implements SelectProps {
   /**
    * common form control properties
    */
-  attrs: any;
+  @State() attrs: any;
   hasNamedSlot: { [key: string]: boolean } = {};
   prefix = 'go-select-';
+  id = uniqueId(this.prefix);
+  controlEl: HTMLElement;
 
   async componentWillLoad() {
-    this.attrs = inheritComponentAttrs(this, ['value', 'options', 'error', 'readonly']);
-    fieldSlotNames.forEach((slotName) => {
-      this.hasNamedSlot[slotName] = hasSlot(this.el, slotName);
-    });
+    this.attrs = inheritNonFieldAttrs(this, ['options']);
+    this.hasNamedSlot = loadFieldSlots(this.el);
     this.loadOptions();
     if (this.value) {
       this.loadValue();
@@ -103,9 +103,6 @@ export class GoSelect implements SelectProps {
   // save reference to active option
   private activeOptionRef: HTMLElement;
 
-  // Unique ID that should really use a UUID library instead
-  private htmlId = uniqueId('go-select-');
-
   // Prevent menu closing before click completed
   private ignoreBlur = false;
 
@@ -113,10 +110,12 @@ export class GoSelect implements SelectProps {
   private inputRef: HTMLElement;
 
   // save reference to listbox
-  private listboxRef: HTMLElement;
+  private listboxRef: HTMLGoDropdownElement;
 
-  componentDidUpdate() {
-    if (this.open) {
+  @Watch('open')
+  handleDomOnOpen(isOpen) {
+    if (isOpen) {
+      this.listboxRef.open();
       // adjust dropdown size
       // - we use fixed positioning strategy to make dropdown "break out" of the clipping containers, now we need to calculate dropdown width up opening
       // see https://floating-ui.com/docs/computePosition#strategy
@@ -126,24 +125,26 @@ export class GoSelect implements SelectProps {
       if (isScrollable(this.listboxRef) && this.activeOptionRef) {
         maintainScrollVisibility(this.activeOptionRef, this.listboxRef);
       }
+    } else {
+      this.listboxRef.close();
     }
   }
 
   render() {
-    const { prefix, parsedOptions, error, activeIndex, htmlId, open = false, dropdownWidth, value, readonly, attrs } = this;
-    const { name } = attrs;
+    const { parsedOptions, activeIndex, id, open = false, dropdownWidth, value, readonly, disabled, name, attrs } = this;
+    const fieldProps = loadFieldProps(this);
 
-    const activeId = open ? `${htmlId}-${activeIndex}` : '';
+    const activeId = open ? `${id}-${activeIndex}` : '';
 
     const controlAttrs = {
-      id: htmlId,
+      id,
       name,
       value,
       ...attrs,
     };
     return [
       <input type="hidden" name={name} value={value} />,
-      <go-field controlId={htmlId} idPrefix={prefix} error={error} readonly={readonly} {...attrs}>
+      <go-field {...fieldProps}>
         {fieldSlotNames.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (
@@ -161,10 +162,12 @@ export class GoSelect implements SelectProps {
             aria-autocomplete="none"
             aria-haspopup="listbox"
             aria-expanded={`${open}`}
-            aria-labelledby={`${htmlId} ${htmlId}-value`}
-            aria-controls={`${htmlId}-listbox`}
+            aria-labelledby={`${id} ${id}-value`}
+            aria-controls={`${id}-listbox`}
+            aria-disabled={disabled ? 'true' : undefined}
+            aria-readonly={readonly ? 'true' : undefined}
             class="control"
-            id={`${htmlId}-value`}
+            id={`${id}-value`}
             ref={(el) => (this.inputRef = el)}
             tabindex="0"
             onBlur={this.onComboBlur.bind(this)}
@@ -184,9 +187,8 @@ export class GoSelect implements SelectProps {
             </svg>
           </div>
           <go-dropdown
-            is-active={open}
-            trigger-selector={`#${htmlId}-value`}
-            no-trigger-clickHandler={true}
+            disabled={readonly || disabled}
+            trigger-selector={`#${id}-value`}
             width={dropdownWidth}
             onOpened={() => {
               this.updateMenuState(true);
@@ -196,13 +198,13 @@ export class GoSelect implements SelectProps {
             }}
             role="listbox"
             ref={(el) => (this.listboxRef = el)}
-            id={`${htmlId}-listbox`}>
+            id={`${id}-listbox`}>
             {parsedOptions &&
               parsedOptions.map((option, i) => {
                 return (
                   <div
                     class={{ 'current': this.activeIndex === i, 'combo-option': true }}
-                    id={`${this.htmlId}-${i}`}
+                    id={`${this.id}-${i}`}
                     aria-selected={this.activeIndex === i ? 'true' : undefined}
                     ref={(el) => {
                       if (this.activeIndex === i) {
@@ -321,6 +323,9 @@ export class GoSelect implements SelectProps {
   }
 
   private updateMenuState(open: boolean, callFocus = true) {
+    if (open && (this.readonly || this.disabled)) {
+      return;
+    }
     this.open = open;
     if (callFocus) {
       this.inputRef.focus();

@@ -40,6 +40,11 @@
   .control {
     color: var(--input-text-disabled-color);
     background-color: var(--input-bg-disabled-color);
+    &:focus-visible,
+    &:focus-within {
+      box-shadow: none;
+      outline: none;
+    }
   }
 }
 

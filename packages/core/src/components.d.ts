@@ -397,6 +397,10 @@ export namespace Components {
          */
         "close": (focusBackToTrigger?: boolean) => Promise<void>;
         /**
+          * if set, dropdown cannot be opened
+         */
+        "disabled"?: boolean;
+        /**
           * If set, dropdown will take full width of its parent.
          */
         "fullWidth"?: boolean;
@@ -1928,6 +1932,10 @@ declare namespace LocalJSX {
         "persistent"?: boolean;
     }
     interface GoDropdown {
+        /**
+          * if set, dropdown cannot be opened
+         */
+        "disabled"?: boolean;
         /**
           * If set, dropdown will take full width of its parent.
          */
