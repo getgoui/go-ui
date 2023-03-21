@@ -67,11 +67,10 @@ go-datepicker {
         border: none;
       }
     }
-  }
-
-  @include desktop {
-    .duet-date__mobile {
-      display: none;
+    @media (min-width: 36em) {
+      .duet-date__mobile {
+        display: none;
+      }
     }
   }
 }
