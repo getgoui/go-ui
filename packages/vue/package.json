@@ -21,6 +21,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@duetds/date-picker": "^1.4.0",
     "@go-ui/core": "workspace:*"
   },
   "devDependencies": {

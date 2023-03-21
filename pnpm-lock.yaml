@@ -263,7 +263,8 @@ importers:
 
   packages/react:
     specifiers:
-      '@go-ui/core': workspace:0.0.0-development
+      '@duetds/date-picker': ^1.4.0
+      '@go-ui/core': workspace:*
       '@types/jest': 23.3.9
       '@types/node': ^15.14.9
       '@types/react': ^17.0.52
@@ -278,6 +279,7 @@ importers:
       semantic-release-monorepo: ^7.0.5
       typescript: ^4.8.4
     dependencies:
+      '@duetds/date-picker': 1.4.0
       '@go-ui/core': link:../core
     devDependencies:
       '@types/jest': 23.3.9
@@ -296,7 +298,8 @@ importers:
 
   packages/vue:
     specifiers:
-      '@go-ui/core': workspace:0.0.0-development
+      '@duetds/date-picker': ^1.4.0
+      '@go-ui/core': workspace:*
       '@types/node': ^15.14.9
       cpy-cli: ^4.2.0
       semantic-release: ^19.0.5
@@ -304,6 +307,7 @@ importers:
       typescript: ^4.8.4
       vue: ^3.2.45
     dependencies:
+      '@duetds/date-picker': 1.4.0
       '@go-ui/core': link:../core
     devDependencies:
       '@types/node': 15.14.9
