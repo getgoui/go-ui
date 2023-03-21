@@ -22,11 +22,10 @@
 
       <!-- keep this sandbox empty before pushing changes -->
 
-      <go-button id="readonly-test-button">Toggle readonly</go-button>
 
       <go-accordion multiple>
         <go-accordion-item active heading="Date picker">
-          <go-datepicker id="test" type="text" label="Date picker" hint="Please enter a date" auto-flip></go-datepicker>
+          <go-datepicker id="test" type="text" label="Date picker" hint="Please enter a date" auto-flip  value="2000-01-01"></go-datepicker>
           <go-datepicker type="text" label="Error state" hint="Please enter a date" error="This is an error"></go-datepicker>
           <go-datepicker type="text" label="Disabled state" value="2000-01-01" disabled></go-datepicker>
           <go-datepicker id="readonly-test" type="text" label="Readonly state" value="2000-01-01" readonly></go-datepicker>
@@ -47,8 +46,7 @@
             <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
           </go-datepicker>
         </go-accordion-item>
-
-        <go-accordion-item heading="Select">
+        <go-accordion-item  heading="Select">
           <go-select name="select-1" label="Select" hint="This is a hint message" value="Banana" options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
           </go-select>
 
@@ -80,6 +78,7 @@
 
         </go-accordion-item>
 
+
         <go-accordion-item  heading="Input">
           <go-input id="test" type="text" label="Input field" hint="Please enter some text"></go-input>
           <go-input type="text" label="Error state" hint="Please enter some text" error="This is an error"></go-input>
@@ -103,7 +102,7 @@
           </go-input>
         </go-accordion-item>
 
-        <go-accordion-item active heading="Textarea">
+        <go-accordion-item heading="Textarea">
           <go-textarea id="txt-1" auto-grow label="Textarea" hint="This is a textarea field" maxlength="1000"></go-textarea>
           <go-textarea type="text" label="Error state" hint="Please enter some text" error="This is an error" maxlength="1000"></go-textarea>
           <go-textarea type="text" label="Disabled state" value="I'm not editable" disabled></go-textarea>
@@ -131,20 +130,6 @@
       </go-accordion>
 
 
-      <script>
-        const controls = Array.from(document.querySelectorAll('go-textarea'));
-        const btn = document.querySelector('#readonly-test-button');
-        btn.addEventListener('click', () => {
-          controls.map((control) => {
-            const attr = control.hasAttribute('readonly');
-            if(attr){
-              control.removeAttribute('readonly');
-            }else{
-              control.setAttribute('readonly', 'true')
-            }
-          })
-        })
-      </script>
       <!-- #region demo start -->
       <!-- #endregion demo finish -->
     </div>

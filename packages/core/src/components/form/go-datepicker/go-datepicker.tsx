@@ -30,8 +30,6 @@ export class GoDatepicker implements FormFieldProps {
    */
   @Prop() options?: string | DuetDatePickerProps;
 
-  @Prop() autoFlip?: boolean;
-
   @State() parsedOptions: DuetDatePickerProps;
 
   @Watch('options')
@@ -49,11 +47,6 @@ export class GoDatepicker implements FormFieldProps {
     this.hasNamedSlot = loadFieldSlots(this.el);
 
     this.datepickerInputEl = this.el.querySelector('.duet-date__input');
-    // get parent scroll positions
-    if (this.autoFlip) {
-      const parent = this.el;
-      console.log(parent);
-    }
   }
 
   render() {

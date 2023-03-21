@@ -321,7 +321,6 @@ export namespace Components {
         "tocProps"?: TocProps;
     }
     interface GoDatepicker {
-        "autoFlip"?: boolean;
         /**
           * If the input is disabled
          */
@@ -1863,7 +1862,6 @@ declare namespace LocalJSX {
         "tocProps"?: TocProps;
     }
     interface GoDatepicker {
-        "autoFlip"?: boolean;
         /**
           * If the input is disabled
          */

@@ -5,6 +5,7 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from '@go-ui/core/dist/components';
 
+import { defineCustomElement as defineDuetDatePicker } from '@go-ui/core/dist/components/duet-date-picker.js';
 import { defineCustomElement as defineGoAccordion } from '@go-ui/core/dist/components/go-accordion.js';
 import { defineCustomElement as defineGoAccordionItem } from '@go-ui/core/dist/components/go-accordion-item.js';
 import { defineCustomElement as defineGoBadge } from '@go-ui/core/dist/components/go-badge.js';
@@ -19,6 +20,7 @@ import { defineCustomElement as defineGoCheckbox } from '@go-ui/core/dist/compon
 import { defineCustomElement as defineGoChip } from '@go-ui/core/dist/components/go-chip.js';
 import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/components/go-content.js';
 import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
+import { defineCustomElement as defineGoDatepicker } from '@go-ui/core/dist/components/go-datepicker.js';
 import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
 import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
 import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
@@ -54,6 +56,7 @@ import { defineCustomElement as defineGoToTop } from '@go-ui/core/dist/component
 import { defineCustomElement as defineGoToc } from '@go-ui/core/dist/components/go-toc.js';
 import { defineCustomElement as defineGoTooltip } from '@go-ui/core/dist/components/go-tooltip.js';
 
+export const DuetDatePicker = /*@__PURE__*/createReactComponent<JSX.DuetDatePicker, HTMLDuetDatePickerElement>('duet-date-picker', undefined, undefined, defineDuetDatePicker);
 export const GoAccordion = /*@__PURE__*/createReactComponent<JSX.GoAccordion, HTMLGoAccordionElement>('go-accordion', undefined, undefined, defineGoAccordion);
 export const GoAccordionItem = /*@__PURE__*/createReactComponent<JSX.GoAccordionItem, HTMLGoAccordionItemElement>('go-accordion-item', undefined, undefined, defineGoAccordionItem);
 export const GoBadge = /*@__PURE__*/createReactComponent<JSX.GoBadge, HTMLGoBadgeElement>('go-badge', undefined, undefined, defineGoBadge);
@@ -68,6 +71,7 @@ export const GoCheckbox = /*@__PURE__*/createReactComponent<JSX.GoCheckbox, HTML
 export const GoChip = /*@__PURE__*/createReactComponent<JSX.GoChip, HTMLGoChipElement>('go-chip', undefined, undefined, defineGoChip);
 export const GoContent = /*@__PURE__*/createReactComponent<JSX.GoContent, HTMLGoContentElement>('go-content', undefined, undefined, defineGoContent);
 export const GoContentLayout = /*@__PURE__*/createReactComponent<JSX.GoContentLayout, HTMLGoContentLayoutElement>('go-content-layout', undefined, undefined, defineGoContentLayout);
+export const GoDatepicker = /*@__PURE__*/createReactComponent<JSX.GoDatepicker, HTMLGoDatepickerElement>('go-datepicker', undefined, undefined, defineGoDatepicker);
 export const GoDialog = /*@__PURE__*/createReactComponent<JSX.GoDialog, HTMLGoDialogElement>('go-dialog', undefined, undefined, defineGoDialog);
 export const GoDropdown = /*@__PURE__*/createReactComponent<JSX.GoDropdown, HTMLGoDropdownElement>('go-dropdown', undefined, undefined, defineGoDropdown);
 export const GoDropdownItem = /*@__PURE__*/createReactComponent<JSX.GoDropdownItem, HTMLGoDropdownItemElement>('go-dropdown-item', undefined, undefined, defineGoDropdownItem);
