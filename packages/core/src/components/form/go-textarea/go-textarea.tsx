@@ -109,12 +109,12 @@ export class GoTextarea implements TextareaProps {
         })}
 
         <textarea
+          {...fieldProps}
           {...attrs}
           ref={(el) => (this.controlEl = el)}
           id={id}
           class="control"
           rows={5}
-          {...attrs}
           onInput={(e) => (this.value = (e.target as HTMLTextAreaElement).value)}>
           {value}
         </textarea>

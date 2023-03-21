@@ -99,7 +99,7 @@ export class GoInput implements InputProps {
             );
           }
         })}
-        <input class="control" {...attrs} ref={(el) => (this.controlEl = el)} id={id} value={value} />
+        <input {...fieldProps} {...attrs} class="control" ref={(el) => (this.controlEl = el)} id={id} value={value} />
       </go-field>
     );
   }

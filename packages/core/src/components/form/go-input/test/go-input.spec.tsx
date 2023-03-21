@@ -34,9 +34,10 @@ describe('go-input', () => {
     });
     const nativeControl = page.root.querySelector('input');
     const keys = Object.keys(attrs);
+    const booleanAttrs = ['required', 'disabled', 'readonly'];
     keys.forEach((key) => {
-      if (key === 'required' || key === 'disabled') {
-        expect(nativeControl).toEqualAttribute(key, '');
+      if (booleanAttrs.includes(key)) {
+        expect(nativeControl).toHaveAttribute(key);
         return;
       }
       expect(nativeControl).toEqualAttribute(key, attrs[key]);
