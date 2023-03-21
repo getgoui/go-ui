@@ -18,12 +18,14 @@ export const config: Config = {
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
       includeImportCustomElements: true,
       customElementsDir: 'dist/components',
+      excludeComponents: ['duet-date-picker'],
     }),
     vueOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../vue/src/components.ts',
       includeImportCustomElements: true,
       customElementsDir: 'dist/components',
+      excludeComponents: ['duet-date-picker'],
     }),
     {
       type: 'dist',

@@ -5,7 +5,6 @@ import { defineContainer } from './vue-component-lib/utils';
 
 import type { JSX } from '@go-ui/core/dist/components';
 
-import { defineCustomElement as defineDuetDatePicker } from '@go-ui/core/dist/components/duet-date-picker.js';
 import { defineCustomElement as defineGoAccordion } from '@go-ui/core/dist/components/go-accordion.js';
 import { defineCustomElement as defineGoAccordionItem } from '@go-ui/core/dist/components/go-accordion-item.js';
 import { defineCustomElement as defineGoBadge } from '@go-ui/core/dist/components/go-badge.js';
@@ -55,28 +54,6 @@ import { defineCustomElement as defineGoTextarea } from '@go-ui/core/dist/compon
 import { defineCustomElement as defineGoToTop } from '@go-ui/core/dist/components/go-to-top.js';
 import { defineCustomElement as defineGoToc } from '@go-ui/core/dist/components/go-toc.js';
 import { defineCustomElement as defineGoTooltip } from '@go-ui/core/dist/components/go-tooltip.js';
-
-
-export const DuetDatePicker = /*@__PURE__*/ defineContainer<JSX.DuetDatePicker>('duet-date-picker', defineDuetDatePicker, [
-  'name',
-  'identifier',
-  'disabled',
-  'role',
-  'direction',
-  'required',
-  'value',
-  'min',
-  'max',
-  'firstDayOfWeek',
-  'localization',
-  'dateAdapter',
-  'isDateDisabled',
-  'duetChange',
-  'duetBlur',
-  'duetFocus',
-  'duetOpen',
-  'duetClose'
-]);
 
 
 export const GoAccordion = /*@__PURE__*/ defineContainer<JSX.GoAccordion>('go-accordion', defineGoAccordion, [

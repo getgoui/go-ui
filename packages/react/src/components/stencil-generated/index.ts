@@ -5,7 +5,6 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from '@go-ui/core/dist/components';
 
-import { defineCustomElement as defineDuetDatePicker } from '@go-ui/core/dist/components/duet-date-picker.js';
 import { defineCustomElement as defineGoAccordion } from '@go-ui/core/dist/components/go-accordion.js';
 import { defineCustomElement as defineGoAccordionItem } from '@go-ui/core/dist/components/go-accordion-item.js';
 import { defineCustomElement as defineGoBadge } from '@go-ui/core/dist/components/go-badge.js';
@@ -56,7 +55,6 @@ import { defineCustomElement as defineGoToTop } from '@go-ui/core/dist/component
 import { defineCustomElement as defineGoToc } from '@go-ui/core/dist/components/go-toc.js';
 import { defineCustomElement as defineGoTooltip } from '@go-ui/core/dist/components/go-tooltip.js';
 
-export const DuetDatePicker = /*@__PURE__*/createReactComponent<JSX.DuetDatePicker, HTMLDuetDatePickerElement>('duet-date-picker', undefined, undefined, defineDuetDatePicker);
 export const GoAccordion = /*@__PURE__*/createReactComponent<JSX.GoAccordion, HTMLGoAccordionElement>('go-accordion', undefined, undefined, defineGoAccordion);
 export const GoAccordionItem = /*@__PURE__*/createReactComponent<JSX.GoAccordionItem, HTMLGoAccordionItemElement>('go-accordion-item', undefined, undefined, defineGoAccordionItem);
 export const GoBadge = /*@__PURE__*/createReactComponent<JSX.GoBadge, HTMLGoBadgeElement>('go-badge', undefined, undefined, defineGoBadge);
