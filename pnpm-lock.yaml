@@ -169,9 +169,9 @@ importers:
       '@floating-ui/dom': ^1.1.0
       '@stencil/core': ^2.22.1
       '@stencil/postcss': ^2.1.0
-      '@stencil/react-output-target': ^0.3.1
+      '@stencil/react-output-target': ^0.5.0
       '@stencil/sass': ^1.5.2
-      '@stencil/vue-output-target': ^0.6.2
+      '@stencil/vue-output-target': ^0.8.0
       '@types/jest': ^26.0.24
       '@types/markdown-it': ^12.2.3
       '@types/node': ^18.11.18
@@ -227,9 +227,9 @@ importers:
       '@commitlint/config-conventional': 13.2.0
       '@stencil/core': 2.22.1
       '@stencil/postcss': 2.1.0_@stencil+core@2.22.1
-      '@stencil/react-output-target': 0.3.1_@stencil+core@2.22.1
+      '@stencil/react-output-target': 0.5.0_@stencil+core@2.22.1
       '@stencil/sass': 1.5.2_@stencil+core@2.22.1
-      '@stencil/vue-output-target': 0.6.2_@stencil+core@2.22.1
+      '@stencil/vue-output-target': 0.8.0_@stencil+core@2.22.1
       '@types/jest': 26.0.24
       '@types/markdown-it': 12.2.3
       '@types/node': 18.11.18
@@ -3110,10 +3110,10 @@ packages:
       postcss: 8.3.11
     dev: true
 
-  /@stencil/react-output-target/0.3.1_@stencil+core@2.22.1:
-    resolution: {integrity: sha512-6d9pPhyajFfdxkqU/pPP2SzI7wn+EklySQc4KXlI/xcdvC2H9BzLmhmR40fR1q2TQoJbJui/nvSWhbYqkE3OBQ==}
+  /@stencil/react-output-target/0.5.0_@stencil+core@2.22.1:
+    resolution: {integrity: sha512-m2UwgrFuVXzi1h4m6I+EWDGeZV4n1wPHkzbRCS9QaqysiQEN5VIi9zjLzvPQF7O9Gg3E/W28z0yElp0kY3VuFQ==}
     peerDependencies:
-      '@stencil/core': ^2.9.0
+      '@stencil/core': ^2.9.0 || ^3.0.0
     dependencies:
       '@stencil/core': 2.22.1
     dev: true
@@ -3142,10 +3142,10 @@ packages:
       '@stencil/core': 2.22.1
     dev: true
 
-  /@stencil/vue-output-target/0.6.2_@stencil+core@2.22.1:
-    resolution: {integrity: sha512-Oh7SLFbOUchCSCbGe/Dqal2xSYPKCFQiVKnvzvS0dsHP/XS7rfHqp3qptW6JCp9lBoo3wmmBurHfldqxhLlnag==}
+  /@stencil/vue-output-target/0.8.0_@stencil+core@2.22.1:
+    resolution: {integrity: sha512-Clh+aXTvS0uF4IfsecZHOw3Md6jwoNTrY5pXdnJRsqtGKK8KpBDeErcU323ngJNITkgaMhBvRxksSFqvay4kzQ==}
     peerDependencies:
-      '@stencil/core': ^2.9.0
+      '@stencil/core': ^2.9.0 || ^3.0.0
     dependencies:
       '@stencil/core': 2.22.1
     dev: true
