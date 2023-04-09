@@ -52,6 +52,9 @@ import '@go-ui/vue/dist/go-ui.css';
 
 2. import the component(s) you wish to use
 
+<go-tabs>
+<go-tab label="Setup script">
+
 
 ```html
 <script lang="ts" setup>
@@ -63,22 +66,30 @@ import { GoButton } from '@go-ui/vue';
 </template>
 ```
 
+
+</go-tab>
+
+<go-tab label="Options API">
+
 ```html
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { GoButton } from '@go-ui/vue';
 export default defineComponent({
   components: {
-    GoButton,
-    //... other components you might need
-  },
-  //...
+    GoButton
+  }
 })
 </script>
 <template>
   <GoButton variant="primary">Hello world</GoButton>
 </template>
 ```
+
+</go-tab>
+
+</go-tabs>
+
 
 
 
