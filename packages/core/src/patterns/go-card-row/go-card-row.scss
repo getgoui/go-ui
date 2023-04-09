@@ -25,12 +25,4 @@ go-card-row {
   .card-col {
     margin-bottom: var(--card-row-gap);
   }
-
-  .heading-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: var(--go-size-1);
-    padding: 0 var(--go-outer-gutter);
-  }
 }

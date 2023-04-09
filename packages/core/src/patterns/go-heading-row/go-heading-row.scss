@@ -1,0 +1,45 @@
+go-heading-row {
+  /**
+    @prop --heading-row-alignment:
+      Flexbox alignment value for vertically align heading and view more link
+      - default: center
+  */
+  --heading-row-alignment: center;
+  /**
+    @prop --heading-row-justify:
+      Flexbox horizontal (justify-content) value
+      - default: space-between
+  */
+  --heading-row-justify: space-between;
+  /**
+    @prop --heading-row-gap-bottom:
+      Bottom margin between heading row and the content follows
+      - default: var(--go-size-1)
+  */
+  --heading-row-gap-bottom: var(--go-size-1);
+  /**
+    @prop --heading-row-inner-gap:
+      Padding for heading row
+      - default: 0 var(--go-outer-gutter)
+  */
+  --heading-row-inner-gap: 0 var(--go-outer-gutter);
+
+  /**
+    @prop --heading-row-inner-gap-wide:
+      Padding for heading row (for tablet and wider screens)
+      - default: var(--heading-row-inner-gap)
+  */
+  --heading-row-inner-gap-wide: var(--heading-row-inner-gap);
+
+  .heading-row {
+    display: block;
+    margin-bottom: var(--heading-row-gap-bottom);
+    padding: var(--heading-row-inner-gap);
+    @include tablet {
+      display: flex;
+      align-items: var(--heading-row-alignment);
+      justify-content: var(--heading-row-justify);
+      padding: var(--heading-row-inner-gap-wide);
+    }
+  }
+}

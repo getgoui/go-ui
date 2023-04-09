@@ -55,6 +55,8 @@ export class GoCardRow {
    */
   @Prop() heading?: string;
 
+  @Prop() headingTag?: string = 'h2';
+
   /**
    * View more link href
    */
@@ -89,7 +91,7 @@ export class GoCardRow {
 
     // initialise intersection observer
     this.inViewObserver = new IntersectionObserver(
-      entries => {
+      (entries) => {
         entries.forEach((entry, i) => {
           if (!entry.isIntersecting) {
             return;
@@ -147,38 +149,24 @@ export class GoCardRow {
   }
 
   render() {
-    const { noStretch, stagger, heading, moreLinkHref, moreLinkText, hasHeadingSlot } = this;
-    const shouldRenderHeading = heading || hasHeadingSlot;
-    const shouldRenderMoreLink = moreLinkHref && moreLinkText;
-
+    const { noStretch, stagger, heading, moreLinkHref, moreLinkText, hasHeadingSlot, headingTag } = this;
+    const headingRowProps = {
+      heading,
+      moreLinkHref,
+      moreLinkText,
+      hasHeadingSlot,
+      headingTag,
+    };
     return (
       <section>
-        {shouldRenderHeading || shouldRenderMoreLink ? (
-          <div class="heading-row">
-            {shouldRenderHeading ? (
-              <slot name="heading">
-                <h2>{heading}</h2>
-              </slot>
-            ) : (
-              <span></span>
-            )}
-            {shouldRenderMoreLink ? (
-              <go-nav-link
-                item={{
-                  url: moreLinkHref,
-                  label: moreLinkText,
-                }}
-                showArrow={true}></go-nav-link>
-            ) : null}
-          </div>
-        ) : null}
+        <go-heading-row {...headingRowProps}></go-heading-row>
         <div
           class={{
             'card-row row': true,
             'no-stretch': noStretch,
             'stagger': !!stagger,
           }}
-          ref={el => (this.rowEl = el)}>
+          ref={(el) => (this.rowEl = el)}>
           <slot></slot>
         </div>
       </section>
