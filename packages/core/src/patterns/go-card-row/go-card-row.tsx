@@ -154,12 +154,11 @@ export class GoCardRow {
       heading,
       moreLinkHref,
       moreLinkText,
-      hasHeadingSlot,
       headingTag,
     };
     return (
       <section>
-        <go-heading-row {...headingRowProps}></go-heading-row>
+        <go-heading-row {...headingRowProps}>{hasHeadingSlot ? <slot name="heading"></slot> : null}</go-heading-row>
         <div
           class={{
             'card-row row': true,
