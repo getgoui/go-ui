@@ -48,14 +48,29 @@ export class GoContentLayout implements ContentLayoutProps {
    */
   @Prop() noHero?: boolean = false;
 
+  /**
+   * If the "On this page" table of content section should be displayed
+   */
   @Prop() toc?: boolean;
-
+  /**
+   * Props to pass into the table of content ([see `go-toc` props](/docs/components/go-toc#go-toc-props))
+   */
   @Prop() tocProps?: TocProps;
-
+  /**
+   * sidebar position on mobile screens
+   * possible values are `start` and `end`
+   */
   @Prop() sidebarMobilePosition?: SidebarPosition = 'start';
 
+  /**
+   * sidebar position on desktop screens
+   * possible values are `start` and `end`
+   */
   @Prop() sidebarDesktopPosition?: SidebarPosition = 'start';
 
+  /**
+   * If sidebar should be sticky
+   */
   @Prop() sidebarSticky? = false;
   tocEl: HTMLGoTocElement;
 

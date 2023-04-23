@@ -13,6 +13,7 @@ import { defineCustomElement as defineGoBlockquote } from '@go-ui/core/dist/comp
 import { defineCustomElement as defineGoBreadcrumb } from '@go-ui/core/dist/components/go-breadcrumb.js';
 import { defineCustomElement as defineGoButton } from '@go-ui/core/dist/components/go-button.js';
 import { defineCustomElement as defineGoButtonGroup } from '@go-ui/core/dist/components/go-button-group.js';
+import { defineCustomElement as defineGoCalloutSection } from '@go-ui/core/dist/components/go-callout-section.js';
 import { defineCustomElement as defineGoCard } from '@go-ui/core/dist/components/go-card.js';
 import { defineCustomElement as defineGoCardRow } from '@go-ui/core/dist/components/go-card-row.js';
 import { defineCustomElement as defineGoCheckbox } from '@go-ui/core/dist/components/go-checkbox.js';
@@ -30,6 +31,7 @@ import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/compon
 import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
 import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
 import { defineCustomElement as defineGoHeaderBar } from '@go-ui/core/dist/components/go-header-bar.js';
+import { defineCustomElement as defineGoHeadingRow } from '@go-ui/core/dist/components/go-heading-row.js';
 import { defineCustomElement as defineGoHero } from '@go-ui/core/dist/components/go-hero.js';
 import { defineCustomElement as defineGoIcon } from '@go-ui/core/dist/components/go-icon.js';
 import { defineCustomElement as defineGoInput } from '@go-ui/core/dist/components/go-input.js';
@@ -125,6 +127,16 @@ export const GoButtonGroup = /*@__PURE__*/ defineContainer<JSX.GoButtonGroup>('g
 ]);
 
 
+export const GoCalloutSection = /*@__PURE__*/ defineContainer<JSX.GoCalloutSection>('go-callout-section', defineGoCalloutSection, [
+  'heading',
+  'headingTag',
+  'description',
+  'imgSrc',
+  'imgAlt',
+  'imgPos'
+]);
+
+
 export const GoCard = /*@__PURE__*/ defineContainer<JSX.GoCard>('go-card', defineGoCard, [
   'cardTitle',
   'cardSubtitle',
@@ -144,6 +156,7 @@ export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-r
   'colsLarge',
   'stagger',
   'heading',
+  'headingTag',
   'moreLinkHref',
   'moreLinkText'
 ]);
@@ -294,6 +307,14 @@ export const GoGovAuLogo = /*@__PURE__*/ defineContainer<JSX.GoGovAuLogo>('go-go
 
 export const GoHeaderBar = /*@__PURE__*/ defineContainer<JSX.GoHeaderBar>('go-header-bar', defineGoHeaderBar, [
   'breakpoint'
+]);
+
+
+export const GoHeadingRow = /*@__PURE__*/ defineContainer<JSX.GoHeadingRow>('go-heading-row', defineGoHeadingRow, [
+  'heading',
+  'headingTag',
+  'moreLinkHref',
+  'moreLinkText'
 ]);
 
 

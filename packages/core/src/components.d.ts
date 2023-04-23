@@ -172,6 +172,32 @@ export namespace Components {
          */
         "connected"?: boolean;
     }
+    interface GoCalloutSection {
+        /**
+          * Description text
+         */
+        "description": string;
+        /**
+          * Heading text
+         */
+        "heading": string;
+        /**
+          * HTML tag to use for heading
+         */
+        "headingTag": string;
+        /**
+          * Alt text of image (default '' which marks the image decorative)
+         */
+        "imgAlt": string;
+        /**
+          * Image position, possible values are `start` and `end`
+         */
+        "imgPos"?: 'start' | 'end';
+        /**
+          * Url of image
+         */
+        "imgSrc": string;
+    }
     interface GoCard {
         /**
           * Show border on card
@@ -228,6 +254,7 @@ export namespace Components {
           * Heading for this card row section
          */
         "heading"?: string;
+        "headingTag"?: string;
         /**
           * View more link href
          */
@@ -314,10 +341,25 @@ export namespace Components {
         "noHero"?: boolean;
         "pageHeading": string;
         "preHeading"?: string;
+        /**
+          * sidebar position on desktop screens possible values are `start` and `end`
+         */
         "sidebarDesktopPosition"?: SidebarPosition;
+        /**
+          * sidebar position on mobile screens possible values are `start` and `end`
+         */
         "sidebarMobilePosition"?: SidebarPosition;
+        /**
+          * If sidebar should be sticky
+         */
         "sidebarSticky"?: boolean;
+        /**
+          * If the "On this page" table of content section should be displayed
+         */
         "toc"?: boolean;
+        /**
+          * Props to pass into the table of content ([see `go-toc` props](/docs/components/go-toc#go-toc-props))
+         */
         "tocProps"?: TocProps;
     }
     interface GoDatepicker {
@@ -591,6 +633,24 @@ export namespace Components {
           * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
          */
         "breakpoint": Breakpoints;
+    }
+    interface GoHeadingRow {
+        /**
+          * Heading for this card row section
+         */
+        "heading"?: string;
+        /**
+          * HTML tag to use for heading
+         */
+        "headingTag"?: string;
+        /**
+          * View more link href
+         */
+        "moreLinkHref"?: string;
+        /**
+          * View more link text
+         */
+        "moreLinkText"?: string;
     }
     interface GoHero {
         /**
@@ -1248,6 +1308,12 @@ declare global {
         prototype: HTMLGoButtonGroupElement;
         new (): HTMLGoButtonGroupElement;
     };
+    interface HTMLGoCalloutSectionElement extends Components.GoCalloutSection, HTMLStencilElement {
+    }
+    var HTMLGoCalloutSectionElement: {
+        prototype: HTMLGoCalloutSectionElement;
+        new (): HTMLGoCalloutSectionElement;
+    };
     interface HTMLGoCardElement extends Components.GoCard, HTMLStencilElement {
     }
     var HTMLGoCardElement: {
@@ -1349,6 +1415,12 @@ declare global {
     var HTMLGoHeaderBarElement: {
         prototype: HTMLGoHeaderBarElement;
         new (): HTMLGoHeaderBarElement;
+    };
+    interface HTMLGoHeadingRowElement extends Components.GoHeadingRow, HTMLStencilElement {
+    }
+    var HTMLGoHeadingRowElement: {
+        prototype: HTMLGoHeadingRowElement;
+        new (): HTMLGoHeadingRowElement;
     };
     interface HTMLGoHeroElement extends Components.GoHero, HTMLStencilElement {
     }
@@ -1503,6 +1575,7 @@ declare global {
         "go-breadcrumb": HTMLGoBreadcrumbElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
+        "go-callout-section": HTMLGoCalloutSectionElement;
         "go-card": HTMLGoCardElement;
         "go-card-row": HTMLGoCardRowElement;
         "go-checkbox": HTMLGoCheckboxElement;
@@ -1520,6 +1593,7 @@ declare global {
         "go-footer": HTMLGoFooterElement;
         "go-gov-au-logo": HTMLGoGovAuLogoElement;
         "go-header-bar": HTMLGoHeaderBarElement;
+        "go-heading-row": HTMLGoHeadingRowElement;
         "go-hero": HTMLGoHeroElement;
         "go-icon": HTMLGoIconElement;
         "go-input": HTMLGoInputElement;
@@ -1706,6 +1780,32 @@ declare namespace LocalJSX {
          */
         "connected"?: boolean;
     }
+    interface GoCalloutSection {
+        /**
+          * Description text
+         */
+        "description"?: string;
+        /**
+          * Heading text
+         */
+        "heading"?: string;
+        /**
+          * HTML tag to use for heading
+         */
+        "headingTag"?: string;
+        /**
+          * Alt text of image (default '' which marks the image decorative)
+         */
+        "imgAlt"?: string;
+        /**
+          * Image position, possible values are `start` and `end`
+         */
+        "imgPos"?: 'start' | 'end';
+        /**
+          * Url of image
+         */
+        "imgSrc"?: string;
+    }
     interface GoCard {
         /**
           * Show border on card
@@ -1762,6 +1862,7 @@ declare namespace LocalJSX {
           * Heading for this card row section
          */
         "heading"?: string;
+        "headingTag"?: string;
         /**
           * View more link href
          */
@@ -1855,10 +1956,25 @@ declare namespace LocalJSX {
         "noHero"?: boolean;
         "pageHeading"?: string;
         "preHeading"?: string;
+        /**
+          * sidebar position on desktop screens possible values are `start` and `end`
+         */
         "sidebarDesktopPosition"?: SidebarPosition;
+        /**
+          * sidebar position on mobile screens possible values are `start` and `end`
+         */
         "sidebarMobilePosition"?: SidebarPosition;
+        /**
+          * If sidebar should be sticky
+         */
         "sidebarSticky"?: boolean;
+        /**
+          * If the "On this page" table of content section should be displayed
+         */
         "toc"?: boolean;
+        /**
+          * Props to pass into the table of content ([see `go-toc` props](/docs/components/go-toc#go-toc-props))
+         */
         "tocProps"?: TocProps;
     }
     interface GoDatepicker {
@@ -2121,6 +2237,24 @@ declare namespace LocalJSX {
           * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
          */
         "breakpoint"?: Breakpoints;
+    }
+    interface GoHeadingRow {
+        /**
+          * Heading for this card row section
+         */
+        "heading"?: string;
+        /**
+          * HTML tag to use for heading
+         */
+        "headingTag"?: string;
+        /**
+          * View more link href
+         */
+        "moreLinkHref"?: string;
+        /**
+          * View more link text
+         */
+        "moreLinkText"?: string;
     }
     interface GoHero {
         /**
@@ -2692,6 +2826,7 @@ declare namespace LocalJSX {
         "go-breadcrumb": GoBreadcrumb;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
+        "go-callout-section": GoCalloutSection;
         "go-card": GoCard;
         "go-card-row": GoCardRow;
         "go-checkbox": GoCheckbox;
@@ -2709,6 +2844,7 @@ declare namespace LocalJSX {
         "go-footer": GoFooter;
         "go-gov-au-logo": GoGovAuLogo;
         "go-header-bar": GoHeaderBar;
+        "go-heading-row": GoHeadingRow;
         "go-hero": GoHero;
         "go-icon": GoIcon;
         "go-input": GoInput;
@@ -2747,6 +2883,7 @@ declare module "@stencil/core" {
             "go-breadcrumb": LocalJSX.GoBreadcrumb & JSXBase.HTMLAttributes<HTMLGoBreadcrumbElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
+            "go-callout-section": LocalJSX.GoCalloutSection & JSXBase.HTMLAttributes<HTMLGoCalloutSectionElement>;
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
             "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
             "go-checkbox": LocalJSX.GoCheckbox & JSXBase.HTMLAttributes<HTMLGoCheckboxElement>;
@@ -2764,6 +2901,7 @@ declare module "@stencil/core" {
             "go-footer": LocalJSX.GoFooter & JSXBase.HTMLAttributes<HTMLGoFooterElement>;
             "go-gov-au-logo": LocalJSX.GoGovAuLogo & JSXBase.HTMLAttributes<HTMLGoGovAuLogoElement>;
             "go-header-bar": LocalJSX.GoHeaderBar & JSXBase.HTMLAttributes<HTMLGoHeaderBarElement>;
+            "go-heading-row": LocalJSX.GoHeadingRow & JSXBase.HTMLAttributes<HTMLGoHeadingRowElement>;
             "go-hero": LocalJSX.GoHero & JSXBase.HTMLAttributes<HTMLGoHeroElement>;
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
             "go-input": LocalJSX.GoInput & JSXBase.HTMLAttributes<HTMLGoInputElement>;

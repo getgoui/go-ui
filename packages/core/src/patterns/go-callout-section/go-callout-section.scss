@@ -1,0 +1,82 @@
+go-callout-section {
+  /**
+    @prop --section-inner-gap:
+      Inner gap size between image and text
+      - default: 5%
+  */
+  --section-inner-gap: 5%;
+
+  /**
+    @prop --section-media-width:
+      width of media part
+      - default: 45%
+  */
+  --section-media-width: 45%;
+
+  /**
+    @prop --section-text-width:
+      width of text part
+      - default: 50%
+  */
+  --section-text-width: 50%;
+
+  /**
+    @prop --section-text-inner-gap:
+      inner gap inside text part
+      - default: 1rem
+  */
+  --section-text-inner-gap: 1rem;
+
+  /**
+    @prop --image-fit:
+      object-fit property of image
+      - default: contain
+  */
+  --image-fit: contain;
+
+  /**
+    @prop --image-object-position:
+      object-position of image
+      - default: top
+  */
+  --image-object-position: top;
+
+  display: block;
+  .callout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-inner-gap);
+    @include tablet {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    &.reverse {
+      @include tablet {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+  .media {
+    @include tablet {
+      width: var(--section-media-width);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: var(--image-fit);
+      object-position: var(--image-object-position);
+    }
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-text-inner-gap);
+    @include tablet {
+      width: var(--section-text-width);
+    }
+    .actions {
+      margin-top: auto;
+    }
+  }
+}
