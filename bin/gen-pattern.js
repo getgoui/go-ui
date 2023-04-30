@@ -119,7 +119,7 @@ function writeBoilerplate(patternName, createElement, tags) {
 
   // write the demo html file
   const demoHtmlContent = getDemoHtmlContent(patternName, createElement);
-  const demoHtmlPath = path.resolve(`${dir}/demo/`, `${patternName}.html`);
+  const demoHtmlPath = path.resolve(`${dir}/usage/`, `${patternName}.md`);
   try {
     fs.writeFileSync(demoHtmlPath, demoHtmlContent);
     console.log(chalk.green('√ Demo html file generated'));
@@ -194,7 +194,7 @@ describe('${name}', () => {
   beforeAll(async () => {
     const fs = require('fs');
     const path = require('path');
-    html = fs.readFileSync(path.resolve(__dirname, '../demo/${name}.html'), 'utf8');
+    html = fs.readFileSync(path.resolve(__dirname, '../usage/${name}.md'), 'utf8');
   });
 
   it('renders', async () => {
@@ -239,9 +239,6 @@ hide_table_of_contents: true
 ${getTagsFrontmatter(tags)}
 ---
 
-import Demo from '@/components/Demo';
-import demoSource from '!!raw-loader!@/go-ui/patterns/${patternName}/demo/${patternName}.html';
-
 # ${title}
 
 <!-- Description -->
@@ -253,9 +250,9 @@ ${title} is a pattern.
 -
 -
 
-## A11y
+## Accessibility
 
-(Provide relevant a11y information here.)
+<!-- Provide relevant a11y information here -->
 
 
 
@@ -267,13 +264,12 @@ ${title} is a pattern.
 
 ## Demo
 
-<Demo code={demoSource} />
+<demo-frame component="${tagname}" demo="${tagname}"></demo-frame>
+
 ${
   createElement
     ? `
-<!-- API -->
-
-{@include: ../../../src/patterns/${patternName}/readme.md}
+<!-- Auto Generated Below -->
 `
     : ''
 }

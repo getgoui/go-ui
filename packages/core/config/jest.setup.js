@@ -13,6 +13,7 @@ expect.extend({
     await page.addScriptTag({
       path: require.resolve('axe-core'),
     });
+    const pageContent = await page.evaluate(() => document.querySelector('body').outerHTML);
     const results = await page.evaluate((axeConfig) => {
       return window.axe.run(axeConfig);
     }, axeConfig);
@@ -22,32 +23,36 @@ expect.extend({
       resultDisplay = results.violations
         .map(
           (violation) => `
-* ${violation.help}
-* (id: ${violation.id})
-*
-* Impact: ${violation.impact}
-*
-* Description:
-*
-*   ${violation.description}
-*
-* Elements:
-*
-*   ${violation.nodes.map((node) => node.html).join('\n*   ')}
-*
-* ${violation.helpUrl}
-*
+  ${violation.help}
+  (id: ${violation.id})
+ 
+  Impact: ${violation.impact}
+ 
+  Description:
+ 
+    ${violation.description}
+ 
+  Elements:
+ 
+    ${violation.nodes.map((node) => node.html).join('\n*   ')}
+ 
+  More Info:
+  ${violation.helpUrl}
+ 
       `,
         )
         .join('\n');
+
       message = `
 ****************************************************
 * A11y test failed, see below for more information *
 ****************************************************
-*
-* ${resultDisplay}
-*
+
+  ${resultDisplay}
+
 ****************************************************
+
+${pageContent}
 `;
     }
 
