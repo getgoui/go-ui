@@ -1,5 +1,14 @@
 {
   "extends": "semantic-release-monorepo",
+  "plugins": [
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "failTitle": false
+      }
+    ]
+  ],
   "branches": [
     "main"
   ]
