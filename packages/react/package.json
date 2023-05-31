@@ -8,11 +8,12 @@
     "url": "https://github.com/getgoui/go-ui"
   },
   "scripts": {
-    "build": "pnpm run clean && pnpm run compile && pnpm run cpyCss",
+    "build": "pnpm run clean && pnpm run compile && pnpm run cpyCss && pnpm run cpyScss",
     "clean": "rm -rf dist",
     "compile": "pnpm run tsc",
     "tsc": "tsc -p .",
     "rollup": "rollup -c",
+    "cpyScss": "cpy \"node_modules/@go-ui/core/src/global/scss/**/*\" \"dist/scss\"",
     "cpyCss": "cpy \"node_modules/@go-ui/core/dist/go-ui/go-ui.css\" \"dist\" --flat",
     "semantic-release": "semantic-release -e semantic-release-monorepo"
   },
