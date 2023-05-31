@@ -83,31 +83,32 @@ export class GoCardRow {
    * intersection observer to check if cards are in view
    */
   inViewObserver: IntersectionObserver;
-  contentObserver: MutationObserver;
 
   componentWillLoad() {
     // check if heading slot is used
     this.hasHeadingSlot = hasSlot(this.el, 'heading');
 
     // initialise intersection observer
-    this.inViewObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, i) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-          const card = entry.target as HTMLElement;
-          // add stagger fade in effect
-          card.classList.add('stagger-fade-in');
-          card.style.cssText = `--stagger-delay: ${i * this.stagger}ms`;
-          // stop observing
-          this.inViewObserver.unobserve(card);
-        });
-      },
-      {
-        threshold: 0.2, // >= 1/5th of card is in view
-      },
-    );
+    if (this.stagger) {
+      this.inViewObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, i) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+            const card = entry.target as HTMLElement;
+            // add stagger fade in effect
+            card.classList.add('stagger-fade-in');
+            card.style.cssText = `--stagger-delay: ${i * this.stagger}ms`;
+            // stop observing
+            this.inViewObserver.unobserve(card);
+          });
+        },
+        {
+          threshold: 0.2, // >= 1/5th of card is in view
+        },
+      );
+    }
   }
 
   async componentDidLoad() {
@@ -134,7 +135,7 @@ export class GoCardRow {
     wrapper.classList.add(...colClasses);
 
     // insert wrapper before el in the DOM tree
-    card.parentNode.insertBefore(wrapper, card);
+    // card.parentNode.insertBefore(wrapper, card);
 
     // move el into wrapper
     moveEl(card, wrapper);
