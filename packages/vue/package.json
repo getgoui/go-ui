@@ -1,6 +1,6 @@
 {
   "name": "@go-ui/vue",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "description": "Vue wrapper for @go-ui/core",
   "repository": {
     "type": "git",
