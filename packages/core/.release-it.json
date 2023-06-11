@@ -1,0 +1,14 @@
+{
+  "publishConfig": {
+    "access": "public"
+  },
+  "github": {
+    "release": true
+  },
+  "npm": {
+    "ignoreVersion": true
+  },
+  "git": {
+    "commitMessage": "chore: release v${version} [skip ci]"
+  }
+}

@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@go-ui/react": "workspace:0.0.0-development",
+    "@go-ui/react": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

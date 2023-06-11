@@ -10,7 +10,6 @@ const ROUTER_LINK_VALUE = 'routerLink';
 const NAV_MANAGER = 'navManager';
 const ROUTER_PROP_PREFIX = 'router';
 const ARIA_PROP_PREFIX = 'aria';
-
 /**
  * Starting in Vue 3.1.0, all properties are
  * added as keys to the props object, even if
@@ -31,8 +30,14 @@ const getComponentClasses = (classes: unknown) => {
   return (classes as string)?.split(' ') || [];
 };
 
-const getElementClasses = (ref: Ref<HTMLElement | undefined>, componentClasses: Set<string>, defaultClasses: string[] = []) => {
-  return [...Array.from(ref.value?.classList || []), ...defaultClasses].filter((c: string, i, self) => !componentClasses.has(c) && self.indexOf(c) === i);
+const getElementClasses = (
+  ref: Ref<HTMLElement | undefined>,
+  componentClasses: Set<string>,
+  defaultClasses: string[] = []
+) => {
+  return [...Array.from(ref.value?.classList || []), ...defaultClasses].filter(
+    (c: string, i, self) => !componentClasses.has(c) && self.indexOf(c) === i
+  );
 };
 
 /**
@@ -55,7 +60,7 @@ export const defineContainer = <Props, VModelType = string | number | boolean>(
   componentProps: string[] = [],
   modelProp?: string,
   modelUpdateEvent?: string,
-  externalModelUpdateEvent?: string,
+  externalModelUpdateEvent?: string
 ) => {
   /**
    * Create a Vue component wrapper around a Web Component.
