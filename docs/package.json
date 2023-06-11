@@ -15,7 +15,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@go-ui/core": "workspace:0.0.0-development",
+    "@go-ui/core": "workspace:*",
     "@stencil/core": "^2.22.1",
     "@stencil/helmet": "^0.3.3",
     "@stencil/sass": "^1.5.2",

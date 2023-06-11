@@ -1,4 +1,10 @@
 {
+  "name": "go-ui-root",
+  "workspaces": [
+    "packages/core",
+    "packages/react",
+    "packages/vue"
+  ],
   "scripts": {
     "dev": "concurrently --kill-others \"npm:watch.*\"",
     "watch.core": "nx build @go-ui/core -- --watch",
@@ -8,23 +14,20 @@
     "dev.docs": "nx build @go-ui/core && concurrently --kill-others \"npm:watch.ia\" \"nx start @go-ui/docs\"",
     "dev.react.app": "nx start @go-ui/react-starter",
     "dev.vue.app": "nx dev @go-ui/vue-starter",
-    "build": "nx run-many --target=build",
+    "build.libs": "pnpm --stream -r --filter \"./packages/**\" build",
     "build.docs": "nx build @go-ui/docs",
     "build.ia": "nx build.ia @go-ui/docs",
-    "build.core": "nx build @go-ui/core",
-    "build.react": "nx build @go-ui/react",
-    "build.vue": "nx build @go-ui/vue",
     "build.affected": "nx affected:build",
     "test.spec.watch": "nx test.spec.watch @go-ui/core",
     "test.spec": "nx test.spec @go-ui/core",
     "test.e2e.watch": "nx test.e2e.watch @go-ui/core",
     "test.e2e": "nx test.e2e @go-ui/core",
-    "release.core": "nx semantic-release @go-ui/core",
-    "release.react": "nx semantic-release @go-ui/react",
-    "release.vue": "nx semantic-release @go-ui/vue",
+    "release": "pnpm run --stream -r --filter \"./packages/**\" release && release-it",
     "gg": "node ./bin/index.js"
   },
   "devDependencies": {
+    "@release-it/bumper": "^4.0.2",
+    "@release-it/conventional-changelog": "^5.1.1",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "concurrently": "^6.5.1",
@@ -37,8 +40,12 @@
     "nanospinner": "^1.1.0",
     "nx": "14.6.5",
     "prompts": "^2.4.2",
-    "semantic-release": "^19.0.5",
-    "semantic-release-cli": "^5.4.4",
-    "semantic-release-monorepo": "^7.0.5"
+    "release-it": "^15.11.0"
+  },
+  "release-it": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md"
+    }
   }
 }
