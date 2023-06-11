@@ -1,7 +1,7 @@
 {
   "name": "@go-ui/react",
   "sideEffects": false,
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "React wrapper for @go-ui/core",
   "repository": {
     "type": "git",
