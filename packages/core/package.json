@@ -84,5 +84,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/getgoui/go-ui"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

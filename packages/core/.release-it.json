@@ -1,7 +1,4 @@
 {
-  "publishConfig": {
-    "access": "public"
-  },
   "github": {
     "release": true
   },
