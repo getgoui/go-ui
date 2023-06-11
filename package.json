@@ -22,7 +22,7 @@
     "test.spec": "nx test.spec @go-ui/core",
     "test.e2e.watch": "nx test.e2e.watch @go-ui/core",
     "test.e2e": "nx test.e2e @go-ui/core",
-    "release": "pnpm run --stream -r --filter \"./packages/**\" release && release-it",
+    "release": "pnpm run --stream -r --filter \"@go-ui/core\" release",
     "gg": "node ./bin/index.js"
   },
   "devDependencies": {

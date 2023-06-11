@@ -5,9 +5,6 @@
   "github": {
     "release": true
   },
-  "npm": {
-    "ignoreVersion": true
-  },
   "git": {
     "commitMessage": "chore: release v${version} [skip ci]",
     "requireCleanWorkingDir": false
@@ -15,7 +12,7 @@
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits",
-      "infile": "CHANGELOG.md"
+      "infile": "../../CHANGELOG.md"
     }
   }
 }
