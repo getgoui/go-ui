@@ -1,10 +1,4 @@
 {
-  "name": "go-ui-root",
-  "workspaces": [
-    "packages/core",
-    "packages/react",
-    "packages/vue"
-  ],
   "scripts": {
     "dev": "concurrently --kill-others \"npm:watch.*\"",
     "watch.core": "nx build @go-ui/core -- --watch",
