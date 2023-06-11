@@ -44,7 +44,11 @@
   },
   "release-it": {
     "git": {
-      "requireCleanWorkingDir": false
+      "requireCleanWorkingDir": false,
+      "release": false
+    },
+    "npm": {
+      "publish": false
     },
     "plugins": {
       "@release-it/conventional-changelog": {
