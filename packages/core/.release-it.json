@@ -9,6 +9,7 @@
     "ignoreVersion": true
   },
   "git": {
-    "commitMessage": "chore: release v${version} [skip ci]"
+    "commitMessage": "chore: release v${version} [skip ci]",
+    "requireCleanWorkingDir": false
   }
 }
