@@ -1,0 +1,25 @@
+{
+  "autorun": true,
+  "autokill": true,
+  "terminals": [
+    {
+      "name": "Project root",
+      "icon": "globe"
+    },
+    {
+      "name": "Core",
+      "icon": "library",
+      "cwd": "./packages/core"
+    },
+    {
+      "name": "React",
+      "icon": "library",
+      "cwd": "./packages/react"
+    },
+    {
+      "name": "Vue",
+      "icon": "library",
+      "cwd": "./packages/vue"
+    }
+  ]
+}
