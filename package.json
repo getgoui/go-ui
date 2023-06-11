@@ -43,6 +43,9 @@
     "release-it": "^15.11.0"
   },
   "release-it": {
+    "git": {
+      "requireCleanWorkingDir": false
+    },
     "@release-it/conventional-changelog": {
       "preset": "angular",
       "infile": "CHANGELOG.md"
