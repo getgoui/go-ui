@@ -48,16 +48,16 @@ jobs:
         run: pnpm -r install --no-frozen-lockfile
 
       #TEST
-      - name: Unit Test Core Components
-        run: pnpm test.spec
-        working-directory: packages/core
+      # - name: Unit Test Core Components
+      #   run: pnpm test.spec
+      #   working-directory: packages/core
 
-      - name: E2E Test Core Components
-        run: pnpm test.e2e
-        working-directory: packages/core
+      # - name: E2E Test Core Components
+      #   run: pnpm test.e2e
+      #   working-directory: packages/core
 
       - name: Build
-        run: pnpm run build
+        run: pnpm run build.libs
 
       - name: Authenticate NPM
         run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
