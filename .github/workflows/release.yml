@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 jobs:
   release:
-    permissions: read-all|write-all
     name: Release
     runs-on: ubuntu-latest
     steps:
@@ -18,8 +17,8 @@ jobs:
 
       - name: git config
         run: |
-          git config user.name "seanwuservicebot"
-          git config user.email "xx19881013@gmail.com"
+          git config user.name "${{ secrets.BOT_USERNAME }}"
+          git config user.email "${{ secrets.BOT_EMAIL }}"
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -72,9 +71,7 @@ jobs:
         run: pnpm run prerelease
 
       - name: Release Core
-        run: echo "export GITHUB_TOKEN=\"$BOT_TOKEN\"" > ~/.profile && pnpm run release
-        env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: pnpm run release
 
       - name: Pre wrapper release
         run: pnpm run prerelease-wrappers
