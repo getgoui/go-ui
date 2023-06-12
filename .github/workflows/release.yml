@@ -61,8 +61,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Pre release
-        run: pnpm run prerelease
+      # - name: Pre release
+      #   run: pnpm run prerelease
 
       - name: Release
         env:
