@@ -4,9 +4,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { promisify } from 'util';
 import { exec } from 'child_process';
-// const execAsync = promisify(exec);
 
 function execAsync(command) {
   return new Promise((resolve, reject) => {
@@ -29,11 +27,9 @@ async function getLatestVersion(packageName) {
     throw error;
   }
 }
-const packages = ['core', 'react', 'vue'];
+const packages = ['core'];
 
 export default async function releasePrep(args) {
-  const latestCore = 'latest';
-
   try {
     const latestVer = await getLatestVersion('@go-ui/core');
     console.log({ latestVer });
@@ -44,9 +40,6 @@ export default async function releasePrep(args) {
       let json = JSON.parse(content);
       // replace version number
       json['version'] = latestVer;
-      if (json['dependencies']['@go-ui/core']) {
-        json['dependencies']['@go-ui/core'] = latestCore;
-      }
       const newContent = JSON.stringify(json, undefined, 2);
       fs.writeFileSync(pkgFile, newContent);
       console.log(`[${pkgFile}]`);

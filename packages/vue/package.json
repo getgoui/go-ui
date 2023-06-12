@@ -1,6 +1,6 @@
 {
   "name": "@go-ui/vue",
-  "version": "1.19.0",
+  "version": "1.22.0",
   "description": "Vue wrapper for @go-ui/core",
   "repository": {
     "type": "git",
@@ -16,17 +16,15 @@
     "rollup": "rollup -c",
     "cpyScss": "cpy \"node_modules/@go-ui/core/src/global/scss/**/*\" \"dist/scss\"",
     "cpyCss": "cpy \"node_modules/@go-ui/core/dist/go-ui/*.css\" \"dist\"",
-    "release": "release-it --ci"
+    "release": "npm publish"
   },
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
     "@go-ui/core": "workspace:*"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^5.1.1",
     "@types/node": "^15.14.9",
     "cpy-cli": "^4.2.0",
-    "release-it": "^15.11.0",
     "typescript": "^4.8.4",
     "vue": "^3.2.45"
   },

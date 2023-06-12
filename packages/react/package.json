@@ -1,7 +1,7 @@
 {
   "name": "@go-ui/react",
   "sideEffects": false,
-  "version": "1.19.0",
+  "version": "1.22.0",
   "description": "React wrapper for @go-ui/core",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "rollup": "rollup -c",
     "cpyScss": "cpy \"node_modules/@go-ui/core/src/global/scss/**/*\" \"dist/scss\"",
     "cpyCss": "cpy \"node_modules/@go-ui/core/dist/go-ui/go-ui.css\" \"dist\" --flat",
-    "release": "release-it --ci"
+    "release": "npm publish"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -28,7 +28,6 @@
     "@go-ui/core": "workspace:*"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^5.1.1",
     "@types/jest": "23.3.9",
     "@types/node": "^15.14.9",
     "@types/react": "^17.0.52",
@@ -39,7 +38,6 @@
     "np": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "release-it": "^15.11.0",
     "typescript": "^4.8.4"
   },
   "peerDependencies": {

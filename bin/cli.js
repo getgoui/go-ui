@@ -4,6 +4,7 @@ import pattern from './gen-pattern';
 import dev from './dev';
 import help from './help';
 import releasePrep from './release-prep';
+import releasePrepWrappers from './release-prep-wappers';
 
 const commands = {
   component,
@@ -11,6 +12,7 @@ const commands = {
   dev,
   help,
   'release-prep': releasePrep,
+  'release-prep-wrappers': releasePrepWrappers,
 };
 
 export async function main(argsArray) {

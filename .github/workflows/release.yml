@@ -66,10 +66,16 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Pre release
+      - name: Pre core release
         run: pnpm run prerelease
 
-      - name: Release
+      - name: Release Core
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: pnpm run release
+
+      - name: Pre wrapper release
+        run: pnpm run prerelease-wrappers
+
+      - name: Release React
+        run: pnpm run release-wrappers
