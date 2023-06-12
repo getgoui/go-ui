@@ -30,4 +30,5 @@ export default async function releasePrepWrappers(args) {
   }
 
   exec('git add . && git commit -m "bump versions for wrapper libraries"');
+  console.log(`${packages.join(', ')} packages are synced to version ${coreVersion}`);
 }
