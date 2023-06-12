@@ -1,6 +1,7 @@
 {
   "github": {
-    "release": true
+    "release": true,
+    "tokenRef": "BOT_TOKEN"
   },
   "git": {
     "commitMessage": "chore: release v${version} [skip ci]",
