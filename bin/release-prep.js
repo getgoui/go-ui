@@ -36,7 +36,7 @@ export default async function releasePrep(args) {
 
   try {
     const latestVer = await getLatestVersion('@go-ui/core');
-
+    console.log({ latestVer });
     packages.map((pkg) => {
       const pkgRoot = path.resolve(__dirname, `../packages/${pkg}`);
       const pkgFile = path.resolve(pkgRoot, 'package.json');
@@ -47,7 +47,10 @@ export default async function releasePrep(args) {
       if (json['dependencies']['@go-ui/core']) {
         json['dependencies']['@go-ui/core'] = latestCore;
       }
-      fs.writeFileSync(pkgFile, JSON.stringify(json, undefined, 2));
+      const newContent = JSON.stringify(json, undefined, 2);
+      fs.writeFileSync(pkgFile, newContent);
+      console.log(`[${pkgFile}]`);
+      console.log(newContent);
     });
   } catch (error) {
     console.error('Error:', error);

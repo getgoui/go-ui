@@ -1,6 +1,6 @@
 {
   "name": "@go-ui/vue",
-  "version": "0.0.0-development",
+  "version": "1.19.0",
   "description": "Vue wrapper for @go-ui/core",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
-    "@go-ui/core": "workspace:*"
+    "@go-ui/core": "latest"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.1.1",
