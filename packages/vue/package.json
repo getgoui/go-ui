@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
-    "@go-ui/core": "latest"
+    "@go-ui/core": "workspace:*"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.1.1",
