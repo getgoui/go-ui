@@ -21,6 +21,7 @@ export default async function releasePrepWrappers(args) {
       let json = JSON.parse(content);
       // replace version number
       json['version'] = coreVersion;
+      json['dependencies']['@go-ui/core'] = coreVersion;
       const newContent = JSON.stringify(json, undefined, 2);
       fs.writeFileSync(pkgFile, newContent);
     });
