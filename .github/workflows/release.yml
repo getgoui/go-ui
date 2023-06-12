@@ -72,11 +72,14 @@ jobs:
 
       - name: Release Core
         run: pnpm run release
-        # env:
-        #   BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
       - name: Pre wrapper release
         run: pnpm run prerelease-wrappers
 
       - name: Release React
-        run: pnpm run release-wrappers
+        run: pnpm run release
+        working-directory: ./packages/react
+
+      - name: Release Vue
+        run: pnpm run release
+        working-directory: ./packages/vue
