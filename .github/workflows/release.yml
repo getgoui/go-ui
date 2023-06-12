@@ -17,8 +17,8 @@ jobs:
 
       - name: git config
         run: |
-          git config user.name "${{ secrets.BOT_USERNAME }}"
-          git config user.email "${{ secrets.BOT_EMAIL }}"
+          git config user.name "seanwuservicebot"
+          git config user.email "xx19881013@gmail.com"
 
       - name: Install Node.js
         uses: actions/setup-node@v3
