@@ -72,6 +72,8 @@ jobs:
 
       - name: Release Core
         run: pnpm run release
+        # env:
+        #   BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
       - name: Pre wrapper release
         run: pnpm run prerelease-wrappers
