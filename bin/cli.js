@@ -10,7 +10,7 @@ const commands = {
   pattern,
   dev,
   help,
-  releasePrep,
+  'release-prep': releasePrep,
 };
 
 export async function main(argsArray) {
