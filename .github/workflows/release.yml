@@ -70,9 +70,9 @@ jobs:
         run: pnpm run prerelease
 
       - name: Release Core
+        run: echo "export GITHUB_TOKEN=\"$BOT_TOKEN\"" > ~/.profile && pnpm run release
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        run: export GITHUB_TOKEN="$BOT_TOKEN" && pnpm run release
 
       - name: Pre wrapper release
         run: pnpm run prerelease-wrappers
