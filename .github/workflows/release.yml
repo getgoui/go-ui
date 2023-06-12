@@ -13,7 +13,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ secrets.BOT_TOKEN }}
 
       - name: git config
         run: |
@@ -71,9 +70,7 @@ jobs:
         run: pnpm run prerelease
 
       - name: Release Core
-        run: echo "export GITHUB_TOKEN=\"$BOT_TOKEN\"" > ~/.profile && pnpm run release
-        env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: pnpm run release
 
       - name: Pre wrapper release
         run: pnpm run prerelease-wrappers
