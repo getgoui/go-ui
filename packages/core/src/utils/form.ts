@@ -26,7 +26,7 @@ export function loadFieldProps(compInstance) {
     props[propKey] = compInstance[propKey];
   });
   const specialPropMap = {
-    controlId: 'id',
+    // controlId: 'id',
     idPrefix: 'prefix',
   };
   Object.keys(specialPropMap).forEach((key) => {

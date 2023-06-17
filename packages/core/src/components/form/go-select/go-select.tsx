@@ -1,7 +1,14 @@
 import { Component, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { SelectOption, SelectProps } from '../../../interfaces';
 import { parseItems, fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots, loadFieldProps } from '../../../utils';
-import { getActionFromKey, getIndexByLetter, getUpdatedIndex, isScrollable, maintainScrollVisibility, MenuActions } from '../../../utils/select';
+import {
+  getActionFromKey,
+  getIndexByLetter,
+  getUpdatedIndex,
+  isScrollable,
+  maintainScrollVisibility,
+  MenuActions,
+} from '../../../utils/select';
 import { uniqueId } from 'lodash-es';
 
 @Component({
@@ -38,9 +45,10 @@ export class GoSelect implements SelectProps {
    * common form control properties
    */
   @State() attrs: any;
+
   hasNamedSlot: { [key: string]: boolean } = {};
-  prefix = 'go-select-';
-  id = uniqueId(this.prefix);
+  prefixer = 'go-select-';
+  controlId = uniqueId(this.prefixer);
   controlEl: HTMLElement;
 
   async componentWillLoad() {
@@ -131,7 +139,18 @@ export class GoSelect implements SelectProps {
   }
 
   render() {
-    const { parsedOptions, activeIndex, id, open = false, dropdownWidth, value, readonly, disabled, name, attrs } = this;
+    const {
+      parsedOptions,
+      activeIndex,
+      controlId: id,
+      open = false,
+      dropdownWidth,
+      value,
+      readonly,
+      disabled,
+      name,
+      attrs,
+    } = this;
     const fieldProps = loadFieldProps(this);
 
     const activeId = open ? `${id}-${activeIndex}` : '';
@@ -204,7 +223,7 @@ export class GoSelect implements SelectProps {
                 return (
                   <div
                     class={{ 'current': this.activeIndex === i, 'combo-option': true }}
-                    id={`${this.id}-${i}`}
+                    id={`${id}-${i}`}
                     aria-selected={this.activeIndex === i ? 'true' : undefined}
                     ref={(el) => {
                       if (this.activeIndex === i) {
