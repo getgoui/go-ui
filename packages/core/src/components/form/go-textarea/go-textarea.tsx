@@ -70,10 +70,9 @@ export class GoTextarea implements TextareaProps {
    */
   @Prop() autoGrow?: boolean = false;
 
-  prefix = 'go-textarea-';
-
   hasNamedSlot: { [key: string]: boolean } = {};
-  id = uniqueId(this.prefix);
+  prefixer = 'go-textarea-';
+  controlId = uniqueId(this.prefixer);
   controlEl: HTMLTextAreaElement;
   /**
    * keep track of non-field attrs
@@ -94,7 +93,7 @@ export class GoTextarea implements TextareaProps {
   }
 
   render() {
-    const { value, id, attrs } = this;
+    const { value, controlId: id, attrs } = this;
     const fieldProps = loadFieldProps(this);
     return (
       <go-field {...fieldProps}>
@@ -122,7 +121,9 @@ export class GoTextarea implements TextareaProps {
           <span class="textarea-count">
             {value?.length ?? 0}/{attrs.maxlength}
             <span class="visually-hidden" aria-live="assertive" role="alert">
-              {value?.length === Number(attrs.maxlength) ? `Limit reached, you can only enter ${attrs.maxlength} characters in this field.` : ''}
+              {value?.length === Number(attrs.maxlength)
+                ? `Limit reached, you can only enter ${attrs.maxlength} characters in this field.`
+                : ''}
             </span>
           </span>
         ) : null}

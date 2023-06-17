@@ -76,9 +76,9 @@ export class GoInput implements InputProps {
    */
   @State() attrs: any;
 
-  prefix = 'go-input-';
+  prefixer = 'go-input-';
   hasNamedSlot: { [key: string]: boolean } = {};
-  id = uniqueId(this.prefix);
+  controlId = uniqueId(this.prefixer);
   controlEl: HTMLElement;
   componentWillLoad() {
     this.attrs = inheritNonFieldAttrs(this);
@@ -86,7 +86,7 @@ export class GoInput implements InputProps {
   }
 
   render() {
-    const { id, value, attrs } = this;
+    const { controlId, value, attrs } = this;
     const fieldProps = loadFieldProps(this);
     return (
       <go-field {...fieldProps}>
@@ -99,7 +99,14 @@ export class GoInput implements InputProps {
             );
           }
         })}
-        <input {...fieldProps} {...attrs} class="control" ref={(el) => (this.controlEl = el)} id={id} value={value} />
+        <input
+          {...fieldProps}
+          {...attrs}
+          class="control"
+          ref={(el) => (this.controlEl = el)}
+          id={controlId}
+          value={value}
+        />
       </go-field>
     );
   }

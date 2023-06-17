@@ -37,9 +37,9 @@ export class GoDatepicker implements FormFieldProps {
     this.parsedOptions = parseItems(this.options);
   }
 
-  prefix = 'go-datepicker-';
+  prefixer = 'go-datepicker-';
   hasNamedSlot: { [key: string]: boolean } = {};
-  id = uniqueId(this.prefix);
+  controlId = uniqueId(this.prefixer);
   datepickerInputEl: HTMLInputElement;
   datepickerEl: HTMLDuetDatePickerElement;
   componentWillLoad() {
@@ -50,7 +50,7 @@ export class GoDatepicker implements FormFieldProps {
   }
 
   render() {
-    const { id, value, name, disabled, parsedOptions } = this;
+    const { controlId: id, value, name, disabled, parsedOptions } = this;
     const fieldProps = loadFieldProps(this);
     return (
       <go-field {...fieldProps}>

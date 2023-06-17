@@ -1,7 +1,7 @@
 {
   "jsxBracketSameLine": true,
   "quoteProps": "consistent",
-  "printWidth": 160,
+  "printWidth": 120,
   "singleQuote": true,
   "trailingComma": "all",
   "bracketSpacing": true,

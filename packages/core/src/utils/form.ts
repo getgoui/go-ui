@@ -6,8 +6,8 @@ export const fieldSlotNames = ['icon-before', 'icon-after', 'prefix', 'suffix', 
 export const fieldPropNames = [
   'prefix',
   'value',
-  'id',
   'error',
+  'controlId',
   'labelId',
   'prefixId',
   'suffixId',
@@ -26,7 +26,7 @@ export function loadFieldProps(compInstance) {
     props[propKey] = compInstance[propKey];
   });
   const specialPropMap = {
-    controlId: 'id',
+    // controlId: 'id',
     idPrefix: 'prefix',
   };
   Object.keys(specialPropMap).forEach((key) => {
