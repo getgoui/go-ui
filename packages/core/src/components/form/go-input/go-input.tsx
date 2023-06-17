@@ -76,9 +76,9 @@ export class GoInput implements InputProps {
    */
   @State() attrs: any;
 
-  prefix = 'go-input-';
+  prefixer = 'go-input-';
   hasNamedSlot: { [key: string]: boolean } = {};
-  id = uniqueId(this.prefix);
+  id = uniqueId(this.prefixer);
   controlEl: HTMLElement;
   componentWillLoad() {
     this.attrs = inheritNonFieldAttrs(this);

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { GoButton, GoCard, GoHero, GoLink } from '@go-ui/vue';
+import { GoButton, GoCard, GoHero, GoLink, GoInput } from '@go-ui/vue';
 import vitelogo from './assets/vite.svg';
 import vuelogo from './assets/vue.svg';
 let count = ref(0);
@@ -24,7 +24,8 @@ let count = ref(0);
       <p>Check out the full documentation of Go UI at <GoLink href="https://go-ui.com">go-ui.com</GoLink></p>
     </GoHero>
 
-    <div className="container pt-5">
+    <div class="container pt-5">
+      <GoInput label="TEST" />
       <GoCard border cardTitle="Counter example" media-position="left">
         <div class="d-flex" slot="media">
           <img :src="vuelogo" alt="vue logo" />

@@ -195,7 +195,7 @@
 @mixin label {
   font-size: var(--input-label-font-size);
   font-weight: var(--input-label-font-weight);
-  margin-bottom: var(--input-gap-inner);
+  line-height: 1;
 }
 
 @mixin error-msg {
@@ -225,4 +225,10 @@
   --go-focus-outline-offset: calc(-1 * var(--go-focus-outline-width));
   box-shadow: var(--input-focus-shadow);
   @include focus-outline;
+}
+
+@mixin label-wrapper {
+  display: grid;
+  gap: var(--input-gap-inner);
+  margin-bottom: var(--input-gap-inner);
 }

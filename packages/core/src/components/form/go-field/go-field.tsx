@@ -169,6 +169,9 @@ export class GoField implements FormFieldProps {
       errorId,
     } = this;
 
+    const showLabel = hasLabelSlot || label;
+    const showHint = hasHintSlot || hint;
+    const showLabelWrapper = showLabel || showHint;
     return (
       <Host
         class={{
@@ -181,14 +184,18 @@ export class GoField implements FormFieldProps {
           'has-icon-before': hasIconBefore,
           'has-icon-after': hasIconAfter,
         }}>
-        {hasLabelSlot || label ? (
-          <label class="label" htmlFor={controlId} id={labelId}>
-            {label}
-          </label>
-        ) : null}
-        {hasHintSlot || hint ? (
-          <div class="hint" id={hintId}>
-            <slot name="hint">{hint}</slot>
+        {showLabelWrapper ? (
+          <div class="label-wrapper">
+            {showLabel ? (
+              <label class="label" htmlFor={controlId} id={labelId}>
+                {label}
+              </label>
+            ) : null}
+            {showHint ? (
+              <div class="hint" id={hintId}>
+                <slot name="hint">{hint}</slot>
+              </div>
+            ) : null}
           </div>
         ) : null}
 

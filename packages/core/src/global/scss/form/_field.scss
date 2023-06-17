@@ -39,7 +39,9 @@
       @include suffix-icon;
     }
   }
-
+  .label-wrapper {
+    @include label-wrapper;
+  }
   .control-wrapper {
     position: relative;
   }
