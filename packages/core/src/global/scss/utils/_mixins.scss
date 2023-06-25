@@ -193,3 +193,12 @@
     box-shadow: var(--inner-shadow-3);
   }
 }
+
+@mixin unstyled-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li { 
+    margin: 0;
+  }
+}

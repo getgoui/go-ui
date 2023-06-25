@@ -1219,9 +1219,17 @@ export interface GoBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoBannerElement;
 }
+export interface GoCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoCheckboxElement;
+}
 export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
+}
+export interface GoDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoDatepickerElement;
 }
 export interface GoDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1911,6 +1919,7 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
+        "onGoChange"?: (event: GoCheckboxCustomEvent<{ checked: boolean; value?: string }>) => void;
         /**
           * Value of the input field
          */
@@ -2010,6 +2019,7 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
+        "onGoChange"?: (event: GoDatepickerCustomEvent<string>) => void;
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */

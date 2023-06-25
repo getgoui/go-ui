@@ -69,7 +69,7 @@ export class GoInput implements InputProps {
   /**
    * Value of the input field
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * keep track of non-field attrs
@@ -106,6 +106,7 @@ export class GoInput implements InputProps {
           ref={(el) => (this.controlEl = el)}
           id={controlId}
           value={value}
+          onInput={(e) => (this.value = (e.target as HTMLInputElement).value)}
         />
       </go-field>
     );

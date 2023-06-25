@@ -70,8 +70,10 @@ export class GoFieldset {
     const ul = document.createElement('ul');
     ul.classList.add('fieldset-content');
     // Get the div's direct children
-    const children = div.children;
+    // we need to modify html structure, this will change the div.children reference.
+    // so make a new array to iterate against.
 
+    const children = [...div.children];
     // Iterate over the children
     for (let i = 0; i < children.length; i++) {
       // Create a new li element
@@ -91,6 +93,7 @@ export class GoFieldset {
       this.wrapChildrenInUl(this.el.querySelector('.fieldset-content'));
     }
   }
+
   render() {
     const { label, error, hint, hasError, hasHintSlot, labelId, errorId, hintId } = this;
     return (

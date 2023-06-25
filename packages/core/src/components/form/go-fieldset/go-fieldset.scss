@@ -8,14 +8,10 @@ go-fieldset {
     legend {
       @include label-wrapper;
     }
-    ul.fieldset-content {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      li {
-        margin: 0;
-        margin-bottom: var(--input-gap-inner);
-      }
+    .fieldset-content {
+      display: grid;
+      gap: var(--input-gap-inner);
+      @include unstyled-list;
     }
   }
 }

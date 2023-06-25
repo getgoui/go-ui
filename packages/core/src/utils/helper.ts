@@ -75,7 +75,9 @@ export function hasSlot(el: HTMLElement, slotName?: string): boolean {
 // };
 
 export const isDarkMode = () => {
-  const darkByAttribute = document.documentElement.getAttribute('data-theme') === 'dark' || document.documentElement.getAttribute('color-theme') === 'dark';
+  const darkByAttribute =
+    document.documentElement.getAttribute('data-theme') === 'dark' ||
+    document.documentElement.getAttribute('color-theme') === 'dark';
   return prefersDark() || darkByAttribute;
 };
 

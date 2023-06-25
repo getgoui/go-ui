@@ -26,6 +26,23 @@ export const config: Config = {
       includeImportCustomElements: true,
       customElementsDir: 'dist/components',
       excludeComponents: ['duet-date-picker'],
+      componentModels: [
+        {
+          elements: ['go-input', 'go-textarea'],
+          event: 'input',
+          targetAttr: 'value',
+        },
+        {
+          elements: ['go-checkbox', 'go-switch'],
+          event: 'go-change',
+          targetAttr: 'checked',
+        },
+        {
+          elements: ['go-datepicker', 'go-select', 'go-radio'],
+          event: 'go-change',
+          targetAttr: 'value',
+        },
+      ],
     }),
     {
       type: 'dist',

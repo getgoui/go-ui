@@ -18,6 +18,13 @@ import {
 import vitelogo from './assets/vite.svg';
 import vuelogo from './assets/vue.svg';
 let count = ref(0);
+let text = ref('v-model supported');
+
+let selectedFruits = {
+  apple: false,
+  orange: true,
+  watermelon: false,
+};
 </script>
 
 <template>
@@ -39,7 +46,6 @@ let count = ref(0);
     </GoHero>
 
     <div class="container pt-5">
-      <GoInput label="TEST" />
       <GoCard border cardTitle="Counter example" media-position="left">
         <div class="d-flex" slot="media">
           <img :src="vuelogo" alt="vue logo" />
@@ -52,12 +58,22 @@ let count = ref(0);
       </GoCard>
       <GoCard class="mt-4" card-title="Form components">
         <h2>Checkbox</h2>
-        <go-fieldset label="What fruit do you like?" hint="Select one or more" is-list>
-          <go-checkbox name="fruit" label="Apple" value="apple" hint="Not the company"></go-checkbox>
-          <go-checkbox name="fruit" label="Banana" value="banana"></go-checkbox>
-          <go-checkbox name="fruit" label="Orange" value="orange"></go-checkbox>
-          <go-checkbox name="fruit" label="Kiwi" value="kiwi"></go-checkbox>
-          <go-checkbox name="fruit" label="Watermelon" value="watermelon"></go-checkbox>
+        <pre>{{ { selectedFruits } }}</pre>
+        <go-fieldset label="What fruit do you like?" hint="Select one or more">
+          <go-checkbox
+            v-model="selectedFruits.apple"
+            name="fruit"
+            label="Apple"
+            value="apple"
+            hint="Not the company"></go-checkbox>
+          <go-checkbox v-model="selectedFruits.banana" name="fruit" label="Banana" value="banana"></go-checkbox>
+          <go-checkbox v-model="selectedFruits.orange" name="fruit" label="Orange" value="orange"></go-checkbox>
+          <go-checkbox v-model="selectedFruits.kiwi" name="fruit" label="Kiwi" value="kiwi"></go-checkbox>
+          <go-checkbox
+            v-model="selectedFruits.watermelon"
+            name="fruit"
+            label="Watermelon"
+            value="watermelon"></go-checkbox>
         </go-fieldset>
 
         <h3>Error state</h3>
@@ -111,7 +127,8 @@ let count = ref(0);
         </go-datepicker>
 
         <h2>Input</h2>
-        <go-input id="test" type="text" label="Input field" hint="Please enter some text"></go-input>
+        <pre>{{ text }}</pre>
+        <go-input id="test" type="text" v-model="text" label="Input field" hint="Please enter some text"></go-input>
         <go-input type="text" label="Error state" hint="Please enter some text" error="This is an error"></go-input>
         <go-input type="text" label="Disabled state" value="I'm not editable" disabled></go-input>
         <go-input type="text" label="Readonly state" value="I'm not editable" readonly></go-input>
@@ -204,6 +221,7 @@ let count = ref(0);
         <h2>Textarea</h2>
         <go-textarea
           id="txt-1"
+          v-model="text"
           auto-grow
           label="Textarea"
           hint="This is a textarea field"

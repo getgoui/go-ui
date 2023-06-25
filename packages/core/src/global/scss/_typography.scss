@@ -117,7 +117,6 @@ a {
   }
 }
 
-label {
-  font-weight: 700;
-  font-size: var(--go-size-0);
+.unstyled-list {
+  @include unstyled-list;
 }

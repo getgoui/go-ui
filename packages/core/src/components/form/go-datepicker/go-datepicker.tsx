@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, State, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, State, Watch, Event, EventEmitter } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import '@duetds/date-picker';
 import { fieldSlotNames, loadFieldProps, loadFieldSlots, parseItems } from '../../../utils';
@@ -22,7 +22,7 @@ export class GoDatepicker implements FormFieldProps {
   @Prop() hint?: string;
   @Prop() error?: string | boolean;
   @Prop() readonly?: boolean;
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Duet Date Picker options
@@ -49,6 +49,13 @@ export class GoDatepicker implements FormFieldProps {
     this.datepickerInputEl = this.el.querySelector('.duet-date__input');
   }
 
+  @Event() goChange: EventEmitter<string>;
+
+  handleChange(e) {
+    this.value = e.detail.value;
+    this.goChange.emit(this.value);
+  }
+
   render() {
     const { controlId: id, value, name, disabled, parsedOptions } = this;
     const fieldProps = loadFieldProps(this);
@@ -70,6 +77,7 @@ export class GoDatepicker implements FormFieldProps {
           value={value}
           name={name}
           disabled={disabled}
+          onDuetChange={(e) => this.handleChange(e)}
           {...parsedOptions}></duet-date-picker>
       </go-field>
     );

@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
 import { CheckboxProps } from '../../../interfaces';
 import { hasSlot, initIdProps } from '../../../utils';
 @Component({
@@ -18,8 +18,7 @@ export class GoCheckbox implements CheckboxProps {
   @Prop() hint?: string;
   @Prop({ reflect: true }) error?: string;
 
-  id: string;
-
+  controlId: string;
   /**
    * DOM id for hint message
    */
@@ -42,15 +41,37 @@ export class GoCheckbox implements CheckboxProps {
     this.hasError = typeof this.error !== 'undefined';
   }
 
+  @Event() goChange: EventEmitter<{ checked: boolean; value?: string }>;
+  handleChange(e) {
+    this.goChange.emit({
+      checked: e.target.checked,
+      value: e.target.value,
+    });
+  }
+
   hasHintSlot: boolean;
   componentWillLoad() {
     this.hasHintSlot = hasSlot(this.el, 'hint');
-    initIdProps(this, this.el, ['hint', 'error'], 'go-checkbox-');
+    initIdProps(this, this.el, ['hint', 'error', 'control'], 'go-checkbox-');
     this.updateErrorState();
   }
 
   render() {
-    const { label, error, id, hint, hintId, hasHintSlot, checked, indeterminate, name, disabled, value, hasError, errorId } = this;
+    const {
+      label,
+      error,
+      controlId,
+      hint,
+      hintId,
+      hasHintSlot,
+      checked,
+      indeterminate,
+      name,
+      disabled,
+      value,
+      hasError,
+      errorId,
+    } = this;
 
     const describedByIds = [];
     if (hasHintSlot || hint) {
@@ -60,7 +81,7 @@ export class GoCheckbox implements CheckboxProps {
       describedByIds.push(errorId);
     }
     const props = {
-      id,
+      id: controlId,
       checked,
       indeterminate,
       name,
@@ -76,7 +97,14 @@ export class GoCheckbox implements CheckboxProps {
         }}>
         <div class="control-wrapper">
           <div class="box">
-            <input class="hidden-control" type="checkbox" {...props} aria-invalid={String(hasError)} aria-describedby={describedByIds.join(' ')} />
+            <input
+              class="hidden-control"
+              type="checkbox"
+              {...props}
+              aria-invalid={String(hasError)}
+              aria-describedby={describedByIds.join(' ')}
+              onChange={(e) => this.handleChange(e)}
+            />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -101,7 +129,7 @@ export class GoCheckbox implements CheckboxProps {
             </svg>
           </div>
           <div class="text">
-            <label htmlFor={id}>{label}</label>
+            <label htmlFor={controlId}>{label}</label>
             {hasHintSlot || hint ? (
               <div class="hint" id={hintId}>
                 <slot name="hint">{hint}</slot>

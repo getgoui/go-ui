@@ -29,7 +29,7 @@ export class GoSelect implements SelectProps {
   @Prop() hint?: string;
   @Prop() error?: string | boolean;
   @Prop() readonly?: boolean;
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Array of label/value options
