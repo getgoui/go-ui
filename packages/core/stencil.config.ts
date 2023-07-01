@@ -34,13 +34,14 @@ export const config: Config = {
         },
         {
           elements: ['go-checkbox', 'go-switch'],
-          event: 'go-change',
+          event: 'change',
           targetAttr: 'checked',
         },
         {
           elements: ['go-datepicker', 'go-select', 'go-radio'],
-          event: 'go-change',
+          event: 'v-go-change',
           targetAttr: 'value',
+          externalEvent: 'goChange',
         },
       ],
     }),

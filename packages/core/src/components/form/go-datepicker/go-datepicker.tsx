@@ -49,11 +49,12 @@ export class GoDatepicker implements FormFieldProps {
     this.datepickerInputEl = this.el.querySelector('.duet-date__input');
   }
 
-  @Event() goChange: EventEmitter<string>;
+  @Event() goChange: EventEmitter<{ value: string }>;
 
   handleChange(e) {
     this.value = e.detail.value;
-    this.goChange.emit(this.value);
+    console.log('in datepicker emitting value: ', this.value);
+    this.goChange.emit({ value: this.value });
   }
 
   render() {

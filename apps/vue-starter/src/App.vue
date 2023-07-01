@@ -17,14 +17,18 @@ import {
 } from '@go-ui/vue';
 import vitelogo from './assets/vite.svg';
 import vuelogo from './assets/vue.svg';
-let count = ref(0);
-let text = ref('v-model supported');
+const count = ref(0);
+const text = ref('v-model supported');
 
-let selectedFruits = {
-  apple: false,
+const selectedFruits = ref({
+  apple: true,
   orange: true,
   watermelon: false,
-};
+});
+
+const switchVal = ref(false);
+
+const date = ref('2000-01-21');
 </script>
 
 <template>
@@ -90,13 +94,14 @@ let selectedFruits = {
         </go-fieldset>
 
         <h2>Datepicker</h2>
+        <pre>{{ { date } }}</pre>
         <go-datepicker
           id="test"
           type="text"
           label="Date picker"
           hint="Please enter a date"
           auto-flip
-          value="2000-01-01"></go-datepicker>
+          v-model="date"></go-datepicker>
         <go-datepicker
           type="text"
           label="Error state"
@@ -193,17 +198,19 @@ let selectedFruits = {
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
         </go-select>
+
         <h2>Switch</h2>
-        <go-switch checked name="switch1" label="Switch"></go-switch>
+        <pre>{{ { switchVal } }}</pre>
+        <go-switch v-model="switchVal" name="switch1" label="Switch"></go-switch>
         <br />
-        <go-switch checked name="switch2" label="Stacked switch" stack></go-switch>
+        <go-switch v-model="switchVal" name="switch2" label="Stacked switch" stack></go-switch>
         <br />
-        <go-switch checked name="switch3" label="Full-width switch" full-width></go-switch>
+        <go-switch v-model="switchVal" name="switch3" label="Full-width switch" full-width></go-switch>
         <br />
-        <go-switch checked name="switch4" label="On off switch" show-on-off></go-switch>
+        <go-switch v-model="switchVal" name="switch4" label="On off switch" show-on-off></go-switch>
         <br />
         <go-switch
-          checked
+          v-model="switchVal"
           name="switch5"
           label="Yes no switch"
           show-on-off
@@ -211,7 +218,7 @@ let selectedFruits = {
           inactive-label="No"></go-switch>
         <br />
         <go-switch
-          checked
+          v-model="switchVal"
           name="switch5"
           label="On off outside switch"
           show-on-off-outside

@@ -172,10 +172,9 @@ export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-chec
   'hint',
   'error',
   'hintId',
-  'errorId',
-  'goChange'
+  'errorId'
 ],
-'checked', 'go-change');
+'checked', 'change');
 
 
 export const GoChip = /*@__PURE__*/ defineContainer<JSX.GoChip>('go-chip', defineGoChip, [
@@ -223,7 +222,7 @@ export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker>('go-
   'options',
   'goChange'
 ],
-'value', 'go-change');
+'value', 'v-go-change', 'goChange');
 
 
 export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', defineGoDialog, [
@@ -445,7 +444,7 @@ export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio>('go-radio', de
   'hintId',
   'errorId'
 ],
-'value', 'go-change');
+'value', 'v-go-change', 'goChange');
 
 
 export const GoSearchBar = /*@__PURE__*/ defineContainer<JSX.GoSearchBar>('go-search-bar', defineGoSearchBar);
@@ -466,7 +465,7 @@ export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect>('go-select',
   'options',
   'goChange'
 ],
-'value', 'go-change');
+'value', 'v-go-change', 'goChange');
 
 
 export const GoSkipLink = /*@__PURE__*/ defineContainer<JSX.GoSkipLink>('go-skip-link', defineGoSkipLink, [
@@ -498,7 +497,7 @@ export const GoSwitch = /*@__PURE__*/ defineContainer<JSX.GoSwitch>('go-switch',
   'activeLabel',
   'inactiveLabel'
 ],
-'checked', 'go-change');
+'checked', 'change');
 
 
 export const GoTab = /*@__PURE__*/ defineContainer<JSX.GoTab>('go-tab', defineGoTab, [
