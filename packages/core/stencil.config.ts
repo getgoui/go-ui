@@ -16,15 +16,15 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
-      includeImportCustomElements: true,
-      customElementsDir: 'dist/components',
+      includePolyfills: false,
       excludeComponents: ['duet-date-picker'],
     }),
     vueOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../vue/src/components.ts',
       includeImportCustomElements: true,
-      customElementsDir: 'dist/components',
+      includePolyfills: false,
+      customElementsDir: '',
       excludeComponents: ['duet-date-picker'],
       componentModels: [
         {
@@ -50,7 +50,7 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
-      autoDefineCustomElements: true,
+      customElementsExportBehavior: 'auto-define-custom-elements',
       generateTypeDeclarations: true,
     },
     {

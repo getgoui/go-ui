@@ -57,7 +57,7 @@ importers:
   apps/react-starter:
     dependencies:
       '@go-ui/react':
-        specifier: workspace:0.0.0-development
+        specifier: workspace:*
         version: link:../../packages/react
       react:
         specifier: ^18.2.0
@@ -82,7 +82,7 @@ importers:
   apps/vanilla-starter:
     dependencies:
       '@go-ui/core':
-        specifier: workspace:0.0.0-development
+        specifier: workspace:*
         version: link:../../packages/core
     devDependencies:
       vite:
@@ -92,7 +92,7 @@ importers:
   apps/vue-starter:
     dependencies:
       '@go-ui/vue':
-        specifier: workspace:0.0.0-development
+        specifier: workspace:*
         version: link:../../packages/vue
       vue:
         specifier: ^3.2.45
@@ -145,7 +145,7 @@ importers:
         version: 0.6.0(@stencil/core@2.22.1)
     devDependencies:
       '@go-ui/core':
-        specifier: workspace:0.0.0-development
+        specifier: workspace:*
         version: link:../packages/core
       '@stencil/core':
         specifier: ^2.22.1
@@ -272,20 +272,20 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(release-it@15.11.0)
       '@stencil/core':
-        specifier: ^2.22.1
-        version: 2.22.1
+        specifier: ^3.4.1
+        version: 3.4.1
       '@stencil/postcss':
         specifier: ^2.1.0
-        version: 2.1.0(@stencil/core@2.22.1)
+        version: 2.1.0(@stencil/core@3.4.1)
       '@stencil/react-output-target':
-        specifier: ^0.5.0
-        version: 0.5.0(@stencil/core@2.22.1)
+        specifier: ^0.5.3
+        version: 0.5.3(@stencil/core@3.4.1)
       '@stencil/sass':
-        specifier: ^1.5.2
-        version: 1.5.2(@stencil/core@2.22.1)
+        specifier: ^3.0.4
+        version: 3.0.4(@stencil/core@3.4.1)
       '@stencil/vue-output-target':
-        specifier: ^0.8.0
-        version: 0.8.0(@stencil/core@2.22.1)
+        specifier: ^0.8.6
+        version: 0.8.6(@stencil/core@3.4.1)
       '@types/jest':
         specifier: ^26.0.24
         version: 26.0.24
@@ -295,9 +295,6 @@ importers:
       '@types/node':
         specifier: ^18.11.18
         version: 18.11.18
-      '@types/puppeteer':
-        specifier: ^5.4.7
-        version: 5.4.7
       autoprefixer:
         specifier: ^10.4.13
         version: 10.4.13(postcss@8.4.21)
@@ -3169,27 +3166,33 @@ packages:
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
 
+  /@stencil/core@3.4.1:
+    resolution: {integrity: sha512-7rjOmM0W9K5op2gtOQRLERGH1155rv2fm6ppxOzYqqG8ISct4m9skp5XgUBYPu+GSPsJFdRuCIQs0IuVsG/7+g==}
+    engines: {node: '>=14.10.0', npm: '>=6.0.0'}
+    hasBin: true
+    dev: true
+
   /@stencil/helmet@0.3.3:
     resolution: {integrity: sha512-CAOsX+mmzozSWOSeUiCZAGHfEo8B2brE+bKJgZJLzs7c3EnX6GBDwn1k1oFamC5PMTxV7PtSib5OcvXTy602DA==}
     deprecated: '@stencil/helmet is no longer supported'
     dev: true
 
-  /@stencil/postcss@2.1.0(@stencil/core@2.22.1):
+  /@stencil/postcss@2.1.0(@stencil/core@3.4.1):
     resolution: {integrity: sha512-/e4TYEXErGaHxH0ocg620YqEMLuMLpK/Wg4MJsiJglrLZCZhU4XCX1N0SwxaIOUbEZ1Zh+AqQ++yMI92ilndEA==}
     peerDependencies:
       '@stencil/core': '>=2.0.0'
     dependencies:
-      '@stencil/core': 2.22.1
+      '@stencil/core': 3.4.1
       autoprefixer: 10.4.13(postcss@8.3.11)
       postcss: 8.3.11
     dev: true
 
-  /@stencil/react-output-target@0.5.0(@stencil/core@2.22.1):
-    resolution: {integrity: sha512-m2UwgrFuVXzi1h4m6I+EWDGeZV4n1wPHkzbRCS9QaqysiQEN5VIi9zjLzvPQF7O9Gg3E/W28z0yElp0kY3VuFQ==}
+  /@stencil/react-output-target@0.5.3(@stencil/core@3.4.1):
+    resolution: {integrity: sha512-68jwRp35CjAcwhTJ9yFD/3n+jrHOqvEH2jreVuPVvZK+4tkhPlYlwz0d1E1RlF3jyifUSfdkWUGgXIEy8Fo3yw==}
     peerDependencies:
-      '@stencil/core': ^2.9.0 || ^3.0.0
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 2.22.1
+      '@stencil/core': 3.4.1
     dev: true
 
   /@stencil/sass@1.5.2(@stencil/core@2.22.1):
@@ -3198,6 +3201,14 @@ packages:
       '@stencil/core': '>=1.0.2'
     dependencies:
       '@stencil/core': 2.22.1
+    dev: true
+
+  /@stencil/sass@3.0.4(@stencil/core@3.4.1):
+    resolution: {integrity: sha512-k1dP0A2QBx62m250FATc1hErXxXs6Jnf4TBxdL1C/dc32Kzz2n5aCT4SodBz0ebT5WMnITauZyFqYxzCzDoKag==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 3.4.1
     dev: true
 
   /@stencil/store@1.5.0(@stencil/core@2.22.1):
@@ -3216,12 +3227,12 @@ packages:
       '@stencil/core': 2.22.1
     dev: true
 
-  /@stencil/vue-output-target@0.8.0(@stencil/core@2.22.1):
-    resolution: {integrity: sha512-Clh+aXTvS0uF4IfsecZHOw3Md6jwoNTrY5pXdnJRsqtGKK8KpBDeErcU323ngJNITkgaMhBvRxksSFqvay4kzQ==}
+  /@stencil/vue-output-target@0.8.6(@stencil/core@3.4.1):
+    resolution: {integrity: sha512-B1gQW8FWeU7x/KBPm9R28jYFGN5NsZTZR4jwfDMhKBmU1Q2dIxFY52ARhbrfj5tJQxKoxr2tQJD2S14r9t1v7w==}
     peerDependencies:
-      '@stencil/core': ^2.9.0 || ^3.0.0
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 2.22.1
+      '@stencil/core': 3.4.1
     dev: true
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
@@ -3412,12 +3423,6 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
-
-  /@types/puppeteer@5.4.7:
-    resolution: {integrity: sha512-JdGWZZYL0vKapXF4oQTC5hLVNfOgdPrqeZ1BiQnGk5cB7HeE91EWUiTdVSdQPobRN8rIcdffjiOgCYJ/S8QrnQ==}
-    dependencies:
-      '@types/node': 18.11.18
     dev: true
 
   /@types/react-dom@17.0.18:

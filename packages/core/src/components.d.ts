@@ -13,6 +13,14 @@ import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
+export { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType, SelectOption } from "./interfaces";
+export { ChipVariants } from "./interfaces/variants";
+export { TocProps } from "./components/go-toc/go-toc";
+export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
+export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
+export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+export { Options } from "markdown-it";
+export { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
         /**
