@@ -53,15 +53,18 @@ export class GoDatepicker implements FormFieldProps {
 
   handleChange(e) {
     this.value = e.detail.value;
-    console.log('in datepicker emitting value: ', this.value);
-    this.goChange.emit({ value: this.value });
   }
 
   render() {
     const { controlId: id, value, name, disabled, parsedOptions } = this;
     const fieldProps = loadFieldProps(this);
     return (
-      <go-field {...fieldProps}>
+      <go-field
+        {...fieldProps}
+        value={value}
+        onChange={(e) => {
+          console.log(`go-field hidden input change event`, e);
+        }}>
         {fieldSlotNames.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (

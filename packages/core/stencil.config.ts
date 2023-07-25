@@ -21,8 +21,8 @@ export const config: Config = {
     vueOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../vue/src/components.ts',
-      includeImportCustomElements: true,
-      customElementsDir: 'dist/components',
+      // includeImportCustomElements: true,
+      // customElementsDir: 'dist/components',
       excludeComponents: ['duet-date-picker'],
       componentModels: [
         {
@@ -37,9 +37,8 @@ export const config: Config = {
         },
         {
           elements: ['go-datepicker', 'go-select', 'go-radio'],
-          event: 'v-go-change',
+          event: 'change',
           targetAttr: 'value',
-          externalEvent: 'goChange',
         },
       ],
     }),
@@ -48,7 +47,7 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
-      customElementsExportBehavior: 'auto-define-custom-elements',
+      // customElementsExportBehavior: 'auto-define-custom-elements',
       generateTypeDeclarations: true,
     },
     {

@@ -3,8 +3,8 @@ import { INavItem } from '../../interfaces';
 import { parseItems } from '../../utils';
 
 @Component({
-  tag: 'go-breadcrumb',
-  styleUrl: 'go-breadcrumb.scss',
+  tag: 'go-breadcrumbs',
+  styleUrl: 'go-breadcrumbs.scss',
   shadow: false,
 })
 export class GoBreadcrumb {
@@ -13,7 +13,7 @@ export class GoBreadcrumb {
   /**
    * The label for the navigation landmark. This is used by assistive technologies to identify the landmark.
    */
-  @Prop() label = 'Breadcrumb';
+  @Prop() label = 'Breadcrumbs';
 
   /**
    * list of navigation items to be displayed
@@ -21,7 +21,7 @@ export class GoBreadcrumb {
   @Prop() items: INavItem[] | string;
 
   /**
-   * Hide current page (last item without url) from the breadcrumb
+   * Hide current page (last item without url) from the breadcrumbs
    */
   @Prop() hideCurrent: boolean = false;
 

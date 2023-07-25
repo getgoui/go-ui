@@ -105,9 +105,9 @@ export namespace Components {
         "citeUrl"?: string;
         "hideQuoteMark"?: boolean;
     }
-    interface GoBreadcrumb {
+    interface GoBreadcrumbs {
         /**
-          * Hide current page (last item without url) from the breadcrumb
+          * Hide current page (last item without url) from the breadcrumbs
          */
         "hideCurrent": boolean;
         /**
@@ -569,6 +569,10 @@ export namespace Components {
           * DOM id for suffix
          */
         "suffixId"?: string;
+        /**
+          * Optional value prop to track value state this will trigger a hidden native input to emit change event so that the vue wrapper can pick up the event and easily use v-model
+         */
+        "value"?: string;
     }
     interface GoFieldset {
         /**
@@ -1302,11 +1306,11 @@ declare global {
         prototype: HTMLGoBlockquoteElement;
         new (): HTMLGoBlockquoteElement;
     };
-    interface HTMLGoBreadcrumbElement extends Components.GoBreadcrumb, HTMLStencilElement {
+    interface HTMLGoBreadcrumbsElement extends Components.GoBreadcrumbs, HTMLStencilElement {
     }
-    var HTMLGoBreadcrumbElement: {
-        prototype: HTMLGoBreadcrumbElement;
-        new (): HTMLGoBreadcrumbElement;
+    var HTMLGoBreadcrumbsElement: {
+        prototype: HTMLGoBreadcrumbsElement;
+        new (): HTMLGoBreadcrumbsElement;
     };
     interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
     }
@@ -1584,7 +1588,7 @@ declare global {
         "go-badge": HTMLGoBadgeElement;
         "go-banner": HTMLGoBannerElement;
         "go-blockquote": HTMLGoBlockquoteElement;
-        "go-breadcrumb": HTMLGoBreadcrumbElement;
+        "go-breadcrumbs": HTMLGoBreadcrumbsElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-callout-section": HTMLGoCalloutSectionElement;
@@ -1717,9 +1721,9 @@ declare namespace LocalJSX {
         "citeUrl"?: string;
         "hideQuoteMark"?: boolean;
     }
-    interface GoBreadcrumb {
+    interface GoBreadcrumbs {
         /**
-          * Hide current page (last item without url) from the breadcrumb
+          * Hide current page (last item without url) from the breadcrumbs
          */
         "hideCurrent"?: boolean;
         /**
@@ -2178,6 +2182,10 @@ declare namespace LocalJSX {
           * DOM id for suffix
          */
         "suffixId"?: string;
+        /**
+          * Optional value prop to track value state this will trigger a hidden native input to emit change event so that the vue wrapper can pick up the event and easily use v-model
+         */
+        "value"?: string;
     }
     interface GoFieldset {
         /**
@@ -2836,7 +2844,7 @@ declare namespace LocalJSX {
         "go-badge": GoBadge;
         "go-banner": GoBanner;
         "go-blockquote": GoBlockquote;
-        "go-breadcrumb": GoBreadcrumb;
+        "go-breadcrumbs": GoBreadcrumbs;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-callout-section": GoCalloutSection;
@@ -2893,7 +2901,7 @@ declare module "@stencil/core" {
             "go-badge": LocalJSX.GoBadge & JSXBase.HTMLAttributes<HTMLGoBadgeElement>;
             "go-banner": LocalJSX.GoBanner & JSXBase.HTMLAttributes<HTMLGoBannerElement>;
             "go-blockquote": LocalJSX.GoBlockquote & JSXBase.HTMLAttributes<HTMLGoBlockquoteElement>;
-            "go-breadcrumb": LocalJSX.GoBreadcrumb & JSXBase.HTMLAttributes<HTMLGoBreadcrumbElement>;
+            "go-breadcrumbs": LocalJSX.GoBreadcrumbs & JSXBase.HTMLAttributes<HTMLGoBreadcrumbsElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-callout-section": LocalJSX.GoCalloutSection & JSXBase.HTMLAttributes<HTMLGoCalloutSectionElement>;

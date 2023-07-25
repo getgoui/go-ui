@@ -71,6 +71,13 @@ export class GoField implements FormFieldProps {
   @Prop() readonly?: boolean;
 
   /**
+   * Optional value prop to track value state
+   * this will trigger a hidden native input to emit change event
+   * so that the vue wrapper can pick up the event and easily use v-model
+   */
+  @Prop() value?: string;
+
+  /**
    * Allow empty value for `error` attribute and show error state
    */
   @State() hasError = false;
@@ -78,6 +85,21 @@ export class GoField implements FormFieldProps {
   @Watch('error')
   updateErrorState() {
     this.hasError = !!this.error;
+  }
+
+  private hiddenInput: HTMLInputElement = null;
+
+  @Watch('value')
+  updateValueState(newVal) {
+    if (this.hiddenInput) {
+      // trigger native change event on the hiddenInput DOM element
+      this.hiddenInput.value = newVal;
+      this.hiddenInput.dispatchEvent(
+        new Event('change', {
+          bubbles: true,
+        }),
+      );
+    }
   }
 
   hasIconBefore: boolean;
@@ -113,7 +135,9 @@ export class GoField implements FormFieldProps {
     if (!this.controlEl) {
       this.controlEl = this.el.querySelector(this.controlElSelector);
       if (!this.controlEl) {
-        warning(`Cannot find field control based on selector ${this.controlElSelector}. Make sure the element exists in the DOM`);
+        warning(
+          `Cannot find field control based on selector ${this.controlElSelector}. Make sure the element exists in the DOM`,
+        );
         return;
       }
     }
@@ -167,6 +191,7 @@ export class GoField implements FormFieldProps {
       prefixId,
       suffixId,
       errorId,
+      value,
     } = this;
 
     const showLabel = hasLabelSlot || label;
@@ -235,6 +260,8 @@ export class GoField implements FormFieldProps {
             {error}
           </div>
         ) : null}
+
+        {value ? <input type="hidden" ref={(el) => (this.hiddenInput = el)} /> : null}
       </Host>
     );
   }

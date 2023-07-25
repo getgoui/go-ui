@@ -15,6 +15,7 @@ import {
   GoTextarea,
   GoSwitch,
 } from '@go-ui/vue';
+
 import vitelogo from './assets/vite.svg';
 import vuelogo from './assets/vue.svg';
 const count = ref(0);
@@ -29,19 +30,18 @@ const selectedFruits = ref({
 const switchVal = ref(false);
 
 const date = ref('2000-01-21');
+
+const breadcrumbs = `[
+  {
+    label: 'Home',
+    url: '#',
+  }
+]`;
 </script>
 
 <template>
   <div>
-    <GoHero
-      :breadcrumbs="[
-        {
-          label: 'Home',
-          url: '#',
-        },
-      ]"
-      preHeading="Vite + Vue + GoUI"
-      heading="Develop with happiness">
+    <GoHero :breadcrumbs="breadcrumbs" preHeading="Vite + Vue + GoUI" heading="Develop with happiness">
       <img
         src="https://images.unsplash.com/photo-1599811392833-a39014faf967?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
         alt="Beach"
@@ -62,36 +62,35 @@ const date = ref('2000-01-21');
       </GoCard>
       <GoCard class="mt-4" card-title="Form components">
         <h2>Checkbox</h2>
-        <pre>{{ { selectedFruits } }}</pre>
-        <go-fieldset label="What fruit do you like?" hint="Select one or more">
-          <go-checkbox
+        <GoFieldset label="What fruit do you like?" hint="Select one or more">
+          <GoCheckbox
             v-model="selectedFruits.apple"
             name="fruit"
             label="Apple"
             value="apple"
-            hint="Not the company"></go-checkbox>
-          <go-checkbox v-model="selectedFruits.banana" name="fruit" label="Banana" value="banana"></go-checkbox>
-          <go-checkbox v-model="selectedFruits.orange" name="fruit" label="Orange" value="orange"></go-checkbox>
-          <go-checkbox v-model="selectedFruits.kiwi" name="fruit" label="Kiwi" value="kiwi"></go-checkbox>
-          <go-checkbox
+            hint="Not the company"></GoCheckbox>
+          <GoCheckbox v-model="selectedFruits.banana" name="fruit" label="Banana" value="banana"></GoCheckbox>
+          <GoCheckbox v-model="selectedFruits.orange" name="fruit" label="Orange" value="orange"></GoCheckbox>
+          <GoCheckbox v-model="selectedFruits.kiwi" name="fruit" label="Kiwi" value="kiwi"></GoCheckbox>
+          <GoCheckbox
             v-model="selectedFruits.watermelon"
             name="fruit"
             label="Watermelon"
-            value="watermelon"></go-checkbox>
-        </go-fieldset>
+            value="watermelon"></GoCheckbox>
+        </GoFieldset>
 
         <h3>Error state</h3>
-        <go-fieldset
+        <GoFieldset
           label="What fruit do you like?"
           error="[This is an error message]"
           hint="Select one or more"
           is-list>
-          <go-checkbox name="fruit2" label="Apple" value="apple" hint="Not the company"></go-checkbox>
-          <go-checkbox name="fruit2" label="Banana" value="banana"></go-checkbox>
-          <go-checkbox name="fruit2" label="Orange" value="orange"></go-checkbox>
-          <go-checkbox name="fruit2" label="Kiwi" value="kiwi"></go-checkbox>
-          <go-checkbox name="fruit2" label="Watermelon" value="watermelon"></go-checkbox>
-        </go-fieldset>
+          <GoCheckbox name="fruit2" label="Apple" value="apple" hint="Not the company"></GoCheckbox>
+          <GoCheckbox name="fruit2" label="Banana" value="banana"></GoCheckbox>
+          <GoCheckbox name="fruit2" label="Orange" value="orange"></GoCheckbox>
+          <GoCheckbox name="fruit2" label="Kiwi" value="kiwi"></GoCheckbox>
+          <GoCheckbox name="fruit2" label="Watermelon" value="watermelon"></GoCheckbox>
+        </GoFieldset>
 
         <h2>Datepicker</h2>
         <pre>{{ { date } }}</pre>
@@ -155,22 +154,22 @@ const date = ref('2000-01-21');
         </go-input>
 
         <h2>Radio</h2>
-        <go-fieldset label="What fruit do you like?" hint="Select one" is-list>
+        <GoFieldset label="What fruit do you like?" hint="Select one" is-list>
           <go-radio name="fruit" label="Apple" value="apple" hint="Not the company"></go-radio>
           <go-radio name="fruit" label="Banana" value="banana"></go-radio>
           <go-radio name="fruit" label="Orange" value="orange"></go-radio>
           <go-radio name="fruit" label="Kiwi" value="kiwi"></go-radio>
           <go-radio name="fruit" label="Watermelon" value="watermelon"></go-radio>
-        </go-fieldset>
+        </GoFieldset>
 
         <p>Error state</p>
-        <go-fieldset label="What fruit do you like?" error="[This is an error message]" hint="Select one" is-list>
+        <GoFieldset label="What fruit do you like?" error="[This is an error message]" hint="Select one" is-list>
           <go-radio name="fruit2" label="Apple" value="apple" hint="Not the company"></go-radio>
           <go-radio name="fruit2" label="Banana" value="banana"></go-radio>
           <go-radio name="fruit2" label="Orange" value="orange"></go-radio>
           <go-radio name="fruit2" label="Kiwi" value="kiwi"></go-radio>
           <go-radio name="fruit2" label="Watermelon" value="watermelon"></go-radio>
-        </go-fieldset>
+        </GoFieldset>
 
         <h2>Select</h2>
 
