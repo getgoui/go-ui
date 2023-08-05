@@ -45,7 +45,7 @@ export class GoDatepicker implements FormFieldProps {
     const dateFormat = this.format;
     const defaultDateAdapter = {
       parse: (input: string): Date => {
-        return dayjs(input, this.format).toDate();
+        return dayjs(input, dateFormat).toDate();
       },
       format: (date: Date): string => {
         return dayjs(date).format(dateFormat);
