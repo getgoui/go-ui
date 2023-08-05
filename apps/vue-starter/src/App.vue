@@ -31,6 +31,8 @@ const switchVal = ref(false);
 
 const date = ref('2000-01-21');
 
+const selectVal = ref('');
+
 const breadcrumbs = `[
   {
     label: 'Home',
@@ -62,6 +64,7 @@ const breadcrumbs = `[
       </GoCard>
       <GoCard class="mt-4" card-title="Form components">
         <h2>Checkbox</h2>
+        <pre>{{ { selectedFruits } }}</pre>
         <GoFieldset label="What fruit do you like?" hint="Select one or more">
           <GoCheckbox
             v-model="selectedFruits.apple"
@@ -94,41 +97,37 @@ const breadcrumbs = `[
 
         <h2>Datepicker</h2>
         <pre>{{ { date } }}</pre>
-        <go-datepicker
+        <GoDatepicker
           id="test"
+          name="datepicker1"
           type="text"
           label="Date picker"
           hint="Please enter a date"
           auto-flip
-          v-model="date"></go-datepicker>
-        <go-datepicker
+          v-model="date"></GoDatepicker>
+        <GoDatepicker
           type="text"
           label="Error state"
           hint="Please enter a date"
-          error="This is an error"></go-datepicker>
-        <go-datepicker type="text" label="Disabled state" value="2000-01-01" disabled></go-datepicker>
-        <go-datepicker
-          id="readonly-test"
-          type="text"
-          label="Readonly state"
-          value="2000-01-01"
-          readonly></go-datepicker>
-        <go-datepicker type="text" label="Custom icon">
+          error="This is an error"></GoDatepicker>
+        <GoDatepicker type="text" label="Disabled state" value="2000-01-01" disabled></GoDatepicker>
+        <GoDatepicker id="readonly-test" type="text" label="Readonly state" value="2000-01-01" readonly></GoDatepicker>
+        <GoDatepicker type="text" label="Custom icon">
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
-        </go-datepicker>
+        </GoDatepicker>
 
-        <go-datepicker type="text" label="Prefix slot">
+        <GoDatepicker type="text" label="Prefix slot">
           <div slot="prefix">https://go-ui.com/</div>
 
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
-        </go-datepicker>
-        <go-datepicker type="text" label="Suffix slot">
+        </GoDatepicker>
+        <GoDatepicker type="text" label="Suffix slot">
           <div slot="suffix">.com.au</div>
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
-        </go-datepicker>
+        </GoDatepicker>
 
         <h2>Input</h2>
         <pre>{{ text }}</pre>
@@ -172,18 +171,43 @@ const breadcrumbs = `[
         </GoFieldset>
 
         <h2>Select</h2>
-
-        <go-select
+        <pre>{{ { selectVal } }}</pre>
+        <GoSelect
           name="select-1"
           label="Select"
           hint="This is a hint message"
-          value="Banana"
-          options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
-        </go-select>
+          v-model="selectVal"
+          :options="[
+            'Apple',
+            'Banana',
+            'Blueberry',
+            'Boysenberry',
+            'Cherry',
+            'Durian',
+            'Eggplant',
+            'Fig',
+            'Grape',
+            'Guava',
+            'Huckleberry',
+          ]">
+        </GoSelect>
         <go-select
           name="select-4"
           label="Prefix slot"
-          options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
+          v-model="selectVal"
+          :options="[
+            'Apple',
+            'Banana',
+            'Blueberry',
+            'Boysenberry',
+            'Cherry',
+            'Durian',
+            'Eggplant',
+            'Fig',
+            'Grape',
+            'Guava',
+            'Huckleberry',
+          ]">
           <div slot="prefix">https://go-ui.com/</div>
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
@@ -191,7 +215,20 @@ const breadcrumbs = `[
         <go-select
           name="select-3"
           label="Suffix slot"
-          options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
+          v-model="selectVal"
+          :options="[
+            'Apple',
+            'Banana',
+            'Blueberry',
+            'Boysenberry',
+            'Cherry',
+            'Durian',
+            'Eggplant',
+            'Fig',
+            'Grape',
+            'Guava',
+            'Huckleberry',
+          ]">
           <div slot="suffix">.com.au</div>
 
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>

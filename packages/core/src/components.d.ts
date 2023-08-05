@@ -383,6 +383,7 @@ export namespace Components {
           * DOM id for error
          */
         "errorId"?: string;
+        "format"?: string;
         /**
           * Hint message for the input
          */
@@ -1235,10 +1236,6 @@ export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
 }
-export interface GoDatepickerCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGoDatepickerElement;
-}
 export interface GoDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoDropdownElement;
@@ -2006,6 +2003,7 @@ declare namespace LocalJSX {
           * DOM id for error
          */
         "errorId"?: string;
+        "format"?: string;
         /**
           * Hint message for the input
          */
@@ -2026,7 +2024,6 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        "onGoChange"?: (event: GoDatepickerCustomEvent<{ value: string }>) => void;
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */

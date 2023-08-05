@@ -169,8 +169,7 @@ export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker, JSX.
   'error',
   'readonly',
   'value',
-  'options',
-  'goChange'
+  'options'
 ],
 'value', 'change');
 

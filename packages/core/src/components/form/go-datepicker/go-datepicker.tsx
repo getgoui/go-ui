@@ -1,9 +1,14 @@
-import { Component, h, Prop, Element, State, Watch, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Element, State, Watch } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import '@duetds/date-picker';
 import { fieldSlotNames, loadFieldProps, loadFieldSlots, parseItems } from '../../../utils';
 import { FormFieldProps } from '../../../interfaces';
 import { DuetDatePickerProps } from './duet-date-picker';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(customParseFormat);
+
 @Component({
   tag: 'go-datepicker',
   styleUrl: 'go-datepicker.scss',
@@ -30,11 +35,26 @@ export class GoDatepicker implements FormFieldProps {
    */
   @Prop() options?: string | DuetDatePickerProps;
 
+  @Prop() format?: string = 'YYYY-MM-DD';
+
   @State() parsedOptions: DuetDatePickerProps;
 
   @Watch('options')
   loadOptions() {
     this.parsedOptions = parseItems(this.options);
+    const dateFormat = this.format;
+    const defaultDateAdapter = {
+      parse: (input: string): Date => {
+        return dayjs(input, this.format).toDate();
+      },
+      format: (date: Date): string => {
+        return dayjs(date).format(dateFormat);
+      },
+    };
+    this.parsedOptions = {
+      ...this.parsedOptions,
+      dateAdapter: this.parsedOptions?.dateAdapter ?? defaultDateAdapter,
+    };
   }
 
   prefixer = 'go-datepicker-';
@@ -45,14 +65,30 @@ export class GoDatepicker implements FormFieldProps {
   componentWillLoad() {
     this.loadOptions();
     this.hasNamedSlot = loadFieldSlots(this.el);
-
     this.datepickerInputEl = this.el.querySelector('.duet-date__input');
   }
 
-  @Event() goChange: EventEmitter<{ value: string }>;
+  @Watch('value')
+  handleValueChange(val, oldVal) {
+    console.log('1');
+    console.log({ val, oldVal });
+    if (val === oldVal) {
+      console.log('no change, return');
+      return;
+    }
+    const date = val;
+    this.validateDate(date);
+  }
 
-  handleChange(e) {
-    this.value = e.detail.value;
+  validateDate(date) {
+    console.log('2');
+    if (dayjs(date, 'YYYY-MM-DD').isValid()) {
+      console.log(`date ${date} is valid`);
+      this.value = date;
+    } else {
+      console.log(`date ${date} is INVALID`);
+      this.value = '';
+    }
   }
 
   render() {
@@ -81,7 +117,7 @@ export class GoDatepicker implements FormFieldProps {
           value={value}
           name={name}
           disabled={disabled}
-          onDuetChange={(e) => this.handleChange(e)}
+          onDuetChange={(e) => this.validateDate(e.detail.value)}
           {...parsedOptions}></duet-date-picker>
       </go-field>
     );

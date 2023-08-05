@@ -16,7 +16,8 @@
   ],
   "homepage": "https://go-ui.com/",
   "scripts": {
-    "build": "stencil build",
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && stencil build",
     "build.component-docs": "stencil build --docs-readme --docs-json",
     "start": "stencil build --dev --watch --serve",
     "watch.components": "stencil build --docs-json --watch",
@@ -32,6 +33,7 @@
     "@duetds/date-picker": "^1.4.0",
     "@floating-ui/dom": "^1.1.0",
     "body-scroll-lock": "4.0.0-beta.0",
+    "dayjs": "^1.11.9",
     "dompurify": "^2.4.3",
     "json5": "^2.2.3",
     "lodash-es": "^4.17.21",

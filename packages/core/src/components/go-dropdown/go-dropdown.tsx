@@ -185,7 +185,7 @@ export class GoDropdown {
             this.el.classList.remove('flip');
           }
         });
-      }, 100),
+      }, 50),
     );
   }
 
@@ -214,7 +214,10 @@ export class GoDropdown {
   render() {
     let { isActive, width, fullWidth } = this;
     return (
-      <Host class={{ 'is-active': isActive, 'full-width': fullWidth }} aria-hidden={isActive ? 'false' : 'true'} style={{ '--dropdown-width': width }}>
+      <Host
+        class={{ 'is-active': isActive, 'full-width': fullWidth }}
+        aria-hidden={isActive ? 'false' : 'true'}
+        style={{ '--dropdown-width': width }}>
         <div class="dropdown-content">
           <slot></slot>
         </div>
