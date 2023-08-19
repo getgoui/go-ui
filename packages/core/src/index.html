@@ -23,7 +23,7 @@
       <!-- keep this sandbox empty before pushing changes -->
 
       <!-- #region demo start -->
-<h2>Checkbox</h2>
+<!-- <h2>Checkbox</h2>
 <go-fieldset label="What fruit do you like?" hint="Select one or more" is-list>
   <go-checkbox name="fruit" label="Apple" value="apple" hint="Not the company"></go-checkbox>
   <go-checkbox name="fruit" label="Banana" value="banana"></go-checkbox>
@@ -39,17 +39,17 @@
   <go-checkbox name="fruit2" label="Orange" value="orange"></go-checkbox>
   <go-checkbox name="fruit2" label="Kiwi" value="kiwi"></go-checkbox>
   <go-checkbox name="fruit2" label="Watermelon" value="watermelon"></go-checkbox>
-</go-fieldset>
+</go-fieldset> -->
 
 <h2>Datepicker</h2>
-<go-datepicker format="DD/MM/YYYY" id="test" type="text" label="Date picker" hint="Please enter a date" auto-flip  value="2000-01-01"></go-datepicker>
+<go-datepicker format="DD/MM/YYYY" id="test" type="text" label="Date picker" hint="Please enter a date"  value="01/01/2000"></go-datepicker>
 <script>
   document.querySelector('#test').addEventListener('change', (e) => {
     console.log(e)
   })
 </script>
 
-<!-- <go-datepicker type="text" label="Error state" hint="Please enter a date" error="This is an error"></go-datepicker> -->
+<go-datepicker hint-format="false" label="Error state" hint="Please enter a date" error="This is an error"></go-datepicker>
 <!-- <go-datepicker type="text" label="Disabled state" value="2000-01-01" disabled></go-datepicker> -->
 <!-- <go-datepicker id="readonly-test" type="text" label="Readonly state" value="2000-01-01" readonly></go-datepicker> -->
 <!-- <go-datepicker type="text" label="Custom icon">

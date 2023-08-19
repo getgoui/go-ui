@@ -389,6 +389,10 @@ export namespace Components {
          */
         "hint"?: string;
         /**
+          * add date format into hint message
+         */
+        "hintFormat"?: boolean;
+        /**
           * DOM id for hint message
          */
         "hintId"?: string;
@@ -408,6 +412,10 @@ export namespace Components {
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
         "options"?: string | DuetDatePickerProps;
+        /**
+          * Placeholder text
+         */
+        "placeholder"?: string;
         /**
           * DOM id for prefix
          */
@@ -2009,6 +2017,10 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
+          * add date format into hint message
+         */
+        "hintFormat"?: boolean;
+        /**
           * DOM id for hint message
          */
         "hintId"?: string;
@@ -2028,6 +2040,10 @@ declare namespace LocalJSX {
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
         "options"?: string | DuetDatePickerProps;
+        /**
+          * Placeholder text
+         */
+        "placeholder"?: string;
         /**
           * DOM id for prefix
          */

@@ -92,13 +92,10 @@ export class GoField implements FormFieldProps {
   @Watch('value')
   updateValueState(newVal) {
     if (this.hiddenInput) {
+      console.log(`from updateValueState in go-field`);
       // trigger native change event on the hiddenInput DOM element
       this.hiddenInput.value = newVal;
-      this.hiddenInput.dispatchEvent(
-        new Event('change', {
-          bubbles: true,
-        }),
-      );
+      this.hiddenInput.dispatchEvent(new Event('change'));
     }
   }
 
