@@ -78,3 +78,7 @@ export interface SelectOption {
   value: string;
   label: string;
 }
+
+export interface GoChangeEventDetail<T = any> {
+  value: T;
+}

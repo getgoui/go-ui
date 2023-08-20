@@ -1,12 +1,13 @@
-import { Component, h, Prop, Element, State, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, State, Watch, EventEmitter, Event } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import '@duetds/date-picker';
 import { fieldSlotNames, loadFieldProps, loadFieldSlots, parseItems } from '../../../utils';
-import { FormFieldProps } from '../../../interfaces';
-import { DuetDatePickerProps, DuetLocalizedText } from './duet-date-picker';
+import { FormFieldProps, GoChangeEventDetail } from '../../../interfaces';
+import { DuetDatePickerProps } from './duet-date-picker';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { DuetDatePickerChangeEvent } from '@duetds/date-picker/dist/types/components/duet-date-picker/duet-date-picker';
+import { getDefaultDateAdapter, getDefaultLocalization } from './utils';
 
 @Component({
   tag: 'go-datepicker',
@@ -52,59 +53,14 @@ export class GoDatepicker implements FormFieldProps {
   loadOptions() {
     this.parsedOptions = parseItems(this.options);
     const dateFormat = this.format;
-    const defaultDateAdapter = {
-      parse: (value: string): Date => {
-        console.log(`parse value: `, value);
-        if (!value) {
-          console.log('no input');
-          return;
-        }
-        const dayObj = dayjs(value, dateFormat);
-        console.log(`parse dayObj: `, dayObj);
-
-        if (dayObj.isValid()) {
-          return dayObj.toDate();
-        }
-      },
-      format: (date: Date): string => {
-        console.log(`format date:`, date);
-        return dayjs(date).format(dateFormat);
-      },
-    };
-    const defaultLocalization = {
-      placeholder: this.placeholder,
-      buttonLabel: 'Choose date',
-      selectedDateMessage: 'Selected date is',
-      prevMonthLabel: 'Previous month',
-      nextMonthLabel: 'Next month',
-      monthSelectLabel: 'Month',
-      yearSelectLabel: 'Year',
-      closeLabel: 'Close window',
-      calendarHeading: 'Choose a date',
-      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      monthNames: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ],
-      monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      locale: 'en-AU',
-    } as DuetLocalizedText;
     this.parsedOptions = {
       ...this.parsedOptions,
-      localization: this.parsedOptions?.localization ?? defaultLocalization,
-      dateAdapter: this.parsedOptions?.dateAdapter ?? defaultDateAdapter,
+      localization: this.parsedOptions?.localization ?? getDefaultLocalization(this.placeholder),
+      dateAdapter: this.parsedOptions?.dateAdapter ?? getDefaultDateAdapter(dayjs, dateFormat),
     };
   }
+
+  @Event() goChange: EventEmitter<GoChangeEventDetail>;
 
   prefixer = 'go-datepicker-';
   hasNamedSlot: { [key: string]: boolean } = {};
@@ -115,7 +71,12 @@ export class GoDatepicker implements FormFieldProps {
     dayjs.extend(customParseFormat);
     this.loadOptions();
     this.hasNamedSlot = loadFieldSlots(this.el);
+  }
+
+  componentDidLoad() {
     this.datepickerInputEl = this.el.querySelector('.duet-date__input');
+    console.log('readonly', this.readonly);
+    this.passThroughReadonly(this.readonly);
   }
 
   toISO(str: string) {
@@ -156,12 +117,29 @@ export class GoDatepicker implements FormFieldProps {
       return;
     }
     this.value = dateObj.format(this.format);
+    this.goChange.emit({ value: this.value });
+  }
+
+  @Watch('readonly')
+  watchReadonlyProp(readonly) {
+    this.passThroughReadonly(readonly);
+  }
+
+  passThroughReadonly(readonly) {
+    if (!this.datepickerInputEl) {
+      return;
+    }
+    if (readonly) {
+      this.datepickerInputEl.setAttribute('readonly', 'true');
+    } else {
+      this.datepickerInputEl.removeAttribute('readonly');
+    }
   }
 
   render() {
     const { controlId: id, value, name, disabled, parsedOptions } = this;
     const fieldProps = loadFieldProps(this);
-    const hint = `${this.hint}${this.hintFormat ? ` (${this.format})` : ''}`;
+    const hint = `${this.hint ?? ''}${this.hintFormat ? ` (${this.format})` : ''}`;
     return (
       <go-field {...fieldProps} hint={hint}>
         {fieldSlotNames.map((slotName) => {
@@ -173,7 +151,6 @@ export class GoDatepicker implements FormFieldProps {
             );
           }
         })}
-        <pre>{JSON.stringify({ value })}</pre>
         <duet-date-picker
           ref={(el) => (this.datepickerEl = el)}
           class="control"

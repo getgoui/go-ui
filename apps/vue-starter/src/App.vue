@@ -104,7 +104,12 @@ const breadcrumbs = `[
           label="Date picker"
           hint="Please enter a date"
           auto-flip
-          v-model="date"></GoDatepicker>
+          :model-value="date"
+          @update:model-value="
+            (e) => {
+              console.log({ e });
+            }
+          "></GoDatepicker>
         <GoDatepicker
           type="text"
           label="Error state"

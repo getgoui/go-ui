@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType, SelectOption } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType, SelectOption } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -13,7 +13,7 @@ import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
-export { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType, SelectOption } from "./interfaces";
+export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType, SelectOption } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
 export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -1244,6 +1244,10 @@ export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
 }
+export interface GoDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoDatepickerElement;
+}
 export interface GoDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoDropdownElement;
@@ -2036,6 +2040,7 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
+        "onGoChange"?: (event: GoDatepickerCustomEvent<GoChangeEventDetail>) => void;
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
