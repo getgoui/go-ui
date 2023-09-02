@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
-import { SelectOption, SelectProps } from '../../../interfaces';
+import { GoChangeEventDetail, SelectOption, SelectProps } from '../../../interfaces';
 import { parseItems, fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots, loadFieldProps } from '../../../utils';
 import {
   getActionFromKey,
@@ -85,8 +85,10 @@ export class GoSelect implements SelectProps {
   /**
    * Emit a custom select event on value change
    */
-  @Event()
-  goChange: EventEmitter;
+  @Event({
+    eventName: 'gochange',
+  })
+  goChange: EventEmitter<GoChangeEventDetail>;
 
   // Active option index
   @State() activeIndex = -1;

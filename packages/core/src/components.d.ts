@@ -2633,7 +2633,7 @@ declare namespace LocalJSX {
         /**
           * Emit a custom select event on value change
          */
-        "onGochange"?: (event: GoSelectCustomEvent<GoChangeEventDetail<string>>) => void;
+        "onGochange"?: (event: GoSelectCustomEvent<GoChangeEventDetail>) => void;
         /**
           * Array of label/value options
          */

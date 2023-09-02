@@ -143,14 +143,15 @@
         label="Select"
         hint="This is a hint message"
         value="Banana"
+        id="select"
         options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
       </go-select>
 
-      <go-select name="select-2" label="Set options via script" id="js-options-select"> </go-select>
+      <pre id="select-1-value"></pre>
       <script>
-        window.select = document.querySelector('#js-options-select');
-        window.select.options = ['', 'Apple', 'Banana', 'Blueberry Boysenberry Cherry Durian Eggplant'];
-        window.select.addEventListener('goChange', ({ detail }) => {
+        const select = document.querySelector('#select');
+        select.addEventListener('gochange', ({ detail }) => {
+          document.querySelector('#select-1-value').textContent = detail.value;
           if (detail.value === '') {
             window.select.error = 'Ahh';
           } else {

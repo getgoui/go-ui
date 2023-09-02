@@ -418,7 +418,7 @@ export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect, JSX.GoSelect
   'readonly',
   'value',
   'options',
-  'gochange'
+  'goChange'
 ],
 'value', 'gochange', 'gochange');
 

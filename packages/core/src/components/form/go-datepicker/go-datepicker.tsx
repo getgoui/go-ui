@@ -66,7 +66,6 @@ export class GoDatepicker implements FormFieldProps {
   }
 
   @Event({
-    bubbles: true,
     eventName: 'gochange',
   })
   goChange: EventEmitter<GoChangeEventDetail<string>>;
