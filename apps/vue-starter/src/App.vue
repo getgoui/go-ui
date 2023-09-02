@@ -1,46 +1,3 @@
-<script setup>
-import { ref } from 'vue';
-import {
-  GoButton,
-  GoCard,
-  GoHero,
-  GoLink,
-  GoSelect,
-  GoInput,
-  GoDatepicker,
-  GoCheckbox,
-  GoRadio,
-  GoFieldset,
-  GoIcon,
-  GoTextarea,
-  GoSwitch,
-} from '@go-ui/vue';
-
-import vitelogo from './assets/vite.svg';
-import vuelogo from './assets/vue.svg';
-const count = ref(0);
-const text = ref('v-model supported');
-
-const selectedFruits = ref({
-  apple: true,
-  orange: true,
-  watermelon: false,
-});
-
-const switchVal = ref(false);
-
-const date = ref('2000-01-21');
-
-const selectVal = ref('');
-
-const breadcrumbs = `[
-  {
-    label: 'Home',
-    url: '#',
-  }
-]`;
-</script>
-
 <template>
   <div>
     <GoHero :breadcrumbs="breadcrumbs" preHeading="Vite + Vue + GoUI" heading="Develop with happiness">
@@ -51,19 +8,20 @@ const breadcrumbs = `[
       <p>Check out the full documentation of Go UI at <GoLink href="https://go-ui.com">go-ui.com</GoLink></p>
     </GoHero>
 
-    <div class="container pt-5">
-      <GoCard border cardTitle="Counter example" media-position="left">
-        <div class="d-flex" slot="media">
-          <img :src="vuelogo" alt="vue logo" />
-          <img :src="vitelogo" alt="vite logo" />
+    <main class="container" style="position: relative">
+      <div class="row">
+        <div class="col-desktop-3">
+          <GoToc style="position: sticky; top: 0" />
         </div>
-        <p>Edit <code>src/App.jsx</code> and save to test HMR</p>
-        <div slot="footer">
-          <GoButton block="all" variant="primary" @click="count++"> count is {{ count }} </GoButton>
+        <div class="col">
+          <CardSection />
+          <FormControlsSection />
         </div>
-      </GoCard>
-      <GoCard class="mt-4" card-title="Form components">
-        <h2>Checkbox</h2>
+      </div>
+    </main>
+
+    <!-- <GoCard class="mt-4" card-title="Form components"> -->
+    <!-- <h2>Checkbox</h2>
         <pre>{{ { selectedFruits } }}</pre>
         <GoFieldset label="What fruit do you like?" hint="Select one or more">
           <GoCheckbox
@@ -93,8 +51,8 @@ const breadcrumbs = `[
           <GoCheckbox name="fruit2" label="Orange" value="orange"></GoCheckbox>
           <GoCheckbox name="fruit2" label="Kiwi" value="kiwi"></GoCheckbox>
           <GoCheckbox name="fruit2" label="Watermelon" value="watermelon"></GoCheckbox>
-        </GoFieldset>
-
+        </GoFieldset> -->
+    <!-- 
         <h2>Datepicker</h2>
         <pre>{{ { date } }}</pre>
         <GoDatepicker
@@ -104,13 +62,8 @@ const breadcrumbs = `[
           label="Date picker"
           hint="Please enter a date"
           auto-flip
-          :model-value="date"
-          @update:model-value="
-            (e) => {
-              console.log({ e });
-            }
-          "></GoDatepicker>
-        <GoDatepicker
+          v-model="date"></GoDatepicker> -->
+    <!-- <GoDatepicker
           type="text"
           label="Error state"
           hint="Please enter a date"
@@ -132,9 +85,9 @@ const breadcrumbs = `[
           <div slot="suffix">.com.au</div>
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
-        </GoDatepicker>
+        </GoDatepicker> -->
 
-        <h2>Input</h2>
+    <!-- <h2>Input</h2>
         <pre>{{ text }}</pre>
         <go-input id="test" type="text" v-model="text" label="Input field" hint="Please enter some text"></go-input>
         <go-input type="text" label="Error state" hint="Please enter some text" error="This is an error"></go-input>
@@ -174,29 +127,8 @@ const breadcrumbs = `[
           <go-radio name="fruit2" label="Kiwi" value="kiwi"></go-radio>
           <go-radio name="fruit2" label="Watermelon" value="watermelon"></go-radio>
         </GoFieldset>
-
-        <h2>Select</h2>
-        <pre>{{ { selectVal } }}</pre>
-        <GoSelect
-          name="select-1"
-          label="Select"
-          hint="This is a hint message"
-          v-model="selectVal"
-          :options="[
-            'Apple',
-            'Banana',
-            'Blueberry',
-            'Boysenberry',
-            'Cherry',
-            'Durian',
-            'Eggplant',
-            'Fig',
-            'Grape',
-            'Guava',
-            'Huckleberry',
-          ]">
-        </GoSelect>
-        <go-select
+ -->
+    <!-- <go-select
           name="select-4"
           label="Prefix slot"
           v-model="selectVal"
@@ -238,9 +170,9 @@ const breadcrumbs = `[
 
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
-        </go-select>
+        </go-select> -->
 
-        <h2>Switch</h2>
+    <!-- <h2>Switch</h2>
         <pre>{{ { switchVal } }}</pre>
         <go-switch v-model="switchVal" name="switch1" label="Switch"></go-switch>
         <br />
@@ -296,7 +228,46 @@ const breadcrumbs = `[
           <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
           <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
         </go-textarea>
-      </GoCard>
-    </div>
+         -->
+    <!-- </GoCard> -->
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import {
+  GoButton,
+  GoCard,
+  GoHero,
+  GoLink,
+  GoSelect,
+  GoInput,
+  GoDatepicker,
+  GoCheckbox,
+  GoRadio,
+  GoFieldset,
+  GoIcon,
+  GoTextarea,
+  GoSwitch,
+  GoToc,
+} from '@go-ui/vue';
+
+import FormControlsSection from './components/FormControlsSection.vue';
+import CardSection from './components/CardSection.vue';
+const text = ref('v-model supported');
+
+const selectedFruits = ref({
+  apple: true,
+  orange: true,
+  watermelon: false,
+});
+
+const switchVal = ref(false);
+
+const breadcrumbs = `[
+  {
+    label: 'Home',
+    url: '#',
+  }
+]`;
+</script>

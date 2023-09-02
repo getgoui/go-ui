@@ -9,6 +9,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { DuetDatePickerChangeEvent } from '@duetds/date-picker/dist/types/components/duet-date-picker/duet-date-picker';
 import { getDefaultDateAdapter, getDefaultLocalization } from './utils';
 
+const ISO_DATE_FORMAT = 'YYYY-MM-DD';
 @Component({
   tag: 'go-datepicker',
   styleUrl: 'go-datepicker.scss',
@@ -45,7 +46,11 @@ export class GoDatepicker implements FormFieldProps {
    */
   @Prop() options?: string | DuetDatePickerProps;
 
-  @Prop() format?: string = 'YYYY-MM-DD';
+  /**
+   * Specify the expected date format
+   * Supported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
+   */
+  @Prop() format?: string = ISO_DATE_FORMAT;
 
   @State() parsedOptions: DuetDatePickerProps;
 
@@ -60,7 +65,11 @@ export class GoDatepicker implements FormFieldProps {
     };
   }
 
-  @Event() goChange: EventEmitter<GoChangeEventDetail>;
+  @Event({
+    bubbles: true,
+    eventName: 'gochange',
+  })
+  goChange: EventEmitter<GoChangeEventDetail<string>>;
 
   prefixer = 'go-datepicker-';
   hasNamedSlot: { [key: string]: boolean } = {};
@@ -75,12 +84,12 @@ export class GoDatepicker implements FormFieldProps {
 
   componentDidLoad() {
     this.datepickerInputEl = this.el.querySelector('.duet-date__input');
-    console.log('readonly', this.readonly);
     this.passThroughReadonly(this.readonly);
+    this.removeDuetInputName();
   }
 
-  toISO(str: string) {
-    return dayjs(str, this.format).format('YYYY-MM-DD');
+  toISO(value: string) {
+    return dayjs(value, this.format).format(ISO_DATE_FORMAT);
   }
 
   handleDuetChange(e: CustomEvent<DuetDatePickerChangeEvent>) {
@@ -136,12 +145,28 @@ export class GoDatepicker implements FormFieldProps {
     }
   }
 
+  /**
+   * removes duet hidden input in form data
+   * go-field is used to do this
+   * duet hidden input doesn't store formatted date
+   */
+  removeDuetInputName() {
+    if (!this.datepickerInputEl) {
+      return;
+    }
+    this.datepickerInputEl.removeAttribute('name');
+    const duetHiddenInput = this.datepickerEl.querySelector(`input[type="hidden"][name="${this.name}-duet-hidden"]`);
+    if (duetHiddenInput) {
+      duetHiddenInput.removeAttribute('name');
+    }
+  }
+
   render() {
     const { controlId: id, value, name, disabled, parsedOptions } = this;
     const fieldProps = loadFieldProps(this);
-    const hint = `${this.hint ?? ''}${this.hintFormat ? ` (${this.format})` : ''}`;
+    const hint = `${this.hint ?? ''}${this.hintFormat ? ` ${this.format}` : ''}`;
     return (
-      <go-field {...fieldProps} hint={hint}>
+      <go-field {...fieldProps} hint={hint} hiddenInputName={name} hiddenInputValue={value}>
         {fieldSlotNames.map((slotName) => {
           if (this.hasNamedSlot[slotName]) {
             return (
@@ -156,7 +181,7 @@ export class GoDatepicker implements FormFieldProps {
           class="control"
           identifier={id}
           value={this.toISO(value)}
-          name={name}
+          name={`${name}-duet-hidden`}
           disabled={disabled}
           onDuetBlur={() => this.handleDuetBlur()}
           onDuetChange={(e) => this.handleDuetChange(e)}

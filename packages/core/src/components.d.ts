@@ -383,6 +383,9 @@ export namespace Components {
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * Specify the expected date format Supported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
+         */
         "format"?: string;
         /**
           * Hint message for the input
@@ -546,6 +549,14 @@ export namespace Components {
          */
         "errorId"?: string;
         /**
+          * If specified, an input element with `type="hidden"` will be generated and this hiddenName prop will be used as the `name` of the hidden input  use `hiddenInputValue` prop to set the value of that field
+         */
+        "hiddenInputName"?: string;
+        /**
+          * Sets the value of the hidden input created by `hiddenInputName`
+         */
+        "hiddenInputValue"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
@@ -578,10 +589,6 @@ export namespace Components {
           * DOM id for suffix
          */
         "suffixId"?: string;
-        /**
-          * Optional value prop to track value state this will trigger a hidden native input to emit change event so that the vue wrapper can pick up the event and easily use v-model
-         */
-        "value"?: string;
     }
     interface GoFieldset {
         /**
@@ -2015,6 +2022,9 @@ declare namespace LocalJSX {
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * Specify the expected date format Supported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
+         */
         "format"?: string;
         /**
           * Hint message for the input
@@ -2040,7 +2050,7 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        "onGoChange"?: (event: GoDatepickerCustomEvent<GoChangeEventDetail>) => void;
+        "onGochange"?: (event: GoDatepickerCustomEvent<GoChangeEventDetail<string>>) => void;
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
@@ -2168,6 +2178,14 @@ declare namespace LocalJSX {
          */
         "errorId"?: string;
         /**
+          * If specified, an input element with `type="hidden"` will be generated and this hiddenName prop will be used as the `name` of the hidden input  use `hiddenInputValue` prop to set the value of that field
+         */
+        "hiddenInputName"?: string;
+        /**
+          * Sets the value of the hidden input created by `hiddenInputName`
+         */
+        "hiddenInputValue"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
@@ -2200,10 +2218,6 @@ declare namespace LocalJSX {
           * DOM id for suffix
          */
         "suffixId"?: string;
-        /**
-          * Optional value prop to track value state this will trigger a hidden native input to emit change event so that the vue wrapper can pick up the event and easily use v-model
-         */
-        "value"?: string;
     }
     interface GoFieldset {
         /**
@@ -2619,7 +2633,7 @@ declare namespace LocalJSX {
         /**
           * Emit a custom select event on value change
          */
-        "onGoChange"?: (event: GoSelectCustomEvent<any>) => void;
+        "onGochange"?: (event: GoSelectCustomEvent<GoChangeEventDetail<string>>) => void;
         /**
           * Array of label/value options
          */

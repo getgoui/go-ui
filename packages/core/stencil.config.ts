@@ -37,8 +37,8 @@ export const config: Config = {
         },
         {
           elements: ['go-datepicker', 'go-select', 'go-radio'],
-          event: 'goChange',
-          externalEvent: 'goChange',
+          event: 'gochange',
+          externalEvent: 'gochange',
           targetAttr: 'value',
         },
       ],

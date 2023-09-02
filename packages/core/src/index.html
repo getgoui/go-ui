@@ -40,18 +40,23 @@
   <go-checkbox name="fruit2" label="Kiwi" value="kiwi"></go-checkbox>
   <go-checkbox name="fruit2" label="Watermelon" value="watermelon"></go-checkbox>
 </go-fieldset> -->
-
-      <h2>Datepicker</h2>
-      <go-datepicker
-        format="DD/MM/YYYY"
-        id="test"
-        type="text"
-        label="Date picker"
-        hint="Please enter a date"
-        value="01/01/2000"></go-datepicker>
+      <form action="">
+        <h2>Datepicker</h2>
+        <go-datepicker
+          name="test"
+          format="DD/MM/YYYY"
+          id="test"
+          type="text"
+          label="Date picker"
+          hint="Please enter a date"
+          value="01/01/2000"></go-datepicker>
+        <button>Submit</button>
+      </form>
+      <pre id="result"></pre>
       <script>
-        document.querySelector('#test').addEventListener('goChange', (e) => {
-          console.log(e, e.detail.value, e.target.value);
+        document.querySelector('#test').addEventListener('gochange', (e) => {
+          console.log({ e });
+          document.querySelector('#result').textContent = `${e.detail.value}`;
         });
       </script>
 

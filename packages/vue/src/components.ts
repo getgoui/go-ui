@@ -173,9 +173,9 @@ export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker, JSX.
   'placeholder',
   'options',
   'format',
-  'goChange'
+  'gochange'
 ],
-'value', 'goChange', 'goChange');
+'value', 'gochange', 'gochange');
 
 
 export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', undefined, [
@@ -230,7 +230,8 @@ export const GoField = /*@__PURE__*/ defineContainer<JSX.GoField>('go-field', un
   'hint',
   'error',
   'readonly',
-  'value',
+  'hiddenInputName',
+  'hiddenInputValue',
   'controlElSelector'
 ]);
 
@@ -398,7 +399,7 @@ export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio, JSX.GoRadio["v
   'hintId',
   'errorId'
 ],
-'value', 'goChange', 'goChange');
+'value', 'gochange', 'gochange');
 
 
 export const GoSearchBar = /*@__PURE__*/ defineContainer<JSX.GoSearchBar>('go-search-bar', undefined);
@@ -417,9 +418,9 @@ export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect, JSX.GoSelect
   'readonly',
   'value',
   'options',
-  'goChange'
+  'gochange'
 ],
-'value', 'goChange', 'goChange');
+'value', 'gochange', 'gochange');
 
 
 export const GoSkipLink = /*@__PURE__*/ defineContainer<JSX.GoSkipLink>('go-skip-link', undefined, [

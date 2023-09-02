@@ -71,32 +71,26 @@ export class GoField implements FormFieldProps {
   @Prop() readonly?: boolean;
 
   /**
-   * Optional value prop to track value state
-   * this will trigger a hidden native input to emit change event
-   * so that the vue wrapper can pick up the event and easily use v-model
-   */
-  @Prop() value?: string;
-
-  /**
    * Allow empty value for `error` attribute and show error state
    */
   @State() hasError = false;
 
+  /**
+   * If specified, an input element with `type="hidden"` will be generated
+   * and this hiddenName prop will be used as the `name` of the hidden input
+   *
+   * use `hiddenInputValue` prop to set the value of that field
+   */
+  @Prop() hiddenInputName?: string;
+
+  /**
+   * Sets the value of the hidden input created by `hiddenInputName`
+   */
+  @Prop() hiddenInputValue?: string;
+
   @Watch('error')
   updateErrorState() {
     this.hasError = !!this.error;
-  }
-
-  private hiddenInput: HTMLInputElement = null;
-
-  @Watch('value')
-  updateValueState(newVal) {
-    if (this.hiddenInput) {
-      console.log(`from updateValueState in go-field`);
-      // trigger native change event on the hiddenInput DOM element
-      this.hiddenInput.value = newVal;
-      this.hiddenInput.dispatchEvent(new Event('change'));
-    }
   }
 
   hasIconBefore: boolean;
@@ -104,7 +98,6 @@ export class GoField implements FormFieldProps {
   hasPrefix: boolean;
   hasSuffix: boolean;
   hasHintSlot: boolean;
-  hasPostControlSlot: boolean;
   hasLabelSlot: boolean;
 
   componentWillLoad() {
@@ -113,7 +106,6 @@ export class GoField implements FormFieldProps {
     this.hasPrefix = hasSlot(this.el, 'prefix');
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
-    this.hasPostControlSlot = hasSlot(this.el, 'post-control');
     this.hasLabelSlot = hasSlot(this.el, 'label');
     initIdProps(this, this.el, ['label', 'prefix', 'suffix', 'hint', 'error'], this.idPrefix);
     this.updateErrorState();
@@ -188,7 +180,8 @@ export class GoField implements FormFieldProps {
       prefixId,
       suffixId,
       errorId,
-      value,
+      hiddenInputName,
+      hiddenInputValue,
     } = this;
 
     const showLabel = hasLabelSlot || label;
@@ -258,7 +251,7 @@ export class GoField implements FormFieldProps {
           </div>
         ) : null}
 
-        {value ? <input type="hidden" ref={(el) => (this.hiddenInput = el)} /> : null}
+        {hiddenInputName ? <input type="hidden" name={hiddenInputName} value={hiddenInputValue} /> : null}
       </Host>
     );
   }
