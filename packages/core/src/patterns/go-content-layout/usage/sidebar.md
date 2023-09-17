@@ -37,7 +37,7 @@ Sorry the content of this page couldn't be loaded,
         <go-button variant="primary">Button</go-button>
       </div>
       <img src="//images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&amp;fit=crop&amp;w=600&amp;h=600&amp;q=80" alt="Photo" slot="media" />
-      <div slot="pre-title">Active 2 hours ago</div>
+      <div slot="pre-heading">Active 2 hours ago</div>
     </go-card>
 
   </div>
