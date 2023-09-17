@@ -3,7 +3,8 @@
  * https://github.com/microsoft/sonder-ui/blob/master/src/components/select/select.tsx
  */
 
-import { SelectOption } from '../interfaces';
+import { SelectOption } from '@/interfaces';
+import { parseItems } from '@/utils';
 
 export enum Keys {
   Backspace = 'Backspace',
@@ -50,7 +51,11 @@ export enum TreeActions {
 
 // filter an array of options against an input string
 // returns an array of options that begin with the filter string, case-independent
-export function filterOptions(options: SelectOption[] = [], filter: string, exclude: SelectOption[] = []): SelectOption[] {
+export function filterOptions(
+  options: SelectOption[] = [],
+  filter: string,
+  exclude: SelectOption[] = [],
+): SelectOption[] {
   let filterString = filter.toLowerCase().trim();
   return options.filter((option) => {
     const matches = option.label.toLowerCase().indexOf(filterString) === 0;
@@ -80,7 +85,11 @@ export function getActionFromKey(event: KeyboardEvent, menuOpen: boolean): MenuA
   }
 
   // handle typing characters when open or closed
-  if (key === Keys.Backspace || key === Keys.Clear || (key.length === 1 && key !== ' ' && !altKey && !ctrlKey && !metaKey)) {
+  if (
+    key === Keys.Backspace ||
+    key === Keys.Clear ||
+    (key.length === 1 && key !== ' ' && !altKey && !ctrlKey && !metaKey)
+  ) {
     return MenuActions.Type;
   }
 
@@ -169,3 +178,31 @@ export function maintainScrollVisibility(activeElement: HTMLElement, scrollParen
     scrollParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
   }
 }
+
+/**
+ * parse multiple formats of options prop into SelectOption[]
+ */
+export const parseSelectOptions = (options: string | string[] | SelectOption[]): SelectOption[] | null => {
+  try {
+    // vue passes array of strings into prop as the result of Array.toString()
+    console.log('parseSelectOptions', { options });
+    if (typeof options === 'string' && !options.startsWith('[')) {
+      options = options.split(',');
+    }
+
+    const parsedOptions = parseItems<SelectOption[] | string[]>(options);
+    if (parsedOptions) {
+      // format parsed options into SelectOption[]
+      return parsedOptions.map((option) =>
+        typeof option === 'string'
+          ? {
+              value: option,
+              label: option,
+            }
+          : option,
+      );
+    }
+  } catch (e) {
+    console.error(`Couldn't parse options: `, options, { e });
+  }
+};

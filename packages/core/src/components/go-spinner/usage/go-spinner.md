@@ -1,4 +1,4 @@
-<go-card card-title="Spinner">
+<go-card heading="Spinner">
   <p>Click the button below to toggle loading states.</p>
   <go-spinner></go-spinner>
   <br />

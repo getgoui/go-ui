@@ -128,7 +128,7 @@ export function parseItems<T>(items: T | string): T {
     return null;
   }
   try {
-    return typeof items === 'string' ? JSON5.parse(items) : items;
+    return typeof items === 'string' ? JSON5.parse<T>(items) : items;
   } catch (e) {
     warning('Could not parse items', e);
   }

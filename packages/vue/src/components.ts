@@ -88,8 +88,8 @@ export const GoCalloutSection = /*@__PURE__*/ defineContainer<JSX.GoCalloutSecti
 
 
 export const GoCard = /*@__PURE__*/ defineContainer<JSX.GoCard>('go-card', undefined, [
-  'cardTitle',
-  'cardSubtitle',
+  'heading',
+  'subHeading',
   'mediaPosition',
   'href',
   'target',
@@ -387,7 +387,7 @@ export const GoProgress = /*@__PURE__*/ defineContainer<JSX.GoProgress>('go-prog
 ]);
 
 
-export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio, JSX.GoRadio["value"]>('go-radio', undefined, [
+export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio, JSX.GoRadio["defaultValue"]>('go-radio', undefined, [
   'checked',
   'indeterminate',
   'name',
@@ -396,10 +396,12 @@ export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio, JSX.GoRadio["v
   'label',
   'hint',
   'error',
+  'defaultValue',
   'hintId',
-  'errorId'
+  'errorId',
+  'gochange'
 ],
-'value', 'gochange', 'gochange');
+'defaultValue', 'gochange', 'gochange');
 
 
 export const GoSearchBar = /*@__PURE__*/ defineContainer<JSX.GoSearchBar>('go-search-bar', undefined);
@@ -418,7 +420,7 @@ export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect, JSX.GoSelect
   'readonly',
   'value',
   'options',
-  'goChange'
+  'gochange'
 ],
 'value', 'gochange', 'gochange');
 

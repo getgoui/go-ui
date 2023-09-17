@@ -20,7 +20,7 @@
       </div>
     </main>
 
-    <!-- <GoCard class="mt-4" card-title="Form components"> -->
+    <!-- <GoCard class="mt-4" heading="Form components"> -->
     <!-- <h2>Checkbox</h2>
         <pre>{{ { selectedFruits } }}</pre>
         <GoFieldset label="What fruit do you like?" hint="Select one or more">

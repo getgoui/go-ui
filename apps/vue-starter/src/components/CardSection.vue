@@ -1,6 +1,6 @@
 <template>
-  <DemoSection name="Card">
-    <GoCard border cardTitle="Counter example" media-position="left">
+  <Section name="Card">
+    <GoCard border heading="Counter example" media-position="left">
       <div class="d-flex" slot="media">
         <img :src="vuelogo" alt="vue logo" />
         <img :src="vitelogo" alt="vite logo" />
@@ -10,7 +10,7 @@
         <GoButton block="all" variant="primary" @click="count++"> count is {{ count }} </GoButton>
       </div>
     </GoCard>
-  </DemoSection>
+  </Section>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +18,6 @@ import { ref } from 'vue';
 import { GoCard, GoButton } from '@go-ui/vue';
 import vitelogo from '../assets/vite.svg';
 import vuelogo from '../assets/vue.svg';
-import DemoSection from './DemoSection.vue';
+import Section from './Section.vue';
 const count = ref(0);
 </script>

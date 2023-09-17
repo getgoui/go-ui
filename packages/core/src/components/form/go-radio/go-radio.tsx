@@ -1,5 +1,6 @@
-import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
 import { hasSlot, initIdProps } from '../../../utils';
+import { GoChangeEventDetail } from '@/interfaces';
 
 @Component({
   tag: 'go-radio',
@@ -20,6 +21,7 @@ export class GoRadio {
 
   id: string;
 
+  @Prop() defaultValue: any;
   /**
    * DOM id for hint message
    */
@@ -44,12 +46,33 @@ export class GoRadio {
 
   hasHintSlot: boolean;
   componentWillLoad() {
+    // record original "value" attribute
+    if (!this.defaultValue) {
+      this.defaultValue = this.value;
+    }
+
     this.hasHintSlot = hasSlot(this.el, 'hint');
     initIdProps(this, this.el, ['hint', 'error'], 'go-radio-');
     this.updateErrorState();
   }
+
+  /**
+   * Emit custom event with selected value
+   */
+  @Event({
+    eventName: 'gochange',
+  })
+  goChange: EventEmitter<GoChangeEventDetail<string>>;
+
+  handleChange(e) {
+    console.log(e.target.value);
+    console.log('this.value', this.value);
+    console.log('defaultValue', this.defaultValue);
+    this.goChange.emit({ value: this.defaultValue });
+  }
+
   render() {
-    const { label, error, id, hint, hintId, hasHintSlot, checked, indeterminate, name, disabled, value, hasError, errorId } = this;
+    const { label, error, id, hint, hintId, hasHintSlot, checked, name, disabled, hasError, errorId } = this;
 
     const describedByIds = [];
     if (hasHintSlot || hint) {
@@ -61,10 +84,9 @@ export class GoRadio {
     const props = {
       id,
       checked,
-      indeterminate,
       name,
       disabled,
-      value,
+      value: this.defaultValue, // value shouldn't change
     };
 
     return (
@@ -72,11 +94,17 @@ export class GoRadio {
         class={{
           error: hasError,
           disabled: !!disabled,
-          indeterminate: !!indeterminate,
         }}>
         <div class="control-wrapper">
           <div class="box">
-            <input class="hidden-control" type="radio" {...props} aria-invalid={String(hasError)} aria-describedby={describedByIds.join(' ')} />
+            <input
+              class="hidden-control"
+              onChange={(e) => this.handleChange(e)}
+              type="radio"
+              {...props}
+              aria-invalid={String(hasError)}
+              aria-describedby={describedByIds.join(' ')}
+            />
             <span class="mark">
               <span class="dot"></span>
             </span>

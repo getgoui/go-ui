@@ -52,8 +52,10 @@ export interface FormFieldProps {
   /**
    * Value of the input field
    */
-  value?: string;
+  value?: FieldValue;
 }
+
+export type FieldValue = string | undefined | null;
 
 export interface CheckboxProps extends FormFieldProps {
   checked?: boolean;
@@ -67,7 +69,7 @@ export interface InputProps extends FormFieldProps {
 export type InputType = 'email' | 'number' | 'password' | 'search' | 'tel' | 'text';
 
 export interface SelectProps extends FormFieldProps {
-  options: SelectOption[] | string;
+  options: SelectOption[] | string[] | string;
 }
 
 export interface TextareaProps extends FormFieldProps {

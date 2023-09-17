@@ -3,8 +3,8 @@ import { hasSlot } from '../../utils/helper';
 
 /**
  * @slot default - Card content
- * @slot custom-title - Slot for custom card title
- * @slot pre-title - Slot for content above the card title
+ * @slot heading - Slot for custom card heading
+ * @slot pre-heading - Slot for content above the card heading
  * @slot media - Slot for media markup for media card
  * @slot footer - Slot for card footer markup
  */
@@ -17,16 +17,16 @@ export class GoCard {
   @Element() el: HTMLElement;
 
   /**
-   * Title of the card
+   * Heading of the card
    */
   @Prop()
-  cardTitle?: string;
+  heading?: string;
 
   /**
-   * Subtitle of the card
+   * Sub heading of the card
    */
   @Prop()
-  cardSubtitle?: string;
+  subHeading?: string;
 
   /**
    * Position of featured media in the card
@@ -41,7 +41,7 @@ export class GoCard {
 
   /**
    * For cards that link to destinations, one card can only link to one destination.
-   * Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
+   * Note: The link (`a` tag) will be applied to the heading, so if you don't have a `card-heading` prop, you will need to manually add the `a` tag in one of the slots provided.
    */
   @Prop() href?: string;
   /**
@@ -59,24 +59,36 @@ export class GoCard {
    */
   @Prop() border: boolean = false;
 
-  hasCustomTitle: boolean;
+  hasCustomHeading: boolean;
 
   hasMedia: boolean;
 
-  hasPreTitle: boolean;
+  hasPreHeading: boolean;
 
   hasFooter: boolean;
 
   componentWillLoad() {
-    this.hasCustomTitle = hasSlot(this.el, 'title');
+    this.hasCustomHeading = hasSlot(this.el, 'heading');
     this.hasMedia = hasSlot(this.el, 'media');
-    this.hasPreTitle = hasSlot(this.el, 'pre-title');
+    this.hasPreHeading = hasSlot(this.el, 'pre-heading');
     this.hasFooter = hasSlot(this.el, 'footer');
+    console.log(this.heading);
   }
 
   render() {
-    const { hasMedia, mediaPosition, hasCustomTitle, cardTitle, cardSubtitle, hasPreTitle, hasFooter, href, target, flat, border } = this;
-
+    const {
+      hasMedia,
+      mediaPosition,
+      hasCustomHeading,
+      heading,
+      subHeading,
+      hasPreHeading,
+      hasFooter,
+      href,
+      target,
+      flat,
+      border,
+    } = this;
     return (
       <Host class={{ [`media ${mediaPosition}`]: hasMedia, 'has-link': !!href, flat, border }}>
         {hasMedia && (
@@ -85,27 +97,23 @@ export class GoCard {
           </div>
         )}
         <section class="card-inner">
-          {hasCustomTitle || cardTitle || cardSubtitle ? (
-            <div class="card-title-section">
-              {hasPreTitle ? <slot name="pre-title"></slot> : null}
-              {hasCustomTitle ? (
-                <slot name="title"></slot>
-              ) : (
-                [
-                  cardTitle ? (
-                    <h2 class="card-title">
-                      {href ? (
-                        <go-link href={href} target={target ? target : null} expand-clickable-area={true}>
-                          {cardTitle}
-                        </go-link>
-                      ) : (
-                        cardTitle
-                      )}
-                    </h2>
-                  ) : null,
-                  cardSubtitle ? <h3 class="card-subtitle">{cardSubtitle}</h3> : null,
-                ]
-              )}
+          {hasCustomHeading || heading || subHeading ? (
+            <div class="card-heading-section">
+              {hasPreHeading ? <slot name="pre-heading"></slot> : null}
+              <slot name="heading">
+                {heading ? (
+                  <h2 class="card-heading">
+                    {href ? (
+                      <go-link href={href} target={target ? target : null} expand-clickable-area={true}>
+                        {heading}
+                      </go-link>
+                    ) : (
+                      heading
+                    )}
+                  </h2>
+                ) : null}
+                {subHeading ? <h3 class="card-subheading">{subHeading}</h3> : null}
+              </slot>
             </div>
           ) : null}
 

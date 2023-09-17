@@ -19,10 +19,63 @@
     <!-- keep this sandbox empty before pushing changes -->
     <main class="frame container">
       <!-- #region demo start -->
+      <div class="container">
+        <div class="row equal-height-row">
+          <div class="col-tablet-4">
+            <go-card heading="Heading" sub-heading="Sub heading">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+              <go-button-group slot="footer">
+                <go-button type="button" variant="primary">Primary</go-button>
+                <go-button type="button" variant="secondary">Secondary</go-button>
+              </go-button-group>
+            </go-card>
+          </div>
+          <div class="col-tablet-4">
+            <go-card heading="Heading" sub-heading="Sub heading">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+              Lorem ipsum dolor sit amet consectetur dolor sit amet consectetur adipisicing elit. Atque natus autem
+              veritatis architecto facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus facilis
+              <go-button-group slot="footer">
+                <go-button type="button" variant="primary">Primary</go-button>
+                <go-button type="button" variant="secondary">Secondary</go-button>
+              </go-button-group>
+            </go-card>
+          </div>
+          <div class="col-tablet-4">
+            <go-card heading="Heading" sub-heading="Sub heading">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+              Lorem ipsum dolor sit amet consectetur
+              <div slot="footer">Lorem ipsum dolor sit.</div>
+            </go-card>
+          </div>
+        </div>
+      </div>
 
       <!-- keep this sandbox empty before pushing changes -->
 
-      <!-- #region demo start -->
+      <h2>Select</h2>
+
+      <go-select
+        name="select-1"
+        label="Select"
+        hint="This is a hint message"
+        id="select"
+        options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
+      </go-select>
+
+      <pre id="select-1-value"></pre>
+      <script>
+        const select = document.querySelector('#select');
+        select.addEventListener('gochange', ({ detail }) => {
+          document.querySelector('#select-1-value').textContent = detail.value;
+          if (detail.value === '') {
+            window.select.error = 'Ahh';
+          } else {
+            window.select.error = false;
+          }
+        });
+      </script>
+
       <!-- <h2>Checkbox</h2>
 <go-fieldset label="What fruit do you like?" hint="Select one or more" is-list>
   <go-checkbox name="fruit" label="Apple" value="apple" hint="Not the company"></go-checkbox>
@@ -79,7 +132,7 @@
         });
       </script>
 
-      <go-datepicker label="Custom icon">
+      <!-- <go-datepicker label="Custom icon">
         <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
         <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
       </go-datepicker>
@@ -134,33 +187,9 @@
         <go-radio name="fruit2" label="Orange" value="orange"></go-radio>
         <go-radio name="fruit2" label="Kiwi" value="kiwi"></go-radio>
         <go-radio name="fruit2" label="Watermelon" value="watermelon"></go-radio>
-      </go-fieldset>
+      </go-fieldset> -->
 
-      <h2>Select</h2>
-
-      <go-select
-        name="select-1"
-        label="Select"
-        hint="This is a hint message"
-        value="Banana"
-        id="select"
-        options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
-      </go-select>
-
-      <pre id="select-1-value"></pre>
-      <script>
-        const select = document.querySelector('#select');
-        select.addEventListener('gochange', ({ detail }) => {
-          document.querySelector('#select-1-value').textContent = detail.value;
-          if (detail.value === '') {
-            window.select.error = 'Ahh';
-          } else {
-            window.select.error = false;
-          }
-        });
-      </script>
-
-      <go-select
+      <!-- <go-select
         name="select-4"
         label="Prefix slot"
         options="['Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry']">
@@ -176,7 +205,7 @@
 
         <go-icon icon-set="material-icons" name="search" slot="icon-before"></go-icon>
         <go-icon icon-set="material-icons" name="star_outline" slot="icon-after"></go-icon>
-      </go-select>
+      </go-select> -->
       <h2>Switch</h2>
       <div class="container">
         <go-switch checked name="switch1" label="Switch"></go-switch>

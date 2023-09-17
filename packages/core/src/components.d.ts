@@ -5,21 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType, SelectOption } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
 import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
+import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
-export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType, SelectOption } from "./interfaces";
+export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
 export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
 export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export { Options } from "markdown-it";
+export { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
 export { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
@@ -212,19 +214,15 @@ export namespace Components {
          */
         "border": boolean;
         /**
-          * Subtitle of the card
-         */
-        "cardSubtitle"?: string;
-        /**
-          * Title of the card
-         */
-        "cardTitle"?: string;
-        /**
           * Flat card without box-shadow
          */
         "flat": boolean;
         /**
-          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
+          * Heading of the card
+         */
+        "heading"?: string;
+        /**
+          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the heading, so if you don't have a `card-heading` prop, you will need to manually add the `a` tag in one of the slots provided.
          */
         "href"?: string;
         /**
@@ -236,6 +234,10 @@ export namespace Components {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
+        /**
+          * Sub heading of the card
+         */
+        "subHeading"?: string;
         /**
           * when href is present, `target` attribute to be applied to the card link
          */
@@ -941,6 +943,7 @@ export namespace Components {
     }
     interface GoRadio {
         "checked"?: boolean;
+        "defaultValue": any;
         "disabled"?: boolean;
         "error"?: string;
         /**
@@ -995,9 +998,9 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Array of label/value options
+          * Array of options. Note: Sometimes frameworks may incorrectly pass the result of Array.toString() into this prop, `go-select` tries to obsorb this issue by trying to do a `split(',')` on the options prop if a string is passed in. This means the accepted formats include: 1. array of objects of type `{label: string, value: string}` 2. array of strings (e.g. ['Apple', 'Orange', 'Banana']) 3. string, toString() result of format 2 (i.e. 'Apple,Orange,Banana') 4. string, option 1 or 2 passed in as string that can be parsed by [JSON5](https://json5.org/)
          */
-        "options": SelectOption[] | string;
+        "options": SelectOption[] | string[] | string;
         /**
           * If this input is read-only
          */
@@ -1009,7 +1012,7 @@ export namespace Components {
         /**
           * Value of the input field
          */
-        "value"?: string;
+        "value"?: FieldValue;
     }
     interface GoSkipLink {
         /**
@@ -1282,6 +1285,10 @@ export interface GoNavLinkCustomEvent<T> extends CustomEvent<T> {
 export interface GoOverlayCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoOverlayElement;
+}
+export interface GoRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoRadioElement;
 }
 export interface GoSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1844,19 +1851,15 @@ declare namespace LocalJSX {
          */
         "border"?: boolean;
         /**
-          * Subtitle of the card
-         */
-        "cardSubtitle"?: string;
-        /**
-          * Title of the card
-         */
-        "cardTitle"?: string;
-        /**
           * Flat card without box-shadow
          */
         "flat"?: boolean;
         /**
-          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
+          * Heading of the card
+         */
+        "heading"?: string;
+        /**
+          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the heading, so if you don't have a `card-heading` prop, you will need to manually add the `a` tag in one of the slots provided.
          */
         "href"?: string;
         /**
@@ -1868,6 +1871,10 @@ declare namespace LocalJSX {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
+        /**
+          * Sub heading of the card
+         */
+        "subHeading"?: string;
         /**
           * when href is present, `target` attribute to be applied to the card link
          */
@@ -2579,6 +2586,7 @@ declare namespace LocalJSX {
     }
     interface GoRadio {
         "checked"?: boolean;
+        "defaultValue"?: any;
         "disabled"?: boolean;
         "error"?: string;
         /**
@@ -2593,6 +2601,10 @@ declare namespace LocalJSX {
         "indeterminate"?: boolean;
         "label"?: string;
         "name"?: string;
+        /**
+          * Emit custom event with selected value
+         */
+        "onGochange"?: (event: GoRadioCustomEvent<GoChangeEventDetail<string>>) => void;
         "value"?: any;
     }
     interface GoSearchBar {
@@ -2631,13 +2643,13 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emit a custom select event on value change
+          * Emit custom event with selected value
          */
-        "onGochange"?: (event: GoSelectCustomEvent<GoChangeEventDetail>) => void;
+        "onGochange"?: (event: GoSelectCustomEvent<GoChangeEventDetail<string>>) => void;
         /**
-          * Array of label/value options
+          * Array of options. Note: Sometimes frameworks may incorrectly pass the result of Array.toString() into this prop, `go-select` tries to obsorb this issue by trying to do a `split(',')` on the options prop if a string is passed in. This means the accepted formats include: 1. array of objects of type `{label: string, value: string}` 2. array of strings (e.g. ['Apple', 'Orange', 'Banana']) 3. string, toString() result of format 2 (i.e. 'Apple,Orange,Banana') 4. string, option 1 or 2 passed in as string that can be parsed by [JSON5](https://json5.org/)
          */
-        "options"?: SelectOption[] | string;
+        "options"?: SelectOption[] | string[] | string;
         /**
           * If this input is read-only
          */
@@ -2649,7 +2661,7 @@ declare namespace LocalJSX {
         /**
           * Value of the input field
          */
-        "value"?: string;
+        "value"?: FieldValue;
     }
     interface GoSkipLink {
         /**

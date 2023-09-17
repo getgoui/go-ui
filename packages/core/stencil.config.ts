@@ -36,10 +36,16 @@ export const config: Config = {
           targetAttr: 'checked',
         },
         {
-          elements: ['go-datepicker', 'go-select', 'go-radio'],
+          elements: ['go-datepicker', 'go-select'],
           event: 'gochange',
           externalEvent: 'gochange',
           targetAttr: 'value',
+        },
+        {
+          elements: ['go-radio'],
+          event: 'gochange',
+          externalEvent: 'gochange',
+          targetAttr: 'defaultValue',
         },
       ],
     }),
