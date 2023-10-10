@@ -14,8 +14,8 @@
           <GoToc style="position: sticky; top: 0" />
         </div>
         <div class="col">
-          <CardSection />
-          <FormControlsSection />
+          <!-- <CardSection /> -->
+          <FormSections />
         </div>
       </div>
     </main>
@@ -252,7 +252,7 @@ import {
   GoToc,
 } from '@go-ui/vue';
 
-import FormControlsSection from './components/FormControlsSection.vue';
+import FormSections from './components/FormSections.vue';
 import CardSection from './components/CardSection.vue';
 const text = ref('v-model supported');
 
