@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { CheckboxProps } from '../../../interfaces';
 import { hasSlot, initIdProps } from '../../../utils';
 @Component({
@@ -9,7 +9,7 @@ import { hasSlot, initIdProps } from '../../../utils';
 export class GoCheckbox implements CheckboxProps {
   @Element() el: HTMLElement;
 
-  @Prop() checked?: boolean;
+  @Prop({ mutable: true }) checked?: boolean;
   @Prop() indeterminate?: boolean;
   @Prop() name: string;
   @Prop() disabled?: boolean;
@@ -41,12 +41,8 @@ export class GoCheckbox implements CheckboxProps {
     this.hasError = typeof this.error !== 'undefined';
   }
 
-  @Event() goChange: EventEmitter<{ checked: boolean; value?: string }>;
   handleChange(e) {
-    this.goChange.emit({
-      checked: e.target.checked,
-      value: e.target.value,
-    });
+    this.checked = e.target.checked;
   }
 
   hasHintSlot: boolean;

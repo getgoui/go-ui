@@ -5,14 +5,24 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, INavItem, InputType, SelectOption } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
 import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
+import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
+export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType } from "./interfaces";
+export { ChipVariants } from "./interfaces/variants";
+export { TocProps } from "./components/go-toc/go-toc";
+export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
+export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
+export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
+export { Options } from "markdown-it";
+export { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
+export { ActivatedTab } from "./components/go-tabs/go-tabs";
 export namespace Components {
     interface GoAccordion {
         /**
@@ -97,9 +107,9 @@ export namespace Components {
         "citeUrl"?: string;
         "hideQuoteMark"?: boolean;
     }
-    interface GoBreadcrumb {
+    interface GoBreadcrumbs {
         /**
-          * Hide current page (last item without url) from the breadcrumb
+          * Hide current page (last item without url) from the breadcrumbs
          */
         "hideCurrent": boolean;
         /**
@@ -204,19 +214,15 @@ export namespace Components {
          */
         "border": boolean;
         /**
-          * Subtitle of the card
-         */
-        "cardSubtitle"?: string;
-        /**
-          * Title of the card
-         */
-        "cardTitle"?: string;
-        /**
           * Flat card without box-shadow
          */
         "flat": boolean;
         /**
-          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
+          * Heading of the card
+         */
+        "heading"?: string;
+        /**
+          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the heading, so if you don't have a `card-heading` prop, you will need to manually add the `a` tag in one of the slots provided.
          */
         "href"?: string;
         /**
@@ -228,6 +234,10 @@ export namespace Components {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
+        /**
+          * Sub heading of the card
+         */
+        "subHeading"?: string;
         /**
           * when href is present, `target` attribute to be applied to the card link
          */
@@ -376,9 +386,17 @@ export namespace Components {
          */
         "errorId"?: string;
         /**
+          * Specify the expected date format Supported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
+         */
+        "format"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
+        /**
+          * add date format into hint message
+         */
+        "hintFormat"?: boolean;
         /**
           * DOM id for hint message
          */
@@ -398,7 +416,11 @@ export namespace Components {
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
-        "options"?: string | DuetDatePickerProps;
+        "options"?: string | Partial<DuetDatePickerProps>;
+        /**
+          * Placeholder text
+         */
+        "placeholder"?: string;
         /**
           * DOM id for prefix
          */
@@ -528,6 +550,14 @@ export namespace Components {
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * If specified, an input element with `type="hidden"` will be generated and this hiddenName prop will be used as the `name` of the hidden input  use `hiddenInputValue` prop to set the value of that field
+         */
+        "hiddenInputName"?: string;
+        /**
+          * Sets the value of the hidden input created by `hiddenInputName`
+         */
+        "hiddenInputValue"?: string;
         /**
           * Hint message for the input
          */
@@ -913,6 +943,10 @@ export namespace Components {
     }
     interface GoRadio {
         "checked"?: boolean;
+        /**
+          * DOM id for native input control, default auto generated unique id
+         */
+        "controlId"?: string;
         "disabled"?: boolean;
         "error"?: string;
         /**
@@ -967,9 +1001,9 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Array of label/value options
+          * Array of options. Note: Sometimes frameworks may incorrectly pass the result of Array.toString() into this prop, `go-select` tries to obsorb this issue by trying to do a `split(',')` on the options prop if a string is passed in. This means the accepted formats include: 1. array of objects of type `{label: string, value: string}` 2. array of strings (e.g. ['Apple', 'Orange', 'Banana']) 3. string, toString() result of format 2 (i.e. 'Apple,Orange,Banana') 4. string, option 1 or 2 passed in as string that can be parsed by [JSON5](https://json5.org/)
          */
-        "options": SelectOption[] | string;
+        "options": SelectOption[] | string[] | string;
         /**
           * If this input is read-only
          */
@@ -981,7 +1015,7 @@ export namespace Components {
         /**
           * Value of the input field
          */
-        "value"?: string;
+        "value"?: FieldValue;
     }
     interface GoSkipLink {
         /**
@@ -1219,10 +1253,6 @@ export interface GoBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoBannerElement;
 }
-export interface GoCheckboxCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGoCheckboxElement;
-}
 export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
@@ -1298,11 +1328,11 @@ declare global {
         prototype: HTMLGoBlockquoteElement;
         new (): HTMLGoBlockquoteElement;
     };
-    interface HTMLGoBreadcrumbElement extends Components.GoBreadcrumb, HTMLStencilElement {
+    interface HTMLGoBreadcrumbsElement extends Components.GoBreadcrumbs, HTMLStencilElement {
     }
-    var HTMLGoBreadcrumbElement: {
-        prototype: HTMLGoBreadcrumbElement;
-        new (): HTMLGoBreadcrumbElement;
+    var HTMLGoBreadcrumbsElement: {
+        prototype: HTMLGoBreadcrumbsElement;
+        new (): HTMLGoBreadcrumbsElement;
     };
     interface HTMLGoButtonElement extends Components.GoButton, HTMLStencilElement {
     }
@@ -1580,7 +1610,7 @@ declare global {
         "go-badge": HTMLGoBadgeElement;
         "go-banner": HTMLGoBannerElement;
         "go-blockquote": HTMLGoBlockquoteElement;
-        "go-breadcrumb": HTMLGoBreadcrumbElement;
+        "go-breadcrumbs": HTMLGoBreadcrumbsElement;
         "go-button": HTMLGoButtonElement;
         "go-button-group": HTMLGoButtonGroupElement;
         "go-callout-section": HTMLGoCalloutSectionElement;
@@ -1713,9 +1743,9 @@ declare namespace LocalJSX {
         "citeUrl"?: string;
         "hideQuoteMark"?: boolean;
     }
-    interface GoBreadcrumb {
+    interface GoBreadcrumbs {
         /**
-          * Hide current page (last item without url) from the breadcrumb
+          * Hide current page (last item without url) from the breadcrumbs
          */
         "hideCurrent"?: boolean;
         /**
@@ -1820,19 +1850,15 @@ declare namespace LocalJSX {
          */
         "border"?: boolean;
         /**
-          * Subtitle of the card
-         */
-        "cardSubtitle"?: string;
-        /**
-          * Title of the card
-         */
-        "cardTitle"?: string;
-        /**
           * Flat card without box-shadow
          */
         "flat"?: boolean;
         /**
-          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the card-title element, so if you don't have a `card-title` prop, you will need to manually add the `a` tag in one of the slots provided.
+          * Heading of the card
+         */
+        "heading"?: string;
+        /**
+          * For cards that link to destinations, one card can only link to one destination. Note: The link (`a` tag) will be applied to the heading, so if you don't have a `card-heading` prop, you will need to manually add the `a` tag in one of the slots provided.
          */
         "href"?: string;
         /**
@@ -1844,6 +1870,10 @@ declare namespace LocalJSX {
     | 'bottom'
     | 'start' // responsive top left
     | 'end';
+        /**
+          * Sub heading of the card
+         */
+        "subHeading"?: string;
         /**
           * when href is present, `target` attribute to be applied to the card link
          */
@@ -1919,7 +1949,6 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        "onGoChange"?: (event: GoCheckboxCustomEvent<{ checked: boolean; value?: string }>) => void;
         /**
           * Value of the input field
          */
@@ -2000,9 +2029,17 @@ declare namespace LocalJSX {
          */
         "errorId"?: string;
         /**
+          * Specify the expected date format Supported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
+         */
+        "format"?: string;
+        /**
           * Hint message for the input
          */
         "hint"?: string;
+        /**
+          * add date format into hint message
+         */
+        "hintFormat"?: boolean;
         /**
           * DOM id for hint message
          */
@@ -2019,11 +2056,15 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        "onGoChange"?: (event: GoDatepickerCustomEvent<string>) => void;
+        "onGochange"?: (event: GoDatepickerCustomEvent<GoChangeEventDetail<string>>) => void;
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
-        "options"?: string | DuetDatePickerProps;
+        "options"?: string | Partial<DuetDatePickerProps>;
+        /**
+          * Placeholder text
+         */
+        "placeholder"?: string;
         /**
           * DOM id for prefix
          */
@@ -2142,6 +2183,14 @@ declare namespace LocalJSX {
           * DOM id for error
          */
         "errorId"?: string;
+        /**
+          * If specified, an input element with `type="hidden"` will be generated and this hiddenName prop will be used as the `name` of the hidden input  use `hiddenInputValue` prop to set the value of that field
+         */
+        "hiddenInputName"?: string;
+        /**
+          * Sets the value of the hidden input created by `hiddenInputName`
+         */
+        "hiddenInputValue"?: string;
         /**
           * Hint message for the input
          */
@@ -2536,6 +2585,10 @@ declare namespace LocalJSX {
     }
     interface GoRadio {
         "checked"?: boolean;
+        /**
+          * DOM id for native input control, default auto generated unique id
+         */
+        "controlId"?: string;
         "disabled"?: boolean;
         "error"?: string;
         /**
@@ -2588,13 +2641,13 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emit a custom select event on value change
+          * Emit custom event with selected value
          */
-        "onGoChange"?: (event: GoSelectCustomEvent<any>) => void;
+        "onGochange"?: (event: GoSelectCustomEvent<GoChangeEventDetail<string>>) => void;
         /**
-          * Array of label/value options
+          * Array of options. Note: Sometimes frameworks may incorrectly pass the result of Array.toString() into this prop, `go-select` tries to obsorb this issue by trying to do a `split(',')` on the options prop if a string is passed in. This means the accepted formats include: 1. array of objects of type `{label: string, value: string}` 2. array of strings (e.g. ['Apple', 'Orange', 'Banana']) 3. string, toString() result of format 2 (i.e. 'Apple,Orange,Banana') 4. string, option 1 or 2 passed in as string that can be parsed by [JSON5](https://json5.org/)
          */
-        "options"?: SelectOption[] | string;
+        "options"?: SelectOption[] | string[] | string;
         /**
           * If this input is read-only
          */
@@ -2606,7 +2659,7 @@ declare namespace LocalJSX {
         /**
           * Value of the input field
          */
-        "value"?: string;
+        "value"?: FieldValue;
     }
     interface GoSkipLink {
         /**
@@ -2833,7 +2886,7 @@ declare namespace LocalJSX {
         "go-badge": GoBadge;
         "go-banner": GoBanner;
         "go-blockquote": GoBlockquote;
-        "go-breadcrumb": GoBreadcrumb;
+        "go-breadcrumbs": GoBreadcrumbs;
         "go-button": GoButton;
         "go-button-group": GoButtonGroup;
         "go-callout-section": GoCalloutSection;
@@ -2890,7 +2943,7 @@ declare module "@stencil/core" {
             "go-badge": LocalJSX.GoBadge & JSXBase.HTMLAttributes<HTMLGoBadgeElement>;
             "go-banner": LocalJSX.GoBanner & JSXBase.HTMLAttributes<HTMLGoBannerElement>;
             "go-blockquote": LocalJSX.GoBlockquote & JSXBase.HTMLAttributes<HTMLGoBlockquoteElement>;
-            "go-breadcrumb": LocalJSX.GoBreadcrumb & JSXBase.HTMLAttributes<HTMLGoBreadcrumbElement>;
+            "go-breadcrumbs": LocalJSX.GoBreadcrumbs & JSXBase.HTMLAttributes<HTMLGoBreadcrumbsElement>;
             "go-button": LocalJSX.GoButton & JSXBase.HTMLAttributes<HTMLGoButtonElement>;
             "go-button-group": LocalJSX.GoButtonGroup & JSXBase.HTMLAttributes<HTMLGoButtonGroupElement>;
             "go-callout-section": LocalJSX.GoCalloutSection & JSXBase.HTMLAttributes<HTMLGoCalloutSectionElement>;

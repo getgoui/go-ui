@@ -18,6 +18,7 @@ go-select {
     align-items: center;
     .arrow {
       height: 1.5em;
+      @include transition(transform);
       &.open {
         transform: rotate(180deg);
       }

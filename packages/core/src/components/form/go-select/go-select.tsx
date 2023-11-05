@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
-import { SelectOption, SelectProps } from '../../../interfaces';
-import { parseItems, fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots, loadFieldProps } from '../../../utils';
+import { FieldValue, GoChangeEventDetail, SelectOption, SelectProps } from '@/interfaces';
+import { fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots, loadFieldProps } from '@/utils';
 import {
   getActionFromKey,
   getIndexByLetter,
@@ -8,7 +8,8 @@ import {
   isScrollable,
   maintainScrollVisibility,
   MenuActions,
-} from '../../../utils/select';
+  parseSelectOptions,
+} from './utils';
 import { uniqueId } from 'lodash-es';
 
 @Component({
@@ -29,17 +30,26 @@ export class GoSelect implements SelectProps {
   @Prop() hint?: string;
   @Prop() error?: string | boolean;
   @Prop() readonly?: boolean;
-  @Prop({ mutable: true }) value?: string;
+  @Prop({ mutable: true }) value?: FieldValue;
 
   /**
-   * Array of label/value options
+   * Array of options.
+   * Note:
+   * Sometimes frameworks may incorrectly pass the result of Array.toString() into this prop,
+   * `go-select` tries to obsorb this issue by trying to do a `split(',')` on the options prop
+   * if a string is passed in.
+   * This means the accepted formats include:
+   * 1. array of objects of type `{label: string, value: string}`
+   * 2. array of strings (e.g. ['Apple', 'Orange', 'Banana'])
+   * 3. string, toString() result of format 2 (i.e. 'Apple,Orange,Banana')
+   * 4. string, option 1 or 2 passed in as string that can be parsed by [JSON5](https://json5.org/)
    */
-  @Prop() options: SelectOption[] | string;
+  @Prop() options: SelectOption[] | string[] | string;
 
   /**
    * parsed options array
    */
-  @State() parsedOptions = [];
+  @State() parsedOptions: SelectOption[] = [];
 
   /**
    * common form control properties
@@ -52,9 +62,10 @@ export class GoSelect implements SelectProps {
   controlEl: HTMLElement;
 
   async componentWillLoad() {
+    console.log('will load', this.options);
+    this.loadOptions();
     this.attrs = inheritNonFieldAttrs(this, ['options']);
     this.hasNamedSlot = loadFieldSlots(this.el);
-    this.loadOptions();
     if (this.value) {
       this.loadValue();
     }
@@ -62,18 +73,7 @@ export class GoSelect implements SelectProps {
 
   @Watch('options')
   loadOptions() {
-    const options = parseItems(this.options);
-    if (options) {
-      this.parsedOptions = options.map((option) => {
-        if (typeof option === 'string') {
-          return {
-            value: option,
-            label: option,
-          };
-        }
-        return option;
-      });
-    }
+    this.parsedOptions = parseSelectOptions(this.options);
   }
 
   @Watch('value')
@@ -83,10 +83,12 @@ export class GoSelect implements SelectProps {
   }
 
   /**
-   * Emit a custom select event on value change
+   * Emit custom event with selected value
    */
-  @Event()
-  goChange: EventEmitter;
+  @Event({
+    eventName: 'gochange',
+  })
+  goChange: EventEmitter<GoChangeEventDetail<string>>;
 
   // Active option index
   @State() activeIndex = -1;
@@ -151,6 +153,7 @@ export class GoSelect implements SelectProps {
       name,
       attrs,
     } = this;
+
     const fieldProps = loadFieldProps(this);
 
     const activeId = open ? `${id}-${activeIndex}` : '';
@@ -191,7 +194,7 @@ export class GoSelect implements SelectProps {
             tabindex="0"
             onBlur={this.onComboBlur.bind(this)}
             onKeyDown={this.onComboKeyDown.bind(this)}>
-            <span>{parsedOptions[activeIndex]?.label ?? ''}</span>
+            <span>{parsedOptions && parsedOptions[activeIndex]?.label ? parsedOptions[activeIndex].label : ''}</span>
             <svg
               class={{ arrow: true, open }}
               xmlns="http://www.w3.org/2000/svg"
@@ -263,6 +266,9 @@ export class GoSelect implements SelectProps {
   }
 
   private onComboKeyDown(event: KeyboardEvent) {
+    if (!this.parsedOptions) {
+      return;
+    }
     const { key } = event;
     const max = this.parsedOptions.length - 1;
 
@@ -338,7 +344,9 @@ export class GoSelect implements SelectProps {
     const selected = this.parsedOptions[index];
     this.selectedLabel = selected.label;
     this.selectedIndex = index;
-    this.goChange.emit(selected);
+    this.value = selected.value;
+
+    this.goChange.emit({ value: selected.value });
   }
 
   private updateMenuState(open: boolean, callFocus = true) {

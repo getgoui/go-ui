@@ -1,5 +1,5 @@
 {
-  "autorun": true,
+  "autorun": false,
   "autokill": true,
   "terminals": [
     {
@@ -20,6 +20,11 @@
       "name": "Vue",
       "icon": "library",
       "cwd": "./packages/vue"
+    },
+    {
+      "name": "Vue App",
+      "icon": "run",
+      "cwd": "./apps/vue-starter"
     }
   ]
 }

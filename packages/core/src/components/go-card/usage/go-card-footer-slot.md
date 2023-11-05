@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row equal-height-row">
     <div class="col-tablet-4">
-      <go-card card-title="Title" card-subtitle="Subtitle">
+      <go-card heading="Heading" sub-heading="Sub heading">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
         <go-button-group slot="footer">
           <go-button type="button" variant="primary">Primary</go-button>
@@ -10,7 +10,7 @@
       </go-card>
     </div>
     <div class="col-tablet-4">
-      <go-card card-title="Title" card-subtitle="Subtitle">
+      <go-card heading="Heading" sub-heading="Sub heading">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis Lorem ipsum dolor sit amet consectetur dolor sit
         amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus
         facilis
@@ -21,7 +21,7 @@
       </go-card>
     </div>
     <div class="col-tablet-4">
-      <go-card card-title="Title" card-subtitle="Subtitle">
+      <go-card heading="Heading" sub-heading="Sub heading">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis Lorem ipsum dolor sit amet consectetur
         <div slot="footer">Lorem ipsum dolor sit.</div>
       </go-card>

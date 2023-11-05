@@ -3,67 +3,17 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@go-ui/core/dist/components';
-
-import { defineCustomElement as defineGoAccordion } from '@go-ui/core/dist/components/go-accordion.js';
-import { defineCustomElement as defineGoAccordionItem } from '@go-ui/core/dist/components/go-accordion-item.js';
-import { defineCustomElement as defineGoBadge } from '@go-ui/core/dist/components/go-badge.js';
-import { defineCustomElement as defineGoBanner } from '@go-ui/core/dist/components/go-banner.js';
-import { defineCustomElement as defineGoBlockquote } from '@go-ui/core/dist/components/go-blockquote.js';
-import { defineCustomElement as defineGoBreadcrumb } from '@go-ui/core/dist/components/go-breadcrumb.js';
-import { defineCustomElement as defineGoButton } from '@go-ui/core/dist/components/go-button.js';
-import { defineCustomElement as defineGoButtonGroup } from '@go-ui/core/dist/components/go-button-group.js';
-import { defineCustomElement as defineGoCalloutSection } from '@go-ui/core/dist/components/go-callout-section.js';
-import { defineCustomElement as defineGoCard } from '@go-ui/core/dist/components/go-card.js';
-import { defineCustomElement as defineGoCardRow } from '@go-ui/core/dist/components/go-card-row.js';
-import { defineCustomElement as defineGoCheckbox } from '@go-ui/core/dist/components/go-checkbox.js';
-import { defineCustomElement as defineGoChip } from '@go-ui/core/dist/components/go-chip.js';
-import { defineCustomElement as defineGoContent } from '@go-ui/core/dist/components/go-content.js';
-import { defineCustomElement as defineGoContentLayout } from '@go-ui/core/dist/components/go-content-layout.js';
-import { defineCustomElement as defineGoDatepicker } from '@go-ui/core/dist/components/go-datepicker.js';
-import { defineCustomElement as defineGoDialog } from '@go-ui/core/dist/components/go-dialog.js';
-import { defineCustomElement as defineGoDropdown } from '@go-ui/core/dist/components/go-dropdown.js';
-import { defineCustomElement as defineGoDropdownItem } from '@go-ui/core/dist/components/go-dropdown-item.js';
-import { defineCustomElement as defineGoDropdownMenu } from '@go-ui/core/dist/components/go-dropdown-menu.js';
-import { defineCustomElement as defineGoDropdownSeparator } from '@go-ui/core/dist/components/go-dropdown-separator.js';
-import { defineCustomElement as defineGoField } from '@go-ui/core/dist/components/go-field.js';
-import { defineCustomElement as defineGoFieldset } from '@go-ui/core/dist/components/go-fieldset.js';
-import { defineCustomElement as defineGoFooter } from '@go-ui/core/dist/components/go-footer.js';
-import { defineCustomElement as defineGoGovAuLogo } from '@go-ui/core/dist/components/go-gov-au-logo.js';
-import { defineCustomElement as defineGoHeaderBar } from '@go-ui/core/dist/components/go-header-bar.js';
-import { defineCustomElement as defineGoHeadingRow } from '@go-ui/core/dist/components/go-heading-row.js';
-import { defineCustomElement as defineGoHero } from '@go-ui/core/dist/components/go-hero.js';
-import { defineCustomElement as defineGoIcon } from '@go-ui/core/dist/components/go-icon.js';
-import { defineCustomElement as defineGoInput } from '@go-ui/core/dist/components/go-input.js';
-import { defineCustomElement as defineGoLink } from '@go-ui/core/dist/components/go-link.js';
-import { defineCustomElement as defineGoMainNav } from '@go-ui/core/dist/components/go-main-nav.js';
-import { defineCustomElement as defineGoMd } from '@go-ui/core/dist/components/go-md.js';
-import { defineCustomElement as defineGoNavDrawer } from '@go-ui/core/dist/components/go-nav-drawer.js';
-import { defineCustomElement as defineGoNavLink } from '@go-ui/core/dist/components/go-nav-link.js';
-import { defineCustomElement as defineGoNavList } from '@go-ui/core/dist/components/go-nav-list.js';
-import { defineCustomElement as defineGoOverlay } from '@go-ui/core/dist/components/go-overlay.js';
-import { defineCustomElement as defineGoProgress } from '@go-ui/core/dist/components/go-progress.js';
-import { defineCustomElement as defineGoRadio } from '@go-ui/core/dist/components/go-radio.js';
-import { defineCustomElement as defineGoSearchBar } from '@go-ui/core/dist/components/go-search-bar.js';
-import { defineCustomElement as defineGoSelect } from '@go-ui/core/dist/components/go-select.js';
-import { defineCustomElement as defineGoSkipLink } from '@go-ui/core/dist/components/go-skip-link.js';
-import { defineCustomElement as defineGoSpinner } from '@go-ui/core/dist/components/go-spinner.js';
-import { defineCustomElement as defineGoSwitch } from '@go-ui/core/dist/components/go-switch.js';
-import { defineCustomElement as defineGoTab } from '@go-ui/core/dist/components/go-tab.js';
-import { defineCustomElement as defineGoTableWrapper } from '@go-ui/core/dist/components/go-table-wrapper.js';
-import { defineCustomElement as defineGoTabs } from '@go-ui/core/dist/components/go-tabs.js';
-import { defineCustomElement as defineGoTextarea } from '@go-ui/core/dist/components/go-textarea.js';
-import { defineCustomElement as defineGoToTop } from '@go-ui/core/dist/components/go-to-top.js';
-import { defineCustomElement as defineGoToc } from '@go-ui/core/dist/components/go-toc.js';
-import { defineCustomElement as defineGoTooltip } from '@go-ui/core/dist/components/go-tooltip.js';
+import type { JSX } from '@go-ui/core';
 
 
-export const GoAccordion = /*@__PURE__*/ defineContainer<JSX.GoAccordion>('go-accordion', defineGoAccordion, [
+
+
+export const GoAccordion = /*@__PURE__*/ defineContainer<JSX.GoAccordion>('go-accordion', undefined, [
   'multiple'
 ]);
 
 
-export const GoAccordionItem = /*@__PURE__*/ defineContainer<JSX.GoAccordionItem>('go-accordion-item', defineGoAccordionItem, [
+export const GoAccordionItem = /*@__PURE__*/ defineContainer<JSX.GoAccordionItem>('go-accordion-item', undefined, [
   'heading',
   'headingTag',
   'autoHeight',
@@ -75,7 +25,7 @@ export const GoAccordionItem = /*@__PURE__*/ defineContainer<JSX.GoAccordionItem
 ]);
 
 
-export const GoBadge = /*@__PURE__*/ defineContainer<JSX.GoBadge>('go-badge', defineGoBadge, [
+export const GoBadge = /*@__PURE__*/ defineContainer<JSX.GoBadge>('go-badge', undefined, [
   'count',
   'min',
   'max',
@@ -84,7 +34,7 @@ export const GoBadge = /*@__PURE__*/ defineContainer<JSX.GoBadge>('go-badge', de
 ]);
 
 
-export const GoBanner = /*@__PURE__*/ defineContainer<JSX.GoBanner>('go-banner', defineGoBanner, [
+export const GoBanner = /*@__PURE__*/ defineContainer<JSX.GoBanner>('go-banner', undefined, [
   'variant',
   'heading',
   'dismissible',
@@ -92,20 +42,20 @@ export const GoBanner = /*@__PURE__*/ defineContainer<JSX.GoBanner>('go-banner',
 ]);
 
 
-export const GoBlockquote = /*@__PURE__*/ defineContainer<JSX.GoBlockquote>('go-blockquote', defineGoBlockquote, [
+export const GoBlockquote = /*@__PURE__*/ defineContainer<JSX.GoBlockquote>('go-blockquote', undefined, [
   'citeUrl',
   'hideQuoteMark'
 ]);
 
 
-export const GoBreadcrumb = /*@__PURE__*/ defineContainer<JSX.GoBreadcrumb>('go-breadcrumb', defineGoBreadcrumb, [
+export const GoBreadcrumbs = /*@__PURE__*/ defineContainer<JSX.GoBreadcrumbs>('go-breadcrumbs', undefined, [
   'label',
   'items',
   'hideCurrent'
 ]);
 
 
-export const GoButton = /*@__PURE__*/ defineContainer<JSX.GoButton>('go-button', defineGoButton, [
+export const GoButton = /*@__PURE__*/ defineContainer<JSX.GoButton>('go-button', undefined, [
   'type',
   'disabled',
   'variant',
@@ -121,13 +71,13 @@ export const GoButton = /*@__PURE__*/ defineContainer<JSX.GoButton>('go-button',
 ]);
 
 
-export const GoButtonGroup = /*@__PURE__*/ defineContainer<JSX.GoButtonGroup>('go-button-group', defineGoButtonGroup, [
+export const GoButtonGroup = /*@__PURE__*/ defineContainer<JSX.GoButtonGroup>('go-button-group', undefined, [
   'block',
   'connected'
 ]);
 
 
-export const GoCalloutSection = /*@__PURE__*/ defineContainer<JSX.GoCalloutSection>('go-callout-section', defineGoCalloutSection, [
+export const GoCalloutSection = /*@__PURE__*/ defineContainer<JSX.GoCalloutSection>('go-callout-section', undefined, [
   'heading',
   'headingTag',
   'description',
@@ -137,9 +87,9 @@ export const GoCalloutSection = /*@__PURE__*/ defineContainer<JSX.GoCalloutSecti
 ]);
 
 
-export const GoCard = /*@__PURE__*/ defineContainer<JSX.GoCard>('go-card', defineGoCard, [
-  'cardTitle',
-  'cardSubtitle',
+export const GoCard = /*@__PURE__*/ defineContainer<JSX.GoCard>('go-card', undefined, [
+  'heading',
+  'subHeading',
   'mediaPosition',
   'href',
   'target',
@@ -148,7 +98,7 @@ export const GoCard = /*@__PURE__*/ defineContainer<JSX.GoCard>('go-card', defin
 ]);
 
 
-export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-row', defineGoCardRow, [
+export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-row', undefined, [
   'noStretch',
   'cols',
   'colsTablet',
@@ -162,7 +112,7 @@ export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-r
 ]);
 
 
-export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-checkbox', defineGoCheckbox, [
+export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox, JSX.GoCheckbox["checked"]>('go-checkbox', undefined, [
   'checked',
   'indeterminate',
   'name',
@@ -172,13 +122,12 @@ export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox>('go-chec
   'hint',
   'error',
   'hintId',
-  'errorId',
-  'goChange'
+  'errorId'
 ],
-'checked', 'go-change');
+'checked', 'change');
 
 
-export const GoChip = /*@__PURE__*/ defineContainer<JSX.GoChip>('go-chip', defineGoChip, [
+export const GoChip = /*@__PURE__*/ defineContainer<JSX.GoChip>('go-chip', undefined, [
   'variant',
   'outline',
   'clickable',
@@ -188,10 +137,10 @@ export const GoChip = /*@__PURE__*/ defineContainer<JSX.GoChip>('go-chip', defin
 ]);
 
 
-export const GoContent = /*@__PURE__*/ defineContainer<JSX.GoContent>('go-content', defineGoContent);
+export const GoContent = /*@__PURE__*/ defineContainer<JSX.GoContent>('go-content', undefined);
 
 
-export const GoContentLayout = /*@__PURE__*/ defineContainer<JSX.GoContentLayout>('go-content-layout', defineGoContentLayout, [
+export const GoContentLayout = /*@__PURE__*/ defineContainer<JSX.GoContentLayout>('go-content-layout', undefined, [
   'pageHeading',
   'preHeading',
   'intro',
@@ -207,7 +156,7 @@ export const GoContentLayout = /*@__PURE__*/ defineContainer<JSX.GoContentLayout
 ]);
 
 
-export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker>('go-datepicker', defineGoDatepicker, [
+export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker, JSX.GoDatepicker["value"]>('go-datepicker', undefined, [
   'labelId',
   'prefixId',
   'suffixId',
@@ -220,20 +169,23 @@ export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker>('go-
   'error',
   'readonly',
   'value',
+  'hintFormat',
+  'placeholder',
   'options',
-  'goChange'
+  'format',
+  'gochange'
 ],
-'value', 'go-change');
+'value', 'gochange', 'gochange');
 
 
-export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', defineGoDialog, [
+export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', undefined, [
   'active',
   'persistent',
   'heading'
 ]);
 
 
-export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-dropdown', defineGoDropdown, [
+export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-dropdown', undefined, [
   'triggerSelector',
   'isActive',
   'width',
@@ -245,14 +197,14 @@ export const GoDropdown = /*@__PURE__*/ defineContainer<JSX.GoDropdown>('go-drop
 ]);
 
 
-export const GoDropdownItem = /*@__PURE__*/ defineContainer<JSX.GoDropdownItem>('go-dropdown-item', defineGoDropdownItem, [
+export const GoDropdownItem = /*@__PURE__*/ defineContainer<JSX.GoDropdownItem>('go-dropdown-item', undefined, [
   'width',
   'disabled',
   'selected'
 ]);
 
 
-export const GoDropdownMenu = /*@__PURE__*/ defineContainer<JSX.GoDropdownMenu>('go-dropdown-menu', defineGoDropdownMenu, [
+export const GoDropdownMenu = /*@__PURE__*/ defineContainer<JSX.GoDropdownMenu>('go-dropdown-menu', undefined, [
   'triggerSelector',
   'isActive',
   'width',
@@ -261,10 +213,10 @@ export const GoDropdownMenu = /*@__PURE__*/ defineContainer<JSX.GoDropdownMenu>(
 ]);
 
 
-export const GoDropdownSeparator = /*@__PURE__*/ defineContainer<JSX.GoDropdownSeparator>('go-dropdown-separator', defineGoDropdownSeparator);
+export const GoDropdownSeparator = /*@__PURE__*/ defineContainer<JSX.GoDropdownSeparator>('go-dropdown-separator', undefined);
 
 
-export const GoField = /*@__PURE__*/ defineContainer<JSX.GoField>('go-field', defineGoField, [
+export const GoField = /*@__PURE__*/ defineContainer<JSX.GoField>('go-field', undefined, [
   'idPrefix',
   'controlId',
   'labelId',
@@ -278,11 +230,13 @@ export const GoField = /*@__PURE__*/ defineContainer<JSX.GoField>('go-field', de
   'hint',
   'error',
   'readonly',
+  'hiddenInputName',
+  'hiddenInputValue',
   'controlElSelector'
 ]);
 
 
-export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fieldset', defineGoFieldset, [
+export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fieldset', undefined, [
   'label',
   'hint',
   'error',
@@ -293,7 +247,7 @@ export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fiel
 ]);
 
 
-export const GoFooter = /*@__PURE__*/ defineContainer<JSX.GoFooter>('go-footer', defineGoFooter, [
+export const GoFooter = /*@__PURE__*/ defineContainer<JSX.GoFooter>('go-footer', undefined, [
   'links',
   'navLabel',
   'dark',
@@ -303,18 +257,18 @@ export const GoFooter = /*@__PURE__*/ defineContainer<JSX.GoFooter>('go-footer',
 ]);
 
 
-export const GoGovAuLogo = /*@__PURE__*/ defineContainer<JSX.GoGovAuLogo>('go-gov-au-logo', defineGoGovAuLogo, [
+export const GoGovAuLogo = /*@__PURE__*/ defineContainer<JSX.GoGovAuLogo>('go-gov-au-logo', undefined, [
   'height',
   'href'
 ]);
 
 
-export const GoHeaderBar = /*@__PURE__*/ defineContainer<JSX.GoHeaderBar>('go-header-bar', defineGoHeaderBar, [
+export const GoHeaderBar = /*@__PURE__*/ defineContainer<JSX.GoHeaderBar>('go-header-bar', undefined, [
   'breakpoint'
 ]);
 
 
-export const GoHeadingRow = /*@__PURE__*/ defineContainer<JSX.GoHeadingRow>('go-heading-row', defineGoHeadingRow, [
+export const GoHeadingRow = /*@__PURE__*/ defineContainer<JSX.GoHeadingRow>('go-heading-row', undefined, [
   'heading',
   'headingTag',
   'moreLinkHref',
@@ -322,7 +276,7 @@ export const GoHeadingRow = /*@__PURE__*/ defineContainer<JSX.GoHeadingRow>('go-
 ]);
 
 
-export const GoHero = /*@__PURE__*/ defineContainer<JSX.GoHero>('go-hero', defineGoHero, [
+export const GoHero = /*@__PURE__*/ defineContainer<JSX.GoHero>('go-hero', undefined, [
   'heading',
   'preHeading',
   'breadcrumbs',
@@ -332,7 +286,7 @@ export const GoHero = /*@__PURE__*/ defineContainer<JSX.GoHero>('go-hero', defin
 ]);
 
 
-export const GoIcon = /*@__PURE__*/ defineContainer<JSX.GoIcon>('go-icon', defineGoIcon, [
+export const GoIcon = /*@__PURE__*/ defineContainer<JSX.GoIcon>('go-icon', undefined, [
   'iconSet',
   'name',
   'size',
@@ -341,7 +295,7 @@ export const GoIcon = /*@__PURE__*/ defineContainer<JSX.GoIcon>('go-icon', defin
 ]);
 
 
-export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput>('go-input', defineGoInput, [
+export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput, JSX.GoInput["value"]>('go-input', undefined, [
   'type',
   'labelId',
   'prefixId',
@@ -359,21 +313,21 @@ export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput>('go-input', de
 'value', 'input');
 
 
-export const GoLink = /*@__PURE__*/ defineContainer<JSX.GoLink>('go-link', defineGoLink, [
+export const GoLink = /*@__PURE__*/ defineContainer<JSX.GoLink>('go-link', undefined, [
   'href',
   'target',
   'expandClickableArea'
 ]);
 
 
-export const GoMainNav = /*@__PURE__*/ defineContainer<JSX.GoMainNav>('go-main-nav', defineGoMainNav, [
+export const GoMainNav = /*@__PURE__*/ defineContainer<JSX.GoMainNav>('go-main-nav', undefined, [
   'items',
   'label',
   'navigate'
 ]);
 
 
-export const GoMd = /*@__PURE__*/ defineContainer<JSX.GoMd>('go-md', defineGoMd, [
+export const GoMd = /*@__PURE__*/ defineContainer<JSX.GoMd>('go-md', undefined, [
   'inline',
   'content',
   'src',
@@ -385,7 +339,7 @@ export const GoMd = /*@__PURE__*/ defineContainer<JSX.GoMd>('go-md', defineGoMd,
 ]);
 
 
-export const GoNavDrawer = /*@__PURE__*/ defineContainer<JSX.GoNavDrawer>('go-nav-drawer', defineGoNavDrawer, [
+export const GoNavDrawer = /*@__PURE__*/ defineContainer<JSX.GoNavDrawer>('go-nav-drawer', undefined, [
   'position',
   'items',
   'active',
@@ -397,7 +351,7 @@ export const GoNavDrawer = /*@__PURE__*/ defineContainer<JSX.GoNavDrawer>('go-na
 ]);
 
 
-export const GoNavLink = /*@__PURE__*/ defineContainer<JSX.GoNavLink>('go-nav-link', defineGoNavLink, [
+export const GoNavLink = /*@__PURE__*/ defineContainer<JSX.GoNavLink>('go-nav-link', undefined, [
   'item',
   'showArrow',
   'block',
@@ -405,7 +359,7 @@ export const GoNavLink = /*@__PURE__*/ defineContainer<JSX.GoNavLink>('go-nav-li
 ]);
 
 
-export const GoNavList = /*@__PURE__*/ defineContainer<JSX.GoNavList>('go-nav-list', defineGoNavList, [
+export const GoNavList = /*@__PURE__*/ defineContainer<JSX.GoNavList>('go-nav-list', undefined, [
   'items',
   'headingItem',
   'heading',
@@ -414,7 +368,7 @@ export const GoNavList = /*@__PURE__*/ defineContainer<JSX.GoNavList>('go-nav-li
 ]);
 
 
-export const GoOverlay = /*@__PURE__*/ defineContainer<JSX.GoOverlay>('go-overlay', defineGoOverlay, [
+export const GoOverlay = /*@__PURE__*/ defineContainer<JSX.GoOverlay>('go-overlay', undefined, [
   'active',
   'persistent',
   'overlayOpen',
@@ -422,7 +376,7 @@ export const GoOverlay = /*@__PURE__*/ defineContainer<JSX.GoOverlay>('go-overla
 ]);
 
 
-export const GoProgress = /*@__PURE__*/ defineContainer<JSX.GoProgress>('go-progress', defineGoProgress, [
+export const GoProgress = /*@__PURE__*/ defineContainer<JSX.GoProgress>('go-progress', undefined, [
   'min',
   'max',
   'value',
@@ -433,25 +387,10 @@ export const GoProgress = /*@__PURE__*/ defineContainer<JSX.GoProgress>('go-prog
 ]);
 
 
-export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio>('go-radio', defineGoRadio, [
-  'checked',
-  'indeterminate',
-  'name',
-  'disabled',
-  'value',
-  'label',
-  'hint',
-  'error',
-  'hintId',
-  'errorId'
-],
-'value', 'go-change');
+export const GoSearchBar = /*@__PURE__*/ defineContainer<JSX.GoSearchBar>('go-search-bar', undefined);
 
 
-export const GoSearchBar = /*@__PURE__*/ defineContainer<JSX.GoSearchBar>('go-search-bar', defineGoSearchBar);
-
-
-export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect>('go-select', defineGoSelect, [
+export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect, JSX.GoSelect["value"]>('go-select', undefined, [
   'name',
   'label',
   'labelId',
@@ -464,17 +403,17 @@ export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect>('go-select',
   'readonly',
   'value',
   'options',
-  'goChange'
+  'gochange'
 ],
-'value', 'go-change');
+'value', 'gochange', 'gochange');
 
 
-export const GoSkipLink = /*@__PURE__*/ defineContainer<JSX.GoSkipLink>('go-skip-link', defineGoSkipLink, [
+export const GoSkipLink = /*@__PURE__*/ defineContainer<JSX.GoSkipLink>('go-skip-link', undefined, [
   'target'
 ]);
 
 
-export const GoSpinner = /*@__PURE__*/ defineContainer<JSX.GoSpinner>('go-spinner', defineGoSpinner, [
+export const GoSpinner = /*@__PURE__*/ defineContainer<JSX.GoSpinner>('go-spinner', undefined, [
   'ringColor',
   'baseColor',
   'size',
@@ -485,7 +424,7 @@ export const GoSpinner = /*@__PURE__*/ defineContainer<JSX.GoSpinner>('go-spinne
 ]);
 
 
-export const GoSwitch = /*@__PURE__*/ defineContainer<JSX.GoSwitch>('go-switch', defineGoSwitch, [
+export const GoSwitch = /*@__PURE__*/ defineContainer<JSX.GoSwitch, JSX.GoSwitch["checked"]>('go-switch', undefined, [
   'checked',
   'name',
   'label',
@@ -498,10 +437,10 @@ export const GoSwitch = /*@__PURE__*/ defineContainer<JSX.GoSwitch>('go-switch',
   'activeLabel',
   'inactiveLabel'
 ],
-'checked', 'go-change');
+'checked', 'change');
 
 
-export const GoTab = /*@__PURE__*/ defineContainer<JSX.GoTab>('go-tab', defineGoTab, [
+export const GoTab = /*@__PURE__*/ defineContainer<JSX.GoTab>('go-tab', undefined, [
   'label',
   'active',
   'tabId',
@@ -509,14 +448,14 @@ export const GoTab = /*@__PURE__*/ defineContainer<JSX.GoTab>('go-tab', defineGo
 ]);
 
 
-export const GoTableWrapper = /*@__PURE__*/ defineContainer<JSX.GoTableWrapper>('go-table-wrapper', defineGoTableWrapper, [
+export const GoTableWrapper = /*@__PURE__*/ defineContainer<JSX.GoTableWrapper>('go-table-wrapper', undefined, [
   'striped',
   'bordered',
   'hoverable'
 ]);
 
 
-export const GoTabs = /*@__PURE__*/ defineContainer<JSX.GoTabs>('go-tabs', defineGoTabs, [
+export const GoTabs = /*@__PURE__*/ defineContainer<JSX.GoTabs>('go-tabs', undefined, [
   'tabGroupLabel',
   'vertical',
   'manual',
@@ -524,7 +463,7 @@ export const GoTabs = /*@__PURE__*/ defineContainer<JSX.GoTabs>('go-tabs', defin
 ]);
 
 
-export const GoTextarea = /*@__PURE__*/ defineContainer<JSX.GoTextarea>('go-textarea', defineGoTextarea, [
+export const GoTextarea = /*@__PURE__*/ defineContainer<JSX.GoTextarea, JSX.GoTextarea["value"]>('go-textarea', undefined, [
   'labelId',
   'prefixId',
   'suffixId',
@@ -542,19 +481,19 @@ export const GoTextarea = /*@__PURE__*/ defineContainer<JSX.GoTextarea>('go-text
 'value', 'input');
 
 
-export const GoToTop = /*@__PURE__*/ defineContainer<JSX.GoToTop>('go-to-top', defineGoToTop, [
+export const GoToTop = /*@__PURE__*/ defineContainer<JSX.GoToTop>('go-to-top', undefined, [
   'offset'
 ]);
 
 
-export const GoToc = /*@__PURE__*/ defineContainer<JSX.GoToc>('go-toc', defineGoToc, [
+export const GoToc = /*@__PURE__*/ defineContainer<JSX.GoToc>('go-toc', undefined, [
   'label',
   'selector',
   'labelClass'
 ]);
 
 
-export const GoTooltip = /*@__PURE__*/ defineContainer<JSX.GoTooltip>('go-tooltip', defineGoTooltip, [
+export const GoTooltip = /*@__PURE__*/ defineContainer<JSX.GoTooltip>('go-tooltip', undefined, [
   'triggerId',
   'arrow',
   'inline',

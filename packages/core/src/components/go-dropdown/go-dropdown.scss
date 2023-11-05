@@ -8,9 +8,9 @@ go-dropdown {
   /**
     @prop --dropdown-bg-color:
       Dropdown background color
-      - default: var(--go-color-neutral-100)
+      - default: var(--go-color-lightest)
   */
-  --dropdown-bg-color: var(--go-color-neutral-100);
+  --dropdown-bg-color: var(--go-color-lightest);
 
   /**
     @prop --dropdown-duration:

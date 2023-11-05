@@ -75,6 +75,19 @@ export class GoField implements FormFieldProps {
    */
   @State() hasError = false;
 
+  /**
+   * If specified, an input element with `type="hidden"` will be generated
+   * and this hiddenName prop will be used as the `name` of the hidden input
+   *
+   * use `hiddenInputValue` prop to set the value of that field
+   */
+  @Prop() hiddenInputName?: string;
+
+  /**
+   * Sets the value of the hidden input created by `hiddenInputName`
+   */
+  @Prop() hiddenInputValue?: string;
+
   @Watch('error')
   updateErrorState() {
     this.hasError = !!this.error;
@@ -85,7 +98,6 @@ export class GoField implements FormFieldProps {
   hasPrefix: boolean;
   hasSuffix: boolean;
   hasHintSlot: boolean;
-  hasPostControlSlot: boolean;
   hasLabelSlot: boolean;
 
   componentWillLoad() {
@@ -94,7 +106,6 @@ export class GoField implements FormFieldProps {
     this.hasPrefix = hasSlot(this.el, 'prefix');
     this.hasSuffix = hasSlot(this.el, 'suffix');
     this.hasHintSlot = hasSlot(this.el, 'hint');
-    this.hasPostControlSlot = hasSlot(this.el, 'post-control');
     this.hasLabelSlot = hasSlot(this.el, 'label');
     initIdProps(this, this.el, ['label', 'prefix', 'suffix', 'hint', 'error'], this.idPrefix);
     this.updateErrorState();
@@ -113,7 +124,9 @@ export class GoField implements FormFieldProps {
     if (!this.controlEl) {
       this.controlEl = this.el.querySelector(this.controlElSelector);
       if (!this.controlEl) {
-        warning(`Cannot find field control based on selector ${this.controlElSelector}. Make sure the element exists in the DOM`);
+        warning(
+          `Cannot find field control based on selector ${this.controlElSelector}. Make sure the element exists in the DOM`,
+        );
         return;
       }
     }
@@ -167,6 +180,8 @@ export class GoField implements FormFieldProps {
       prefixId,
       suffixId,
       errorId,
+      hiddenInputName,
+      hiddenInputValue,
     } = this;
 
     const showLabel = hasLabelSlot || label;
@@ -235,6 +250,8 @@ export class GoField implements FormFieldProps {
             {error}
           </div>
         ) : null}
+
+        {hiddenInputName ? <input type="hidden" name={hiddenInputName} value={hiddenInputValue} /> : null}
       </Host>
     );
   }

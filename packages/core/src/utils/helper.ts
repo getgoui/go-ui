@@ -124,8 +124,11 @@ export function initIdProps(instance: any, rootEl: HTMLElement, idProps: string[
  * @param items {T|string} navigation items to be rendered
  */
 export function parseItems<T>(items: T | string): T {
+  if (!items) {
+    return null;
+  }
   try {
-    return typeof items === 'string' ? JSON5.parse(items) : items;
+    return typeof items === 'string' ? JSON5.parse<T>(items) : items;
   } catch (e) {
     warning('Could not parse items', e);
   }

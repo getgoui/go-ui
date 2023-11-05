@@ -1,3 +1,6 @@
+/**
+ * Typescript file taken from duet-datepicker
+ */
 type MonthsNames = [string, string, string, string, string, string, string, string, string, string, string, string];
 type DayNames = [string, string, string, string, string, string, string];
 

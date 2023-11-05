@@ -1,4 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import '@go-ui/vue/dist/go-ui.css';
-createApp(App).mount('#app');
+import { ComponentLibrary } from '@go-ui/vue';
+
+createApp(App).use(ComponentLibrary).mount('#app');

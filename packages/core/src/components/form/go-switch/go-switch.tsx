@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, State } from '@stencil/core';
+import { Component, Host, h, Element, Prop } from '@stencil/core';
 import { inheritAttributes } from '../../../utils/helper';
 import { uniqueId, kebabCase } from 'lodash-es';
 import { CheckboxProps } from '../../../interfaces/form';
@@ -9,7 +9,7 @@ import { CheckboxProps } from '../../../interfaces/form';
   shadow: false,
 })
 export class GoSwitch implements CheckboxProps {
-  @Prop()
+  @Prop({ mutable: true })
   checked?: boolean;
 
   @Prop()
@@ -58,11 +58,8 @@ export class GoSwitch implements CheckboxProps {
 
   inputEl: HTMLInputElement;
 
-  @State()
-  isOn = null;
-
   handleChange(e) {
-    this.isOn = e.target.checked;
+    this.checked = e.target.checked;
   }
 
   // Store attributes inherited from the host element
@@ -71,11 +68,23 @@ export class GoSwitch implements CheckboxProps {
     const propNames = Object.keys(this['__proto__']);
     const attributeNames = propNames.map((name) => kebabCase(name));
     this.attrs = inheritAttributes(this.el, ['class', 'style', ...attributeNames]);
-    this.isOn = this.checked;
   }
 
   render() {
-    const { checked, name, label, disabled, value, attrs, stack, fullWidth, showOnOff, showOnOffOutside, isOn, activeLabel, inactiveLabel } = this;
+    const {
+      checked,
+      name,
+      label,
+      disabled,
+      value,
+      attrs,
+      stack,
+      fullWidth,
+      showOnOff,
+      showOnOffOutside,
+      activeLabel,
+      inactiveLabel,
+    } = this;
     const inputId = attrs?.id ? attrs.id : uniqueId('go-switch-');
     return (
       <Host class={{ stack, 'full-width': fullWidth }}>
@@ -98,13 +107,13 @@ export class GoSwitch implements CheckboxProps {
               <span class="switch-handle"></span>
               {showOnOff ? (
                 <span class="switch-text" aria-hidden="true">
-                  {isOn ? activeLabel : inactiveLabel}
+                  {checked ? activeLabel : inactiveLabel}
                 </span>
               ) : null}
             </span>
             {showOnOffOutside ? (
               <span class="text-size-0" aria-hidden="true">
-                {isOn ? activeLabel : inactiveLabel}
+                {checked ? activeLabel : inactiveLabel}
               </span>
             ) : null}
           </div>

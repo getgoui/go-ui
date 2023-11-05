@@ -16,16 +16,13 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
-      includeImportCustomElements: true,
-      customElementsDir: 'dist/components',
       excludeComponents: ['duet-date-picker'],
     }),
     vueOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../vue/src/components.ts',
-      includeImportCustomElements: true,
-      customElementsDir: 'dist/components',
-      excludeComponents: ['duet-date-picker'],
+      // customElementsDir: 'dist/components',
+      excludeComponents: ['duet-date-picker', 'go-radio'],
       componentModels: [
         {
           elements: ['go-input', 'go-textarea'],
@@ -34,12 +31,13 @@ export const config: Config = {
         },
         {
           elements: ['go-checkbox', 'go-switch'],
-          event: 'go-change',
+          event: 'change',
           targetAttr: 'checked',
         },
         {
-          elements: ['go-datepicker', 'go-select', 'go-radio'],
-          event: 'go-change',
+          elements: ['go-datepicker', 'go-select'],
+          event: 'gochange',
+          externalEvent: 'gochange',
           targetAttr: 'value',
         },
       ],
@@ -49,7 +47,7 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
-      autoDefineCustomElements: true,
+      customElementsExportBehavior: 'auto-define-custom-elements',
       generateTypeDeclarations: true,
     },
     {

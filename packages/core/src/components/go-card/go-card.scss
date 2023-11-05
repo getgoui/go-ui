@@ -7,7 +7,7 @@ go-card {
 
   /**
     @prop --go-card-inner-gap:
-      Gap size in between inner sections of card. ie. title, content, footer
+      Gap size in between inner sections of card. ie. heading, content, footer
   */
   --go-card-inner-gap: 1rem;
 
@@ -24,40 +24,40 @@ go-card {
   --go-card-fg: var(--go-color-text);
 
   /**
-    @prop --go-card-title-font-size:
-      Font size of card title text
+    @prop --go-card-heading-font-size:
+      Font size of card heading text
   */
-  --go-card-title-font-size: var(--go-size-2);
+  --go-card-heading-font-size: var(--go-size-2);
 
   /**
-    @prop --go-card-title-font-weight:
-      Font weight of card title text
+    @prop --go-card-heading-font-weight:
+      Font weight of card heading text
   */
-  --go-card-title-font-weight: 500;
+  --go-card-heading-font-weight: 500;
 
   /**
-    @prop --go-card-title-color:
-      Text colour of card title
+    @prop --go-card-heading-color:
+      Text colour of card heading
   */
-  --go-card-title-color: var(--go-card-fg);
+  --go-card-heading-color: var(--go-card-fg);
 
   /**
-    @prop --go-card-subtitle-font-size:
-      Font size of subtitle
+    @prop --go-card-subheading-font-size:
+      Font size of subheading
   */
-  --go-card-subtitle-font-size: var(--go-size-1);
+  --go-card-subheading-font-size: var(--go-size-1);
 
   /**
-    @prop --go-card-subtitle-font-weight:
-      Font weight of subtitle
+    @prop --go-card-subheading-font-weight:
+      Font weight of subheading
   */
-  --go-card-subtitle-font-weight: 400;
+  --go-card-subheading-font-weight: 400;
 
   /**
-    @prop --go-card-subtitle-text-color:
-      Text colour of subtitle
+    @prop --go-card-subheading-text-color:
+      Text colour of subheading
   */
-  --go-card-subtitle-color: var(--go-color-neutral-600);
+  --go-card-subheading-color: var(--go-color-neutral-600);
 
   /**
     @prop --go-card-border-width:
@@ -125,16 +125,16 @@ go-card {
     flex: 1;
     flex-direction: column;
     gap: var(--go-card-inner-gap);
-    .card-title-section {
-      .card-title {
-        font-size: var(--go-card-title-font-size);
-        font-weight: var(--go-card-title-font-weight);
-        color: var(--go-card-title-color);
+    .card-heading-section {
+      .card-heading {
+        font-size: var(--go-card-heading-font-size);
+        font-weight: var(--go-card-heading-font-weight);
+        color: var(--go-card-heading-color);
       }
-      .card-subtitle {
-        font-size: var(--go-card-subtitle-font-size);
-        font-weight: var(--go-card-subtitle-font-weight);
-        color: var(--go-card-subtitle-color);
+      .card-subheading {
+        font-size: var(--go-card-subheading-font-size);
+        font-weight: var(--go-card-subheading-font-weight);
+        color: var(--go-card-subheading-color);
       }
     }
   }
@@ -201,7 +201,7 @@ go-card {
       outline: 2px solid var(--go-color-link);
       outline-offset: 2px;
     }
-    .card-title {
+    .card-heading {
       .go-link {
         &:focus-visible {
           outline: none; // stylelint-disable-line

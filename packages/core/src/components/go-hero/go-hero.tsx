@@ -91,7 +91,7 @@ export class GoHero implements HeroProps {
             <div class="hero-container">
               <div class="hero-text">
                 {hasFullWidthBg ? <div class="hero-text-bg"></div> : null}
-                {breadcrumbs ? <go-breadcrumb items={breadcrumbs}></go-breadcrumb> : null}
+                {breadcrumbs ? <go-breadcrumbs items={breadcrumbs}></go-breadcrumbs> : null}
                 <div class="pre-heading text-size-2">{preHeading}</div>
                 <h1 class="text-display-2">{heading}</h1>
                 <slot></slot>

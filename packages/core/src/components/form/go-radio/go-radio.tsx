@@ -9,16 +9,19 @@ import { hasSlot, initIdProps } from '../../../utils';
 export class GoRadio {
   @Element() el: HTMLElement;
 
-  @Prop() checked?: boolean;
+  @Prop({ mutable: true }) checked?: boolean;
   @Prop() indeterminate?: boolean;
   @Prop() name: string;
   @Prop() disabled?: boolean;
-  @Prop() value: any;
+  @Prop() value: any; // initial value
   @Prop() label: string;
   @Prop() hint?: string;
   @Prop({ reflect: true }) error?: string;
 
-  id: string;
+  /**
+   * DOM id for native input control, default auto generated unique id
+   */
+  @Prop() controlId?: string;
 
   /**
    * DOM id for hint message
@@ -45,11 +48,14 @@ export class GoRadio {
   hasHintSlot: boolean;
   componentWillLoad() {
     this.hasHintSlot = hasSlot(this.el, 'hint');
-    initIdProps(this, this.el, ['hint', 'error'], 'go-radio-');
+    initIdProps(this, this.el, ['hint', 'error', 'control'], 'go-radio-');
+
     this.updateErrorState();
   }
+
   render() {
-    const { label, error, id, hint, hintId, hasHintSlot, checked, indeterminate, name, disabled, value, hasError, errorId } = this;
+    const { label, value, error, controlId, hint, hintId, hasHintSlot, checked, name, disabled, hasError, errorId } =
+      this;
 
     const describedByIds = [];
     if (hasHintSlot || hint) {
@@ -59,9 +65,8 @@ export class GoRadio {
       describedByIds.push(errorId);
     }
     const props = {
-      id,
+      id: controlId,
       checked,
-      indeterminate,
       name,
       disabled,
       value,
@@ -72,17 +77,22 @@ export class GoRadio {
         class={{
           error: hasError,
           disabled: !!disabled,
-          indeterminate: !!indeterminate,
         }}>
         <div class="control-wrapper">
           <div class="box">
-            <input class="hidden-control" type="radio" {...props} aria-invalid={String(hasError)} aria-describedby={describedByIds.join(' ')} />
+            <input
+              {...props}
+              type="radio"
+              class="hidden-control"
+              aria-invalid={String(hasError)}
+              aria-describedby={describedByIds.join(' ')}
+            />
             <span class="mark">
               <span class="dot"></span>
             </span>
           </div>
           <div class="text">
-            <label htmlFor={id}>{label}</label>
+            <label htmlFor={controlId}>{label}</label>
             {hasHintSlot || hint ? (
               <div class="hint" id={hintId}>
                 <slot name="hint">{hint}</slot>

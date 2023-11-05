@@ -80,6 +80,12 @@ go-hero {
     width: 100%;
     top: 50%;
     transform: translateY(-50%);
+    > img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   &.has-full-width-bg {
@@ -126,7 +132,7 @@ go-hero {
 
   .hero-text {
     padding: var(--hero-text-box-padding);
-    go-breadcrumb {
+    go-breadcrumbs {
       margin-bottom: var(--hero-breadcrumb-gap);
     }
     .pre-heading {
