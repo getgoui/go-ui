@@ -4,7 +4,7 @@ import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
-// import { reactOutputTarget } from '@stencil/react-output-target';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
@@ -13,13 +13,11 @@ export const config: Config = {
     after: [nodePolyfills()],
   },
   outputTargets: [
-    /*
     reactOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
       excludeComponents: ['duet-date-picker'],
     }),
-    */
     vueOutputTarget({
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../vue/src/components.ts',
