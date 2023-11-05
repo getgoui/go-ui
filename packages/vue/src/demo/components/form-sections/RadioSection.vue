@@ -8,9 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { GoFieldset, GoRadio } from '@go-ui/vue';
+import { GoFieldset, GoRadio } from '@';
 import Section from '../Section.vue';
 import { OPTIONS } from './constants';
 import { ref } from 'vue';
-const selected = ref(undefined);
+const selected = ref('Watermelon');
 </script>

@@ -1,6 +1,6 @@
 <template>
   <form>
-    <!-- <Datepickersection /> -->
+    <Datepickersection />
     <!-- <SelectSection /> -->
     <RadioSection />
     <hr />

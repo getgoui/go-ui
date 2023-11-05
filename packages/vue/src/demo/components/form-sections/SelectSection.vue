@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { GoSelect } from '@go-ui/vue';
+import { GoSelect } from '@';
 import { ref } from 'vue';
 import Section from '../Section.vue';
 import { OPTIONS, OBJECT_OPTIONS, STRING_OPTIONS } from './constants';

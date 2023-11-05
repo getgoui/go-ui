@@ -3,6 +3,12 @@ import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // config so file can import from @ instead of import from 'src'
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   plugins: [
     vue({
       template: {

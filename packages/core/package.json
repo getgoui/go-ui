@@ -47,7 +47,7 @@
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
     "@release-it/conventional-changelog": "^5.1.1",
-    "@stencil/core": "^4.0.1",
+    "@stencil/core": "^4.5.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/react-output-target": "^0.5.3",
     "@stencil/sass": "^3.0.4",

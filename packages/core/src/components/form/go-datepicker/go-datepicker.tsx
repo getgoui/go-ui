@@ -44,7 +44,7 @@ export class GoDatepicker implements FormFieldProps {
    * Duet Date Picker options
    * https://www.npmjs.com/package/@duetds/date-picker#properties
    */
-  @Prop() options?: string | DuetDatePickerProps;
+  @Prop() options?: string | Partial<DuetDatePickerProps>;
 
   /**
    * Specify the expected date format
@@ -52,7 +52,7 @@ export class GoDatepicker implements FormFieldProps {
    */
   @Prop() format?: string = ISO_DATE_FORMAT;
 
-  @State() parsedOptions: DuetDatePickerProps;
+  @State() parsedOptions: Partial<DuetDatePickerProps>;
 
   @Watch('options')
   loadOptions() {

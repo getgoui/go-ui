@@ -5,7 +5,7 @@
   </section>
 </template>
 <script lang="ts">
-import { GoHeadingRow } from '@go-ui/vue';
+import { GoHeadingRow } from '@';
 
 export default {
   props: {

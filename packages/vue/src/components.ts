@@ -387,23 +387,6 @@ export const GoProgress = /*@__PURE__*/ defineContainer<JSX.GoProgress>('go-prog
 ]);
 
 
-export const GoRadio = /*@__PURE__*/ defineContainer<JSX.GoRadio, JSX.GoRadio["defaultValue"]>('go-radio', undefined, [
-  'checked',
-  'indeterminate',
-  'name',
-  'disabled',
-  'value',
-  'label',
-  'hint',
-  'error',
-  'defaultValue',
-  'hintId',
-  'errorId',
-  'gochange'
-],
-'defaultValue', 'gochange', 'gochange');
-
-
 export const GoSearchBar = /*@__PURE__*/ defineContainer<JSX.GoSearchBar>('go-search-bar', undefined);
 
 

@@ -1,6 +1,5 @@
-import { Component, Host, h, Element, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { hasSlot, initIdProps } from '../../../utils';
-import { GoChangeEventDetail } from '@/interfaces';
 
 @Component({
   tag: 'go-radio',
@@ -10,18 +9,20 @@ import { GoChangeEventDetail } from '@/interfaces';
 export class GoRadio {
   @Element() el: HTMLElement;
 
-  @Prop() checked?: boolean;
+  @Prop({ mutable: true }) checked?: boolean;
   @Prop() indeterminate?: boolean;
   @Prop() name: string;
   @Prop() disabled?: boolean;
-  @Prop() value: any;
+  @Prop() value: any; // initial value
   @Prop() label: string;
   @Prop() hint?: string;
   @Prop({ reflect: true }) error?: string;
 
-  id: string;
+  /**
+   * DOM id for native input control, default auto generated unique id
+   */
+  @Prop() controlId?: string;
 
-  @Prop() defaultValue: any;
   /**
    * DOM id for hint message
    */
@@ -46,33 +47,15 @@ export class GoRadio {
 
   hasHintSlot: boolean;
   componentWillLoad() {
-    // record original "value" attribute
-    if (!this.defaultValue) {
-      this.defaultValue = this.value;
-    }
-
     this.hasHintSlot = hasSlot(this.el, 'hint');
-    initIdProps(this, this.el, ['hint', 'error'], 'go-radio-');
+    initIdProps(this, this.el, ['hint', 'error', 'control'], 'go-radio-');
+
     this.updateErrorState();
   }
 
-  /**
-   * Emit custom event with selected value
-   */
-  @Event({
-    eventName: 'gochange',
-  })
-  goChange: EventEmitter<GoChangeEventDetail<string>>;
-
-  handleChange(e) {
-    console.log(e.target.value);
-    console.log('this.value', this.value);
-    console.log('defaultValue', this.defaultValue);
-    this.goChange.emit({ value: this.defaultValue });
-  }
-
   render() {
-    const { label, error, id, hint, hintId, hasHintSlot, checked, name, disabled, hasError, errorId } = this;
+    const { label, value, error, controlId, hint, hintId, hasHintSlot, checked, name, disabled, hasError, errorId } =
+      this;
 
     const describedByIds = [];
     if (hasHintSlot || hint) {
@@ -82,11 +65,11 @@ export class GoRadio {
       describedByIds.push(errorId);
     }
     const props = {
-      id,
+      id: controlId,
       checked,
       name,
       disabled,
-      value: this.defaultValue, // value shouldn't change
+      value,
     };
 
     return (
@@ -98,10 +81,9 @@ export class GoRadio {
         <div class="control-wrapper">
           <div class="box">
             <input
-              class="hidden-control"
-              onChange={(e) => this.handleChange(e)}
-              type="radio"
               {...props}
+              type="radio"
+              class="hidden-control"
               aria-invalid={String(hasError)}
               aria-describedby={describedByIds.join(' ')}
             />
@@ -110,7 +92,7 @@ export class GoRadio {
             </span>
           </div>
           <div class="text">
-            <label htmlFor={id}>{label}</label>
+            <label htmlFor={controlId}>{label}</label>
             {hasHintSlot || hint ? (
               <div class="hint" id={hintId}>
                 <slot name="hint">{hint}</slot>

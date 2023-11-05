@@ -416,7 +416,7 @@ export namespace Components {
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
-        "options"?: string | DuetDatePickerProps;
+        "options"?: string | Partial<DuetDatePickerProps>;
         /**
           * Placeholder text
          */
@@ -943,7 +943,10 @@ export namespace Components {
     }
     interface GoRadio {
         "checked"?: boolean;
-        "defaultValue": any;
+        /**
+          * DOM id for native input control, default auto generated unique id
+         */
+        "controlId"?: string;
         "disabled"?: boolean;
         "error"?: string;
         /**
@@ -1285,10 +1288,6 @@ export interface GoNavLinkCustomEvent<T> extends CustomEvent<T> {
 export interface GoOverlayCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoOverlayElement;
-}
-export interface GoRadioCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGoRadioElement;
 }
 export interface GoSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2061,7 +2060,7 @@ declare namespace LocalJSX {
         /**
           * Duet Date Picker options https://www.npmjs.com/package/@duetds/date-picker#properties
          */
-        "options"?: string | DuetDatePickerProps;
+        "options"?: string | Partial<DuetDatePickerProps>;
         /**
           * Placeholder text
          */
@@ -2586,7 +2585,10 @@ declare namespace LocalJSX {
     }
     interface GoRadio {
         "checked"?: boolean;
-        "defaultValue"?: any;
+        /**
+          * DOM id for native input control, default auto generated unique id
+         */
+        "controlId"?: string;
         "disabled"?: boolean;
         "error"?: string;
         /**
@@ -2601,10 +2603,6 @@ declare namespace LocalJSX {
         "indeterminate"?: boolean;
         "label"?: string;
         "name"?: string;
-        /**
-          * Emit custom event with selected value
-         */
-        "onGochange"?: (event: GoRadioCustomEvent<GoChangeEventDetail<string>>) => void;
         "value"?: any;
     }
     interface GoSearchBar {

@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { GoCard, GoButton } from '@go-ui/vue';
+import { GoCard, GoButton } from '@';
 import vitelogo from '../assets/vite.svg';
 import vuelogo from '../assets/vue.svg';
 import Section from './Section.vue';
