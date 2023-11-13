@@ -4,12 +4,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { GoRadio, defineCustomElement } from '@go-ui/core/dist/components/go-radio';
+import type { GoRadio } from '@go-ui/core/dist/components/go-radio';
 export default defineComponent({
   name: 'GoRadio',
-  beforeMount() {
-    // defineCustomElement();
-  },
   props: {
     modelValue: {
       type: [String, Object, Boolean],
