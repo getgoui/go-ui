@@ -7,7 +7,7 @@
     "dev.core": "nx start @go-ui/core",
     "dev.docs": "nx build @go-ui/core && concurrently --kill-others \"npm:watch.ia\" \"nx start @go-ui/docs\"",
     "dev.react.app": "nx start @go-ui/react-starter",
-    "dev.vue.app": "nx dev @go-ui/vue-starter",
+    "dev.vue": "nx dev @go-ui/vue",
     "build.libs": "pnpm --stream -r --filter \"./packages/**\" build",
     "build.docs": "nx build @go-ui/docs",
     "build.ia": "nx build.ia @go-ui/docs",

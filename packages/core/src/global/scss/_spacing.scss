@@ -6,14 +6,19 @@ $directions: (
   'b': 'bottom',
   '': '',
 );
-$spacer: 1rem;
+$spacer: 0.5rem;
 $spacers: (
   0: 0,
-  1: $spacer * 0.25,
-  2: $spacer * 0.5,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
+  1: $spacer,
+  2: 2 * $spacer,
+  3: 3 * $spacer,
+  4: 4 * $spacer,
+  5: 5 * $spacer,
+  6: 6 * $spacer,
+  7: 7 * $spacer,
+  8: 8 * $spacer,
+  9: 9 * $spacer,
+  10: 10 * $spacer,
 );
 
 @mixin make-space($dir-name, $dir, $spacer, $spacing-type) {

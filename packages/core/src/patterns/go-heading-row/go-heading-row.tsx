@@ -30,28 +30,37 @@ export class GoHeadingRow {
 
   hasHeadingSlot: boolean;
 
+  hasActionSlot: boolean;
+
+  componentWillLoad() {
+    this.hasHeadingSlot = !!this.el.querySelector('slot[name="heading"]');
+    this.hasActionSlot = !!this.el.querySelector('slot[name="action"]');
+  }
+
   render() {
-    const { heading, moreLinkHref, moreLinkText, hasHeadingSlot, headingTag: HeadingTag } = this;
+    const { heading, moreLinkHref, moreLinkText, hasHeadingSlot, hasActionSlot, headingTag: HeadingTag } = this;
     const shouldRenderHeading = heading || hasHeadingSlot;
-    const shouldRenderMoreLink = moreLinkHref && moreLinkText;
+    const shouldRenderMoreLink = (moreLinkHref && moreLinkText) || hasActionSlot;
     return (
       <Host>
         {shouldRenderHeading || shouldRenderMoreLink ? (
           <div class="heading-row">
             {shouldRenderHeading ? (
-              <slot>
+              <slot name="heading">
                 <HeadingTag>{heading}</HeadingTag>
               </slot>
             ) : (
               <span></span>
             )}
             {shouldRenderMoreLink ? (
-              <go-nav-link
-                item={{
-                  url: moreLinkHref,
-                  label: moreLinkText,
-                }}
-                showArrow={true}></go-nav-link>
+              <slot name="action">
+                <go-nav-link
+                  item={{
+                    url: moreLinkHref,
+                    label: moreLinkText,
+                  }}
+                  showArrow={true}></go-nav-link>
+              </slot>
             ) : null}
           </div>
         ) : null}

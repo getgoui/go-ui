@@ -14,4 +14,8 @@ go-fieldset {
       @include unstyled-list;
     }
   }
+
+  .go-field {
+    margin-top: 0;
+  }
 }

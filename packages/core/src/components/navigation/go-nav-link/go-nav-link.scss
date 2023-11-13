@@ -62,6 +62,7 @@ go-nav-link {
   }
 
   a.nav-item-link {
+    @include transition(background);
     .nav-link-text {
       @include underline;
     }

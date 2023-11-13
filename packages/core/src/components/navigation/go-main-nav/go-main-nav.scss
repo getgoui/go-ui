@@ -61,8 +61,10 @@ go-main-nav {
         text-decoration: none;
         background: var(--nav-item-bg-color);
         border-bottom: var(--nav-item-current-bar-width) solid transparent;
+        @include transition(background);
         &:hover,
         &:focus {
+          border-radius: var(--radius-2);
           background: var(--nav-item-hover-bg-color);
         }
 
