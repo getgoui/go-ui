@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, State } from '@stencil/core';
-import { InputProps, InputType } from '../../../interfaces';
+import { InputProps } from '../../../interfaces';
 import { uniqueId } from 'lodash-es';
 import { loadFieldProps, fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots } from '../../../utils';
 @Component({
@@ -8,12 +8,6 @@ import { loadFieldProps, fieldSlotNames, inheritNonFieldAttrs, loadFieldSlots } 
 })
 export class GoInput implements InputProps {
   @Element() el: HTMLElement;
-  /**
-   * Type of this input field
-   * `go-input` support only the types that is considered "single-line of text"
-   * For other types, check other form components.
-   */
-  @Prop() type?: InputType = 'text';
 
   /**
    * DOM id for label

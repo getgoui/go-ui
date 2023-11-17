@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -14,7 +14,7 @@ import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./co
 import { Options } from "markdown-it";
 import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
 import { ActivatedTab } from "./components/go-tabs/go-tabs";
-export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem, InputType } from "./interfaces";
+export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
 export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -775,10 +775,6 @@ export namespace Components {
           * DOM id for suffix
          */
         "suffixId"?: string;
-        /**
-          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
-         */
-        "type"?: InputType;
         /**
           * Value of the input field
          */
@@ -2408,10 +2404,6 @@ declare namespace LocalJSX {
           * DOM id for suffix
          */
         "suffixId"?: string;
-        /**
-          * Type of this input field `go-input` support only the types that is considered "single-line of text" For other types, check other form components.
-         */
-        "type"?: InputType;
         /**
           * Value of the input field
          */

@@ -296,7 +296,6 @@ export const GoIcon = /*@__PURE__*/ defineContainer<JSX.GoIcon>('go-icon', undef
 
 
 export const GoInput = /*@__PURE__*/ defineContainer<JSX.GoInput, JSX.GoInput["value"]>('go-input', undefined, [
-  'type',
   'labelId',
   'prefixId',
   'suffixId',
