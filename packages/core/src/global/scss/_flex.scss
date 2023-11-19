@@ -22,7 +22,7 @@ $justify-values: start, end, center, between, around;
 // justify-content
 @each $device, $width in $breakpoints {
   @include min-query($device) {
-    @each $value in $align-values {
+    @each $value in $justify-values {
       @if $device == mobile {
         .justify-content-#{$value} {
           justify-content: $value !important;
