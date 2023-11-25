@@ -62,16 +62,16 @@ go-card {
   /**
     @prop --go-card-border-width:
       Border width for `border` card
-      - default: 2px
+      - default: 1px
   */
-  --go-card-border-width: 2px;
+  --go-card-border-width: 1px;
 
   /**
     @prop --go-card-border-color:
       Border color for card (for `border` card only)
-      - default: var(--go-color-neutral-200)
+      - default: var(--go-color-neutral-300)
   */
-  --go-card-border-color: var(--go-color-neutral-200);
+  --go-card-border-color: var(--go-color-neutral-300);
 
   /**
     @prop --go-card-media-basis:
@@ -111,7 +111,6 @@ go-card {
   display: block;
   background: var(--go-card-bg);
   color: var(--go-card-text);
-  border: var(--go-card-border-width) solid transparent;
   border-radius: var(--go-card-radius);
   box-shadow: var(--go-card-shadow);
   width: 100%;
@@ -213,7 +212,7 @@ go-card {
     --go-card-shadow: none;
   }
   &.border {
-    border-color: var(--go-card-border-color);
+    border: var(--go-card-border-width) solid var(--go-card-border-color);
   }
 
   // content

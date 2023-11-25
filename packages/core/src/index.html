@@ -20,16 +20,18 @@
     <!-- material icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <go-main-nav id="main-nav"></go-main-nav>
-    <go-nav-list block id="nav-list"></go-nav-list>
 
-    <go-dialog heading="Dialog content" active>
-      <p>demo</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quidem aut laudantium sint perspiciatis fugit,
-        quos voluptatum facilis. Delectus fugiat deserunt cumque adipisci alias voluptates, atque facere beatae
-        aspernatur nihil!
-      </p>
-    </go-dialog>
+    <div class="container pt-5">
+      <go-card border flat heading="Basic card" sub-heading="Subheading" media-position="left">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
+
+        <div slot="pre-heading">Active 2 hours ago</div>
+        <div slot="footer">
+          <go-button variant="text">Button</go-button>
+        </div>
+      </go-card>
+    </div>
+
     <script>
       const mainNav = document.getElementById('main-nav');
       const navList = document.getElementById('nav-list');
