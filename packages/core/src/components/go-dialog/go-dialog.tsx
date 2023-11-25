@@ -22,6 +22,11 @@ export class GoDialog {
    */
   @Prop() heading?: string;
 
+  /**
+   * HTML tag for the heading
+   */
+  @Prop() headingTag?: string = 'h2';
+
   // aria-labelledby https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html
   headingId: string = uniqueId('overlay-label-');
 
@@ -52,7 +57,7 @@ export class GoDialog {
   }
 
   render() {
-    const { active, heading, persistent, headingId } = this;
+    const { active, heading, persistent, headingId, headingTag: H } = this;
     return (
       <go-overlay
         class="go-dialog"
@@ -66,7 +71,7 @@ export class GoDialog {
         onOverlayClose={() => this.handleOverlayClose()}>
         <div class="overlay-heading" id={headingId}>
           <slot name="heading">
-            <h3>{heading}</h3>
+            <H class="heading">{heading}</H>
           </slot>
           {!persistent ? (
             <go-button

@@ -28,7 +28,11 @@ go-overlay.go-dialog {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    flex: 1;
+    .heading{
+      font-size: var(--go-size-3);
+      font-weight: 500;
+      line-height: 1.5;
+    }
     .close-btn {
       flex: 0;
     }

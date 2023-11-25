@@ -448,6 +448,10 @@ export namespace Components {
           * Heading of the overlay content
          */
         "heading"?: string;
+        /**
+          * HTML tag for the heading
+         */
+        "headingTag"?: string;
         "open": () => Promise<void>;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
@@ -2087,6 +2091,10 @@ declare namespace LocalJSX {
           * Heading of the overlay content
          */
         "heading"?: string;
+        /**
+          * HTML tag for the heading
+         */
+        "headingTag"?: string;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
          */
