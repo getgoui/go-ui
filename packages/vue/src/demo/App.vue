@@ -9,9 +9,14 @@
       </div>
     </div>
   </main>
+
+  <!-- quickSaveDialog -->
+  <GoDialog ref="quickSaveDialog" heading="Quick save" active>
+    <h1>demo</h1>
+  </GoDialog>
 </template>
 
 <script setup lang="ts">
-import { GoToc } from '@';
+import { GoToc, GoDialog } from '@';
 import FormSections from './components/FormSections.vue';
 </script>

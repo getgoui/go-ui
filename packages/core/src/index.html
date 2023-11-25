@@ -1,6 +1,6 @@
 <!-- Used in Docusaurus demo component -->
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -21,6 +21,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <go-main-nav id="main-nav"></go-main-nav>
     <go-nav-list block id="nav-list"></go-nav-list>
+
+    <go-dialog heading="Dialog content" active>
+      <p>demo</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quidem aut laudantium sint perspiciatis fugit,
+        quos voluptatum facilis. Delectus fugiat deserunt cumque adipisci alias voluptates, atque facere beatae
+        aspernatur nihil!
+      </p>
+    </go-dialog>
     <script>
       const mainNav = document.getElementById('main-nav');
       const navList = document.getElementById('nav-list');

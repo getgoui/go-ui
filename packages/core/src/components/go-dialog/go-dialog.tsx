@@ -1,6 +1,5 @@
 import { Component, h, Element, Prop, Method, Watch } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
-import { inheritAttributes } from '../../utils/helper';
 
 @Component({
   tag: 'go-dialog',
@@ -28,12 +27,6 @@ export class GoDialog {
 
   overlayEl: HTMLElement;
 
-  // Store attributes inherited from the host element
-  private inheritedAttrs = {};
-  componentWillLoad() {
-    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style']);
-  }
-
   @Method()
   async close() {
     this.active = false;
@@ -59,7 +52,7 @@ export class GoDialog {
   }
 
   render() {
-    const { active, heading, persistent, headingId, inheritedAttrs } = this;
+    const { active, heading, persistent, headingId } = this;
     return (
       <go-overlay
         class="go-dialog"
@@ -70,15 +63,22 @@ export class GoDialog {
         active={active}
         aria-hidden={active ? 'false' : 'true'}
         ref={(el) => (this.overlayEl = el)}
-        onOverlayClose={() => this.handleOverlayClose()}
-        {...inheritedAttrs}>
+        onOverlayClose={() => this.handleOverlayClose()}>
         <div class="overlay-heading" id={headingId}>
           <slot name="heading">
             <h3>{heading}</h3>
           </slot>
           {!persistent ? (
-            <go-button class="close-btn" flat stack color="tertiary" compact onClick={() => this.close()}>
+            <go-button
+              class="close-btn"
+              flat
+              icon
+              stack
+              variant="text"
+              onClick={() => this.close()}
+              aria-label="Close dialog">
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 stroke="currentColor"
@@ -88,7 +88,6 @@ export class GoDialog {
                 viewBox="0 0 24 24">
                 <path d="M18 6 6 18M6 6l12 12" />
               </svg>
-              <span>Close</span>
             </go-button>
           ) : null}
         </div>
