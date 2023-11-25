@@ -62,7 +62,6 @@ export class GoSelect implements SelectProps {
   controlEl: HTMLElement;
 
   async componentWillLoad() {
-    console.log('will load', this.options);
     this.loadOptions();
     this.attrs = inheritNonFieldAttrs(this, ['options']);
     this.hasNamedSlot = loadFieldSlots(this.el);

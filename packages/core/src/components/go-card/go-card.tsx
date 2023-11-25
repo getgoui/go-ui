@@ -72,7 +72,6 @@ export class GoCard {
     this.hasMedia = hasSlot(this.el, 'media');
     this.hasPreHeading = hasSlot(this.el, 'pre-heading');
     this.hasFooter = hasSlot(this.el, 'footer');
-    console.log(this.heading);
   }
 
   render() {
