@@ -20,17 +20,14 @@
     <!-- material icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <go-main-nav id="main-nav"></go-main-nav>
-
-    <div class="container pt-5">
-      <go-card border flat heading="Basic card" sub-heading="Subheading" media-position="left">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque natus autem veritatis architecto facilis
-
-        <div slot="pre-heading">Active 2 hours ago</div>
-        <div slot="footer">
-          <go-button variant="text">Button</go-button>
-        </div>
-      </go-card>
-    </div>
+    <go-center height="100%">
+      <div class="">
+        <go-button flat variant="primary" loading="true">
+          <go-icon name="home" slot="prefix"></go-icon>
+          <span>Home</span>
+        </go-button>
+      </div>
+    </go-center>
 
     <script>
       const mainNav = document.getElementById('main-nav');
@@ -155,7 +152,6 @@
       ];
 
       mainNav.items = navItems;
-      navList.items = navItems;
     </script>
   </body>
 </html>

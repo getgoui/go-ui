@@ -45,6 +45,15 @@ export function inheritComponentAttrs(component, excludes: string[] = []) {
 }
 
 /**
+ * get attributes that are not defined in a components props, without removing them from the host element
+ * @returns list of attributes inherited from the host element
+ */
+export function $attrs(removeAttrs = false) {
+  const propNames = Object.keys(Object.getPrototypeOf(this));
+  return inheritAttributes(this.el, propNames, removeAttrs);
+}
+
+/**
  * Extract the `id` from target element, then remove the original id attribute
  * @param el target element
  * @returns id specified in target element

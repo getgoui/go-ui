@@ -43,6 +43,11 @@ export class GoSpinner {
    */
   @Prop({ reflect: true }) loading: boolean = true;
 
+  /**
+   * screen reader announcement when loading
+   */
+  @Prop() loadingAnnouncement: string = 'Loading';
+
   @State() isLoading: boolean;
 
   componentWillLoad() {
@@ -55,7 +60,8 @@ export class GoSpinner {
   }
 
   render() {
-    const { ringColor, baseColor, size, ringWidth, duration, stacked, isLoading } = this;
+    const { ringColor, baseColor, size, ringWidth, duration, stacked, isLoading, loadingAnnouncement } = this;
+    console.log({ loadingAnnouncement });
     let styles = {};
     if (ringColor) {
       styles['--spinner-ring-color'] = ringColor;
@@ -78,11 +84,8 @@ export class GoSpinner {
     return (
       <Host style={styles} role="status" class={{ stacked }}>
         <div aria-hidden="true" class="spinner"></div>
-        <span class="spinner-label">
-          <slot>
-            <span class="visually-hidden">Loading</span>
-          </slot>
-        </span>
+        <span class="visually-hidden">{loadingAnnouncement}</span>
+        <slot></slot>
       </Host>
     );
   }

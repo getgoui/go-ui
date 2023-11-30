@@ -112,6 +112,11 @@ export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-r
 ]);
 
 
+export const GoCenter = /*@__PURE__*/ defineContainer<JSX.GoCenter>('go-center', undefined, [
+  'height'
+]);
+
+
 export const GoCheckbox = /*@__PURE__*/ defineContainer<JSX.GoCheckbox, JSX.GoCheckbox["checked"]>('go-checkbox', undefined, [
   'checked',
   'indeterminate',
@@ -181,7 +186,8 @@ export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker, JSX.
 export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', undefined, [
   'active',
   'persistent',
-  'heading'
+  'heading',
+  'headingTag'
 ]);
 
 
