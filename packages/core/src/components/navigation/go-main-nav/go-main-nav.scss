@@ -1,18 +1,33 @@
 go-main-nav {
+  /**
+    @prop --nav-border-top:
+      top border
+      - default: 1px solid var(--go-color-neutral-200)
+  */
   --nav-border-top: 1px solid var(--go-color-neutral-200);
+  /**
+    @prop --nav-border-bottom:
+      bottom border
+      - default: 1px solid var(--go-color-neutral-200)
+  */
   --nav-border-bottom: 1px solid var(--go-color-neutral-200);
   --nav-bg-color: transparent;
   --nav-shadow: var(--shadow-2);
   --nav-item-text-color: var(--go-color-darkest);
   --nav-item-bg-color: var(--nav-bg-color);
   --nav-item-hover-bg-color: var(--go-color-neutral-200);
-  --nav-item-active-bg-color: var(--go-color-bg);
+  --nav-item-active-bg-color: var(--go-color-primary-100);
   --nav-item-current-bg-color: var(--nav-item-bg-color);
   --nav-item-padding: var(--go-size--1) var(--go-size-0);
   --nav-item-icon-gap: 0.5rem;
   --nav-item-current-bar-width: 4px;
   --nav-item-current-bar-color: var(--go-color-secondary-700);
   --submenu-bg-color: var(--nav-item-active-bg-color);
+  --submenu-border-radius: var(--radius-2);
+
+  @include theme-dark() {
+    --submenu-bg-color: var(--go-color-neutral-500);
+  }
   --submenu-padding-y: var(--go-size-0);
   --submenu-padding-x: var(--go-size-1);
   --submenu-link-padding: 8px;
@@ -30,6 +45,21 @@ go-main-nav {
       - default: var(--go-color-neutral-200)
   */
   --submenu-separator-color: var(--go-color-neutral-200);
+
+  /**
+    @prop --submenu-indent:
+      submenu indent
+      - default: 0.5rem
+  */
+  --submenu-indent: 0.5rem;
+
+
+  /**
+    @prop --submenu-tail-size:
+      submenu tail size
+      - default: 1rem
+  */
+  --submenu-tail-size: 1rem;
 
   display: block;
   box-shadow: var(--nav-shadow);
@@ -100,20 +130,35 @@ go-main-nav {
 
       // new structure
       .submenu-container {
+
         @include transition(opacity, visibility);
 
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        top: 100%;
+        top: calc(100% + var(--submenu-tail-size));
         max-width: 100%;
         z-index: 1;
         box-shadow: var(--nav-shadow);
         padding: var(--submenu-padding-y) var(--submenu-padding-x);
         background: var(--submenu-bg-color);
+        border-radius: var(--submenu-border-radius);
+
+        &::before {
+          content: '';
+          width: var(--submenu-tail-size);
+          height: var(--submenu-tail-size);
+          background: var(--submenu-bg-color);
+          position: absolute;
+          top: 0;
+          left: calc(var(--submenu-tail-size) + 5px);
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
         .submenu-header {
           padding: 0.5rem 0;
           margin-bottom: 0;
+          border-bottom: 1px solid var(--submenu-separator-color);
           svg {
             width: 1.5em;
             height: 1.5em;
@@ -153,7 +198,10 @@ go-main-nav {
 
     .submenu {
       ul {
-        border-top: 1px solid var(--submenu-separator-color);
+        padding-left: 0;
+        a {
+          padding-left: calc(0.5rem + var(--submenu-indent));
+        }
       }
       go-nav-link {
         display: block;
