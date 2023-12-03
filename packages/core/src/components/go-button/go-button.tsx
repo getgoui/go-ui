@@ -157,14 +157,15 @@ export class GoButton {
           'outline outline-fill': outlineFill,
         }}>
         <Tag
-          href={href ? href : null}
-          type={href ? null : type}
-          aria-disabled={disabled ? 'true' : null}
-          disabled={disabled}
           ref={(el) => {
             this.nativeEl = el;
           }}
+          href={href ? href : null}
+          type={href ? null : type}
+          aria-disabled={disabled ? 'true' : null}
+          disabled={disabled ? 'true' : null}
           class="inner-button"
+          aria-busy={loading ? 'true' : null}
           {...inheritedAttributes}>
           <go-spinner loading={loading} loadingAnnouncement={loadingAnouncement}></go-spinner>
           <slot name="prefix"></slot>

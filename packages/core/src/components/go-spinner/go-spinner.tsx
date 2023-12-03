@@ -61,7 +61,6 @@ export class GoSpinner {
 
   render() {
     const { ringColor, baseColor, size, ringWidth, duration, stacked, isLoading, loadingAnnouncement } = this;
-    console.log({ loadingAnnouncement });
     let styles = {};
     if (ringColor) {
       styles['--spinner-ring-color'] = ringColor;
@@ -78,14 +77,16 @@ export class GoSpinner {
     if (duration) {
       styles['--spinner-duration'] = duration;
     }
-    if (!isLoading) {
-      styles['display'] = 'none';
-    }
     return (
-      <Host style={styles} role="status" class={{ stacked }}>
-        <div aria-hidden="true" class="spinner"></div>
-        <span class="visually-hidden">{loadingAnnouncement}</span>
-        <slot></slot>
+      <Host style={styles} role="status" class={{ stacked, 'visually-hidden': !isLoading }}>
+        {isLoading
+          ? [
+              <div aria-hidden="true" class="spinner"></div>,
+              <slot>
+                <span class="visually-hidden">{loadingAnnouncement}</span>
+              </slot>,
+            ]
+          : null}
       </Host>
     );
   }

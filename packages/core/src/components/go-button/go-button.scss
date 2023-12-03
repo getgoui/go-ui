@@ -203,6 +203,16 @@ go-button {
     --go-btn-bg-color-hover: var(--go-color-neutral-300);
     --go-btn-text-color: currentColor;
     --go-btn-text-color-hover: currentColor;
+    .btn-text {
+      text-decoration: underline;
+    }
+    
+    &:hover,
+    &:focus-within {
+      .btn-text {
+        text-decoration: none;
+      }
+    }
   }
 }
 

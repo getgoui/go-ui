@@ -33,15 +33,15 @@ export const inheritAttributes = (el: HTMLElement, excludes: string[] = [], remo
 };
 
 /**
- *
+ * @deprecated use $attrs.bind(this)(true|false) in component
  * @param component stencil class instance
  * @param excludes exclude inheriting these attributes (besides class, style, id)
  */
-export function inheritComponentAttrs(component, excludes: string[] = []) {
+export function inheritComponentAttrs(component, excludes: string[] = [], remove: boolean = true) {
   if (!component.el) {
     warning(`root element not found in component`, component);
   }
-  return inheritAttributes(component.el, ['class', 'style', 'id', ...Array.from(excludes)]);
+  return inheritAttributes(component.el, ['class', 'style', 'id', ...Array.from(excludes)], remove);
 }
 
 /**
@@ -50,7 +50,8 @@ export function inheritComponentAttrs(component, excludes: string[] = []) {
  */
 export function $attrs(removeAttrs = false) {
   const propNames = Object.keys(Object.getPrototypeOf(this));
-  return inheritAttributes(this.el, propNames, removeAttrs);
+
+  return inheritAttributes(this.el, ['class', 'style', 'id', ...propNames], removeAttrs);
 }
 
 /**
