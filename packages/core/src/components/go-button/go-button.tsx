@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element, Host, Watch, State, Build } from '@stencil/core';
 import { Breakpoints, ColorVariants } from '../../interfaces';
-import { inheritAttributes, warning } from '../../utils/helper';
+import { $attrs, warning } from '../../utils/helper';
 
 /**
  * @slot default - Button text
@@ -78,6 +78,16 @@ export class GoButton {
    */
   @Prop() href?: string;
 
+  /**
+   * If the button is loading
+   */
+  @Prop() loading: boolean = false;
+
+  /**
+   * Screen reader announcement for loading state
+   */
+  @Prop() loadingAnouncement?: string = 'Loading';
+
   @State() blockClasses: string;
 
   @State() inheritedAttributes = {} as any;
@@ -115,23 +125,7 @@ export class GoButton {
   updateInnerButtonAttributes() {
     this.inheritedAttributes = {
       ...this.inheritedAttributes,
-      ...inheritAttributes(this.root, [
-        'block',
-        'variant',
-        'class',
-        'disabled',
-        'style',
-        'invert',
-        'outline',
-        'outline-fill',
-        'flat',
-        'round',
-        'icon',
-        'stack',
-        'compact',
-        'href',
-        'id',
-      ]),
+      ...$attrs.bind(this)(true),
     };
   }
 
@@ -141,7 +135,18 @@ export class GoButton {
   }
 
   render() {
-    const { type, disabled, variant, blockClasses, outline, outlineFill, inheritedAttributes, href } = this;
+    const {
+      type,
+      disabled,
+      variant,
+      blockClasses,
+      outline,
+      outlineFill,
+      inheritedAttributes,
+      href,
+      loading,
+      loadingAnouncement,
+    } = this;
     const Tag = href ? 'a' : 'button';
     const rootClasses = `${variant} ${blockClasses}`;
     return (
@@ -152,17 +157,21 @@ export class GoButton {
           'outline outline-fill': outlineFill,
         }}>
         <Tag
-          href={href ? href : null}
-          type={href ? null : type}
-          aria-disabled={disabled ? 'true' : null}
-          disabled={disabled}
           ref={(el) => {
             this.nativeEl = el;
           }}
+          href={href ? href : null}
+          type={href ? null : type}
+          aria-disabled={disabled ? 'true' : null}
+          disabled={disabled ? 'true' : null}
           class="inner-button"
+          aria-busy={loading ? 'true' : null}
           {...inheritedAttributes}>
+          <go-spinner loading={loading} loadingAnnouncement={loadingAnouncement}></go-spinner>
           <slot name="prefix"></slot>
-          <slot></slot>
+          <span class="btn-text">
+            <slot></slot>
+          </span>
           <slot name="suffix"></slot>
         </Tag>
       </Host>

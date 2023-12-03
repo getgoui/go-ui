@@ -147,6 +147,14 @@ export namespace Components {
          */
         "icon"?: boolean;
         /**
+          * If the button is loading
+         */
+        "loading": boolean;
+        /**
+          * Screen reader announcement for loading state
+         */
+        "loadingAnouncement"?: string;
+        /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
@@ -281,6 +289,16 @@ export namespace Components {
           * If set, cards will fade in one by one with the specified delay in milliseconds when they are in the viewport. uses `IntersectionObserver`, [see browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
          */
         "stagger"?: number;
+    }
+    interface GoCenter {
+        /**
+          * If true, the text-align: center will also be applied to the container
+         */
+        "alignText": boolean;
+        /**
+          * Height of this container
+         */
+        "height": string;
     }
     interface GoCheckbox {
         "checked"?: boolean;
@@ -1037,6 +1055,10 @@ export namespace Components {
          */
         "loading": boolean;
         /**
+          * screen reader announcement when loading
+         */
+        "loadingAnnouncement": string;
+        /**
           * Set the ring color of the spinner.
          */
         "ringColor"?: string;
@@ -1364,6 +1386,12 @@ declare global {
         prototype: HTMLGoCardRowElement;
         new (): HTMLGoCardRowElement;
     };
+    interface HTMLGoCenterElement extends Components.GoCenter, HTMLStencilElement {
+    }
+    var HTMLGoCenterElement: {
+        prototype: HTMLGoCenterElement;
+        new (): HTMLGoCenterElement;
+    };
     interface HTMLGoCheckboxElement extends Components.GoCheckbox, HTMLStencilElement {
     }
     var HTMLGoCheckboxElement: {
@@ -1616,6 +1644,7 @@ declare global {
         "go-callout-section": HTMLGoCalloutSectionElement;
         "go-card": HTMLGoCardElement;
         "go-card-row": HTMLGoCardRowElement;
+        "go-center": HTMLGoCenterElement;
         "go-checkbox": HTMLGoCheckboxElement;
         "go-chip": HTMLGoChipElement;
         "go-content": HTMLGoContentElement;
@@ -1783,6 +1812,14 @@ declare namespace LocalJSX {
          */
         "icon"?: boolean;
         /**
+          * If the button is loading
+         */
+        "loading"?: boolean;
+        /**
+          * Screen reader announcement for loading state
+         */
+        "loadingAnouncement"?: string;
+        /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
          */
@@ -1917,6 +1954,16 @@ declare namespace LocalJSX {
           * If set, cards will fade in one by one with the specified delay in milliseconds when they are in the viewport. uses `IntersectionObserver`, [see browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
          */
         "stagger"?: number;
+    }
+    interface GoCenter {
+        /**
+          * If true, the text-align: center will also be applied to the container
+         */
+        "alignText"?: boolean;
+        /**
+          * Height of this container
+         */
+        "height"?: string;
     }
     interface GoCheckbox {
         "checked"?: boolean;
@@ -2681,6 +2728,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * screen reader announcement when loading
+         */
+        "loadingAnnouncement"?: string;
+        /**
           * Set the ring color of the spinner.
          */
         "ringColor"?: string;
@@ -2892,6 +2943,7 @@ declare namespace LocalJSX {
         "go-callout-section": GoCalloutSection;
         "go-card": GoCard;
         "go-card-row": GoCardRow;
+        "go-center": GoCenter;
         "go-checkbox": GoCheckbox;
         "go-chip": GoChip;
         "go-content": GoContent;
@@ -2949,6 +3001,7 @@ declare module "@stencil/core" {
             "go-callout-section": LocalJSX.GoCalloutSection & JSXBase.HTMLAttributes<HTMLGoCalloutSectionElement>;
             "go-card": LocalJSX.GoCard & JSXBase.HTMLAttributes<HTMLGoCardElement>;
             "go-card-row": LocalJSX.GoCardRow & JSXBase.HTMLAttributes<HTMLGoCardRowElement>;
+            "go-center": LocalJSX.GoCenter & JSXBase.HTMLAttributes<HTMLGoCenterElement>;
             "go-checkbox": LocalJSX.GoCheckbox & JSXBase.HTMLAttributes<HTMLGoCheckboxElement>;
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-content": LocalJSX.GoContent & JSXBase.HTMLAttributes<HTMLGoContentElement>;

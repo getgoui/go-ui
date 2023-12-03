@@ -18,6 +18,7 @@ export const GoButtonGroup = /*@__PURE__*/createReactComponent<JSX.GoButtonGroup
 export const GoCalloutSection = /*@__PURE__*/createReactComponent<JSX.GoCalloutSection, HTMLGoCalloutSectionElement>('go-callout-section');
 export const GoCard = /*@__PURE__*/createReactComponent<JSX.GoCard, HTMLGoCardElement>('go-card');
 export const GoCardRow = /*@__PURE__*/createReactComponent<JSX.GoCardRow, HTMLGoCardRowElement>('go-card-row');
+export const GoCenter = /*@__PURE__*/createReactComponent<JSX.GoCenter, HTMLGoCenterElement>('go-center');
 export const GoCheckbox = /*@__PURE__*/createReactComponent<JSX.GoCheckbox, HTMLGoCheckboxElement>('go-checkbox');
 export const GoChip = /*@__PURE__*/createReactComponent<JSX.GoChip, HTMLGoChipElement>('go-chip');
 export const GoContent = /*@__PURE__*/createReactComponent<JSX.GoContent, HTMLGoContentElement>('go-content');
