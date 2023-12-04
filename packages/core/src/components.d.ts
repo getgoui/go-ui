@@ -9,6 +9,7 @@ import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavIt
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
+import { Theme } from "./components/go-dark-mode/go-dark-mode";
 import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
@@ -18,6 +19,7 @@ export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavIt
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
 export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
+export { Theme } from "./components/go-dark-mode/go-dark-mode";
 export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export { Options } from "markdown-it";
@@ -391,6 +393,19 @@ export namespace Components {
         "tocProps"?: TocProps;
     }
     interface GoDarkMode {
+        /**
+          * Attribute name on html element that will be used to store theme
+         */
+        "attribute": string;
+        /**
+          * get preferred theme, 1. Check user settings:    - check if localstorage has user-theme key    - if so, check if value is either light or dark,    - if so, return value    - if value is neither light or dark, continue to next step 2. Check system preference:    - check if prefers-color-scheme is dark, if so, return dark 3. default to light
+         */
+        "getUserPreference": () => Promise<Theme>;
+        /**
+          * set the current theme and change the html attribute
+          * @param theme theme to set
+         */
+        "setTheme": (theme: Theme) => Promise<void>;
     }
     interface GoDatepicker {
         /**
@@ -1281,6 +1296,10 @@ export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
 }
+export interface GoDarkModeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoDarkModeElement;
+}
 export interface GoDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoDatepickerElement;
@@ -2072,6 +2091,11 @@ declare namespace LocalJSX {
         "tocProps"?: TocProps;
     }
     interface GoDarkMode {
+        /**
+          * Attribute name on html element that will be used to store theme
+         */
+        "attribute"?: string;
+        "onThemechange"?: (event: GoDarkModeCustomEvent<{ theme: Theme }>) => void;
     }
     interface GoDatepicker {
         /**
