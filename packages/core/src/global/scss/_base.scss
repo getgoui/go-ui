@@ -8,3 +8,6 @@ body {
 * {
   box-sizing: border-box;
 }
+*:not(:defined):not(slot-fb) {
+  visibility: hidden;
+}

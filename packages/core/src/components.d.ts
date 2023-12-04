@@ -390,6 +390,8 @@ export namespace Components {
          */
         "tocProps"?: TocProps;
     }
+    interface GoDarkMode {
+    }
     interface GoDatepicker {
         /**
           * If the input is disabled
@@ -1416,6 +1418,12 @@ declare global {
         prototype: HTMLGoContentLayoutElement;
         new (): HTMLGoContentLayoutElement;
     };
+    interface HTMLGoDarkModeElement extends Components.GoDarkMode, HTMLStencilElement {
+    }
+    var HTMLGoDarkModeElement: {
+        prototype: HTMLGoDarkModeElement;
+        new (): HTMLGoDarkModeElement;
+    };
     interface HTMLGoDatepickerElement extends Components.GoDatepicker, HTMLStencilElement {
     }
     var HTMLGoDatepickerElement: {
@@ -1649,6 +1657,7 @@ declare global {
         "go-chip": HTMLGoChipElement;
         "go-content": HTMLGoContentElement;
         "go-content-layout": HTMLGoContentLayoutElement;
+        "go-dark-mode": HTMLGoDarkModeElement;
         "go-datepicker": HTMLGoDatepickerElement;
         "go-dialog": HTMLGoDialogElement;
         "go-dropdown": HTMLGoDropdownElement;
@@ -2061,6 +2070,8 @@ declare namespace LocalJSX {
           * Props to pass into the table of content ([see `go-toc` props](/docs/components/go-toc#go-toc-props))
          */
         "tocProps"?: TocProps;
+    }
+    interface GoDarkMode {
     }
     interface GoDatepicker {
         /**
@@ -2948,6 +2959,7 @@ declare namespace LocalJSX {
         "go-chip": GoChip;
         "go-content": GoContent;
         "go-content-layout": GoContentLayout;
+        "go-dark-mode": GoDarkMode;
         "go-datepicker": GoDatepicker;
         "go-dialog": GoDialog;
         "go-dropdown": GoDropdown;
@@ -3006,6 +3018,7 @@ declare module "@stencil/core" {
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-content": LocalJSX.GoContent & JSXBase.HTMLAttributes<HTMLGoContentElement>;
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
+            "go-dark-mode": LocalJSX.GoDarkMode & JSXBase.HTMLAttributes<HTMLGoDarkModeElement>;
             "go-datepicker": LocalJSX.GoDatepicker & JSXBase.HTMLAttributes<HTMLGoDatepickerElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;

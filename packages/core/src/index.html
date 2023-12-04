@@ -9,18 +9,13 @@
     <link rel="stylesheet" href="/build/go-ui.css" />
     <script type="module" src="/build/go-ui.esm.js"></script>
     <script nomodule src="/build/go-ui.js"></script>
-    <style>
-      *:not(:defined):not(slot-fb) {
-        visibility: hidden;
-      }
-    </style>
   </head>
   <body>
     <!-- keep this sandbox empty before pushing changes -->
     <!-- material icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <go-main-nav id="main-nav"></go-main-nav>
-    <go-center height="100lvh">
+    <go-center height="100vh">
       <div class="">
         <go-button flat variant="text" id="test">
           <go-icon name="home" slot="prefix"></go-icon>
