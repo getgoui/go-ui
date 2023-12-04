@@ -9,6 +9,7 @@ import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavIt
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
+import { Theme } from "./components/go-dark-mode/go-dark-mode";
 import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
@@ -18,6 +19,7 @@ export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavIt
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
 export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
+export { Theme } from "./components/go-dark-mode/go-dark-mode";
 export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export { Options } from "markdown-it";
@@ -389,6 +391,21 @@ export namespace Components {
           * Props to pass into the table of content ([see `go-toc` props](/docs/components/go-toc#go-toc-props))
          */
         "tocProps"?: TocProps;
+    }
+    interface GoDarkMode {
+        /**
+          * Attribute name on html element that will be used to store theme
+         */
+        "attribute": string;
+        /**
+          * get preferred theme, 1. Check user settings:    - check if localstorage has user-theme key    - if so, check if value is either light or dark,    - if so, return value    - if value is neither light or dark, continue to next step 2. Check system preference:    - check if prefers-color-scheme is dark, if so, return dark 3. default to light
+         */
+        "getUserPreference": () => Promise<Theme>;
+        /**
+          * set the current theme and change the html attribute
+          * @param theme theme to set
+         */
+        "setTheme": (theme: Theme) => Promise<void>;
     }
     interface GoDatepicker {
         /**
@@ -1279,6 +1296,10 @@ export interface GoChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoChipElement;
 }
+export interface GoDarkModeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoDarkModeElement;
+}
 export interface GoDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoDatepickerElement;
@@ -1415,6 +1436,12 @@ declare global {
     var HTMLGoContentLayoutElement: {
         prototype: HTMLGoContentLayoutElement;
         new (): HTMLGoContentLayoutElement;
+    };
+    interface HTMLGoDarkModeElement extends Components.GoDarkMode, HTMLStencilElement {
+    }
+    var HTMLGoDarkModeElement: {
+        prototype: HTMLGoDarkModeElement;
+        new (): HTMLGoDarkModeElement;
     };
     interface HTMLGoDatepickerElement extends Components.GoDatepicker, HTMLStencilElement {
     }
@@ -1649,6 +1676,7 @@ declare global {
         "go-chip": HTMLGoChipElement;
         "go-content": HTMLGoContentElement;
         "go-content-layout": HTMLGoContentLayoutElement;
+        "go-dark-mode": HTMLGoDarkModeElement;
         "go-datepicker": HTMLGoDatepickerElement;
         "go-dialog": HTMLGoDialogElement;
         "go-dropdown": HTMLGoDropdownElement;
@@ -2061,6 +2089,13 @@ declare namespace LocalJSX {
           * Props to pass into the table of content ([see `go-toc` props](/docs/components/go-toc#go-toc-props))
          */
         "tocProps"?: TocProps;
+    }
+    interface GoDarkMode {
+        /**
+          * Attribute name on html element that will be used to store theme
+         */
+        "attribute"?: string;
+        "onThemechange"?: (event: GoDarkModeCustomEvent<{ theme: Theme }>) => void;
     }
     interface GoDatepicker {
         /**
@@ -2948,6 +2983,7 @@ declare namespace LocalJSX {
         "go-chip": GoChip;
         "go-content": GoContent;
         "go-content-layout": GoContentLayout;
+        "go-dark-mode": GoDarkMode;
         "go-datepicker": GoDatepicker;
         "go-dialog": GoDialog;
         "go-dropdown": GoDropdown;
@@ -3006,6 +3042,7 @@ declare module "@stencil/core" {
             "go-chip": LocalJSX.GoChip & JSXBase.HTMLAttributes<HTMLGoChipElement>;
             "go-content": LocalJSX.GoContent & JSXBase.HTMLAttributes<HTMLGoContentElement>;
             "go-content-layout": LocalJSX.GoContentLayout & JSXBase.HTMLAttributes<HTMLGoContentLayoutElement>;
+            "go-dark-mode": LocalJSX.GoDarkMode & JSXBase.HTMLAttributes<HTMLGoDarkModeElement>;
             "go-datepicker": LocalJSX.GoDatepicker & JSXBase.HTMLAttributes<HTMLGoDatepickerElement>;
             "go-dialog": LocalJSX.GoDialog & JSXBase.HTMLAttributes<HTMLGoDialogElement>;
             "go-dropdown": LocalJSX.GoDropdown & JSXBase.HTMLAttributes<HTMLGoDropdownElement>;

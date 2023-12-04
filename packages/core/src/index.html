@@ -1,6 +1,6 @@
 <!-- Used in Docusaurus demo component -->
 <!DOCTYPE html>
-<html dir="ltr" lang="en" data-theme="light">
+<html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -9,164 +9,10 @@
     <link rel="stylesheet" href="/build/go-ui.css" />
     <script type="module" src="/build/go-ui.esm.js"></script>
     <script nomodule src="/build/go-ui.js"></script>
-    <style>
-      *:not(:defined):not(slot-fb) {
-        visibility: hidden;
-      }
-    </style>
   </head>
   <body>
     <!-- keep this sandbox empty before pushing changes -->
     <!-- material icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <go-main-nav id="main-nav"></go-main-nav>
-    <go-center height="100lvh">
-      <div class="">
-        <go-button flat variant="text" id="test">
-          <go-icon name="home" slot="prefix"></go-icon>
-          <span>Home</span>
-        </go-button>
-      </div>
-    </go-center>
-
-    <script>
-      const btn = document.getElementById('test');
-      btn.addEventListener('click', () => {
-        console.log('clicked');
-        if (btn.hasAttribute('loading')) {
-          btn.removeAttribute('loading');
-        } else {
-          btn.setAttribute('loading', 'true');
-          setTimeout(() => {
-            btn.removeAttribute('loading');
-          }, 1000);
-        }
-      });
-    </script>
-
-    <script>
-      const mainNav = document.getElementById('main-nav');
-      const navList = document.getElementById('nav-list');
-
-      const navItems = [
-        {
-          label: 'Home',
-          url: '#',
-          icon: 'home',
-          isCurrent: true,
-        },
-        {
-          label: 'Components',
-          url: '#',
-          icon: 'view_module',
-          description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
-          children: [
-            {
-              label: 'Sub menu 1',
-              url: '#submenu',
-              icon: 'text_fields',
-            },
-            {
-              label: 'Colors',
-              url: '#',
-              icon: 'color_lens',
-            },
-            {
-              label: 'Icons',
-              url: '#',
-              icon: 'image',
-            },
-            {
-              label: 'Buttons',
-              url: '#',
-              icon: 'touch_app',
-            },
-          ],
-        },
-        {
-          label: 'Styleguide',
-          url: '#',
-          icon: 'style',
-          children: [
-            {
-              label: 'Typography',
-              url: '#',
-              icon: 'text_fields',
-              children: [
-                {
-                  label: 'Headings',
-                  url: '#',
-                  icon: 'text_fields',
-                  children: [
-                    {
-                      label: 'Heading 1',
-                      url: '#',
-                    },
-                    {
-                      label: 'Heading 2',
-                      url: '#',
-                    },
-                  ],
-                },
-                {
-                  label: 'Paragraphs',
-                  url: '#',
-                  icon: 'text_fields',
-                },
-                {
-                  label: 'Lists',
-                  url: '#',
-                  icon: 'text_fields',
-                },
-                {
-                  label: 'Code',
-                  url: '#',
-                  icon: 'text_fields',
-                },
-                {
-                  label: 'Tables',
-                  url: '#',
-                  icon: 'text_fields',
-                },
-              ],
-            },
-            {
-              label: 'Colors',
-              url: '#',
-              icon: 'color_lens',
-              children: [
-                {
-                  label: 'Primary',
-                  url: '#',
-                  icon: 'color_lens',
-                },
-              ],
-            },
-            {
-              label: 'Icons',
-              url: '#',
-              icon: 'image',
-            },
-            {
-              label: 'Buttons',
-              url: '#',
-              icon: 'touch_app',
-            },
-            {
-              label: 'Forms',
-              url: '#',
-              icon: 'text_fields',
-            },
-          ],
-        },
-        {
-          label: 'About',
-          url: '#',
-          icon: 'info',
-        },
-      ];
-
-      mainNav.items = navItems;
-    </script>
   </body>
 </html>
