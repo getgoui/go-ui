@@ -2,7 +2,7 @@
   "name": "@go-ui/docs",
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "pnpm run build.ia && nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
