@@ -67,7 +67,9 @@ export const GoButton = /*@__PURE__*/ defineContainer<JSX.GoButton>('go-button',
   'icon',
   'stack',
   'compact',
-  'href'
+  'href',
+  'loading',
+  'loadingAnouncement'
 ]);
 
 
@@ -113,7 +115,8 @@ export const GoCardRow = /*@__PURE__*/ defineContainer<JSX.GoCardRow>('go-card-r
 
 
 export const GoCenter = /*@__PURE__*/ defineContainer<JSX.GoCenter>('go-center', undefined, [
-  'height'
+  'height',
+  'alignText'
 ]);
 
 
@@ -158,6 +161,12 @@ export const GoContentLayout = /*@__PURE__*/ defineContainer<JSX.GoContentLayout
   'sidebarMobilePosition',
   'sidebarDesktopPosition',
   'sidebarSticky'
+]);
+
+
+export const GoDarkMode = /*@__PURE__*/ defineContainer<JSX.GoDarkMode>('go-dark-mode', undefined, [
+  'attribute',
+  'themechange'
 ]);
 
 
@@ -425,7 +434,8 @@ export const GoSpinner = /*@__PURE__*/ defineContainer<JSX.GoSpinner>('go-spinne
   'ringWidth',
   'duration',
   'stacked',
-  'loading'
+  'loading',
+  'loadingAnnouncement'
 ]);
 
 

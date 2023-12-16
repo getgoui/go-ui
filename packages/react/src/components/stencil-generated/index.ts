@@ -23,6 +23,7 @@ export const GoCheckbox = /*@__PURE__*/createReactComponent<JSX.GoCheckbox, HTML
 export const GoChip = /*@__PURE__*/createReactComponent<JSX.GoChip, HTMLGoChipElement>('go-chip');
 export const GoContent = /*@__PURE__*/createReactComponent<JSX.GoContent, HTMLGoContentElement>('go-content');
 export const GoContentLayout = /*@__PURE__*/createReactComponent<JSX.GoContentLayout, HTMLGoContentLayoutElement>('go-content-layout');
+export const GoDarkMode = /*@__PURE__*/createReactComponent<JSX.GoDarkMode, HTMLGoDarkModeElement>('go-dark-mode');
 export const GoDatepicker = /*@__PURE__*/createReactComponent<JSX.GoDatepicker, HTMLGoDatepickerElement>('go-datepicker');
 export const GoDialog = /*@__PURE__*/createReactComponent<JSX.GoDialog, HTMLGoDialogElement>('go-dialog');
 export const GoDropdown = /*@__PURE__*/createReactComponent<JSX.GoDropdown, HTMLGoDropdownElement>('go-dropdown');

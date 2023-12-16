@@ -7,9 +7,9 @@
     "utils",
     "global"
   ],
-	"editor.formatOnSave": true,
-	"editor.codeActionsOnSave": {
-		"source.fixAll.stylelint": true
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
   },
   "cSpell.words": [
     "Dialog"

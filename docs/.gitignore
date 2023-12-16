@@ -1,29 +1,26 @@
-dist/
-!www/favicon.ico
-www/
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
 
-*~
-*.sw[mnpcod]
+# Node dependencies
+node_modules
+
+# Logs
+logs
 *.log
-*.lock
-*.tmp
-*.tmp.*
-log.txt
-*.sublime-project
-*.sublime-workspace
 
-.stencil/
-.idea/
-.vscode/
-.sass-cache/
-.versions/
-node_modules/
-$RECYCLE.BIN/
-
+# Misc
 .DS_Store
-Thumbs.db
-UserInterfaceState.xcuserstate
-.env
+.fleet
+.idea
 
-src/generated-ia.ts
-src/assets/demo
+# Local env files
+.env
+.env.*
+!.env.example
+
+ia/generated-ia.ts

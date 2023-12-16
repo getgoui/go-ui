@@ -12,6 +12,9 @@ declare const requestAnimationFrame: any;
  * @param {boolean} [remove=true] - Remove the attributes after extracting them.
  */
 export const inheritAttributes = (el: HTMLElement, excludes: string[] = [], remove: boolean = true) => {
+  if (!el) {
+    return {};
+  }
   const attributes = el.attributes as NamedNodeMap;
   let attributeObject = {};
   for (let i = 0; i < attributes.length; i++) {
