@@ -124,6 +124,10 @@ function buildSidebarItemUrl(comp, withPrefix = true) {
 function parseCompDocs(components) {
   const iaItems = components.map((comp) => {
     let url = '/' + buildSidebarItemUrl(comp);
+
+    if (url.startsWith('/src')) {
+      url = url.replace('/src', '/docs');
+    }
     md['meta'] = null; // reset meta for each file
     let env = { title: '', excerpt: [] };
     try {

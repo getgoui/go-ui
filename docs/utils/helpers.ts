@@ -64,7 +64,6 @@ export function buildSidebar(): IAItem[] {
   const route = useRoute();
   const prefix = getDocsPrefix();
   const activePath = removeLeadingSlash(route.fullPath.replace(prefix, ''));
-  console.log({ activePath });
   const activeCategory = activePath.split('/')[0]; // patterns/components
   const cat = ia.docs.children.find((category) => category.id === activeCategory);
   if (!cat?.children) {
@@ -101,40 +100,22 @@ export function executeScriptElements(containerElement: HTMLElement) {
   });
 }
 
-export function prepareNavItems(items: any[]): any[] {
-  const route = useRoute();
-  console.log(route.path);
-  return items.map((item) => {
-    const isCurrent = route.path === item.url;
-    if (item.children && item.children?.length > 0) {
+export function buildContentPageSidebar(iaItems: any[], currentPath: string): any[] {
+  return iaItems.map((item) => {
+    const isCurrent = currentPath.includes(item.url);
+    if (item.children) {
       return {
         ...item,
         label: item.label,
-        linkAttrs: { ...href(item.url) },
         isCurrent,
-        children: prepareNavItems(item.children),
+        linkAttrs: { ...href(item.url) },
+        children: buildContentPageSidebar(item.children, currentPath),
       };
     }
     return {
       ...item,
       label: item.label,
-      linkAttrs: { ...href(item.url) },
       isCurrent,
-    };
-  });
-}
-
-export function buildContentPageSidebar(iaItems: any[]): any[] {
-  return iaItems.map((item) => {
-    if (item.children) {
-      return {
-        ...item,
-        linkAttrs: { ...href(item.url) },
-        children: buildContentPageSidebar(item.children),
-      };
-    }
-    return {
-      ...item,
       linkAttrs: { ...href(item.url) },
     };
   });

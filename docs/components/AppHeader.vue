@@ -46,7 +46,10 @@ const repoLinkProps = {
   href: siteConfig.repoLink.url,
   rel: 'noopener noreferrer nofollow',
 };
-const navItems = prepareNavItems(siteConfig.navbar.main);
+
+const navItems = computed(() => {
+  return buildContentPageSidebar(siteConfig.navbar.main, useRoute().path);
+});
 </script>
 
 <script lang="ts">

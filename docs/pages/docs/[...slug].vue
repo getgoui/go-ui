@@ -1,13 +1,10 @@
 <template>
-  <NotFound v-if="notfound" />
-  <template v-else>
-    <SidebarLayout :sidebarItems="sidebarNavItems" :content="result" :editUrl="editUrl" />
-  </template>
+  <SidebarLayout :sidebarItems="sidebarNavItems" :content="result" :editUrl="editUrl" />
 </template>
 <script setup lang="ts">
 import { IAItem } from '~/ia/ia.interface';
-import ia from '../ia/generated-ia';
-import { INavItem } from '../../packages/core/dist/types/interfaces';
+import ia from '../../ia/generated-ia';
+import { INavItem } from '../../../packages/core/dist/types/interfaces';
 
 const route = useRoute();
 
@@ -27,18 +24,20 @@ async function loadPage() {
   }
 }
 
-const category = computed(() => route.params.slug[0]);
-
 const sidebarNavItems = ref<INavItem[]>([]);
 async function loadSidebarNav() {
-  const children = (ia as any)[category.value]?.children;
-  const route = useRoute();
-  sidebarNavItems.value = children ? buildContentPageSidebar(children, route.path) : [];
+  const activeCategory = removeLeadingSlash(route.path).split('/')[1]; // patterns/components
+  const cat = ia.docs.children.find((category) => category.id === activeCategory);
+  if (!cat?.children) {
+    return [];
+  }
+  const sidebar = cat.children;
+  return buildContentPageSidebar(sidebar, route.path);
 }
 
 async function init() {
   await loadPage();
-  await loadSidebarNav();
+  sidebarNavItems.value = await loadSidebarNav();
 }
 
 onMounted(async () => {
