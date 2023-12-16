@@ -1,3 +1,4 @@
+// @ts-ignore
 import MarkdownIt from 'markdown-it';
 // @ts-ignore
 import meta from 'markdown-it-meta';
