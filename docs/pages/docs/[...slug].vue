@@ -42,5 +42,15 @@ async function init() {
 
 onMounted(async () => {
   await init();
+  const title = meta.value?.title ? `${meta.value?.title} | Go UI` : 'Go UI';
+  const description = result.value.substring(0, 100);
+  useSeoMeta({
+    title,
+    ogTitle: title,
+    description: description,
+    ogDescription: description,
+    ogImage: siteConfig.logoSocial,
+    twitterCard: 'summary_large_image',
+  });
 });
 </script>

@@ -3,7 +3,7 @@ import { startCase } from 'lodash-es';
 export const siteConfig = {
   name: 'Go UI',
   tagline: 'A design system for everyone.',
-  logoSocial: '~/assets/img/logo-padded.png',
+  logoSocial: 'https://go-ui.com/img/logo-padded.png',
   baseUrl: 'https://go-ui.com/',
   docsRoutePrefix: 'docs/',
   repoLink: {

@@ -4,7 +4,15 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
+      title: 'Go UI',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
       link: [
+        // favicon
+        {
+          rel: 'icon',
+          href: '/favicon.svg',
+        },
         {
           rel: 'stylesheet',
           href: 'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css',
