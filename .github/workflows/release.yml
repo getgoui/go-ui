@@ -88,7 +88,7 @@ jobs:
       - name: Deploy to docs site
         run: |
           echo "Clone docs site repo"
-          git clone --branch=main https://${{ secrets.BOT_USERNAME }}:${{ secrets.BOT_PASS }}@github.com/getgoui/docsite.git docsite
+          git clone --branch=main https://${{ secrets.BOT_USERNAME }}:${{ secrets.BOT_TOKEN }}@github.com/getgoui/docsite.git docsite
           cd docsite
 
           echo "Add and commit changes"
