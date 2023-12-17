@@ -1,6 +1,6 @@
 {
   "name": "@go-ui/core",
-  "version": "1.33.8",
+  "version": "1.33.9",
   "description": "A design system for everyone.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.mjs",
