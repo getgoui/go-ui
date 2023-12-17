@@ -93,5 +93,5 @@ jobs:
 
           echo "Add and commit changes"
           git add .
-          git commit -m 'chore: trigger latest doc site deployment'
+          git commit --allow-empty -m 'chore: trigger latest doc site deployment'
           git push origin main -f
