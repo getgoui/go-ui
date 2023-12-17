@@ -87,6 +87,10 @@ jobs:
       # push to doc site repo to trigger vercel deployment
       - name: Deploy to docs site
         run: |
+          echo "Set up git credentials"
+          git config user.name "${{ secrets.BOT_USERNAME }}"
+          git config user.email "${{ secrets.BOT_EMAIL }}"
+
           echo "Clone docs site repo"
           git clone --branch=main https://github.com/getgoui/docsite.git docsite
           cd docsite
