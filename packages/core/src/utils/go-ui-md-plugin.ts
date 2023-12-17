@@ -1,9 +1,9 @@
-import type MarkdownIt from "markdown-it";
+import type MarkdownIt from 'markdown-it';
 import iterator from 'markdown-it-for-inline';
 import mdContainer from 'markdown-it-container';
 
 // add go-ui markdown renderer
-export function goUiPlugin(md: MarkdownIt):void {
+export function goUiPlugin(md: MarkdownIt): void {
   // banner
   const bannerOptions = ['info', 'critical', 'success'];
   bannerOptions.forEach((type) => {

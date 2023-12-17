@@ -83,3 +83,15 @@ jobs:
       - name: Release Vue
         run: pnpm run release
         working-directory: ./packages/vue
+
+      # push to doc site repo to trigger vercel deployment
+      - name: Deploy to docs site
+        run: |
+          echo "Clone docs site repo"
+          git clone --branch=main https://github.com/getgoui/docsite.git docsite
+          cd docsite
+
+          echo "Add and commit changes"
+          git add .
+          git commit -m 'chore: trigger latest doc site deployment'
+          git push origin main
