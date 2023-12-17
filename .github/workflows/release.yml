@@ -17,8 +17,8 @@ jobs:
 
       - name: git config
         run: |
-          git config user.name "${{ secrets.BOT_USERNAME }}"
-          git config user.email "${{ secrets.BOT_EMAIL }}"
+          git config --global user.name "${{ secrets.BOT_USERNAME }}"
+          git config --global user.email "${{ secrets.BOT_EMAIL }}"
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -87,10 +87,6 @@ jobs:
       # push to doc site repo to trigger vercel deployment
       - name: Deploy to docs site
         run: |
-          echo "Set up git credentials"
-          git config user.name "${{ secrets.BOT_USERNAME }}"
-          git config user.email "${{ secrets.BOT_EMAIL }}"
-
           echo "Clone docs site repo"
           git clone --branch=main https://github.com/getgoui/docsite.git docsite
           cd docsite
