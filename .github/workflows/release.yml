@@ -20,69 +20,69 @@ jobs:
           git config --global user.name "${{ secrets.BOT_USERNAME }}"
           git config --global user.email "${{ secrets.BOT_EMAIL }}"
 
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18.13.0
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.13.0
 
-      # - uses: pnpm/action-setup@v2
-      #   name: Install pnpm
-      #   id: pnpm-install
-      #   with:
-      #     version: 8.6.0
-      #     run_install: false
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8.6.0
+          run_install: false
 
-      # - name: Get pnpm store directory
-      #   id: pnpm-cache
-      #   shell: bash
-      #   run: |
-      #     echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      # - uses: actions/cache@v3
-      #   name: Setup pnpm cache
-      #   with:
-      #     path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pnpm-store-
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
-      # # Install deps and cache
-      # - name: Install dependencies
-      #   run: pnpm -r install --no-frozen-lockfile
+      # Install deps and cache
+      - name: Install dependencies
+        run: pnpm -r install --no-frozen-lockfile
 
-      # #TEST
-      # # - name: Unit Test Core Components
-      # #   run: pnpm test.spec
-      # #   working-directory: packages/core
+      #TEST
+      # - name: Unit Test Core Components
+      #   run: pnpm test.spec
+      #   working-directory: packages/core
 
-      # # - name: E2E Test Core Components
-      # #   run: pnpm test.e2e
-      # #   working-directory: packages/core
+      # - name: E2E Test Core Components
+      #   run: pnpm test.e2e
+      #   working-directory: packages/core
 
-      # - name: Build
-      #   run: pnpm run build.libs
+      - name: Build
+        run: pnpm run build.libs
 
-      # - name: Authenticate NPM
-      #   run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Authenticate NPM
+        run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # - name: Pre core release
-      #   run: pnpm run prerelease
+      - name: Pre core release
+        run: pnpm run prerelease
 
-      # - name: Release Core
-      #   run: pnpm run release
+      - name: Release Core
+        run: pnpm run release
 
-      # - name: Pre wrapper release
-      #   run: pnpm run prerelease-wrappers
+      - name: Pre wrapper release
+        run: pnpm run prerelease-wrappers
 
-      # - name: Release React
-      #   run: pnpm run release
-      #   working-directory: ./packages/react
+      - name: Release React
+        run: pnpm run release
+        working-directory: ./packages/react
 
-      # - name: Release Vue
-      #   run: pnpm run release
-      #   working-directory: ./packages/vue
+      - name: Release Vue
+        run: pnpm run release
+        working-directory: ./packages/vue
 
   docsite:
     name: Deploy docsite
