@@ -106,5 +106,4 @@ jobs:
           echo "Add and commit changes"
           git add .
           git commit --allow-empty -m 'chore: trigger latest doc site deployment'
-          git config --unset-all http.https://github.com/.extraheader
           git push origin main -f
