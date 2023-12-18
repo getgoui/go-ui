@@ -84,14 +84,27 @@ jobs:
       #   run: pnpm run release
       #   working-directory: ./packages/vue
 
-      # push to doc site repo to trigger vercel deployment
-      - name: Deploy to docs site
-        run: |
-          echo "Clone docs site repo"
-          git clone --branch=main https://${{ secrets.BOT_USERNAME }}:${{ secrets.BOT_TOKEN }}@github.com/getgoui/docsite.git docsite
-          cd docsite
+  docsite:
+    name: Deploy docsite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: getgoui/docsite
+          fetch-depth: 0
+          token: ${{ secrets.BOT_TOKEN }}
 
+      - name: git config
+        run: |
+          git config --global user.name "${{ secrets.BOT_USERNAME }}"
+          git config --global user.email "${{ secrets.BOT_EMAIL }}"
+
+      # push to doc site repo to trigger vercel deployment
+      - name: Push to trigger deployment
+        run: |
           echo "Add and commit changes"
           git add .
           git commit --allow-empty -m 'chore: trigger latest doc site deployment'
+          git config --unset-all http.https://github.com/.extraheader
           git push origin main -f
