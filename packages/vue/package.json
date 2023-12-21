@@ -40,6 +40,6 @@
   "types": "./dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wuruoyun/vue-component-lib-starter.git"
+    "url": "https://github.com/getgoui/go-ui"
   }
 }
