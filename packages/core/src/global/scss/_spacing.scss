@@ -52,3 +52,34 @@ $spacers: (
     }
   }
 }
+
+// gap
+@each $device, $width in $breakpoints {
+  @include min-query($device) {
+    @each $dir-name, $dir in $directions {
+      @each $spacer-name, $spacer in $spacers {
+        @if $device == mobile {
+          .gap-#{$spacer-name} {
+            gap: $spacer;
+          }
+          .gap-row-#{$spacer-name} {
+            row-gap: $spacer;
+          }
+          .gap-col-#{$spacer-name} {
+            column-gap: $spacer;
+          }
+        } @else {
+          .gap-#{$spacer-name}-#{$device} {
+            gap: $spacer;
+          }
+          .gap-row-#{$spacer-name}-#{$device} {
+            row-gap: $spacer;
+          }
+          .gap-col-#{$spacer-name}-#{$device} {
+            column-gap: $spacer;
+          }
+        }
+      }
+    }
+  }
+}

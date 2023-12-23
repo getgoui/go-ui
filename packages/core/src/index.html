@@ -11,8 +11,25 @@
     <script nomodule src="/build/go-ui.js"></script>
   </head>
   <body>
+    <go-dark-mode></go-dark-mode>
     <!-- keep this sandbox empty before pushing changes -->
-    <!-- material icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <div class="container">
+      <!-- block -->
+      <div class="d-flex gap-1">
+        <go-button variant="primary">Primary</go-button>
+        <go-button variant="secondary">Secondary</go-button>
+        <go-button variant="neutral">Neutral (default)</go-button>
+        <go-button variant="success">Success</go-button>
+        <go-button variant="critical">Critical</go-button>
+      </div>
+      <p>Full width on mobile, inline from tablet onwards</p>
+      <go-button block="mobile" variant="primary">Button</go-button>
+
+      <p>Full width on mobile and tablet, inline from desktop onwards</p>
+      <go-button block="tablet" variant="primary">Button</go-button>
+
+      <p>Full width on mobile, tablet and desktop, inline from large onwards</p>
+      <go-button block="desktop" variant="primary">Button</go-button>
+    </div>
   </body>
 </html>

@@ -249,8 +249,8 @@ go-button {
     --go-btn-bg-color: var(--go-color-neutral-400);
     --go-btn-bg-color-hover: var(--go-color-neutral-500);
     &[variant='primary'] {
-      --go-btn-bg-color: var(--go-color-primary-400);
-      --go-btn-bg-color-hover: var(--go-color-primary-500);
+      --go-btn-bg-color: var(--go-color-primary-600);
+      --go-btn-bg-color-hover: var(--go-color-primary-400);
     }
     &[variant='secondary'] {
       --go-btn-bg-color: var(--go-color-secondary-400);
@@ -277,12 +277,6 @@ go-button {
 // light theme
 // dark theme
 
-@include prefer-light {
-  @include btn-light-overrides;
-}
-@include prefer-dark {
-  @include btn-dark-overrides;
-}
 @include theme-light {
   @include btn-light-overrides;
 }
