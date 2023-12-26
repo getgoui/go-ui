@@ -30,9 +30,9 @@ go-banner {
   /**
     @prop --banner-padding-y:
       Vertical padding of banner area
-      - default: 1.5rem
+      - default: 1rem
   */
-  --banner-padding-y: 1.5rem;
+  --banner-padding-y: 1rem;
 
   /**
     @prop --banner-heading-gap
@@ -100,8 +100,13 @@ go-banner {
     display: flex;
     align-items: center;
   }
-  .banner-content {
+  .banner-inner {
+    display: flex;
+    width: 100%;
     padding: var(--banner-padding-y) var(--banner-padding-x);
+  }
+  .banner-inner-content {
+    flex: 1;
     h2 {
       margin-bottom: var(--banner-heading-gap);
     }
@@ -112,8 +117,7 @@ go-banner {
       margin-bottom: 0;
     }
   }
-  .dismissible-col {
-    padding-top: var(--banner-padding-y);
-    padding-right: var(--banner-padding-x);
+  .banner-inner-dismiss {
+    margin-inline-start: auto;
   }
 }

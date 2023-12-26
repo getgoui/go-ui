@@ -43,35 +43,49 @@ export class GoBanner {
   render() {
     const { hasIcon, heading, dismissible, isShowing } = this;
     return (
-      <Host class={{ 'has-icon': hasIcon, dismissible, 'is-showing': isShowing }}>
+      <Host
+        class={{
+          'has-icon': hasIcon,
+          dismissible,
+          'is-showing': isShowing,
+          'no-heading': !heading,
+        }}>
         {hasIcon ? (
           <div class="icon-col">
             <slot name="icon"></slot>
           </div>
         ) : null}
 
-        <section class="banner-content">
-          {heading ? <h2 class="h5">{heading}</h2> : null}
-          <slot></slot>
-        </section>
-        {dismissible ? (
-          <div class="dismissible-col">
-            <go-button variant="text" class="dismissible-btn" flat={true} icon={true} onClick={() => this.handleClose()} round={true}>
-              <span class="visually-hidden">Dismiss</span>
-              <svg
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                viewBox="0 0 24 24">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
-            </go-button>
+        <section class="banner-inner">
+          <div class="banner-inner-content">
+            {heading ? <h2 class="h5">{heading}</h2> : null}
+            <slot></slot>
           </div>
-        ) : null}
+          {dismissible ? (
+            <div class="banner-inner-dismiss">
+              <go-button
+                variant="text"
+                icon
+                class="dismissible-btn"
+                flat={true}
+                onClick={() => this.handleClose()}
+                round={true}>
+                <span class="visually-hidden">Dismiss</span>
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </go-button>
+            </div>
+          ) : null}
+        </section>
       </Host>
     );
   }
