@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Host, Watch, State, Build } from '@stencil/core';
+import { Component, h, Prop, Element, Host, Watch, State } from '@stencil/core';
 import { Breakpoints, ColorVariants } from '../../interfaces';
 import { $attrs, warning } from '../../utils/helper';
 
@@ -13,7 +13,7 @@ import { $attrs, warning } from '../../utils/helper';
   shadow: false,
 })
 export class GoButton {
-  @Element() root: HTMLElement;
+  @Element() el: HTMLElement;
 
   /**
    * Html type of the button
@@ -97,8 +97,8 @@ export class GoButton {
   componentWillLoad() {
     // a11y check
     if (this.icon) {
-      if (!this.root.hasAttribute('aria-label') && !this.root.hasAttribute('aria-labelledby')) {
-        warning(`go-button with icon must have either aria-label or aria-labelledby attribute`, this.root);
+      if (!this.el.hasAttribute('aria-label') && !this.el.hasAttribute('aria-labelledby')) {
+        warning(`go-button with icon must have either aria-label or aria-labelledby attribute`, this.el);
       }
     }
 
@@ -106,25 +106,9 @@ export class GoButton {
       this.handleBlockChange(this.block);
     }
     this.updateInnerButtonAttributes();
-
-    if (Build.isBrowser) {
-      // watch attribute change in case they're modified by after initial load
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === 'attributes') {
-            this.updateInnerButtonAttributes();
-          }
-        });
-      });
-      observer.observe(this.root, {
-        attributes: true,
-      });
-    }
   }
-
   updateInnerButtonAttributes() {
     this.inheritedAttributes = {
-      ...this.inheritedAttributes,
       ...$attrs.bind(this)(true),
     };
   }
@@ -147,6 +131,7 @@ export class GoButton {
       loading,
       loadingAnouncement,
     } = this;
+    console.log(inheritedAttributes);
     const Tag = href ? 'a' : 'button';
     const rootClasses = `${variant} ${blockClasses}`;
     return (
