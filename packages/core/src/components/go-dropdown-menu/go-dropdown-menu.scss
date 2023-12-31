@@ -1,3 +1,4 @@
+@import '../../global/scss/dropdown/mixins';
 go-dropdown-menu {
   /**
     @prop --dd-item-gap:
@@ -5,9 +6,24 @@ go-dropdown-menu {
       - default: 0
   */
   --dd-item-gap: 0;
+
   .dropdown-menu-inner {
     display: flex;
     flex-direction: column;
     gap: var(--dd-item-gap);
+  }
+
+  @include dropdown-item-vars;
+
+  [role='menuitem'] {
+    @include dropdown-item;
+  }
+    
+  go-dropdown-item {
+    &[disabled] {
+      [role='menuitem'] {
+        @include item-disabled-state;
+      }
+    }
   }
 }

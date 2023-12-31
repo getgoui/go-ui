@@ -182,6 +182,7 @@ export class GoDropdownMenu implements DropdownProps {
         onOpened={() => this.handleDropdownOpened()}
         onClosed={() => this.handleDropdownClosed()}
         {...dropdownProps}>
+        <slot name="prefix"></slot>
         <div
           role="menu"
           class="dropdown-menu-inner"
@@ -191,6 +192,7 @@ export class GoDropdownMenu implements DropdownProps {
           }}>
           <slot></slot>
         </div>
+        <slot name="suffix"></slot>
       </go-dropdown>
     );
   }
