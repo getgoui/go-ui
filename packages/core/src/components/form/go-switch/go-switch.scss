@@ -96,8 +96,12 @@ go-switch {
   &.full-width {
     display: flex;
     justify-content: space-between;
+    label {
+      flex-grow: 1;
+    }
   }
   label {
+    cursor: pointer;
     font-weight: 700;
   }
 
