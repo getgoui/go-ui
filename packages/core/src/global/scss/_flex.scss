@@ -1,17 +1,31 @@
+@use "sass:map";
 // flex alignments
-$align-values: start, end, center, baseline, stretch;
-$justify-values: start, end, center, between, around;
+$align-values: (
+  normal: normal,
+  stretch: stretch,
+  center: center,
+  start: flex-start, 
+  end: flex-end, 
+  baseline: baseline, 
+);
+$justify-values: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around
+);
 
 // align-items
 @each $device, $width in $breakpoints {
   @include min-query($device) {
-    @each $value in $align-values {
+    @each $name, $value in $align-values {
       @if $device == mobile {
-        .align-items-#{$value} {
+        .align-items-#{$name} {
           align-items: $value !important;
         }
       } @else {
-        .align-items-#{$value}-#{$device} {
+        .align-items-#{$name}-#{$device} {
           align-items: $value !important;
         }
       }
@@ -22,13 +36,13 @@ $justify-values: start, end, center, between, around;
 // justify-content
 @each $device, $width in $breakpoints {
   @include min-query($device) {
-    @each $value in $justify-values {
+    @each $name, $value in $justify-values {
       @if $device == mobile {
-        .justify-content-#{$value} {
+        .justify-content-#{$name} {
           justify-content: $value !important;
         }
       } @else {
-        .justify-content-#{$value}-#{$device} {
+        .justify-content-#{$name}-#{$device} {
           justify-content: $value !important;
         }
       }
