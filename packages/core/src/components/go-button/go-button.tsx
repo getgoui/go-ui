@@ -131,7 +131,6 @@ export class GoButton {
       loading,
       loadingAnouncement,
     } = this;
-    console.log(inheritedAttributes);
     const Tag = href ? 'a' : 'button';
     const rootClasses = `${variant} ${blockClasses}`;
     return (

@@ -4,7 +4,7 @@
     "watch.core": "nx build @go-ui/core -- --watch",
     "dev.core": "nx start @go-ui/core",
     "dev.react.app": "nx start @go-ui/react-starter",
-    "dev.vue": "nx dev @go-ui/vue",
+    "dev.vue": "nx dev @go-ui/vue-starter",
     "build.core": "nx build @go-ui/core",
     "build.libs": "pnpm --stream -r --filter \"./packages/**\" build",
     "build.affected": "nx affected:build",

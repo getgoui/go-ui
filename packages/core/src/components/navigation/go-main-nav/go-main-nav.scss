@@ -61,6 +61,13 @@ go-main-nav {
   */
   --submenu-tail-size: 1rem;
 
+  /**
+    @prop --submenu-z-index:
+      submenu z-index
+      - default: var(--layer-important)
+  */
+  --submenu-z-index: var(--layer-important);
+
   display: block;
   box-shadow: var(--nav-shadow);
   border-top: var(--nav-border-top);
@@ -138,7 +145,7 @@ go-main-nav {
         position: absolute;
         top: calc(100% + var(--submenu-tail-size));
         max-width: 100%;
-        z-index: 1;
+        z-index: var(--submenu-z-index);
         box-shadow: var(--nav-shadow);
         padding: var(--submenu-padding-y) var(--submenu-padding-x);
         background: var(--submenu-bg-color);
