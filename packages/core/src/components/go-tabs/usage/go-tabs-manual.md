@@ -8,7 +8,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var tabs = document.querySelector('#tabs');
-    tabs.addEventListener('tabChange', function (e) {
+    tabs.addEventListener('tabactivated', function (e) {
       const { index, tabEl, panelEl } = e.detail;
       console.log(`Tab ${index + 1} activated.`);
       panelEl.innerHTML = `Loading...`;

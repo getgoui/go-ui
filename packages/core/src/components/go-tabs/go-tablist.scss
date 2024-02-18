@@ -1,4 +1,4 @@
-go-tabs {
+go-tablist {
   /**
     @prop --tab-padding:
       Padding for tabs
@@ -72,22 +72,6 @@ go-tabs {
         - default: var(--tab-active-color)
     */
   --tabs-active-indicator-color: var(--tab-active-color);
-  /**
-      @prop --tabs-vertical-tablist-basis:
-        Basis for the vertical tab list
-        - default: 25%
-    */
-  --tabs-vertical-tablist-basis: 25%;
-  /**
-      @prop --tabs-tablist-gap:
-        Gap between tabs in the tab list
-        - default: 1rem
-    */
-  --tabs-tablist-gap: 1rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: var(--tabs-tablist-gap);
 
   [role='tablist'] {
     overflow: auto;
@@ -137,9 +121,28 @@ go-tabs {
     }
   }
   &.vertical {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--tabs-tablist-gap);
+    flex-direction: row;
+    [role='tablist'] {
+      flex-direction: column;
+      .tabs-active-indicator-track {
+        width: auto;
+        top: 0;
+        left: auto;
+        .tabs-active-indicator {
+          --tabs-active-indicator-width: 4px;
+
+          transform: translateY(var(--tabs-active-indicator-top));
+        }
+      }
+    }
+    [role='tab'] {
+      text-align: start;
+      white-space: normal;
+      &:focus-visible {
+        border-top-color: transparent;
+        border-left-color: var(--tab-focus-color);
+      }
+    }
   }
 
   &.full-width {

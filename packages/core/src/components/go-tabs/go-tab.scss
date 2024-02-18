@@ -4,4 +4,8 @@ go-tab {
   &.active {
     display: block;
   }
+
+  &:focus-visible {
+    outline-offset: 0.5rem;
+  }
 }

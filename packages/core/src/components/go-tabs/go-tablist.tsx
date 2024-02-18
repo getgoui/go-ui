@@ -1,0 +1,298 @@
+import { Component, h, Host, Prop, State, Element, Event, EventEmitter, Watch, Method } from '@stencil/core';
+import { ActiveTab, TabItem } from './tabs.type';
+
+@Component({
+  tag: 'go-tablist',
+  styleUrl: 'go-tablist.scss',
+})
+export class GoTablist {
+  @Element() el: HTMLElement;
+  /**
+   * Set tabs orientation to vertical
+   */
+  @Prop() vertical?: boolean = false;
+
+  /**
+   * Provides a label that describes the purpose of the set of tabs.
+   */
+  @Prop() label?: string;
+
+  /**
+   * By default, tabs are automatically activated and their panel is displayed when they receive focus.
+   * If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+   */
+  @Prop() manual: boolean = false;
+
+  /**
+   * Fix tabs control to the bottom of screen
+   */
+  @Prop() bottom?: boolean = false;
+
+  /**
+   * fill available width
+   * not applicable for vertical tabs
+   */
+  @Prop() fullWidth?: boolean = false;
+
+  @Prop() items: TabItem[];
+
+  @State() activeTabRect: DOMRect;
+  @State() tabsState: TabItem[];
+
+  activeIndex = -1;
+  tablistEl: HTMLElement;
+  tabEls: HTMLElement[] = [];
+
+  /**
+   * Tab activated event
+   * @param ActiveTab {index, tabEl} currently active tab
+   */
+  @Event({
+    eventName: 'activated',
+  })
+  activated: EventEmitter<ActiveTab>;
+
+  componentWillLoad() {
+    this.loadItemsState();
+  }
+
+  @Watch('items')
+  loadItemsState() {
+    if (!this.items?.length) {
+      return;
+    }
+    this.tabsState = [...this.items];
+  }
+
+  componentDidLoad() {
+    if (!this.tabsState?.length) {
+      return;
+    }
+    // load rect for indicator
+    this.activeIndex = this.tabsState.findIndex((tab) => tab.active);
+
+    requestAnimationFrame(() => {
+      this.activeTabRect = this.tabEls[this.activeIndex].getBoundingClientRect();
+      // this.activateTab(this.tabEls[this.activeIndex], true, true);
+    });
+  }
+
+  deactivateTabs() {
+    this.tabsState = this.tabsState.map((tab) => {
+      return {
+        ...tab,
+        active: false,
+      };
+    });
+  }
+
+  // Activates any given tab panel
+  @Method()
+  async activateTab(tabEl: HTMLElement, setFocus = true, isOnload = false) {
+    // if tab is already active, do nothing
+    if (tabEl.getAttribute('aria-selected') === 'true' && isOnload) {
+      // emit event
+      this.activated.emit({
+        index: this.activeIndex,
+        tabEl,
+      });
+      return;
+    }
+
+    this.deactivateTabs();
+    const tabId = tabEl.getAttribute('id');
+
+    this.activeTabRect = tabEl.getBoundingClientRect();
+
+    this.tabsState = this.tabsState.map((tab, i) => {
+      if (tab.tabId === tabId) {
+        this.activeIndex = i;
+        return {
+          ...tab,
+          active: true,
+        };
+      }
+      return tab;
+    });
+
+    // Set focus when required
+    if (setFocus) {
+      tabEl.focus();
+    }
+
+    // emit event
+    this.activated.emit({
+      index: this.activeIndex,
+      tabEl,
+    });
+  }
+
+  // When a tab is clicked, activateTab is fired to activate it
+  onTabClick(e) {
+    const tabEl = e.target as HTMLElement;
+    this.activateTab(tabEl, false);
+  }
+
+  // Focus on the first tab
+  focusFirstTab() {
+    this.tabEls[0].focus();
+  }
+
+  // Focus on the last tab
+  focusLastTab() {
+    this.tabEls[this.tabEls.length - 1].focus();
+  }
+
+  activateFirstTab() {
+    this.activateTab(this.tabEls[0]);
+  }
+
+  activateLastTab() {
+    this.activateTab(this.tabEls[this.tabEls.length - 1]);
+  }
+
+  /**********************************
+   * Keyboard support
+   ***********************************/
+
+  onKeydown(event: KeyboardEvent) {
+    const key = event.code;
+    switch (key) {
+      case 'End':
+        event.preventDefault();
+        // Activate last tab
+        if (this.manual) {
+          this.focusLastTab();
+        } else {
+          this.activateLastTab();
+        }
+        break;
+      case 'Home':
+        event.preventDefault();
+        // Activate first tab
+        if (this.manual) {
+          this.focusFirstTab();
+        } else {
+          this.activateFirstTab();
+        }
+        break;
+
+      // Up and down are in keydown
+      // because we need to prevent page scroll >:)
+      case 'ArrowUp':
+      case 'ArrowDown':
+        if (this.vertical) {
+          event.preventDefault();
+          this.switchTabOnArrowPress(event);
+        }
+        break;
+      case 'ArrowLeft':
+      case 'ArrowRight':
+        event.preventDefault();
+        this.switchTabOnArrowPress(event);
+        break;
+    }
+  }
+
+  // Add or subtract depending on key pressed
+  private direction = {
+    ArrowUp: -1,
+    ArrowLeft: -1,
+    ArrowDown: 1,
+    ArrowRight: 1,
+  };
+
+  // Either focus the next, previous, first, or last tab
+  // depending on key pressed
+  switchTabOnArrowPress(event): void {
+    var pressed = event.code;
+    const currentIndex = this.tabEls.findIndex((tab) => event.target.isSameNode(tab));
+    if (this.direction[pressed] && currentIndex !== -1) {
+      const targetIndex = currentIndex + this.direction[pressed];
+      if (this.tabEls[targetIndex]) {
+        if (this.manual) {
+          this.tabEls[targetIndex].focus();
+          return;
+        }
+        this.activateTab(this.tabEls[targetIndex]);
+        return;
+      }
+
+      // target index out of range
+      if (pressed === 'ArrowLeft' || pressed === 'ArrowUp') {
+        if (this.manual) {
+          console.log('yo!!');
+          this.focusLastTab();
+          return;
+        }
+        this.activateLastTab();
+        return;
+      }
+
+      if (pressed === 'ArrowRight' || pressed == 'ArrowDown') {
+        if (this.manual) {
+          this.focusFirstTab();
+          return;
+        }
+        this.activateFirstTab();
+        return;
+      }
+    }
+  }
+  render() {
+    const { label, tabsState, vertical, tablistEl, activeTabRect } = this;
+
+    const tablistScrollLeft = tablistEl?.scrollLeft || 0;
+    const tablistScrollTop = tablistEl?.scrollTop || 0;
+    const tablistRect = tablistEl?.getBoundingClientRect();
+
+    const activeOffsetLeft = tablistScrollLeft - tablistRect?.left || 0;
+    const activeOffsetTop = tablistScrollTop - tablistRect?.top || 0;
+
+    return (
+      <Host
+        class={{ vertical }}
+        style={
+          vertical
+            ? {
+                '--tabs-active-indicator-top': `${activeTabRect?.top + activeOffsetTop || 0}px`,
+                '--tabs-active-indicator-height': `${activeTabRect?.height || 0}px`,
+              }
+            : {
+                '--tabs-active-indicator-left': `${activeTabRect?.left + activeOffsetLeft || 0}px`,
+                '--tabs-active-indicator-width': `${activeTabRect?.width || 0}px`,
+              }
+        }>
+        <div
+          role="tablist"
+          ref={(el) => (this.tablistEl = el)}
+          aria-label={label}
+          aria-orientation={vertical ? 'vertical' : undefined}>
+          {tabsState
+            ? tabsState.map((tab, index) => {
+                return (
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={tab.active ? 'true' : 'false'}
+                    tabindex={tab.active ? undefined : '-1'}
+                    aria-controls={tab.panelId}
+                    id={tab.tabId}
+                    onClick={(e) => this.onTabClick(e)}
+                    onKeyDown={(e) => this.onKeydown(e)}
+                    key={index}
+                    class={{ active: tab.active }}
+                    ref={(el) => this.tabEls.push(el)}>
+                    {tab.label}
+                  </button>
+                );
+              })
+            : null}
+          <div class="tabs-active-indicator-track" aria-hidden="true">
+            <div class="tabs-active-indicator"></div>
+          </div>
+        </div>
+      </Host>
+    );
+  }
+}

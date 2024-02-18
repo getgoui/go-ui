@@ -14,7 +14,7 @@ import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
-import { ActivatedTab } from "./components/go-tabs/go-tabs";
+import { ActiveTab, ActiveTabWithPanel, TabItem } from "./components/go-tabs/tabs.type";
 export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
@@ -24,7 +24,7 @@ export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export { Options } from "markdown-it";
 export { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
-export { ActivatedTab } from "./components/go-tabs/go-tabs";
+export { ActiveTab, ActiveTabWithPanel, TabItem } from "./components/go-tabs/tabs.type";
 export namespace Components {
     interface GoAccordion {
         /**
@@ -1140,11 +1140,15 @@ export namespace Components {
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
          */
         "active": boolean;
+        /**
+          * Label displayed on the tab
+         */
         "label": string;
         /**
           * id for the tab panel element If not provided, a unique id will be generated.
          */
         "panelId"?: string;
+        "setActive": (active: boolean) => Promise<void>;
         /**
           * `id` for the tab button element. If not provided, a unique id will be generated.
          */
@@ -1164,11 +1168,39 @@ export namespace Components {
          */
         "striped": boolean;
     }
-    interface GoTabs {
+    interface GoTablist {
+        "activateTab": (tabEl: HTMLElement, setFocus?: boolean, isOnload?: boolean) => Promise<void>;
+        /**
+          * Fix tabs control to the bottom of screen
+         */
+        "bottom"?: boolean;
+        /**
+          * fill available width not applicable for vertical tabs
+         */
+        "fullWidth"?: boolean;
+        "items": TabItem[];
+        /**
+          * Provides a label that describes the purpose of the set of tabs.
+         */
+        "label"?: string;
         /**
           * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
          */
         "manual": boolean;
+        /**
+          * Set tabs orientation to vertical
+         */
+        "vertical"?: boolean;
+    }
+    interface GoTabs {
+        /**
+          * fill available width not applicable for vertical tabs
+         */
+        "fullWidth"?: boolean;
+        /**
+          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+         */
+        "manual"?: boolean;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
@@ -1176,7 +1208,7 @@ export namespace Components {
         /**
           * Set tabs orientation to vertical
          */
-        "vertical": boolean;
+        "vertical"?: boolean;
     }
     interface GoTextarea {
         /**
@@ -1336,6 +1368,10 @@ export interface GoSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoSelectElement;
 }
+export interface GoTablistCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoTablistElement;
+}
 export interface GoTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoTabsElement;
@@ -1347,7 +1383,21 @@ declare global {
         prototype: HTMLGoAccordionElement;
         new (): HTMLGoAccordionElement;
     };
+    interface HTMLGoAccordionItemElementEventMap {
+        "opened": any;
+        "opening": any;
+        "closed": any;
+        "closing": any;
+    }
     interface HTMLGoAccordionItemElement extends Components.GoAccordionItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoAccordionItemElementEventMap>(type: K, listener: (this: HTMLGoAccordionItemElement, ev: GoAccordionItemCustomEvent<HTMLGoAccordionItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoAccordionItemElementEventMap>(type: K, listener: (this: HTMLGoAccordionItemElement, ev: GoAccordionItemCustomEvent<HTMLGoAccordionItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoAccordionItemElement: {
         prototype: HTMLGoAccordionItemElement;
@@ -1359,7 +1409,18 @@ declare global {
         prototype: HTMLGoBadgeElement;
         new (): HTMLGoBadgeElement;
     };
+    interface HTMLGoBannerElementEventMap {
+        "dismissed": void;
+    }
     interface HTMLGoBannerElement extends Components.GoBanner, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoBannerElementEventMap>(type: K, listener: (this: HTMLGoBannerElement, ev: GoBannerCustomEvent<HTMLGoBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoBannerElementEventMap>(type: K, listener: (this: HTMLGoBannerElement, ev: GoBannerCustomEvent<HTMLGoBannerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoBannerElement: {
         prototype: HTMLGoBannerElement;
@@ -1419,7 +1480,19 @@ declare global {
         prototype: HTMLGoCheckboxElement;
         new (): HTMLGoCheckboxElement;
     };
+    interface HTMLGoChipElementEventMap {
+        "chipClick": any;
+        "chipDismissed": any;
+    }
     interface HTMLGoChipElement extends Components.GoChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoChipElementEventMap>(type: K, listener: (this: HTMLGoChipElement, ev: GoChipCustomEvent<HTMLGoChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoChipElementEventMap>(type: K, listener: (this: HTMLGoChipElement, ev: GoChipCustomEvent<HTMLGoChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoChipElement: {
         prototype: HTMLGoChipElement;
@@ -1437,13 +1510,35 @@ declare global {
         prototype: HTMLGoContentLayoutElement;
         new (): HTMLGoContentLayoutElement;
     };
+    interface HTMLGoDarkModeElementEventMap {
+        "themechange": { theme: Theme };
+    }
     interface HTMLGoDarkModeElement extends Components.GoDarkMode, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoDarkModeElementEventMap>(type: K, listener: (this: HTMLGoDarkModeElement, ev: GoDarkModeCustomEvent<HTMLGoDarkModeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoDarkModeElementEventMap>(type: K, listener: (this: HTMLGoDarkModeElement, ev: GoDarkModeCustomEvent<HTMLGoDarkModeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoDarkModeElement: {
         prototype: HTMLGoDarkModeElement;
         new (): HTMLGoDarkModeElement;
     };
+    interface HTMLGoDatepickerElementEventMap {
+        "gochange": GoChangeEventDetail<string>;
+    }
     interface HTMLGoDatepickerElement extends Components.GoDatepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoDatepickerElementEventMap>(type: K, listener: (this: HTMLGoDatepickerElement, ev: GoDatepickerCustomEvent<HTMLGoDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoDatepickerElementEventMap>(type: K, listener: (this: HTMLGoDatepickerElement, ev: GoDatepickerCustomEvent<HTMLGoDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoDatepickerElement: {
         prototype: HTMLGoDatepickerElement;
@@ -1455,13 +1550,36 @@ declare global {
         prototype: HTMLGoDialogElement;
         new (): HTMLGoDialogElement;
     };
+    interface HTMLGoDropdownElementEventMap {
+        "opened": void;
+        "closed": void;
+    }
     interface HTMLGoDropdownElement extends Components.GoDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoDropdownElementEventMap>(type: K, listener: (this: HTMLGoDropdownElement, ev: GoDropdownCustomEvent<HTMLGoDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoDropdownElementEventMap>(type: K, listener: (this: HTMLGoDropdownElement, ev: GoDropdownCustomEvent<HTMLGoDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoDropdownElement: {
         prototype: HTMLGoDropdownElement;
         new (): HTMLGoDropdownElement;
     };
+    interface HTMLGoDropdownItemElementEventMap {
+        "selected": HTMLElement;
+    }
     interface HTMLGoDropdownItemElement extends Components.GoDropdownItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoDropdownItemElementEventMap>(type: K, listener: (this: HTMLGoDropdownItemElement, ev: GoDropdownItemCustomEvent<HTMLGoDropdownItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoDropdownItemElementEventMap>(type: K, listener: (this: HTMLGoDropdownItemElement, ev: GoDropdownItemCustomEvent<HTMLGoDropdownItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoDropdownItemElement: {
         prototype: HTMLGoDropdownItemElement;
@@ -1539,25 +1657,72 @@ declare global {
         prototype: HTMLGoLinkElement;
         new (): HTMLGoLinkElement;
     };
+    interface HTMLGoMainNavElementEventMap {
+        "navigate": any;
+    }
     interface HTMLGoMainNavElement extends Components.GoMainNav, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoMainNavElementEventMap>(type: K, listener: (this: HTMLGoMainNavElement, ev: GoMainNavCustomEvent<HTMLGoMainNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoMainNavElementEventMap>(type: K, listener: (this: HTMLGoMainNavElement, ev: GoMainNavCustomEvent<HTMLGoMainNavElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoMainNavElement: {
         prototype: HTMLGoMainNavElement;
         new (): HTMLGoMainNavElement;
     };
+    interface HTMLGoMdElementEventMap {
+        "init": any;
+        "rendered": any;
+    }
     interface HTMLGoMdElement extends Components.GoMd, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoMdElementEventMap>(type: K, listener: (this: HTMLGoMdElement, ev: GoMdCustomEvent<HTMLGoMdElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoMdElementEventMap>(type: K, listener: (this: HTMLGoMdElement, ev: GoMdCustomEvent<HTMLGoMdElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoMdElement: {
         prototype: HTMLGoMdElement;
         new (): HTMLGoMdElement;
     };
+    interface HTMLGoNavDrawerElementEventMap {
+        "open": void;
+        "close": void;
+        "navItemClick": INavItem;
+    }
     interface HTMLGoNavDrawerElement extends Components.GoNavDrawer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoNavDrawerElementEventMap>(type: K, listener: (this: HTMLGoNavDrawerElement, ev: GoNavDrawerCustomEvent<HTMLGoNavDrawerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoNavDrawerElementEventMap>(type: K, listener: (this: HTMLGoNavDrawerElement, ev: GoNavDrawerCustomEvent<HTMLGoNavDrawerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoNavDrawerElement: {
         prototype: HTMLGoNavDrawerElement;
         new (): HTMLGoNavDrawerElement;
     };
+    interface HTMLGoNavLinkElementEventMap {
+        "navigate": any;
+    }
     interface HTMLGoNavLinkElement extends Components.GoNavLink, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoNavLinkElementEventMap>(type: K, listener: (this: HTMLGoNavLinkElement, ev: GoNavLinkCustomEvent<HTMLGoNavLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoNavLinkElementEventMap>(type: K, listener: (this: HTMLGoNavLinkElement, ev: GoNavLinkCustomEvent<HTMLGoNavLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoNavLinkElement: {
         prototype: HTMLGoNavLinkElement;
@@ -1569,7 +1734,19 @@ declare global {
         prototype: HTMLGoNavListElement;
         new (): HTMLGoNavListElement;
     };
+    interface HTMLGoOverlayElementEventMap {
+        "overlayOpen": void;
+        "overlayClose": void;
+    }
     interface HTMLGoOverlayElement extends Components.GoOverlay, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoOverlayElementEventMap>(type: K, listener: (this: HTMLGoOverlayElement, ev: GoOverlayCustomEvent<HTMLGoOverlayElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoOverlayElementEventMap>(type: K, listener: (this: HTMLGoOverlayElement, ev: GoOverlayCustomEvent<HTMLGoOverlayElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoOverlayElement: {
         prototype: HTMLGoOverlayElement;
@@ -1593,7 +1770,18 @@ declare global {
         prototype: HTMLGoSearchBarElement;
         new (): HTMLGoSearchBarElement;
     };
+    interface HTMLGoSelectElementEventMap {
+        "gochange": GoChangeEventDetail<string>;
+    }
     interface HTMLGoSelectElement extends Components.GoSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoSelectElementEventMap>(type: K, listener: (this: HTMLGoSelectElement, ev: GoSelectCustomEvent<HTMLGoSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoSelectElementEventMap>(type: K, listener: (this: HTMLGoSelectElement, ev: GoSelectCustomEvent<HTMLGoSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoSelectElement: {
         prototype: HTMLGoSelectElement;
@@ -1629,7 +1817,35 @@ declare global {
         prototype: HTMLGoTableWrapperElement;
         new (): HTMLGoTableWrapperElement;
     };
+    interface HTMLGoTablistElementEventMap {
+        "activated": ActiveTab;
+    }
+    interface HTMLGoTablistElement extends Components.GoTablist, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoTablistElementEventMap>(type: K, listener: (this: HTMLGoTablistElement, ev: GoTablistCustomEvent<HTMLGoTablistElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoTablistElementEventMap>(type: K, listener: (this: HTMLGoTablistElement, ev: GoTablistCustomEvent<HTMLGoTablistElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGoTablistElement: {
+        prototype: HTMLGoTablistElement;
+        new (): HTMLGoTablistElement;
+    };
+    interface HTMLGoTabsElementEventMap {
+        "tabactivated": ActiveTabWithPanel;
+    }
     interface HTMLGoTabsElement extends Components.GoTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoTabsElementEventMap>(type: K, listener: (this: HTMLGoTabsElement, ev: GoTabsCustomEvent<HTMLGoTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoTabsElementEventMap>(type: K, listener: (this: HTMLGoTabsElement, ev: GoTabsCustomEvent<HTMLGoTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoTabsElement: {
         prototype: HTMLGoTabsElement;
@@ -1708,6 +1924,7 @@ declare global {
         "go-switch": HTMLGoSwitchElement;
         "go-tab": HTMLGoTabElement;
         "go-table-wrapper": HTMLGoTableWrapperElement;
+        "go-tablist": HTMLGoTablistElement;
         "go-tabs": HTMLGoTabsElement;
         "go-textarea": HTMLGoTextareaElement;
         "go-to-top": HTMLGoToTopElement;
@@ -2831,6 +3048,9 @@ declare namespace LocalJSX {
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
          */
         "active"?: boolean;
+        /**
+          * Label displayed on the tab
+         */
         "label"?: string;
         /**
           * id for the tab panel element If not provided, a unique id will be generated.
@@ -2855,16 +3075,48 @@ declare namespace LocalJSX {
          */
         "striped"?: boolean;
     }
-    interface GoTabs {
+    interface GoTablist {
+        /**
+          * Fix tabs control to the bottom of screen
+         */
+        "bottom"?: boolean;
+        /**
+          * fill available width not applicable for vertical tabs
+         */
+        "fullWidth"?: boolean;
+        "items"?: TabItem[];
+        /**
+          * Provides a label that describes the purpose of the set of tabs.
+         */
+        "label"?: string;
         /**
           * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
          */
         "manual"?: boolean;
         /**
-          * tab change event
+          * Tab activated event
+          * @param ActiveTab , tabEl} currently active tab
+         */
+        "onActivated"?: (event: GoTablistCustomEvent<ActiveTab>) => void;
+        /**
+          * Set tabs orientation to vertical
+         */
+        "vertical"?: boolean;
+    }
+    interface GoTabs {
+        /**
+          * fill available width not applicable for vertical tabs
+         */
+        "fullWidth"?: boolean;
+        /**
+          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+         */
+        "manual"?: boolean;
+        /**
+          * Tab activated event
           * @param ActivatedTab , tabEl, panelEl}
          */
-        "onTabChange"?: (event: GoTabsCustomEvent<ActivatedTab>) => void;
+        "onTabactivated"?: (event: GoTabsCustomEvent<ActiveTabWithPanel>) => void;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
@@ -3015,6 +3267,7 @@ declare namespace LocalJSX {
         "go-switch": GoSwitch;
         "go-tab": GoTab;
         "go-table-wrapper": GoTableWrapper;
+        "go-tablist": GoTablist;
         "go-tabs": GoTabs;
         "go-textarea": GoTextarea;
         "go-to-top": GoToTop;
@@ -3074,6 +3327,7 @@ declare module "@stencil/core" {
             "go-switch": LocalJSX.GoSwitch & JSXBase.HTMLAttributes<HTMLGoSwitchElement>;
             "go-tab": LocalJSX.GoTab & JSXBase.HTMLAttributes<HTMLGoTabElement>;
             "go-table-wrapper": LocalJSX.GoTableWrapper & JSXBase.HTMLAttributes<HTMLGoTableWrapperElement>;
+            "go-tablist": LocalJSX.GoTablist & JSXBase.HTMLAttributes<HTMLGoTablistElement>;
             "go-tabs": LocalJSX.GoTabs & JSXBase.HTMLAttributes<HTMLGoTabsElement>;
             "go-textarea": LocalJSX.GoTextarea & JSXBase.HTMLAttributes<HTMLGoTextareaElement>;
             "go-to-top": LocalJSX.GoToTop & JSXBase.HTMLAttributes<HTMLGoToTopElement>;

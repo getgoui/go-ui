@@ -11,25 +11,76 @@
     <script nomodule src="/build/go-ui.js"></script>
   </head>
   <body>
-    <go-dark-mode></go-dark-mode>
+    <header class="container text-end">
+      <go-dark-mode id="themer"></go-dark-mode>
+      <go-switch id="switcher" label="Dark Mode"></go-switch>
+
+      <script>
+        const themer = document.getElementById('themer');
+        const switcher = document.getElementById('switcher');
+        themer.addEventListener('themechange', (e) => {
+          switcher.setAttribute('checked', e.detail.theme === 'dark');
+        });
+        switcher.addEventListener('change', (e) => {
+          themer.setTheme(e.target.checked ? 'dark' : 'light');
+        });
+      </script>
+    </header>
+
     <!-- keep this sandbox empty before pushing changes -->
     <div class="container">
-      <!-- block -->
-      <div class="d-flex gap-1">
-        <go-button variant="primary">Primary</go-button>
-        <go-button variant="secondary">Secondary</go-button>
-        <go-button variant="neutral">Neutral (default)</go-button>
-        <go-button variant="success">Success</go-button>
-        <go-button variant="critical">Critical</go-button>
+      <go-tabs full-width>
+        <go-tab label="First tab">
+          <p>Tab 1 content</p>
+        </go-tab>
+        <go-tab label="Second tab">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, esse laboriosam tempore vel, deserunt
+            nulla, corporis eaque dolore ad laudantium animi minima reprehenderit aliquam voluptate minus dolorem nobis
+            fugiat molestiae.
+          </p>
+        </go-tab>
+        <go-tab label="Third tab">
+          <p>Tab 3 content</p>
+        </go-tab>
+      </go-tabs>
+
+      <h2>vertical</h2>
+      <go-tabs vertical="true">
+        <go-tab label="First tab">
+          <p>Tab 1 content</p>
+        </go-tab>
+        <go-tab label="Second tab">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, esse laboriosam tempore vel, deserunt
+            nulla, corporis eaque dolore ad laudantium animi minima reprehenderit aliquam voluptate minus dolorem nobis
+            fugiat molestiae.
+          </p>
+        </go-tab>
+        <go-tab label="Third tab">
+          <p>Tab 3 content</p>
+        </go-tab>
+      </go-tabs>
+
+      <h2>Load content on tab activated</h2>
+      <div class="container">
+        <go-tabs manual id="tabs-manual">
+          <go-tab label="First tab">Loading...</go-tab>
+          <go-tab label="Second tab">Loading...</go-tab>
+          <go-tab label="Third tab">Loading...</go-tab>
+        </go-tabs>
       </div>
-      <p>Full width on mobile, inline from tablet onwards</p>
-      <go-button block="mobile" variant="primary">Button</go-button>
-
-      <p>Full width on mobile and tablet, inline from desktop onwards</p>
-      <go-button block="tablet" variant="primary">Button</go-button>
-
-      <p>Full width on mobile, tablet and desktop, inline from large onwards</p>
-      <go-button block="desktop" variant="primary">Button</go-button>
+      <script>
+        var tabs = document.querySelector('#tabs-manual');
+        tabs.addEventListener('tabactivated', function (e) {
+          const { index, tabEl, panelEl } = e.detail;
+          console.log(`Tab ${index + 1} activated.`);
+          panelEl.innerHTML = `Loading...`;
+          setTimeout(() => {
+            panelEl.innerHTML = 'Dynamic tab ' + (index + 1) + ' content ';
+          }, 1500);
+        });
+      </script>
     </div>
   </body>
 </html>
