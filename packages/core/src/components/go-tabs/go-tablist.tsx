@@ -83,7 +83,16 @@ export class GoTablist {
 
     requestAnimationFrame(() => {
       this.activeTabRect = this.tabEls[this.activeIndex].getBoundingClientRect();
-      // this.activateTab(this.tabEls[this.activeIndex], true, true);
+      this.tabsState.forEach((tab, i) => {
+        if (tab.iconSlot) {
+          if (tab.iconPosition === 'before') {
+            this.tabEls[i].prepend(tab.iconSlot);
+          }
+          if (tab.iconPosition === 'after') {
+            this.tabEls[i].append(tab.iconSlot);
+          }
+        }
+      });
     });
   }
 
@@ -138,9 +147,8 @@ export class GoTablist {
   }
 
   // When a tab is clicked, activateTab is fired to activate it
-  onTabClick(e) {
-    const tabEl = e.target as HTMLElement;
-    this.activateTab(tabEl, false);
+  onTabClick(i) {
+    this.activateTab(this.tabEls[i]);
   }
 
   // Focus on the first tab
@@ -289,12 +297,12 @@ export class GoTablist {
                     tabindex={tab.active ? undefined : '-1'}
                     aria-controls={tab.panelId}
                     id={tab.tabId}
-                    onClick={(e) => this.onTabClick(e)}
+                    onClick={() => this.onTabClick(index)}
                     onKeyDown={(e) => this.onKeydown(e)}
                     key={index}
-                    class={{ active: tab.active }}
+                    class={{ active: tab.active, [`icon-${tab.iconPosition}`]: !!tab.iconPosition }}
                     ref={(el) => this.tabEls.push(el)}>
-                    {tab.label}
+                    <span>{tab.label}</span>
                   </button>
                 );
               })

@@ -1,4 +1,5 @@
 import { Component, h, Prop, Element, Host, Method } from '@stencil/core';
+import { TabIconPosition } from './tabs.type';
 @Component({
   tag: 'go-tab',
   styleUrl: 'go-tab.scss',
@@ -28,6 +29,8 @@ export class GoTab {
    * If not provided, a unique id will be generated.
    */
   @Prop({ mutable: true }) panelId?: string;
+
+  @Prop() iconPosition?: TabIconPosition = 'before';
 
   @Method()
   async setActive(active: boolean) {

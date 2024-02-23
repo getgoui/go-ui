@@ -14,7 +14,7 @@ import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
-import { ActiveTab, ActiveTabWithPanel, JustifyOption, TabItem } from "./components/go-tabs/tabs.type";
+import { ActiveTab, ActiveTabWithPanel, JustifyOption, TabIconPosition, TabItem } from "./components/go-tabs/tabs.type";
 export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
@@ -24,7 +24,7 @@ export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export { Options } from "markdown-it";
 export { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
-export { ActiveTab, ActiveTabWithPanel, JustifyOption, TabItem } from "./components/go-tabs/tabs.type";
+export { ActiveTab, ActiveTabWithPanel, JustifyOption, TabIconPosition, TabItem } from "./components/go-tabs/tabs.type";
 export namespace Components {
     interface GoAccordion {
         /**
@@ -1140,6 +1140,7 @@ export namespace Components {
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
          */
         "active": boolean;
+        "iconPosition"?: TabIconPosition;
         /**
           * Label displayed on the tab
          */
@@ -3059,6 +3060,7 @@ declare namespace LocalJSX {
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
          */
         "active"?: boolean;
+        "iconPosition"?: TabIconPosition;
         /**
           * Label displayed on the tab
          */

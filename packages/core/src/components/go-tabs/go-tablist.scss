@@ -73,6 +73,13 @@ go-tablist {
     */
   --tabs-active-indicator-color: var(--tab-active-color);
 
+  /**
+      @prop --tab-icon-gap:
+        Gap between tab icons
+        - default: 0.5rem
+    */
+  --tab-icon-gap: 0.5rem;
+
   [role='tablist'] {
     overflow: auto;
     display: flex;
@@ -81,6 +88,15 @@ go-tablist {
     position: relative;
   }
   [role='tab'] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--tab-icon-gap);
+    @include tablet() {
+      flex-direction: row;
+    }
+
     padding: var(--tab-padding);
     border: var(--tab-border-width) solid transparent;
     white-space: nowrap;

@@ -1,6 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import { ActiveTabWithPanel, JustifyOption, TabItem } from './tabs.type';
+import { moveEl } from '@/utils';
 
 @Component({
   tag: 'go-tabs',
@@ -56,10 +57,10 @@ export class GoTabs {
   tablistEl: HTMLElement;
 
   componentWillLoad() {
-    this.initialiseTabs();
+    this.initialiseTabChildren();
   }
 
-  initialiseTabs() {
+  initialiseTabChildren() {
     const children = Array.from(this.el.querySelectorAll('go-tab')) as HTMLGoTabElement[];
     if (children.length === 0) {
       return;
@@ -70,11 +71,23 @@ export class GoTabs {
       const panelId = tabId + '-panel';
       goTab.tabId = tabId;
       goTab.panelId = panelId;
+      const iconEl = goTab.querySelector('[slot="icon"]');
+      let iconSlot = null;
+
+      if (iconEl) {
+        iconSlot = document.createElement('span');
+        iconSlot.setAttribute('aria-hidden', 'true'); // icons are decorative only
+        iconSlot.classList.add('icon');
+        iconEl.removeAttribute('slot');
+        moveEl(iconEl, iconSlot);
+      }
       return {
         tabId: goTab.tabId || tabId,
         panelId: goTab.panelId || panelId,
         label: goTab.label,
         active: goTab.active,
+        iconSlot,
+        iconPosition: goTab.iconPosition,
       };
     });
     this.panels = children;

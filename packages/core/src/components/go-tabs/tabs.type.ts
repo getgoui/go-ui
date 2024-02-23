@@ -3,6 +3,8 @@ export interface TabItem {
   panelId: string;
   label: string;
   active: boolean;
+  iconSlot?: Element;
+  iconPosition?: TabIconPosition;
 }
 
 export interface ActiveTab {
@@ -16,3 +18,5 @@ export interface ActiveTabWithPanel {
 }
 
 export type JustifyOption = 'normal' | 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch';
+
+export type TabIconPosition = 'before' | 'after';
