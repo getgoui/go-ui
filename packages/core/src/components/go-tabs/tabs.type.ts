@@ -14,3 +14,5 @@ export interface ActiveTabWithPanel {
   tabEl: HTMLElement;
   panelEl: HTMLElement;
 }
+
+export type JustifyOption = 'normal' | 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch';

@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
-import { ActiveTabWithPanel, TabItem } from './tabs.type';
+import { ActiveTabWithPanel, JustifyOption, TabItem } from './tabs.type';
 
 @Component({
   tag: 'go-tabs',
@@ -27,10 +27,15 @@ export class GoTabs {
   @Prop() manual?: boolean = false;
 
   /**
-   * fill available width
-   * not applicable for vertical tabs
+   * Applies justify-content property to tablist (horizontal only)
+   * ie. `justify="between"` applies `justify-content: space-between`
    */
-  @Prop() fullWidth?: boolean = false;
+  @Prop() justify?: JustifyOption = 'normal';
+
+  /**
+   * fill available space (horizontal only)
+   */
+  @Prop() fill?: boolean = false;
 
   /**
    * Tab activated event
@@ -100,7 +105,7 @@ export class GoTabs {
   }
 
   render() {
-    const { tabChildren, tabGroupLabel, vertical, manual, fullWidth } = this;
+    const { tabChildren, tabGroupLabel, vertical, manual, fill, justify } = this;
 
     return (
       <Host class={{ vertical }}>
@@ -108,8 +113,9 @@ export class GoTabs {
           items={tabChildren}
           label={tabGroupLabel}
           manual={manual}
-          fullWidth={fullWidth}
+          fill={fill}
           vertical={vertical}
+          justify={justify}
           onActivated={(e) => this.activateTab(e)}></go-tablist>
         <slot></slot>
       </Host>

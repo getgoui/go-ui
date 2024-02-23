@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop, State, Element, Event, EventEmitter, Watch, Method } from '@stencil/core';
-import { ActiveTab, TabItem } from './tabs.type';
+import { ActiveTab, JustifyOption, TabItem } from './tabs.type';
+import { JUSTIFY_VALUES_MAP } from './tabs.const';
 
 @Component({
   tag: 'go-tablist',
@@ -32,9 +33,18 @@ export class GoTablist {
    * fill available width
    * not applicable for vertical tabs
    */
-  @Prop() fullWidth?: boolean = false;
+  @Prop() fill?: boolean = false;
 
+  /**
+   * tab items array
+   */
   @Prop() items: TabItem[];
+
+  /**
+   * applies justify-content property to tablist
+   * ie. `justify="between"` applies `justify-content: space-between`
+   */
+  @Prop() justify?: JustifyOption = 'normal';
 
   @State() activeTabRect: DOMRect;
   @State() tabsState: TabItem[];
@@ -240,7 +250,7 @@ export class GoTablist {
     }
   }
   render() {
-    const { label, tabsState, vertical, tablistEl, activeTabRect } = this;
+    const { label, tabsState, vertical, tablistEl, activeTabRect, justify, fill } = this;
 
     const tablistScrollLeft = tablistEl?.scrollLeft || 0;
     const tablistScrollTop = tablistEl?.scrollTop || 0;
@@ -251,7 +261,7 @@ export class GoTablist {
 
     return (
       <Host
-        class={{ vertical }}
+        class={{ vertical, fill }}
         style={
           vertical
             ? {
@@ -267,7 +277,8 @@ export class GoTablist {
           role="tablist"
           ref={(el) => (this.tablistEl = el)}
           aria-label={label}
-          aria-orientation={vertical ? 'vertical' : undefined}>
+          aria-orientation={vertical ? 'vertical' : undefined}
+          style={{ 'justify-content': JUSTIFY_VALUES_MAP[justify] }}>
           {tabsState
             ? tabsState.map((tab, index) => {
                 return (

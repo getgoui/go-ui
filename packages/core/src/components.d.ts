@@ -14,7 +14,7 @@ import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
 import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
-import { ActiveTab, ActiveTabWithPanel, TabItem } from "./components/go-tabs/tabs.type";
+import { ActiveTab, ActiveTabWithPanel, JustifyOption, TabItem } from "./components/go-tabs/tabs.type";
 export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
@@ -24,7 +24,7 @@ export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-p
 export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export { Options } from "markdown-it";
 export { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
-export { ActiveTab, ActiveTabWithPanel, TabItem } from "./components/go-tabs/tabs.type";
+export { ActiveTab, ActiveTabWithPanel, JustifyOption, TabItem } from "./components/go-tabs/tabs.type";
 export namespace Components {
     interface GoAccordion {
         /**
@@ -1177,8 +1177,15 @@ export namespace Components {
         /**
           * fill available width not applicable for vertical tabs
          */
-        "fullWidth"?: boolean;
+        "fill"?: boolean;
+        /**
+          * tab items array
+         */
         "items": TabItem[];
+        /**
+          * applies justify-content property to tablist ie. `justify="between"` applies `justify-content: space-between`
+         */
+        "justify"?: JustifyOption;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
@@ -1194,9 +1201,13 @@ export namespace Components {
     }
     interface GoTabs {
         /**
-          * fill available width not applicable for vertical tabs
+          * fill available space (horizontal only)
          */
-        "fullWidth"?: boolean;
+        "fill"?: boolean;
+        /**
+          * Applies justify-content property to tablist (horizontal only) ie. `justify="between"` applies `justify-content: space-between`
+         */
+        "justify"?: JustifyOption;
         /**
           * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
          */
@@ -3083,8 +3094,15 @@ declare namespace LocalJSX {
         /**
           * fill available width not applicable for vertical tabs
          */
-        "fullWidth"?: boolean;
+        "fill"?: boolean;
+        /**
+          * tab items array
+         */
         "items"?: TabItem[];
+        /**
+          * applies justify-content property to tablist ie. `justify="between"` applies `justify-content: space-between`
+         */
+        "justify"?: JustifyOption;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
@@ -3105,9 +3123,13 @@ declare namespace LocalJSX {
     }
     interface GoTabs {
         /**
-          * fill available width not applicable for vertical tabs
+          * fill available space (horizontal only)
          */
-        "fullWidth"?: boolean;
+        "fill"?: boolean;
+        /**
+          * Applies justify-content property to tablist (horizontal only) ie. `justify="between"` applies `justify-content: space-between`
+         */
+        "justify"?: JustifyOption;
         /**
           * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
          */
