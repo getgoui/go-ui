@@ -4,7 +4,7 @@ go-tablist {
       Padding for tabs
       - default: 0.75rem 1.25rem
   */
-  --tab-padding: 0.75rem 1.25rem;
+  --tab-padding: 0.5rem 1rem;
   /**
       @prop --tab-bg-color:
         Background color for tabs
@@ -17,12 +17,21 @@ go-tablist {
         - default: var(--go-color-neutral-200)
     */
   --tab-hover-bg-color: var(--go-color-neutral-200);
+
   /**
       @prop --tab-text-color:
         Text color for tabs
-        - default: var(--go-color-neutral-700)
+        - default: var(--go-color-neutral-800)
     */
-  --tab-text-color: var(--go-color-neutral-700);
+  --tab-text-color: var(--go-color-neutral-800);
+
+  /**
+      @prop --tab-hover-text-color:
+        Text color for tabs on hover
+        - default: var(--go-color-neutral-900)
+    */
+  --tab-hover-text-color: var(--go-color-neutral-900);
+
   /**
       @prop --tab-focus-color:
         Focus outline color for tabs
@@ -34,7 +43,7 @@ go-tablist {
         Text color for active tab
         - default: var(--go-color-primary-800)
     */
-  --tab-active-color: var(--go-color-primary-800);
+  --tab-active-color: var(--go-color-primary-600);
   /**
       @prop --tab-active-bg-color:
         Background color for active tab
@@ -107,6 +116,7 @@ go-tablist {
 
     &:hover,
     &:focus {
+      color: var(--tab-hover-text-color);
       background: var(--tab-hover-bg-color);
     }
     &:not(.active) {
@@ -168,5 +178,13 @@ go-tablist {
     [role='tab'] {
       flex: 1;
     }
+  }
+}
+
+@include theme-dark() {
+  go-tablist {
+    --tab-text-color: var(--go-color-neutral-700);
+    --tab-hover-text-color: var(--go-color-neutral-900);
+    --tab-active-color: var(--go-color-primary-800);
   }
 }
