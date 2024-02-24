@@ -22,10 +22,10 @@ export class GoTabs {
   @Prop() vertical?: boolean = false;
 
   /**
-   * By default, tabs are automatically activated and their panel is displayed when they receive focus.
-   * If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+   * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated.
+   * if `auto` is true, tabs are automatically activated when they receive focus.
    */
-  @Prop() manual?: boolean = false;
+  @Prop() auto?: boolean = false;
 
   /**
    * Applies justify-content property to tablist (horizontal only)
@@ -118,14 +118,14 @@ export class GoTabs {
   }
 
   render() {
-    const { tabChildren, tabGroupLabel, vertical, manual, fill, justify } = this;
+    const { tabChildren, tabGroupLabel, vertical, auto, fill, justify } = this;
 
     return (
       <Host class={{ vertical }}>
         <go-tablist
           items={tabChildren}
           label={tabGroupLabel}
-          manual={manual}
+          auto={auto}
           fill={fill}
           vertical={vertical}
           justify={justify}

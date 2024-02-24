@@ -35,8 +35,12 @@ References:
 
 <demo-frame component="go-tabs" demo="go-tabs-vertical"></demo-frame>
 
-## Manual activation
+## Auto activation
 
-<demo-frame component="go-tabs" demo="go-tabs-manual"></demo-frame>
+By default, the tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated.
+
+By adding the `auto` attribute to `go-tabs`, tabs are automatically activated upon receiving focus.
+
+<demo-frame component="go-tabs" demo="go-tabs-auto-activate"></demo-frame>
 
 <!-- Auto Generated Below -->

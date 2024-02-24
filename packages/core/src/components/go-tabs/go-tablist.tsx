@@ -19,10 +19,10 @@ export class GoTablist {
   @Prop() label?: string;
 
   /**
-   * By default, tabs are automatically activated and their panel is displayed when they receive focus.
-   * If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+   * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated.
+   * if `auto` is true, tabs are automatically activated when they receive focus.
    */
-  @Prop() manual: boolean = false;
+  @Prop() auto: boolean = false;
 
   /**
    * Fix tabs control to the bottom of screen
@@ -179,7 +179,7 @@ export class GoTablist {
       case 'End':
         event.preventDefault();
         // Activate last tab
-        if (this.manual) {
+        if (!this.auto) {
           this.focusLastTab();
         } else {
           this.activateLastTab();
@@ -188,7 +188,7 @@ export class GoTablist {
       case 'Home':
         event.preventDefault();
         // Activate first tab
-        if (this.manual) {
+        if (!this.auto) {
           this.focusFirstTab();
         } else {
           this.activateFirstTab();
@@ -228,7 +228,7 @@ export class GoTablist {
     if (this.direction[pressed] && currentIndex !== -1) {
       const targetIndex = currentIndex + this.direction[pressed];
       if (this.tabEls[targetIndex]) {
-        if (this.manual) {
+        if (!this.auto) {
           this.tabEls[targetIndex].focus();
           return;
         }
@@ -238,7 +238,7 @@ export class GoTablist {
 
       // target index out of range
       if (pressed === 'ArrowLeft' || pressed === 'ArrowUp') {
-        if (this.manual) {
+        if (!this.auto) {
           console.log('yo!!');
           this.focusLastTab();
           return;
@@ -248,7 +248,7 @@ export class GoTablist {
       }
 
       if (pressed === 'ArrowRight' || pressed == 'ArrowDown') {
-        if (this.manual) {
+        if (!this.auto) {
           this.focusFirstTab();
           return;
         }

@@ -1172,6 +1172,10 @@ export namespace Components {
     interface GoTablist {
         "activateTab": (tabEl: HTMLElement, setFocus?: boolean, isOnload?: boolean) => Promise<void>;
         /**
+          * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+         */
+        "auto": boolean;
+        /**
           * Fix tabs control to the bottom of screen
          */
         "bottom"?: boolean;
@@ -1192,15 +1196,15 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
-         */
-        "manual": boolean;
-        /**
           * Set tabs orientation to vertical
          */
         "vertical"?: boolean;
     }
     interface GoTabs {
+        /**
+          * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+         */
+        "auto"?: boolean;
         /**
           * fill available space (horizontal only)
          */
@@ -1209,10 +1213,6 @@ export namespace Components {
           * Applies justify-content property to tablist (horizontal only) ie. `justify="between"` applies `justify-content: space-between`
          */
         "justify"?: JustifyOption;
-        /**
-          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
-         */
-        "manual"?: boolean;
         /**
           * Provides a label that describes the purpose of the set of tabs.
          */
@@ -3090,6 +3090,10 @@ declare namespace LocalJSX {
     }
     interface GoTablist {
         /**
+          * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+         */
+        "auto"?: boolean;
+        /**
           * Fix tabs control to the bottom of screen
          */
         "bottom"?: boolean;
@@ -3110,10 +3114,6 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
-         */
-        "manual"?: boolean;
-        /**
           * Tab activated event
           * @param ActiveTab , tabEl} currently active tab
          */
@@ -3125,6 +3125,10 @@ declare namespace LocalJSX {
     }
     interface GoTabs {
         /**
+          * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+         */
+        "auto"?: boolean;
+        /**
           * fill available space (horizontal only)
          */
         "fill"?: boolean;
@@ -3132,10 +3136,6 @@ declare namespace LocalJSX {
           * Applies justify-content property to tablist (horizontal only) ie. `justify="between"` applies `justify-content: space-between`
          */
         "justify"?: JustifyOption;
-        /**
-          * By default, tabs are automatically activated and their panel is displayed when they receive focus. If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
-         */
-        "manual"?: boolean;
         /**
           * Tab activated event
           * @param ActivatedTab , tabEl, panelEl}
