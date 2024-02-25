@@ -1,5 +1,10 @@
 import { Component, h, Prop, Element, Host, Method } from '@stencil/core';
 import { TabIconPosition } from './tabs.type';
+
+/**
+ * @slot icon - Slot for the tab icon (only 1 element allowed)
+ * @slot icon-active - Slot for the tab icon (only 1 element allowed)
+ */
 @Component({
   tag: 'go-tab',
   styleUrl: 'go-tab.scss',

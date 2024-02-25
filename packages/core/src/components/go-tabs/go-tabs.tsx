@@ -60,6 +60,20 @@ export class GoTabs {
     this.initialiseTabChildren();
   }
 
+  initIconSlot(goTab, slotName) {
+    const iconEl = goTab.querySelector(`[slot="${slotName}"]`);
+    if (!iconEl) {
+      return;
+    }
+    let iconSlot = null;
+    iconSlot = document.createElement('span');
+    iconSlot.setAttribute('aria-hidden', 'true'); // icons are decorative only
+    iconSlot.classList.add(`go-tab-${slotName}`);
+    iconEl.removeAttribute('slot');
+    moveEl(iconEl, iconSlot);
+    return iconSlot;
+  }
+
   initialiseTabChildren() {
     const children = Array.from(this.el.querySelectorAll('go-tab')) as HTMLGoTabElement[];
     if (children.length === 0) {
@@ -71,22 +85,15 @@ export class GoTabs {
       const panelId = tabId + '-panel';
       goTab.tabId = tabId;
       goTab.panelId = panelId;
-      const iconEl = goTab.querySelector('[slot="icon"]');
-      let iconSlot = null;
-
-      if (iconEl) {
-        iconSlot = document.createElement('span');
-        iconSlot.setAttribute('aria-hidden', 'true'); // icons are decorative only
-        iconSlot.classList.add('icon');
-        iconEl.removeAttribute('slot');
-        moveEl(iconEl, iconSlot);
-      }
+      const iconSlot = this.initIconSlot(goTab, 'icon');
+      const iconActiveSlot = this.initIconSlot(goTab, 'icon-active');
       return {
         tabId: goTab.tabId || tabId,
         panelId: goTab.panelId || panelId,
         label: goTab.label,
         active: goTab.active,
         iconSlot,
+        iconActiveSlot,
         iconPosition: goTab.iconPosition,
       };
     });

@@ -84,13 +84,19 @@ export class GoTablist {
     requestAnimationFrame(() => {
       this.activeTabRect = this.tabEls[this.activeIndex].getBoundingClientRect();
       this.tabsState.forEach((tab, i) => {
-        if (tab.iconSlot) {
-          if (tab.iconPosition === 'before') {
-            this.tabEls[i].prepend(tab.iconSlot);
-          }
-          if (tab.iconPosition === 'after') {
-            this.tabEls[i].append(tab.iconSlot);
-          }
+        // add icon container
+        if (!tab.iconSlot && !tab.iconActiveSlot) {
+          return;
+        }
+        const iconContainer = document.createElement('span');
+        iconContainer.classList.add('go-tab-icon-slot');
+        if (tab.iconSlot) iconContainer.append(tab.iconSlot);
+        if (tab.iconActiveSlot) iconContainer.append(tab.iconActiveSlot);
+        if (tab.iconPosition === 'before') {
+          this.tabEls[i].prepend(iconContainer);
+        }
+        if (tab.iconPosition === 'after') {
+          this.tabEls[i].append(iconContainer);
         }
       });
     });
@@ -300,7 +306,10 @@ export class GoTablist {
                     onClick={() => this.onTabClick(index)}
                     onKeyDown={(e) => this.onKeydown(e)}
                     key={index}
-                    class={{ active: tab.active, [`icon-${tab.iconPosition}`]: !!tab.iconPosition }}
+                    class={{
+                      'active': tab.active,
+                      'has-active-icon': !!tab.iconActiveSlot,
+                    }}
                     ref={(el) => this.tabEls.push(el)}>
                     <span>{tab.label}</span>
                   </button>

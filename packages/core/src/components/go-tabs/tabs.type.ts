@@ -4,6 +4,7 @@ export interface TabItem {
   label: string;
   active: boolean;
   iconSlot?: Element;
+  iconActiveSlot?: Element;
   iconPosition?: TabIconPosition;
 }
 

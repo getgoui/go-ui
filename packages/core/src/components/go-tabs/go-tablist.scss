@@ -113,7 +113,15 @@ go-tablist {
     color: var(--tab-text-color);
     font-weight: 500;
     @include transition(background-color, color);
-
+    .go-tab-icon-slot {
+      svg,
+      img {
+        display: block;
+      }
+    }
+    .go-tab-icon-active {
+      display: none;
+    }
     &:hover,
     &:focus {
       color: var(--tab-hover-text-color);
@@ -126,7 +134,14 @@ go-tablist {
       background: var(--tab-active-bg-color);
       color: var(--tab-active-color);
       text-decoration: none;
-      text-shadow: 0 0 1px currentColor;
+      &.has-active-icon {
+        .go-tab-icon {
+          display: none;
+        }
+      }
+      .go-tab-icon-active {
+        display: block;
+      }
     }
   }
 
