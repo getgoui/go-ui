@@ -55,6 +55,7 @@ export const GoSpinner = /*@__PURE__*/createReactComponent<JSX.GoSpinner, HTMLGo
 export const GoSwitch = /*@__PURE__*/createReactComponent<JSX.GoSwitch, HTMLGoSwitchElement>('go-switch');
 export const GoTab = /*@__PURE__*/createReactComponent<JSX.GoTab, HTMLGoTabElement>('go-tab');
 export const GoTableWrapper = /*@__PURE__*/createReactComponent<JSX.GoTableWrapper, HTMLGoTableWrapperElement>('go-table-wrapper');
+export const GoTablist = /*@__PURE__*/createReactComponent<JSX.GoTablist, HTMLGoTablistElement>('go-tablist');
 export const GoTabs = /*@__PURE__*/createReactComponent<JSX.GoTabs, HTMLGoTabsElement>('go-tabs');
 export const GoTextarea = /*@__PURE__*/createReactComponent<JSX.GoTextarea, HTMLGoTextareaElement>('go-textarea');
 export const GoToTop = /*@__PURE__*/createReactComponent<JSX.GoToTop, HTMLGoToTopElement>('go-to-top');

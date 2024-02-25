@@ -459,7 +459,8 @@ export const GoTab = /*@__PURE__*/ defineContainer<JSX.GoTab>('go-tab', undefine
   'label',
   'active',
   'tabId',
-  'panelId'
+  'panelId',
+  'iconPosition'
 ]);
 
 
@@ -470,11 +471,25 @@ export const GoTableWrapper = /*@__PURE__*/ defineContainer<JSX.GoTableWrapper>(
 ]);
 
 
+export const GoTablist = /*@__PURE__*/ defineContainer<JSX.GoTablist>('go-tablist', undefined, [
+  'vertical',
+  'label',
+  'auto',
+  'bottom',
+  'fill',
+  'items',
+  'justify',
+  'activated'
+]);
+
+
 export const GoTabs = /*@__PURE__*/ defineContainer<JSX.GoTabs>('go-tabs', undefined, [
   'tabGroupLabel',
   'vertical',
-  'manual',
-  'tabChange'
+  'auto',
+  'justify',
+  'fill',
+  'tabactivated'
 ]);
 
 
