@@ -158,19 +158,19 @@ importers:
         version: 5.1.1(release-it@15.11.0)
       '@stencil-community/postcss':
         specifier: ^2.2.0
-        version: 2.2.0(@stencil/core@4.12.2)
+        version: 2.2.0(@stencil/core@4.12.3)
       '@stencil/core':
-        specifier: ^4.12.2
-        version: 4.12.2
+        specifier: ^4.12.3
+        version: 4.12.3
       '@stencil/react-output-target':
         specifier: ^0.5.3
-        version: 0.5.3(@stencil/core@4.12.2)
+        version: 0.5.3(@stencil/core@4.12.3)
       '@stencil/sass':
         specifier: ^3.0.4
-        version: 3.0.4(@stencil/core@4.12.2)
+        version: 3.0.4(@stencil/core@4.12.3)
       '@stencil/vue-output-target':
         specifier: ^0.8.6
-        version: 0.8.6(@stencil/core@4.12.2)
+        version: 0.8.6(@stencil/core@4.12.3)
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -1932,47 +1932,49 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@stencil-community/postcss@2.2.0(@stencil/core@4.12.2):
+  /@stencil-community/postcss@2.2.0(@stencil/core@4.12.3):
     resolution: {integrity: sha512-PuPdjqgF6HdvSLwS6fpLf1TRzd3bd6zqpsICCUA0u9sxPnwrsIpx1xYyA/K9hSWrmyUg0WhHPvkX9k26N5DCnw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >=4.0.0'
     dependencies:
-      '@stencil/core': 4.12.2
+      '@stencil/core': 4.12.3
       postcss: 8.4.31
     dev: true
 
   /@stencil/core@2.22.1:
     resolution: {integrity: sha512-L4EsWLXYkg24BfrR3aS1df3BSkH0RFyza+Tu84MaYoF2csiKTJxDTZuFHSnJeF8UdgzV7CBfnsIEV6r3s0+h3g==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
+    hasBin: true
     dev: false
 
-  /@stencil/core@4.12.2:
-    resolution: {integrity: sha512-WEMpoqwMV4hY/ab2z9NxRhSeZwuKEugjyn6Vd+qA9xqZh6VNUL27QbP8vCa7IeqD4Zql4JBtKu3lVuBHutWE6w==}
+  /@stencil/core@4.12.3:
+    resolution: {integrity: sha512-9XkE9i2aXPlApMNeq3tbVHKx0eAfDc7QGyIl6t5NMuQFTOGL5Xd1soF38d+hCIDpUoUUtY7jXWg+iFrlrMzQhg==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
     dev: true
 
-  /@stencil/react-output-target@0.5.3(@stencil/core@4.12.2):
+  /@stencil/react-output-target@0.5.3(@stencil/core@4.12.3):
     resolution: {integrity: sha512-68jwRp35CjAcwhTJ9yFD/3n+jrHOqvEH2jreVuPVvZK+4tkhPlYlwz0d1E1RlF3jyifUSfdkWUGgXIEy8Fo3yw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.12.2
+      '@stencil/core': 4.12.3
     dev: true
 
-  /@stencil/sass@3.0.4(@stencil/core@4.12.2):
+  /@stencil/sass@3.0.4(@stencil/core@4.12.3):
     resolution: {integrity: sha512-k1dP0A2QBx62m250FATc1hErXxXs6Jnf4TBxdL1C/dc32Kzz2n5aCT4SodBz0ebT5WMnITauZyFqYxzCzDoKag==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.12.2
+      '@stencil/core': 4.12.3
     dev: true
 
-  /@stencil/vue-output-target@0.8.6(@stencil/core@4.12.2):
+  /@stencil/vue-output-target@0.8.6(@stencil/core@4.12.3):
     resolution: {integrity: sha512-B1gQW8FWeU7x/KBPm9R28jYFGN5NsZTZR4jwfDMhKBmU1Q2dIxFY52ARhbrfj5tJQxKoxr2tQJD2S14r9t1v7w==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.12.2
+      '@stencil/core': 4.12.3
     dev: true
 
   /@szmarczak/http-timer@1.1.2:
@@ -2747,6 +2749,7 @@ packages:
   /autoprefixer@10.4.13(postcss@8.4.21):
     resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
     engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
@@ -7216,6 +7219,7 @@ packages:
   /jest-cli@29.7.0(@types/node@20.11.19):
     resolution: {integrity: sha512-OVVobw2IubN/GSYsxETi+gOe7Ka59EFMR/twOU3Jb2GnKKeMGJB5SGUUrEz3SFVmJASUdZUzy83sLNNQ2gZslg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+    hasBin: true
     peerDependencies:
       node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
     peerDependenciesMeta:
@@ -7924,6 +7928,7 @@ packages:
   /jest@29.7.0(@types/node@20.11.19):
     resolution: {integrity: sha512-NIy3oAFp9shda19hy4HK0HRTWKtPJmGdnvywu01nOqNC2vZg+Z+fvJDxpMQA88eb2I9EcafcdjYgsDthnYTvGw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+    hasBin: true
     peerDependencies:
       node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
     peerDependenciesMeta:
@@ -9161,6 +9166,7 @@ packages:
 
   /nx@14.6.5:
     resolution: {integrity: sha512-egV8Zrec+0m+27wTENe9W/JKRMkBDx1N0xaFzKjL0WKj5WIe4asao5uwTJEwqi9iQyiijExxUFVU5MNGuF2c+A==}
+    hasBin: true
     requiresBuild: true
     peerDependencies:
       '@swc-node/register': ^1.4.2
@@ -11631,6 +11637,7 @@ packages:
   /stylelint-config-prettier@8.0.2(stylelint@14.16.1):
     resolution: {integrity: sha512-TN1l93iVTXpF9NJstlvP7nOu9zY2k+mN0NSFQ/VEGz15ZIP9ohdDZTtCWHs5LjctAhSAzaILULGbgiM0ItId3A==}
     engines: {node: '>= 10', npm: '>= 5'}
+    hasBin: true
     peerDependencies:
       stylelint: '>=11.0.0'
     dependencies:
@@ -12056,6 +12063,7 @@ packages:
   /ts-node@9.1.1(typescript@4.9.4):
     resolution: {integrity: sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg==}
     engines: {node: '>=10.0.0'}
+    hasBin: true
     peerDependencies:
       typescript: '>=2.7'
     dependencies:
@@ -12263,6 +12271,7 @@ packages:
 
   /update-browserslist-db@1.0.10(browserslist@4.21.4):
     resolution: {integrity: sha512-OztqDenkfFkbSG+tRxBeAnCVPckDBcvibKd35yDONx6OU8N7sqgwc7rCbkJ/WcYtVRZ4ba68d6byhC21GFh7sQ==}
+    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
@@ -12273,6 +12282,7 @@ packages:
 
   /update-browserslist-db@1.0.13(browserslist@4.21.3):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
+    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
@@ -12283,6 +12293,7 @@ packages:
 
   /update-browserslist-db@1.0.13(browserslist@4.22.2):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
+    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
@@ -12425,6 +12436,7 @@ packages:
   /vite@3.2.3:
     resolution: {integrity: sha512-h8jl1TZ76eGs3o2dIBSsvXDLb1m/Ec1iej8ZMdz+PsaFUsftZeWe2CZOI3qogEsMNaywc17gu0q6cQDzh/weCQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
     peerDependencies:
       '@types/node': '>= 14'
       less: '*'
@@ -12457,6 +12469,7 @@ packages:
   /vite@4.3.9(@types/node@20.3.3)(sass@1.63.6):
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
     peerDependencies:
       '@types/node': '>= 14'
       less: '*'
@@ -12513,6 +12526,7 @@ packages:
 
   /vue-tsc@1.8.22(typescript@5.1.6):
     resolution: {integrity: sha512-j9P4kHtW6eEE08aS5McFZE/ivmipXy0JzrnTgbomfABMaVKx37kNBw//irL3+LlE3kOo63XpnRigyPC3w7+z+A==}
+    hasBin: true
     peerDependencies:
       typescript: '*'
     dependencies:

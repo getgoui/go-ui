@@ -127,8 +127,6 @@ export class GoTablist {
     this.deactivateTabs();
     const tabId = tabEl.getAttribute('id');
 
-    this.activeTabRect = tabEl.getBoundingClientRect();
-
     this.tabsState = this.tabsState.map((tab, i) => {
       if (tab.tabId === tabId) {
         this.activeIndex = i;
@@ -149,6 +147,10 @@ export class GoTablist {
     this.activated.emit({
       index: this.activeIndex,
       tabEl,
+    });
+
+    requestAnimationFrame(() => {
+      this.activeTabRect = tabEl.getBoundingClientRect();
     });
   }
 
