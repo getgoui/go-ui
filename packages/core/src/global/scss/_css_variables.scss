@@ -32,8 +32,10 @@ Default Go UI CSS variables
   //////////////////////
   // Font family
   //////////////////////
-  --go-heading-font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --go-body-font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --go-heading-font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  --go-body-font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
 
   //////////////////////
   // Focus
@@ -51,6 +53,7 @@ Default Go UI CSS variables
   --go-color-code-bg: var(--go-color-neutral-100);
   --go-color-code-fg: var(--go-color-neutral-800);
 
+  --go-link-fw: 500;
   //////////////////////
   // Transitions
   //////////////////////

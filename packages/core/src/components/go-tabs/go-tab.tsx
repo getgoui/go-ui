@@ -1,4 +1,10 @@
-import { Component, h, Prop, Element, Host } from '@stencil/core';
+import { Component, h, Prop, Element, Host, Method } from '@stencil/core';
+import { TabIconPosition } from './tabs.type';
+
+/**
+ * @slot icon - Slot for the tab icon (only 1 element allowed)
+ * @slot icon-active - Slot for the tab icon (only 1 element allowed)
+ */
 @Component({
   tag: 'go-tab',
   styleUrl: 'go-tab.scss',
@@ -6,6 +12,9 @@ import { Component, h, Prop, Element, Host } from '@stencil/core';
 export class GoTab {
   @Element() el: HTMLElement;
 
+  /**
+   * Label displayed on the tab
+   */
   @Prop() label: string;
 
   /**
@@ -26,7 +35,12 @@ export class GoTab {
    */
   @Prop({ mutable: true }) panelId?: string;
 
-  componentWillLoad() {}
+  @Prop() iconPosition?: TabIconPosition = 'before';
+
+  @Method()
+  async setActive(active: boolean) {
+    this.active = active;
+  }
 
   render() {
     const { panelId, tabId, active } = this;

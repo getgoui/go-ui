@@ -1,17 +1,8 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
+import { ActiveTabWithPanel, JustifyOption, TabItem } from './tabs.type';
+import { moveEl } from '@/utils';
 
-export interface TabChild {
-  tabId: string;
-  panelId: string;
-  label: string;
-  active: boolean;
-}
-export interface ActivatedTab {
-  index: number;
-  tabEl: HTMLElement;
-  panelEl: HTMLElement;
-}
 @Component({
   tag: 'go-tabs',
   styleUrl: 'go-tabs.scss',
@@ -28,21 +19,35 @@ export class GoTabs {
   /**
    * Set tabs orientation to vertical
    */
-  @Prop() vertical: boolean = false;
+  @Prop() vertical?: boolean = false;
 
   /**
-   * By default, tabs are automatically activated and their panel is displayed when they receive focus.
-   * If `manual` is true, users need to activate a tab by pressing the Enter or Space key.
+   * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated.
+   * if `auto` is true, tabs are automatically activated when they receive focus.
    */
-  @Prop() manual: boolean = false;
+  @Prop() auto?: boolean = false;
 
   /**
-   * tab change event
+   * Applies justify-content property to tablist (horizontal only)
+   * ie. `justify="between"` applies `justify-content: space-between`
+   */
+  @Prop() justify?: JustifyOption = 'normal';
+
+  /**
+   * fill available space (horizontal only)
+   */
+  @Prop() fill?: boolean = false;
+
+  /**
+   * Tab activated event
    * @param ActivatedTab {index, tabEl, panelEl}
    */
-  @Event() tabChange: EventEmitter<ActivatedTab>;
+  @Event({
+    eventName: 'tabactivated',
+  })
+  tabActivated: EventEmitter<ActiveTabWithPanel>;
 
-  @State() tabChildren: TabChild[];
+  @State() tabChildren: TabItem[] = [];
 
   @State() activeTabRect: DOMRect;
 
@@ -52,10 +57,24 @@ export class GoTabs {
   tablistEl: HTMLElement;
 
   componentWillLoad() {
-    this.initialiseTabs();
+    this.initialiseTabChildren();
   }
 
-  initialiseTabs() {
+  initIconSlot(goTab, slotName) {
+    const iconEl = goTab.querySelector(`[slot="${slotName}"]`);
+    if (!iconEl) {
+      return;
+    }
+    let iconSlot = null;
+    iconSlot = document.createElement('span');
+    iconSlot.setAttribute('aria-hidden', 'true'); // icons are decorative only
+    iconSlot.classList.add(`go-tab-${slotName}`);
+    iconEl.removeAttribute('slot');
+    moveEl(iconEl, iconSlot);
+    return iconSlot;
+  }
+
+  initialiseTabChildren() {
     const children = Array.from(this.el.querySelectorAll('go-tab')) as HTMLGoTabElement[];
     if (children.length === 0) {
       return;
@@ -66,11 +85,16 @@ export class GoTabs {
       const panelId = tabId + '-panel';
       goTab.tabId = tabId;
       goTab.panelId = panelId;
+      const iconSlot = this.initIconSlot(goTab, 'icon');
+      const iconActiveSlot = this.initIconSlot(goTab, 'icon-active');
       return {
         tabId: goTab.tabId || tabId,
         panelId: goTab.panelId || panelId,
         label: goTab.label,
         active: goTab.active,
+        iconSlot,
+        iconActiveSlot,
+        iconPosition: goTab.iconPosition,
       };
     });
     this.panels = children;
@@ -82,227 +106,37 @@ export class GoTabs {
     }
   }
 
-  componentDidLoad() {
-    if (!this.tabChildren?.length) {
-      return;
-    }
-    // load rect for indicator
-    this.activeIndex = this.tabChildren.findIndex((tab) => tab.active);
-    setTimeout(() => {
-      this.activeTabRect = this.tabs[this.activeIndex].getBoundingClientRect();
-      this.activateTab(this.tabs[this.activeIndex], true, true);
-    }, 10);
-  }
+  activateTab(event) {
+    const { index, tabEl } = event.detail;
 
-  deactivateTabs() {
-    this.panels.forEach((panel) => (panel.active = false));
-    this.tabChildren = this.tabChildren.map((tab) => {
-      return {
-        ...tab,
-        active: false,
-      };
-    });
-  }
-
-  // Activates any given tab panel
-  activateTab(tabEl: HTMLElement, setFocus = true, isOnload = false) {
-    // if tab is already active, do nothing
-    if (tabEl.getAttribute('aria-selected') === 'true') {
-      if (isOnload) {
-        // emit event
-        this.tabChange.emit({
-          index: this.activeIndex,
-          tabEl,
-          panelEl: this.panels[this.activeIndex],
-        });
+    this.panels.forEach((panel, i) => {
+      if (i === index) {
+        panel.setActive(true);
+      } else {
+        panel.setActive(false);
       }
-
-      return;
-    }
-
-    this.deactivateTabs();
-    const tabId = tabEl.getAttribute('id');
-
-    this.activeTabRect = tabEl.getBoundingClientRect();
-
-    this.tabChildren = this.tabChildren.map((tab, i) => {
-      if (tab.tabId === tabId) {
-        this.panels[i].active = true;
-        this.activeIndex = i;
-        return {
-          ...tab,
-          active: true,
-        };
-      }
-      return tab;
     });
 
-    // Set focus when required
-    if (setFocus) {
-      tabEl.focus();
-    }
-
-    // emit event
-    this.tabChange.emit({
-      index: this.activeIndex,
+    this.tabActivated.emit({
+      index,
       tabEl,
-      panelEl: this.panels[this.activeIndex],
+      panelEl: this.panels[index] ?? null,
     });
-  }
-
-  // When a tab is clicked, activateTab is fired to activate it
-  onTabClick(e) {
-    const tabEl = e.target as HTMLElement;
-    this.activateTab(tabEl, false);
-  }
-
-  /**********************************
-   * Keyboard support
-   ***********************************/
-
-  onKeydown(event: KeyboardEvent) {
-    const key = event.code;
-    switch (key) {
-      case 'End':
-        event.preventDefault();
-        // Activate last tab
-        if (this.manual) {
-          this.focusLastTab();
-        } else {
-          this.activateTab(this.tabs[this.tabs.length - 1]);
-        }
-        break;
-      case 'Home':
-        event.preventDefault();
-        // Activate first tab
-        if (this.manual) {
-          this.focusFirstTab();
-        } else {
-          this.activateTab(this.tabs[0]);
-        }
-        break;
-
-      // Up and down are in keydown
-      // because we need to prevent page scroll >:)
-      case 'ArrowUp':
-      case 'ArrowDown':
-        if (this.vertical) {
-          event.preventDefault();
-          this.switchTabOnArrowPress(event);
-        }
-        break;
-      case 'ArrowLeft':
-      case 'ArrowRight':
-        event.preventDefault();
-        this.switchTabOnArrowPress(event);
-        break;
-    }
-  }
-
-  // Add or subtract depending on key pressed
-  private direction = {
-    ArrowUp: -1,
-    ArrowLeft: -1,
-    ArrowDown: 1,
-    ArrowRight: 1,
-  };
-
-  // Either focus the next, previous, first, or last tab
-  // depending on key pressed
-  switchTabOnArrowPress(event): void {
-    var pressed = event.code;
-    const currentIndex = this.tabs.findIndex((tab) => event.target.isSameNode(tab));
-    if (this.direction[pressed] && currentIndex !== -1) {
-      const targetIndex = currentIndex + this.direction[pressed];
-      if (this.tabs[targetIndex]) {
-        if (this.manual) {
-          this.tabs[targetIndex].focus();
-          return;
-        }
-        this.activateTab(this.tabs[targetIndex]);
-        return;
-      }
-
-      // target index out of range
-      if (pressed === 'ArrowLeft' || pressed === 'ArrowUp') {
-        if (this.manual) {
-          this.focusLastTab();
-          return;
-        }
-        this.activateTab(this.tabs[this.tabs.length - 1]);
-        return;
-      }
-
-      if (pressed === 'ArrowRight' || pressed == 'ArrowDown') {
-        if (this.manual) {
-          this.focusFirstTab();
-          return;
-        }
-        this.activateTab(this.tabs[0]);
-        return;
-      }
-    }
-  }
-
-  // Focus on the first tab
-  focusFirstTab() {
-    this.tabs[0].focus();
-  }
-
-  // Focus on the last tab
-  focusLastTab() {
-    this.tabs[this.tabs.length - 1].focus();
   }
 
   render() {
-    const { tabChildren, tabGroupLabel, vertical, activeTabRect, tablistEl } = this;
-
-    const tablistScrollLeft = tablistEl?.scrollLeft || 0;
-    const tablistScrollTop = tablistEl?.scrollTop || 0;
-    const tablistRect = tablistEl?.getBoundingClientRect();
-
-    const activeOffsetLeft = tablistScrollLeft - tablistRect?.left || 0;
-    const activeOffsetTop = tablistScrollTop - tablistRect?.top || 0;
+    const { tabChildren, tabGroupLabel, vertical, auto, fill, justify } = this;
 
     return (
-      <Host
-        class={{ tabs: true, vertical }}
-        style={
-          vertical
-            ? {
-                '--tabs-active-indicator-top': `${activeTabRect?.top + activeOffsetTop || 0}px`,
-                '--tabs-active-indicator-height': `${activeTabRect?.height || 0}px`,
-              }
-            : {
-                '--tabs-active-indicator-left': `${activeTabRect?.left + activeOffsetLeft || 0}px`,
-                '--tabs-active-indicator-width': `${activeTabRect?.width || 0}px`,
-              }
-        }>
-        <div role="tablist" ref={(el) => (this.tablistEl = el)} aria-label={tabGroupLabel} aria-orientation={vertical ? 'vertical' : undefined}>
-          {tabChildren
-            ? tabChildren.map((tab, index) => {
-                return (
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={tab.active ? 'true' : 'false'}
-                    tabindex={tab.active ? undefined : '-1'}
-                    aria-controls={tab.panelId}
-                    id={tab.tabId}
-                    onClick={(e) => this.onTabClick(e)}
-                    onKeyDown={(e) => this.onKeydown(e)}
-                    key={index}
-                    class={{ active: tab.active }}
-                    ref={(el) => this.tabs.push(el)}>
-                    {tab.label}
-                  </button>
-                );
-              })
-            : null}
-          <div class="tabs-active-indicator-track" aria-hidden="true">
-            <div class="tabs-active-indicator"></div>
-          </div>
-        </div>
+      <Host class={{ vertical }}>
+        <go-tablist
+          items={tabChildren}
+          label={tabGroupLabel}
+          auto={auto}
+          fill={fill}
+          vertical={vertical}
+          justify={justify}
+          onActivated={(e) => this.activateTab(e)}></go-tablist>
         <slot></slot>
       </Host>
     );
