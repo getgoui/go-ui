@@ -6,6 +6,7 @@ export interface TabItem {
   iconSlot?: Element;
   iconActiveSlot?: Element;
   iconPosition?: TabIconPosition;
+  iconOnly?: boolean;
 }
 
 export interface ActiveTab {

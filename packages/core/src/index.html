@@ -29,22 +29,22 @@
 
     <!-- keep this sandbox empty before pushing changes -->
     <div class="container">
-      <go-tabs fill vertical>
-        <go-tab label="Icon tab" icon-position="before">
+      <go-tabs fill>
+        <go-tab label="Icon tab" icon-position="before" icon-only>
           <go-icon name="home" slot="icon"></go-icon>
           <p>
             You can use <code>slot="icon"</code> to add an icon to tab (by default, icon is placed before the label
             text)
           </p>
         </go-tab>
-        <go-tab label="Icon tab" icon-position="after">
-          <go-icon name="star" slot="icon-active"></go-icon>
+        <go-tab label="Icon tab" icon-position="after" icon-only>
+          <go-icon name="star" slot="icon"></go-icon>
           <p>
             <code>icon-position="after"</code> puts icon after the label, you can use <code>slot="icon-active"</code> to
             specify the icon that will be shown when the tab is active
           </p>
         </go-tab>
-        <go-tab label="Third tab">
+        <go-tab label="Third tab" icon-only>
           <svg fill="currentColor" width="2rem" height="2rem" slot="icon" viewBox="0 0 500 500">
             <path
               d="M302.5 131.9c-29.3-28.1-69.1-45.3-112.9-45.3-90.3 0-163.4 73.1-163.4 163.4s73.2 163.4 163.4 163.4c43.8 0 83.6-17.2 112.9-45.3L184.1 250l118.4-118.1zm-171.2 24.6c0-20.8 16.9-37.7 37.7-37.7s37.7 16.9 37.7 37.7c0 20.8-16.9 37.7-37.7 37.7s-37.7-16.8-37.7-37.7z" />

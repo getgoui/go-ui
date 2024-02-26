@@ -247,7 +247,6 @@ export class GoTablist {
       // target index out of range
       if (pressed === 'ArrowLeft' || pressed === 'ArrowUp') {
         if (!this.auto) {
-          console.log('yo!!');
           this.focusLastTab();
           return;
         }
@@ -313,7 +312,7 @@ export class GoTablist {
                       'has-active-icon': !!tab.iconActiveSlot,
                     }}
                     ref={(el) => this.tabEls.push(el)}>
-                    <span>{tab.label}</span>
+                    <span class={{ 'visually-hidden': tab.iconOnly }}>{tab.label}</span>
                   </button>
                 );
               })

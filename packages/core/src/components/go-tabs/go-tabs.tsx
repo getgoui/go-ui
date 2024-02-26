@@ -81,20 +81,27 @@ export class GoTabs {
     }
 
     this.tabChildren = children.map((goTab) => {
-      const tabId = uniqueId('tab-');
-      const panelId = tabId + '-panel';
-      goTab.tabId = tabId;
-      goTab.panelId = panelId;
+      if (!goTab.tabId) {
+        const tId = uniqueId('tab-');
+        goTab.tabId = tId;
+      }
+      if (!goTab.panelId) {
+        const pId = goTab.tabId + '-panel';
+        goTab.panelId = pId;
+      }
       const iconSlot = this.initIconSlot(goTab, 'icon');
       const iconActiveSlot = this.initIconSlot(goTab, 'icon-active');
+
+      const { tabId, panelId, label, active, iconPosition, iconOnly } = goTab;
       return {
-        tabId: goTab.tabId || tabId,
-        panelId: goTab.panelId || panelId,
-        label: goTab.label,
-        active: goTab.active,
+        tabId,
+        panelId,
+        label,
+        active,
+        iconPosition,
+        iconOnly,
         iconSlot,
         iconActiveSlot,
-        iconPosition: goTab.iconPosition,
       };
     });
     this.panels = children;

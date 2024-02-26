@@ -1140,6 +1140,13 @@ export namespace Components {
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
          */
         "active": boolean;
+        /**
+          * Only show `icon` and `icon-active` slot content "Label" prop is still required for screen reader announcement, but will not be shown visually
+         */
+        "iconOnly"?: boolean;
+        /**
+          * Position of the icon, either 'before' or 'after'
+         */
         "iconPosition"?: TabIconPosition;
         /**
           * Label displayed on the tab
@@ -3060,6 +3067,13 @@ declare namespace LocalJSX {
           * If this tab is currently active if multiple `go-tab` are active in the same `go-tabs`, first one is active.
          */
         "active"?: boolean;
+        /**
+          * Only show `icon` and `icon-active` slot content "Label" prop is still required for screen reader announcement, but will not be shown visually
+         */
+        "iconOnly"?: boolean;
+        /**
+          * Position of the icon, either 'before' or 'after'
+         */
         "iconPosition"?: TabIconPosition;
         /**
           * Label displayed on the tab

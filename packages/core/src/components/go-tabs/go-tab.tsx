@@ -35,7 +35,16 @@ export class GoTab {
    */
   @Prop({ mutable: true }) panelId?: string;
 
+  /**
+   * Position of the icon, either 'before' or 'after'
+   */
   @Prop() iconPosition?: TabIconPosition = 'before';
+
+  /**
+   * Only show `icon` and `icon-active` slot content
+   * "Label" prop is still required for screen reader announcement, but will not be shown visually
+   */
+  @Prop() iconOnly?: boolean = false;
 
   @Method()
   async setActive(active: boolean) {
