@@ -199,7 +199,8 @@ go-tablist {
 @include theme-dark() {
   go-tablist {
     --tab-text-color: var(--go-color-neutral-700);
-    --tab-hover-text-color: var(--go-color-neutral-900);
+    --tab-hover-bg-color: var(--go-color-neutral-200);
+    --tab-hover-text-color: var(--go-color-darkest);
     --tab-active-color: var(--go-color-primary-800);
   }
 }
