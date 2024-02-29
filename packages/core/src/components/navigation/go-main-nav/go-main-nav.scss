@@ -1,5 +1,12 @@
 go-main-nav {
   /**
+    @prop --nav-outer-padding:
+      Outer padding between container and nav items
+      - default: 0.5rem
+  */
+  --nav-outer-padding: 0.5rem;
+
+  /**
     @prop --nav-border-top:
       top border
       - default: 1px solid var(--go-color-neutral-200)
@@ -11,22 +18,55 @@ go-main-nav {
       - default: 1px solid var(--go-color-neutral-200)
   */
   --nav-border-bottom: 1px solid var(--go-color-neutral-200);
+  /**
+    @prop --nav-bg-color:
+    background of nav container
+    - default: transparent
+  */
   --nav-bg-color: transparent;
+  /**
+    @prop --nav-shadow:
+    shadow of nav container
+    - default: var(--shadow-2)
+  */
   --nav-shadow: var(--shadow-2);
-  --nav-item-text-color: var(--go-color-darkest);
+  /**
+    @prop --nav-item-fw:
+    nav item font weight
+    - default: 500
+  */
+  --nav-item-fw: 500;
+  --nav-item-text-color: var(--go-color-neutral-800);
+  --nav-item-hover-text-color: var(--go-color-darkest);
+  --nav-item-active-text-color: var(--go-color-darkest);
+  --nav-item-current-text-color: var(--go-color-lightest);
   --nav-item-bg-color: var(--nav-bg-color);
   --nav-item-hover-bg-color: var(--go-color-neutral-200);
   --nav-item-active-bg-color: var(--go-color-primary-100);
-  --nav-item-current-bg-color: var(--nav-item-bg-color);
-  --nav-item-padding: var(--go-size--1) var(--go-size-0);
+  --nav-item-current-bg-color: var(--go-color-neutral-800);
+  --nav-item-current-fw: 700;
+
+  --nav-item-gap: 0.5rem;
+  --nav-item-padding: 0.25em 0.5em;
+  --nav-item-radius: 0.25em;
   --nav-item-icon-gap: 0.5rem;
-  --nav-item-current-bar-width: 4px;
-  --nav-item-current-bar-color: var(--go-color-secondary-700);
-  --submenu-bg-color: var(--nav-item-active-bg-color);
+  --nav-item-current-border-width: 2px;
+  --nav-item-current-border-color: var(--go-color-primary-600);
+
+  /**
+    @prop --submenu-width:
+    width of submenu
+    - default: auto
+  */
+  --submenu-width: auto;
+  --submenu-bg-color: var(--go-color-lightest);
   --submenu-border-radius: var(--radius-2);
+  --submenu-border-width: 2px;
+  --submenu-border-color: red;
 
   @include theme-dark() {
     --submenu-bg-color: var(--go-color-neutral-500);
+    --submenu-border-color: var(--go-color-neutral-800);
   }
   --submenu-padding-y: var(--go-size-0);
   --submenu-padding-x: var(--go-size-1);
@@ -53,7 +93,6 @@ go-main-nav {
   */
   --submenu-indent: 0.5rem;
 
-
   /**
     @prop --submenu-tail-size:
       submenu tail size
@@ -71,6 +110,7 @@ go-main-nav {
   display: block;
   box-shadow: var(--nav-shadow);
   border-top: var(--nav-border-top);
+  padding: var(--nav-outer-padding);
   ul {
     list-style: none;
   }
@@ -81,6 +121,7 @@ go-main-nav {
       padding: 0;
       display: flex;
       flex-direction: row;
+      gap: var(--nav-item-gap);
       align-items: stretch;
       flex-wrap: nowrap;
       position: relative;
@@ -89,6 +130,7 @@ go-main-nav {
       .nav-item-inner {
         @include reset-btn;
 
+        font-weight: var(--nav-item-fw);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -97,12 +139,19 @@ go-main-nav {
         color: var(--nav-item-text-color);
         text-decoration: none;
         background: var(--nav-item-bg-color);
-        border-bottom: var(--nav-item-current-bar-width) solid transparent;
-        @include transition(background);
+        border: var(--nav-item-current-border-width) solid transparent;
+        border-radius: var(--nav-item-radius);
+        @include transition(background, border-color);
         &:hover,
         &:focus {
-          border-radius: var(--radius-2);
+          border-radius: var(--nav-item-radius);
           background: var(--nav-item-hover-bg-color);
+          color: var(--nav-item-hover-text-color);
+        }
+
+        &:active {
+          background: var(--nav-item-active-bg-color);
+          color: var(--nav-item-active-text-color);
         }
 
         svg {
@@ -124,8 +173,9 @@ go-main-nav {
       &.current {
         .nav-item-inner {
           --nav-item-bg-color: var(--nav-item-current-bg-color);
-
-          border-bottom-color: var(--nav-item-current-bar-color);
+          // border-color: var(--nav-item-current-border-color);
+          color: var(--nav-item-current-text-color);
+          font-weight: var(--nav-item-current-fw);
         }
       }
 
@@ -137,19 +187,21 @@ go-main-nav {
 
       // new structure
       .submenu-container {
-
         @include transition(opacity, visibility);
+        --submenu-border: var(--submenu-border-width) solid var(--submenu-border-color);
 
         visibility: hidden;
         opacity: 0;
         position: absolute;
         top: calc(100% + var(--submenu-tail-size));
         max-width: 100%;
+        width: var(--submenu-width);
         z-index: var(--submenu-z-index);
         box-shadow: var(--nav-shadow);
         padding: var(--submenu-padding-y) var(--submenu-padding-x);
         background: var(--submenu-bg-color);
         border-radius: var(--submenu-border-radius);
+        border: var(--submenu-border);
 
         &::before {
           content: '';
@@ -160,6 +212,8 @@ go-main-nav {
           top: 0;
           left: calc(var(--submenu-tail-size) + 5px);
           transform: translate(-50%, -50%) rotate(45deg);
+          border: var(--submenu-border);
+          z-index: 9;
         }
 
         .submenu-header {
