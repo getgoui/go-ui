@@ -53,7 +53,9 @@ export class GoFooter {
   componentWillLoad() {
     this.navItems = parseItems(this.links);
     if (this.navItems?.length > 0 && !this.navLabel) {
-      warning('Please add a unique "nav-label" in order to put navigation items into the nav landmark for better accessibility.');
+      warning(
+        'Please add a unique "nav-label" in order to put navigation items into the nav landmark for better accessibility.',
+      );
     }
 
     // check if copyright slot is empty

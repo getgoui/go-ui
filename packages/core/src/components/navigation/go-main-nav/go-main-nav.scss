@@ -1,21 +1,20 @@
 go-main-nav {
   /**
     @prop --nav-outer-padding:
-      Outer padding between container and nav items
-      - default: 0.5rem
+    Outer padding between container and nav items
+    - default: 0.5rem
   */
   --nav-outer-padding: 0.5rem;
-
   /**
     @prop --nav-border-top:
-      top border
-      - default: 1px solid var(--go-color-neutral-200)
+    Navigation bar top border
+    - default: 1px solid var(--go-color-neutral-200)
   */
   --nav-border-top: 1px solid var(--go-color-neutral-200);
   /**
     @prop --nav-border-bottom:
-      bottom border
-      - default: 1px solid var(--go-color-neutral-200)
+    avigation barbottom border
+    - default: 1px solid var(--go-color-neutral-200)
   */
   --nav-border-bottom: 1px solid var(--go-color-neutral-200);
   /**
@@ -36,28 +35,114 @@ go-main-nav {
     - default: 500
   */
   --nav-item-fw: 500;
-
+  /**
+    @prop --nav-item-text-color:
+      text color of nav items
+      - default: var(--go-color-neutral-800)
+  */
   --nav-item-text-color: var(--go-color-neutral-800);
+  /**
+    @prop --nav-item-bg-color:
+      background color of nav items
+      - default: var(--nav-bg-color) (transparent)
+  */
   --nav-item-bg-color: var(--nav-bg-color);
 
+  /**
+    @prop --nav-item-hover-text-color:
+      text color of nav items on hover
+      - default: var(--go-color-darkest)
+  */
   --nav-item-hover-text-color: var(--go-color-darkest);
+
+  /**
+    @prop --nav-item-hover-bg-color:
+      background color of nav items on hover
+      - default: var(--go-color-neutral-200)
+  */
   --nav-item-hover-bg-color: var(--go-color-neutral-200);
 
+  /**
+    @prop --nav-item-active-text-color:
+      text color of nav items when active
+      - default: var(--go-color-darkest)
+  */
   --nav-item-active-text-color: var(--go-color-darkest);
-  --nav-item-active-bg-color: var(--go-color-neutral-200);
 
+  /**
+    @prop --nav-item-active-bg-color:
+      background color of nav items when active
+      - default: var(--go-color-neutral-200)
+  */
+  --nav-item-active-bg-color: var(--go-color-neutral-200);
+  /**
+    @prop --nav-item-current-text-color:
+      text color of nav items when current (highlighted)
+      - default: var(--go-color-neutral-100)
+  */
   --nav-item-current-text-color: var(--go-color-neutral-100);
+  /**
+    @prop --nav-item-current-bg-color:
+      background color of nav items when current (highlighted)
+      - default: var(--go-color-neutral-900)
+  */
   --nav-item-current-bg-color: var(--go-color-neutral-900);
+  /**
+    @prop --nav-item-current-fw:
+      font-weight of nav items when current (highlighted)
+      - default: 700
+  */
   --nav-item-current-fw: 700;
 
+  /**
+    @prop --nav-item-open-bg-color:
+      background color of nav items when submenu is open
+      - default: var(--go-color-neutral-900)
+  */
   --nav-item-open-bg-color: var(--go-color-neutral-900);
+  /**
+    @prop --nav-item-open-text-color:
+      text color of nav items when submenu is open
+      - default: var(--go-color-neutral-100)
+  */
   --nav-item-open-text-color: var(--go-color-neutral-100);
 
+  /**
+    @prop --nav-item-gap:
+      Gap between nav items
+      - default: 0.5rem
+  */
   --nav-item-gap: 0.5rem;
+  /**
+    @prop --nav-item-padding:
+      Padding of nav items
+      - default: 0.25em 0.5em
+  */
   --nav-item-padding: 0.25em 0.5em;
+  /**
+    @prop --nav-item-radius:
+      Radius of nav items
+      - default: 0.25em
+  */
   --nav-item-radius: 0.25em;
+  /**
+    @prop --nav-item-icon-gap:
+      Gap between icon and text in nav items
+      - default: 0.5rem
+  */
   --nav-item-icon-gap: 0.5rem;
+
+  /**
+    @prop --nav-item-current-border-width:
+      Border width of nav items when current (highlighted)
+      - default: 2px
+  */
   --nav-item-current-border-width: 2px;
+  /**
+    @prop --nav-item-current-border-color:
+      Border color of nav items when current (highlighted)
+      - default: var(--go-color-primary-600)
+  */
   --nav-item-current-border-color: var(--go-color-primary-600);
 
   /**
@@ -66,25 +151,48 @@ go-main-nav {
     - default: auto
   */
   --submenu-width: auto;
-  --submenu-bg-color: var(--go-color-neutral-100);
-  --submenu-border-radius: var(--radius-2);
-  --submenu-border-width: 2px;
-  --submenu-border-color: var(--go-color-neutral-500);
-
-  @include theme-dark() {
-    --submenu-bg-color: var(--go-color-neutral-500);
-    --submenu-border-color: var(--go-color-neutral-800);
-  }
-  --submenu-padding-y: var(--go-size-0);
-  --submenu-padding-x: var(--go-size-1);
-  --submenu-link-padding: 8px;
-  --submenu-link-hover-bg-color: var(--go-color-neutral-200);
   /**
-    @prop --submenu-description-color:
-      text color for submenu description text
-      - default: var(--go-color-neutral-700)
+    @prop --submenu-bg-color:
+      Background color of submenu
+      - default: var(--go-color-neutral-100)
   */
-  --submenu-description-color: var(--go-color-neutral-700);
+  --submenu-bg-color: var(--go-color-neutral-100);
+  /**
+    @prop --submenu-border-radius:
+      Border radius of submenu
+      - default: var(--radius-2)
+  */
+  --submenu-border-radius: var(--radius-2);
+  /**
+    @prop --submenu-border-width:
+      Border width of submenu
+      - default: 2px
+  */
+  --submenu-border-width: 2px;
+  /**
+    @prop --submenu-border-color:
+      Border color of submenu
+      - default: var(--go-color-neutral-500)
+  */
+  --submenu-border-color: var(--go-color-neutral-500);
+  /**
+    @prop --submenu-padding-y:
+      vertical padding of submenu links
+      - default: var(--go-size-0)
+  */
+  --submenu-padding-y: var(--go-size-0);
+  /**
+    @prop --submenu-padding-x:
+      horizontal padding of submenu links
+      - default: var(--go-size-1)
+  */
+  --submenu-padding-x: var(--go-size-1);
+  /**
+    @prop --submenu-link-padding:
+      padding of submenu links (applied to top/bottom only)
+      - default: 8px
+  */
+  --submenu-link-padding: 8px;
 
   /**
     @prop --submenu-separator-color:
@@ -288,3 +396,9 @@ go-main-nav {
     }
   }
 }
+
+// @include theme-dark() {
+//   go-main-nav {
+//     --submenu-border-color: var(--go-color-neutral-800);
+//   }
+// }

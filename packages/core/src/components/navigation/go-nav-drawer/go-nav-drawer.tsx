@@ -197,7 +197,10 @@ export class GoNavDrawer {
           <nav aria-label={isSubNav ? parentItem.label : this.label}>
             {isSubNav && parentItem.url ? (
               <div class="parent-link">
-                <go-link href={parentItem.url} {...parentItem.linkAttrs} onClick={(e) => this.handleNavItemClick(e, parentItem)}>
+                <go-link
+                  href={parentItem.url}
+                  {...parentItem.linkAttrs}
+                  onClick={(e) => this.handleNavItemClick(e, parentItem)}>
                   <span class="nav-item-label">
                     {renderIcon(parentItem.icon)}
                     <span>{parentItem.label}</span>

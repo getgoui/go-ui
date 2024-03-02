@@ -80,7 +80,11 @@ export class GoNavList {
                   {item.children?.length ? (
                     <go-accordion>
                       <go-accordion-item heading={item.label} active={expandSubLists || isCurrent}>
-                        <go-nav-list headingItem={navHeading} heading={heading} block={block} items={item.children}></go-nav-list>
+                        <go-nav-list
+                          headingItem={navHeading}
+                          heading={heading}
+                          block={block}
+                          items={item.children}></go-nav-list>
                       </go-accordion-item>
                     </go-accordion>
                   ) : (

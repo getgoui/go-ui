@@ -205,7 +205,6 @@ export class GoMainNav {
         </Tag>
         {item.children ? (
           <slot name="submenu">
-            <div class="submenu-arrow"></div>
             <div class="submenu-container">
               <div class="submenu-header">
                 <go-nav-link block item={item} showDescription showArrow></go-nav-link>
