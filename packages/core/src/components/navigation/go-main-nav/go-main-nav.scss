@@ -36,15 +36,22 @@ go-main-nav {
     - default: 500
   */
   --nav-item-fw: 500;
+
   --nav-item-text-color: var(--go-color-neutral-800);
-  --nav-item-hover-text-color: var(--go-color-darkest);
-  --nav-item-active-text-color: var(--go-color-darkest);
-  --nav-item-current-text-color: var(--go-color-lightest);
   --nav-item-bg-color: var(--nav-bg-color);
+
+  --nav-item-hover-text-color: var(--go-color-darkest);
   --nav-item-hover-bg-color: var(--go-color-neutral-200);
-  --nav-item-active-bg-color: var(--go-color-primary-100);
-  --nav-item-current-bg-color: var(--go-color-neutral-800);
+
+  --nav-item-active-text-color: var(--go-color-darkest);
+  --nav-item-active-bg-color: var(--go-color-neutral-200);
+
+  --nav-item-current-text-color: var(--go-color-neutral-100);
+  --nav-item-current-bg-color: var(--go-color-neutral-900);
   --nav-item-current-fw: 700;
+
+  --nav-item-open-bg-color: var(--go-color-neutral-900);
+  --nav-item-open-text-color: var(--go-color-neutral-100);
 
   --nav-item-gap: 0.5rem;
   --nav-item-padding: 0.25em 0.5em;
@@ -59,10 +66,10 @@ go-main-nav {
     - default: auto
   */
   --submenu-width: auto;
-  --submenu-bg-color: var(--go-color-lightest);
+  --submenu-bg-color: var(--go-color-neutral-100);
   --submenu-border-radius: var(--radius-2);
   --submenu-border-width: 2px;
-  --submenu-border-color: red;
+  --submenu-border-color: var(--go-color-neutral-500);
 
   @include theme-dark() {
     --submenu-bg-color: var(--go-color-neutral-500);
@@ -89,17 +96,23 @@ go-main-nav {
   /**
     @prop --submenu-indent:
       submenu indent
-      - default: 0.5rem
+      - default: 1rem
   */
-  --submenu-indent: 0.5rem;
+  --submenu-indent: 1rem;
 
   /**
     @prop --submenu-tail-size:
       submenu tail size
-      - default: 1rem
+      - default: 1em
   */
-  --submenu-tail-size: 1rem;
+  --submenu-tail-size: 1em;
 
+  /**
+      @prop --submenu-tail-offset-x:
+      set the horizontal offset from the tail to left edge of parent menu
+      - default: 1rem
+    */
+  --submenu-tail-offset-x: 1rem;
   /**
     @prop --submenu-z-index:
       submenu z-index
@@ -110,6 +123,7 @@ go-main-nav {
   display: block;
   box-shadow: var(--nav-shadow);
   border-top: var(--nav-border-top);
+  border-bottom: var(--nav-border-bottom);
   padding: var(--nav-outer-padding);
   ul {
     list-style: none;
@@ -158,8 +172,8 @@ go-main-nav {
           @include transition(transform);
 
           margin-left: 0.5rem;
-          width: 1.25em;
-          height: 1.25em;
+          width: 1em;
+          height: 1em;
           transform: translateX(0);
         }
 
@@ -172,8 +186,7 @@ go-main-nav {
 
       &.current {
         .nav-item-inner {
-          --nav-item-bg-color: var(--nav-item-current-bg-color);
-          // border-color: var(--nav-item-current-border-color);
+          background: var(--nav-item-current-bg-color);
           color: var(--nav-item-current-text-color);
           font-weight: var(--nav-item-current-fw);
         }
@@ -209,10 +222,12 @@ go-main-nav {
           height: var(--submenu-tail-size);
           background: var(--submenu-bg-color);
           position: absolute;
-          top: 0;
-          left: calc(var(--submenu-tail-size) + 5px);
-          transform: translate(-50%, -50%) rotate(45deg);
+          top: calc(-1 * var(--submenu-border-width) / 2);
+          left: var(--submenu-tail-offset-x);
+          transform: translate(0, -50%) rotate(45deg);
           border: var(--submenu-border);
+          border-right: none;
+          border-bottom: none;
           z-index: 9;
         }
 
@@ -229,11 +244,6 @@ go-main-nav {
             align-items: center;
             gap: 0.5em;
           }
-          .description {
-            margin: 0;
-            padding: 0.5rem;
-            color: var(--submenu-description-color);
-          }
         }
         .submenu-list {
           display: flex;
@@ -242,9 +252,10 @@ go-main-nav {
           gap: 0.75rem;
         }
       }
-      &.active {
-        background: var(--nav-item-active-bg-color);
+      &.open {
         .nav-item-inner {
+          background: var(--nav-item-open-bg-color);
+          color: var(--nav-item-open-text-color);
           svg {
             transform: rotate(180deg);
           }
@@ -258,11 +269,11 @@ go-main-nav {
     }
 
     .submenu {
-      ul {
+      > ul {
         padding-left: 0;
-        a {
-          padding-left: calc(0.5rem + var(--submenu-indent));
-        }
+      }
+      ul {
+        padding-left: var(--submenu-indent);
       }
       go-nav-link {
         display: block;

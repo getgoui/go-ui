@@ -901,6 +901,8 @@ export namespace Components {
         "position"?: 'left' | 'right';
         "toggle": () => Promise<void>;
     }
+    interface GoNavItem {
+    }
     interface GoNavLink {
         /**
           * full width
@@ -913,7 +915,11 @@ export namespace Components {
         /**
           * show arrow at the end of the link
          */
-        "showArrow": boolean;
+        "showArrow"?: boolean;
+        /**
+          * show description in the link
+         */
+        "showDescription"?: boolean;
     }
     interface GoNavList {
         /**
@@ -1730,6 +1736,12 @@ declare global {
         prototype: HTMLGoNavDrawerElement;
         new (): HTMLGoNavDrawerElement;
     };
+    interface HTMLGoNavItemElement extends Components.GoNavItem, HTMLStencilElement {
+    }
+    var HTMLGoNavItemElement: {
+        prototype: HTMLGoNavItemElement;
+        new (): HTMLGoNavItemElement;
+    };
     interface HTMLGoNavLinkElementEventMap {
         "navigate": any;
     }
@@ -1931,6 +1943,7 @@ declare global {
         "go-main-nav": HTMLGoMainNavElement;
         "go-md": HTMLGoMdElement;
         "go-nav-drawer": HTMLGoNavDrawerElement;
+        "go-nav-item": HTMLGoNavItemElement;
         "go-nav-link": HTMLGoNavLinkElement;
         "go-nav-list": HTMLGoNavListElement;
         "go-overlay": HTMLGoOverlayElement;
@@ -2819,6 +2832,8 @@ declare namespace LocalJSX {
          */
         "position"?: 'left' | 'right';
     }
+    interface GoNavItem {
+    }
     interface GoNavLink {
         /**
           * full width
@@ -2833,6 +2848,10 @@ declare namespace LocalJSX {
           * show arrow at the end of the link
          */
         "showArrow"?: boolean;
+        /**
+          * show description in the link
+         */
+        "showDescription"?: boolean;
     }
     interface GoNavList {
         /**
@@ -3293,6 +3312,7 @@ declare namespace LocalJSX {
         "go-main-nav": GoMainNav;
         "go-md": GoMd;
         "go-nav-drawer": GoNavDrawer;
+        "go-nav-item": GoNavItem;
         "go-nav-link": GoNavLink;
         "go-nav-list": GoNavList;
         "go-overlay": GoOverlay;
@@ -3353,6 +3373,7 @@ declare module "@stencil/core" {
             "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-md": LocalJSX.GoMd & JSXBase.HTMLAttributes<HTMLGoMdElement>;
             "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
+            "go-nav-item": LocalJSX.GoNavItem & JSXBase.HTMLAttributes<HTMLGoNavItemElement>;
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;

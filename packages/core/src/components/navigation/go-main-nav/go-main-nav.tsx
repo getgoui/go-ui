@@ -30,7 +30,7 @@ export class GoMainNav {
   // Store attributes inherited from the host element
   private inheritedAttrs = {};
   async componentWillLoad() {
-    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position']);
+    this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items']);
     this.navItems = parseItems(this.items);
     // click outside to close menus
     onClickOutside(this.el, () => {
@@ -59,7 +59,7 @@ export class GoMainNav {
   }
 
   private closeAllSubMenus() {
-    this.el.querySelectorAll('.nav-menu-root > li.active').forEach((item) => {
+    this.el.querySelectorAll('.nav-menu-root > li.open').forEach((item) => {
       this.closeSubMenu(item as HTMLElement);
     });
   }
@@ -68,19 +68,19 @@ export class GoMainNav {
     const triggerBtn = e.currentTarget as HTMLElement;
     const menuItem = triggerBtn.closest('.nav-item.has-children') as HTMLElement;
 
-    if (menuItem.classList.contains('active')) {
+    if (menuItem.classList.contains('open')) {
       this.closeSubMenu(menuItem);
     } else {
       // close any open menus
       this.closeAllSubMenus();
-      menuItem.classList.add('active');
+      menuItem.classList.add('open');
       triggerBtn.setAttribute('aria-expanded', 'true');
     }
   }
 
   private closeSubMenu(menuItem: HTMLElement) {
     const triggerBtn = menuItem.querySelector('.nav-item-inner');
-    menuItem.classList.remove('active');
+    menuItem.classList.remove('open');
     triggerBtn.setAttribute('aria-expanded', 'false');
   }
 
@@ -149,7 +149,7 @@ export class GoMainNav {
     }
     return (
       <div class="nav-item">
-        <go-nav-link block item={parent}></go-nav-link>
+        <go-nav-link block showDescription item={parent}></go-nav-link>
       </div>
     );
   }
@@ -205,10 +205,10 @@ export class GoMainNav {
         </Tag>
         {item.children ? (
           <slot name="submenu">
+            <div class="submenu-arrow"></div>
             <div class="submenu-container">
               <div class="submenu-header">
-                <go-nav-link block item={item} showArrow></go-nav-link>
-                {item?.description ? <p class="description">{item.description}</p> : null}
+                <go-nav-link block item={item} showDescription showArrow></go-nav-link>
               </div>
               <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
             </div>

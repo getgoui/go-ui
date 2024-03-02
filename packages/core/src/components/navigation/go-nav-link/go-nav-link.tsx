@@ -18,8 +18,12 @@ export class GoNavLink {
   /**
    * show arrow at the end of the link
    */
-  @Prop() showArrow = false;
+  @Prop() showArrow?: boolean = false;
 
+  /**
+   * show description in the link
+   */
+  @Prop() showDescription?: boolean = false;
   /**
    * full width
    */
@@ -69,7 +73,13 @@ export class GoNavLink {
       <Host>
         <Tag {...attrs}>
           {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
-          <span class="nav-link-text">{label}</span>
+          <span class="nav-link-text">
+            <span class="nav-link-text-label">{label}</span>
+            {this.showDescription && this.item?.description ? (
+              <span class="nav-link-text-description">{this.item?.description}</span>
+            ) : null}
+          </span>
+
           {url && this.showArrow ? (
             <svg
               class="arrow"
