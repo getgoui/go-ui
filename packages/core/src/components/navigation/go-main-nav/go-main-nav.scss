@@ -341,7 +341,7 @@ go-main-nav {
 
         .submenu-header {
           padding: 0.5rem 0;
-          margin-bottom: 0;
+          margin-bottom: 0.5rem;
           border-bottom: 1px solid var(--submenu-separator-color);
           svg {
             width: 1.5em;
@@ -396,9 +396,3 @@ go-main-nav {
     }
   }
 }
-
-// @include theme-dark() {
-//   go-main-nav {
-//     --submenu-border-color: var(--go-color-neutral-800);
-//   }
-// }

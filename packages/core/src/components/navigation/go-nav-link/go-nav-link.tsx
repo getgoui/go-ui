@@ -1,6 +1,6 @@
-import { Component, h, Host, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Host, Prop, Element, Event, EventEmitter, State, Watch } from '@stencil/core';
 import { INavItem } from '../../../interfaces';
-import { inheritAttributes } from '../../../utils/helper';
+import { $attrs, parseJsonProp } from '../../../utils/helper';
 
 @Component({
   tag: 'go-nav-link',
@@ -13,7 +13,14 @@ export class GoNavLink {
   /**
    * navigation item
    */
-  @Prop() item: INavItem;
+  @Prop() item: INavItem | string;
+
+  @State() parsedItem: INavItem;
+
+  @Watch('item')
+  parseNavItem(newItem: INavItem | string) {
+    this.parsedItem = parseJsonProp(newItem);
+  }
 
   /**
    * show arrow at the end of the link
@@ -38,25 +45,26 @@ export class GoNavLink {
 
   private inheritedAttrs = {};
   componentWillLoad() {
-    this.inheritedAttrs = inheritAttributes(this.el, [], true);
+    this.inheritedAttrs = $attrs.bind(this)();
+    this.parseNavItem(this.item);
   }
 
   render() {
     const { inheritedAttrs } = this;
-    if (!this.item) {
+    if (!this.parsedItem) {
       return (
         <a {...inheritedAttrs}>
           <slot></slot>
         </a>
       );
     }
-    const { isCurrent, url, icon, label } = this.item;
+    const { isCurrent, url, icon, label, description } = this.parsedItem;
 
     const isSpan = isCurrent || !url;
 
     let Tag = isSpan ? 'span' : 'go-link';
     let attrs = {
-      ...this.item?.linkAttrs,
+      ...this.parsedItem.linkAttrs,
       ...inheritedAttrs,
     };
     attrs = !isSpan
@@ -75,9 +83,7 @@ export class GoNavLink {
           {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
           <span class="nav-link-text">
             <span class="nav-link-text-label">{label}</span>
-            {this.showDescription && this.item?.description ? (
-              <span class="nav-link-text-description">{this.item?.description}</span>
-            ) : null}
+            {this.showDescription && description ? <span class="nav-link-text-description">{description}</span> : null}
           </span>
 
           {url && this.showArrow ? (

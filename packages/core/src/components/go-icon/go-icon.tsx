@@ -1,7 +1,11 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
 import { IconProps } from '../../interfaces';
-import { inheritAttributes } from '../../utils/helper';
-export type MaterialIconVariants = `material-icons` | `material-icons-outlined` | `material-icons-round` | `material-icons-sharp`;
+import { $attrs } from '../../utils/helper';
+export type MaterialIconVariants =
+  | `material-icons`
+  | `material-icons-outlined`
+  | `material-icons-round`
+  | `material-icons-sharp`;
 /**
  * https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use
  */
@@ -48,7 +52,7 @@ export class GoIcon implements IconProps {
 
   private attrs = {} as any;
   componentWillLoad() {
-    this.attrs = inheritAttributes(this.el, [], false);
+    this.attrs = $attrs.bind(this)(false);
   }
 
   render() {

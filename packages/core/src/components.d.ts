@@ -911,7 +911,7 @@ export namespace Components {
         /**
           * navigation item
          */
-        "item": INavItem;
+        "item": INavItem | string;
         /**
           * show arrow at the end of the link
          */
@@ -2842,7 +2842,7 @@ declare namespace LocalJSX {
         /**
           * navigation item
          */
-        "item"?: INavItem;
+        "item"?: INavItem | string;
         "onNavigate"?: (event: GoNavLinkCustomEvent<any>) => void;
         /**
           * show arrow at the end of the link
