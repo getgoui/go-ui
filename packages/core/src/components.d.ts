@@ -832,11 +832,6 @@ export namespace Components {
     }
     interface GoMainNav {
         /**
-          * Initialise the menu
-          * @param items menu items to be rendered
-         */
-        "init": (newItems: INavItem[] | string) => Promise<void>;
-        /**
           * Navigation items to be rendered if provided, slot content will not be rendered.
          */
         "items"?: INavItem[] | string;
@@ -844,6 +839,11 @@ export namespace Components {
           * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
          */
         "label": string;
+        /**
+          * Load nav items
+          * @param items menu items to be rendered
+         */
+        "loadNavItems": (newItems: INavItem[] | string) => Promise<void>;
     }
     interface GoMd {
         /**

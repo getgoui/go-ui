@@ -29,11 +29,14 @@ export class GoMainNav {
 
   // Store attributes inherited from the host element
   private inheritedAttrs = {};
+  clickOutsideCleanUp = null;
   async componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items']);
-    this.navItems = parseJsonProp(this.items);
+
+    await this.loadNavItems(this.items);
+
     // click outside to close menus
-    onClickOutside(this.el, () => {
+    this.clickOutsideCleanUp = onClickOutside(this.el, () => {
       this.closeAllSubMenus();
     });
     // esc to close menus
@@ -44,12 +47,18 @@ export class GoMainNav {
     });
   }
 
+  disconnectedCallback() {
+    if (this.clickOutsideCleanUp) {
+      this.clickOutsideCleanUp();
+    }
+  }
+
   /**
-   * Initialise the menu
+   * Load nav items
    * @param items {INavItem[]} menu items to be rendered
    */
   @Method()
-  async init(newItems: INavItem[] | string) {
+  async loadNavItems(newItems: INavItem[] | string) {
     this.navItems = parseJsonProp(newItems);
   }
 

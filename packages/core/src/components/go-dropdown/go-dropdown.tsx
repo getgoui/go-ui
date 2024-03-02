@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, Method, Watch, Event, EventEmitter } from '@stencil/core';
 import { uniqueId, debounce } from 'lodash-es';
 import { computePosition, offset, flip, autoUpdate } from '@floating-ui/dom';
-import { onClickOutside, removeClickOutsideListener } from '../../utils';
+import { onClickOutside } from '../../utils';
 
 @Component({
   tag: 'go-dropdown',
@@ -105,7 +105,7 @@ export class GoDropdown {
 
   private escapeHandler;
   private focusOutHandler;
-  private clickOutHandler;
+  private clickOutsideCleanUp;
 
   async componentDidLoad() {
     if (!this.triggerEl) {
@@ -139,8 +139,8 @@ export class GoDropdown {
     if (this.focusOutHandler) {
       this.el.removeEventListener('focusout', this.focusOutHandler);
     }
-    if (this.clickOutHandler) {
-      removeClickOutsideListener(this.clickOutHandler);
+    if (this.clickOutsideCleanUp) {
+      this.clickOutsideCleanUp();
     }
     if (this.cleanupAutoUpdate) {
       this.cleanupAutoUpdate();
@@ -157,7 +157,7 @@ export class GoDropdown {
       this.triggerEl.addEventListener('click', () => this.toggle());
     }
 
-    this.clickOutHandler = onClickOutside(this.el, (e) => {
+    this.clickOutsideCleanUp = onClickOutside(this.el, (e) => {
       if (!this.triggerEl.contains(e.target as Node) && this.isActive) {
         this.close();
       }

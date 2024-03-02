@@ -3,18 +3,15 @@ export const AUTO_FOCUS_TIMEOUT = 50;
  * handle click outside of element
  * @param el target element
  * @param callback handler
+ * @returns clean up function, call to remove event listener
  */
-export function onClickOutside(el: HTMLElement, callback: (event: MouseEvent) => void): (e: MouseEvent) => void {
+export function onClickOutside(el: HTMLElement, callback: (event: MouseEvent) => void): () => void {
   const handler = (e: MouseEvent) => {
     if (el.contains(e.target as HTMLElement)) return;
     callback(e);
   };
   document.addEventListener('click', handler);
-  return handler;
-}
-
-export function removeClickOutsideListener(handler) {
-  document.removeEventListener('click', handler);
+  return () => document.removeEventListener('click', handler);
 }
 
 /**
