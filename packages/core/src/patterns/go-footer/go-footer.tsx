@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../interfaces';
 import { warning, hasSlot } from '../../utils/helper';
-import { parseItems } from '../../utils';
+import { parseJsonProp } from '../../utils';
 @Component({
   tag: 'go-footer',
   styleUrl: 'go-footer.scss',
@@ -44,14 +44,14 @@ export class GoFooter {
 
   @Watch('links')
   async watchItems(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
+    this.navItems = parseJsonProp(newItems);
   }
 
   private hasCopyRightSlot = false;
   private hasFooterBottomSlot = false;
 
   componentWillLoad() {
-    this.navItems = parseItems(this.links);
+    this.navItems = parseJsonProp(this.links);
     if (this.navItems?.length > 0 && !this.navLabel) {
       warning(
         'Please add a unique "nav-label" in order to put navigation items into the nav landmark for better accessibility.',

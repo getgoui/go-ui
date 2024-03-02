@@ -1,7 +1,7 @@
 import { Component, h, Element, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
 
 import { INavItem } from '../../../interfaces';
-import { inheritAttributes, trapFocus, parseItems } from '../../../utils';
+import { inheritAttributes, trapFocus, parseJsonProp } from '../../../utils';
 import { renderIcon } from '../nav-helpers';
 
 @Component({
@@ -49,7 +49,7 @@ export class GoNavDrawer {
   @Method()
   @Watch('items')
   async init(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
+    this.navItems = parseJsonProp(newItems);
   }
 
   /**
@@ -111,7 +111,7 @@ export class GoNavDrawer {
   componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position'], false);
     try {
-      this.navItems = parseItems(this.items);
+      this.navItems = parseJsonProp(this.items);
     } catch (e) {
       console.warn('Could not parse nav items.', e);
     }

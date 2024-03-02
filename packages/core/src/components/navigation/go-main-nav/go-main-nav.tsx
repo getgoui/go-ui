@@ -2,7 +2,7 @@ import { Component, Element, h, Method, Prop, State, Host, EventEmitter, Event, 
 import { INavItem } from '../../../interfaces';
 import { onClickOutside } from '../../../utils/dom';
 import { inheritAttributes } from '../../../utils/helper';
-import { parseItems } from '../../../utils';
+import { parseJsonProp } from '../../../utils';
 import { renderIcon } from '../nav-helpers';
 
 @Component({
@@ -31,7 +31,7 @@ export class GoMainNav {
   private inheritedAttrs = {};
   async componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items']);
-    this.navItems = parseItems(this.items);
+    this.navItems = parseJsonProp(this.items);
     // click outside to close menus
     onClickOutside(this.el, () => {
       this.closeAllSubMenus();
@@ -50,12 +50,12 @@ export class GoMainNav {
    */
   @Method()
   async init(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
+    this.navItems = parseJsonProp(newItems);
   }
 
   @Watch('items')
   async watchItems(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
+    this.navItems = parseJsonProp(newItems);
   }
 
   private closeAllSubMenus() {

@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../interfaces';
-import { parseItems } from '../../utils';
+import { parseJsonProp } from '../../utils';
 
 @Component({
   tag: 'go-breadcrumbs',
@@ -38,7 +38,7 @@ export class GoBreadcrumb {
   }
 
   getItems(items: INavItem[] | string) {
-    const navItems = parseItems(items);
+    const navItems = parseJsonProp(items);
     if (!this.hideCurrent) {
       return navItems;
     }

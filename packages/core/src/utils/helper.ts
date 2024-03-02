@@ -132,16 +132,16 @@ export function initIdProps(instance: any, rootEl: HTMLElement, idProps: string[
   });
 }
 /**
- * parse items prop passed into the navigation component
- * @param items {T|string} navigation items to be rendered
+ * parse json prop passed into a component
+ * @param prop {T|string}
  */
-export function parseItems<T>(items: T | string): T {
-  if (!items) {
+export function parseJsonProp<T>(prop: T | string): T {
+  if (!prop) {
     return null;
   }
   try {
-    return typeof items === 'string' ? JSON5.parse<T>(items) : items;
+    return typeof prop === 'string' ? JSON5.parse<T>(prop) : prop;
   } catch (e) {
-    warning('Could not parse items', e);
+    warning('Could not parse prop', e);
   }
 }

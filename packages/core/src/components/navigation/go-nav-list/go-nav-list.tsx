@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../../interfaces';
-import { parseItems } from '../../../utils';
+import { parseJsonProp } from '../../../utils';
 @Component({
   tag: 'go-nav-list',
   styleUrl: 'go-nav-list.scss',
@@ -40,17 +40,17 @@ export class GoNavList {
 
   @Watch('items')
   async watchItems(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
+    this.navItems = parseJsonProp(newItems);
   }
 
   @Watch('headingItem')
   async watchHeadingItem(newItem: INavItem | string) {
-    this.navHeading = parseItems(newItem);
+    this.navHeading = parseJsonProp(newItem);
   }
 
   componentWillLoad() {
-    this.navItems = parseItems(this.items);
-    this.navHeading = parseItems(this.headingItem);
+    this.navItems = parseJsonProp(this.items);
+    this.navHeading = parseJsonProp(this.headingItem);
   }
 
   render() {
