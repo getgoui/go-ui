@@ -13,7 +13,7 @@ import { Theme } from "./components/go-dark-mode/go-dark-mode";
 import { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 import { Options } from "markdown-it";
-import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
+import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, INavItem as INavItem1, SelectOption } from "./interfaces/index";
 import { ActiveTab, ActiveTabWithPanel, JustifyOption, TabIconPosition, TabItem } from "./components/go-tabs/tabs.type";
 export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
@@ -23,7 +23,7 @@ export { Theme } from "./components/go-dark-mode/go-dark-mode";
 export { DuetDatePickerProps } from "./components/form/go-datepicker/duet-date-picker";
 export { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./components/go-icon/go-icon";
 export { Options } from "markdown-it";
-export { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, SelectOption } from "./interfaces/index";
+export { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, INavItem as INavItem1, SelectOption } from "./interfaces/index";
 export { ActiveTab, ActiveTabWithPanel, JustifyOption, TabIconPosition, TabItem } from "./components/go-tabs/tabs.type";
 export namespace Components {
     interface GoAccordion {
@@ -699,7 +699,7 @@ export namespace Components {
     }
     interface GoHeaderBar {
         /**
-          * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
+          * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-nav-bar)
          */
         "breakpoint": Breakpoints;
     }
@@ -830,21 +830,6 @@ export namespace Components {
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
     }
-    interface GoMainNav {
-        /**
-          * Navigation items to be rendered if provided, slot content will not be rendered.
-         */
-        "items"?: INavItem[] | string;
-        /**
-          * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
-         */
-        "label": string;
-        /**
-          * Load nav items
-          * @param items menu items to be rendered
-         */
-        "loadNavItems": (newItems: INavItem[] | string) => Promise<void>;
-    }
     interface GoMd {
         /**
           * Markdown content to be rendered
@@ -870,6 +855,21 @@ export namespace Components {
           * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
          */
         "useGoUi"?: boolean;
+    }
+    interface GoNavBar {
+        /**
+          * Navigation items to be rendered if provided, slot content will not be rendered.
+         */
+        "items"?: INavItem[] | string;
+        /**
+          * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
+         */
+        "label": string;
+        /**
+          * Load nav items
+          * @param items menu items to be rendered
+         */
+        "loadNavItems": (newItems: INavItem[] | string) => Promise<void>;
     }
     interface GoNavDrawer {
         /**
@@ -902,6 +902,7 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface GoNavItem {
+        "items": INavItem[] | string;
     }
     interface GoNavLink {
         /**
@@ -1369,13 +1370,13 @@ export interface GoDropdownItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoDropdownItemElement;
 }
-export interface GoMainNavCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGoMainNavElement;
-}
 export interface GoMdCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoMdElement;
+}
+export interface GoNavBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoNavBarElement;
 }
 export interface GoNavDrawerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1682,23 +1683,6 @@ declare global {
         prototype: HTMLGoLinkElement;
         new (): HTMLGoLinkElement;
     };
-    interface HTMLGoMainNavElementEventMap {
-        "navigate": any;
-    }
-    interface HTMLGoMainNavElement extends Components.GoMainNav, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGoMainNavElementEventMap>(type: K, listener: (this: HTMLGoMainNavElement, ev: GoMainNavCustomEvent<HTMLGoMainNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGoMainNavElementEventMap>(type: K, listener: (this: HTMLGoMainNavElement, ev: GoMainNavCustomEvent<HTMLGoMainNavElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLGoMainNavElement: {
-        prototype: HTMLGoMainNavElement;
-        new (): HTMLGoMainNavElement;
-    };
     interface HTMLGoMdElementEventMap {
         "init": any;
         "rendered": any;
@@ -1716,6 +1700,23 @@ declare global {
     var HTMLGoMdElement: {
         prototype: HTMLGoMdElement;
         new (): HTMLGoMdElement;
+    };
+    interface HTMLGoNavBarElementEventMap {
+        "navigate": any;
+    }
+    interface HTMLGoNavBarElement extends Components.GoNavBar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoNavBarElementEventMap>(type: K, listener: (this: HTMLGoNavBarElement, ev: GoNavBarCustomEvent<HTMLGoNavBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoNavBarElementEventMap>(type: K, listener: (this: HTMLGoNavBarElement, ev: GoNavBarCustomEvent<HTMLGoNavBarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGoNavBarElement: {
+        prototype: HTMLGoNavBarElement;
+        new (): HTMLGoNavBarElement;
     };
     interface HTMLGoNavDrawerElementEventMap {
         "open": void;
@@ -1940,8 +1941,8 @@ declare global {
         "go-icon": HTMLGoIconElement;
         "go-input": HTMLGoInputElement;
         "go-link": HTMLGoLinkElement;
-        "go-main-nav": HTMLGoMainNavElement;
         "go-md": HTMLGoMdElement;
+        "go-nav-bar": HTMLGoNavBarElement;
         "go-nav-drawer": HTMLGoNavDrawerElement;
         "go-nav-item": HTMLGoNavItemElement;
         "go-nav-link": HTMLGoNavLinkElement;
@@ -2628,7 +2629,7 @@ declare namespace LocalJSX {
     }
     interface GoHeaderBar {
         /**
-          * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
+          * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-nav-bar)
          */
         "breakpoint"?: Breakpoints;
     }
@@ -2759,17 +2760,6 @@ declare namespace LocalJSX {
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
     }
-    interface GoMainNav {
-        /**
-          * Navigation items to be rendered if provided, slot content will not be rendered.
-         */
-        "items"?: INavItem[] | string;
-        /**
-          * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
-         */
-        "label"?: string;
-        "onNavigate"?: (event: GoMainNavCustomEvent<any>) => void;
-    }
     interface GoMd {
         /**
           * Markdown content to be rendered
@@ -2797,6 +2787,17 @@ declare namespace LocalJSX {
           * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
          */
         "useGoUi"?: boolean;
+    }
+    interface GoNavBar {
+        /**
+          * Navigation items to be rendered if provided, slot content will not be rendered.
+         */
+        "items"?: INavItem[] | string;
+        /**
+          * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
+         */
+        "label"?: string;
+        "onNavigate"?: (event: GoNavBarCustomEvent<any>) => void;
     }
     interface GoNavDrawer {
         /**
@@ -2833,6 +2834,7 @@ declare namespace LocalJSX {
         "position"?: 'left' | 'right';
     }
     interface GoNavItem {
+        "items"?: INavItem[] | string;
     }
     interface GoNavLink {
         /**
@@ -3309,8 +3311,8 @@ declare namespace LocalJSX {
         "go-icon": GoIcon;
         "go-input": GoInput;
         "go-link": GoLink;
-        "go-main-nav": GoMainNav;
         "go-md": GoMd;
+        "go-nav-bar": GoNavBar;
         "go-nav-drawer": GoNavDrawer;
         "go-nav-item": GoNavItem;
         "go-nav-link": GoNavLink;
@@ -3370,8 +3372,8 @@ declare module "@stencil/core" {
             "go-icon": LocalJSX.GoIcon & JSXBase.HTMLAttributes<HTMLGoIconElement>;
             "go-input": LocalJSX.GoInput & JSXBase.HTMLAttributes<HTMLGoInputElement>;
             "go-link": LocalJSX.GoLink & JSXBase.HTMLAttributes<HTMLGoLinkElement>;
-            "go-main-nav": LocalJSX.GoMainNav & JSXBase.HTMLAttributes<HTMLGoMainNavElement>;
             "go-md": LocalJSX.GoMd & JSXBase.HTMLAttributes<HTMLGoMdElement>;
+            "go-nav-bar": LocalJSX.GoNavBar & JSXBase.HTMLAttributes<HTMLGoNavBarElement>;
             "go-nav-drawer": LocalJSX.GoNavDrawer & JSXBase.HTMLAttributes<HTMLGoNavDrawerElement>;
             "go-nav-item": LocalJSX.GoNavItem & JSXBase.HTMLAttributes<HTMLGoNavItemElement>;
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;

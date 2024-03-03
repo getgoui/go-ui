@@ -33,21 +33,11 @@
     <!-- vue 3 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.26"></script>
 
-    <!-- <div id="app"></div> -->
+    <div id="app"></div>
 
-    <go-nav-link
-      show-arrow="true"
-      item="{
-      label: 'Link',
-      url: '#',
-      icon: {
-        name: 'star',
-        size: '1.5em'
-      },
-      linkAttrs: {
-        title: 'Link title text'
-      },
-    }"></go-nav-link>
+    <go-nav-bar>
+      <go-nav-item></go-nav-item>
+    </go-nav-bar>
 
     <script>
       const { createApp } = Vue;
@@ -198,7 +188,7 @@
         mounted() {},
         template: `
   <p>Mega menu rendered from <code>items</code> JSON data</p>
-  <go-main-nav :items.prop="navItems" @navigate="(e) => onNav(e)"></go-main-nav>
+  <go-nav-bar :items.prop="navItems" @navigate="(e) => onNav(e)"></go-nav-bar>
   `,
       };
 

@@ -153,7 +153,7 @@
     mounted() {},
     template: `
   <p>Mega menu rendered from <code>items</code> JSON data</p>
-  <go-main-nav :items.prop="navItems" @navigate="(e) => onNav(e)"></go-main-nav>
+  <go-nav-bar :items.prop="navItems" @navigate="(e) => onNav(e)"></go-nav-bar>
   `,
   };
 

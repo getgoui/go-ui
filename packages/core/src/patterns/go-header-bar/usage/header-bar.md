@@ -134,7 +134,7 @@
           </div>
         </go-search-bar>
 
-        <go-main-nav slot="main-nav" .items="items"></go-main-nav>
+        <go-nav-bar slot="nav-bar" .items="items"></go-nav-bar>
 
       </go-header-bar>
   `,

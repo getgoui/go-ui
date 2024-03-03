@@ -10,7 +10,7 @@ export class GoHeaderBar {
   @Element() el: HTMLElement;
 
   /**
-   * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-main-nav)
+   * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-nav-bar)
    */
   @Prop() breakpoint: Breakpoints = 'desktop';
 
@@ -37,10 +37,10 @@ export class GoHeaderBar {
         </div>
         <div
           class={{
-            'main-nav d-none': true,
+            'nav-bar d-none': true,
             [`d-block-${breakpoint}`]: true,
           }}>
-          <slot name="main-nav"></slot>
+          <slot name="nav-bar"></slot>
         </div>
       </Host>
     );

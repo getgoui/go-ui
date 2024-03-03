@@ -334,13 +334,6 @@ export const GoLink = /*@__PURE__*/ defineContainer<JSX.GoLink>('go-link', undef
 ]);
 
 
-export const GoMainNav = /*@__PURE__*/ defineContainer<JSX.GoMainNav>('go-main-nav', undefined, [
-  'items',
-  'label',
-  'navigate'
-]);
-
-
 export const GoMd = /*@__PURE__*/ defineContainer<JSX.GoMd>('go-md', undefined, [
   'inline',
   'content',
@@ -350,6 +343,13 @@ export const GoMd = /*@__PURE__*/ defineContainer<JSX.GoMd>('go-md', undefined, 
   'useGoUi',
   'init',
   'rendered'
+]);
+
+
+export const GoNavBar = /*@__PURE__*/ defineContainer<JSX.GoNavBar>('go-nav-bar', undefined, [
+  'items',
+  'label',
+  'navigate'
 ]);
 
 
@@ -365,9 +365,15 @@ export const GoNavDrawer = /*@__PURE__*/ defineContainer<JSX.GoNavDrawer>('go-na
 ]);
 
 
+export const GoNavItem = /*@__PURE__*/ defineContainer<JSX.GoNavItem>('go-nav-item', undefined, [
+  'items'
+]);
+
+
 export const GoNavLink = /*@__PURE__*/ defineContainer<JSX.GoNavLink>('go-nav-link', undefined, [
   'item',
   'showArrow',
+  'showDescription',
   'block',
   'navigate'
 ]);
@@ -460,7 +466,8 @@ export const GoTab = /*@__PURE__*/ defineContainer<JSX.GoTab>('go-tab', undefine
   'active',
   'tabId',
   'panelId',
-  'iconPosition'
+  'iconPosition',
+  'iconOnly'
 ]);
 
 

@@ -6,11 +6,11 @@ import { parseJsonProp } from '../../../utils';
 import { renderIcon } from '../nav-helpers';
 
 @Component({
-  tag: 'go-main-nav',
-  styleUrl: 'go-main-nav.scss',
+  tag: 'go-nav-bar',
+  styleUrl: 'go-nav-bar.scss',
   shadow: false,
 })
-export class GoMainNav {
+export class GoNavBar {
   @Element() el: HTMLElement;
 
   /**
@@ -243,7 +243,7 @@ export class GoMainNav {
 
     return (
       <Host {...inheritedAttrs}>
-        <nav aria-label={label}>{navItems ? this.renderRootNav(navItems) : <slot></slot>}</nav>
+        <nav aria-label={label}>{navItems ? navItems.map((item) => this.renderRootNavItem(item)) : <slot></slot>}</nav>
       </Host>
     );
   }
