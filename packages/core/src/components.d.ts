@@ -902,7 +902,14 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface GoNavItem {
-        "items": INavItem[] | string;
+        "closeSubmenu": () => Promise<void>;
+        "item": INavItem | string;
+        /**
+          * open state of the submenu, only applicable if - the `item` property has `children` key, or - go-nav-item has `submenu` slot
+         */
+        "open": boolean;
+        "openSubmenu": () => Promise<void>;
+        "toggleSubmenu": () => Promise<void>;
     }
     interface GoNavLink {
         /**
@@ -1374,13 +1381,13 @@ export interface GoMdCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoMdElement;
 }
-export interface GoNavBarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGoNavBarElement;
-}
 export interface GoNavDrawerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoNavDrawerElement;
+}
+export interface GoNavItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoNavItemElement;
 }
 export interface GoNavLinkCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1701,18 +1708,7 @@ declare global {
         prototype: HTMLGoMdElement;
         new (): HTMLGoMdElement;
     };
-    interface HTMLGoNavBarElementEventMap {
-        "navigate": any;
-    }
     interface HTMLGoNavBarElement extends Components.GoNavBar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGoNavBarElementEventMap>(type: K, listener: (this: HTMLGoNavBarElement, ev: GoNavBarCustomEvent<HTMLGoNavBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGoNavBarElementEventMap>(type: K, listener: (this: HTMLGoNavBarElement, ev: GoNavBarCustomEvent<HTMLGoNavBarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoNavBarElement: {
         prototype: HTMLGoNavBarElement;
@@ -1737,7 +1733,19 @@ declare global {
         prototype: HTMLGoNavDrawerElement;
         new (): HTMLGoNavDrawerElement;
     };
+    interface HTMLGoNavItemElementEventMap {
+        "navigate": any;
+        "submenutoggle": any;
+    }
     interface HTMLGoNavItemElement extends Components.GoNavItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoNavItemElementEventMap>(type: K, listener: (this: HTMLGoNavItemElement, ev: GoNavItemCustomEvent<HTMLGoNavItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoNavItemElementEventMap>(type: K, listener: (this: HTMLGoNavItemElement, ev: GoNavItemCustomEvent<HTMLGoNavItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGoNavItemElement: {
         prototype: HTMLGoNavItemElement;
@@ -2797,7 +2805,6 @@ declare namespace LocalJSX {
           * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
          */
         "label"?: string;
-        "onNavigate"?: (event: GoNavBarCustomEvent<any>) => void;
     }
     interface GoNavDrawer {
         /**
@@ -2834,7 +2841,13 @@ declare namespace LocalJSX {
         "position"?: 'left' | 'right';
     }
     interface GoNavItem {
-        "items"?: INavItem[] | string;
+        "item"?: INavItem | string;
+        "onNavigate"?: (event: GoNavItemCustomEvent<any>) => void;
+        "onSubmenutoggle"?: (event: GoNavItemCustomEvent<any>) => void;
+        /**
+          * open state of the submenu, only applicable if - the `item` property has `children` key, or - go-nav-item has `submenu` slot
+         */
+        "open"?: boolean;
     }
     interface GoNavLink {
         /**

@@ -126,3 +126,19 @@ export function focusLastWithin(parent: HTMLElement): void {
     }, AUTO_FOCUS_TIMEOUT);
   }
 }
+
+/**
+ *
+ * Add event listener on escape key press
+ * @param el the element to add event listener to
+ */
+export function onEscape(el: HTMLElement, callback: (e: KeyboardEvent) => void): () => void {
+  const handler = (e) => {
+    if (e.code === 'Escape') {
+      callback(e);
+    }
+  };
+  el.addEventListener('keydown', handler);
+
+  return () => el.removeEventListener('click', handler);
+}

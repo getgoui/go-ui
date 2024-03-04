@@ -19,7 +19,7 @@
     "clean": "rm -rf dist",
     "build": "pnpm run clean && stencil build",
     "build.component-docs": "stencil build --docs-readme --docs-json",
-    "start": "stencil build --dev --watch --serve",
+    "start": "pnpm run clean && stencil build --dev --watch --serve",
     "watch.components": "stencil build --docs-json --watch",
     "test.spec": "stencil test --spec",
     "test.spec.watch": "stencil test --spec --watchAll",

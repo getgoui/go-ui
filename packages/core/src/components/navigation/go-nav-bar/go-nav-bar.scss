@@ -239,8 +239,7 @@ go-nav-bar {
   > nav {
     background: var(--nav-bg-color);
     .nav-menu-root {
-      margin: 0;
-      padding: 0;
+      list-style: none;
       display: flex;
       flex-direction: row;
       gap: var(--nav-item-gap);
