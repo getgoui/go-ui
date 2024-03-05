@@ -6,6 +6,7 @@ export interface INavItem {
   icon?: IIcon;
   description?: string;
   children?: INavItem[];
+  columns?: number;
   isCurrent?: boolean;
   linkAttrs?: any;
 }

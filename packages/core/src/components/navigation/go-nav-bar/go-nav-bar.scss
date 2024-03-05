@@ -228,6 +228,13 @@ go-nav-bar {
   */
   --submenu-z-index: var(--layer-important);
 
+  /**
+    @prop --submenu-columns:
+    number of columns in submenu list
+    - default: 1
+  */
+  --submenu-columns: 1;
+
   display: block;
   box-shadow: var(--nav-shadow);
   border-top: var(--nav-border-top);
@@ -353,9 +360,10 @@ go-nav-bar {
           }
         }
         .submenu-list {
-          display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: repeat(var(--submenu-columns), 1fr);
+          // flex-direction: column;
+          // flex-wrap: wrap;
           gap: 0.75rem;
         }
       }

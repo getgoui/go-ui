@@ -1,4 +1,4 @@
-import { Component, Element, h, Method, Prop, State, Host, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Host, Watch } from '@stencil/core';
 import { INavItem } from '../../../interfaces';
 import { inheritAttributes } from '../../../utils/helper';
 import { parseJsonProp } from '../../../utils';
@@ -59,27 +59,24 @@ export class GoNavBar {
     this.closeAllSubMenus(e.srcElement);
   }
 
-  /**
-   * render top level nav items
-   */
-  renderRootNav(items: INavItem[]) {
-    return (
-      <div class="container">
-        <div role="list" class="nav-menu-root">
-          {items.map((item) => (
-            <go-nav-item onSubmenutoggle={(e) => this.handleItemNav(e)} item={item}></go-nav-item>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   render() {
     let { label, navItems, inheritedAttrs } = this;
 
     return (
       <Host {...inheritedAttrs}>
-        <nav aria-label={label}>{navItems ? this.renderRootNav(navItems) : <slot></slot>}</nav>
+        <nav aria-label={label}>
+          <div class="container">
+            <div role="list" class="nav-menu-root">
+              <slot>
+                {navItems
+                  ? navItems.map((item) => (
+                      <go-nav-item onSubmenutoggle={(e) => this.handleItemNav(e)} item={item}></go-nav-item>
+                    ))
+                  : null}
+              </slot>
+            </div>
+          </div>
+        </nav>
       </Host>
     );
   }

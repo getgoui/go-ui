@@ -1,5 +1,5 @@
 import { INavItem } from '@/interfaces';
-import { onClickOutside, onEscape, parseJsonProp } from '@/utils';
+import { hasSlot, onClickOutside, onEscape, parseJsonProp } from '@/utils';
 import { Component, Host, Prop, State, h, Event, EventEmitter, Method, Element, Watch } from '@stencil/core';
 import { renderIcon } from '../nav-helpers';
 
@@ -20,6 +20,7 @@ export class GoNavItem {
 
   clickOutsideCleanUp = null;
   escapeCleanUp = null;
+  @State() hasSubmenuSlot = false;
 
   componentWillLoad() {
     this.parseItemProp();
@@ -32,6 +33,7 @@ export class GoNavItem {
     });
     // esc to close menus
     this.escapeCleanUp = onEscape(this.el, () => this.closeSubmenu());
+    this.hasSubmenuSlot = hasSlot(this.el, 'submenu');
   }
 
   disconnectedCallback() {
@@ -113,7 +115,8 @@ export class GoNavItem {
   render() {
     const { parsedItem: item } = this;
     let Tag = 'a';
-    const hasChildren = item?.children?.length > 0;
+
+    const hasChildren = item?.children?.length > 0 || this.hasSubmenuSlot;
     if (item?.isCurrent) {
       Tag = 'span';
     }
@@ -143,36 +146,36 @@ export class GoNavItem {
       <Host
         role="listitem"
         class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item?.isCurrent, 'open': this.open }}>
-        <Tag class="nav-item-inner" {...attrs}>
-          <span class="nav-item-label">
-            {renderIcon(item?.icon)}
-            <span>{item?.label}</span>
-          </span>
-          {hasChildren ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              viewBox="0 0 24 24">
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          ) : null}
-        </Tag>
-        {item?.children ? (
-          <div class="submenu-container">
-            <slot name="submenu">
+        <slot name="default">
+          <Tag class="nav-item-inner" {...attrs}>
+            <span class="nav-item-label">
+              {renderIcon(item?.icon)}
+              <span>{item?.label}</span>
+            </span>
+            {hasChildren ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            ) : null}
+          </Tag>
+        </slot>
+        <slot name="submenu">
+          {item?.children ? (
+            <div class="submenu-container" style={{ '--submenu-columns': item?.columns ? String(item.columns) : '1' }}>
               <div class="submenu-header">
                 <go-nav-link block item={item} showDescription showArrow></go-nav-link>
               </div>
-              <div class="submenu-list">
-                <slot name="submenu">{item.children.map((child) => this.renderSubMenu(child))}</slot>
-              </div>
-            </slot>
-          </div>
-        ) : null}
+              <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
+            </div>
+          ) : null}
+        </slot>
       </Host>
     );
   }
