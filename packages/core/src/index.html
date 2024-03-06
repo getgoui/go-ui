@@ -193,13 +193,14 @@
           url: '#', 
           icon: 'home', 
           label: 'Home', 
-        }"
-          showDescription
-          showArrow></go-nav-link>
+        }"></go-nav-link>
       </go-nav-item>
       <go-nav-item>
-        <button slot="submenu-trigger">Components</button>
-        <div slot="submenu">yo</div>
+        <go-nav-submenu-trigger controls="submenu">
+          <go-icon name="view_module"></go-icon>
+          Components
+        </go-nav-submenu-trigger>
+        <go-nav-submenu id="submenu"> asfd </go-nav-submenu>
       </go-nav-item>
     </go-nav-bar>
   </body>

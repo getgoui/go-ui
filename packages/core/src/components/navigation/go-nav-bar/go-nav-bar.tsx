@@ -47,18 +47,6 @@ export class GoNavBar {
     this.navItems = parseJsonProp(newItems);
   }
 
-  private closeAllSubMenus(sourceNavItem: HTMLGoNavItemElement) {
-    this.el.querySelectorAll('go-nav-item.open').forEach((item: HTMLGoNavItemElement) => {
-      if (item !== sourceNavItem) {
-        item.closeSubmenu();
-      }
-    });
-  }
-
-  handleItemNav(e) {
-    this.closeAllSubMenus(e.srcElement);
-  }
-
   render() {
     let { label, navItems, inheritedAttrs } = this;
 
@@ -67,13 +55,7 @@ export class GoNavBar {
         <nav aria-label={label}>
           <div class="container">
             <div role="list" class="nav-menu-root">
-              <slot>
-                {navItems
-                  ? navItems.map((item) => (
-                      <go-nav-item onSubmenutoggle={(e) => this.handleItemNav(e)} item={item}></go-nav-item>
-                    ))
-                  : null}
-              </slot>
+              <slot>{navItems ? navItems.map((item) => <go-nav-item item={item}></go-nav-item>) : null}</slot>
             </div>
           </div>
         </nav>

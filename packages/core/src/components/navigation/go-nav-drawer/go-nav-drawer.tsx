@@ -140,7 +140,7 @@ export class GoNavDrawer {
 
   handleNavItemClick(e, item: INavItem) {
     if (item.linkAttrs?.onClick) {
-      item.linkAttrs.onClick(e);
+      (item.linkAttrs.onClick as EventListener)(e);
     }
     if (this.autoClose) {
       this.close();

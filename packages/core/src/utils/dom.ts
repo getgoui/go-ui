@@ -132,7 +132,7 @@ export function focusLastWithin(parent: HTMLElement): void {
  * Add event listener on escape key press
  * @param el the element to add event listener to
  */
-export function onEscape(el: HTMLElement, callback: (e: KeyboardEvent) => void): () => void {
+export function onEscape(el: HTMLElement | Document, callback: (e: KeyboardEvent) => void): () => void {
   const handler = (e) => {
     if (e.code === 'Escape') {
       callback(e);

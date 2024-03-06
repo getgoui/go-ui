@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
+import { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, IIcon, INavItem, UnknownObject } from "./interfaces";
 import { ChipVariants } from "./interfaces/variants";
 import { TocProps } from "./components/go-toc/go-toc";
 import { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -15,7 +15,7 @@ import { BoxiconVariants, FontAwesomeVariants, MaterialIconVariants } from "./co
 import { Options } from "markdown-it";
 import { FieldValue, GoChangeEventDetail as GoChangeEventDetail1, INavItem as INavItem1, SelectOption } from "./interfaces/index";
 import { ActiveTab, ActiveTabWithPanel, JustifyOption, TabIconPosition, TabItem } from "./components/go-tabs/tabs.type";
-export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, INavItem } from "./interfaces";
+export { BannerVariants, Breakpoints, ColorVariants, GoChangeEventDetail, IIcon, INavItem, UnknownObject } from "./interfaces";
 export { ChipVariants } from "./interfaces/variants";
 export { TocProps } from "./components/go-toc/go-toc";
 export { SidebarPosition } from "./patterns/go-content-layout/go-content-layout";
@@ -902,32 +902,27 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface GoNavItem {
-        "closeSubmenu": () => Promise<void>;
         "item": INavItem | string;
-        /**
-          * open state of the submenu, only applicable if - the `item` property has `children` key, or - go-nav-item has `submenu` slot
-         */
-        "open": boolean;
-        "openSubmenu": () => Promise<void>;
-        "toggleSubmenu": () => Promise<void>;
     }
     interface GoNavLink {
         /**
           * full width
          */
         "block": boolean;
+        "description"?: string;
+        "icon"?: IIcon | string;
+        "isCurrent"?: boolean;
         /**
           * navigation item
          */
-        "item": INavItem | string;
+        "item"?: INavItem | string;
+        "label"?: string;
+        "linkAttrs"?: UnknownObject | string;
         /**
           * show arrow at the end of the link
          */
         "showArrow"?: boolean;
-        /**
-          * show description in the link
-         */
-        "showDescription"?: boolean;
+        "url"?: string;
     }
     interface GoNavList {
         /**
@@ -950,6 +945,15 @@ export namespace Components {
           * list of navigation items to be displayed uuuuuu
          */
         "items": INavItem[] | string;
+    }
+    interface GoNavSubmenu {
+        "close": () => Promise<void>;
+        "columns": number;
+        "open": () => Promise<void>;
+        "toggle": () => Promise<void>;
+    }
+    interface GoNavSubmenuTrigger {
+        "controls": string;
     }
     interface GoOverlay {
         "active": boolean;
@@ -1393,6 +1397,10 @@ export interface GoNavLinkCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoNavLinkElement;
 }
+export interface GoNavSubmenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoNavSubmenuElement;
+}
 export interface GoOverlayCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGoOverlayElement;
@@ -1774,6 +1782,29 @@ declare global {
         prototype: HTMLGoNavListElement;
         new (): HTMLGoNavListElement;
     };
+    interface HTMLGoNavSubmenuElementEventMap {
+        "toggle": any;
+    }
+    interface HTMLGoNavSubmenuElement extends Components.GoNavSubmenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoNavSubmenuElementEventMap>(type: K, listener: (this: HTMLGoNavSubmenuElement, ev: GoNavSubmenuCustomEvent<HTMLGoNavSubmenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoNavSubmenuElementEventMap>(type: K, listener: (this: HTMLGoNavSubmenuElement, ev: GoNavSubmenuCustomEvent<HTMLGoNavSubmenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGoNavSubmenuElement: {
+        prototype: HTMLGoNavSubmenuElement;
+        new (): HTMLGoNavSubmenuElement;
+    };
+    interface HTMLGoNavSubmenuTriggerElement extends Components.GoNavSubmenuTrigger, HTMLStencilElement {
+    }
+    var HTMLGoNavSubmenuTriggerElement: {
+        prototype: HTMLGoNavSubmenuTriggerElement;
+        new (): HTMLGoNavSubmenuTriggerElement;
+    };
     interface HTMLGoOverlayElementEventMap {
         "overlayOpen": void;
         "overlayClose": void;
@@ -1955,6 +1986,8 @@ declare global {
         "go-nav-item": HTMLGoNavItemElement;
         "go-nav-link": HTMLGoNavLinkElement;
         "go-nav-list": HTMLGoNavListElement;
+        "go-nav-submenu": HTMLGoNavSubmenuElement;
+        "go-nav-submenu-trigger": HTMLGoNavSubmenuTriggerElement;
         "go-overlay": HTMLGoOverlayElement;
         "go-progress": HTMLGoProgressElement;
         "go-radio": HTMLGoRadioElement;
@@ -2844,29 +2877,27 @@ declare namespace LocalJSX {
         "item"?: INavItem | string;
         "onNavigate"?: (event: GoNavItemCustomEvent<any>) => void;
         "onSubmenutoggle"?: (event: GoNavItemCustomEvent<any>) => void;
-        /**
-          * open state of the submenu, only applicable if - the `item` property has `children` key, or - go-nav-item has `submenu` slot
-         */
-        "open"?: boolean;
     }
     interface GoNavLink {
         /**
           * full width
          */
         "block"?: boolean;
+        "description"?: string;
+        "icon"?: IIcon | string;
+        "isCurrent"?: boolean;
         /**
           * navigation item
          */
         "item"?: INavItem | string;
+        "label"?: string;
+        "linkAttrs"?: UnknownObject | string;
         "onNavigate"?: (event: GoNavLinkCustomEvent<any>) => void;
         /**
           * show arrow at the end of the link
          */
         "showArrow"?: boolean;
-        /**
-          * show description in the link
-         */
-        "showDescription"?: boolean;
+        "url"?: string;
     }
     interface GoNavList {
         /**
@@ -2889,6 +2920,13 @@ declare namespace LocalJSX {
           * list of navigation items to be displayed uuuuuu
          */
         "items"?: INavItem[] | string;
+    }
+    interface GoNavSubmenu {
+        "columns"?: number;
+        "onToggle"?: (event: GoNavSubmenuCustomEvent<any>) => void;
+    }
+    interface GoNavSubmenuTrigger {
+        "controls"?: string;
     }
     interface GoOverlay {
         "active"?: boolean;
@@ -3330,6 +3368,8 @@ declare namespace LocalJSX {
         "go-nav-item": GoNavItem;
         "go-nav-link": GoNavLink;
         "go-nav-list": GoNavList;
+        "go-nav-submenu": GoNavSubmenu;
+        "go-nav-submenu-trigger": GoNavSubmenuTrigger;
         "go-overlay": GoOverlay;
         "go-progress": GoProgress;
         "go-radio": GoRadio;
@@ -3391,6 +3431,8 @@ declare module "@stencil/core" {
             "go-nav-item": LocalJSX.GoNavItem & JSXBase.HTMLAttributes<HTMLGoNavItemElement>;
             "go-nav-link": LocalJSX.GoNavLink & JSXBase.HTMLAttributes<HTMLGoNavLinkElement>;
             "go-nav-list": LocalJSX.GoNavList & JSXBase.HTMLAttributes<HTMLGoNavListElement>;
+            "go-nav-submenu": LocalJSX.GoNavSubmenu & JSXBase.HTMLAttributes<HTMLGoNavSubmenuElement>;
+            "go-nav-submenu-trigger": LocalJSX.GoNavSubmenuTrigger & JSXBase.HTMLAttributes<HTMLGoNavSubmenuTriggerElement>;
             "go-overlay": LocalJSX.GoOverlay & JSXBase.HTMLAttributes<HTMLGoOverlayElement>;
             "go-progress": LocalJSX.GoProgress & JSXBase.HTMLAttributes<HTMLGoProgressElement>;
             "go-radio": LocalJSX.GoRadio & JSXBase.HTMLAttributes<HTMLGoRadioElement>;

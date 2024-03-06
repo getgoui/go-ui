@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, Event, EventEmitter, State, Watch } from '@stencil/core';
-import { INavItem } from '../../../interfaces';
+import { IIcon, INavItem, UnknownObject } from '../../../interfaces';
 import { $attrs, parseJsonProp } from '../../../utils/helper';
 
 @Component({
@@ -13,13 +13,38 @@ export class GoNavLink {
   /**
    * navigation item
    */
-  @Prop() item: INavItem | string;
+  @Prop() item?: INavItem | string;
 
   @State() parsedItem: INavItem;
 
+  // developers can also chose to not pass in an item prop
+  // but use the following INavItem keys as props to construct the link
+
+  @Prop() label?: string;
+  @Prop() url?: string;
+  @Prop() icon?: IIcon | string;
+  @Prop() description?: string;
+  @Prop() isCurrent?: boolean;
+  @Prop() linkAttrs?: UnknownObject | string;
+
   @Watch('item')
-  parseNavItem(newItem: INavItem | string) {
-    this.parsedItem = parseJsonProp(newItem);
+  parseNavItem() {
+    if (this.item) {
+      this.parsedItem = parseJsonProp(this.item);
+    }
+
+    // component props will override item data if both are present
+    const icon = parseJsonProp(this.icon) ?? this.parsedItem?.icon;
+    const linkAttrs = parseJsonProp(this.linkAttrs) ?? this.parsedItem?.linkAttrs;
+    this.parsedItem = {
+      ...this.parsedItem,
+      label: this.label ?? this.parsedItem?.label,
+      url: this.url ?? this.parsedItem?.url,
+      icon,
+      description: this.description ?? this.parsedItem?.description,
+      isCurrent: this.isCurrent ?? this.parsedItem?.isCurrent,
+      linkAttrs,
+    };
   }
 
   /**
@@ -27,10 +52,6 @@ export class GoNavLink {
    */
   @Prop() showArrow?: boolean = false;
 
-  /**
-   * show description in the link
-   */
-  @Prop() showDescription?: boolean = false;
   /**
    * full width
    */
@@ -46,7 +67,7 @@ export class GoNavLink {
   private inheritedAttrs = {};
   componentWillLoad() {
     this.inheritedAttrs = $attrs.bind(this)();
-    this.parseNavItem(this.item);
+    this.parseNavItem();
   }
 
   render() {
@@ -83,7 +104,7 @@ export class GoNavLink {
           {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
           <span class="nav-link-text">
             <span class="nav-link-text-label">{label}</span>
-            {this.showDescription && description ? <span class="nav-link-text-description">{description}</span> : null}
+            {description ? <span class="nav-link-text-description">{description}</span> : null}
           </span>
 
           {url && this.showArrow ? (

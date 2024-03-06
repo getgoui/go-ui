@@ -8,5 +8,7 @@ export interface INavItem {
   children?: INavItem[];
   columns?: number;
   isCurrent?: boolean;
-  linkAttrs?: any;
+  linkAttrs?: UnknownObject;
 }
+
+export type UnknownObject = { [key: string]: unknown | (() => void) };
