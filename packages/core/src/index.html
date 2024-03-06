@@ -45,6 +45,7 @@
           url: '#components',
           icon: 'view_module',
           description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+          columns: 2,
           children: [
             {
               label: 'Sub menu 1',
@@ -197,13 +198,7 @@
           showArrow></go-nav-link>
       </go-nav-item>
       <go-nav-item>
-        <go-nav-link
-          block
-          item="{
-          url: '#',
-          icon: 'view_module',
-          label: 'Components',
-        }"></go-nav-link>
+        <button slot="submenu-trigger">Components</button>
         <div slot="submenu">yo</div>
       </go-nav-item>
     </go-nav-bar>

@@ -89,12 +89,11 @@ export class GoNavItem {
     // if submenu item has children, render the current item and its children
     if (parent.children?.length > 0) {
       return (
-        <div class="submenu">
+        <div class="submenu-list-container">
           <div class="submenu-header">
-            <go-nav-link block item={parent}></go-nav-link>
-            {parent.description ? <p class="description">{parent.description}</p> : null}
+            <go-nav-link block showDescription item={parent}></go-nav-link>
           </div>
-          <ul>
+          <ul class="submenu-list">
             {parent.children.map((child) => (
               <li>
                 <go-nav-link block item={child}></go-nav-link>
@@ -146,7 +145,7 @@ export class GoNavItem {
       <Host
         role="listitem"
         class={{ 'nav-item': true, 'has-children': hasChildren, 'current': item?.isCurrent, 'open': this.open }}>
-        <slot name="default">
+        <slot>
           <Tag class="nav-item-inner" {...attrs}>
             <span class="nav-item-label">
               {renderIcon(item?.icon)}
@@ -172,7 +171,7 @@ export class GoNavItem {
               <div class="submenu-header">
                 <go-nav-link block item={item} showDescription showArrow></go-nav-link>
               </div>
-              <div class="submenu-list">{item.children.map((child) => this.renderSubMenu(child))}</div>
+              <div class="submenu-body">{item.children.map((child) => this.renderSubMenu(child))}</div>
             </div>
           ) : null}
         </slot>
