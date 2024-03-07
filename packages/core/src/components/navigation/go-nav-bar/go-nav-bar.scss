@@ -262,7 +262,9 @@ go-nav-bar {
       position: relative;
     }
     .nav-item {
-      .nav-item-inner {
+      .nav-item-inner,
+      > go-nav-link a {
+        --nav-link-text-decoration: none;
         @include reset-btn;
 
         font-weight: var(--nav-item-fw);
@@ -273,7 +275,7 @@ go-nav-bar {
         height: 100%;
         padding: var(--nav-item-padding);
         color: var(--nav-item-text-color);
-        text-decoration: none;
+        text-decoration: var(--nav-link-text-decoration);
         background: var(--nav-item-bg-color);
         border: var(--nav-item-current-border-width) solid transparent;
         border-radius: var(--nav-item-radius);
@@ -379,6 +381,7 @@ go-nav-bar {
           display: grid;
           grid-template-columns: repeat(var(--submenu-columns), 1fr);
           gap: var(--submenu-list-gap);
+          align-items: flex-start;
         }
       }
       .submenu-list-container {

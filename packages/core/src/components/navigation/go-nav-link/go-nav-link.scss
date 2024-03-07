@@ -58,9 +58,9 @@ go-nav-link {
   /**
     @prop --nav-link-align-y:
       vertical alignment of icon and text
-      - default: center
+      - default: flex-start
   */
-  --nav-link-align-y: center;
+  --nav-link-align-y: flex-start;
 
   /**
     @prop --nav-link-radius:
@@ -108,6 +108,8 @@ go-nav-link {
   --nav-link-current-bg-color: var(--go-color-darkest);
   --nav-link-current-description-color: var(--go-color-neutral-300);
 
+  --nav-link-text-decoration: underline;
+
   display: inline-flex;
   align-items: var(--nav-link-align-y);
   color: var(--go-color-link);
@@ -121,6 +123,7 @@ go-nav-link {
     }
     .nav-item-link {
       display: flex;
+      align-items: var(--nav-link-align-y);
       width: 100%;
     }
   }
@@ -159,7 +162,8 @@ go-nav-link {
       gap: 4px;
       line-height: 1.25;
       .nav-link-text-label {
-        @include underline;
+        text-decoration: var(--nav-link-text-decoration);
+        text-underline-offset: 0.2em;
       }
       .nav-link-text-description {
         font-size: var(--nav-link-description-fs);

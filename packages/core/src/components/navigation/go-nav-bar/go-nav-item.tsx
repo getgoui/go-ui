@@ -97,7 +97,7 @@ export class GoNavItem {
 
     if (Tag === 'a') {
       attrs = {
-        href: item?.url,
+        url: item?.url,
         onClick: (event) => {
           this.navEvent.emit({ event, item });
         },

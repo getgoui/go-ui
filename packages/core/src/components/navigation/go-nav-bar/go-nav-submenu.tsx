@@ -1,4 +1,4 @@
-import { onClickOutside, onEscape, warning } from '@/utils';
+import { hasSlot, onClickOutside, onEscape, warning } from '@/utils';
 import { Component, Method, Prop, h, State, Event, EventEmitter, Element } from '@stencil/core';
 
 @Component({
@@ -52,21 +52,26 @@ export class GoNavSubmenu {
   parentNavItem: HTMLGoNavItemElement;
   clickOutsideCleanUp = null;
   escapeCleanUp = null;
+  hasHeaderSlot = false;
   componentWillLoad() {
     this.parentNavItem = this.el.closest('go-nav-item');
     if (!this.parentNavItem) {
       warning('<go-nav-submenu> must be a child of <go-nav-item>', this.el);
       return;
     }
+
+    this.hasHeaderSlot = hasSlot(this.el, 'submenu-header');
   }
 
   render() {
-    const { columns, isOpen } = this;
+    const { columns, isOpen, hasHeaderSlot } = this;
     return (
       <div class={{ 'submenu-container': true, 'open': isOpen }} style={{ '--submenu-columns': String(columns) }}>
-        <div class="submenu-header">
-          <slot name="submenu-header"></slot>
-        </div>
+        {hasHeaderSlot ? (
+          <div class="submenu-header">
+            <slot name="submenu-header"></slot>
+          </div>
+        ) : null}
         <div class="submenu-body">
           <slot></slot>
         </div>

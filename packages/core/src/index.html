@@ -187,20 +187,22 @@
     <!-- composable nav bar -->
     <go-nav-bar>
       <go-nav-item>
-        <go-nav-link
-          block
-          item="{
-          url: '#', 
-          icon: 'home', 
-          label: 'Home', 
-        }"></go-nav-link>
+        <go-nav-link block url="#home" label="Home" icon="{name: 'home'}"></go-nav-link>
       </go-nav-item>
       <go-nav-item>
         <go-nav-submenu-trigger controls="submenu">
           <go-icon name="view_module"></go-icon>
           Components
         </go-nav-submenu-trigger>
-        <go-nav-submenu id="submenu"> asfd </go-nav-submenu>
+        <go-nav-submenu id="submenu" columns="3">
+          <go-nav-list>
+            <go-nav-link block url="#item" label="Item" icon="{name: 'star'}" description="lorem ipsum"></go-nav-link>
+            <go-nav-link block url="#item" label="Item" icon="{name: 'star'}" description="lorem ipsum"></go-nav-link>
+          </go-nav-list>
+          <go-nav-link block url="#item" label="Item" icon="{name: 'star'}" description="lorem ipsum"></go-nav-link>
+          <go-nav-link block url="#item" label="Item" icon="{name: 'star'}" description="lorem ipsum"></go-nav-link>
+          <go-nav-link block url="#item" label="Item" icon="{name: 'star'}" description="lorem ipsum"></go-nav-link>
+        </go-nav-submenu>
       </go-nav-item>
     </go-nav-bar>
   </body>
