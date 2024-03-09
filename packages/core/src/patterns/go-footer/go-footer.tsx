@@ -21,11 +21,6 @@ export class GoFooter {
   @Prop() navLabel?: string = 'Footer';
 
   /**
-   * Dark theme footer
-   */
-  @Prop() dark?: boolean = false;
-
-  /**
    * Number of navigation columns
    */
   @Prop() navCols?: number = 1;
@@ -39,6 +34,11 @@ export class GoFooter {
    * Number of navigation columns for desktop and up
    */
   @Prop() navColsDesktop?: number = 4;
+
+  /**
+   * Heading tag for nav list
+   */
+  @Prop() listHeadingTag?: string = 'h4';
 
   @State() navItems: INavItem[];
 
@@ -64,10 +64,9 @@ export class GoFooter {
   }
 
   render() {
-    const { navItems, navLabel, dark, hasCopyRightSlot, hasFooterBottomSlot } = this;
-    const { navCols, navColsTablet, navColsDesktop } = this;
+    const { navItems, navLabel, hasCopyRightSlot, hasFooterBottomSlot, navCols, navColsTablet, navColsDesktop } = this;
     return (
-      <Host class={{ dark }}>
+      <Host>
         <footer>
           {navItems ? (
             <div class="container nav-container">
@@ -76,9 +75,9 @@ export class GoFooter {
                   {navItems?.map((item) => (
                     <go-nav-list
                       class={`col-${12 / navCols} col-tablet-${12 / navColsTablet} col-desktop-${12 / navColsDesktop}`}
-                      block
-                      headingItem={item}
-                      items={item?.children}></go-nav-list>
+                      items={item?.children}>
+                      <go-nav-link slot="header" item={item} showArrow></go-nav-link>
+                    </go-nav-list>
                   ))}
                 </div>
               </nav>

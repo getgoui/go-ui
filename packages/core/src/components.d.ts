@@ -663,13 +663,13 @@ export namespace Components {
     }
     interface GoFooter {
         /**
-          * Dark theme footer
-         */
-        "dark"?: boolean;
-        /**
           * Navigation links to be displayed.
          */
         "links": INavItem[] | string;
+        /**
+          * Heading tag for nav list
+         */
+        "listHeadingTag"?: string;
         /**
           * Number of navigation columns
          */
@@ -933,14 +933,6 @@ export namespace Components {
           * Make all sub lists (if any) expanded by default
          */
         "expandSubLists": boolean;
-        /**
-          * Heading text
-         */
-        "heading": string;
-        /**
-          * Heading navigation item
-         */
-        "headingItem": INavItem | string;
         /**
           * list of navigation items to be displayed uuuuuu
          */
@@ -2634,13 +2626,13 @@ declare namespace LocalJSX {
     }
     interface GoFooter {
         /**
-          * Dark theme footer
-         */
-        "dark"?: boolean;
-        /**
           * Navigation links to be displayed.
          */
         "links"?: INavItem[] | string;
+        /**
+          * Heading tag for nav list
+         */
+        "listHeadingTag"?: string;
         /**
           * Number of navigation columns
          */
@@ -2908,14 +2900,6 @@ declare namespace LocalJSX {
           * Make all sub lists (if any) expanded by default
          */
         "expandSubLists"?: boolean;
-        /**
-          * Heading text
-         */
-        "heading"?: string;
-        /**
-          * Heading navigation item
-         */
-        "headingItem"?: INavItem | string;
         /**
           * list of navigation items to be displayed uuuuuu
          */

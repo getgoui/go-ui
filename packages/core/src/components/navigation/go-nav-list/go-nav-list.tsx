@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../../interfaces';
-import { parseJsonProp } from '../../../utils';
+import { hasSlot, parseJsonProp } from '../../../utils';
 @Component({
   tag: 'go-nav-list',
   styleUrl: 'go-nav-list.scss',
@@ -17,18 +17,6 @@ export class GoNavList {
   @State() navItems: INavItem[];
 
   /**
-   * Heading navigation item
-   */
-  @Prop() headingItem: INavItem | string;
-
-  @State() navHeading: INavItem;
-
-  /**
-   * Heading text
-   */
-  @Prop() heading: string;
-
-  /**
    * Make the list full width
    */
   @Prop({ reflect: true }) block: boolean = false;
@@ -43,48 +31,31 @@ export class GoNavList {
     this.navItems = parseJsonProp(newItems);
   }
 
-  @Watch('headingItem')
-  async watchHeadingItem(newItem: INavItem | string) {
-    this.navHeading = parseJsonProp(newItem);
-  }
-
+  hasHeaderSlot = false;
   componentWillLoad() {
     this.navItems = parseJsonProp(this.items);
-    this.navHeading = parseJsonProp(this.headingItem);
+    this.hasHeaderSlot = hasSlot(this.el, 'header');
   }
 
   render() {
-    const { navItems, navHeading, heading, block, expandSubLists } = this;
+    const { navItems, block, expandSubLists, hasHeaderSlot } = this;
     return (
       <div>
-        {navHeading ? (
+        {hasHeaderSlot ? (
           <div class="nav-list-header">
-            <go-nav-link showArrow block={block} class="nav-list-header-text" item={navHeading}></go-nav-link>
+            <slot name="header"></slot>
           </div>
         ) : null}
-
-        {heading ? (
-          <div class="nav-list-header">
-            <span class="nav-list-header-text">{heading}</span>
-          </div>
-        ) : null}
-
-        <slot name="heading"></slot>
-
         {navItems?.length > 0 ? (
           <ul class="nav-list">
             {navItems.map((item) => {
               const isCurrent = item.isCurrent || item?.children?.some((item) => item.isCurrent);
               return (
-                <li class={{ 'is-current': isCurrent }}>
+                <li class={{ 'mb-1': true, 'is-current': isCurrent }}>
                   {item.children?.length ? (
                     <go-accordion>
                       <go-accordion-item heading={item.label} active={expandSubLists || isCurrent}>
-                        <go-nav-list
-                          headingItem={navHeading}
-                          heading={heading}
-                          block={block}
-                          items={item.children}></go-nav-list>
+                        <go-nav-list block={block} items={item.children}></go-nav-list>
                       </go-accordion-item>
                     </go-accordion>
                   ) : (

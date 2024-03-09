@@ -103,6 +103,8 @@ go-nav-link {
   */
   --nav-link-description-color: var(--go-color-neutral-800);
 
+  --nav-link-description-color-hover: var(--go-color-neutral-700);
+
   --nav-link-current-fw: 700;
   --nav-link-current-text-color: var(--go-color-neutral-200);
   --nav-link-current-bg-color: var(--go-color-darkest);
@@ -142,57 +144,18 @@ go-nav-link {
     go-icon {
       text-decoration: none;
     }
-    svg.external-link-icon {
-      flex: 0 0 auto;
-      transform: none;
-    }
-    .arrow {
-      @include transition(transform);
-
-      stroke: var(--nav-link-arrow-color);
-      flex: 0 0 auto;
-      height: 1.25em;
-      margin-left: calc(var(--nav-link-arrow-gap) + 4px);
-      transform: translateX(-4px);
-    }
     .nav-link-text {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 4px;
       line-height: 1.25;
-      .nav-link-text-label {
-        text-decoration: var(--nav-link-text-decoration);
-        text-underline-offset: 0.2em;
-      }
       .nav-link-text-description {
         font-size: var(--nav-link-description-fs);
         font-weight: var(--nav-link-description-fw);
         color: var(--nav-link-description-color);
         text-decoration: none;
       }
-    }
-
-    &:hover,
-    &:focus-visible {
-      background-color: var(--nav-link-bg-color);
-      color: var(--nav-link-text-color);
-
-      .nav-link-text-label {
-        text-decoration: none;
-      }
-      .arrow {
-        transform: translateX(0);
-      }
-    }
-    &::after {
-      // expand clickable area to include arrow
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
     }
 
     &.current {
@@ -206,6 +169,52 @@ go-nav-link {
       .nav-link-text-description {
         color: var(--nav-link-current-description-color);
       }
+    }
+  }
+
+  // interactable states only applicable to a tag
+  a.nav-item-link {
+    svg.external-link-icon {
+      flex: 0 0 auto;
+      transform: none;
+    }
+    .arrow {
+      @include transition(transform);
+
+      stroke: var(--nav-link-arrow-color);
+      flex: 0 0 auto;
+      height: 1.25em;
+      margin-left: calc(var(--nav-link-arrow-gap) + 4px);
+      transform: translateX(-4px);
+    }
+    .nav-link-text-label {
+      text-decoration: var(--nav-link-text-decoration);
+      text-underline-offset: 0.2em;
+    }
+    &:hover,
+    &:focus-visible {
+      background-color: var(--nav-link-bg-color);
+      color: var(--nav-link-text-color);
+      .nav-link-text {
+        .nav-link-text-label {
+          text-decoration: none;
+        }
+        .nav-link-text-description {
+          color: var(--nav-link-description-color-hover);
+        }
+      }
+      .arrow {
+        transform: translateX(0);
+      }
+    }
+    &::after {
+      // expand clickable area to include arrow
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
   }
 }

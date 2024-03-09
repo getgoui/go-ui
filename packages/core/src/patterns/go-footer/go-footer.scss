@@ -1,42 +1,51 @@
 go-footer {
-  --footer-section-padding: 2rem 0;
+  /**
+    @prop --footer-nav-section-padding:
+    Padding for the navigation section
+    - default: 3rem 0
+  */
   --footer-nav-section-padding: 3rem 0;
-  --footer-bottom-section-padding: var(--footer-section-padding);
-  --footer-copyright-section-padding: var(--footer-section-padding);
-  --footer-separator-color: var(--go-color-neutral-300);
-
-  // colours
+  /**
+    @prop --footer-bottom-section-padding:
+    Padding for the bottom section
+    - default: 2rem 0
+  */
+  --footer-bottom-section-padding: 2rem 0;
+  /**
+    @prop --footer-copyright-section-padding:
+    Padding for the copyright section
+    - default: 2rem 0
+  */
+  --footer-copyright-section-padding: 2rem 0;
+  /**
+    @prop --footer-bg-color:
+    Background color for the footer
+    - default: var(--go-color-lightest)
+  */
   --footer-bg-color: var(--go-color-lightest);
+  /**
+    @prop --footer-text-color:
+    Text color for the footer
+    - default: var(--go-color-text)
+  */
   --footer-text-color: var(--go-color-text);
-  --footer-link-color: var(--footer-text-color);
-  --footer-link-color-hover: var(--go-color-success-900);
-  --footer-link-bg-color-hover: transparent;
+  /**
+    @prop --footer-separator-color:
+    Color for separator between sections
+    - default: var(--go-color-neutral-300)
+  */
+  --footer-separator-color: var(--go-color-neutral-300);
 
   display: block;
   background: var(--footer-bg-color);
   color: var(--footer-text-color);
 
-  &.dark {
-    // dark theme, use tokens to fix colours regardless of user OS preference.
-    --footer-bg-color: rgb(var(--go-token-secondary-900));
-    --footer-text-color: rgb(var(--go-token-lightest));
-    --footer-link-color: var(--footer-text-color);
-    --footer-link-color-hover: rgb(var(--go-token-success-200));
-    --nav-link-arrow-color: var(--footer-text-color);
-    --nav-link-arrow-color-hover: var(--footer-link-color-hover);
-    --footer-link-bg-color-hover: transparent;
-    --footer-separator-color: rgb(var(--go-token-neutral-300));
-  }
+  a,
   go-nav-list {
     --go-color-link: var(--footer-text-color);
-    --nav-list-header-text-color: var(--footer-text-color);
-  }
-  a {
-    --go-color-link: var(--footer-link-color);
-    &:hover,
-    &:focus-visible {
-      --go-color-link-hover: var(--footer-link-color-hover);
-      --go-color-link-hover-bg: var(--footer-link-bg-color-hover);
+    --nav-list-header-color: var(--footer-text-color);
+    .nav-link-text-description {
+      --nav-link-description-color: var(--footer-text-color);
     }
   }
   .nav-container {

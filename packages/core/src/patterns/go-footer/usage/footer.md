@@ -4,6 +4,7 @@
   links="[
 {
   label: 'Features',
+  url: '#',
   icon: 'star',
   children: [
     {

@@ -1,7 +1,21 @@
 go-nav-list {
   --nav-list-header-padding: var(--go-base-spacing) 0;
-  --nav-list-header-gap: 0;
-  --nav-list-header-text-color: var(--go-color-text);
+  --nav-list-margin: 1rem 0;
+  --nav-list-header-color: var(--go-color-text);
+
+  /**
+    @prop --nav-list-header-fs:
+    Font size of nav list header
+    - default: 1rem
+  */
+  --nav-list-header-fs: 1rem;
+
+  /**
+    @prop --nav-list-header-fw:
+    Font weight of nav list header
+    - default: 500
+  */
+  --nav-list-header-fw: 500;
 
   display: inline-block;
   &[block] {
@@ -9,11 +23,12 @@ go-nav-list {
   }
 
   .nav-list-header {
-    margin-top: var(--nav-list-header-gap);
-    font-size: var(--go-size-0);
-    color: var(--nav-list-header-text-color);
-    margin-bottom: 1rem;
-
+    margin: var(--nav-list-margin);
+    :where([slot='header']) {
+      font-size: var(--nav-list-header-fs);
+      font-weight: var(--nav-list-header-fw);
+      color: var(--nav-list-header-color);
+    }
     // border-bottom: 1px solid var(--go-color-neutral-300);
     .nav-list-header-text {
       display: flex;

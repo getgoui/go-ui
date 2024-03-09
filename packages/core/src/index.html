@@ -26,10 +26,151 @@
         });
       </script>
     </header>
+    <!-- material icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <go-footer
+      dark
+      links="[
+{
+  label: 'Features',
+  icon: 'star',
+  url: '#',
+  description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+  children: [
+    {
+      label: 'Home',
+      url: '#',
+      icon: 'home'
+    },
+    {
+      label: 'About',
+      url: '#',
+      icon: 'info'
+    },
+    {
+      label: 'Contact',
+      url: '#',
+      icon: 'contact_mail'
+    }
+  ]
+},
+{
+  label: 'Get involved',
+  url: '#',
+  children: [
+    {
+      label: 'Bug report',
+      url: '#',
+    },
+    {
+      label: 'Feature request',
+      url: '#',
+    },
+    {
+      label: 'Development guide',
+      url: '#',
+    },
+  ],
+},
+{
+  label: 'Community',
+  icon: 'people',
+  description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+
+  children: [
+    {
+      label: 'Discord',
+      url: 'https://discord.gg/g7cuQAdPfS',
+      linkAttr: {
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }
+    },
+    {
+      label: 'Twitter',
+      url: 'https://twitter.com/go-components',
+      linkAttr: {
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }
+    },
+  ],
+},
+]">
+      <div slot="copyright">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente sed dolorum nemo facere neque eveniet modi
+        accusantium fuga placeat expedita. Eius minus non vero id neque. Id a expedita atque.
+      </div>
+
+      <div slot="footer-bottom">
+        <style>
+          .link-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            gap: 1rem;
+            font-size: var(--go-size--1);
+          }
+        </style>
+        <ul class="link-list">
+          <li>
+            <a href="#">Privacy policies</a>
+          </li>
+          <li>
+            <a href="#">Terms and conditions</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </go-footer>
 
     <!-- keep this sandbox empty before pushing changes -->
     <!-- material icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <div class="container">
+      <go-nav-list
+        heading-item="{
+    label: 'List heading',
+    url: '#'
+  }"
+        items="[
+          {
+            label: 'Dashboard',
+            url: '#',
+            icon: 'dashboard',
+          },
+          {
+            label: 'Forms',
+            url: '#',
+            icon: 'text_fields',
+          },
+          {
+            label: 'Tables',
+            url: '#',
+            icon: 'grid_on',
+          },
+          {
+            label: 'Charts',
+            url: '#',
+            icon: 'insert_chart',
+          },
+          {
+            label: 'User profile',
+            url: '#',
+            icon: 'person',
+          },
+        ]"></go-nav-list>
+    </div>
+
+    <go-center height="50vh">
+      <go-nav-list>
+        <go-nav-link block url="#item" label="Item" icon="{name: 'star'}" description="lorem ipsum"></go-nav-link>
+        <go-nav-link block url="#item" label="Item" icon="{name: 'star'}" description="lorem ipsum"></go-nav-link>
+      </go-nav-list>
+    </go-center>
 
     <go-nav-bar id="navbar1"></go-nav-bar>
 
