@@ -1,163 +1,153 @@
-<!-- material icons -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<!-- vue 3 -->
-<script src="https://cdn.jsdelivr.net/npm/vue@3.2.26"></script>
-
-<div id="app"></div>
+<go-nav-bar id="navbar1"></go-nav-bar>
 
 <script>
-  const { createApp } = Vue;
-  const Root = {
-    data() {
-      return {
-        navItems: [
-          {
-            label: 'Home',
-            url: '#',
-            icon: 'home',
-            isCurrent: true,
-          },
-          {
-            label: 'Components',
-            url: '#',
-            icon: 'view_module',
-            description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
-            children: [
-              {
-                label: 'Sub menu 1',
-                url: '#submenu',
-                icon: 'text_fields',
-              },
-              {
-                label: 'Colors',
-                url: '#',
-                icon: 'color_lens',
-              },
-              {
-                label: 'Icons',
-                url: '#',
-                icon: 'image',
-              },
-              {
-                label: 'Buttons',
-                url: '#',
-                icon: 'touch_app',
-              },
-            ],
-          },
-          {
-            label: 'Styleguide',
-            url: '#',
-            icon: 'style',
-            children: [
-              {
-                label: 'Typography',
-                url: '#',
-                icon: 'text_fields',
-                children: [
-                  {
-                    label: 'Headings',
-                    url: '#',
-                    icon: 'text_fields',
-                    children: [
-                      {
-                        label: 'Heading 1',
-                        url: '#',
-                      },
-                      {
-                        label: 'Heading 2',
-                        url: '#',
-                      },
-                    ],
-                  },
-                  {
-                    label: 'Paragraphs',
-                    url: '#',
-                    icon: 'text_fields',
-                  },
-                  {
-                    label: 'Lists',
-                    url: '#',
-                    icon: 'text_fields',
-                  },
-                  {
-                    label: 'Code',
-                    url: '#',
-                    icon: 'text_fields',
-                  },
-                  {
-                    label: 'Tables',
-                    url: '#',
-                    icon: 'text_fields',
-                  },
-                ],
-              },
-              {
-                label: 'Colors',
-                url: '#',
-                icon: 'color_lens',
-                children: [
-                  {
-                    label: 'Primary',
-                    url: '#',
-                    icon: 'color_lens',
-                  },
-                ],
-              },
-              {
-                label: 'Icons',
-                url: '#',
-                icon: 'image',
-              },
-              {
-                label: 'Buttons',
-                url: '#',
-                icon: 'touch_app',
-              },
-              {
-                label: 'Forms',
-                url: '#',
-                icon: 'text_fields',
-              },
-            ],
-          },
-          {
-            label: 'About',
-            url: '#',
-            icon: 'info',
-          },
-        ],
-      };
+  const navItems = [
+    {
+      label: 'Home',
+      url: '#home',
+      icon: 'home',
     },
-    methods: {
-      onNav(e) {
-        // traverse the navItems array, clear isCurrent property and set it to true for the clicked item
-        const newCurrentItem = e.detail.item;
-        console.log({ newCurrentItem });
-        this.navItems = this.navItems.map((item) => this.traverseNavItems(item, newCurrentItem));
-      },
-      traverseNavItems(item, newCurrent) {
-        let isCurrent = false;
-        if (item === newCurrent) {
-          console.log('item === newCurrent', item, newCurrent);
-          isCurrent = true;
-        }
-        const children = item?.children?.map((child) => this.traverseNavItems(child, newCurrent));
-        return {
-          ...item,
-          isCurrent,
-          children,
-        };
-      },
+    {
+      label: 'Components',
+      url: '#components',
+      icon: 'view_module',
+      description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+      columns: 2,
+      children: [
+        {
+          label: 'Sub menu 1',
+          url: '#submenu1',
+          icon: 'text_fields',
+          description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+        },
+        {
+          label: 'Colors',
+          url: '#colors',
+          icon: 'color_lens',
+        },
+        {
+          label: 'Icons',
+          url: '#icons',
+          icon: 'image',
+        },
+        {
+          label: 'Buttons',
+          url: '#buttons',
+          icon: 'touch_app',
+        },
+      ],
     },
-    mounted() {},
-    template: `
-  <p>Mega menu rendered from <code>items</code> JSON data</p>
-  <go-nav-bar :items.prop="navItems" @navigate="(e) => onNav(e)"></go-nav-bar>
-  `,
+    {
+      label: 'Styleguide',
+      url: '#styleguide',
+      icon: 'style',
+      columns: 3,
+      description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+      children: [
+        {
+          label: 'Typography',
+          url: '#typography',
+          icon: 'text_fields',
+          children: [
+            {
+              label: 'Headings',
+              url: '#headings',
+              icon: 'text_fields',
+              children: [
+                {
+                  label: 'Heading 1',
+                  url: '#h1',
+                },
+                {
+                  label: 'Heading 2',
+                  url: '#h2',
+                },
+              ],
+            },
+            {
+              label: 'Paragraphs',
+              url: '#paragraphs',
+              icon: 'text_fields',
+            },
+            {
+              label: 'Lists',
+              url: '#lists',
+              icon: 'text_fields',
+            },
+            {
+              label: 'Code',
+              url: '#code',
+              icon: 'text_fields',
+            },
+            {
+              label: 'Tables',
+              url: '#tables',
+              icon: 'text_fields',
+            },
+          ],
+        },
+        {
+          label: 'Colors',
+          url: '#colors2',
+          icon: 'color_lens',
+          description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+          children: [
+            {
+              label: 'Primary',
+              url: '#primary',
+              icon: 'color_lens',
+            },
+          ],
+        },
+        {
+          label: 'Icons',
+          url: '#icons2',
+          icon: 'image',
+          description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+        },
+        {
+          label: 'Buttons',
+          url: '#buttons2',
+          icon: 'touch_app',
+        },
+        {
+          label: 'Forms',
+          url: '#forms',
+          icon: 'text_fields',
+        },
+      ],
+    },
+    {
+      label: 'About',
+      url: '#about',
+      icon: 'info',
+    },
+  ];
+  navbar1.items = navItems;
+
+  const setCurrentItem = (item, newCurrent) => {
+    if (item.label === 'Colors') {
+      console.log({ item, newCurrent });
+    }
+    let isCurrent = undefined;
+    if (item.url === newCurrent.url) {
+      console.log('item === newCurrent', item, newCurrent);
+      isCurrent = true;
+    }
+    const children = item?.children?.map((child) => setCurrentItem(child, newCurrent));
+    return {
+      ...item,
+      isCurrent,
+      children,
+    };
   };
 
-  const app = createApp(Root);
-  app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('go-');
-  app.mount('#app');
+  navbar1.addEventListener('navigate', (e) => {
+    console.log('nav event', e.detail);
+    const newCurrent = e.detail?.item;
+    if (!newCurrent) {
+      return;
+    }
+    navbar1.items = navItems.map((item) => setCurrentItem(item, newCurrent));
+  });
 </script>

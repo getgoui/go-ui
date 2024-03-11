@@ -1,6 +1,6 @@
 go-nav-list {
   --nav-list-header-padding: var(--go-base-spacing) 0;
-  --nav-list-margin: 1rem 0;
+  --nav-list-margin: 0;
   --nav-list-header-color: var(--go-color-text);
 
   /**
@@ -17,6 +17,13 @@ go-nav-list {
   */
   --nav-list-header-fw: 500;
 
+  /**
+    @prop --nav-list-header-gap:
+    Gap between nav list header and list items
+    - default: 1em
+  */
+  --nav-list-header-gap: 1em;
+
   display: inline-block;
   margin: var(--nav-list-margin);
 
@@ -28,6 +35,7 @@ go-nav-list {
     font-size: var(--nav-list-header-fs);
     font-weight: var(--nav-list-header-fw);
     color: var(--nav-list-header-color);
+    margin-bottom: var(--nav-list-header-gap);
   }
   // border-bottom: 1px solid var(--go-color-neutral-300);
   .nav-list-header-text {
@@ -49,21 +57,6 @@ go-nav-list {
     .nav-item-link {
       font-size: 1em;
       line-height: 1.5;
-    }
-
-    go-accordion {
-      --heading-bg-color: transparent;
-      --heading-bg-color-hover: var(--go-color-link-hover-bg);
-      --heading-padding-x: 0;
-      --heading-padding-y: 0.25em;
-      --panel-padding-x: var(--go-base-spacing);
-      --panel-padding-y: 0;
-      --heading-radius: var(--radius-1);
-
-      .heading-control {
-        border-left: var(--go-base-spacing) solid transparent;
-        line-height: 1.5;
-      }
     }
   }
 }
