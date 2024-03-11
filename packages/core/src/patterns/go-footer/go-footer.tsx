@@ -74,9 +74,10 @@ export class GoFooter {
                 <div class="row">
                   {navItems?.map((item) => (
                     <go-nav-list
+                      block
                       class={`col-${12 / navCols} col-tablet-${12 / navColsTablet} col-desktop-${12 / navColsDesktop}`}
                       items={item?.children}>
-                      <go-nav-link slot="header" item={item} showArrow></go-nav-link>
+                      <go-nav-link block slot="header" item={item} showArrow></go-nav-link>
                     </go-nav-list>
                   ))}
                 </div>

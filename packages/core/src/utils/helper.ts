@@ -53,7 +53,11 @@ export function inheritComponentAttrs(component, excludes: string[] = [], remove
  */
 export function $attrs(removeAttrs = false, elPropName = 'el') {
   const propNames = Object.keys(Object.getPrototypeOf(this));
-  return inheritAttributes(this[elPropName], ['class', 'style', 'id', 'data-testid', ...propNames], removeAttrs);
+  return inheritAttributes(
+    this[elPropName],
+    ['class', 'style', 'id', 'data-testid', 'slot', ...propNames],
+    removeAttrs,
+  );
 }
 
 /**

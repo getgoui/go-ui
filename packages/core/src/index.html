@@ -29,7 +29,6 @@
     <!-- material icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <go-footer
-      dark
       links="[
 {
   label: 'Features',
@@ -38,9 +37,26 @@
   description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
   children: [
     {
-      label: 'Home',
+      label: 'Nested list',
       url: '#',
-      icon: 'home'
+      children: [
+        {
+          label: 'Nested',
+          url: '#',
+        },
+        {
+          label: 'Nested',
+          url: '#',
+        },
+        {
+          label: 'Nested',
+          url: '#',
+        },
+        {
+          label: 'Nested',
+          url: '#',
+        }
+      ]
     },
     {
       label: 'About',

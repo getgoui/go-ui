@@ -39,7 +39,9 @@ go-footer {
   display: block;
   background: var(--footer-bg-color);
   color: var(--footer-text-color);
-
+  go-nav-link {
+    --nav-link-padding: 0.5em;
+  }
   a,
   go-nav-list {
     --go-color-link: var(--footer-text-color);

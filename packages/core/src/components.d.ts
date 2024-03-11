@@ -930,10 +930,6 @@ export namespace Components {
          */
         "block": boolean;
         /**
-          * Make all sub lists (if any) expanded by default
-         */
-        "expandSubLists": boolean;
-        /**
           * list of navigation items to be displayed uuuuuu
          */
         "items": INavItem[] | string;
@@ -2896,10 +2892,6 @@ declare namespace LocalJSX {
           * Make the list full width
          */
         "block"?: boolean;
-        /**
-          * Make all sub lists (if any) expanded by default
-         */
-        "expandSubLists"?: boolean;
         /**
           * list of navigation items to be displayed uuuuuu
          */
