@@ -3,18 +3,15 @@ export const AUTO_FOCUS_TIMEOUT = 50;
  * handle click outside of element
  * @param el target element
  * @param callback handler
+ * @returns clean up function, call to remove event listener
  */
-export function onClickOutside(el: HTMLElement, callback: (event: MouseEvent) => void): (e: MouseEvent) => void {
+export function onClickOutside(el: HTMLElement, callback: (event: MouseEvent) => void): () => void {
   const handler = (e: MouseEvent) => {
     if (el.contains(e.target as HTMLElement)) return;
     callback(e);
   };
   document.addEventListener('click', handler);
-  return handler;
-}
-
-export function removeClickOutsideListener(handler) {
-  document.removeEventListener('click', handler);
+  return () => document.removeEventListener('click', handler);
 }
 
 /**
@@ -128,4 +125,20 @@ export function focusLastWithin(parent: HTMLElement): void {
       lastFocusableChild.focus();
     }, AUTO_FOCUS_TIMEOUT);
   }
+}
+
+/**
+ *
+ * Add event listener on escape key press
+ * @param el the element to add event listener to
+ */
+export function onEscape(el: HTMLElement | Document, callback: (e: KeyboardEvent) => void): () => void {
+  const handler = (e) => {
+    if (e.code === 'Escape') {
+      callback(e);
+    }
+  };
+  el.addEventListener('keydown', handler);
+
+  return () => el.removeEventListener('click', handler);
 }

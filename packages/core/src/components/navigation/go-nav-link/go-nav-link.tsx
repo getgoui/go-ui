@@ -1,6 +1,6 @@
-import { Component, h, Host, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { INavItem } from '../../../interfaces';
-import { inheritAttributes } from '../../../utils/helper';
+import { Component, h, Host, Prop, Element, Event, EventEmitter, State, Watch } from '@stencil/core';
+import { IIcon, INavItem, UnknownObject } from '../../../interfaces';
+import { $attrs, parseJsonProp } from '../../../utils/helper';
 
 @Component({
   tag: 'go-nav-link',
@@ -13,12 +13,44 @@ export class GoNavLink {
   /**
    * navigation item
    */
-  @Prop() item: INavItem;
+  @Prop() item?: INavItem | string;
+
+  @State() parsedItem: INavItem;
+
+  // developers can also chose to not pass in an item prop
+  // but use the following INavItem keys as props to construct the link
+
+  @Prop() label?: string;
+  @Prop() url?: string;
+  @Prop() icon?: IIcon | string;
+  @Prop() description?: string;
+  @Prop() isCurrent?: boolean;
+  @Prop() linkAttrs?: UnknownObject | string;
+
+  @Watch('item')
+  parseNavItem() {
+    if (this.item) {
+      this.parsedItem = parseJsonProp(this.item);
+    }
+
+    // component props will override item data if both are present
+    const icon = parseJsonProp(this.icon) ?? this.parsedItem?.icon;
+    const linkAttrs = parseJsonProp(this.linkAttrs) ?? this.parsedItem?.linkAttrs;
+    this.parsedItem = {
+      ...this.parsedItem,
+      label: this.label ?? this.parsedItem?.label,
+      url: this.url ?? this.parsedItem?.url,
+      icon,
+      description: this.description ?? this.parsedItem?.description,
+      isCurrent: this.isCurrent ?? this.parsedItem?.isCurrent,
+      linkAttrs,
+    };
+  }
 
   /**
    * show arrow at the end of the link
    */
-  @Prop() showArrow = false;
+  @Prop() showArrow?: boolean = false;
 
   /**
    * full width
@@ -34,25 +66,26 @@ export class GoNavLink {
 
   private inheritedAttrs = {};
   componentWillLoad() {
-    this.inheritedAttrs = inheritAttributes(this.el, [], true);
+    this.inheritedAttrs = $attrs.bind(this)();
+    this.parseNavItem();
   }
 
   render() {
     const { inheritedAttrs } = this;
-    if (!this.item) {
+    if (!this.parsedItem) {
       return (
         <a {...inheritedAttrs}>
           <slot></slot>
         </a>
       );
     }
-    const { isCurrent, url, icon, label } = this.item;
+    const { isCurrent, url, icon, label, description } = this.parsedItem;
 
     const isSpan = isCurrent || !url;
 
     let Tag = isSpan ? 'span' : 'go-link';
     let attrs = {
-      ...this.item?.linkAttrs,
+      ...this.parsedItem.linkAttrs,
       ...inheritedAttrs,
     };
     attrs = !isSpan
@@ -69,7 +102,11 @@ export class GoNavLink {
       <Host>
         <Tag {...attrs}>
           {icon ? typeof icon === 'string' ? <go-icon name={icon}></go-icon> : <go-icon {...icon}></go-icon> : null}
-          <span class="nav-link-text">{label}</span>
+          <span class="nav-link-text">
+            <span class="nav-link-text-label">{label}</span>
+            {description ? <span class="nav-link-text-description">{description}</span> : null}
+          </span>
+
           {url && this.showArrow ? (
             <svg
               class="arrow"

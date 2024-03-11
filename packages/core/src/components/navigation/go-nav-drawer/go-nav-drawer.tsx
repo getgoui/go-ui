@@ -1,7 +1,7 @@
 import { Component, h, Element, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
 
 import { INavItem } from '../../../interfaces';
-import { inheritAttributes, trapFocus, parseItems } from '../../../utils';
+import { inheritAttributes, trapFocus, parseJsonProp } from '../../../utils';
 import { renderIcon } from '../nav-helpers';
 
 @Component({
@@ -49,7 +49,7 @@ export class GoNavDrawer {
   @Method()
   @Watch('items')
   async init(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
+    this.navItems = parseJsonProp(newItems);
   }
 
   /**
@@ -111,7 +111,7 @@ export class GoNavDrawer {
   componentWillLoad() {
     this.inheritedAttrs = inheritAttributes(this.el, ['class', 'style', 'items', 'active', 'position'], false);
     try {
-      this.navItems = parseItems(this.items);
+      this.navItems = parseJsonProp(this.items);
     } catch (e) {
       console.warn('Could not parse nav items.', e);
     }
@@ -140,7 +140,7 @@ export class GoNavDrawer {
 
   handleNavItemClick(e, item: INavItem) {
     if (item.linkAttrs?.onClick) {
-      item.linkAttrs.onClick(e);
+      (item.linkAttrs.onClick as EventListener)(e);
     }
     if (this.autoClose) {
       this.close();
@@ -197,7 +197,10 @@ export class GoNavDrawer {
           <nav aria-label={isSubNav ? parentItem.label : this.label}>
             {isSubNav && parentItem.url ? (
               <div class="parent-link">
-                <go-link href={parentItem.url} {...parentItem.linkAttrs} onClick={(e) => this.handleNavItemClick(e, parentItem)}>
+                <go-link
+                  href={parentItem.url}
+                  {...parentItem.linkAttrs}
+                  onClick={(e) => this.handleNavItemClick(e, parentItem)}>
                   <span class="nav-item-label">
                     {renderIcon(parentItem.icon)}
                     <span>{parentItem.label}</span>

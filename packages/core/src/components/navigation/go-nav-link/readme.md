@@ -12,13 +12,12 @@ title: Nav link
 
 - [Nav list](./go-nav-list)
 - [Nav drawer](./go-nav-drawer)
-- [Main navigation](./go-main-navigation)
+- [Nav bar](./go-nav-bar)
 
 <!-- Demos, tips, variations, use cases -->
 
 ## Demo
 
 <demo-frame component="go-nav-link" demo="go-nav-link"></demo-frame>
-
 
 <!-- Auto Generated Below -->

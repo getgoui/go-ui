@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Watch } from '@stencil/core';
 import { INavItem } from '../../interfaces';
 import { warning, hasSlot } from '../../utils/helper';
-import { parseItems } from '../../utils';
+import { parseJsonProp } from '../../utils';
 @Component({
   tag: 'go-footer',
   styleUrl: 'go-footer.scss',
@@ -21,11 +21,6 @@ export class GoFooter {
   @Prop() navLabel?: string = 'Footer';
 
   /**
-   * Dark theme footer
-   */
-  @Prop() dark?: boolean = false;
-
-  /**
    * Number of navigation columns
    */
   @Prop() navCols?: number = 1;
@@ -40,20 +35,27 @@ export class GoFooter {
    */
   @Prop() navColsDesktop?: number = 4;
 
+  /**
+   * Heading tag for nav list
+   */
+  @Prop() listHeadingTag?: string = 'h4';
+
   @State() navItems: INavItem[];
 
   @Watch('links')
   async watchItems(newItems: INavItem[] | string) {
-    this.navItems = parseItems(newItems);
+    this.navItems = parseJsonProp(newItems);
   }
 
   private hasCopyRightSlot = false;
   private hasFooterBottomSlot = false;
 
   componentWillLoad() {
-    this.navItems = parseItems(this.links);
+    this.navItems = parseJsonProp(this.links);
     if (this.navItems?.length > 0 && !this.navLabel) {
-      warning('Please add a unique "nav-label" in order to put navigation items into the nav landmark for better accessibility.');
+      warning(
+        'Please add a unique "nav-label" in order to put navigation items into the nav landmark for better accessibility.',
+      );
     }
 
     // check if copyright slot is empty
@@ -62,10 +64,9 @@ export class GoFooter {
   }
 
   render() {
-    const { navItems, navLabel, dark, hasCopyRightSlot, hasFooterBottomSlot } = this;
-    const { navCols, navColsTablet, navColsDesktop } = this;
+    const { navItems, navLabel, hasCopyRightSlot, hasFooterBottomSlot, navCols, navColsTablet, navColsDesktop } = this;
     return (
-      <Host class={{ dark }}>
+      <Host>
         <footer>
           {navItems ? (
             <div class="container nav-container">
@@ -73,10 +74,11 @@ export class GoFooter {
                 <div class="row">
                   {navItems?.map((item) => (
                     <go-nav-list
-                      class={`col-${12 / navCols} col-tablet-${12 / navColsTablet} col-desktop-${12 / navColsDesktop}`}
                       block
-                      headingItem={item}
-                      items={item?.children}></go-nav-list>
+                      class={`col-${12 / navCols} col-tablet-${12 / navColsTablet} col-desktop-${12 / navColsDesktop}`}
+                      items={item?.children}>
+                      <go-nav-link block slot="header" item={item} showArrow></go-nav-link>
+                    </go-nav-list>
                   ))}
                 </div>
               </nav>

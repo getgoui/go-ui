@@ -1,7 +1,7 @@
 import { Component, h, Prop, Element, State, Watch, EventEmitter, Event } from '@stencil/core';
 import { uniqueId } from 'lodash-es';
 import '@duetds/date-picker';
-import { fieldSlotNames, loadFieldProps, loadFieldSlots, parseItems } from '../../../utils';
+import { fieldSlotNames, loadFieldProps, loadFieldSlots, parseJsonProp } from '../../../utils';
 import { FormFieldProps, GoChangeEventDetail } from '../../../interfaces';
 import { DuetDatePickerProps } from './duet-date-picker';
 import dayjs from 'dayjs';
@@ -56,7 +56,7 @@ export class GoDatepicker implements FormFieldProps {
 
   @Watch('options')
   loadOptions() {
-    this.parsedOptions = parseItems(this.options);
+    this.parsedOptions = parseJsonProp(this.options);
     const dateFormat = this.format;
     this.parsedOptions = {
       ...this.parsedOptions,

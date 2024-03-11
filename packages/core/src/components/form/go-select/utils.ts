@@ -4,7 +4,7 @@
  */
 
 import { SelectOption } from '@/interfaces';
-import { parseItems } from '@/utils';
+import { parseJsonProp } from '@/utils';
 
 export enum Keys {
   Backspace = 'Backspace',
@@ -190,7 +190,7 @@ export const parseSelectOptions = (options: string | string[] | SelectOption[]):
       options = options.split(',');
     }
 
-    const parsedOptions = parseItems<SelectOption[] | string[]>(options);
+    const parsedOptions = parseJsonProp<SelectOption[] | string[]>(options);
     if (parsedOptions) {
       // format parsed options into SelectOption[]
       return parsedOptions.map((option) =>

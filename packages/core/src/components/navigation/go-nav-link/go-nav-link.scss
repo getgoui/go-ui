@@ -1,14 +1,116 @@
 go-nav-link {
+  /**
+    @prop --nav-link-padding:
+      padding on nav link
+      - default: 0.25em 0
+  */
   --nav-link-padding: 0.25em 0;
+
+  /**
+    @prop --nav-link-current-bar-width:
+      width of underline on current nav link
+      - default: 2px
+  */
   --nav-link-current-bar-width: 2px;
+
+  /**
+    @prop --nav-link-current-bar-color:
+      color of underline on current nav link
+      - default: currentColor
+  */
   --nav-link-current-bar-color: currentColor;
+
+  /**
+    @prop --nav-link-hover-fg-color:
+      text color on hover
+      - default: var(--go-color-link-hover)
+  */
   --nav-link-hover-fg-color: var(--go-color-link-hover);
+
+  /**
+    @prop --nav-link-hover-bg-color:
+      background color on hover
+      - default: var(--go-color-link-hover-bg)
+  */
   --nav-link-hover-bg-color: var(--go-color-link-hover-bg);
+
+  /**
+    @prop --nav-link-arrow-gap:
+      gap between arrow icon and link text
+      - default: var(--go-base-spacing)
+  */
   --nav-link-arrow-gap: var(--go-base-spacing);
+
+  /**
+    @prop --nav-link-arrow-color:
+      icon color on nav link
+      - default: currentColor
+  */
   --nav-link-arrow-color: currentColor;
+
+  /**
+    @prop --nav-link-arrow-color-hover:
+      icon color on hover
+      - default: currentColor
+  */
   --nav-link-arrow-color-hover: currentColor;
-  --nav-link-align-y: center;
-  --nav-link-radius: var(--radius-1);
+
+  /**
+    @prop --nav-link-align-y:
+      vertical alignment of icon and text
+      - default: flex-start
+  */
+  --nav-link-align-y: flex-start;
+
+  /**
+    @prop --nav-link-radius:
+      border radius of nav link
+      - default: var(--radius-2)
+  */
+  --nav-link-radius: var(--radius-2);
+
+  /**
+    @prop --nav-link-bg-color:
+      background color of nav link
+      - default: var(--go-color-neutral-200)
+  */
+  --nav-link-bg-color: var(--go-color-neutral-200);
+
+  /**
+    @prop --nav-link-text-color:
+      text color of nav link
+      - default: var(--go-color-darkest)
+  */
+  --nav-link-text-color: var(--go-color-darkest);
+
+  /**
+    @prop --nav-link-description-fs:
+    font size of description
+    - default: 0.85em
+  */
+  --nav-link-description-fs: 0.85em;
+  /**
+    @prop --nav-link-description-fw:
+    font weight of description
+    - default: normal
+  */
+  --nav-link-description-fw: normal;
+
+  /**
+    @prop --nav-link-description-color:
+    color of description
+    - default: var(--go-color-neutral-800)
+  */
+  --nav-link-description-color: var(--go-color-neutral-800);
+
+  --nav-link-description-color-hover: var(--go-color-neutral-700);
+
+  --nav-link-current-fw: 700;
+  --nav-link-current-text-color: var(--go-color-neutral-200);
+  --nav-link-current-bg-color: var(--go-color-darkest);
+  --nav-link-current-description-color: var(--go-color-neutral-300);
+
+  --nav-link-text-decoration: underline;
 
   display: inline-flex;
   align-items: var(--nav-link-align-y);
@@ -23,29 +125,55 @@ go-nav-link {
     }
     .nav-item-link {
       display: flex;
+      align-items: var(--nav-link-align-y);
+      width: 100%;
     }
   }
 
   .nav-item-link {
+    @include transition(background);
+
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.5rem;
     padding: var(--nav-link-padding);
     border-radius: var(--nav-link-radius);
-    border-left: var(--nav-link-current-bar-width) solid transparent;
-    line-height: 1.5;
+    // border-left: var(--nav-link-current-bar-width) solid transparent;
     text-decoration: none;
-
-    &.current {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-left-color: var(--nav-link-current-bar-color);
-      padding-left: 0.5rem;
-    }
 
     go-icon {
       text-decoration: none;
     }
+    .nav-link-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      line-height: 1.25;
+      .nav-link-text-description {
+        font-size: var(--nav-link-description-fs);
+        font-weight: var(--nav-link-description-fw);
+        color: var(--nav-link-description-color);
+        text-decoration: none;
+      }
+    }
+
+    &.current {
+      color: var(--nav-link-current-text-color);
+      background: var(--nav-link-current-bg-color);
+
+      .nav-link-text-label {
+        font-weight: var(--nav-link-current-fw);
+        text-decoration: none;
+      }
+      .nav-link-text-description {
+        color: var(--nav-link-current-description-color);
+      }
+    }
+  }
+
+  // interactable states only applicable to a tag
+  a.nav-item-link {
     svg.external-link-icon {
       flex: 0 0 auto;
       transform: none;
@@ -59,18 +187,21 @@ go-nav-link {
       margin-left: calc(var(--nav-link-arrow-gap) + 4px);
       transform: translateX(-4px);
     }
-  }
-
-  a.nav-item-link {
-    @include transition(background);
-    .nav-link-text {
-      @include underline;
+    .nav-link-text-label {
+      text-decoration: var(--nav-link-text-decoration);
+      text-underline-offset: 0.2em;
     }
-
     &:hover,
     &:focus-visible {
+      background-color: var(--nav-link-bg-color);
+      color: var(--nav-link-text-color);
       .nav-link-text {
-        text-decoration: none;
+        .nav-link-text-label {
+          text-decoration: none;
+        }
+        .nav-link-text-description {
+          color: var(--nav-link-description-color-hover);
+        }
       }
       .arrow {
         transform: translateX(0);

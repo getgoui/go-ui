@@ -1,0 +1,410 @@
+go-nav-bar {
+  /**
+    @prop --nav-outer-padding:
+    Outer padding between container and nav items
+    - default: 0.5rem
+  */
+  --nav-outer-padding: 0.5rem;
+  /**
+    @prop --nav-border-top:
+    Navigation bar top border
+    - default: 1px solid var(--go-color-neutral-200)
+  */
+  --nav-border-top: 1px solid var(--go-color-neutral-200);
+  /**
+    @prop --nav-border-bottom:
+    avigation barbottom border
+    - default: 1px solid var(--go-color-neutral-200)
+  */
+  --nav-border-bottom: 1px solid var(--go-color-neutral-200);
+  /**
+    @prop --nav-bg-color:
+    background of nav container
+    - default: transparent
+  */
+  --nav-bg-color: transparent;
+  /**
+    @prop --nav-shadow:
+    shadow of nav container
+    - default: var(--shadow-2)
+  */
+  --nav-shadow: var(--shadow-2);
+  /**
+    @prop --nav-item-fw:
+    nav item font weight
+    - default: 500
+  */
+  --nav-item-fw: 500;
+  /**
+    @prop --nav-item-text-color:
+      text color of nav items
+      - default: var(--go-color-neutral-800)
+  */
+  --nav-item-text-color: var(--go-color-neutral-800);
+  /**
+    @prop --nav-item-bg-color:
+      background color of nav items
+      - default: var(--nav-bg-color) (transparent)
+  */
+  --nav-item-bg-color: var(--nav-bg-color);
+
+  /**
+    @prop --nav-item-hover-text-color:
+      text color of nav items on hover
+      - default: var(--go-color-darkest)
+  */
+  --nav-item-hover-text-color: var(--go-color-darkest);
+
+  /**
+    @prop --nav-item-hover-bg-color:
+      background color of nav items on hover
+      - default: var(--go-color-neutral-200)
+  */
+  --nav-item-hover-bg-color: var(--go-color-neutral-200);
+
+  /**
+    @prop --nav-item-active-text-color:
+      text color of nav items when active
+      - default: var(--go-color-darkest)
+  */
+  --nav-item-active-text-color: var(--go-color-darkest);
+
+  /**
+    @prop --nav-item-active-bg-color:
+      background color of nav items when active
+      - default: var(--go-color-neutral-200)
+  */
+  --nav-item-active-bg-color: var(--go-color-neutral-200);
+  /**
+    @prop --nav-item-current-text-color:
+      text color of nav items when current (highlighted)
+      - default: var(--go-color-neutral-100)
+  */
+  --nav-item-current-text-color: var(--go-color-neutral-100);
+  /**
+    @prop --nav-item-current-bg-color:
+      background color of nav items when current (highlighted)
+      - default: var(--go-color-neutral-900)
+  */
+  --nav-item-current-bg-color: var(--go-color-neutral-900);
+  /**
+    @prop --nav-item-current-fw:
+      font-weight of nav items when current (highlighted)
+      - default: 700
+  */
+  --nav-item-current-fw: 700;
+
+  /**
+    @prop --nav-item-open-bg-color:
+      background color of nav items when submenu is open
+      - default: var(--go-color-neutral-900)
+  */
+  --nav-item-open-bg-color: var(--go-color-neutral-900);
+  /**
+    @prop --nav-item-open-text-color:
+      text color of nav items when submenu is open
+      - default: var(--go-color-neutral-100)
+  */
+  --nav-item-open-text-color: var(--go-color-neutral-100);
+
+  /**
+    @prop --nav-item-gap:
+      Gap between nav items
+      - default: 0.5rem
+  */
+  --nav-item-gap: 0.5rem;
+  /**
+    @prop --nav-item-padding:
+      Padding of nav items
+      - default: 0.25em 0.5em
+  */
+  --nav-item-padding: 0.25em 0.5em;
+  /**
+    @prop --nav-item-radius:
+      Radius of nav items
+      - default: 0.25em
+  */
+  --nav-item-radius: 0.25em;
+  /**
+    @prop --nav-item-icon-gap:
+      Gap between icon and text in nav items
+      - default: 0.5rem
+  */
+  --nav-item-icon-gap: 0.5rem;
+
+  /**
+    @prop --nav-item-current-border-width:
+      Border width of nav items when current (highlighted)
+      - default: 2px
+  */
+  --nav-item-current-border-width: 2px;
+  /**
+    @prop --nav-item-current-border-color:
+      Border color of nav items when current (highlighted)
+      - default: var(--go-color-primary-600)
+  */
+  --nav-item-current-border-color: var(--go-color-primary-600);
+
+  /**
+    @prop --submenu-width:
+    width of submenu
+    - default: auto
+  */
+  --submenu-width: auto;
+  /**
+    @prop --submenu-bg-color:
+      Background color of submenu
+      - default: var(--go-color-neutral-100)
+  */
+  --submenu-bg-color: var(--go-color-neutral-100);
+  /**
+    @prop --submenu-border-radius:
+      Border radius of submenu
+      - default: var(--radius-2)
+  */
+  --submenu-border-radius: var(--radius-2);
+  /**
+    @prop --submenu-border-width:
+      Border width of submenu
+      - default: 2px
+  */
+  --submenu-border-width: 2px;
+  /**
+    @prop --submenu-border-color:
+      Border color of submenu
+      - default: var(--go-color-neutral-500)
+  */
+  --submenu-border-color: var(--go-color-neutral-500);
+  /**
+    @prop --submenu-padding-y:
+      vertical padding of submenu links
+      - default: var(--go-size-0)
+  */
+  --submenu-padding-y: var(--go-size-0);
+  /**
+    @prop --submenu-padding-x:
+      horizontal padding of submenu links
+      - default: var(--go-size-1)
+  */
+  --submenu-padding-x: var(--go-size-1);
+  /**
+    @prop --submenu-link-padding:
+      padding of submenu links (applied to top/bottom only)
+      - default: 8px
+  */
+  --submenu-link-padding: 8px;
+
+  /**
+    @prop --submenu-separator-color:
+      border color separator between submenu header and list
+      - default: var(--go-color-neutral-200)
+  */
+  --submenu-separator-color: var(--go-color-neutral-200);
+
+  /**
+    @prop --submenu-list-indent:
+      submenu indent
+      - default: 1rem
+  */
+  --submenu-list-indent: 1rem;
+
+  /**
+    @prop --submenu-tail-size:
+      submenu tail size
+      - default: 1em
+  */
+  --submenu-tail-size: 1em;
+
+  /**
+      @prop --submenu-tail-offset-x:
+      set the horizontal offset from the tail to left edge of parent menu
+      - default: 1rem
+    */
+  --submenu-tail-offset-x: 1rem;
+  /**
+    @prop --submenu-z-index:
+      submenu z-index
+      - default: var(--layer-important)
+  */
+  --submenu-z-index: var(--layer-important);
+
+  /**
+    @prop --submenu-columns:
+    number of columns in submenu list
+    - default: 1
+  */
+  --submenu-columns: 1;
+
+  /**
+    @prop --submenu-list-gap:
+    gap between submenu lists
+    - default: 1rem
+  */
+  --submenu-list-gap: 1rem;
+
+  display: block;
+  box-shadow: var(--nav-shadow);
+  border-top: var(--nav-border-top);
+  border-bottom: var(--nav-border-bottom);
+  padding: var(--nav-outer-padding);
+  ul {
+    list-style: none;
+  }
+  > nav {
+    background: var(--nav-bg-color);
+    .nav-menu-root {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: var(--nav-item-gap);
+      align-items: stretch;
+      flex-wrap: nowrap;
+      position: relative;
+    }
+    .nav-item {
+      .nav-item-inner,
+      > go-nav-link a {
+        --nav-link-text-decoration: none;
+        @include reset-btn;
+
+        font-weight: var(--nav-item-fw);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: var(--nav-item-padding);
+        color: var(--nav-item-text-color);
+        text-decoration: var(--nav-link-text-decoration);
+        background: var(--nav-item-bg-color);
+        border: var(--nav-item-current-border-width) solid transparent;
+        border-radius: var(--nav-item-radius);
+        @include transition(background, border-color);
+        &:hover,
+        &:focus {
+          border-radius: var(--nav-item-radius);
+          background: var(--nav-item-hover-bg-color);
+          color: var(--nav-item-hover-text-color);
+        }
+
+        &:active {
+          background: var(--nav-item-active-bg-color);
+          color: var(--nav-item-active-text-color);
+        }
+
+        svg {
+          @include transition(transform);
+
+          margin-left: 0.5rem;
+          width: 1em;
+          height: 1em;
+          transform: translateX(0);
+        }
+
+        .nav-item-label {
+          display: flex;
+          align-items: center;
+          gap: var(--nav-item-icon-gap);
+        }
+
+        &[aria-expanded='true'] {
+          background: var(--nav-item-open-bg-color);
+          color: var(--nav-item-open-text-color);
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      &.current {
+        .nav-item-inner {
+          background: var(--nav-item-current-bg-color);
+          color: var(--nav-item-current-text-color);
+          font-weight: var(--nav-item-current-fw);
+        }
+      }
+
+      .parent-link {
+        svg {
+          width: 40px;
+        }
+      }
+
+      // new structure
+      .submenu-container {
+        @include transition(opacity, visibility);
+        --submenu-border: var(--submenu-border-width) solid var(--submenu-border-color);
+
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        top: calc(100% + var(--submenu-tail-size));
+        max-width: 100%;
+        width: var(--submenu-width);
+        z-index: var(--submenu-z-index);
+        box-shadow: var(--nav-shadow);
+        padding: var(--submenu-padding-y) var(--submenu-padding-x);
+        background: var(--submenu-bg-color);
+        border-radius: var(--submenu-border-radius);
+        border: var(--submenu-border);
+
+        &::before {
+          content: '';
+          width: var(--submenu-tail-size);
+          height: var(--submenu-tail-size);
+          background: var(--submenu-bg-color);
+          position: absolute;
+          top: calc(-1 * var(--submenu-border-width) / 2);
+          left: var(--submenu-tail-offset-x);
+          transform: translate(0, -50%) rotate(45deg);
+          border: var(--submenu-border);
+          border-right: none;
+          border-bottom: none;
+          z-index: 9;
+        }
+
+        .submenu-header {
+          padding-bottom: 0.5rem;
+          margin-bottom: 0.5rem;
+          border-bottom: 1px solid var(--submenu-separator-color);
+          svg {
+            width: 1.5em;
+            height: 1.5em;
+          }
+          h5 {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+          }
+        }
+        .submenu-body {
+          display: grid;
+          grid-template-columns: repeat(var(--submenu-columns), 1fr);
+          gap: var(--submenu-list-gap);
+          align-items: flex-start;
+        }
+      }
+      .submenu-list-container {
+        .submenu-list {
+          margin: 0;
+          margin-inline-start: var(--submenu-list-indent);
+          padding: 0;
+        }
+      }
+
+      // opened submenu
+      .submenu-container.open {
+        visibility: visible;
+        opacity: 1;
+        box-shadow: var(--shadow-2);
+      }
+    }
+  }
+
+  go-nav-link {
+    --nav-link-padding: var(--submenu-link-padding);
+    .nav-item-link .nav-link-text {
+      text-decoration: none;
+    }
+  }
+}

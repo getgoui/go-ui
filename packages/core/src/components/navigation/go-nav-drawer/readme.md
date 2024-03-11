@@ -16,7 +16,7 @@ This component combines the [w3c dialog](https://www.w3.org/TR/wai-aria-practice
 
 <!-- Patterns that uses this component -->
 
-- [Main navigation](../../patterns/go-main-nav)
+- [Navigation bar](../../patterns/go-nav-bar)
 
 <!-- Demos, tips, variations, use cases -->
 

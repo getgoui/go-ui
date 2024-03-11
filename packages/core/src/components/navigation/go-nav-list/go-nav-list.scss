@@ -1,53 +1,62 @@
 go-nav-list {
   --nav-list-header-padding: var(--go-base-spacing) 0;
-  --nav-list-header-gap: 0;
-  --nav-list-header-text-color: var(--go-color-text);
+  --nav-list-margin: 0;
+  --nav-list-header-color: var(--go-color-text);
+
+  /**
+    @prop --nav-list-header-fs:
+    Font size of nav list header
+    - default: 1rem
+  */
+  --nav-list-header-fs: 1rem;
+
+  /**
+    @prop --nav-list-header-fw:
+    Font weight of nav list header
+    - default: 500
+  */
+  --nav-list-header-fw: 500;
+
+  /**
+    @prop --nav-list-header-gap:
+    Gap between nav list header and list items
+    - default: 1em
+  */
+  --nav-list-header-gap: 1em;
 
   display: inline-block;
+  margin: var(--nav-list-margin);
+
   &[block] {
     display: block;
   }
 
-  .nav-list-header {
-    margin-top: var(--nav-list-header-gap);
-    font-size: var(--go-size-0);
-    color: var(--nav-list-header-text-color);
-    margin-bottom: 1rem;
-
-    // border-bottom: 1px solid var(--go-color-neutral-300);
-    .nav-list-header-text {
-      display: flex;
-      line-height: 1.5;
-      padding: var(--nav-list-header-padding);
-    }
+  :where([slot='header']) {
+    font-size: var(--nav-list-header-fs);
+    font-weight: var(--nav-list-header-fw);
+    color: var(--nav-list-header-color);
+    margin-bottom: var(--nav-list-header-gap);
+  }
+  // border-bottom: 1px solid var(--go-color-neutral-300);
+  .nav-list-header-text {
+    display: flex;
+    line-height: 1.5;
+    padding: var(--nav-list-header-padding);
   }
   .nav-list {
     list-style: none;
     padding: 0;
     margin: 0;
 
+    // nested list
     .nav-list {
+      margin-left: 0.5rem;
       padding-left: 0.5rem;
     }
 
     .nav-item-link {
-      font-size: 1rem;
+      font-size: 1em;
       line-height: 1.5;
-    }
-
-    go-accordion {
-      --heading-bg-color: transparent;
-      --heading-bg-color-hover: var(--go-color-link-hover-bg);
-      --heading-padding-x: 0;
-      --heading-padding-y: 0.25em;
-      --panel-padding-x: var(--go-base-spacing);
-      --panel-padding-y: 0;
-      --heading-radius: var(--radius-1);
-
-      .heading-control {
-        border-left: var(--go-base-spacing) solid transparent;
-        line-height: 1.5;
-      }
     }
   }
 }
