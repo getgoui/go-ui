@@ -109,7 +109,7 @@ export class GoButton {
   }
   updateInnerButtonAttributes() {
     this.inheritedAttributes = {
-      ...$attrs.bind(this)(true),
+      ...$attrs.bind(this)(),
     };
   }
 
