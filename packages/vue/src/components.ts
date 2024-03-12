@@ -265,10 +265,10 @@ export const GoFieldset = /*@__PURE__*/ defineContainer<JSX.GoFieldset>('go-fiel
 export const GoFooter = /*@__PURE__*/ defineContainer<JSX.GoFooter>('go-footer', undefined, [
   'links',
   'navLabel',
-  'dark',
   'navCols',
   'navColsTablet',
-  'navColsDesktop'
+  'navColsDesktop',
+  'listHeadingTag'
 ]);
 
 
@@ -348,8 +348,7 @@ export const GoMd = /*@__PURE__*/ defineContainer<JSX.GoMd>('go-md', undefined, 
 
 export const GoNavBar = /*@__PURE__*/ defineContainer<JSX.GoNavBar>('go-nav-bar', undefined, [
   'items',
-  'label',
-  'navigate'
+  'label'
 ]);
 
 
@@ -366,14 +365,21 @@ export const GoNavDrawer = /*@__PURE__*/ defineContainer<JSX.GoNavDrawer>('go-na
 
 
 export const GoNavItem = /*@__PURE__*/ defineContainer<JSX.GoNavItem>('go-nav-item', undefined, [
-  'items'
+  'item',
+  'navigate',
+  'submenutoggle'
 ]);
 
 
 export const GoNavLink = /*@__PURE__*/ defineContainer<JSX.GoNavLink>('go-nav-link', undefined, [
   'item',
+  'label',
+  'url',
+  'icon',
+  'description',
+  'isCurrent',
+  'linkAttrs',
   'showArrow',
-  'showDescription',
   'block',
   'navigate'
 ]);
@@ -381,10 +387,18 @@ export const GoNavLink = /*@__PURE__*/ defineContainer<JSX.GoNavLink>('go-nav-li
 
 export const GoNavList = /*@__PURE__*/ defineContainer<JSX.GoNavList>('go-nav-list', undefined, [
   'items',
-  'headingItem',
-  'heading',
-  'block',
-  'expandSubLists'
+  'block'
+]);
+
+
+export const GoNavSubmenu = /*@__PURE__*/ defineContainer<JSX.GoNavSubmenu>('go-nav-submenu', undefined, [
+  'columns',
+  'toggle'
+]);
+
+
+export const GoNavSubmenuTrigger = /*@__PURE__*/ defineContainer<JSX.GoNavSubmenuTrigger>('go-nav-submenu-trigger', undefined, [
+  'controls'
 ]);
 
 
