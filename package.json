@@ -3,7 +3,7 @@
     "dev": "concurrently --kill-others \"npm:watch.*\"",
     "watch.core": "nx build @go-ui/core -- --watch",
     "dev.core": "nx start @go-ui/core",
-    "dev.react.app": "nx start @go-ui/react-starter",
+    "dev.react": "nx start @go-ui/react-starter",
     "dev.vue": "nx dev @go-ui/vue-starter",
     "build.core": "nx build @go-ui/core",
     "build.react": "nx build @go-ui/react",

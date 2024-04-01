@@ -19,7 +19,7 @@ export class GoNavSubmenuTrigger {
       if (!this.submenuEl) {
         warning('<go-nav-submenu-trigger> is missing <go-nav-submenu> with id: ' + this.controls, this.el);
       }
-      this.submenuEl.addEventListener('toggle', (e) => {
+      this.submenuEl.addEventListener('toggle', (e: CustomEvent) => {
         this.isOpen = e.detail.isOpen;
       });
     }
