@@ -67,22 +67,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Pre core release
-        run: pnpm run prerelease
-
-      - name: Release Core
+      - name: Release
         run: pnpm run release
-
-      - name: Pre wrapper release
-        run: pnpm run prerelease-wrappers
-
-      - name: Release React
-        run: pnpm run release
-        working-directory: ./packages/react
-
-      - name: Release Vue
-        run: pnpm run release
-        working-directory: ./packages/vue
 
   docsite:
     name: Deploy docsite
