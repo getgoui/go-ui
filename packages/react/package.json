@@ -15,7 +15,7 @@
     "rollup": "rollup -c",
     "cpyScss": "cpy \"node_modules/@go-ui/core/src/global/scss/**/*\" \"dist/scss\"",
     "cpyCss": "cpy \"node_modules/@go-ui/core/dist/go-ui/go-ui.css\" \"dist\" --flat",
-    "release": "npm publish"
+    "release": "pnpm run build &&npm publish"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",

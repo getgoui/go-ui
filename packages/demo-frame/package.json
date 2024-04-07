@@ -21,8 +21,7 @@
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
-    "prerelease": "npm run build",
-    "release": "npm publish"
+    "release": "npm run build && npm publish"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.5",

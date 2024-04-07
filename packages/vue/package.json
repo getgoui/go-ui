@@ -6,7 +6,7 @@
     "build": "rimraf dist && vue-tsc && vite build && pnpm run cpyCss && pnpm run cpyScss",
     "cpyScss": "cpy \"node_modules/@go-ui/core/src/global/scss/**/*\" \"dist/scss\"",
     "cpyCss": "cpy \"node_modules/@go-ui/core/dist/go-ui/*.css\" \"dist\"",
-    "release": "npm publish"
+    "release": "pnpm run build && npm publish"
   },
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
