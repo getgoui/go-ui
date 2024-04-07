@@ -3,7 +3,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const RELEASE_COMMAND = 'pnpm run release --dry-run';
+const RELEASE_COMMAND = 'pnpm run release';
 
 function getLatestVersion(packageName) {
   console.log(`> Getting latest version number from npm`);
@@ -65,6 +65,7 @@ function syncVersionToWrappers() {
   try {
     execSync('pnpm run gg release-prep-wrappers', { stdio: 'inherit' });
     console.log('✅ React and Vue packages have been synced.');
+    console.log('✅ <demo-frame> version has been synced.');
   } catch (error) {
     console.error('❎ Error:', error);
     process.exit(1);
@@ -75,11 +76,11 @@ function syncVersionToWrappers() {
  * Run release script in packages/react/package.json and packages/vue/package.json
  */
 function releaseWrappers() {
-  const wrapperLibs = ['react', 'vue'];
-  console.log(`3️⃣ STEP 3. Release wrappers, ${wrapperLibs.join(', ')}`);
+  const associatedPkgs = ['react', 'vue', 'demo-frame'];
+  console.log(`3️⃣ STEP 3. Release associated packages, ${associatedPkgs.join(', ')}`);
   try {
-    for (let i = 0; i < wrapperLibs.length; i++) {
-      const lib = wrapperLibs[i];
+    for (let i = 0; i < associatedPkgs.length; i++) {
+      const lib = associatedPkgs[i];
       const cwd = path.resolve(__dirname, `../packages/${lib}`);
       execSync(RELEASE_COMMAND, { cwd, stdio: 'inherit' });
       console.log(`✅ ${lib} package have been released.`);

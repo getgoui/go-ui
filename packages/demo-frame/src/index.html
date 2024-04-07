@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@go-ui/core@latest/dist/go-ui/go-ui.min.css"
+    />
+    <script type="module" src="/build/demo-frame.esm.js"></script>
+    <script nomodule src="/build/demo-frame.js"></script>
+  </head>
+  <body>
+    <go-dark-mode id="themer"></go-dark-mode>
+    <div class="container">
+      <go-switch id="switcher" label="Dark Mode"></go-switch>
+
+      <script>
+        const themer = document.getElementById('themer');
+        const switcher = document.getElementById('switcher');
+        themer.addEventListener('themechange', e => {
+          switcher.setAttribute('checked', e.detail.theme === 'dark');
+        });
+        switcher.addEventListener('change', e => {
+          themer.setTheme(e.target.checked ? 'dark' : 'light');
+        });
+      </script>
+
+      <demo-frame component="go-nav-bar" demo="go-nav-bar"></demo-frame>
+    </div>
+  </body>
+</html>

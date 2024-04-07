@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
 
-const packages = ['react', 'vue'];
+const packages = ['react', 'vue', 'demo-frame'];
 
 export default async function releasePrepWrappers(args) {
   const corePackageFile = path.resolve(__dirname, `../packages/core/package.json`);

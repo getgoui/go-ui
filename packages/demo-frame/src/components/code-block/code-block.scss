@@ -1,0 +1,16 @@
+@import '~highlight.js/styles/github-dark.css';
+
+pre.code-block {
+  padding: 0;
+  background-color: transparent;
+  margin: 1rem 0;
+  position: relative;
+  copy-code-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+  }
+  .hljs {
+    padding: 1.5rem 1rem;
+  }
+}
