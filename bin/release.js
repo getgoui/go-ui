@@ -63,7 +63,7 @@ function releaseCore() {
 function syncVersionToWrappers() {
   console.log(`2️⃣ STEP 2. Sync version to wrappers`);
   try {
-    execSync('pnpm run release-prep-wrappers', { stdio: 'inherit' });
+    execSync('pnpm run gg release-prep-wrappers', { stdio: 'inherit' });
     console.log('✅ React and Vue packages have been synced.');
   } catch (error) {
     console.error('❎ Error:', error);
