@@ -1,8 +1,6 @@
 name: Release
 on:
-  push:
-    branches: [main]
-  # Allows you to run this workflow manually from the Actions tab
+  # Only run this workflow manually from the GitHub Actions tab
   workflow_dispatch:
 jobs:
   release:
@@ -51,13 +49,13 @@ jobs:
         run: pnpm -r install --no-frozen-lockfile
 
       #TEST
-      # - name: Unit Test Core Components
-      #   run: pnpm test.spec
-      #   working-directory: packages/core
+      - name: Unit Test Core Components
+        run: pnpm test.spec
+        working-directory: packages/core
 
-      # - name: E2E Test Core Components
-      #   run: pnpm test.e2e
-      #   working-directory: packages/core
+      - name: E2E Test Core Components
+        run: pnpm test.e2e
+        working-directory: packages/core
 
       - name: Build
         run: pnpm run build.libs
@@ -67,22 +65,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Pre core release
-        run: pnpm run prerelease
-
-      - name: Release Core
+      - name: Release
         run: pnpm run release
-
-      - name: Pre wrapper release
-        run: pnpm run prerelease-wrappers
-
-      - name: Release React
-        run: pnpm run release
-        working-directory: ./packages/react
-
-      - name: Release Vue
-        run: pnpm run release
-        working-directory: ./packages/vue
 
   docsite:
     name: Deploy docsite

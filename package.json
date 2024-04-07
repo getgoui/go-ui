@@ -13,9 +13,7 @@
     "test.spec": "nx test.spec @go-ui/core",
     "test.e2e.watch": "nx test.e2e.watch @go-ui/core",
     "test.e2e": "nx test.e2e @go-ui/core",
-    "prerelease": "pnpm run gg release-prep",
-    "release": "pnpm run --stream -r --filter \"./packages/core\" release",
-    "prerelease-wrappers": "pnpm run gg release-prep-wrappers",
+    "release": "node ./bin/release.js",
     "gg": "node ./bin/index.js"
   },
   "devDependencies": {
