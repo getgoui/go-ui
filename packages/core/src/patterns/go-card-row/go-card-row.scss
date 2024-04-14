@@ -17,8 +17,12 @@ go-card-row {
     }
   }
   .stagger {
-    go-card.loaded {
+    go-card {
       opacity: 0;
+      transition: opacity var(--go-duration-slow) ease var(--stagger-delay);
+      &.stagger-fade-in {
+        opacity: 1;
+      }
     }
   }
 

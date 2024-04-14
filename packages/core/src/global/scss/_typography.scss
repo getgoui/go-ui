@@ -132,3 +132,14 @@ a {
 .unstyled-list {
   @include unstyled-list;
 }
+dl {
+  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin: 0;
+  }
+}
