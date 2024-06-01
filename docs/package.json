@@ -2,8 +2,9 @@
   "name": "@go-ui/docs",
   "type": "module",
   "scripts": {
-    "build": "npm run build.ia && nuxt build",
-    "dev": "npm run build.ia && nuxt dev",
+    "prebuild": "cd .. && pnpm run build.core && pnpm run build.vue",
+    "build": "pnpm run build.ia && nuxt build",
+    "dev": "pnpm run build.ia && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
