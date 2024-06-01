@@ -53,7 +53,7 @@
     "@stencil/sass": "^3.0.4",
     "@stencil/vue-output-target": "^0.8.6",
     "@types/jest": "^29.5.12",
-    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it": "^14.1.1",
     "@types/node": "^20.11.19",
     "autoprefixer": "^10.4.13",
     "axe-core": "^4.6.2",
