@@ -1,0 +1,36 @@
+{
+  "name": "@go-ui/docs",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build.ia && nuxt build",
+    "dev": "npm run build.ia && nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "build.ia": "node ./bin/build-ia.js",
+    "watch.ia": "node ./bin/build-ia.js --watch"
+  },
+  "dependencies": {
+    "@go-ui/vue": "latest"
+  },
+  "devDependencies": {
+    "@go-ui/core": "latest",
+    "@nuxt/devtools": "latest",
+    "@types/lodash-es": "^4.17.12",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
+    "directory-tree": "^3.5.1",
+    "lodash-es": "^4.17.21",
+    "markdown-it": "^13.0.1",
+    "markdown-it-meta": "^0.0.1",
+    "markdown-it-title": "^4.0.0",
+    "nanospinner": "^1.1.0",
+    "nuxt": "^3.8.1",
+    "nuxt-gtag": "^1.1.2",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5",
+    "vue-tsc": "^1.8.22"
+  }
+}
