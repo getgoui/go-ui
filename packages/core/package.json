@@ -18,8 +18,8 @@
   "homepage": "https://go-ui.com/",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "pnpm run clean && stencil build",
-    "start": "pnpm run clean && stencil build --dev --watch --serve",
+    "build": "pnpm clean && stencil build",
+    "start": "pnpm clean && stencil build --dev --watch --serve",
     "watch.components": "stencil build --docs-json --watch",
     "test.spec": "stencil test --spec",
     "test.spec.watch": "stencil test --spec --watchAll",

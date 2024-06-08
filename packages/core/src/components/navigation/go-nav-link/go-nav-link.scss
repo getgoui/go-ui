@@ -2,9 +2,9 @@ go-nav-link {
   /**
     @prop --nav-link-padding:
       padding on nav link
-      - default: 0.25em 0
+      - default: 0.25em 0.5em
   */
-  --nav-link-padding: 0.25em 0;
+  --nav-link-padding: 0.25em 0.5em;
 
   /**
     @prop --nav-link-current-bar-width:

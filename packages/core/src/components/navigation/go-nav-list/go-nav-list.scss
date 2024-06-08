@@ -20,9 +20,9 @@ go-nav-list {
   /**
     @prop --nav-list-header-gap:
     Gap between nav list header and list items
-    - default: 1em
+    - default: 0.5em
   */
-  --nav-list-header-gap: 1em;
+  --nav-list-header-gap: 0.5em;
 
   display: inline-block;
   margin: var(--nav-list-margin);

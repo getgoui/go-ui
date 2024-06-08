@@ -27,5 +27,56 @@
       </script>
     </header>
     <!-- keep this sandbox empty before pushing changes -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <div class="container">
+      <h3>List with heading link</h3>
+      <go-nav-list
+        block
+        heading-item="{
+    label: 'List heading',
+  }"
+        items="[
+          {
+            label: 'Dashboard',
+            url: '#',
+            icon: 'dashboard',
+            isCurrent: true
+          },
+          {
+            label: 'Forms',
+            url: '#',
+            icon: 'text_fields',
+            isCurrent: true,
+            children: [
+              {
+                label: 'Form 1',
+                url: '#',
+                icon: 'text_fields',
+            isCurrent: true
+          },
+              {
+                label: 'Form 2',
+                url: '#',
+                icon: 'text_fields',
+              },
+            ]
+          },
+          {
+            label: 'Tables',
+            url: '#',
+            icon: 'grid_on',
+          },
+          {
+            label: 'Charts',
+            url: '#',
+            icon: 'insert_chart',
+          },
+          {
+            label: 'User profile',
+            url: '#',
+            icon: 'person',
+          },
+        ]"></go-nav-list>
+    </div>
   </body>
 </html>

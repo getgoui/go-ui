@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-06-08T08:39:27",
+  "timestamp": "2024-06-08T09:52:14",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.3",
@@ -7893,7 +7893,7 @@
         {
           "name": "--nav-link-padding",
           "annotation": "prop",
-          "docs": "padding on nav link - default: 0.25em 0"
+          "docs": "padding on nav link - default: 0.25em 0.5em"
         },
         {
           "name": "--nav-link-radius",
@@ -8025,7 +8025,7 @@
         {
           "name": "--nav-list-header-gap",
           "annotation": "prop",
-          "docs": "Gap between nav list header and list items - default: 1em"
+          "docs": "Gap between nav list header and list items - default: 0.5em"
         }
       ],
       "slots": [],
