@@ -4,7 +4,7 @@
   "scripts": {
     "preparebuild": "cd .. && pnpm run build.core && pnpm run build.vue",
     "build": "pnpm run preparebuild && pnpm run build.ia && nuxt build",
-    "dev": "pnpm run build.ia && nuxt dev",
+    "dev": "pnpm run preparebuild && concurrently --kill-others -n ia,docsite \"pnpm run watch.ia\" \"nuxt dev\"",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -20,6 +20,7 @@
     "@types/lodash-es": "^4.17.12",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
+    "concurrently": "^6.5.1",
     "directory-tree": "^3.5.1",
     "lodash-es": "^4.17.21",
     "markdown-it": "^13.0.1",

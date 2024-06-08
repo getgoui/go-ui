@@ -1,4 +1,11 @@
-import { JsonDocsEvent, JsonDocsListener, JsonDocsMethod, JsonDocsProp, JsonDocsSlot, JsonDocsStyle } from '@go-ui/core/dist/docs/go-ui';
+import {
+  JsonDocsEvent,
+  JsonDocsListener,
+  JsonDocsMethod,
+  JsonDocsProp,
+  JsonDocsSlot,
+  JsonDocsStyle,
+} from '@go-ui/core/docs/go-ui';
 import { INavItem } from '@go-ui/core/dist/types/interfaces';
 
 export interface IA {

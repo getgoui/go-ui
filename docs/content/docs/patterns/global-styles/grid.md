@@ -24,7 +24,6 @@ There are less breakpoints in GO than other popular CSS frameworks, as we often 
 
 The reason for naming them based on device types is that we often find teams communicate easier with these names than with arbitrary numbers or T-shirt sizes.
 
-
 ## Media query modifiers
 
 The media query modifiers are based on the device names you have in the `$breakpoints` varialbe. (e.g. `col-tablet-6`, `col-desktop-4`)
@@ -38,7 +37,7 @@ There is no default gap between columns, you can add it by changing the `--go-gr
 
 ## Demo
 
-<demo-frame code=""></demo-frame>
+<demo-frame component="grid" demo="grid" ></demo-frame>
 
 ## Offset
 

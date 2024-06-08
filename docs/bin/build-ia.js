@@ -267,7 +267,7 @@ function mergeDocs(contentItems, componentDocs) {
   return contentItems;
 }
 
-const docsFile = path.resolve(__dirname + '/../node_modules/@go-ui/core/dist/docs/go-ui.json');
+const docsFile = path.resolve(__dirname + '/../../packages/core/docs/go-ui.json');
 
 const readFile = util.promisify(fs.readFile);
 
@@ -294,17 +294,11 @@ generateIA();
 if (process.argv.includes('--watch')) {
   console.log(chalk.green('Start watching IA...'));
   const watcher = chokidar
-    .watch(
-      [
-        path.resolve(__dirname + '/../node_modules/@go-ui/core/dist/docs/go-ui.json'),
-        path.resolve(__dirname + '/../content/**/*'),
-      ],
-      {
-        ignored: /(^|[\/\\])\../, // ignore dotfiles
-        persistent: true,
-        ignoreInitial: true,
-      },
-    )
+    .watch([docsFile, path.resolve(__dirname + '/../content/**/*')], {
+      ignored: /(^|[\/\\])\../, // ignore dotfiles
+      persistent: true,
+      ignoreInitial: true,
+    })
     .on('all', (event, file) => {
       console.log(chalk.yellow(`${file} changed`));
       generateIA();

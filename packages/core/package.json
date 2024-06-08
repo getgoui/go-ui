@@ -12,13 +12,13 @@
   "unpkg": "dist/go-ui/go-ui.esm.js",
   "files": [
     "dist/",
+    "docs/",
     "src/global/"
   ],
   "homepage": "https://go-ui.com/",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && stencil build",
-    "build.component-docs": "stencil build --docs-readme --docs-json",
     "start": "pnpm run clean && stencil build --dev --watch --serve",
     "watch.components": "stencil build --docs-json --watch",
     "test.spec": "stencil test --spec",
@@ -48,7 +48,7 @@
     "@commitlint/config-conventional": "^13.2.0",
     "@release-it/conventional-changelog": "^5.1.1",
     "@stencil-community/postcss": "^2.2.0",
-    "@stencil/core": "^4.13.0",
+    "@stencil/core": "^4.18.3",
     "@stencil/react-output-target": "^0.5.3",
     "@stencil/sass": "^3.0.4",
     "@stencil/vue-output-target": "^0.8.6",

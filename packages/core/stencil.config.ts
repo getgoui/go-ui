@@ -57,7 +57,7 @@ export const config: Config = {
     },
     {
       type: 'docs-json',
-      file: 'dist/docs/go-ui.json',
+      file: 'docs/go-ui.json',
     },
   ],
   globalStyle: 'src/global/styles.scss',

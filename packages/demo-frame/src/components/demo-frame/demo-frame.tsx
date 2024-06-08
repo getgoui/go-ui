@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
-import docs from '@go-ui/core/dist/docs/go-ui';
+import docs from '@go-ui/core/docs/go-ui';
 import pretty from 'pretty';
 
 @Component({
@@ -22,7 +22,9 @@ export class DemoFrame {
 
   componentWillLoad() {
     if (!this.code && (!this.component || !this.demo)) {
-      console.warn('demo-frame need both component and demo props to be specified.');
+      console.warn(
+        'demo-frame need both component and demo props to be specified.',
+      );
       return;
     }
 

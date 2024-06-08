@@ -129,6 +129,9 @@ importers:
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
+      concurrently:
+        specifier: ^6.5.1
+        version: 6.5.1
       directory-tree:
         specifier: ^3.5.1
         version: 3.5.1
@@ -219,19 +222,19 @@ importers:
         version: 5.1.1(release-it@15.11.0)
       '@stencil-community/postcss':
         specifier: ^2.2.0
-        version: 2.2.0(@stencil/core@4.13.0)
+        version: 2.2.0(@stencil/core@4.18.3)
       '@stencil/core':
-        specifier: ^4.13.0
-        version: 4.13.0
+        specifier: ^4.18.3
+        version: 4.18.3
       '@stencil/react-output-target':
         specifier: ^0.5.3
-        version: 0.5.3(@stencil/core@4.13.0)
+        version: 0.5.3(@stencil/core@4.18.3)
       '@stencil/sass':
         specifier: ^3.0.4
-        version: 3.0.4(@stencil/core@4.13.0)
+        version: 3.0.4(@stencil/core@4.18.3)
       '@stencil/vue-output-target':
         specifier: ^0.8.6
-        version: 0.8.6(@stencil/core@4.13.0)
+        version: 0.8.6(@stencil/core@4.18.3)
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -3973,12 +3976,12 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@stencil-community/postcss@2.2.0(@stencil/core@4.13.0):
+  /@stencil-community/postcss@2.2.0(@stencil/core@4.18.3):
     resolution: {integrity: sha512-PuPdjqgF6HdvSLwS6fpLf1TRzd3bd6zqpsICCUA0u9sxPnwrsIpx1xYyA/K9hSWrmyUg0WhHPvkX9k26N5DCnw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >=4.0.0'
     dependencies:
-      '@stencil/core': 4.13.0
+      '@stencil/core': 4.18.3
       postcss: 8.4.31
     dev: true
 
@@ -3994,12 +3997,18 @@ packages:
     hasBin: true
     dev: true
 
-  /@stencil/react-output-target@0.5.3(@stencil/core@4.13.0):
+  /@stencil/core@4.18.3:
+    resolution: {integrity: sha512-8yoG5AFQYEPocVtuoc5kvRS0Hku0MoDWDUpADRaXPVHsOFLmxR16LJENj25ucCz5GEfeTGQ/tCE8JAypPmr/fQ==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
+    dev: true
+
+  /@stencil/react-output-target@0.5.3(@stencil/core@4.18.3):
     resolution: {integrity: sha512-68jwRp35CjAcwhTJ9yFD/3n+jrHOqvEH2jreVuPVvZK+4tkhPlYlwz0d1E1RlF3jyifUSfdkWUGgXIEy8Fo3yw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.13.0
+      '@stencil/core': 4.18.3
     dev: true
 
   /@stencil/sass@3.0.11(@stencil/core@4.13.0):
@@ -4011,20 +4020,20 @@ packages:
       '@stencil/core': 4.13.0
     dev: true
 
-  /@stencil/sass@3.0.4(@stencil/core@4.13.0):
+  /@stencil/sass@3.0.4(@stencil/core@4.18.3):
     resolution: {integrity: sha512-k1dP0A2QBx62m250FATc1hErXxXs6Jnf4TBxdL1C/dc32Kzz2n5aCT4SodBz0ebT5WMnITauZyFqYxzCzDoKag==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.13.0
+      '@stencil/core': 4.18.3
     dev: true
 
-  /@stencil/vue-output-target@0.8.6(@stencil/core@4.13.0):
+  /@stencil/vue-output-target@0.8.6(@stencil/core@4.18.3):
     resolution: {integrity: sha512-B1gQW8FWeU7x/KBPm9R28jYFGN5NsZTZR4jwfDMhKBmU1Q2dIxFY52ARhbrfj5tJQxKoxr2tQJD2S14r9t1v7w==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.13.0
+      '@stencil/core': 4.18.3
     dev: true
 
   /@szmarczak/http-timer@1.1.2:
@@ -17507,6 +17516,7 @@ packages:
 
   /tree-kill@1.2.2:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
+    hasBin: true
     dev: true
 
   /trim-newlines@2.0.0:
