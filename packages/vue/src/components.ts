@@ -165,7 +165,6 @@ export const GoContentLayout = /*@__PURE__*/ defineContainer<JSX.GoContentLayout
 
 
 export const GoDarkMode = /*@__PURE__*/ defineContainer<JSX.GoDarkMode>('go-dark-mode', undefined, [
-  'attribute',
   'themechange'
 ]);
 

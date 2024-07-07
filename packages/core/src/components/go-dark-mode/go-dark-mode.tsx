@@ -1,4 +1,4 @@
-import { getUserTheme, rememberUserTheme, setCurrentTheme, Theme, THEME_ATTRIBUTE } from '@/utils';
+import { getUserTheme, rememberUserTheme, setCurrentTheme, Theme } from '@/utils';
 import { Component, Build, EventEmitter, Event, Method } from '@stencil/core';
 
 @Component({
