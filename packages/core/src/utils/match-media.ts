@@ -38,3 +38,39 @@ export function watchDevice(callback: (device: BuiltInDeviceTypes) => void): voi
 
   observer.observe(syncEl);
 }
+
+export const THEME_ATTRIBUTE = 'data-theme';
+export type Theme = 'light' | 'dark';
+/**
+ * get preferred theme,
+ * 1. Check user settings:
+ *    - check if localstorage has user-theme key
+ *    - if so, check if value is either light or dark,
+ *    - if so, return value
+ *    - if value is neither light or dark, continue to next step
+ * 2. Check system preference:
+ *    - check if prefers-color-scheme is dark, if so, return dark
+ * 3. default to light
+ */
+export function getUserTheme(): Theme {
+  const userTheme = localStorage.getItem('user-theme');
+  if (userTheme === 'light' || userTheme === 'dark') {
+    return userTheme;
+  }
+
+  // Check system preference
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+
+  // Default to light
+  return 'light';
+}
+
+export function setCurrentTheme(theme: Theme) {
+  document.documentElement.setAttribute(THEME_ATTRIBUTE, theme);
+}
+
+export function rememberUserTheme(theme) {
+  localStorage.setItem('user-theme', theme);
+}
