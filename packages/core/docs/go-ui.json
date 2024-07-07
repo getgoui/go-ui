@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-07-07T02:12:05",
+  "timestamp": "2024-07-07T04:02:12",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.3",
@@ -11592,11 +11592,6 @@
       "docstring": "",
       "path": "src/patterns/go-content-layout/go-content-layout.tsx"
     },
-    "src/utils/index.ts::Theme": {
-      "declaration": "any",
-      "docstring": "",
-      "path": "src/utils/index.ts"
-    },
     "src/components/go-icon/go-icon.tsx::MaterialIconVariants": {
       "declaration": "export type MaterialIconVariants =\r\n  | `material-icons`\r\n  | `material-icons-outlined`\r\n  | `material-icons-round`\r\n  | `material-icons-sharp`;",
       "docstring": "",
@@ -11651,6 +11646,11 @@
       "declaration": "export type ColorVariants = 'neutral' | 'primary' | 'secondary' | 'success' | 'critical';",
       "docstring": "",
       "path": "src/interfaces/variants.ts"
+    },
+    "src/utils/index.ts::Theme": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/utils/index.ts"
     },
     "../../node_modules/.pnpm/@types+markdown-it@14.1.1/node_modules/@types/markdown-it/index.d.ts::Options": {
       "declaration": "any",

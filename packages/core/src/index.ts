@@ -5,4 +5,3 @@ export * from './utils';
 export function initGo() {
   setCurrentTheme(getUserTheme());
 }
-initGo();

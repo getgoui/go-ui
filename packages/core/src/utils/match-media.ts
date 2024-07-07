@@ -53,7 +53,7 @@ export type Theme = 'light' | 'dark';
  * 3. default to light
  */
 export function getUserTheme(): Theme {
-  const userTheme = localStorage.getItem('user-theme');
+  const userTheme = window.localStorage.getItem('user-theme');
   if (userTheme === 'light' || userTheme === 'dark') {
     return userTheme;
   }
@@ -72,5 +72,5 @@ export function setCurrentTheme(theme: Theme) {
 }
 
 export function rememberUserTheme(theme) {
-  localStorage.setItem('user-theme', theme);
+  window.localStorage.setItem('user-theme', theme);
 }
