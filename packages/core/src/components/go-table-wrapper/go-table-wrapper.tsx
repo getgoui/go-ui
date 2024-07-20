@@ -23,17 +23,23 @@ export class GoTableWrapper {
    */
   @Prop() hoverable: boolean = false;
 
+  /**
+   * Full width table
+   */
+  @Prop() fullWidth: boolean = false;
+
   // Store attributes inherited from the host element
   componentWillLoad() {}
 
   render() {
-    const { striped, bordered, hoverable } = this;
+    const { striped, bordered, hoverable, fullWidth } = this;
     return (
       <Host
         class={{
           striped,
           bordered,
           hoverable,
+          'full-width': fullWidth,
         }}>
         <slot></slot>
       </Host>

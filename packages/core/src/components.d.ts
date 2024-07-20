@@ -1166,6 +1166,10 @@ export namespace Components {
          */
         "bordered": boolean;
         /**
+          * Full width table
+         */
+        "fullWidth": boolean;
+        /**
           * Hoverable rows
          */
         "hoverable": boolean;
@@ -3129,6 +3133,10 @@ declare namespace LocalJSX {
           * Bordered table
          */
         "bordered"?: boolean;
+        /**
+          * Full width table
+         */
+        "fullWidth"?: boolean;
         /**
           * Hoverable rows
          */

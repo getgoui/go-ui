@@ -6,8 +6,7 @@
         label="Sidebar navigation"
         :items="sidebarItems"
         :autoClose="true"
-        @close="closeMobileSidebar"
-      ></GoNavDrawer>
+        @close="closeMobileSidebar"></GoNavDrawer>
       <div class="container d-none-desktop">
         <GoButton
           class="mobile-sidebar-trigger"
@@ -16,14 +15,8 @@
           flat
           variant="text"
           type="button"
-          @click="openMobileSidebar"
-        >
-          <GoIcon
-            slot="prefix"
-            iconSet="bx"
-            name="chevrons-right"
-            size="1.5rem"
-          ></GoIcon>
+          @click="openMobileSidebar">
+          <GoIcon slot="prefix" iconSet="bx" name="chevrons-right" size="1.5rem"></GoIcon>
           Open sidebar
         </GoButton>
       </div>
@@ -35,19 +28,14 @@
       <div class="container">
         <div class="row">
           <div class="col-12 col-desktop-9 content-container">
-            <GoContent v-html="content"></GoContent>
+            <GoContent v-if="content" v-html="content"></GoContent>
             <slot></slot>
             <div class="pt-5" v-if="editUrl">
               <GoLink :href="editUrl">Edit this page</GoLink>
             </div>
           </div>
           <div class="d-none d-block-desktop col-desktop-3">
-            <GoToc
-              ref="tocEl"
-              class="toc"
-              selector=".content-container h2"
-              label-class="h6"
-            ></GoToc>
+            <GoToc ref="tocEl" class="toc" selector=".content-container h2" label-class="h6"></GoToc>
           </div>
         </div>
       </div>
@@ -58,16 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  GoButton,
-  GoNavDrawer,
-  GoIcon,
-  GoNavList,
-  GoToc,
-  GoToTop,
-  GoContent,
-  GoLink,
-} from "@go-ui/vue";
+import { GoButton, GoNavDrawer, GoIcon, GoNavList, GoToc, GoToTop, GoContent, GoLink } from '@go-ui/vue';
 
 const props = defineProps({
   sidebarItems: { type: Array as PropType<any[]>, default: () => [] },
@@ -81,7 +60,7 @@ watch(
     if (tocEl.value?.$el) {
       (tocEl.value.$el as HTMLGoTocElement).init();
     }
-  }
+  },
 );
 
 const tocEl = ref();

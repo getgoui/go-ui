@@ -487,7 +487,8 @@ export const GoTab = /*@__PURE__*/ defineContainer<JSX.GoTab>('go-tab', undefine
 export const GoTableWrapper = /*@__PURE__*/ defineContainer<JSX.GoTableWrapper>('go-table-wrapper', undefined, [
   'striped',
   'bordered',
-  'hoverable'
+  'hoverable',
+  'fullWidth'
 ]);
 
 

@@ -43,4 +43,9 @@ go-table-wrapper {
       }
     }
   }
+  &.full-width {
+    > table {
+      min-width: 100%;
+    }
+  }
 }

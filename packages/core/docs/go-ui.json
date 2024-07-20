@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-07-07T04:02:12",
+  "timestamp": "2024-07-20T05:27:51",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.3",
@@ -4703,8 +4703,8 @@
       "filePath": "src/components/form/go-field/go-field.tsx",
       "encapsulation": "none",
       "tag": "go-field",
-      "readme": "---\r\ntitle: Field\r\n---\r\n\r\n# Field <span class=\"text-size-0\">`go-field`</span>\r\n\r\n<!-- Description -->\r\n\r\n<div class=\"text-size-1\">\r\n  Field is a component in Go UI.\r\n</div>\r\n\r\n\r\n## Accessibility\r\n\r\n\r\n## Demo\r\n\r\n<demo-frame component=\"go-field\" demo=\"go-field\"></demo-frame>\r\n\r",
-      "docs": "---\r\ntitle: Field\r\n---",
+      "readme": "---\r\ntitle: Field\r\nhidden: true\r\n---\r\n\r",
+      "docs": "---\r\ntitle: Field\r\nhidden: true\r\n---",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -10099,6 +10099,28 @@
           "attr": "bordered",
           "reflectToAttr": false,
           "docs": "Bordered table",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "full-width",
+          "reflectToAttr": false,
+          "docs": "Full width table",
           "docsTags": [],
           "default": "false",
           "values": [

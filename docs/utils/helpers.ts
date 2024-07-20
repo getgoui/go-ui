@@ -104,6 +104,9 @@ export function executeScriptElements(containerElement: HTMLElement) {
 export function buildContentPageSidebar(iaItems: any[], currentPath: string): any[] {
   return iaItems.map((item) => {
     const isCurrent = currentPath.includes(item.url);
+    if (item.meta?.hidden) {
+      return null;
+    }
     if (item.children) {
       return {
         ...item,

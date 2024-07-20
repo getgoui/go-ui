@@ -41,4 +41,5 @@ export interface Metadata {
   title?: string;
   order?: string;
   tags?: string[];
+  hidden?: boolean;
 }
