@@ -922,9 +922,21 @@ export namespace Components {
          */
         "block": boolean;
         /**
+          * Indicate if this is a submenu
+         */
+        "isSubmenu": boolean;
+        /**
           * list of navigation items to be displayed uuuuuu
          */
         "items": INavItem[] | string;
+        /**
+          * The label for this navigation list. When multiple nav lists are in the page, make sure to give distinct labels for each one
+         */
+        "label": string;
+        /**
+          * The id attribute to be applied to the <ul> element This is useful when you have a button that toggles the visibility of this list and you want to reference the list from the button e.g. ``` <button aria-controls="nav-list-1">Toggle</button> <go-nav-list list-id="nav-list-1"> ... </go-nav-list> ```
+         */
+        "listId": string;
     }
     interface GoNavSubmenu {
         "close": () => Promise<void>;
@@ -2885,9 +2897,21 @@ declare namespace LocalJSX {
          */
         "block"?: boolean;
         /**
+          * Indicate if this is a submenu
+         */
+        "isSubmenu"?: boolean;
+        /**
           * list of navigation items to be displayed uuuuuu
          */
         "items"?: INavItem[] | string;
+        /**
+          * The label for this navigation list. When multiple nav lists are in the page, make sure to give distinct labels for each one
+         */
+        "label"?: string;
+        /**
+          * The id attribute to be applied to the <ul> element This is useful when you have a button that toggles the visibility of this list and you want to reference the list from the button e.g. ``` <button aria-controls="nav-list-1">Toggle</button> <go-nav-list list-id="nav-list-1"> ... </go-nav-list> ```
+         */
+        "listId"?: string;
     }
     interface GoNavSubmenu {
         "columns"?: number;

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-07-20T05:27:51",
+  "timestamp": "2024-07-20T22:17:50",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.3",
@@ -7928,6 +7928,28 @@
           "required": false
         },
         {
+          "name": "isSubmenu",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "is-submenu",
+          "reflectToAttr": false,
+          "docs": "Indicate if this is a submenu",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "items",
           "type": "INavItem[] | string",
           "complexType": {
@@ -7950,6 +7972,27 @@
             {
               "type": "INavItem[]"
             },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label for this navigation list.\r\nWhen multiple nav lists are in the page,\r\nmake sure to give distinct labels for each one",
+          "docsTags": [],
+          "values": [
             {
               "type": "string"
             }

@@ -386,7 +386,10 @@ export const GoNavLink = /*@__PURE__*/ defineContainer<JSX.GoNavLink>('go-nav-li
 
 export const GoNavList = /*@__PURE__*/ defineContainer<JSX.GoNavList>('go-nav-list', undefined, [
   'items',
-  'block'
+  'block',
+  'label',
+  'isSubmenu',
+  'listId'
 ]);
 
 

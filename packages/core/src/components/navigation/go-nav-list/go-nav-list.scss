@@ -24,6 +24,13 @@ go-nav-list {
   */
   --nav-list-header-gap: 0.5em;
 
+  /**
+    @prop --nav-list-indent:
+    Indentation of nested nav list items
+    - default: 1rem
+  */
+  --nav-list-indent: 1rem;
+
   display: inline-block;
   margin: var(--nav-list-margin);
 
@@ -50,13 +57,11 @@ go-nav-list {
 
     // nested list
     .nav-list {
-      margin-left: 0.5rem;
-      padding-left: 0.5rem;
+      padding-left: var(--nav-list-indent);
     }
 
     .nav-item-link {
-      font-size: 1em;
-      line-height: 1.5;
+      --nav-link-padding: 0.5em 1em;
     }
   }
 }

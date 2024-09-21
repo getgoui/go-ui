@@ -30,53 +30,86 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <div class="container">
       <h3>List with heading link</h3>
-      <go-nav-list
-        block
-        heading-item="{
-    label: 'List heading',
-  }"
-        items="[
+      <div class="col-6">
+        <pre id="output"></pre>
+      </div>
+      <div class="col-3">
+        <go-nav-list id="navlist1" block>
+          <div slot="header">This is a header</div>
+        </go-nav-list>
+      </div>
+
+      <script>
+        const navlist = document.getElementById('navlist1');
+        const output = document.getElementById('output');
+        const setNavActiveState = (items, activeUrl) => {
+          return items.map((item) => {
+            const isCurrent = item.url === activeUrl;
+            if (item.children) {
+              return { ...item, children: setNavActiveState(item.children, activeUrl), isCurrent };
+            }
+            return { ...item, isCurrent };
+          });
+        };
+        navItems = [
           {
             label: 'Dashboard',
-            url: '#',
+            url: '#/dashboard',
             icon: 'dashboard',
-            isCurrent: true
           },
           {
-            label: 'Forms',
-            url: '#',
-            icon: 'text_fields',
-            isCurrent: true,
+            label: 'Components',
+            url: '#/components',
+            icon: 'extension',
             children: [
               {
-                label: 'Form 1',
-                url: '#',
-                icon: 'text_fields',
-            isCurrent: true
-          },
-              {
-                label: 'Form 2',
-                url: '#',
-                icon: 'text_fields',
+                label: 'Components 1',
+                url: '#/components/components-1',
+                icon: 'extension',
+                isCurrent: true,
               },
-            ]
-          },
-          {
-            label: 'Tables',
-            url: '#',
-            icon: 'grid_on',
+              {
+                label: 'Components 2',
+                url: '#/components/components-2',
+                icon: 'extension',
+              },
+              {
+                label: 'Forms',
+                url: '#/forms',
+                icon: 'text_fields',
+                children: [
+                  {
+                    label: 'Form 1',
+                    url: '#/forms/form-1',
+                    icon: 'text_fields',
+                  },
+                  {
+                    label: 'Form 2',
+                    url: '#/forms/form-2',
+                    icon: 'text_fields',
+                  },
+                ],
+              },
+            ],
           },
           {
             label: 'Charts',
-            url: '#',
+            url: '#/charts',
             icon: 'insert_chart',
           },
           {
             label: 'User profile',
-            url: '#',
+            url: '#/user-profile',
             icon: 'person',
           },
-        ]"></go-nav-list>
+        ];
+        navlist.items = navItems;
+        output.innerHTML = JSON.stringify(navlist.items, null, 2);
+        navlist.addEventListener('navigate', (e) => {
+          navlist.items = setNavActiveState(navItems, e.detail.item.url);
+          output.innerHTML = JSON.stringify(navlist.items, null, 2);
+        });
+      </script>
     </div>
   </body>
 </html>
