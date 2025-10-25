@@ -13279,6 +13279,15 @@
         "hash": "sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ=="
       }
     },
+    "npm:js-base64": {
+      "type": "npm",
+      "name": "npm:js-base64",
+      "data": {
+        "version": "2.6.4",
+        "packageName": "js-base64",
+        "hash": "sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ=="
+      }
+    },
     "npm:js-beautify": {
       "type": "npm",
       "name": "npm:js-beautify",
@@ -16717,6 +16726,24 @@
         "hash": "sha512-7c3MMjjSZ/qYrx3uc1940GSOzN1Iqjtlqe8uoSg+qdVPYyRb0TILSqqmtlSFuE4mTDECwsm397Ya7iXGzfF7lg=="
       }
     },
+    "npm:postcss-each": {
+      "type": "npm",
+      "name": "npm:postcss-each",
+      "data": {
+        "version": "1.1.0",
+        "packageName": "postcss-each",
+        "hash": "sha512-YfTPHHAPFVRgEJfLg9RM4R9WYEHVU9Rf1R8QgZfnObwV2dgNqzTLzTl0w5tF71ApFcYLiJAXiTpHAoqJFYcZVw=="
+      }
+    },
+    "npm:postcss-for": {
+      "type": "npm",
+      "name": "npm:postcss-for",
+      "data": {
+        "version": "2.1.1",
+        "packageName": "postcss-for",
+        "hash": "sha512-X0R84FCyr5cqzW4+/g4Dvz2OUe1iwC3G/atIrwEpiRstZlBBpknV+ETlIneSTnw/iXgUnEoTRaO2qXY62YWLhQ=="
+      }
+    },
     "npm:postcss-import": {
       "type": "npm",
       "name": "npm:postcss-import",
@@ -17149,9 +17176,27 @@
         "hash": "sha512-8sLjZwK0R+JlxlYcTuVnyT2v+htpdrjDOKuMcOVdYjt52Lh8hWRYpxBPoKx/Zg+bcjc3wx6fmQevMmUztS/ccA=="
       }
     },
-    "npm:postcss-simple-vars": {
+    "npm:postcss-simple-vars@2.0.0": {
       "type": "npm",
-      "name": "npm:postcss-simple-vars",
+      "name": "npm:postcss-simple-vars@2.0.0",
+      "data": {
+        "version": "2.0.0",
+        "packageName": "postcss-simple-vars",
+        "hash": "sha512-HllLaKKCBOdKudyzqrw/ve5rWouM9cDL+WHaSF9q4CkBEPjdTdiKNw1xF2dAz5rUKrxVmnUmOYxamwy37dnq2Q=="
+      }
+    },
+    "npm:postcss-simple-vars@6.0.3": {
+      "type": "npm",
+      "name": "npm:postcss-simple-vars@6.0.3",
+      "data": {
+        "version": "6.0.3",
+        "packageName": "postcss-simple-vars",
+        "hash": "sha512-fkNn4Zio8vN4vIig9IFdb8lVlxWnYR769RgvxCM6YWlFKie/nQaOcaMMMFz/s4gsfHW4/5bJW+i57zD67mQU7g=="
+      }
+    },
+    "npm:postcss-simple-vars@7.0.1": {
+      "type": "npm",
+      "name": "npm:postcss-simple-vars@7.0.1",
       "data": {
         "version": "7.0.1",
         "packageName": "postcss-simple-vars",
@@ -17201,6 +17246,15 @@
         "version": "4.2.0",
         "packageName": "postcss-value-parser",
         "hash": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
+      }
+    },
+    "npm:postcss@5.2.18": {
+      "type": "npm",
+      "name": "npm:postcss@5.2.18",
+      "data": {
+        "version": "5.2.18",
+        "packageName": "postcss",
+        "hash": "sha512-zrUjRRe1bpXKsX1qAJNJjqZViErVuyEkMTRrwu4ud4sbTtIBRmtaYDrHmcGgmrbsW3MHfmtIf+vJumgQn+PrXg=="
       }
     },
     "npm:postcss@8.4.19": {
@@ -22651,6 +22705,16 @@
       },
       {
         "source": "@go-ui/core",
+        "target": "npm:postcss-each",
+        "type": "static"
+      },
+      {
+        "source": "@go-ui/core",
+        "target": "npm:postcss-for",
+        "type": "static"
+      },
+      {
+        "source": "@go-ui/core",
         "target": "npm:postcss-import",
         "type": "static"
       },
@@ -22667,6 +22731,11 @@
       {
         "source": "@go-ui/core",
         "target": "npm:postcss-pxtorem",
+        "type": "static"
+      },
+      {
+        "source": "@go-ui/core",
+        "target": "npm:postcss-simple-vars@7.0.1",
         "type": "static"
       },
       {
@@ -32304,7 +32373,7 @@
       },
       {
         "source": "npm:doiuse",
-        "target": "npm:postcss@8.4.49",
+        "target": "npm:postcss@8.5.6",
         "type": "static"
       },
       {
@@ -43380,6 +43449,30 @@
         "type": "static"
       }
     ],
+    "npm:postcss-each": [
+      {
+        "source": "npm:postcss-each",
+        "target": "npm:postcss@8.4.49",
+        "type": "static"
+      },
+      {
+        "source": "npm:postcss-each",
+        "target": "npm:postcss-simple-vars@6.0.3",
+        "type": "static"
+      }
+    ],
+    "npm:postcss-for": [
+      {
+        "source": "npm:postcss-for",
+        "target": "npm:postcss@5.2.18",
+        "type": "static"
+      },
+      {
+        "source": "npm:postcss-for",
+        "target": "npm:postcss-simple-vars@2.0.0",
+        "type": "static"
+      }
+    ],
     "npm:postcss-import": [
       {
         "source": "npm:postcss-import",
@@ -43656,7 +43749,7 @@
       },
       {
         "source": "npm:postcss-mixins",
-        "target": "npm:postcss-simple-vars",
+        "target": "npm:postcss-simple-vars@7.0.1",
         "type": "static"
       },
       {
@@ -44052,9 +44145,23 @@
         "type": "static"
       }
     ],
-    "npm:postcss-simple-vars": [
+    "npm:postcss-simple-vars@2.0.0": [
       {
-        "source": "npm:postcss-simple-vars",
+        "source": "npm:postcss-simple-vars@2.0.0",
+        "target": "npm:postcss@5.2.18",
+        "type": "static"
+      }
+    ],
+    "npm:postcss-simple-vars@6.0.3": [
+      {
+        "source": "npm:postcss-simple-vars@6.0.3",
+        "target": "npm:postcss@8.4.49",
+        "type": "static"
+      }
+    ],
+    "npm:postcss-simple-vars@7.0.1": [
+      {
+        "source": "npm:postcss-simple-vars@7.0.1",
         "target": "npm:postcss@8.4.49",
         "type": "static"
       }
@@ -44114,6 +44221,28 @@
       {
         "source": "npm:postcss-unique-selectors@7.0.4",
         "target": "npm:postcss-selector-parser@7.1.0",
+        "type": "static"
+      }
+    ],
+    "npm:postcss@5.2.18": [
+      {
+        "source": "npm:postcss@5.2.18",
+        "target": "npm:chalk@1.1.3",
+        "type": "static"
+      },
+      {
+        "source": "npm:postcss@5.2.18",
+        "target": "npm:js-base64",
+        "type": "static"
+      },
+      {
+        "source": "npm:postcss@5.2.18",
+        "target": "npm:source-map@0.5.7",
+        "type": "static"
+      },
+      {
+        "source": "npm:postcss@5.2.18",
+        "target": "npm:supports-color@3.2.3",
         "type": "static"
       }
     ],

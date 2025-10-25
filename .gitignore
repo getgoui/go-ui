@@ -26,5 +26,6 @@ UserInterfaceState.xcuserstate
 
 .custom-docs
 .npmrc
+.nx/cache
 
 docs/src/assets/demo

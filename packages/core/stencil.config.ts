@@ -6,6 +6,9 @@ import pxtorem from 'postcss-pxtorem';
 import postcssImport from 'postcss-import';
 import postcssNested from 'postcss-nested';
 import postcssMixins from 'postcss-mixins';
+import postcssFor from 'postcss-for';
+import postcssEach from 'postcss-each';
+import postcssSimpleVars from 'postcss-simple-vars';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
@@ -81,6 +84,8 @@ export const config: Config = {
             return id;
           },
         }),
+        postcssFor(),
+        postcssEach(),
         postcssMixins(),
         postcssNested(),
         autoprefixer(),

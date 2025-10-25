@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "nx build @go-ui/vue",
-    "startTime": "2025-10-25T07:10:40.263Z",
-    "endTime": "2025-10-25T07:11:30.084Z",
+    "startTime": "2025-10-25T09:13:31.712Z",
+    "endTime": "2025-10-25T09:16:12.602Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "@go-ui/core:build",
       "target": "build",
       "projectName": "@go-ui/core",
-      "hash": "1700303419346037433",
-      "startTime": "2025-10-25T07:10:40.288Z",
-      "endTime": "2025-10-25T07:11:11.591Z",
+      "hash": "15577768094964250757",
+      "startTime": "2025-10-25T09:13:31.798Z",
+      "endTime": "2025-10-25T09:15:26.630Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
@@ -21,9 +21,9 @@
       "taskId": "@go-ui/vue:build",
       "target": "build",
       "projectName": "@go-ui/vue",
-      "hash": "17483199442932183474",
-      "startTime": "2025-10-25T07:11:11.594Z",
-      "endTime": "2025-10-25T07:11:30.083Z",
+      "hash": "17087001066269303779",
+      "startTime": "2025-10-25T09:15:26.637Z",
+      "endTime": "2025-10-25T09:16:12.600Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
