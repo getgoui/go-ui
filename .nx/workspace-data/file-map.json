@@ -1,0 +1,2478 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.2.2",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": false
+    }
+  },
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "commitlint.config.js",
+        "hash": "3431401427305616507"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "10675637555298611044"
+      },
+      {
+        "file": "README.md",
+        "hash": "9884053281243876857"
+      },
+      {
+        "file": "bin/dev.js",
+        "hash": "8079560990586877838"
+      },
+      {
+        "file": ".vscode/terminals.json",
+        "hash": "17303100962724919865"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "3619161694519492503"
+      },
+      {
+        "file": "CHANGELOG.md",
+        "hash": "1310185813108257418"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "5341238296705984297"
+      },
+      {
+        "file": ".github/workflows/pr-testing.yml",
+        "hash": "8464065018361116359"
+      },
+      {
+        "file": "axe-linter.yml",
+        "hash": "17312667730240549682"
+      },
+      {
+        "file": ".github/workflows/v2-project-sync.yml",
+        "hash": "3202764712524162558"
+      },
+      {
+        "file": "bin/release-prep-wappers.js",
+        "hash": "1589618598145929040"
+      },
+      {
+        "file": "nx.json",
+        "hash": "1056565489912157436"
+      },
+      {
+        "file": "vercel.json",
+        "hash": "15624107875771003024"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "10715985483330998418"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/pattern-request.md",
+        "hash": "12677784439848300313"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "10235287737047476444"
+      },
+      {
+        "file": "bin/watch.js",
+        "hash": "4208717328181444867"
+      },
+      {
+        "file": "TESTING.md",
+        "hash": "4618604327719856415"
+      },
+      {
+        "file": "bin/help.js",
+        "hash": "7379118384719998214"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/a11y-issue.md",
+        "hash": "7734161595223553389"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "10753478965027532541"
+      },
+      {
+        "file": ".husky/commit-msg",
+        "hash": "18058850953108304477"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "4335338433574512449"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "6739624399201823367"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/bug_report.md",
+        "hash": "12365803334871321765"
+      },
+      {
+        "file": "bin/gen-component.js",
+        "hash": "5608909149181388148"
+      },
+      {
+        "file": ".github/FUNDING.yml",
+        "hash": "17029494147721740273"
+      },
+      {
+        "file": "bin/release.js",
+        "hash": "7053765357441540247"
+      },
+      {
+        "file": "bin/release-prep.js",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".browserslistrc",
+        "hash": "13078134837573577081"
+      },
+      {
+        "file": "bin/cli.js",
+        "hash": "12369098219370323856"
+      },
+      {
+        "file": ".all-contributorsrc",
+        "hash": "13980783923574765568"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13097910094616754158"
+      },
+      {
+        "file": "bin/utils.js",
+        "hash": "1736822216050453429"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/feature_request.md",
+        "hash": "7335114847464643603"
+      },
+      {
+        "file": "package.json",
+        "hash": "18342944627601534535"
+      },
+      {
+        "file": "bin/index.js",
+        "hash": "16920825573041618262"
+      },
+      {
+        "file": "bin/const.js",
+        "hash": "269992009721291597"
+      },
+      {
+        "file": "bin/gen-pattern.js",
+        "hash": "4017859832951355165"
+      },
+      {
+        "file": ".github/workflows/release.yml",
+        "hash": "7412740737594360111"
+      }
+    ],
+    "projectFileMap": {
+      "@go-ui/vue-starter": [
+        {
+          "file": "apps/vue-starter/.gitignore",
+          "hash": "987422939859577920"
+        },
+        {
+          "file": "apps/vue-starter/.vscode/extensions.json",
+          "hash": "9173851971106269205"
+        },
+        {
+          "file": "apps/vue-starter/README.md",
+          "hash": "16127562245152354246"
+        },
+        {
+          "file": "apps/vue-starter/index.html",
+          "hash": "14448817875407767188"
+        },
+        {
+          "file": "apps/vue-starter/package.json",
+          "hash": "13224926716973796976",
+          "deps": [
+            "npm:@vitejs/plugin-vue@5.2.4",
+            "npm:vite@6.4.1",
+            "@go-ui/vue",
+            "npm:vue",
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "apps/vue-starter/src/App.vue",
+          "hash": "5610441210325614825"
+        },
+        {
+          "file": "apps/vue-starter/src/assets/vite.svg",
+          "hash": "16046085400642193116"
+        },
+        {
+          "file": "apps/vue-starter/src/assets/vue.svg",
+          "hash": "6215844894841429247"
+        },
+        {
+          "file": "apps/vue-starter/src/components/AppHeader.vue",
+          "hash": "4680210406984659563"
+        },
+        {
+          "file": "apps/vue-starter/src/components/CardSection.vue",
+          "hash": "14055629306231412543"
+        },
+        {
+          "file": "apps/vue-starter/src/components/FormSections.vue",
+          "hash": "3665902538710244645"
+        },
+        {
+          "file": "apps/vue-starter/src/components/KitchenSink.vue",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/vue-starter/src/components/Section.vue",
+          "hash": "1011901310894478746"
+        },
+        {
+          "file": "apps/vue-starter/src/components/form-sections/DatePickerSection.vue",
+          "hash": "5682344445423800479"
+        },
+        {
+          "file": "apps/vue-starter/src/components/form-sections/RadioSection.vue",
+          "hash": "8018797085062808531"
+        },
+        {
+          "file": "apps/vue-starter/src/components/form-sections/SelectSection.vue",
+          "hash": "9386352615323658402"
+        },
+        {
+          "file": "apps/vue-starter/src/components/form-sections/constants.ts",
+          "hash": "502962414370572197"
+        },
+        {
+          "file": "apps/vue-starter/src/main.js",
+          "hash": "1491145638255985124"
+        },
+        {
+          "file": "apps/vue-starter/src/pages/Display.vue",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/vue-starter/src/pages/Form.vue",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/vue-starter/src/pages/Home.vue",
+          "hash": "5243997406414785581"
+        },
+        {
+          "file": "apps/vue-starter/src/router.js",
+          "hash": "5239193087363844339"
+        },
+        {
+          "file": "apps/vue-starter/src/style.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/vue-starter/vite.config.js",
+          "hash": "6066999704388648891"
+        }
+      ],
+      "@go-ui/vue": [
+        {
+          "file": "packages/vue/LICENSE",
+          "hash": "1068458560280297901"
+        },
+        {
+          "file": "packages/vue/README.md",
+          "hash": "17655345941525459731"
+        },
+        {
+          "file": "packages/vue/index.html",
+          "hash": "5561206561202499647"
+        },
+        {
+          "file": "packages/vue/package.json",
+          "hash": "9026376193137128343",
+          "deps": [
+            "npm:@types/node@22.18.12",
+            "npm:@vitejs/plugin-vue@5.2.4",
+            "npm:cpy-cli",
+            "npm:rimraf@5.0.5",
+            "npm:sass",
+            "npm:typescript@5.9.3",
+            "npm:vite@6.4.1",
+            "npm:vue-tsc",
+            "npm:@duetds/date-picker",
+            "@go-ui/core",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/assets/go-ui.svg",
+          "hash": "240345792975179186"
+        },
+        {
+          "file": "packages/vue/src/assets/vue.svg",
+          "hash": "16103679877938424820"
+        },
+        {
+          "file": "packages/vue/src/components.ts",
+          "hash": "13620389883163522830"
+        },
+        {
+          "file": "packages/vue/src/components/GoRadio.vue",
+          "hash": "1786652886702322503"
+        },
+        {
+          "file": "packages/vue/src/env.d.ts",
+          "hash": "8863850192667041269"
+        },
+        {
+          "file": "packages/vue/src/index.ts",
+          "hash": "5435190904287104070"
+        },
+        {
+          "file": "packages/vue/src/plugin.ts",
+          "hash": "14692341643514863340"
+        },
+        {
+          "file": "packages/vue/src/vue-component-lib/utils.ts",
+          "hash": "12315035629509989911"
+        },
+        {
+          "file": "packages/vue/tsconfig.json",
+          "hash": "31911247130717046"
+        },
+        {
+          "file": "packages/vue/vite.config.ts",
+          "hash": "8188760429898272495"
+        },
+        {
+          "file": "packages/vue/vite.demo.config.ts",
+          "hash": "9332827278099743661"
+        }
+      ],
+      "@go-ui/vanilla-starter": [
+        {
+          "file": "apps/vanilla-starter/.gitignore",
+          "hash": "987422939859577920"
+        },
+        {
+          "file": "apps/vanilla-starter/counter.js",
+          "hash": "15408867295992256804"
+        },
+        {
+          "file": "apps/vanilla-starter/index.html",
+          "hash": "13608624839631237389"
+        },
+        {
+          "file": "apps/vanilla-starter/main.js",
+          "hash": "12247529937519316542"
+        },
+        {
+          "file": "apps/vanilla-starter/package.json",
+          "hash": "10191032431159035816",
+          "deps": [
+            "npm:vite@3.2.3",
+            "@go-ui/core"
+          ]
+        },
+        {
+          "file": "apps/vanilla-starter/public/javascript.svg",
+          "hash": "8148257050081513771"
+        },
+        {
+          "file": "apps/vanilla-starter/public/vite.svg",
+          "hash": "16046085400642193116"
+        },
+        {
+          "file": "apps/vanilla-starter/style.css",
+          "hash": "3244421341483603138"
+        }
+      ],
+      "@go-ui/react-starter": [
+        {
+          "file": "apps/react-starter/.gitignore",
+          "hash": "987422939859577920"
+        },
+        {
+          "file": "apps/react-starter/index.html",
+          "hash": "14990405884860688880"
+        },
+        {
+          "file": "apps/react-starter/package.json",
+          "hash": "2681123357043884104",
+          "deps": [
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:@vitejs/plugin-react",
+            "npm:vite@6.4.1",
+            "@go-ui/react",
+            "npm:react@18.2.0",
+            "npm:react-dom@18.2.0"
+          ]
+        },
+        {
+          "file": "apps/react-starter/public/vite.svg",
+          "hash": "16046085400642193116"
+        },
+        {
+          "file": "apps/react-starter/src/App.jsx",
+          "hash": "15201360558779873130"
+        },
+        {
+          "file": "apps/react-starter/src/assets/react.svg",
+          "hash": "16069471864800376455"
+        },
+        {
+          "file": "apps/react-starter/src/main.jsx",
+          "hash": "1056179013193230073"
+        },
+        {
+          "file": "apps/react-starter/vite.config.js",
+          "hash": "8126085396849891533"
+        }
+      ],
+      "@go-ui/core": [
+        {
+          "file": "packages/core/.release-it.json",
+          "hash": "13383858421773566571"
+        },
+        {
+          "file": "packages/core/.stylelintrc.json",
+          "hash": "8893735988335640395"
+        },
+        {
+          "file": "packages/core/CONTRIBUTING.md",
+          "hash": "10322716865105309990"
+        },
+        {
+          "file": "packages/core/LICENSE",
+          "hash": "11412324058383946070"
+        },
+        {
+          "file": "packages/core/config/jest.setup.js",
+          "hash": "11782670387412294548"
+        },
+        {
+          "file": "packages/core/docs/go-ui.d.ts",
+          "hash": "13834666377612139111"
+        },
+        {
+          "file": "packages/core/docs/go-ui.json",
+          "hash": "1161521035186606092"
+        },
+        {
+          "file": "packages/core/package.json",
+          "hash": "5898185588103474677",
+          "deps": [
+            "npm:@axe-core/puppeteer",
+            "npm:@commitlint/cli",
+            "npm:@commitlint/config-conventional",
+            "npm:@release-it/conventional-changelog",
+            "npm:@stencil-community/postcss",
+            "npm:@stencil/core@4.38.2",
+            "npm:@stencil/react-output-target",
+            "npm:@stencil/sass@3.2.2",
+            "npm:@stencil/vue-output-target",
+            "npm:@types/jest",
+            "npm:@types/markdown-it",
+            "npm:@types/node@22.18.12",
+            "npm:@types/react",
+            "npm:autoprefixer",
+            "npm:axe-core",
+            "npm:chalk",
+            "npm:chokidar",
+            "npm:concurrently",
+            "npm:cssnano@5.1.14",
+            "npm:esm",
+            "npm:jest",
+            "npm:jest-circus",
+            "npm:jest-cli",
+            "npm:lodash",
+            "npm:lodash.camelcase",
+            "npm:minimist@1.2.7",
+            "npm:postcss@8.4.49",
+            "npm:postcss-pxtorem",
+            "npm:prompts",
+            "npm:puppeteer",
+            "npm:release-it",
+            "npm:rollup-plugin-node-polyfills",
+            "npm:stylelint",
+            "npm:stylelint-a11y",
+            "npm:stylelint-config-prettier",
+            "npm:stylelint-config-standard-scss",
+            "npm:stylelint-no-unsupported-browser-features",
+            "npm:yargs@17.6.2",
+            "npm:@duetds/date-picker",
+            "npm:@floating-ui/dom",
+            "npm:body-scroll-lock",
+            "npm:dayjs",
+            "npm:dompurify@3.3.0",
+            "npm:json5",
+            "npm:lodash-es",
+            "npm:markdown-it@14.1.0",
+            "npm:markdown-it-container",
+            "npm:markdown-it-for-inline",
+            "npm:open-props@1.7.16"
+          ]
+        },
+        {
+          "file": "packages/core/src/components.d.ts",
+          "hash": "12926196969535790561"
+        },
+        {
+          "file": "packages/core/src/components/form/go-checkbox/go-checkbox.scss",
+          "hash": "10335532693741841670"
+        },
+        {
+          "file": "packages/core/src/components/form/go-checkbox/go-checkbox.tsx",
+          "hash": "3777155040081750983"
+        },
+        {
+          "file": "packages/core/src/components/form/go-checkbox/readme.md",
+          "hash": "10862887765785562825"
+        },
+        {
+          "file": "packages/core/src/components/form/go-checkbox/test/go-checkbox.spec.tsx",
+          "hash": "5197930168241311090"
+        },
+        {
+          "file": "packages/core/src/components/form/go-checkbox/usage/checkbox-fieldset.md",
+          "hash": "826679118159622596"
+        },
+        {
+          "file": "packages/core/src/components/form/go-checkbox/usage/go-checkbox.md",
+          "hash": "14905114752994959455"
+        },
+        {
+          "file": "packages/core/src/components/form/go-datepicker/duet-date-picker.ts",
+          "hash": "4806175197804039213"
+        },
+        {
+          "file": "packages/core/src/components/form/go-datepicker/go-datepicker.scss",
+          "hash": "10008021901135100437"
+        },
+        {
+          "file": "packages/core/src/components/form/go-datepicker/go-datepicker.tsx",
+          "hash": "2296972856542574780"
+        },
+        {
+          "file": "packages/core/src/components/form/go-datepicker/readme.md",
+          "hash": "11083809725448261140"
+        },
+        {
+          "file": "packages/core/src/components/form/go-datepicker/test/go-datepicker.spec.tsx",
+          "hash": "8009299881765533629"
+        },
+        {
+          "file": "packages/core/src/components/form/go-datepicker/usage/go-datepicker.md",
+          "hash": "5873066571990615779"
+        },
+        {
+          "file": "packages/core/src/components/form/go-datepicker/utils/index.ts",
+          "hash": "8588908576181449728"
+        },
+        {
+          "file": "packages/core/src/components/form/go-field/go-field.scss",
+          "hash": "5236055403052583154"
+        },
+        {
+          "file": "packages/core/src/components/form/go-field/go-field.tsx",
+          "hash": "5221598029829221245"
+        },
+        {
+          "file": "packages/core/src/components/form/go-field/readme.md",
+          "hash": "3643542371836875209"
+        },
+        {
+          "file": "packages/core/src/components/form/go-field/test/go-field.spec.tsx",
+          "hash": "15033870168408794037"
+        },
+        {
+          "file": "packages/core/src/components/form/go-fieldset/go-fieldset.scss",
+          "hash": "11959641909846734481"
+        },
+        {
+          "file": "packages/core/src/components/form/go-fieldset/go-fieldset.tsx",
+          "hash": "16730761096111808803"
+        },
+        {
+          "file": "packages/core/src/components/form/go-fieldset/readme.md",
+          "hash": "10844658119366965711"
+        },
+        {
+          "file": "packages/core/src/components/form/go-fieldset/test/go-fieldset.spec.tsx",
+          "hash": "7915679089565484349"
+        },
+        {
+          "file": "packages/core/src/components/form/go-fieldset/usage/go-fieldset.md",
+          "hash": "17582820149255667273"
+        },
+        {
+          "file": "packages/core/src/components/form/go-input/go-input.tsx",
+          "hash": "4287680697093773511"
+        },
+        {
+          "file": "packages/core/src/components/form/go-input/readme.md",
+          "hash": "10953253903711671226"
+        },
+        {
+          "file": "packages/core/src/components/form/go-input/test/go-input.spec.tsx",
+          "hash": "8966137797030103063"
+        },
+        {
+          "file": "packages/core/src/components/form/go-input/usage/go-input.md",
+          "hash": "8776832200123923858"
+        },
+        {
+          "file": "packages/core/src/components/form/go-radio/go-radio.scss",
+          "hash": "15928255068053410756"
+        },
+        {
+          "file": "packages/core/src/components/form/go-radio/go-radio.tsx",
+          "hash": "16072325212032637899"
+        },
+        {
+          "file": "packages/core/src/components/form/go-radio/readme.md",
+          "hash": "9053330760971161394"
+        },
+        {
+          "file": "packages/core/src/components/form/go-radio/test/go-radio.spec.tsx",
+          "hash": "8949920209577206139"
+        },
+        {
+          "file": "packages/core/src/components/form/go-radio/usage/go-radio.md",
+          "hash": "13951085596205922437"
+        },
+        {
+          "file": "packages/core/src/components/form/go-radio/usage/radio-fieldset.md",
+          "hash": "6774961811874814908"
+        },
+        {
+          "file": "packages/core/src/components/form/go-select/go-select.scss",
+          "hash": "15392257353805320865"
+        },
+        {
+          "file": "packages/core/src/components/form/go-select/go-select.tsx",
+          "hash": "16678180884239147748"
+        },
+        {
+          "file": "packages/core/src/components/form/go-select/readme.md",
+          "hash": "317496342327731439"
+        },
+        {
+          "file": "packages/core/src/components/form/go-select/test/go-select.spec.tsx",
+          "hash": "7420594398749603892"
+        },
+        {
+          "file": "packages/core/src/components/form/go-select/usage/go-select.md",
+          "hash": "17843905407765493683"
+        },
+        {
+          "file": "packages/core/src/components/form/go-select/utils.ts",
+          "hash": "12931624731518321122"
+        },
+        {
+          "file": "packages/core/src/components/form/go-switch/go-switch.scss",
+          "hash": "4237217500834780352"
+        },
+        {
+          "file": "packages/core/src/components/form/go-switch/go-switch.tsx",
+          "hash": "10261109271486026046"
+        },
+        {
+          "file": "packages/core/src/components/form/go-switch/readme.md",
+          "hash": "7930860830630321803"
+        },
+        {
+          "file": "packages/core/src/components/form/go-switch/test/go-switch.spec.tsx",
+          "hash": "3242267350914861183"
+        },
+        {
+          "file": "packages/core/src/components/form/go-switch/usage/go-switch.md",
+          "hash": "9163828489649549787"
+        },
+        {
+          "file": "packages/core/src/components/form/go-textarea/go-textarea.scss",
+          "hash": "10578359079854440244"
+        },
+        {
+          "file": "packages/core/src/components/form/go-textarea/go-textarea.tsx",
+          "hash": "13852241517488220054"
+        },
+        {
+          "file": "packages/core/src/components/form/go-textarea/readme.md",
+          "hash": "994585732667214678"
+        },
+        {
+          "file": "packages/core/src/components/form/go-textarea/test/go-textarea.spec.tsx",
+          "hash": "13755098197536893126"
+        },
+        {
+          "file": "packages/core/src/components/form/go-textarea/usage/go-textarea.md",
+          "hash": "14556427847983734985"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/go-accordion-item.scss",
+          "hash": "5110621750658381722"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/go-accordion-item.tsx",
+          "hash": "7432669749129089606"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/go-accordion.scss",
+          "hash": "18382395246418531932"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/go-accordion.tsx",
+          "hash": "17859146973191344303"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/readme.md",
+          "hash": "13559609657450745845"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/test/go-accordion.e2e.ts",
+          "hash": "16890475152442803663"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/usage/multiple.md",
+          "hash": "14533142612362463161"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/usage/nested.md",
+          "hash": "2149698620987552308"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/usage/single.md",
+          "hash": "1394595486140276848"
+        },
+        {
+          "file": "packages/core/src/components/go-accordion/usage/slots.md",
+          "hash": "10052774781701577415"
+        },
+        {
+          "file": "packages/core/src/components/go-badge/go-badge.scss",
+          "hash": "13902597590298830432"
+        },
+        {
+          "file": "packages/core/src/components/go-badge/go-badge.tsx",
+          "hash": "1214393942145164209"
+        },
+        {
+          "file": "packages/core/src/components/go-badge/readme.md",
+          "hash": "18076110821699053834"
+        },
+        {
+          "file": "packages/core/src/components/go-badge/test/go-badge.spec.tsx",
+          "hash": "6211929382404732380"
+        },
+        {
+          "file": "packages/core/src/components/go-badge/usage/go-badge.md",
+          "hash": "8956074655654899971"
+        },
+        {
+          "file": "packages/core/src/components/go-banner/go-banner.scss",
+          "hash": "8922287539712005072"
+        },
+        {
+          "file": "packages/core/src/components/go-banner/go-banner.tsx",
+          "hash": "3986825634897213880"
+        },
+        {
+          "file": "packages/core/src/components/go-banner/readme.md",
+          "hash": "6016242105649565620"
+        },
+        {
+          "file": "packages/core/src/components/go-banner/test/go-banner.spec.tsx",
+          "hash": "7935750769769407504"
+        },
+        {
+          "file": "packages/core/src/components/go-banner/usage/go-banner.md",
+          "hash": "6740160142976679695"
+        },
+        {
+          "file": "packages/core/src/components/go-blockquote/go-blockquote.scss",
+          "hash": "17898263104363680770"
+        },
+        {
+          "file": "packages/core/src/components/go-blockquote/go-blockquote.tsx",
+          "hash": "5158391596738611002"
+        },
+        {
+          "file": "packages/core/src/components/go-blockquote/readme.md",
+          "hash": "18266168692903444259"
+        },
+        {
+          "file": "packages/core/src/components/go-blockquote/test/go-blockquote.spec.tsx",
+          "hash": "11328115679921026292"
+        },
+        {
+          "file": "packages/core/src/components/go-blockquote/usage/go-blockquote.md",
+          "hash": "5387090253544466060"
+        },
+        {
+          "file": "packages/core/src/components/go-breadcrumbs/go-breadcrumbs.scss",
+          "hash": "5870800045315471565"
+        },
+        {
+          "file": "packages/core/src/components/go-breadcrumbs/go-breadcrumbs.tsx",
+          "hash": "4149032671272868303"
+        },
+        {
+          "file": "packages/core/src/components/go-breadcrumbs/readme.md",
+          "hash": "9387240794949711180"
+        },
+        {
+          "file": "packages/core/src/components/go-breadcrumbs/test/go-breadcrumbs.spec.tsx",
+          "hash": "1609455822872484071"
+        },
+        {
+          "file": "packages/core/src/components/go-breadcrumbs/usage/go-breadcrumbs.md",
+          "hash": "13033561049435711749"
+        },
+        {
+          "file": "packages/core/src/components/go-button/go-button.scss",
+          "hash": "9635060224287090518"
+        },
+        {
+          "file": "packages/core/src/components/go-button/go-button.tsx",
+          "hash": "9406985435681700853"
+        },
+        {
+          "file": "packages/core/src/components/go-button/readme.md",
+          "hash": "13521163642431958161"
+        },
+        {
+          "file": "packages/core/src/components/go-button/test/go-button.spec.ts",
+          "hash": "5037808974344482369"
+        },
+        {
+          "file": "packages/core/src/components/go-button/usage/block.md",
+          "hash": "328131145210371606"
+        },
+        {
+          "file": "packages/core/src/components/go-button/usage/button-link.md",
+          "hash": "5933051407747016150"
+        },
+        {
+          "file": "packages/core/src/components/go-button/usage/go-button.md",
+          "hash": "9914000424356256436"
+        },
+        {
+          "file": "packages/core/src/components/go-button/usage/icons.md",
+          "hash": "5048677133238878340"
+        },
+        {
+          "file": "packages/core/src/components/go-card/go-card.scss",
+          "hash": "9210495028403449869"
+        },
+        {
+          "file": "packages/core/src/components/go-card/go-card.tsx",
+          "hash": "5296283278540636690"
+        },
+        {
+          "file": "packages/core/src/components/go-card/readme.md",
+          "hash": "4879301284433720134"
+        },
+        {
+          "file": "packages/core/src/components/go-card/test/go-card.spec.tsx",
+          "hash": "17073748431804297878"
+        },
+        {
+          "file": "packages/core/src/components/go-card/usage/go-card-footer-slot.md",
+          "hash": "3603675141990788538"
+        },
+        {
+          "file": "packages/core/src/components/go-card/usage/go-card-links.md",
+          "hash": "12602232637430751004"
+        },
+        {
+          "file": "packages/core/src/components/go-card/usage/go-card.md",
+          "hash": "9492287179129640349"
+        },
+        {
+          "file": "packages/core/src/components/go-card/vars.css",
+          "hash": "1252101799247996598"
+        },
+        {
+          "file": "packages/core/src/components/go-center/go-center.scss",
+          "hash": "11423243639908824867"
+        },
+        {
+          "file": "packages/core/src/components/go-center/go-center.tsx",
+          "hash": "15716762238871746304"
+        },
+        {
+          "file": "packages/core/src/components/go-center/readme.md",
+          "hash": "10709607917414859906"
+        },
+        {
+          "file": "packages/core/src/components/go-center/test/go-center.spec.tsx",
+          "hash": "2047855715799857216"
+        },
+        {
+          "file": "packages/core/src/components/go-center/usage/go-center.md",
+          "hash": "14076167906453629838"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/go-chip.scss",
+          "hash": "1809633064244378232"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/go-chip.tsx",
+          "hash": "4628494574915183978"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/readme.md",
+          "hash": "8666217902177438080"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/test/go-chip.spec.tsx",
+          "hash": "10691359216300171895"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/usage/go-chip-clickable.md",
+          "hash": "3237170264582539417"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/usage/go-chip-combo.md",
+          "hash": "8307537107940822751"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/usage/go-chip-dismissible.md",
+          "hash": "10005280148386541122"
+        },
+        {
+          "file": "packages/core/src/components/go-chip/usage/go-chip.md",
+          "hash": "4333079973698264834"
+        },
+        {
+          "file": "packages/core/src/components/go-content/go-content.scss",
+          "hash": "8560266427010631568"
+        },
+        {
+          "file": "packages/core/src/components/go-content/go-content.tsx",
+          "hash": "3852570159800632393"
+        },
+        {
+          "file": "packages/core/src/components/go-content/readme.md",
+          "hash": "7586345282829521112"
+        },
+        {
+          "file": "packages/core/src/components/go-content/test/go-content.spec.tsx",
+          "hash": "3180864494443265891"
+        },
+        {
+          "file": "packages/core/src/components/go-content/usage/go-content.md",
+          "hash": "9964600028040646637"
+        },
+        {
+          "file": "packages/core/src/components/go-dark-mode/go-dark-mode.scss",
+          "hash": "8398359403983577501"
+        },
+        {
+          "file": "packages/core/src/components/go-dark-mode/go-dark-mode.tsx",
+          "hash": "6964650924008705004"
+        },
+        {
+          "file": "packages/core/src/components/go-dark-mode/readme.md",
+          "hash": "15220633395278961954"
+        },
+        {
+          "file": "packages/core/src/components/go-dark-mode/test/go-dark-mode.spec.tsx",
+          "hash": "4867262678904264371"
+        },
+        {
+          "file": "packages/core/src/components/go-dark-mode/usage/go-dark-mode.md",
+          "hash": "14754544148464304915"
+        },
+        {
+          "file": "packages/core/src/components/go-dialog/go-dialog.scss",
+          "hash": "16674261531477052934"
+        },
+        {
+          "file": "packages/core/src/components/go-dialog/go-dialog.tsx",
+          "hash": "14586459436290412066"
+        },
+        {
+          "file": "packages/core/src/components/go-dialog/readme.md",
+          "hash": "11373322043405118263"
+        },
+        {
+          "file": "packages/core/src/components/go-dialog/test/go-dialog.spec.tsx",
+          "hash": "9341622289771702978"
+        },
+        {
+          "file": "packages/core/src/components/go-dialog/usage/go-dialog.md",
+          "hash": "758017989224296692"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/go-dropdown-item.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/go-dropdown-item.tsx",
+          "hash": "10925756630127453304"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/go-dropdown-menu.scss",
+          "hash": "2723563035579152274"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/go-dropdown-menu.tsx",
+          "hash": "426357492551569762"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/go-dropdown-separator.scss",
+          "hash": "11518012168002608644"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/go-dropdown-separator.tsx",
+          "hash": "4179474451083712475"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/readme.md",
+          "hash": "10469789213516828283"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/test/go-dropdown-menu.spec.tsx",
+          "hash": "15080906095399856005"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown-menu/usage/go-dropdown-menu.md",
+          "hash": "16181758339134640584"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown/go-dropdown.scss",
+          "hash": "6690169249007521094"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown/go-dropdown.tsx",
+          "hash": "505651896768445671"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown/readme.md",
+          "hash": "14363738696713261323"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown/test/go-dropdown.spec.tsx",
+          "hash": "15405676519796302886"
+        },
+        {
+          "file": "packages/core/src/components/go-dropdown/usage/go-dropdown.md",
+          "hash": "12167983198783638342"
+        },
+        {
+          "file": "packages/core/src/components/go-hero/go-hero.scss",
+          "hash": "16178019132159814418"
+        },
+        {
+          "file": "packages/core/src/components/go-hero/go-hero.tsx",
+          "hash": "15409289240215688063"
+        },
+        {
+          "file": "packages/core/src/components/go-hero/readme.md",
+          "hash": "12363893997638723603"
+        },
+        {
+          "file": "packages/core/src/components/go-hero/test/go-hero.spec.tsx",
+          "hash": "12770923298003142477"
+        },
+        {
+          "file": "packages/core/src/components/go-hero/usage/go-hero.md",
+          "hash": "14375287912016217150"
+        },
+        {
+          "file": "packages/core/src/components/go-icon/go-icon.scss",
+          "hash": "2041085591554079789"
+        },
+        {
+          "file": "packages/core/src/components/go-icon/go-icon.tsx",
+          "hash": "18208220591403745281"
+        },
+        {
+          "file": "packages/core/src/components/go-icon/readme.md",
+          "hash": "8657527801122618507"
+        },
+        {
+          "file": "packages/core/src/components/go-icon/test/go-icon.spec.tsx",
+          "hash": "442759592782319024"
+        },
+        {
+          "file": "packages/core/src/components/go-icon/usage/go-icon.md",
+          "hash": "1601925946987742469"
+        },
+        {
+          "file": "packages/core/src/components/go-link/go-link.scss",
+          "hash": "16039468921192370905"
+        },
+        {
+          "file": "packages/core/src/components/go-link/go-link.tsx",
+          "hash": "863633800551959736"
+        },
+        {
+          "file": "packages/core/src/components/go-link/readme.md",
+          "hash": "17077403275725520644"
+        },
+        {
+          "file": "packages/core/src/components/go-link/test/go-link.spec.tsx",
+          "hash": "6292157137954948705"
+        },
+        {
+          "file": "packages/core/src/components/go-link/usage/go-link.md",
+          "hash": "13260799857831139611"
+        },
+        {
+          "file": "packages/core/src/components/go-md/go-md.scss",
+          "hash": "1515919413803209852"
+        },
+        {
+          "file": "packages/core/src/components/go-md/go-md.tsx",
+          "hash": "13366847076005258288"
+        },
+        {
+          "file": "packages/core/src/components/go-md/readme.md",
+          "hash": "5728144573277127232"
+        },
+        {
+          "file": "packages/core/src/components/go-md/test/go-md.spec.tsx",
+          "hash": "13487870870016254935"
+        },
+        {
+          "file": "packages/core/src/components/go-md/usage/extend.md",
+          "hash": "12585502796476882279"
+        },
+        {
+          "file": "packages/core/src/components/go-md/usage/go-md.md",
+          "hash": "15634730815892166337"
+        },
+        {
+          "file": "packages/core/src/components/go-md/usage/remote-source.md",
+          "hash": "1352653108882536693"
+        },
+        {
+          "file": "packages/core/src/components/go-md/usage/use-go-ui.md",
+          "hash": "1036756883993934421"
+        },
+        {
+          "file": "packages/core/src/components/go-overlay/go-overlay.scss",
+          "hash": "4913129724763947001"
+        },
+        {
+          "file": "packages/core/src/components/go-overlay/go-overlay.tsx",
+          "hash": "6323097902901012889"
+        },
+        {
+          "file": "packages/core/src/components/go-overlay/readme.md",
+          "hash": "2409922368154603974"
+        },
+        {
+          "file": "packages/core/src/components/go-overlay/test/go-overlay.spec.tsx",
+          "hash": "18074705346941560974"
+        },
+        {
+          "file": "packages/core/src/components/go-overlay/usage/go-overlay.md",
+          "hash": "7043284117824936756"
+        },
+        {
+          "file": "packages/core/src/components/go-progress/go-progress.scss",
+          "hash": "7836066686593045593"
+        },
+        {
+          "file": "packages/core/src/components/go-progress/go-progress.tsx",
+          "hash": "10462113505969855198"
+        },
+        {
+          "file": "packages/core/src/components/go-progress/readme.md",
+          "hash": "14637515338789042881"
+        },
+        {
+          "file": "packages/core/src/components/go-progress/test/go-progress.spec.tsx",
+          "hash": "5919482423271156070"
+        },
+        {
+          "file": "packages/core/src/components/go-progress/usage/go-progress.md",
+          "hash": "2589371421440853540"
+        },
+        {
+          "file": "packages/core/src/components/go-search-bar/go-search-bar.scss",
+          "hash": "14717538176064830820"
+        },
+        {
+          "file": "packages/core/src/components/go-search-bar/go-search-bar.tsx",
+          "hash": "16939566861000606979"
+        },
+        {
+          "file": "packages/core/src/components/go-search-bar/readme.md",
+          "hash": "660203825579282438"
+        },
+        {
+          "file": "packages/core/src/components/go-search-bar/test/go-search-bar.spec.tsx",
+          "hash": "15594347077713514945"
+        },
+        {
+          "file": "packages/core/src/components/go-search-bar/usage/go-search-bar.md",
+          "hash": "3708518993355799578"
+        },
+        {
+          "file": "packages/core/src/components/go-skip-link/go-skip-link.scss",
+          "hash": "11628470788381741376"
+        },
+        {
+          "file": "packages/core/src/components/go-skip-link/go-skip-link.tsx",
+          "hash": "7893061588122450454"
+        },
+        {
+          "file": "packages/core/src/components/go-skip-link/readme.md",
+          "hash": "1012830531554560383"
+        },
+        {
+          "file": "packages/core/src/components/go-skip-link/test/go-skip-link.spec.tsx",
+          "hash": "16443903617753422915"
+        },
+        {
+          "file": "packages/core/src/components/go-skip-link/usage/go-skip-link.md",
+          "hash": "3205555405707097585"
+        },
+        {
+          "file": "packages/core/src/components/go-spinner/go-spinner.scss",
+          "hash": "7752078453402843837"
+        },
+        {
+          "file": "packages/core/src/components/go-spinner/go-spinner.tsx",
+          "hash": "2614258262049089236"
+        },
+        {
+          "file": "packages/core/src/components/go-spinner/readme.md",
+          "hash": "12043068266269327354"
+        },
+        {
+          "file": "packages/core/src/components/go-spinner/test/go-spinner.spec.tsx",
+          "hash": "14069289115618601273"
+        },
+        {
+          "file": "packages/core/src/components/go-spinner/usage/go-spinner.md",
+          "hash": "102004292764152710"
+        },
+        {
+          "file": "packages/core/src/components/go-table-wrapper/go-table-wrapper.scss",
+          "hash": "6692355416906504984"
+        },
+        {
+          "file": "packages/core/src/components/go-table-wrapper/go-table-wrapper.tsx",
+          "hash": "8516625401417135558"
+        },
+        {
+          "file": "packages/core/src/components/go-table-wrapper/readme.md",
+          "hash": "3483804965621640447"
+        },
+        {
+          "file": "packages/core/src/components/go-table-wrapper/test/go-table-wrapper.spec.tsx",
+          "hash": "4760791681668003177"
+        },
+        {
+          "file": "packages/core/src/components/go-table-wrapper/usage/go-table-wrapper.md",
+          "hash": "10928244828672742658"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/go-tab.scss",
+          "hash": "2233296061910259103"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/go-tab.tsx",
+          "hash": "14853912950030775433"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/go-tablist.scss",
+          "hash": "16463588624723188068"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/go-tablist.tsx",
+          "hash": "3575384765849332395"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/go-tabs.scss",
+          "hash": "12587947612945294775"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/go-tabs.tsx",
+          "hash": "11032818945756189156"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/readme.md",
+          "hash": "5581952235134686324"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/tabs.const.ts",
+          "hash": "3436768082566177989"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/tabs.type.ts",
+          "hash": "14232688598135669413"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/test/go-tabs.spec.tsx",
+          "hash": "14896062697378245960"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/usage/go-tabs-auto-activate.md",
+          "hash": "9544919519569475449"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/usage/go-tabs-fill-icon.md",
+          "hash": "8296379263241081394"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/usage/go-tabs-vertical.md",
+          "hash": "5419786292603442513"
+        },
+        {
+          "file": "packages/core/src/components/go-tabs/usage/go-tabs.md",
+          "hash": "12421037897556789810"
+        },
+        {
+          "file": "packages/core/src/components/go-to-top/go-to-top.scss",
+          "hash": "15915037963673377963"
+        },
+        {
+          "file": "packages/core/src/components/go-to-top/go-to-top.tsx",
+          "hash": "596648574609270219"
+        },
+        {
+          "file": "packages/core/src/components/go-to-top/readme.md",
+          "hash": "7792703937352385630"
+        },
+        {
+          "file": "packages/core/src/components/go-to-top/test/go-to-top.spec.tsx",
+          "hash": "7046557550662336503"
+        },
+        {
+          "file": "packages/core/src/components/go-to-top/usage/go-to-top.md",
+          "hash": "16369591310342846219"
+        },
+        {
+          "file": "packages/core/src/components/go-toc/go-toc.scss",
+          "hash": "12347474709603652409"
+        },
+        {
+          "file": "packages/core/src/components/go-toc/go-toc.tsx",
+          "hash": "13747561065149983704"
+        },
+        {
+          "file": "packages/core/src/components/go-toc/readme.md",
+          "hash": "15097044843520424031"
+        },
+        {
+          "file": "packages/core/src/components/go-toc/test/go-toc.spec.tsx",
+          "hash": "7060799718474092885"
+        },
+        {
+          "file": "packages/core/src/components/go-toc/usage/go-toc.md",
+          "hash": "7037964152485426579"
+        },
+        {
+          "file": "packages/core/src/components/go-tooltip/go-tooltip.scss",
+          "hash": "5572775115886736721"
+        },
+        {
+          "file": "packages/core/src/components/go-tooltip/go-tooltip.tsx",
+          "hash": "15694503887782772060"
+        },
+        {
+          "file": "packages/core/src/components/go-tooltip/readme.md",
+          "hash": "12995531109727254957"
+        },
+        {
+          "file": "packages/core/src/components/go-tooltip/test/go-tooltip.spec.tsx",
+          "hash": "4715763412318775680"
+        },
+        {
+          "file": "packages/core/src/components/go-tooltip/usage/go-tooltip.md",
+          "hash": "6994854726273741758"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/go-nav-bar.scss",
+          "hash": "1868834115810926571"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/go-nav-bar.tsx",
+          "hash": "13296511229782217276"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/go-nav-item.tsx",
+          "hash": "9529329298263322477"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/go-nav-submenu-trigger.tsx",
+          "hash": "3416090188613577856"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/go-nav-submenu.tsx",
+          "hash": "16037704300692018043"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/readme.md",
+          "hash": "8626534470368495862"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/test/go-main-nav.e2e.ts",
+          "hash": "17424285227632552796"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/usage/composable.md",
+          "hash": "10976355732234887721"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-bar/usage/go-nav-bar.md",
+          "hash": "9619987956141717587"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-drawer/go-nav-drawer.scss",
+          "hash": "8421219682160320159"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-drawer/go-nav-drawer.tsx",
+          "hash": "8467329537717103012"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-drawer/readme.md",
+          "hash": "3751026611625298283"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-drawer/test/go-nav-drawer.spec.tsx",
+          "hash": "17546980358712297181"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-drawer/usage/go-nav-drawer.md",
+          "hash": "2075050345837876183"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-link/go-nav-link.scss",
+          "hash": "3112197856580287521"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-link/go-nav-link.tsx",
+          "hash": "1985606330873116408"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-link/readme.md",
+          "hash": "12116141901648424263"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-link/test/go-nav-link.spec.tsx",
+          "hash": "4591150405605328544"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-link/usage/go-nav-link.md",
+          "hash": "2566007053529963699"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-list/go-nav-list.scss",
+          "hash": "12683411049009320018"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-list/go-nav-list.tsx",
+          "hash": "9107124165815389657"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-list/readme.md",
+          "hash": "13794355437413927569"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-list/test/go-nav-list.spec.tsx",
+          "hash": "1591098696557786646"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-list/usage/go-nav-list-js.md",
+          "hash": "1003158869940755554"
+        },
+        {
+          "file": "packages/core/src/components/navigation/go-nav-list/usage/go-nav-list.md",
+          "hash": "6871851054325957941"
+        },
+        {
+          "file": "packages/core/src/components/navigation/nav-helpers.tsx",
+          "hash": "4852372281085188758"
+        },
+        {
+          "file": "packages/core/src/demo.html",
+          "hash": "6823124473117521958"
+        },
+        {
+          "file": "packages/core/src/global.d.ts",
+          "hash": "12101009181003662169"
+        },
+        {
+          "file": "packages/core/src/global/scss/_animation.scss",
+          "hash": "10423518407892981917"
+        },
+        {
+          "file": "packages/core/src/global/scss/_base.scss",
+          "hash": "16373863782352490978"
+        },
+        {
+          "file": "packages/core/src/global/scss/_breakpoint_sync.scss",
+          "hash": "10794554336958175509"
+        },
+        {
+          "file": "packages/core/src/global/scss/_colors.scss",
+          "hash": "1123643471264200525"
+        },
+        {
+          "file": "packages/core/src/global/scss/_css_variables.scss",
+          "hash": "12268834227987030947"
+        },
+        {
+          "file": "packages/core/src/global/scss/_display.scss",
+          "hash": "4639502246903288621"
+        },
+        {
+          "file": "packages/core/src/global/scss/_flex.scss",
+          "hash": "5375835906902691863"
+        },
+        {
+          "file": "packages/core/src/global/scss/_grid.scss",
+          "hash": "7498411509944481642"
+        },
+        {
+          "file": "packages/core/src/global/scss/_misc.scss",
+          "hash": "9104622424735565899"
+        },
+        {
+          "file": "packages/core/src/global/scss/_normalize.scss",
+          "hash": "7779045240597809434"
+        },
+        {
+          "file": "packages/core/src/global/scss/_spacing.scss",
+          "hash": "16165418761256277873"
+        },
+        {
+          "file": "packages/core/src/global/scss/_typography.scss",
+          "hash": "15703359069328773836"
+        },
+        {
+          "file": "packages/core/src/global/scss/_utils.scss",
+          "hash": "6815849154026196353"
+        },
+        {
+          "file": "packages/core/src/global/scss/dropdown/_mixins.scss",
+          "hash": "4854989579317629067"
+        },
+        {
+          "file": "packages/core/src/global/scss/form/_field.scss",
+          "hash": "9377869879201963732"
+        },
+        {
+          "file": "packages/core/src/global/scss/form/_mixins.scss",
+          "hash": "1382812515969175945"
+        },
+        {
+          "file": "packages/core/src/global/scss/form/_variables.scss",
+          "hash": "15524972389146629465"
+        },
+        {
+          "file": "packages/core/src/global/scss/themes/_tokens.scss",
+          "hash": "10301104203157207844"
+        },
+        {
+          "file": "packages/core/src/global/scss/utils/_mixins.scss",
+          "hash": "4280510138995239310"
+        },
+        {
+          "file": "packages/core/src/global/scss/utils/_scss_vars.scss",
+          "hash": "4307529726413518003"
+        },
+        {
+          "file": "packages/core/src/global/scss/utils/mixins/_container.scss",
+          "hash": "3397720973185234865"
+        },
+        {
+          "file": "packages/core/src/global/scss/utils/mixins/_grid.scss",
+          "hash": "8522552160566915839"
+        },
+        {
+          "file": "packages/core/src/global/styles.scss",
+          "hash": "18285245294533562525"
+        },
+        {
+          "file": "packages/core/src/index.html",
+          "hash": "1248004709459034256"
+        },
+        {
+          "file": "packages/core/src/index.ts",
+          "hash": "16786062623714783154"
+        },
+        {
+          "file": "packages/core/src/interfaces/dropdown-props.ts",
+          "hash": "5435985960863642650"
+        },
+        {
+          "file": "packages/core/src/interfaces/form.ts",
+          "hash": "9235005723144674779"
+        },
+        {
+          "file": "packages/core/src/interfaces/icon.ts",
+          "hash": "4709222505170290653"
+        },
+        {
+          "file": "packages/core/src/interfaces/index.ts",
+          "hash": "9314121007083920500"
+        },
+        {
+          "file": "packages/core/src/interfaces/nav-item.ts",
+          "hash": "3236477893230383536"
+        },
+        {
+          "file": "packages/core/src/interfaces/variants.ts",
+          "hash": "14825151338350201499"
+        },
+        {
+          "file": "packages/core/src/patterns/go-button-group/go-button-group.md",
+          "hash": "4500545246554292933"
+        },
+        {
+          "file": "packages/core/src/patterns/go-button-group/go-button-group.scss",
+          "hash": "4585850943648583636"
+        },
+        {
+          "file": "packages/core/src/patterns/go-button-group/go-button-group.tsx",
+          "hash": "15266639702289997531"
+        },
+        {
+          "file": "packages/core/src/patterns/go-button-group/readme.md",
+          "hash": "1735978717645995017"
+        },
+        {
+          "file": "packages/core/src/patterns/go-button-group/test/go-button-group.spec.tsx",
+          "hash": "15712285835600042091"
+        },
+        {
+          "file": "packages/core/src/patterns/go-button-group/usage/button-group-connected.md",
+          "hash": "5228390954084575913"
+        },
+        {
+          "file": "packages/core/src/patterns/go-button-group/usage/button-group.md",
+          "hash": "11611647163699284578"
+        },
+        {
+          "file": "packages/core/src/patterns/go-callout-section/go-callout-section.scss",
+          "hash": "8227113233053689753"
+        },
+        {
+          "file": "packages/core/src/patterns/go-callout-section/go-callout-section.tsx",
+          "hash": "18026773534813258453"
+        },
+        {
+          "file": "packages/core/src/patterns/go-callout-section/readme.md",
+          "hash": "8185996922759030218"
+        },
+        {
+          "file": "packages/core/src/patterns/go-callout-section/test/go-callout-section.e2e.ts",
+          "hash": "12277500353659943984"
+        },
+        {
+          "file": "packages/core/src/patterns/go-callout-section/usage/go-callout-section.md",
+          "hash": "148644503969132257"
+        },
+        {
+          "file": "packages/core/src/patterns/go-card-row/go-card-row.scss",
+          "hash": "9923981372680641651"
+        },
+        {
+          "file": "packages/core/src/patterns/go-card-row/go-card-row.tsx",
+          "hash": "7017575119255111927"
+        },
+        {
+          "file": "packages/core/src/patterns/go-card-row/readme.md",
+          "hash": "8132867510477306064"
+        },
+        {
+          "file": "packages/core/src/patterns/go-card-row/test/go-card-row.e2e.ts",
+          "hash": "10883623359610658537"
+        },
+        {
+          "file": "packages/core/src/patterns/go-card-row/usage/go-card-row-dynamic.md",
+          "hash": "1887744092137027841"
+        },
+        {
+          "file": "packages/core/src/patterns/go-card-row/usage/go-card-row.md",
+          "hash": "12586486299329730939"
+        },
+        {
+          "file": "packages/core/src/patterns/go-content-layout/go-content-layout.scss",
+          "hash": "10034489716923047969"
+        },
+        {
+          "file": "packages/core/src/patterns/go-content-layout/go-content-layout.tsx",
+          "hash": "15417454587377619098"
+        },
+        {
+          "file": "packages/core/src/patterns/go-content-layout/readme.md",
+          "hash": "6626366165598162742"
+        },
+        {
+          "file": "packages/core/src/patterns/go-content-layout/test/go-content-layout.e2e.ts",
+          "hash": "7206798431645982844"
+        },
+        {
+          "file": "packages/core/src/patterns/go-content-layout/usage/go-content-layout.md",
+          "hash": "17764555180848425381"
+        },
+        {
+          "file": "packages/core/src/patterns/go-content-layout/usage/sidebar.md",
+          "hash": "18053980865262770346"
+        },
+        {
+          "file": "packages/core/src/patterns/go-content-layout/usage/toc.md",
+          "hash": "6363408588894556010"
+        },
+        {
+          "file": "packages/core/src/patterns/go-footer/go-footer.scss",
+          "hash": "1941275547585295443"
+        },
+        {
+          "file": "packages/core/src/patterns/go-footer/go-footer.tsx",
+          "hash": "3194568135518310160"
+        },
+        {
+          "file": "packages/core/src/patterns/go-footer/readme.md",
+          "hash": "9656417365205835505"
+        },
+        {
+          "file": "packages/core/src/patterns/go-footer/test/footer.e2e.ts",
+          "hash": "13744641340256580758"
+        },
+        {
+          "file": "packages/core/src/patterns/go-footer/usage/custom.md",
+          "hash": "3489861391554044021"
+        },
+        {
+          "file": "packages/core/src/patterns/go-footer/usage/dark.md",
+          "hash": "16384940081261113422"
+        },
+        {
+          "file": "packages/core/src/patterns/go-footer/usage/footer.md",
+          "hash": "12313891500485732993"
+        },
+        {
+          "file": "packages/core/src/patterns/go-gov-au-logo/go-gov-au-logo.scss",
+          "hash": "2737121762547273036"
+        },
+        {
+          "file": "packages/core/src/patterns/go-gov-au-logo/go-gov-au-logo.tsx",
+          "hash": "11082834791206020575"
+        },
+        {
+          "file": "packages/core/src/patterns/go-gov-au-logo/readme.md",
+          "hash": "18206416442671789668"
+        },
+        {
+          "file": "packages/core/src/patterns/go-gov-au-logo/test/go-gov-au-logo.e2e.ts",
+          "hash": "3360836939122840897"
+        },
+        {
+          "file": "packages/core/src/patterns/go-gov-au-logo/usage/go-gov-au-logo.md",
+          "hash": "10071105619474937249"
+        },
+        {
+          "file": "packages/core/src/patterns/go-header-bar/go-header-bar.scss",
+          "hash": "4617683850680980269"
+        },
+        {
+          "file": "packages/core/src/patterns/go-header-bar/go-header-bar.tsx",
+          "hash": "9050020153258204647"
+        },
+        {
+          "file": "packages/core/src/patterns/go-header-bar/readme.md",
+          "hash": "18315889150005011751"
+        },
+        {
+          "file": "packages/core/src/patterns/go-header-bar/test/go-header-bar.e2e.ts",
+          "hash": "6222883627771363771"
+        },
+        {
+          "file": "packages/core/src/patterns/go-header-bar/usage/go-header-bar.md",
+          "hash": "9774956371982198155"
+        },
+        {
+          "file": "packages/core/src/patterns/go-heading-row/go-heading-row.scss",
+          "hash": "13442414248264940641"
+        },
+        {
+          "file": "packages/core/src/patterns/go-heading-row/go-heading-row.tsx",
+          "hash": "14146802691518124089"
+        },
+        {
+          "file": "packages/core/src/patterns/go-heading-row/readme.md",
+          "hash": "17444161029365930150"
+        },
+        {
+          "file": "packages/core/src/patterns/go-heading-row/test/go-heading-row.e2e.ts",
+          "hash": "2756750428300857567"
+        },
+        {
+          "file": "packages/core/src/patterns/go-heading-row/usage/go-heading-row.md",
+          "hash": "12797533130751542807"
+        },
+        {
+          "file": "packages/core/src/patterns/grid/usage/grid-offset.md",
+          "hash": "3819681472788551032"
+        },
+        {
+          "file": "packages/core/src/patterns/grid/usage/grid.md",
+          "hash": "1819391400454826690"
+        },
+        {
+          "file": "packages/core/src/patterns/typography/test/typography.e2e.ts",
+          "hash": "8516876106215213460"
+        },
+        {
+          "file": "packages/core/src/patterns/typography/usage/headings.md",
+          "hash": "24362718152337376"
+        },
+        {
+          "file": "packages/core/src/patterns/typography/usage/positions.md",
+          "hash": "12826289338739746299"
+        },
+        {
+          "file": "packages/core/src/patterns/typography/usage/typography.md",
+          "hash": "6607799148114569042"
+        },
+        {
+          "file": "packages/core/src/react-runtime.d.ts",
+          "hash": "17848083489912956068"
+        },
+        {
+          "file": "packages/core/src/shims-stencil.d.ts",
+          "hash": "9182424773356030070"
+        },
+        {
+          "file": "packages/core/src/typings/README.md",
+          "hash": "14460217523042526208"
+        },
+        {
+          "file": "packages/core/src/typings/index.d.ts",
+          "hash": "13724752831140604227"
+        },
+        {
+          "file": "packages/core/src/utils/const.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/core/src/utils/dom.ts",
+          "hash": "12668159640517425010"
+        },
+        {
+          "file": "packages/core/src/utils/form.ts",
+          "hash": "17372441059817403813"
+        },
+        {
+          "file": "packages/core/src/utils/go-ui-md-plugin.ts",
+          "hash": "3721370296477967004"
+        },
+        {
+          "file": "packages/core/src/utils/helper.ts",
+          "hash": "2754702153071467563"
+        },
+        {
+          "file": "packages/core/src/utils/index.ts",
+          "hash": "4026944929658457149"
+        },
+        {
+          "file": "packages/core/src/utils/match-media.ts",
+          "hash": "15403321094148148701"
+        },
+        {
+          "file": "packages/core/src/utils/nav.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/core/stencil.config.ts",
+          "hash": "7881517566662731881"
+        },
+        {
+          "file": "packages/core/tsconfig.json",
+          "hash": "14818301918684885250"
+        }
+      ],
+      "@go-ui/docs": [
+        {
+          "file": "docs/.gitignore",
+          "hash": "7213099905102724621"
+        },
+        {
+          "file": "docs/README.md",
+          "hash": "11901635142956402208"
+        },
+        {
+          "file": "docs/app.vue",
+          "hash": "2536579291600998538"
+        },
+        {
+          "file": "docs/assets/colour-levels.png",
+          "hash": "12945116343088972049"
+        },
+        {
+          "file": "docs/assets/icon/favicon.ico",
+          "hash": "12369664874798910249"
+        },
+        {
+          "file": "docs/assets/icon/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/assets/img/docs/a11y-chatgpt.png",
+          "hash": "10575861679743106383"
+        },
+        {
+          "file": "docs/assets/img/docs/typography-scales.png",
+          "hash": "18257415439865154547"
+        },
+        {
+          "file": "docs/assets/img/favicon.ico",
+          "hash": "12369664874798910249"
+        },
+        {
+          "file": "docs/assets/img/logo-padded.png",
+          "hash": "13825303225407756223"
+        },
+        {
+          "file": "docs/assets/img/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/assets/img/puppy.png",
+          "hash": "9824539738936270909"
+        },
+        {
+          "file": "docs/assets/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/bin/build-ia.js",
+          "hash": "1777415172699270615"
+        },
+        {
+          "file": "docs/components/AppHeader.vue",
+          "hash": "1401000694103229193"
+        },
+        {
+          "file": "docs/components/NotFound.vue",
+          "hash": "15195051601078318588"
+        },
+        {
+          "file": "docs/components/SidebarLayout.vue",
+          "hash": "11684833174390876485"
+        },
+        {
+          "file": "docs/components/tables/EventsTable.vue",
+          "hash": "6997085086899307419"
+        },
+        {
+          "file": "docs/components/tables/MethodsTable.vue",
+          "hash": "10907762064237428617"
+        },
+        {
+          "file": "docs/components/tables/PropsTable.vue",
+          "hash": "10255225482240932933"
+        },
+        {
+          "file": "docs/components/tables/SlotsTable.vue",
+          "hash": "5790750533144555961"
+        },
+        {
+          "file": "docs/components/tables/useCompApi.ts",
+          "hash": "3977791238552519095"
+        },
+        {
+          "file": "docs/content/docs/components/index.md",
+          "hash": "15834486744474933010"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/colours.md",
+          "hash": "8157501529306956611"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/grid.md",
+          "hash": "17390588395056761048"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/index.md",
+          "hash": "16187350175466213135"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/typography.md",
+          "hash": "3541101180652503397"
+        },
+        {
+          "file": "docs/content/docs/patterns/index.md",
+          "hash": "4166186104442127958"
+        },
+        {
+          "file": "docs/content/get-involved/bug-report.md",
+          "hash": "7309547338239223593"
+        },
+        {
+          "file": "docs/content/get-involved/development-guide.md",
+          "hash": "16803481342105297426"
+        },
+        {
+          "file": "docs/content/get-involved/feature-request.md",
+          "hash": "8027223397135861569"
+        },
+        {
+          "file": "docs/content/get-involved/index.md",
+          "hash": "13541577229269153494"
+        },
+        {
+          "file": "docs/content/guides/accessibility.md",
+          "hash": "14025476134597261285"
+        },
+        {
+          "file": "docs/content/guides/getting-started.md",
+          "hash": "17589066780181006311"
+        },
+        {
+          "file": "docs/content/guides/integration/index.md",
+          "hash": "3868911364420341184"
+        },
+        {
+          "file": "docs/content/guides/integration/react.md",
+          "hash": "7529621437821483280"
+        },
+        {
+          "file": "docs/content/guides/integration/vue.md",
+          "hash": "5652765459574246170"
+        },
+        {
+          "file": "docs/content/guides/theming/css-variables.md",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "docs/content/guides/theming/introduction.md",
+          "hash": "3761029217197618569"
+        },
+        {
+          "file": "docs/content/guides/theming/sass.md",
+          "hash": "12211967347886328394"
+        },
+        {
+          "file": "docs/content/guides/web-components.md",
+          "hash": "11978922907555125459"
+        },
+        {
+          "file": "docs/ia/ia.interface.ts",
+          "hash": "7536189765853634644"
+        },
+        {
+          "file": "docs/nuxt.config.ts",
+          "hash": "17766844706196861597"
+        },
+        {
+          "file": "docs/package-lock.json",
+          "hash": "4206682057931869394"
+        },
+        {
+          "file": "docs/package.json",
+          "hash": "12999063618044698112",
+          "deps": [
+            "@go-ui/core",
+            "npm:@nuxt/devtools@1.7.0",
+            "npm:@types/lodash-es",
+            "npm:chalk",
+            "npm:chokidar",
+            "npm:concurrently",
+            "npm:directory-tree",
+            "npm:lodash-es",
+            "npm:markdown-it@14.1.0",
+            "npm:markdown-it-meta",
+            "npm:markdown-it-title",
+            "npm:nanospinner",
+            "npm:nuxt",
+            "npm:nuxt-gtag",
+            "npm:sass",
+            "npm:typescript@5.9.3",
+            "npm:vue",
+            "npm:vue-router",
+            "npm:vue-tsc",
+            "@go-ui/vue"
+          ]
+        },
+        {
+          "file": "docs/pages/[...slug].vue",
+          "hash": "17005476892310892169"
+        },
+        {
+          "file": "docs/pages/docs/[...slug].vue",
+          "hash": "1538474954770953011"
+        },
+        {
+          "file": "docs/pages/index.vue",
+          "hash": "13598161160917616269"
+        },
+        {
+          "file": "docs/pages/playground.vue",
+          "hash": "15001457580872424766"
+        },
+        {
+          "file": "docs/plugins/go-ui.client.ts",
+          "hash": "10338001316655556625"
+        },
+        {
+          "file": "docs/public/colour-levels.png",
+          "hash": "12945116343088972049"
+        },
+        {
+          "file": "docs/public/favicon.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/public/img/hero/a11y.png",
+          "hash": "2473649759773573823"
+        },
+        {
+          "file": "docs/public/img/hero/adaptive.png",
+          "hash": "13811008200623204472"
+        },
+        {
+          "file": "docs/public/img/hero/dev.png",
+          "hash": "10482174353351690312"
+        },
+        {
+          "file": "docs/public/img/hero/patterns.png",
+          "hash": "18165961324472789006"
+        },
+        {
+          "file": "docs/public/img/hero/piece.png",
+          "hash": "1188851910798681096"
+        },
+        {
+          "file": "docs/public/img/logo-padded.png",
+          "hash": "13825303225407756223"
+        },
+        {
+          "file": "docs/public/img/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/public/img/puppy.png",
+          "hash": "9824539738936270909"
+        },
+        {
+          "file": "docs/public/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/server/tsconfig.json",
+          "hash": "4871039080285373764"
+        },
+        {
+          "file": "docs/tsconfig.json",
+          "hash": "14215126198570747938"
+        },
+        {
+          "file": "docs/utils/constants.ts",
+          "hash": "3107721292304128788"
+        },
+        {
+          "file": "docs/utils/helpers.ts",
+          "hash": "1414904174540058522"
+        },
+        {
+          "file": "docs/utils/sortIA.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "docs/vercel.json",
+          "hash": "16144915970327677516"
+        }
+      ],
+      "@go-ui/demo-frame": [
+        {
+          "file": "packages/demo-frame/.editorconfig",
+          "hash": "10872272122097428313"
+        },
+        {
+          "file": "packages/demo-frame/.gitignore",
+          "hash": "341628938604786727"
+        },
+        {
+          "file": "packages/demo-frame/.prettierrc.json",
+          "hash": "9623169049348014528"
+        },
+        {
+          "file": "packages/demo-frame/LICENSE",
+          "hash": "16469975179465296534"
+        },
+        {
+          "file": "packages/demo-frame/package.json",
+          "hash": "1343220117933514795",
+          "deps": [
+            "npm:@rollup/plugin-typescript",
+            "npm:@stencil/core@4.13.0",
+            "npm:@stencil/sass@3.0.11",
+            "npm:@types/node@16.18.95",
+            "npm:rollup-plugin-node-polyfills",
+            "npm:@codemirror/commands",
+            "npm:@codemirror/lang-html",
+            "npm:@codemirror/language",
+            "npm:@codemirror/state@6.4.1",
+            "npm:@codemirror/view@6.26.1",
+            "@go-ui/core",
+            "npm:@replit/codemirror-vscode-keymap",
+            "npm:codemirror",
+            "npm:copy-text-to-clipboard",
+            "npm:highlight.js",
+            "npm:json5",
+            "npm:lodash-es",
+            "npm:pretty",
+            "npm:thememirror"
+          ]
+        },
+        {
+          "file": "packages/demo-frame/pnpm-lock.yaml",
+          "hash": "16926322887914055691"
+        },
+        {
+          "file": "packages/demo-frame/readme.md",
+          "hash": "7987417709199979499"
+        },
+        {
+          "file": "packages/demo-frame/src/components.d.ts",
+          "hash": "860531465495871055"
+        },
+        {
+          "file": "packages/demo-frame/src/components/code-block/code-block.scss",
+          "hash": "5160593146436699585"
+        },
+        {
+          "file": "packages/demo-frame/src/components/code-block/code-block.tsx",
+          "hash": "17162566014111744168"
+        },
+        {
+          "file": "packages/demo-frame/src/components/code-block/readme.md",
+          "hash": "4558631917783194358"
+        },
+        {
+          "file": "packages/demo-frame/src/components/copy-code-btn/copy-code-btn.scss",
+          "hash": "8805456208513246754"
+        },
+        {
+          "file": "packages/demo-frame/src/components/copy-code-btn/copy-code-btn.tsx",
+          "hash": "11270747495017214647"
+        },
+        {
+          "file": "packages/demo-frame/src/components/copy-code-btn/readme.md",
+          "hash": "6287257584220305312"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-frame/demo-frame.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-frame/demo-frame.tsx",
+          "hash": "16701575803078339976"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-frame/readme.md",
+          "hash": "1562609696491125880"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/prop.type.ts",
+          "hash": "12456970399303515239"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/props-item",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/props-panel.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/props-panel.tsx",
+          "hash": "10957251481817336834"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/readme.md",
+          "hash": "3067137532977648576"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/slot.type.ts",
+          "hash": "16304619231104613735"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/slots-panel.tsx",
+          "hash": "15120402545604709547"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/wc-output.tsx",
+          "hash": "8077326415946549905"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/wc-playground.scss",
+          "hash": "9464489252863407085"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/wc-playground.tsx",
+          "hash": "1687681753348257550"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-demo-box/go-demo-box.scss",
+          "hash": "5590825350297061582"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-demo-box/go-demo-box.tsx",
+          "hash": "12319234733218853188"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-demo-box/readme.md",
+          "hash": "14155226860536331712"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/consts.ts",
+          "hash": "975858359949786852"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/go-playground-header.tsx",
+          "hash": "4190675304150211478"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/go-playground.scss",
+          "hash": "1696326277785009084"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/go-playground.tsx",
+          "hash": "8034829655029212383"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/readme.md",
+          "hash": "6491629961759129040"
+        },
+        {
+          "file": "packages/demo-frame/src/index.html",
+          "hash": "16673618372891061486"
+        },
+        {
+          "file": "packages/demo-frame/src/index.ts",
+          "hash": "1595832445444187531"
+        },
+        {
+          "file": "packages/demo-frame/stencil.config.ts",
+          "hash": "14670331811089057131"
+        },
+        {
+          "file": "packages/demo-frame/tsconfig.json",
+          "hash": "6080593252490745359"
+        }
+      ],
+      "@go-ui/react": [
+        {
+          "file": "packages/react/.gitignore",
+          "hash": "3236901030507711250"
+        },
+        {
+          "file": "packages/react/LICENSE",
+          "hash": "1068458560280297901"
+        },
+        {
+          "file": "packages/react/README.md",
+          "hash": "16001091263405701299"
+        },
+        {
+          "file": "packages/react/package.json",
+          "hash": "15381017226303722207",
+          "deps": [
+            "npm:react@18.3.1",
+            "npm:react-dom@18.3.1",
+            "npm:@types/jest",
+            "npm:@types/node@22.18.12",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:cpy-cli",
+            "npm:jest",
+            "npm:np",
+            "npm:typescript@5.9.3",
+            "npm:@duetds/date-picker",
+            "@go-ui/core"
+          ]
+        },
+        {
+          "file": "packages/react/src/components/index.ts",
+          "hash": "347267628019298810"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/components.ts",
+          "hash": "12794801945644218508"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/index.ts",
+          "hash": "15775029991460992126"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/createComponent.tsx",
+          "hash": "13763176718888768937"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/createOverlayComponent.tsx",
+          "hash": "4627236263056414153"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/index.ts",
+          "hash": "1196254052687681421"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/interfaces.ts",
+          "hash": "9345528127668002987"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/utils/attachProps.ts",
+          "hash": "14941694564617541460"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/utils/case.ts",
+          "hash": "8151789878317466138"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/utils/dev.ts",
+          "hash": "4726996980237453002"
+        },
+        {
+          "file": "packages/react/src/components/stencil-generated/react-component-lib/utils/index.tsx",
+          "hash": "5822308489777464515"
+        },
+        {
+          "file": "packages/react/src/global.d.ts",
+          "hash": "8099712096298118064"
+        },
+        {
+          "file": "packages/react/src/index.ts",
+          "hash": "16063522346463296908"
+        },
+        {
+          "file": "packages/react/src/types/go-ui-core-shim.d.ts",
+          "hash": "1923069072932101318"
+        },
+        {
+          "file": "packages/react/src/types/stencil-react-shims.d.ts",
+          "hash": "14336940389759471815"
+        },
+        {
+          "file": "packages/react/src/types/stencil-react.d.ts",
+          "hash": "3010396376886523777"
+        },
+        {
+          "file": "packages/react/tsconfig.json",
+          "hash": "8087798939241994290"
+        }
+      ]
+    }
+  }
+}

@@ -11,17 +11,17 @@
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
     "@go-ui/core": "workspace:*",
-    "vue": "^3.4.27"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@types/node": "^20.3.3",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@types/node": "^22.10.1",
+    "@vitejs/plugin-vue": "^5.2.1",
     "cpy-cli": "^4.2.0",
     "rimraf": "^5.0.1",
-    "sass": "^1.63.6",
-    "typescript": "^5.1.6",
-    "vite": "^4.3.9",
-    "vue-tsc": "^2.0.19"
+    "sass": "^1.81.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vue-tsc": "^2.1.10"
   },
   "files": [
     "src",

@@ -131,8 +131,8 @@ export class GoSelect implements SelectProps {
       if (this.inputRef) {
         this.dropdownWidth = `${this.inputRef.offsetWidth}px`;
       }
-      if (isScrollable(this.listboxRef) && this.activeOptionRef) {
-        maintainScrollVisibility(this.activeOptionRef, this.listboxRef);
+      if (isScrollable(this.listboxRef as unknown as HTMLElement) && this.activeOptionRef) {
+        maintainScrollVisibility(this.activeOptionRef, this.listboxRef as unknown as HTMLElement);
       }
     } else {
       this.listboxRef.close();

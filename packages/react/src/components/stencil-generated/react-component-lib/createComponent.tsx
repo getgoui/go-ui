@@ -2,7 +2,7 @@ import React, { createElement } from 'react';
 
 import { attachProps, camelToDashCase, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs } from './utils';
 
-export interface HTMLStencilElement extends HTMLElement {
+export interface HTMLStencilElement extends Omit<HTMLElement, 'autocorrect'> {
   componentOnReady(): Promise<this>;
 }
 
@@ -46,7 +46,7 @@ export const createReactComponent = <
     }
 
     componentDidUpdate(prevProps: StencilReactInternalProps<ElementType>) {
-      attachProps(this.componentEl, this.props, prevProps);
+      attachProps(this.componentEl as unknown as HTMLElement, this.props, prevProps);
     }
 
     render() {

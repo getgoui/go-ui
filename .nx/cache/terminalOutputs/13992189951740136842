@@ -1,0 +1,28 @@
+
+> @go-ui/react@1.22.0 build C:\dev\go-ui\packages\react
+> pnpm run clean && pnpm run compile && pnpm run cpyCss && pnpm run cpyScss
+
+
+> @go-ui/react@1.22.0 clean C:\dev\go-ui\packages\react
+> rm -rf dist
+
+
+> @go-ui/react@1.22.0 compile C:\dev\go-ui\packages\react
+> pnpm run tsc
+
+
+> @go-ui/react@1.22.0 tsc C:\dev\go-ui\packages\react
+> tsc -p .
+
+src/components/stencil-generated/index.ts(6,15): error TS2305: Module '"@go-ui/core"' has no exported member 'JSX'.
+src/components/stencil-generated/react-component-lib/createOverlayComponent.tsx(140,13): error TS2322: Type 'PropsWithoutRef<Props> & { forwardedRef: ForwardedRef<OverlayType>; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Overlay> & Readonly<Props>'.
+  Type 'PropsWithoutRef<Props> & { forwardedRef: ForwardedRef<OverlayType>; }' is not assignable to type 'Readonly<Props>'.
+src/components/stencil-generated/react-component-lib/utils/index.tsx(40,27): error TS2345: Argument of type '{ (props: StencilReactExternalProps<PropType, ElementType>, ref: StencilReactForwardedRef<ElementType>): React.JSX.Element; displayName: string; }' is not assignable to parameter of type 'ForwardRefRenderFunction<ElementType, PropsWithoutRef<StencilReactExternalProps<PropType, ElementType>>>'.
+  Types of parameters 'props' and 'props' are incompatible.
+    Type 'PropsWithoutRef<StencilReactExternalProps<PropType, ElementType>>' is not assignable to type 'StencilReactExternalProps<PropType, ElementType>'.
+      Type 'Omit<HTMLAttributes<ElementType>, "style"> & StyleReactProps' is not assignable to type 'StencilReactExternalProps<PropType, ElementType>'.
+        Type 'Omit<HTMLAttributes<ElementType>, "style"> & StyleReactProps' is not assignable to type 'PropType'.
+          'PropType' could be instantiated with an arbitrary type which could be unrelated to 'Omit<HTMLAttributes<ElementType>, "style"> & StyleReactProps'.
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m

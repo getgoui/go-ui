@@ -10,12 +10,13 @@ export interface TabItem {
 }
 
 export interface ActiveTab {
+  id: string;
+  label: string;
   index: number;
   tabEl: HTMLElement;
 }
-export interface ActiveTabWithPanel {
-  index: number;
-  tabEl: HTMLElement;
+export interface ActiveTabWithPanel extends ActiveTab {
+  panelId: string;
   panelEl: HTMLElement;
 }
 

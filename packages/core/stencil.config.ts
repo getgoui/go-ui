@@ -17,6 +17,7 @@ export const config: Config = {
       componentCorePackage: '@go-ui/core',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
       excludeComponents: ['duet-date-picker'],
+      outDir: '../react/src/components/stencil-generated',
     }),
     vueOutputTarget({
       componentCorePackage: '@go-ui/core',
@@ -49,6 +50,7 @@ export const config: Config = {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'auto-define-custom-elements',
       generateTypeDeclarations: true,
+      externalRuntime: false,
     },
     {
       type: 'www',
@@ -63,7 +65,7 @@ export const config: Config = {
   globalStyle: 'src/global/styles.scss',
   plugins: [
     sass({
-      injectGlobalPaths: ['src/global/scss/utils.scss'], // adds @import 'src/global/scss/utils.scss' statement
+      injectGlobalPaths: ['src/global/scss/_utils.scss'], // adds @import 'src/global/scss/_utils.scss' statement
     }),
     postcss({
       plugins: [

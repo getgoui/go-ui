@@ -1,0 +1,24 @@
+
+> @go-ui/react@1.22.0 build C:\dev\go-ui\packages\react
+> pnpm run clean && pnpm run compile && pnpm run cpyCss && pnpm run cpyScss
+
+
+> @go-ui/react@1.22.0 clean C:\dev\go-ui\packages\react
+> rm -rf dist
+
+
+> @go-ui/react@1.22.0 compile C:\dev\go-ui\packages\react
+> pnpm run tsc
+
+
+> @go-ui/react@1.22.0 tsc C:\dev\go-ui\packages\react
+> tsc -p .
+
+
+> @go-ui/react@1.22.0 cpyCss C:\dev\go-ui\packages\react
+> cpy "node_modules/@go-ui/core/dist/go-ui/go-ui.css" "dist" --flat
+
+
+> @go-ui/react@1.22.0 cpyScss C:\dev\go-ui\packages\react
+> cpy "node_modules/@go-ui/core/src/global/scss/**/*" "dist/scss"
+

@@ -1,0 +1,20 @@
+
+> @go-ui/react@1.22.0 build C:\dev\go-ui\packages\react
+> pnpm run clean && pnpm run compile && pnpm run cpyCss && pnpm run cpyScss
+
+
+> @go-ui/react@1.22.0 clean C:\dev\go-ui\packages\react
+> rm -rf dist
+
+
+> @go-ui/react@1.22.0 compile C:\dev\go-ui\packages\react
+> pnpm run tsc
+
+
+> @go-ui/react@1.22.0 tsc C:\dev\go-ui\packages\react
+> tsc -p .
+
+src/components/stencil-generated/index.ts(6,15): error TS2305: Module '"@go-ui/core"' has no exported member 'JSX'.
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m

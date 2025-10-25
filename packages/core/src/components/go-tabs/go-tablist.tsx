@@ -116,10 +116,13 @@ export class GoTablist {
   async activateTab(tabEl: HTMLElement, setFocus = true, isOnload = false) {
     // if tab is already active, do nothing
     if (tabEl.getAttribute('aria-selected') === 'true' && isOnload) {
+      const tab = this.tabsState[this.activeIndex];
       // emit event
       this.activated.emit({
         index: this.activeIndex,
         tabEl,
+        id: tab.tabId,
+        label: tab.label,
       });
       return;
     }
@@ -143,10 +146,13 @@ export class GoTablist {
       tabEl.focus();
     }
 
+    const tab = this.tabsState[this.activeIndex];
     // emit event
     this.activated.emit({
       index: this.activeIndex,
       tabEl,
+      id: tab.tabId,
+      label: tab.label,
     });
 
     requestAnimationFrame(() => {

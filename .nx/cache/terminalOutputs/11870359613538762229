@@ -1,0 +1,154 @@
+
+> @go-ui/react@1.22.0 build C:\dev\go-ui\packages\react
+> pnpm run clean && pnpm run compile && pnpm run cpyCss && pnpm run cpyScss
+
+
+> @go-ui/react@1.22.0 clean C:\dev\go-ui\packages\react
+> rm -rf dist
+
+
+> @go-ui/react@1.22.0 compile C:\dev\go-ui\packages\react
+> pnpm run tsc
+
+
+> @go-ui/react@1.22.0 tsc C:\dev\go-ui\packages\react
+> tsc -p .
+
+src/components/components.ts(10,15): error TS2305: Module '"@go-ui/core"' has no exported member 'ActiveTab'.
+src/components/components.ts(10,31): error TS2305: Module '"@go-ui/core"' has no exported member 'ActiveTabWithPanel'.
+src/components/components.ts(10,56): error TS2305: Module '"@go-ui/core"' has no exported member 'GoChangeEventDetail'.
+src/components/components.ts(10,82): error TS2305: Module '"@go-ui/core"' has no exported member 'GoDarkModeCustomEvent'.
+src/components/components.ts(10,110): error TS2305: Module '"@go-ui/core"' has no exported member 'GoDatepickerCustomEvent'.
+src/components/components.ts(10,140): error TS2305: Module '"@go-ui/core"' has no exported member 'GoDropdownItemCustomEvent'.
+src/components/components.ts(10,172): error TS2305: Module '"@go-ui/core"' has no exported member 'GoNavDrawerCustomEvent'.
+src/components/components.ts(10,201): error TS2305: Module '"@go-ui/core"' has no exported member 'GoSelectCustomEvent'.
+src/components/components.ts(10,227): error TS2305: Module '"@go-ui/core"' has no exported member 'GoTablistCustomEvent'.
+src/components/components.ts(10,254): error TS2305: Module '"@go-ui/core"' has no exported member 'GoTabsCustomEvent'.
+src/components/components.ts(10,278): error TS2305: Module '"@go-ui/core"' has no exported member 'INavItem'.
+src/components/components.ts(68,55): error TS2307: Cannot find module '@stencil/react-output-target/runtime' or its corresponding type declarations.
+src/components/components.ts(69,33): error TS2307: Cannot find module '@stencil/react-output-target/runtime' or its corresponding type declarations.
+src/components/stencil-generated/index.ts(10,79): error TS2344: Type 'HTMLGoAccordionElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoAccordionElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(11,87): error TS2344: Type 'HTMLGoAccordionItemElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoAccordionItemElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(12,71): error TS2344: Type 'HTMLGoBadgeElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoBadgeElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(13,73): error TS2344: Type 'HTMLGoBannerElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoBannerElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(14,81): error TS2344: Type 'HTMLGoBlockquoteElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoBlockquoteElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(15,83): error TS2344: Type 'HTMLGoBreadcrumbsElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoBreadcrumbsElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(16,73): error TS2344: Type 'HTMLGoButtonElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoButtonElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(17,83): error TS2344: Type 'HTMLGoButtonGroupElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoButtonGroupElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(18,89): error TS2344: Type 'HTMLGoCalloutSectionElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoCalloutSectionElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(19,69): error TS2344: Type 'HTMLGoCardElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoCardElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(20,75): error TS2344: Type 'HTMLGoCardRowElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoCardRowElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(21,73): error TS2344: Type 'HTMLGoCenterElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoCenterElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(22,77): error TS2344: Type 'HTMLGoCheckboxElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoCheckboxElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(23,69): error TS2344: Type 'HTMLGoChipElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoChipElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(24,75): error TS2344: Type 'HTMLGoContentElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoContentElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(25,87): error TS2344: Type 'HTMLGoContentLayoutElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoContentLayoutElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(26,77): error TS2344: Type 'HTMLGoDarkModeElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoDarkModeElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(27,81): error TS2344: Type 'HTMLGoDatepickerElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoDatepickerElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(28,73): error TS2344: Type 'HTMLGoDialogElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoDialogElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(29,77): error TS2344: Type 'HTMLGoDropdownElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoDropdownElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(30,85): error TS2344: Type 'HTMLGoDropdownItemElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoDropdownItemElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(31,85): error TS2344: Type 'HTMLGoDropdownMenuElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoDropdownMenuElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(32,95): error TS2344: Type 'HTMLGoDropdownSeparatorElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoDropdownSeparatorElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(33,71): error TS2344: Type 'HTMLGoFieldElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoFieldElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(34,77): error TS2344: Type 'HTMLGoFieldsetElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoFieldsetElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(35,73): error TS2344: Type 'HTMLGoFooterElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoFooterElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(36,79): error TS2344: Type 'HTMLGoGovAuLogoElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoGovAuLogoElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(37,79): error TS2344: Type 'HTMLGoHeaderBarElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoHeaderBarElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(38,81): error TS2344: Type 'HTMLGoHeadingRowElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoHeadingRowElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(39,69): error TS2344: Type 'HTMLGoHeroElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoHeroElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(40,69): error TS2344: Type 'HTMLGoIconElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoIconElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(41,71): error TS2344: Type 'HTMLGoInputElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoInputElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(42,69): error TS2344: Type 'HTMLGoLinkElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoLinkElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(43,65): error TS2344: Type 'HTMLGoMdElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoMdElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(44,73): error TS2344: Type 'HTMLGoNavBarElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoNavBarElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(45,79): error TS2344: Type 'HTMLGoNavDrawerElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoNavDrawerElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(46,75): error TS2344: Type 'HTMLGoNavItemElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoNavItemElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(47,75): error TS2344: Type 'HTMLGoNavLinkElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoNavLinkElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(48,75): error TS2344: Type 'HTMLGoNavListElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoNavListElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(49,81): error TS2344: Type 'HTMLGoNavSubmenuElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoNavSubmenuElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(50,95): error TS2344: Type 'HTMLGoNavSubmenuTriggerElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoNavSubmenuTriggerElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(51,75): error TS2344: Type 'HTMLGoOverlayElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoOverlayElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(52,77): error TS2344: Type 'HTMLGoProgressElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoProgressElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(53,71): error TS2344: Type 'HTMLGoRadioElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoRadioElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(54,79): error TS2344: Type 'HTMLGoSearchBarElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoSearchBarElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(55,73): error TS2344: Type 'HTMLGoSelectElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoSelectElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(56,77): error TS2344: Type 'HTMLGoSkipLinkElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoSkipLinkElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(57,75): error TS2344: Type 'HTMLGoSpinnerElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoSpinnerElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(58,73): error TS2344: Type 'HTMLGoSwitchElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoSwitchElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(59,67): error TS2344: Type 'HTMLGoTabElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoTabElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(60,85): error TS2344: Type 'HTMLGoTableWrapperElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoTableWrapperElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(61,75): error TS2344: Type 'HTMLGoTablistElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoTablistElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(62,69): error TS2344: Type 'HTMLGoTabsElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoTabsElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(63,77): error TS2344: Type 'HTMLGoTextareaElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoTextareaElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(64,71): error TS2344: Type 'HTMLGoToTopElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoToTopElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(65,67): error TS2344: Type 'HTMLGoTocElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoTocElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/index.ts(66,75): error TS2344: Type 'HTMLGoTooltipElement' does not satisfy the constraint 'HTMLStencilElement'.
+  Property 'autocorrect' is missing in type 'HTMLGoTooltipElement' but required in type 'HTMLStencilElement'.
+src/components/stencil-generated/react-component-lib/createOverlayComponent.tsx(140,13): error TS2322: Type 'PropsWithoutRef<Props> & { forwardedRef: ForwardedRef<OverlayType>; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Overlay> & Readonly<Props>'.
+  Type 'PropsWithoutRef<Props> & { forwardedRef: ForwardedRef<OverlayType>; }' is not assignable to type 'Readonly<Props>'.
+src/components/stencil-generated/react-component-lib/utils/index.tsx(40,27): error TS2345: Argument of type '{ (props: StencilReactExternalProps<PropType, ElementType>, ref: StencilReactForwardedRef<ElementType>): React.JSX.Element; displayName: string; }' is not assignable to parameter of type 'ForwardRefRenderFunction<ElementType, PropsWithoutRef<StencilReactExternalProps<PropType, ElementType>>>'.
+  Types of parameters 'props' and 'props' are incompatible.
+    Type 'PropsWithoutRef<StencilReactExternalProps<PropType, ElementType>>' is not assignable to type 'StencilReactExternalProps<PropType, ElementType>'.
+      Type 'Omit<HTMLAttributes<ElementType>, "style"> & StyleReactProps' is not assignable to type 'StencilReactExternalProps<PropType, ElementType>'.
+        Type 'Omit<HTMLAttributes<ElementType>, "style"> & StyleReactProps' is not assignable to type 'PropType'.
+          'PropType' could be instantiated with an arbitrary type which could be unrelated to 'Omit<HTMLAttributes<ElementType>, "style"> & StyleReactProps'.
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m

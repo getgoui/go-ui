@@ -124,9 +124,13 @@ export class GoTabs {
       }
     });
 
+    const tab = this.tabChildren[index];
     this.tabActivated.emit({
+      id: tab.tabId,
+      label: tab.label,
+      panelId: tab.panelId,
       index,
-      tabEl,
+      tabEl: tabEl as unknown as HTMLElement,
       panelEl: this.panels[index] ?? null,
     });
   }

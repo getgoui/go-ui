@@ -29,16 +29,19 @@ export namespace Components {
     interface GoAccordion {
         /**
           * If true, multiple `<go-accordion-item>`s can be opened at the same time
+          * @default false
          */
         "multiple"?: boolean;
     }
     interface GoAccordionItem {
         /**
           * If the accordion item should be opened by default
+          * @default false
          */
         "active"?: boolean;
         /**
           * If expanded height should be automatically calculated. If true, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
+          * @default true
          */
         "autoHeight"?: boolean;
         /**
@@ -51,10 +54,12 @@ export namespace Components {
         "focusOnControl": () => Promise<void>;
         /**
           * Heading text. This can be overwritten by `heading` slot
+          * @default null
          */
         "heading"?: string;
         /**
           * The HTML tag to be applied to the heading text. This can be overwritten by `heading` slot
+          * @default 'h3'
          */
         "headingTag"?: string;
         /**
@@ -73,6 +78,7 @@ export namespace Components {
         "count": number;
         /**
           * If true, the badge will be displayed only as a dot, no number will be shown
+          * @default false
          */
         "dotOnly"?: boolean;
         /**
@@ -81,16 +87,19 @@ export namespace Components {
         "label"?: string;
         /**
           * maximum number displayable on the badge, if count is greater than max, `{max}+` is displayed
+          * @default 99
          */
         "max": number;
         /**
           * minimum number displayable on the badge, if count is less than min, the badge will not be displayed
+          * @default 0
          */
         "min": number;
     }
     interface GoBanner {
         /**
           * If the banner can be dismissed, a close button will be rendered
+          * @default false
          */
         "dismissible"?: boolean;
         /**
@@ -99,6 +108,7 @@ export namespace Components {
         "heading"?: string;
         /**
           * Type of banner
+          * @default 'info'
          */
         "variant": BannerVariants;
     }
@@ -107,11 +117,15 @@ export namespace Components {
           * A URL that designates a source document or message for the information quoted. This attribute is intended to point to information explaining the context or the reference for the quote. See also: [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote#attr-cite)
          */
         "citeUrl"?: string;
+        /**
+          * @default false
+         */
         "hideQuoteMark"?: boolean;
     }
     interface GoBreadcrumbs {
         /**
           * Hide current page (last item without url) from the breadcrumbs
+          * @default false
          */
         "hideCurrent": boolean;
         /**
@@ -120,6 +134,7 @@ export namespace Components {
         "items": INavItem[] | string;
         /**
           * The label for the navigation landmark. This is used by assistive technologies to identify the landmark.
+          * @default 'Breadcrumbs'
          */
         "label": string;
     }
@@ -130,14 +145,17 @@ export namespace Components {
         "block"?: Breakpoints;
         /**
           * Reduce inner gaps and outer paddings
+          * @default false
          */
         "compact"?: boolean;
         /**
           * If this button is disabled
+          * @default null
          */
         "disabled"?: boolean;
         /**
           * If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant
+          * @default false
          */
         "flat"?: boolean;
         /**
@@ -146,39 +164,48 @@ export namespace Components {
         "href"?: string;
         /**
           * Circle shaped icon only button that has min size of 40px for touch devices
+          * @default false
          */
         "icon"?: boolean;
         /**
           * If the button is loading
+          * @default false
          */
         "loading": boolean;
         /**
           * Screen reader announcement for loading state
+          * @default 'Loading'
          */
         "loadingAnouncement"?: string;
         /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
+          * @default false
          */
         "outline"?: boolean;
         /**
           * Outline style with filled background
+          * @default false
          */
         "outlineFill"?: boolean;
         /**
           * If button should have pill-shaped corners
+          * @default false
          */
         "round"?: boolean;
         /**
           * Stack elements inside the button
+          * @default false
          */
         "stack"?: boolean;
         /**
           * Html type of the button
+          * @default 'button'
          */
         "type": 'submit' | 'reset' | 'button';
         /**
           * Button variants
+          * @default 'neutral'
          */
         "variant"?: ColorVariants | 'text';
     }
@@ -189,6 +216,7 @@ export namespace Components {
         "block"?: Breakpoints;
         /**
           * No gap between buttons.
+          * @default false
          */
         "connected"?: boolean;
     }
@@ -203,14 +231,17 @@ export namespace Components {
         "heading": string;
         /**
           * HTML tag to use for heading
+          * @default 'h2'
          */
         "headingTag": string;
         /**
           * Alt text of image (default '' which marks the image decorative)
+          * @default ''
          */
         "imgAlt": string;
         /**
           * Image position, possible values are `start` and `end`
+          * @default 'start'
          */
         "imgPos"?: 'start' | 'end';
         /**
@@ -221,10 +252,12 @@ export namespace Components {
     interface GoCard {
         /**
           * Show border on card
+          * @default false
          */
         "border": boolean;
         /**
           * Flat card without box-shadow
+          * @default false
          */
         "flat": boolean;
         /**
@@ -237,6 +270,7 @@ export namespace Components {
         "href"?: string;
         /**
           * Position of featured media in the card
+          * @default 'top'
          */
         "mediaPosition"?: | 'top'
     | 'left'
@@ -256,24 +290,31 @@ export namespace Components {
     interface GoCardRow {
         /**
           * Number of columns from mobile breakpoint and up
+          * @default 1
          */
         "cols": number;
         /**
           * Number of columns from desktop breakpoint and up
+          * @default 3
          */
         "colsDesktop": number;
         /**
           * Number of columns from large breakpoint and up
+          * @default 4
          */
         "colsLarge": number;
         /**
           * Number of columns from tablet breakpoint and up
+          * @default 2
          */
         "colsTablet": number;
         /**
           * Heading for this card row section
          */
         "heading"?: string;
+        /**
+          * @default 'h2'
+         */
         "headingTag"?: string;
         /**
           * View more link href
@@ -285,6 +326,7 @@ export namespace Components {
         "moreLinkText"?: string;
         /**
           * By default, `go-card-row` stretches all cards inside to the tallest card in view, unless this property is set to true.
+          * @default false
          */
         "noStretch": boolean;
         /**
@@ -295,10 +337,12 @@ export namespace Components {
     interface GoCenter {
         /**
           * If true, the text-align: center will also be applied to the container
+          * @default false
          */
         "alignText": boolean;
         /**
           * Height of this container
+          * @default 'auto'
          */
         "height": string;
     }
@@ -341,19 +385,23 @@ export namespace Components {
     interface GoChip {
         /**
           * Make chip clickable, `chipClick` event will be emitted on click
+          * @default false
          */
         "clickable"?: boolean;
         /**
           * Make chip dismissible, close button will be shown and `chipDismiss` event will be emitted when close button is clicked
+          * @default false
          */
         "dismissible"?: boolean;
         /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
+          * @default false
          */
         "outline"?: boolean;
         /**
           * Colour variant of the chip
+          * @default 'neutral'
          */
         "variant": ChipVariants;
     }
@@ -367,20 +415,24 @@ export namespace Components {
         "intro"?: string;
         /**
           * no hero banner
+          * @default false
          */
         "noHero"?: boolean;
         "pageHeading": string;
         "preHeading"?: string;
         /**
           * sidebar position on desktop screens possible values are `start` and `end`
+          * @default 'start'
          */
         "sidebarDesktopPosition"?: SidebarPosition;
         /**
           * sidebar position on mobile screens possible values are `start` and `end`
+          * @default 'start'
          */
         "sidebarMobilePosition"?: SidebarPosition;
         /**
           * If sidebar should be sticky
+          * @default false
          */
         "sidebarSticky"?: boolean;
         /**
@@ -414,6 +466,7 @@ export namespace Components {
         "errorId"?: string;
         /**
           * Specify the expected date format Supported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
+          * @default ISO_DATE_FORMAT
          */
         "format"?: string;
         /**
@@ -422,6 +475,7 @@ export namespace Components {
         "hint"?: string;
         /**
           * add date format into hint message
+          * @default true
          */
         "hintFormat"?: boolean;
         /**
@@ -446,6 +500,7 @@ export namespace Components {
         "options"?: string | Partial<DuetDatePickerProps>;
         /**
           * Placeholder text
+          * @default ''
          */
         "placeholder"?: string;
         /**
@@ -468,6 +523,7 @@ export namespace Components {
     interface GoDialog {
         /**
           * If this dialog is active
+          * @default false
          */
         "active": boolean;
         "close": () => Promise<void>;
@@ -477,11 +533,13 @@ export namespace Components {
         "heading"?: string;
         /**
           * HTML tag for the heading
+          * @default 'h2'
          */
         "headingTag"?: string;
         "open": () => Promise<void>;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+          * @default false
          */
         "persistent": boolean;
     }
@@ -492,19 +550,23 @@ export namespace Components {
         "close": (focusBackToTrigger?: boolean) => Promise<void>;
         /**
           * if set, dropdown cannot be opened
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * If set, dropdown will take full width of its parent.
+          * @default false
          */
         "fullWidth"?: boolean;
         "init": () => Promise<void>;
         /**
           * keep track of active state
+          * @default false
          */
         "isActive": boolean;
         /**
           * If set, trigger click event will need to be handled manually.
+          * @default false
          */
         "noTriggerClickHandler": boolean;
         /**
@@ -521,18 +583,21 @@ export namespace Components {
         "triggerSelector": string;
         /**
           * Width of the dropdown, any CSS width values can be used.
+          * @default 'auto'
          */
         "width"?: string;
     }
     interface GoDropdownItem {
         /**
           * if this item is disabled, according to the [menu pattern] https://www.w3.org/WAI/ARIA/apg/patterns/menu/#issue-container-generatedID-17 disabled menu item should be focusable but cannot be activated
+          * @default false
          */
         "disabled"?: boolean;
         "focusInControl": () => Promise<void>;
         "focusOutControl": () => Promise<void>;
         /**
           * customise width of the dropdown item
+          * @default '100%'
          */
         "width"?: string;
     }
@@ -540,6 +605,7 @@ export namespace Components {
         "close": (focusBackToTrigger?: boolean) => Promise<void>;
         /**
           * keep track of active state
+          * @default false
          */
         "isActive": boolean;
         /**
@@ -553,6 +619,7 @@ export namespace Components {
         "open": () => Promise<void>;
         /**
           * If persistent, the dropdown will not close by itself on interaction with elements inside the menu.
+          * @default false
          */
         "persistent"?: boolean;
         /**
@@ -567,6 +634,9 @@ export namespace Components {
     interface GoDropdownSeparator {
     }
     interface GoField {
+        /**
+          * @default '.control'
+         */
         "controlElSelector": string;
         "controlId": string;
         /**
@@ -642,6 +712,7 @@ export namespace Components {
         "hintId"?: string;
         /**
           * Wrap direct DOM children in an unordered list so they are announced by screen readers, good for checkboxes and radio buttons
+          * @default false
          */
         "isList"?: boolean;
         /**
@@ -660,28 +731,34 @@ export namespace Components {
         "links": INavItem[] | string;
         /**
           * Heading tag for nav list
+          * @default 'h4'
          */
         "listHeadingTag"?: string;
         /**
           * Number of navigation columns
+          * @default 1
          */
         "navCols"?: number;
         /**
           * Number of navigation columns for desktop and up
+          * @default 4
          */
         "navColsDesktop"?: number;
         /**
           * Number of navigation columns for tablet and up
+          * @default 3
          */
         "navColsTablet"?: number;
         /**
           * Label for navigation
+          * @default 'Footer'
          */
         "navLabel"?: string;
     }
     interface GoGovAuLogo {
         /**
           * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
+          * @default '3rem'
          */
         "height": string;
         /**
@@ -692,6 +769,7 @@ export namespace Components {
     interface GoHeaderBar {
         /**
           * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-nav-bar)
+          * @default 'desktop'
          */
         "breakpoint": Breakpoints;
     }
@@ -702,6 +780,7 @@ export namespace Components {
         "heading"?: string;
         /**
           * HTML tag to use for heading
+          * @default 'h2'
          */
         "headingTag"?: string;
         /**
@@ -724,6 +803,7 @@ export namespace Components {
         "heading": string;
         /**
           * if we should hide hero img on mobile(`full-width-bg` slot not affected)
+          * @default false
          */
         "hideImgOnMobile": boolean;
         /**
@@ -746,6 +826,7 @@ export namespace Components {
         "color"?: string;
         /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
+          * @default 'material-icons'
          */
         "iconSet": MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
         /**
@@ -812,6 +893,9 @@ export namespace Components {
         "value"?: string;
     }
     interface GoLink {
+        /**
+          * @default false
+         */
         "expandClickableArea"?: boolean;
         /**
           * The `href` of the link.
@@ -829,6 +913,7 @@ export namespace Components {
         "content": string;
         /**
           * Render inline markdown
+          * @default false
          */
         "inline"?: boolean;
         /**
@@ -837,6 +922,7 @@ export namespace Components {
         "mdOptions"?: Options | string;
         /**
           * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
+          * @default false
          */
         "sanitise"?: boolean;
         /**
@@ -845,6 +931,7 @@ export namespace Components {
         "src": string;
         /**
           * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
+          * @default false
          */
         "useGoUi"?: boolean;
     }
@@ -855,6 +942,7 @@ export namespace Components {
         "items"?: INavItem[] | string;
         /**
           * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
+          * @default 'Main'
          */
         "label": string;
         /**
@@ -866,10 +954,12 @@ export namespace Components {
     interface GoNavDrawer {
         /**
           * keep track of open state of drawer
+          * @default false
          */
         "active": boolean;
         /**
           * if true, clicking on nav item will close the drawer automatically
+          * @default false
          */
         "autoClose": boolean;
         "close": () => Promise<void>;
@@ -884,11 +974,13 @@ export namespace Components {
         "items"?: INavItem[] | string;
         /**
           * label for screen readers
+          * @default 'Drawer'
          */
         "label": string;
         "open": () => Promise<void>;
         /**
           * Position where the navigation should appear from
+          * @default 'left'
          */
         "position"?: 'left' | 'right';
         "toggle": () => Promise<void>;
@@ -899,6 +991,7 @@ export namespace Components {
     interface GoNavLink {
         /**
           * full width
+          * @default false
          */
         "block": boolean;
         "description"?: string;
@@ -912,6 +1005,7 @@ export namespace Components {
         "linkAttrs"?: UnknownObject | string;
         /**
           * show arrow at the end of the link
+          * @default false
          */
         "showArrow"?: boolean;
         "url"?: string;
@@ -919,6 +1013,7 @@ export namespace Components {
     interface GoNavList {
         /**
           * Make the list full width
+          * @default false
          */
         "block": boolean;
         /**
@@ -928,6 +1023,9 @@ export namespace Components {
     }
     interface GoNavSubmenu {
         "close": () => Promise<void>;
+        /**
+          * @default 1
+         */
         "columns": number;
         "open": () => Promise<void>;
         "toggle": () => Promise<void>;
@@ -936,17 +1034,22 @@ export namespace Components {
         "controls": string;
     }
     interface GoOverlay {
+        /**
+          * @default false
+         */
         "active": boolean;
         "close": () => Promise<void>;
         "open": () => Promise<void>;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+          * @default false
          */
         "persistent": boolean;
     }
     interface GoProgress {
         /**
           * Set progress to indeterminate state
+          * @default false
          */
         "indeterminate"?: boolean;
         /**
@@ -959,14 +1062,17 @@ export namespace Components {
         "labelledby"?: string;
         /**
           * Total amount of work required for progress to complete
+          * @default 100
          */
         "max"?: number;
         /**
           * min value of the progress bar
+          * @default 0
          */
         "min"?: number;
         /**
           * Display percentage of completion
+          * @default false
          */
         "showPercentage"?: boolean;
         /**
@@ -1053,6 +1159,7 @@ export namespace Components {
     interface GoSkipLink {
         /**
           * Tell skip link which element to focus (supports any query selector)
+          * @default 'main'
          */
         "target"?: string;
     }
@@ -1067,10 +1174,12 @@ export namespace Components {
         "duration"?: number;
         /**
           * set the loading state
+          * @default true
          */
         "loading": boolean;
         /**
           * screen reader announcement when loading
+          * @default 'Loading'
          */
         "loadingAnnouncement": string;
         /**
@@ -1087,12 +1196,14 @@ export namespace Components {
         "size"?: string;
         /**
           * If true, spinner and label will be stacked.
+          * @default false
          */
         "stacked"?: boolean;
     }
     interface GoSwitch {
         /**
           * "on" label to show when `showOnOff*` is set to true
+          * @default 'On'
          */
         "activeLabel": string;
         "checked"?: boolean;
@@ -1102,10 +1213,12 @@ export namespace Components {
         "disabled"?: boolean;
         /**
           * make this field full width
+          * @default false
          */
         "fullWidth": boolean;
         /**
           * "off" label to show when `showOnOff*` is set to true
+          * @default 'Off'
          */
         "inactiveLabel": string;
         /**
@@ -1118,14 +1231,17 @@ export namespace Components {
         "name": string;
         /**
           * show on/off text in switch toggle
+          * @default false
          */
         "showOnOff": boolean;
         /**
           * show on/off text next to the switch toggle
+          * @default false
          */
         "showOnOffOutside": boolean;
         /**
           * Display label on top of switch
+          * @default false
          */
         "stack": boolean;
         /**
@@ -1140,10 +1256,12 @@ export namespace Components {
         "active": boolean;
         /**
           * Only show `icon` and `icon-active` slot content "Label" prop is still required for screen reader announcement, but will not be shown visually
+          * @default false
          */
         "iconOnly"?: boolean;
         /**
           * Position of the icon, either 'before' or 'after'
+          * @default 'before'
          */
         "iconPosition"?: TabIconPosition;
         /**
@@ -1163,18 +1281,22 @@ export namespace Components {
     interface GoTableWrapper {
         /**
           * Bordered table
+          * @default false
          */
         "bordered": boolean;
         /**
           * Full width table
+          * @default false
          */
         "fullWidth": boolean;
         /**
           * Hoverable rows
+          * @default false
          */
         "hoverable": boolean;
         /**
           * Striped rows
+          * @default false
          */
         "striped": boolean;
     }
@@ -1182,14 +1304,17 @@ export namespace Components {
         "activateTab": (tabEl: HTMLElement, setFocus?: boolean, isOnload?: boolean) => Promise<void>;
         /**
           * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+          * @default false
          */
         "auto": boolean;
         /**
           * Fix tabs control to the bottom of screen
+          * @default false
          */
         "bottom"?: boolean;
         /**
           * fill available width not applicable for vertical tabs
+          * @default false
          */
         "fill"?: boolean;
         /**
@@ -1198,6 +1323,7 @@ export namespace Components {
         "items": TabItem[];
         /**
           * applies justify-content property to tablist ie. `justify="between"` applies `justify-content: space-between`
+          * @default 'normal'
          */
         "justify"?: JustifyOption;
         /**
@@ -1206,20 +1332,24 @@ export namespace Components {
         "label"?: string;
         /**
           * Set tabs orientation to vertical
+          * @default false
          */
         "vertical"?: boolean;
     }
     interface GoTabs {
         /**
           * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+          * @default false
          */
         "auto"?: boolean;
         /**
           * fill available space (horizontal only)
+          * @default false
          */
         "fill"?: boolean;
         /**
           * Applies justify-content property to tablist (horizontal only) ie. `justify="between"` applies `justify-content: space-between`
+          * @default 'normal'
          */
         "justify"?: JustifyOption;
         /**
@@ -1228,12 +1358,14 @@ export namespace Components {
         "tabGroupLabel"?: string;
         /**
           * Set tabs orientation to vertical
+          * @default false
          */
         "vertical"?: boolean;
     }
     interface GoTextarea {
         /**
           * If set, grow textarea based on its content
+          * @default false
          */
         "autoGrow"?: boolean;
         /**
@@ -1288,6 +1420,7 @@ export namespace Components {
     interface GoToTop {
         /**
           * how far from the top of the page the button should be shown (in px)
+          * @default 200
          */
         "offset": number;
     }
@@ -1299,20 +1432,24 @@ export namespace Components {
         "init": () => Promise<void>;
         /**
           * Label for the TOC
+          * @default 'On this page'
          */
         "label"?: string;
         /**
           * Custom classes to be applied to the label
+          * @default ''
          */
         "labelClass"?: string;
         /**
           * Selector for the TOC items
+          * @default 'h2'
          */
         "selector"?: string;
     }
     interface GoTooltip {
         /**
           * Add arrow to the tooltip
+          * @default false
          */
         "arrow": boolean;
         /**
@@ -1321,10 +1458,12 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * Improve positioning for inline trigger elements that span over multiple lines. Reference: https://floating-ui.com/docs/inline
+          * @default false
          */
         "inline": boolean;
         /**
           * placement of tooltip relative to the trigger element
+          * @default 'top'
          */
         "placement": 'top' | 'bottom' | 'left' | 'right';
         /**
@@ -1994,24 +2133,29 @@ declare namespace LocalJSX {
     interface GoAccordion {
         /**
           * If true, multiple `<go-accordion-item>`s can be opened at the same time
+          * @default false
          */
         "multiple"?: boolean;
     }
     interface GoAccordionItem {
         /**
           * If the accordion item should be opened by default
+          * @default false
          */
         "active"?: boolean;
         /**
           * If expanded height should be automatically calculated. If true, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height
+          * @default true
          */
         "autoHeight"?: boolean;
         /**
           * Heading text. This can be overwritten by `heading` slot
+          * @default null
          */
         "heading"?: string;
         /**
           * The HTML tag to be applied to the heading text. This can be overwritten by `heading` slot
+          * @default 'h3'
          */
         "headingTag"?: string;
         /**
@@ -2038,6 +2182,7 @@ declare namespace LocalJSX {
         "count"?: number;
         /**
           * If true, the badge will be displayed only as a dot, no number will be shown
+          * @default false
          */
         "dotOnly"?: boolean;
         /**
@@ -2046,16 +2191,19 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * maximum number displayable on the badge, if count is greater than max, `{max}+` is displayed
+          * @default 99
          */
         "max"?: number;
         /**
           * minimum number displayable on the badge, if count is less than min, the badge will not be displayed
+          * @default 0
          */
         "min"?: number;
     }
     interface GoBanner {
         /**
           * If the banner can be dismissed, a close button will be rendered
+          * @default false
          */
         "dismissible"?: boolean;
         /**
@@ -2065,6 +2213,7 @@ declare namespace LocalJSX {
         "onDismissed"?: (event: GoBannerCustomEvent<void>) => void;
         /**
           * Type of banner
+          * @default 'info'
          */
         "variant"?: BannerVariants;
     }
@@ -2073,11 +2222,15 @@ declare namespace LocalJSX {
           * A URL that designates a source document or message for the information quoted. This attribute is intended to point to information explaining the context or the reference for the quote. See also: [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote#attr-cite)
          */
         "citeUrl"?: string;
+        /**
+          * @default false
+         */
         "hideQuoteMark"?: boolean;
     }
     interface GoBreadcrumbs {
         /**
           * Hide current page (last item without url) from the breadcrumbs
+          * @default false
          */
         "hideCurrent"?: boolean;
         /**
@@ -2086,6 +2239,7 @@ declare namespace LocalJSX {
         "items"?: INavItem[] | string;
         /**
           * The label for the navigation landmark. This is used by assistive technologies to identify the landmark.
+          * @default 'Breadcrumbs'
          */
         "label"?: string;
     }
@@ -2096,14 +2250,17 @@ declare namespace LocalJSX {
         "block"?: Breakpoints;
         /**
           * Reduce inner gaps and outer paddings
+          * @default false
          */
         "compact"?: boolean;
         /**
           * If this button is disabled
+          * @default null
          */
         "disabled"?: boolean;
         /**
           * If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant
+          * @default false
          */
         "flat"?: boolean;
         /**
@@ -2112,39 +2269,48 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Circle shaped icon only button that has min size of 40px for touch devices
+          * @default false
          */
         "icon"?: boolean;
         /**
           * If the button is loading
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Screen reader announcement for loading state
+          * @default 'Loading'
          */
         "loadingAnouncement"?: string;
         /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
+          * @default false
          */
         "outline"?: boolean;
         /**
           * Outline style with filled background
+          * @default false
          */
         "outlineFill"?: boolean;
         /**
           * If button should have pill-shaped corners
+          * @default false
          */
         "round"?: boolean;
         /**
           * Stack elements inside the button
+          * @default false
          */
         "stack"?: boolean;
         /**
           * Html type of the button
+          * @default 'button'
          */
         "type"?: 'submit' | 'reset' | 'button';
         /**
           * Button variants
+          * @default 'neutral'
          */
         "variant"?: ColorVariants | 'text';
     }
@@ -2155,6 +2321,7 @@ declare namespace LocalJSX {
         "block"?: Breakpoints;
         /**
           * No gap between buttons.
+          * @default false
          */
         "connected"?: boolean;
     }
@@ -2169,14 +2336,17 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * HTML tag to use for heading
+          * @default 'h2'
          */
         "headingTag"?: string;
         /**
           * Alt text of image (default '' which marks the image decorative)
+          * @default ''
          */
         "imgAlt"?: string;
         /**
           * Image position, possible values are `start` and `end`
+          * @default 'start'
          */
         "imgPos"?: 'start' | 'end';
         /**
@@ -2187,10 +2357,12 @@ declare namespace LocalJSX {
     interface GoCard {
         /**
           * Show border on card
+          * @default false
          */
         "border"?: boolean;
         /**
           * Flat card without box-shadow
+          * @default false
          */
         "flat"?: boolean;
         /**
@@ -2203,6 +2375,7 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Position of featured media in the card
+          * @default 'top'
          */
         "mediaPosition"?: | 'top'
     | 'left'
@@ -2222,24 +2395,31 @@ declare namespace LocalJSX {
     interface GoCardRow {
         /**
           * Number of columns from mobile breakpoint and up
+          * @default 1
          */
         "cols"?: number;
         /**
           * Number of columns from desktop breakpoint and up
+          * @default 3
          */
         "colsDesktop"?: number;
         /**
           * Number of columns from large breakpoint and up
+          * @default 4
          */
         "colsLarge"?: number;
         /**
           * Number of columns from tablet breakpoint and up
+          * @default 2
          */
         "colsTablet"?: number;
         /**
           * Heading for this card row section
          */
         "heading"?: string;
+        /**
+          * @default 'h2'
+         */
         "headingTag"?: string;
         /**
           * View more link href
@@ -2251,6 +2431,7 @@ declare namespace LocalJSX {
         "moreLinkText"?: string;
         /**
           * By default, `go-card-row` stretches all cards inside to the tallest card in view, unless this property is set to true.
+          * @default false
          */
         "noStretch"?: boolean;
         /**
@@ -2261,10 +2442,12 @@ declare namespace LocalJSX {
     interface GoCenter {
         /**
           * If true, the text-align: center will also be applied to the container
+          * @default false
          */
         "alignText"?: boolean;
         /**
           * Height of this container
+          * @default 'auto'
          */
         "height"?: string;
     }
@@ -2307,10 +2490,12 @@ declare namespace LocalJSX {
     interface GoChip {
         /**
           * Make chip clickable, `chipClick` event will be emitted on click
+          * @default false
          */
         "clickable"?: boolean;
         /**
           * Make chip dismissible, close button will be shown and `chipDismiss` event will be emitted when close button is clicked
+          * @default false
          */
         "dismissible"?: boolean;
         /**
@@ -2324,10 +2509,12 @@ declare namespace LocalJSX {
         /**
           * If `outline` is true, the button will have a border based on selected variant
           * @see  `variant` property
+          * @default false
          */
         "outline"?: boolean;
         /**
           * Colour variant of the chip
+          * @default 'neutral'
          */
         "variant"?: ChipVariants;
     }
@@ -2340,20 +2527,24 @@ declare namespace LocalJSX {
         "intro"?: string;
         /**
           * no hero banner
+          * @default false
          */
         "noHero"?: boolean;
         "pageHeading"?: string;
         "preHeading"?: string;
         /**
           * sidebar position on desktop screens possible values are `start` and `end`
+          * @default 'start'
          */
         "sidebarDesktopPosition"?: SidebarPosition;
         /**
           * sidebar position on mobile screens possible values are `start` and `end`
+          * @default 'start'
          */
         "sidebarMobilePosition"?: SidebarPosition;
         /**
           * If sidebar should be sticky
+          * @default false
          */
         "sidebarSticky"?: boolean;
         /**
@@ -2383,6 +2574,7 @@ declare namespace LocalJSX {
         "errorId"?: string;
         /**
           * Specify the expected date format Supported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens
+          * @default ISO_DATE_FORMAT
          */
         "format"?: string;
         /**
@@ -2391,6 +2583,7 @@ declare namespace LocalJSX {
         "hint"?: string;
         /**
           * add date format into hint message
+          * @default true
          */
         "hintFormat"?: boolean;
         /**
@@ -2416,6 +2609,7 @@ declare namespace LocalJSX {
         "options"?: string | Partial<DuetDatePickerProps>;
         /**
           * Placeholder text
+          * @default ''
          */
         "placeholder"?: string;
         /**
@@ -2438,6 +2632,7 @@ declare namespace LocalJSX {
     interface GoDialog {
         /**
           * If this dialog is active
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -2446,28 +2641,34 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * HTML tag for the heading
+          * @default 'h2'
          */
         "headingTag"?: string;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+          * @default false
          */
         "persistent"?: boolean;
     }
     interface GoDropdown {
         /**
           * if set, dropdown cannot be opened
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * If set, dropdown will take full width of its parent.
+          * @default false
          */
         "fullWidth"?: boolean;
         /**
           * keep track of active state
+          * @default false
          */
         "isActive"?: boolean;
         /**
           * If set, trigger click event will need to be handled manually.
+          * @default false
          */
         "noTriggerClickHandler"?: boolean;
         /**
@@ -2484,12 +2685,14 @@ declare namespace LocalJSX {
         "triggerSelector"?: string;
         /**
           * Width of the dropdown, any CSS width values can be used.
+          * @default 'auto'
          */
         "width"?: string;
     }
     interface GoDropdownItem {
         /**
           * if this item is disabled, according to the [menu pattern] https://www.w3.org/WAI/ARIA/apg/patterns/menu/#issue-container-generatedID-17 disabled menu item should be focusable but cannot be activated
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2498,12 +2701,14 @@ declare namespace LocalJSX {
         "onSelected"?: (event: GoDropdownItemCustomEvent<HTMLElement>) => void;
         /**
           * customise width of the dropdown item
+          * @default '100%'
          */
         "width"?: string;
     }
     interface GoDropdownMenu {
         /**
           * keep track of active state
+          * @default false
          */
         "isActive"?: boolean;
         /**
@@ -2512,6 +2717,7 @@ declare namespace LocalJSX {
         "menuId"?: string;
         /**
           * If persistent, the dropdown will not close by itself on interaction with elements inside the menu.
+          * @default false
          */
         "persistent"?: boolean;
         /**
@@ -2526,6 +2732,9 @@ declare namespace LocalJSX {
     interface GoDropdownSeparator {
     }
     interface GoField {
+        /**
+          * @default '.control'
+         */
         "controlElSelector"?: string;
         "controlId"?: string;
         /**
@@ -2601,6 +2810,7 @@ declare namespace LocalJSX {
         "hintId"?: string;
         /**
           * Wrap direct DOM children in an unordered list so they are announced by screen readers, good for checkboxes and radio buttons
+          * @default false
          */
         "isList"?: boolean;
         /**
@@ -2619,28 +2829,34 @@ declare namespace LocalJSX {
         "links"?: INavItem[] | string;
         /**
           * Heading tag for nav list
+          * @default 'h4'
          */
         "listHeadingTag"?: string;
         /**
           * Number of navigation columns
+          * @default 1
          */
         "navCols"?: number;
         /**
           * Number of navigation columns for desktop and up
+          * @default 4
          */
         "navColsDesktop"?: number;
         /**
           * Number of navigation columns for tablet and up
+          * @default 3
          */
         "navColsTablet"?: number;
         /**
           * Label for navigation
+          * @default 'Footer'
          */
         "navLabel"?: string;
     }
     interface GoGovAuLogo {
         /**
           * Set height of the logo group. Slots will be scaled to this height. Width is set to auto to avoid image distortion.
+          * @default '3rem'
          */
         "height"?: string;
         /**
@@ -2651,6 +2867,7 @@ declare namespace LocalJSX {
     interface GoHeaderBar {
         /**
           * Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-nav-bar)
+          * @default 'desktop'
          */
         "breakpoint"?: Breakpoints;
     }
@@ -2661,6 +2878,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * HTML tag to use for heading
+          * @default 'h2'
          */
         "headingTag"?: string;
         /**
@@ -2683,6 +2901,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * if we should hide hero img on mobile(`full-width-bg` slot not affected)
+          * @default false
          */
         "hideImgOnMobile"?: boolean;
         /**
@@ -2705,6 +2924,7 @@ declare namespace LocalJSX {
         "color"?: string;
         /**
           * Specify the icon set being referenced. Icon font CSS files must be included in the page.
+          * @default 'material-icons'
          */
         "iconSet"?: MaterialIconVariants | FontAwesomeVariants | BoxiconVariants;
         /**
@@ -2771,6 +2991,9 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface GoLink {
+        /**
+          * @default false
+         */
         "expandClickableArea"?: boolean;
         /**
           * The `href` of the link.
@@ -2788,6 +3011,7 @@ declare namespace LocalJSX {
         "content"?: string;
         /**
           * Render inline markdown
+          * @default false
          */
         "inline"?: boolean;
         /**
@@ -2798,6 +3022,7 @@ declare namespace LocalJSX {
         "onRendered"?: (event: GoMdCustomEvent<any>) => void;
         /**
           * If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM
+          * @default false
          */
         "sanitise"?: boolean;
         /**
@@ -2806,6 +3031,7 @@ declare namespace LocalJSX {
         "src"?: string;
         /**
           * Use go-ui markdown renderer: - Only `typographer` is enabled in markdown-it options  - linkify with [`go-link`](https://go-ui.com/docs/components/go-link) - [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)
+          * @default false
          */
         "useGoUi"?: boolean;
     }
@@ -2816,16 +3042,19 @@ declare namespace LocalJSX {
         "items"?: INavItem[] | string;
         /**
           * Label for the navigation. This helps screen reader users to quickly navigate to teh correct nav landmark
+          * @default 'Main'
          */
         "label"?: string;
     }
     interface GoNavDrawer {
         /**
           * keep track of open state of drawer
+          * @default false
          */
         "active"?: boolean;
         /**
           * if true, clicking on nav item will close the drawer automatically
+          * @default false
          */
         "autoClose"?: boolean;
         /**
@@ -2834,6 +3063,7 @@ declare namespace LocalJSX {
         "items"?: INavItem[] | string;
         /**
           * label for screen readers
+          * @default 'Drawer'
          */
         "label"?: string;
         /**
@@ -2850,6 +3080,7 @@ declare namespace LocalJSX {
         "onOpen"?: (event: GoNavDrawerCustomEvent<void>) => void;
         /**
           * Position where the navigation should appear from
+          * @default 'left'
          */
         "position"?: 'left' | 'right';
     }
@@ -2861,6 +3092,7 @@ declare namespace LocalJSX {
     interface GoNavLink {
         /**
           * full width
+          * @default false
          */
         "block"?: boolean;
         "description"?: string;
@@ -2875,6 +3107,7 @@ declare namespace LocalJSX {
         "onNavigate"?: (event: GoNavLinkCustomEvent<any>) => void;
         /**
           * show arrow at the end of the link
+          * @default false
          */
         "showArrow"?: boolean;
         "url"?: string;
@@ -2882,6 +3115,7 @@ declare namespace LocalJSX {
     interface GoNavList {
         /**
           * Make the list full width
+          * @default false
          */
         "block"?: boolean;
         /**
@@ -2890,6 +3124,9 @@ declare namespace LocalJSX {
         "items"?: INavItem[] | string;
     }
     interface GoNavSubmenu {
+        /**
+          * @default 1
+         */
         "columns"?: number;
         "onToggle"?: (event: GoNavSubmenuCustomEvent<any>) => void;
     }
@@ -2897,6 +3134,9 @@ declare namespace LocalJSX {
         "controls"?: string;
     }
     interface GoOverlay {
+        /**
+          * @default false
+         */
         "active"?: boolean;
         /**
           * Emitted when the overlay is closed
@@ -2908,12 +3148,14 @@ declare namespace LocalJSX {
         "onOverlayOpen"?: (event: GoOverlayCustomEvent<void>) => void;
         /**
           * If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.
+          * @default false
          */
         "persistent"?: boolean;
     }
     interface GoProgress {
         /**
           * Set progress to indeterminate state
+          * @default false
          */
         "indeterminate"?: boolean;
         /**
@@ -2926,14 +3168,17 @@ declare namespace LocalJSX {
         "labelledby"?: string;
         /**
           * Total amount of work required for progress to complete
+          * @default 100
          */
         "max"?: number;
         /**
           * min value of the progress bar
+          * @default 0
          */
         "min"?: number;
         /**
           * Display percentage of completion
+          * @default false
          */
         "showPercentage"?: boolean;
         /**
@@ -3022,6 +3267,7 @@ declare namespace LocalJSX {
     interface GoSkipLink {
         /**
           * Tell skip link which element to focus (supports any query selector)
+          * @default 'main'
          */
         "target"?: string;
     }
@@ -3036,10 +3282,12 @@ declare namespace LocalJSX {
         "duration"?: number;
         /**
           * set the loading state
+          * @default true
          */
         "loading"?: boolean;
         /**
           * screen reader announcement when loading
+          * @default 'Loading'
          */
         "loadingAnnouncement"?: string;
         /**
@@ -3056,12 +3304,14 @@ declare namespace LocalJSX {
         "size"?: string;
         /**
           * If true, spinner and label will be stacked.
+          * @default false
          */
         "stacked"?: boolean;
     }
     interface GoSwitch {
         /**
           * "on" label to show when `showOnOff*` is set to true
+          * @default 'On'
          */
         "activeLabel"?: string;
         "checked"?: boolean;
@@ -3071,10 +3321,12 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         /**
           * make this field full width
+          * @default false
          */
         "fullWidth"?: boolean;
         /**
           * "off" label to show when `showOnOff*` is set to true
+          * @default 'Off'
          */
         "inactiveLabel"?: string;
         /**
@@ -3087,14 +3339,17 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * show on/off text in switch toggle
+          * @default false
          */
         "showOnOff"?: boolean;
         /**
           * show on/off text next to the switch toggle
+          * @default false
          */
         "showOnOffOutside"?: boolean;
         /**
           * Display label on top of switch
+          * @default false
          */
         "stack"?: boolean;
         /**
@@ -3109,10 +3364,12 @@ declare namespace LocalJSX {
         "active"?: boolean;
         /**
           * Only show `icon` and `icon-active` slot content "Label" prop is still required for screen reader announcement, but will not be shown visually
+          * @default false
          */
         "iconOnly"?: boolean;
         /**
           * Position of the icon, either 'before' or 'after'
+          * @default 'before'
          */
         "iconPosition"?: TabIconPosition;
         /**
@@ -3131,32 +3388,39 @@ declare namespace LocalJSX {
     interface GoTableWrapper {
         /**
           * Bordered table
+          * @default false
          */
         "bordered"?: boolean;
         /**
           * Full width table
+          * @default false
          */
         "fullWidth"?: boolean;
         /**
           * Hoverable rows
+          * @default false
          */
         "hoverable"?: boolean;
         /**
           * Striped rows
+          * @default false
          */
         "striped"?: boolean;
     }
     interface GoTablist {
         /**
           * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+          * @default false
          */
         "auto"?: boolean;
         /**
           * Fix tabs control to the bottom of screen
+          * @default false
          */
         "bottom"?: boolean;
         /**
           * fill available width not applicable for vertical tabs
+          * @default false
          */
         "fill"?: boolean;
         /**
@@ -3165,6 +3429,7 @@ declare namespace LocalJSX {
         "items"?: TabItem[];
         /**
           * applies justify-content property to tablist ie. `justify="between"` applies `justify-content: space-between`
+          * @default 'normal'
          */
         "justify"?: JustifyOption;
         /**
@@ -3178,20 +3443,24 @@ declare namespace LocalJSX {
         "onActivated"?: (event: GoTablistCustomEvent<ActiveTab>) => void;
         /**
           * Set tabs orientation to vertical
+          * @default false
          */
         "vertical"?: boolean;
     }
     interface GoTabs {
         /**
           * By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated. if `auto` is true, tabs are automatically activated when they receive focus.
+          * @default false
          */
         "auto"?: boolean;
         /**
           * fill available space (horizontal only)
+          * @default false
          */
         "fill"?: boolean;
         /**
           * Applies justify-content property to tablist (horizontal only) ie. `justify="between"` applies `justify-content: space-between`
+          * @default 'normal'
          */
         "justify"?: JustifyOption;
         /**
@@ -3205,12 +3474,14 @@ declare namespace LocalJSX {
         "tabGroupLabel"?: string;
         /**
           * Set tabs orientation to vertical
+          * @default false
          */
         "vertical"?: boolean;
     }
     interface GoTextarea {
         /**
           * If set, grow textarea based on its content
+          * @default false
          */
         "autoGrow"?: boolean;
         /**
@@ -3265,34 +3536,41 @@ declare namespace LocalJSX {
     interface GoToTop {
         /**
           * how far from the top of the page the button should be shown (in px)
+          * @default 200
          */
         "offset"?: number;
     }
     interface GoToc {
         /**
           * Label for the TOC
+          * @default 'On this page'
          */
         "label"?: string;
         /**
           * Custom classes to be applied to the label
+          * @default ''
          */
         "labelClass"?: string;
         /**
           * Selector for the TOC items
+          * @default 'h2'
          */
         "selector"?: string;
     }
     interface GoTooltip {
         /**
           * Add arrow to the tooltip
+          * @default false
          */
         "arrow"?: boolean;
         /**
           * Improve positioning for inline trigger elements that span over multiple lines. Reference: https://floating-ui.com/docs/inline
+          * @default false
          */
         "inline"?: boolean;
         /**
           * placement of tooltip relative to the trigger element
+          * @default 'top'
          */
         "placement"?: 'top' | 'bottom' | 'left' | 'right';
         /**

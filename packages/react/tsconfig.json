@@ -1,5 +1,10 @@
 {
     "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@go-ui/core": ["../core/dist/types/index.d.ts"],
+        "@go-ui/core/*": ["../core/dist/types/*"]
+      },
       "allowUnreachableCode": false,
       "allowSyntheticDefaultImports": true,
       "declaration": true,
@@ -17,13 +22,15 @@
       "removeComments": false,
       "sourceMap": true,
       "jsx": "react",
-      "target": "es2015"
+      "target": "es2015",
+      "skipLibCheck": true
     },
     "include": [
       "src"
     ],
     "exclude": [
       "node_modules",
+      "src/components/stencil-generated/components.ts"
     ],
     "compileOnSave": false,
     "buildOnSave": false

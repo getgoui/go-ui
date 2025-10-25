@@ -37,6 +37,7 @@ export const createForwardRef = <PropType, ElementType>(ReactComponent: any, dis
   };
   forwardRef.displayName = displayName;
 
+  // @ts-ignore - React 18 type compatibility issue with Stencil output target
   return React.forwardRef(forwardRef);
 };
 

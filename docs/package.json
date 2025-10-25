@@ -23,16 +23,16 @@
     "concurrently": "^6.5.1",
     "directory-tree": "^3.5.1",
     "lodash-es": "^4.17.21",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^14.1.0",
     "markdown-it-meta": "^0.0.1",
     "markdown-it-title": "^4.0.0",
     "nanospinner": "^1.1.0",
-    "nuxt": "^3.8.1",
+    "nuxt": "^3.14.1592",
     "nuxt-gtag": "^1.1.2",
-    "sass": "^1.69.5",
-    "typescript": "^5.2.2",
-    "vue": "^3.3.8",
-    "vue-router": "^4.2.5",
-    "vue-tsc": "^1.8.22"
+    "sass": "^1.81.0",
+    "typescript": "^5.7.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5",
+    "vue-tsc": "^2.1.10"
   }
 }

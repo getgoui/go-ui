@@ -1,4 +1,5 @@
 //--------------mixins for dropdown item--------------//
+@import '../utils/mixins';
 @mixin dropdown-item-vars {
   --dd-item-padding-y: 0.5rem;
   --dd-item-padding-x: 1rem;

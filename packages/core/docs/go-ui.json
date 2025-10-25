@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-07-20T05:27:51",
+  "timestamp": "2025-10-25T05:00:53",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.18.3",
-    "typescriptVersion": "5.4.5"
+    "version": "4.38.2",
+    "typescriptVersion": "5.9.3"
   },
   "components": [
     {
@@ -32,7 +32,12 @@
           "attr": "multiple",
           "reflectToAttr": false,
           "docs": "If true, multiple `<go-accordion-item>`s can be opened at the same time",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -40,7 +45,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -156,7 +163,12 @@
           "attr": "active",
           "reflectToAttr": true,
           "docs": "If the accordion item should be opened by default",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -164,7 +176,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "autoHeight",
@@ -178,7 +192,12 @@
           "attr": "auto-height",
           "reflectToAttr": false,
           "docs": "If expanded height should be automatically calculated. If true, the `--go-accordion-item-body-max-height` CSS variable will be set automatically to the content height",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
           "default": "true",
           "values": [
             {
@@ -186,7 +205,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heading",
@@ -200,7 +221,12 @@
           "attr": "heading",
           "reflectToAttr": false,
           "docs": "Heading text.\r\nThis can be overwritten by `heading` slot",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "null"
+            }
+          ],
           "default": "null",
           "values": [
             {
@@ -208,7 +234,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "headingTag",
@@ -222,7 +250,12 @@
           "attr": "heading-tag",
           "reflectToAttr": false,
           "docs": "The HTML tag to be applied to the heading text.\r\nThis can be overwritten by `heading` slot",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h3'"
+            }
+          ],
           "default": "'h3'",
           "values": [
             {
@@ -230,7 +263,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -423,7 +458,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "dotOnly",
@@ -437,7 +474,12 @@
           "attr": "dot-only",
           "reflectToAttr": false,
           "docs": "If true, the badge will be displayed only as a dot, no number will be shown",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -445,7 +487,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -466,7 +510,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "max",
@@ -480,7 +526,12 @@
           "attr": "max",
           "reflectToAttr": false,
           "docs": "maximum number displayable on the badge, if count is greater than max, `{max}+` is displayed",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "99"
+            }
+          ],
           "default": "99",
           "values": [
             {
@@ -488,7 +539,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "min",
@@ -502,7 +555,12 @@
           "attr": "min",
           "reflectToAttr": false,
           "docs": "minimum number displayable on the badge, if count is less than min, the badge will not be displayed",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
           "default": "0",
           "values": [
             {
@@ -510,7 +568,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -546,7 +606,12 @@
           "attr": "dismissible",
           "reflectToAttr": false,
           "docs": "If the banner can be dismissed, a close button will be rendered",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -554,7 +619,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heading",
@@ -575,7 +642,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "variant",
@@ -595,7 +664,12 @@
           "attr": "variant",
           "reflectToAttr": true,
           "docs": "Type of banner",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'info'"
+            }
+          ],
           "default": "'info'",
           "values": [
             {
@@ -612,7 +686,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -730,7 +806,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hideQuoteMark",
@@ -744,7 +822,12 @@
           "attr": "hide-quote-mark",
           "reflectToAttr": false,
           "docs": "",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -752,7 +835,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -819,7 +904,12 @@
           "attr": "hide-current",
           "reflectToAttr": false,
           "docs": "Hide current page (last item without url) from the breadcrumbs",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -827,7 +917,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "items",
@@ -857,7 +949,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -871,7 +965,12 @@
           "attr": "label",
           "reflectToAttr": false,
           "docs": "The label for the navigation landmark. This is used by assistive technologies to identify the landmark.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Breadcrumbs'"
+            }
+          ],
           "default": "'Breadcrumbs'",
           "values": [
             {
@@ -879,7 +978,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -975,7 +1076,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "compact",
@@ -989,7 +1092,12 @@
           "attr": "compact",
           "reflectToAttr": true,
           "docs": "Reduce inner gaps and outer paddings",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -997,7 +1105,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -1011,7 +1121,12 @@
           "attr": "disabled",
           "reflectToAttr": true,
           "docs": "If this button is disabled",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "null"
+            }
+          ],
           "default": "null",
           "values": [
             {
@@ -1019,7 +1134,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "flat",
@@ -1033,7 +1150,12 @@
           "attr": "flat",
           "reflectToAttr": true,
           "docs": "If `flat` is set, the button will have no shadow and will be filled with the background color of the selected variant",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1041,7 +1163,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "href",
@@ -1062,7 +1186,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "icon",
@@ -1076,7 +1202,12 @@
           "attr": "icon",
           "reflectToAttr": true,
           "docs": "Circle shaped icon only button that has min size of 40px for touch devices",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1084,7 +1215,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "loading",
@@ -1098,7 +1231,12 @@
           "attr": "loading",
           "reflectToAttr": false,
           "docs": "If the button is loading",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1106,7 +1244,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "loadingAnouncement",
@@ -1120,7 +1260,12 @@
           "attr": "loading-anouncement",
           "reflectToAttr": false,
           "docs": "Screen reader announcement for loading state",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Loading'"
+            }
+          ],
           "default": "'Loading'",
           "values": [
             {
@@ -1128,7 +1273,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "outline",
@@ -1146,6 +1293,10 @@
             {
               "name": "see",
               "text": " `variant` property"
+            },
+            {
+              "name": "default",
+              "text": "false"
             }
           ],
           "default": "false",
@@ -1155,7 +1306,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "outlineFill",
@@ -1169,7 +1322,12 @@
           "attr": "outline-fill",
           "reflectToAttr": true,
           "docs": "Outline style with filled background",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1177,7 +1335,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "round",
@@ -1191,7 +1351,12 @@
           "attr": "round",
           "reflectToAttr": true,
           "docs": "If button should have pill-shaped corners",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1199,7 +1364,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "stack",
@@ -1213,7 +1380,12 @@
           "attr": "stack",
           "reflectToAttr": true,
           "docs": "Stack elements inside the button",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1221,7 +1393,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -1235,7 +1409,12 @@
           "attr": "type",
           "reflectToAttr": false,
           "docs": "Html type of the button",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'button'"
+            }
+          ],
           "default": "'button'",
           "values": [
             {
@@ -1252,7 +1431,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "variant",
@@ -1272,7 +1453,12 @@
           "attr": "variant",
           "reflectToAttr": true,
           "docs": "Button variants",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'neutral'"
+            }
+          ],
           "default": "'neutral'",
           "values": [
             {
@@ -1301,7 +1487,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1429,7 +1617,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "connected",
@@ -1443,7 +1633,12 @@
           "attr": "connected",
           "reflectToAttr": false,
           "docs": "No gap between buttons.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1451,7 +1646,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1517,7 +1714,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heading",
@@ -1538,7 +1737,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "headingTag",
@@ -1552,7 +1753,12 @@
           "attr": "heading-tag",
           "reflectToAttr": false,
           "docs": "HTML tag to use for heading",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h2'"
+            }
+          ],
           "default": "'h2'",
           "values": [
             {
@@ -1560,7 +1766,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "imgAlt",
@@ -1574,7 +1782,12 @@
           "attr": "img-alt",
           "reflectToAttr": false,
           "docs": "Alt text of image (default '' which marks the image decorative)",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
           "default": "''",
           "values": [
             {
@@ -1582,7 +1795,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "imgPos",
@@ -1596,7 +1811,12 @@
           "attr": "img-pos",
           "reflectToAttr": false,
           "docs": "Image position, possible values are `start` and `end`",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'start'"
+            }
+          ],
           "default": "'start'",
           "values": [
             {
@@ -1609,7 +1829,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "imgSrc",
@@ -1630,7 +1852,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1737,7 +1961,12 @@
           "attr": "border",
           "reflectToAttr": false,
           "docs": "Show border on card",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1745,7 +1974,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "flat",
@@ -1759,7 +1990,12 @@
           "attr": "flat",
           "reflectToAttr": false,
           "docs": "Flat card without box-shadow",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -1767,7 +2003,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heading",
@@ -1788,7 +2026,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "href",
@@ -1809,7 +2049,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "mediaPosition",
@@ -1823,7 +2065,12 @@
           "attr": "media-position",
           "reflectToAttr": false,
           "docs": "Position of featured media in the card",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'top'"
+            }
+          ],
           "default": "'top'",
           "values": [
             {
@@ -1852,7 +2099,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "subHeading",
@@ -1873,7 +2122,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "target",
@@ -1907,7 +2158,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -2071,7 +2324,12 @@
           "attr": "cols",
           "reflectToAttr": false,
           "docs": "Number of columns from mobile breakpoint and up",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
           "default": "1",
           "values": [
             {
@@ -2079,7 +2337,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "colsDesktop",
@@ -2093,7 +2353,12 @@
           "attr": "cols-desktop",
           "reflectToAttr": false,
           "docs": "Number of columns from desktop breakpoint and up",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "3"
+            }
+          ],
           "default": "3",
           "values": [
             {
@@ -2101,7 +2366,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "colsLarge",
@@ -2115,7 +2382,12 @@
           "attr": "cols-large",
           "reflectToAttr": false,
           "docs": "Number of columns from large breakpoint and up",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "4"
+            }
+          ],
           "default": "4",
           "values": [
             {
@@ -2123,7 +2395,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "colsTablet",
@@ -2137,7 +2411,12 @@
           "attr": "cols-tablet",
           "reflectToAttr": false,
           "docs": "Number of columns from tablet breakpoint and up",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "2"
+            }
+          ],
           "default": "2",
           "values": [
             {
@@ -2145,7 +2424,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heading",
@@ -2166,7 +2447,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "headingTag",
@@ -2180,7 +2463,12 @@
           "attr": "heading-tag",
           "reflectToAttr": false,
           "docs": "",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h2'"
+            }
+          ],
           "default": "'h2'",
           "values": [
             {
@@ -2188,7 +2476,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "moreLinkHref",
@@ -2209,7 +2499,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "moreLinkText",
@@ -2230,7 +2522,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noStretch",
@@ -2244,7 +2538,12 @@
           "attr": "no-stretch",
           "reflectToAttr": false,
           "docs": "By default, `go-card-row` stretches all cards inside to the tallest card in view, unless this property is set to true.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -2252,7 +2551,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "stagger",
@@ -2273,7 +2574,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -2330,7 +2633,12 @@
           "attr": "align-text",
           "reflectToAttr": false,
           "docs": "If true, the text-align: center will also be applied to the container",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -2338,7 +2646,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "height",
@@ -2352,7 +2662,12 @@
           "attr": "height",
           "reflectToAttr": false,
           "docs": "Height of this container",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'auto'"
+            }
+          ],
           "default": "'auto'",
           "values": [
             {
@@ -2360,7 +2675,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -2404,7 +2721,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -2425,7 +2744,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "error",
@@ -2446,7 +2767,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -2467,7 +2790,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -2488,7 +2813,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -2509,7 +2836,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "indeterminate",
@@ -2530,7 +2859,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -2551,7 +2882,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -2572,7 +2905,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -2593,7 +2928,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -2673,7 +3010,12 @@
           "attr": "clickable",
           "reflectToAttr": false,
           "docs": "Make chip clickable, `chipClick` event will be emitted on click",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -2681,7 +3023,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "dismissible",
@@ -2695,7 +3039,12 @@
           "attr": "dismissible",
           "reflectToAttr": false,
           "docs": "Make chip dismissible, close button will be shown and `chipDismiss` event will be emitted when close button is clicked",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -2703,7 +3052,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "outline",
@@ -2721,6 +3072,10 @@
             {
               "name": "see",
               "text": " `variant` property"
+            },
+            {
+              "name": "default",
+              "text": "false"
             }
           ],
           "default": "false",
@@ -2730,7 +3085,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "variant",
@@ -2750,7 +3107,12 @@
           "attr": "variant",
           "reflectToAttr": true,
           "docs": "Colour variant of the chip",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'neutral'"
+            }
+          ],
           "default": "'neutral'",
           "values": [
             {
@@ -2775,7 +3137,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -2960,7 +3324,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heroImgAlt",
@@ -2981,7 +3347,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heroImgSrc",
@@ -3002,7 +3370,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "intro",
@@ -3023,7 +3393,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noHero",
@@ -3037,7 +3409,12 @@
           "attr": "no-hero",
           "reflectToAttr": false,
           "docs": "no hero banner",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -3045,7 +3422,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "pageHeading",
@@ -3066,7 +3445,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preHeading",
@@ -3087,7 +3468,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "sidebarDesktopPosition",
@@ -3107,7 +3490,12 @@
           "attr": "sidebar-desktop-position",
           "reflectToAttr": false,
           "docs": "sidebar position on desktop screens\r\npossible values are `start` and `end`",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'start'"
+            }
+          ],
           "default": "'start'",
           "values": [
             {
@@ -3120,7 +3508,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "sidebarMobilePosition",
@@ -3140,7 +3530,12 @@
           "attr": "sidebar-mobile-position",
           "reflectToAttr": false,
           "docs": "sidebar position on mobile screens\r\npossible values are `start` and `end`",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'start'"
+            }
+          ],
           "default": "'start'",
           "values": [
             {
@@ -3153,7 +3548,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "sidebarSticky",
@@ -3167,7 +3564,12 @@
           "attr": "sidebar-sticky",
           "reflectToAttr": false,
           "docs": "If sidebar should be sticky",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -3175,7 +3577,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "toc",
@@ -3196,7 +3600,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "tocProps",
@@ -3222,7 +3628,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -3404,7 +3812,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "error",
@@ -3428,7 +3838,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -3449,7 +3861,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "format",
@@ -3463,7 +3877,12 @@
           "attr": "format",
           "reflectToAttr": false,
           "docs": "Specify the expected date format\r\nSupported formats: https://day.js.org/docs/en/parse/string-format#list-of-all-available-parsing-tokens",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "ISO_DATE_FORMAT"
+            }
+          ],
           "default": "ISO_DATE_FORMAT",
           "values": [
             {
@@ -3471,7 +3890,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -3492,7 +3913,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintFormat",
@@ -3506,7 +3929,12 @@
           "attr": "hint-format",
           "reflectToAttr": false,
           "docs": "add date format into hint message",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
           "default": "true",
           "values": [
             {
@@ -3514,7 +3942,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -3535,7 +3965,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -3556,7 +3988,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelId",
@@ -3577,7 +4011,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -3598,7 +4034,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "options",
@@ -3632,7 +4070,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "placeholder",
@@ -3646,7 +4086,12 @@
           "attr": "placeholder",
           "reflectToAttr": false,
           "docs": "Placeholder text",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
           "default": "''",
           "values": [
             {
@@ -3654,7 +4099,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "prefixId",
@@ -3675,7 +4122,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -3696,7 +4145,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "suffixId",
@@ -3717,7 +4168,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -3738,7 +4191,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -3803,7 +4258,12 @@
           "attr": "active",
           "reflectToAttr": true,
           "docs": "If this dialog is active",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -3811,7 +4271,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heading",
@@ -3832,7 +4294,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "headingTag",
@@ -3846,7 +4310,12 @@
           "attr": "heading-tag",
           "reflectToAttr": false,
           "docs": "HTML tag for the heading",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h2'"
+            }
+          ],
           "default": "'h2'",
           "values": [
             {
@@ -3854,7 +4323,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "persistent",
@@ -3868,7 +4339,12 @@
           "attr": "persistent",
           "reflectToAttr": false,
           "docs": "If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -3876,7 +4352,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -3968,7 +4446,12 @@
           "attr": "disabled",
           "reflectToAttr": false,
           "docs": "if set, dropdown cannot be opened",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -3976,7 +4459,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fullWidth",
@@ -3990,7 +4475,12 @@
           "attr": "full-width",
           "reflectToAttr": false,
           "docs": "If set, dropdown will take full width of its parent.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -3998,7 +4488,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "isActive",
@@ -4012,7 +4504,12 @@
           "attr": "is-active",
           "reflectToAttr": true,
           "docs": "keep track of active state",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -4020,7 +4517,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noTriggerClickHandler",
@@ -4034,7 +4533,12 @@
           "attr": "no-trigger-click-handler",
           "reflectToAttr": false,
           "docs": "If set, trigger click event will need to be handled manually.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -4042,7 +4546,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "triggerSelector",
@@ -4063,7 +4569,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "width",
@@ -4077,7 +4585,12 @@
           "attr": "width",
           "reflectToAttr": false,
           "docs": "Width of the dropdown, any CSS width values can be used.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'auto'"
+            }
+          ],
           "default": "'auto'",
           "values": [
             {
@@ -4085,7 +4598,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -4290,7 +4805,12 @@
           "attr": "disabled",
           "reflectToAttr": true,
           "docs": "if this item is disabled, according to the [menu pattern] https://www.w3.org/WAI/ARIA/apg/patterns/menu/#issue-container-generatedID-17 disabled menu item should be focusable but cannot be activated",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -4298,7 +4818,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "width",
@@ -4312,7 +4834,12 @@
           "attr": "width",
           "reflectToAttr": false,
           "docs": "customise width of the dropdown item",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'100%'"
+            }
+          ],
           "default": "'100%'",
           "values": [
             {
@@ -4320,7 +4847,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -4421,7 +4950,12 @@
           "attr": "is-active",
           "reflectToAttr": true,
           "docs": "keep track of active state",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -4429,7 +4963,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "menuId",
@@ -4450,7 +4986,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "persistent",
@@ -4464,7 +5002,12 @@
           "attr": "persistent",
           "reflectToAttr": false,
           "docs": "If persistent, the dropdown will not close by itself on interaction with elements inside the menu.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -4472,7 +5015,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "triggerSelector",
@@ -4498,7 +5043,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "width",
@@ -4519,7 +5066,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -4720,7 +5269,12 @@
           "attr": "control-el-selector",
           "reflectToAttr": false,
           "docs": "",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'.control'"
+            }
+          ],
           "default": "'.control'",
           "values": [
             {
@@ -4728,7 +5282,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "controlId",
@@ -4749,7 +5305,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -4770,7 +5328,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "error",
@@ -4794,7 +5354,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -4815,7 +5377,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hiddenInputName",
@@ -4836,7 +5400,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hiddenInputValue",
@@ -4857,7 +5423,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -4878,7 +5446,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -4899,7 +5469,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "idPrefix",
@@ -4920,7 +5492,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -4941,7 +5515,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelId",
@@ -4962,7 +5538,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -4983,7 +5561,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "prefixId",
@@ -5004,7 +5584,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -5025,7 +5607,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "suffixId",
@@ -5046,7 +5630,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5110,7 +5696,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -5131,7 +5719,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -5152,7 +5742,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -5173,7 +5765,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "isList",
@@ -5187,7 +5781,12 @@
           "attr": "is-list",
           "reflectToAttr": false,
           "docs": "Wrap direct DOM children in an unordered list so they are announced by screen readers, good for checkboxes and radio buttons",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -5195,7 +5794,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -5216,7 +5817,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelId",
@@ -5237,7 +5840,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5291,7 +5896,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "listHeadingTag",
@@ -5305,7 +5912,12 @@
           "attr": "list-heading-tag",
           "reflectToAttr": false,
           "docs": "Heading tag for nav list",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h4'"
+            }
+          ],
           "default": "'h4'",
           "values": [
             {
@@ -5313,7 +5925,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "navCols",
@@ -5327,7 +5941,12 @@
           "attr": "nav-cols",
           "reflectToAttr": false,
           "docs": "Number of navigation columns",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
           "default": "1",
           "values": [
             {
@@ -5335,7 +5954,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "navColsDesktop",
@@ -5349,7 +5970,12 @@
           "attr": "nav-cols-desktop",
           "reflectToAttr": false,
           "docs": "Number of navigation columns for desktop and up",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "4"
+            }
+          ],
           "default": "4",
           "values": [
             {
@@ -5357,7 +5983,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "navColsTablet",
@@ -5371,7 +5999,12 @@
           "attr": "nav-cols-tablet",
           "reflectToAttr": false,
           "docs": "Number of navigation columns for tablet and up",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "3"
+            }
+          ],
           "default": "3",
           "values": [
             {
@@ -5379,7 +6012,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "navLabel",
@@ -5393,7 +6028,12 @@
           "attr": "nav-label",
           "reflectToAttr": false,
           "docs": "Label for navigation",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Footer'"
+            }
+          ],
           "default": "'Footer'",
           "values": [
             {
@@ -5401,7 +6041,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5496,7 +6138,12 @@
           "attr": "height",
           "reflectToAttr": false,
           "docs": "Set height of the logo group. Slots will be scaled to this height.\r\nWidth is set to auto to avoid image distortion.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'3rem'"
+            }
+          ],
           "default": "'3rem'",
           "values": [
             {
@@ -5504,7 +6151,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "href",
@@ -5525,7 +6174,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5580,7 +6231,12 @@
           "attr": "breakpoint",
           "reflectToAttr": false,
           "docs": "Controls at which breakpoint the mobile menu (go-nav-drawer) becomes main nav menu (go-nav-bar)",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'desktop'"
+            }
+          ],
           "default": "'desktop'",
           "values": [
             {
@@ -5605,7 +6261,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5648,7 +6306,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "headingTag",
@@ -5662,7 +6322,12 @@
           "attr": "heading-tag",
           "reflectToAttr": false,
           "docs": "HTML tag to use for heading",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h2'"
+            }
+          ],
           "default": "'h2'",
           "values": [
             {
@@ -5670,7 +6335,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "moreLinkHref",
@@ -5691,7 +6358,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "moreLinkText",
@@ -5712,7 +6381,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5809,7 +6480,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "heading",
@@ -5830,7 +6503,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hideImgOnMobile",
@@ -5844,7 +6519,12 @@
           "attr": "hide-img-on-mobile",
           "reflectToAttr": false,
           "docs": "if we should hide hero img on mobile(`full-width-bg` slot not affected)",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -5852,7 +6532,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "imgAlt",
@@ -5873,7 +6555,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "imgSrc",
@@ -5894,7 +6578,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preHeading",
@@ -5915,7 +6601,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -6026,7 +6714,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconSet",
@@ -6056,7 +6746,12 @@
           "attr": "icon-set",
           "reflectToAttr": true,
           "docs": "Specify the icon set being referenced.\r\nIcon font CSS files must be included in the page.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'material-icons'"
+            }
+          ],
           "default": "'material-icons'",
           "values": [
             {
@@ -6109,7 +6804,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -6130,7 +6827,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -6151,7 +6850,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -6172,7 +6873,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -6229,7 +6932,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "error",
@@ -6253,7 +6958,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -6274,7 +6981,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -6295,7 +7004,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -6316,7 +7027,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -6337,7 +7050,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelId",
@@ -6358,7 +7073,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -6379,7 +7096,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "prefixId",
@@ -6400,7 +7119,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -6421,7 +7142,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "suffixId",
@@ -6442,7 +7165,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -6463,7 +7188,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -6505,7 +7232,12 @@
           "attr": "expand-clickable-area",
           "reflectToAttr": false,
           "docs": "",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -6513,7 +7245,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "href",
@@ -6534,7 +7268,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "target",
@@ -6568,7 +7304,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -6624,7 +7362,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inline",
@@ -6638,7 +7378,12 @@
           "attr": "inline",
           "reflectToAttr": false,
           "docs": "Render inline markdown",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -6646,7 +7391,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "mdOptions",
@@ -6658,7 +7405,7 @@
               "Options": {
                 "location": "import",
                 "path": "markdown-it",
-                "id": "../../node_modules/.pnpm/@types+markdown-it@14.1.1/node_modules/@types/markdown-it/index.d.ts::Options"
+                "id": "../../node_modules/.pnpm/@types+markdown-it@14.1.2/node_modules/@types/markdown-it/index.d.ts::Options"
               }
             }
           },
@@ -6676,7 +7423,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "sanitise",
@@ -6690,7 +7439,12 @@
           "attr": "sanitise",
           "reflectToAttr": false,
           "docs": "If set to true, `go-md` will use [DOMPurify](https://nodei.co/npm/dompurify/) to sanitise the output HTML before inserting it into the DOM",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -6698,7 +7452,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "src",
@@ -6719,7 +7475,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "useGoUi",
@@ -6733,7 +7491,12 @@
           "attr": "use-go-ui",
           "reflectToAttr": false,
           "docs": "Use go-ui markdown renderer:\r\n- Only `typographer` is enabled in markdown-it options\r\n\r\n- linkify with [`go-link`](https://go-ui.com/docs/components/go-link)\r\n- [container](https://github.com/markdown-it/markdown-it-container) banners with [`go-banner`](https://go-ui.com/docs/components/go-banner)",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -6741,7 +7504,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -6823,7 +7588,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -6837,7 +7604,12 @@
           "attr": "label",
           "reflectToAttr": false,
           "docs": "Label for the navigation.\r\nThis helps screen reader users to quickly navigate to teh correct nav landmark",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Main'"
+            }
+          ],
           "default": "'Main'",
           "values": [
             {
@@ -6845,7 +7617,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -7132,7 +7906,12 @@
           "attr": "active",
           "reflectToAttr": true,
           "docs": "keep track of open state of drawer",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -7140,7 +7919,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "autoClose",
@@ -7154,7 +7935,12 @@
           "attr": "auto-close",
           "reflectToAttr": false,
           "docs": "if true, clicking on nav item will close the drawer automatically",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -7162,7 +7948,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "items",
@@ -7192,7 +7980,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -7206,7 +7996,12 @@
           "attr": "label",
           "reflectToAttr": false,
           "docs": "label for screen readers",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Drawer'"
+            }
+          ],
           "default": "'Drawer'",
           "values": [
             {
@@ -7214,7 +8009,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "position",
@@ -7228,7 +8025,12 @@
           "attr": "position",
           "reflectToAttr": true,
           "docs": "Position where the navigation should appear from",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'left'"
+            }
+          ],
           "default": "'left'",
           "values": [
             {
@@ -7241,7 +8043,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -7469,7 +8273,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -7554,7 +8360,12 @@
           "attr": "block",
           "reflectToAttr": true,
           "docs": "full width",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -7562,7 +8373,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "description",
@@ -7583,7 +8396,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "icon",
@@ -7613,7 +8428,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "isCurrent",
@@ -7634,7 +8451,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "item",
@@ -7664,7 +8483,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -7685,7 +8506,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "linkAttrs",
@@ -7715,7 +8538,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "showArrow",
@@ -7729,7 +8554,12 @@
           "attr": "show-arrow",
           "reflectToAttr": false,
           "docs": "show arrow at the end of the link",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -7737,7 +8567,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "url",
@@ -7758,7 +8590,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -7917,7 +8751,12 @@
           "attr": "block",
           "reflectToAttr": true,
           "docs": "Make the list full width",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -7925,7 +8764,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "items",
@@ -7955,7 +8796,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -8024,7 +8867,12 @@
           "attr": "columns",
           "reflectToAttr": false,
           "docs": "",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
           "default": "1",
           "values": [
             {
@@ -8032,7 +8880,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -8164,7 +9014,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -8206,7 +9058,12 @@
           "attr": "active",
           "reflectToAttr": true,
           "docs": "",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -8214,7 +9071,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "persistent",
@@ -8228,7 +9087,12 @@
           "attr": "persistent",
           "reflectToAttr": false,
           "docs": "If persistent, the overlay will not be closed when the user clicks outside of it or presses the escape key.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -8236,7 +9100,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -8368,7 +9234,12 @@
           "attr": "indeterminate",
           "reflectToAttr": false,
           "docs": "Set progress to indeterminate state",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -8376,7 +9247,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -8397,7 +9270,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelledby",
@@ -8418,7 +9293,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "max",
@@ -8432,7 +9309,12 @@
           "attr": "max",
           "reflectToAttr": false,
           "docs": "Total amount of work required for progress to complete",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "100"
+            }
+          ],
           "default": "100",
           "values": [
             {
@@ -8440,7 +9322,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "min",
@@ -8454,7 +9338,12 @@
           "attr": "min",
           "reflectToAttr": false,
           "docs": "min value of the progress bar",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
           "default": "0",
           "values": [
             {
@@ -8462,7 +9351,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "showPercentage",
@@ -8476,7 +9367,12 @@
           "attr": "show-percentage",
           "reflectToAttr": false,
           "docs": "Display percentage of completion",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -8484,7 +9380,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -8505,7 +9403,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -8549,7 +9449,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "controlId",
@@ -8570,7 +9472,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -8591,7 +9495,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "error",
@@ -8612,7 +9518,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -8633,7 +9541,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -8654,7 +9564,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -8675,7 +9587,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "indeterminate",
@@ -8696,7 +9610,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -8717,7 +9633,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -8738,7 +9656,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -8759,7 +9679,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -8925,7 +9847,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "error",
@@ -8949,7 +9873,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -8970,7 +9896,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -8991,7 +9919,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -9012,7 +9942,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -9033,7 +9965,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelId",
@@ -9054,7 +9988,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -9075,7 +10011,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "options",
@@ -9108,7 +10046,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -9129,7 +10069,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "suffixId",
@@ -9150,7 +10092,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -9177,7 +10121,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9303,7 +10249,12 @@
           "attr": "target",
           "reflectToAttr": false,
           "docs": "Tell skip link which element to focus (supports any query selector)",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'main'"
+            }
+          ],
           "default": "'main'",
           "values": [
             {
@@ -9311,7 +10262,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9370,7 +10323,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "duration",
@@ -9391,7 +10346,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "loading",
@@ -9405,7 +10362,12 @@
           "attr": "loading",
           "reflectToAttr": true,
           "docs": "set the loading state",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
           "default": "true",
           "values": [
             {
@@ -9413,7 +10375,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "loadingAnnouncement",
@@ -9427,7 +10391,12 @@
           "attr": "loading-announcement",
           "reflectToAttr": false,
           "docs": "screen reader announcement when loading",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Loading'"
+            }
+          ],
           "default": "'Loading'",
           "values": [
             {
@@ -9435,7 +10404,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "ringColor",
@@ -9456,7 +10427,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "ringWidth",
@@ -9477,7 +10450,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -9498,7 +10473,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "stacked",
@@ -9512,7 +10489,12 @@
           "attr": "stacked",
           "reflectToAttr": false,
           "docs": "If true, spinner and label will be stacked.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -9520,7 +10502,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9562,7 +10546,12 @@
           "attr": "active-label",
           "reflectToAttr": false,
           "docs": "\"on\" label to show when `showOnOff*` is set to true",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'On'"
+            }
+          ],
           "default": "'On'",
           "values": [
             {
@@ -9570,7 +10559,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "checked",
@@ -9591,7 +10582,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -9612,7 +10605,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fullWidth",
@@ -9626,7 +10621,12 @@
           "attr": "full-width",
           "reflectToAttr": false,
           "docs": "make this field full width",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -9634,7 +10634,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inactiveLabel",
@@ -9648,7 +10650,12 @@
           "attr": "inactive-label",
           "reflectToAttr": false,
           "docs": "\"off\" label to show when `showOnOff*` is set to true",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Off'"
+            }
+          ],
           "default": "'Off'",
           "values": [
             {
@@ -9656,7 +10663,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -9677,7 +10686,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -9698,7 +10709,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "showOnOff",
@@ -9712,7 +10725,12 @@
           "attr": "show-on-off",
           "reflectToAttr": false,
           "docs": "show on/off text in switch toggle",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -9720,7 +10738,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "showOnOffOutside",
@@ -9734,7 +10754,12 @@
           "attr": "show-on-off-outside",
           "reflectToAttr": false,
           "docs": "show on/off text next to the switch toggle",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -9742,7 +10767,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "stack",
@@ -9756,7 +10783,12 @@
           "attr": "stack",
           "reflectToAttr": false,
           "docs": "Display label on top of switch",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -9764,7 +10796,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -9785,7 +10819,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9901,7 +10937,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconOnly",
@@ -9915,7 +10953,12 @@
           "attr": "icon-only",
           "reflectToAttr": false,
           "docs": "Only show `icon` and `icon-active` slot content\r\n\"Label\" prop is still required for screen reader announcement, but will not be shown visually",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -9923,7 +10966,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconPosition",
@@ -9943,7 +10988,12 @@
           "attr": "icon-position",
           "reflectToAttr": false,
           "docs": "Position of the icon, either 'before' or 'after'",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'before'"
+            }
+          ],
           "default": "'before'",
           "values": [
             {
@@ -9956,7 +11006,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -9977,7 +11029,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "panelId",
@@ -9998,7 +11052,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "tabId",
@@ -10019,7 +11075,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -10099,7 +11157,12 @@
           "attr": "bordered",
           "reflectToAttr": false,
           "docs": "Bordered table",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10107,7 +11170,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fullWidth",
@@ -10121,7 +11186,12 @@
           "attr": "full-width",
           "reflectToAttr": false,
           "docs": "Full width table",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10129,7 +11199,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hoverable",
@@ -10143,7 +11215,12 @@
           "attr": "hoverable",
           "reflectToAttr": false,
           "docs": "Hoverable rows",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10151,7 +11228,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "striped",
@@ -10165,7 +11244,12 @@
           "attr": "striped",
           "reflectToAttr": false,
           "docs": "Striped rows",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10173,7 +11257,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -10212,7 +11298,12 @@
           "attr": "auto",
           "reflectToAttr": false,
           "docs": "By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated.\r\nif `auto` is true, tabs are automatically activated when they receive focus.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10220,7 +11311,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "bottom",
@@ -10234,7 +11327,12 @@
           "attr": "bottom",
           "reflectToAttr": false,
           "docs": "Fix tabs control to the bottom of screen",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10242,7 +11340,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fill",
@@ -10256,7 +11356,12 @@
           "attr": "fill",
           "reflectToAttr": false,
           "docs": "fill available width\r\nnot applicable for vertical tabs",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10264,7 +11369,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "items",
@@ -10290,7 +11397,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "justify",
@@ -10310,7 +11419,12 @@
           "attr": "justify",
           "reflectToAttr": false,
           "docs": "applies justify-content property to tablist\r\nie. `justify=\"between\"` applies `justify-content: space-between`",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'normal'"
+            }
+          ],
           "default": "'normal'",
           "values": [
             {
@@ -10347,7 +11461,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -10368,7 +11484,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "vertical",
@@ -10382,7 +11500,12 @@
           "attr": "vertical",
           "reflectToAttr": false,
           "docs": "Set tabs orientation to vertical",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10390,7 +11513,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -10591,7 +11716,12 @@
           "attr": "auto",
           "reflectToAttr": false,
           "docs": "By default, tabs require user interaction (by clicking or pressing the `Enter` or `Space` key) to be activated.\r\nif `auto` is true, tabs are automatically activated when they receive focus.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10599,7 +11729,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fill",
@@ -10613,7 +11745,12 @@
           "attr": "fill",
           "reflectToAttr": false,
           "docs": "fill available space (horizontal only)",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10621,7 +11758,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "justify",
@@ -10641,7 +11780,12 @@
           "attr": "justify",
           "reflectToAttr": false,
           "docs": "Applies justify-content property to tablist (horizontal only)\r\nie. `justify=\"between\"` applies `justify-content: space-between`",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'normal'"
+            }
+          ],
           "default": "'normal'",
           "values": [
             {
@@ -10678,7 +11822,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "tabGroupLabel",
@@ -10699,7 +11845,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "vertical",
@@ -10713,7 +11861,12 @@
           "attr": "vertical",
           "reflectToAttr": false,
           "docs": "Set tabs orientation to vertical",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10721,7 +11874,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -10789,7 +11944,12 @@
           "attr": "auto-grow",
           "reflectToAttr": false,
           "docs": "If set, grow textarea based on its content",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -10797,7 +11957,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -10818,7 +11980,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "error",
@@ -10842,7 +12006,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "errorId",
@@ -10863,7 +12029,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hint",
@@ -10884,7 +12052,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hintId",
@@ -10905,7 +12075,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -10926,7 +12098,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelId",
@@ -10947,7 +12121,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -10968,7 +12144,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "prefixId",
@@ -10989,7 +12167,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -11010,7 +12190,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "suffixId",
@@ -11031,7 +12213,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -11052,7 +12236,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -11230,7 +12416,12 @@
           "attr": "offset",
           "reflectToAttr": false,
           "docs": "how far from the top of the page the button should be shown (in px)",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "200"
+            }
+          ],
           "default": "200",
           "values": [
             {
@@ -11238,7 +12429,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -11296,7 +12489,12 @@
           "attr": "label",
           "reflectToAttr": false,
           "docs": "Label for the TOC",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'On this page'"
+            }
+          ],
           "default": "'On this page'",
           "values": [
             {
@@ -11304,7 +12502,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "labelClass",
@@ -11318,7 +12518,12 @@
           "attr": "label-class",
           "reflectToAttr": false,
           "docs": "Custom classes to be applied to the label",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
           "default": "''",
           "values": [
             {
@@ -11326,7 +12531,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "selector",
@@ -11340,7 +12547,12 @@
           "attr": "selector",
           "reflectToAttr": false,
           "docs": "Selector for the TOC items",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h2'"
+            }
+          ],
           "default": "'h2'",
           "values": [
             {
@@ -11348,7 +12560,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -11426,7 +12640,12 @@
           "attr": "arrow",
           "reflectToAttr": false,
           "docs": "Add arrow to the tooltip",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -11434,7 +12653,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inline",
@@ -11448,7 +12669,12 @@
           "attr": "inline",
           "reflectToAttr": false,
           "docs": "Improve positioning for inline trigger elements that span over multiple lines.\r\nReference: https://floating-ui.com/docs/inline",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
           "default": "false",
           "values": [
             {
@@ -11456,7 +12682,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "placement",
@@ -11470,7 +12698,12 @@
           "attr": "placement",
           "reflectToAttr": false,
           "docs": "placement of tooltip relative to the trigger element",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'top'"
+            }
+          ],
           "default": "'top'",
           "values": [
             {
@@ -11491,7 +12724,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "triggerId",
@@ -11512,7 +12747,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -11674,10 +12911,10 @@
       "docstring": "",
       "path": "src/utils/index.ts"
     },
-    "../../node_modules/.pnpm/@types+markdown-it@14.1.1/node_modules/@types/markdown-it/index.d.ts::Options": {
+    "../../node_modules/.pnpm/@types+markdown-it@14.1.2/node_modules/@types/markdown-it/index.d.ts::Options": {
       "declaration": "any",
       "docstring": "",
-      "path": "../../node_modules/.pnpm/@types+markdown-it@14.1.1/node_modules/@types/markdown-it/index.d.ts"
+      "path": "../../node_modules/.pnpm/@types+markdown-it@14.1.2/node_modules/@types/markdown-it/index.d.ts"
     },
     "src/components/go-tabs/tabs.type.ts::TabIconPosition": {
       "declaration": "export type TabIconPosition = 'before' | 'after';",
@@ -11695,12 +12932,12 @@
       "path": "src/components/go-tabs/tabs.type.ts"
     },
     "src/components/go-tabs/tabs.type.ts::ActiveTab": {
-      "declaration": "export interface ActiveTab {\r\n  index: number;\r\n  tabEl: HTMLElement;\r\n}",
+      "declaration": "export interface ActiveTab {\r\n  id: string;\r\n  label: string;\r\n  index: number;\r\n  tabEl: HTMLElement;\r\n}",
       "docstring": "",
       "path": "src/components/go-tabs/tabs.type.ts"
     },
     "src/components/go-tabs/tabs.type.ts::ActiveTabWithPanel": {
-      "declaration": "export interface ActiveTabWithPanel {\r\n  index: number;\r\n  tabEl: HTMLElement;\r\n  panelEl: HTMLElement;\r\n}",
+      "declaration": "export interface ActiveTabWithPanel extends ActiveTab {\r\n  panelId: string;\r\n  panelEl: HTMLElement;\r\n}",
       "docstring": "",
       "path": "src/components/go-tabs/tabs.type.ts"
     },
