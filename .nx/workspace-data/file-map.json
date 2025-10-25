@@ -11,144 +11,108 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "bin/cli.js",
-        "hash": "12369098219370323856"
+        "file": "bin/dev.js",
+        "hash": "8079560990586877838"
       },
       {
-        "file": "commitlint.config.js",
-        "hash": "3431401427305616507"
-      },
-      {
-        "file": ".all-contributorsrc",
-        "hash": "13980783923574765568"
-      },
-      {
-        "file": "README.md",
-        "hash": "9884053281243876857"
-      },
-      {
-        "file": "bin/help.js",
-        "hash": "7379118384719998214"
-      },
-      {
-        "file": "pnpm-lock.yaml",
-        "hash": "17326320923731499659"
-      },
-      {
-        "file": ".github/ISSUE_TEMPLATE/a11y-issue.md",
-        "hash": "7734161595223553389"
-      },
-      {
-        "file": ".github/workflows/release.yml",
-        "hash": "7412740737594360111"
-      },
-      {
-        "file": ".prettierrc.json",
-        "hash": "4335338433574512449"
-      },
-      {
-        "file": "bin/release-prep-wappers.js",
-        "hash": "1589618598145929040"
-      },
-      {
-        "file": "bin/gen-component.js",
-        "hash": "5608909149181388148"
+        "file": ".vscode/settings.json",
+        "hash": "10235287737047476444"
       },
       {
         "file": ".github/ISSUE_TEMPLATE/feature_request.md",
         "hash": "7335114847464643603"
       },
       {
-        "file": ".github/ISSUE_TEMPLATE/pattern-request.md",
-        "hash": "12677784439848300313"
-      },
-      {
-        "file": ".vscode/terminals.json",
-        "hash": "17303100962724919865"
-      },
-      {
-        "file": ".github/workflows/v2-project-sync.yml",
-        "hash": "3202764712524162558"
-      },
-      {
-        "file": "CHANGELOG.md",
-        "hash": "1310185813108257418"
-      },
-      {
-        "file": "bin/index.js",
-        "hash": "16920825573041618262"
-      },
-      {
-        "file": "TESTING.md",
-        "hash": "4618604327719856415"
-      },
-      {
-        "file": "bin/const.js",
-        "hash": "269992009721291597"
-      },
-      {
-        "file": "bin/gen-pattern.js",
-        "hash": "4017859832951355165"
-      },
-      {
-        "file": "axe-linter.yml",
-        "hash": "17312667730240549682"
+        "file": ".vscode/extensions.json",
+        "hash": "5341238296705984297"
       },
       {
         "file": ".github/FUNDING.yml",
         "hash": "17029494147721740273"
       },
       {
-        "file": ".husky/commit-msg",
-        "hash": "18058850953108304477"
+        "file": ".browserslistrc",
+        "hash": "13078134837573577081"
       },
       {
-        "file": "nx.json",
-        "hash": "1056565489912157436"
-      },
-      {
-        "file": "pnpm-workspace.yaml",
-        "hash": "10675637555298611044"
+        "file": ".husky/pre-commit",
+        "hash": "10753478965027532541"
       },
       {
         "file": "vercel.json",
         "hash": "15624107875771003024"
       },
       {
-        "file": ".editorconfig",
-        "hash": "3619161694519492503"
+        "file": ".github/ISSUE_TEMPLATE/pattern-request.md",
+        "hash": "12677784439848300313"
       },
       {
-        "file": "bin/dev.js",
-        "hash": "8079560990586877838"
+        "file": ".github/workflows/v2-project-sync.yml",
+        "hash": "3202764712524162558"
       },
       {
-        "file": "bin/release-prep.js",
-        "hash": "3244421341483603138"
+        "file": "bin/gen-pattern.js",
+        "hash": "4017859832951355165"
       },
       {
-        "file": ".gitignore",
-        "hash": "13097910094616754158"
+        "file": ".github/workflows/release.yml",
+        "hash": "7412740737594360111"
       },
       {
-        "file": ".browserslistrc",
-        "hash": "13078134837573577081"
-      },
-      {
-        "file": "bin/watch.js",
-        "hash": "4208717328181444867"
-      },
-      {
-        "file": ".github/workflows/pr-testing.yml",
-        "hash": "8464065018361116359"
+        "file": "bin/cli.js",
+        "hash": "12369098219370323856"
       },
       {
         "file": "bin/utils.js",
         "hash": "1736822216050453429"
       },
       {
-        "file": ".husky/pre-commit",
-        "hash": "10753478965027532541"
+        "file": "pnpm-workspace.yaml",
+        "hash": "10675637555298611044"
+      },
+      {
+        "file": "TESTING.md",
+        "hash": "4618604327719856415"
+      },
+      {
+        "file": ".husky/commit-msg",
+        "hash": "18058850953108304477"
+      },
+      {
+        "file": "bin/index.js",
+        "hash": "16920825573041618262"
+      },
+      {
+        "file": ".github/workflows/pr-testing.yml",
+        "hash": "8464065018361116359"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13097910094616754158"
+      },
+      {
+        "file": "bin/const.js",
+        "hash": "269992009721291597"
+      },
+      {
+        "file": "bin/release-prep-wappers.js",
+        "hash": "1589618598145929040"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "10715985483330998418"
+      },
+      {
+        "file": "bin/gen-component.js",
+        "hash": "5608909149181388148"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/a11y-issue.md",
+        "hash": "7734161595223553389"
+      },
+      {
+        "file": "commitlint.config.js",
+        "hash": "3431401427305616507"
       },
       {
         "file": ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -159,23 +123,102 @@
         "hash": "7053765357441540247"
       },
       {
+        "file": ".editorconfig",
+        "hash": "3619161694519492503"
+      },
+      {
         "file": "package.json",
         "hash": "18342944627601534535"
       },
       {
-        "file": ".vscode/extensions.json",
-        "hash": "5341238296705984297"
+        "file": "pnpm-lock.yaml",
+        "hash": "8077160945698593677"
       },
       {
-        "file": "LICENSE",
-        "hash": "10715985483330998418"
+        "file": "nx.json",
+        "hash": "1056565489912157436"
       },
       {
-        "file": ".vscode/settings.json",
-        "hash": "10235287737047476444"
+        "file": ".vscode/terminals.json",
+        "hash": "17303100962724919865"
+      },
+      {
+        "file": "axe-linter.yml",
+        "hash": "17312667730240549682"
+      },
+      {
+        "file": ".all-contributorsrc",
+        "hash": "13980783923574765568"
+      },
+      {
+        "file": "CHANGELOG.md",
+        "hash": "1310185813108257418"
+      },
+      {
+        "file": "bin/help.js",
+        "hash": "7379118384719998214"
+      },
+      {
+        "file": "bin/watch.js",
+        "hash": "4208717328181444867"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "4335338433574512449"
+      },
+      {
+        "file": "bin/release-prep.js",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "README.md",
+        "hash": "9884053281243876857"
       }
     ],
     "projectFileMap": {
+      "@go-ui/react-starter": [
+        {
+          "file": "apps/react-starter/.gitignore",
+          "hash": "987422939859577920"
+        },
+        {
+          "file": "apps/react-starter/index.html",
+          "hash": "14990405884860688880"
+        },
+        {
+          "file": "apps/react-starter/package.json",
+          "hash": "2625337611158459646",
+          "deps": [
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:@vitejs/plugin-react",
+            "npm:vite@6.4.1",
+            "@go-ui/react",
+            "npm:react@18.2.0",
+            "npm:react-dom@18.2.0"
+          ]
+        },
+        {
+          "file": "apps/react-starter/public/vite.svg",
+          "hash": "16046085400642193116"
+        },
+        {
+          "file": "apps/react-starter/src/App.jsx",
+          "hash": "15201360558779873130"
+        },
+        {
+          "file": "apps/react-starter/src/assets/react.svg",
+          "hash": "16069471864800376455"
+        },
+        {
+          "file": "apps/react-starter/src/main.jsx",
+          "hash": "1056179013193230073"
+        },
+        {
+          "file": "apps/react-starter/vite.config.js",
+          "hash": "8126085396849891533"
+        }
+      ],
       "@go-ui/vanilla-starter": [
         {
           "file": "apps/vanilla-starter/.gitignore",
@@ -214,477 +257,6 @@
           "hash": "3244421341483603138"
         }
       ],
-      "@go-ui/demo-frame": [
-        {
-          "file": "packages/demo-frame/.editorconfig",
-          "hash": "10872272122097428313"
-        },
-        {
-          "file": "packages/demo-frame/.gitignore",
-          "hash": "341628938604786727"
-        },
-        {
-          "file": "packages/demo-frame/.prettierrc.json",
-          "hash": "9623169049348014528"
-        },
-        {
-          "file": "packages/demo-frame/LICENSE",
-          "hash": "16469975179465296534"
-        },
-        {
-          "file": "packages/demo-frame/package.json",
-          "hash": "1343220117933514795",
-          "deps": [
-            "npm:@rollup/plugin-typescript",
-            "npm:@stencil/core@4.13.0",
-            "npm:@stencil/sass@3.0.11",
-            "npm:@types/node@16.18.95",
-            "npm:rollup-plugin-node-polyfills",
-            "npm:@codemirror/commands",
-            "npm:@codemirror/lang-html",
-            "npm:@codemirror/language",
-            "npm:@codemirror/state@6.4.1",
-            "npm:@codemirror/view@6.26.1",
-            "@go-ui/core",
-            "npm:@replit/codemirror-vscode-keymap",
-            "npm:codemirror",
-            "npm:copy-text-to-clipboard",
-            "npm:highlight.js",
-            "npm:json5",
-            "npm:lodash-es",
-            "npm:pretty",
-            "npm:thememirror"
-          ]
-        },
-        {
-          "file": "packages/demo-frame/pnpm-lock.yaml",
-          "hash": "16926322887914055691"
-        },
-        {
-          "file": "packages/demo-frame/readme.md",
-          "hash": "7987417709199979499"
-        },
-        {
-          "file": "packages/demo-frame/src/components.d.ts",
-          "hash": "860531465495871055"
-        },
-        {
-          "file": "packages/demo-frame/src/components/code-block/code-block.scss",
-          "hash": "5160593146436699585"
-        },
-        {
-          "file": "packages/demo-frame/src/components/code-block/code-block.tsx",
-          "hash": "17162566014111744168"
-        },
-        {
-          "file": "packages/demo-frame/src/components/code-block/readme.md",
-          "hash": "4558631917783194358"
-        },
-        {
-          "file": "packages/demo-frame/src/components/copy-code-btn/copy-code-btn.scss",
-          "hash": "8805456208513246754"
-        },
-        {
-          "file": "packages/demo-frame/src/components/copy-code-btn/copy-code-btn.tsx",
-          "hash": "11270747495017214647"
-        },
-        {
-          "file": "packages/demo-frame/src/components/copy-code-btn/readme.md",
-          "hash": "6287257584220305312"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-frame/demo-frame.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-frame/demo-frame.tsx",
-          "hash": "16701575803078339976"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-frame/readme.md",
-          "hash": "1562609696491125880"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/prop.type.ts",
-          "hash": "12456970399303515239"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/props-item",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/props-panel.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/props-panel.tsx",
-          "hash": "10957251481817336834"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/readme.md",
-          "hash": "3067137532977648576"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/slot.type.ts",
-          "hash": "16304619231104613735"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/slots-panel.tsx",
-          "hash": "15120402545604709547"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/wc-output.tsx",
-          "hash": "8077326415946549905"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/wc-playground.scss",
-          "hash": "9464489252863407085"
-        },
-        {
-          "file": "packages/demo-frame/src/components/demo-playground/wc-playground.tsx",
-          "hash": "1687681753348257550"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-demo-box/go-demo-box.scss",
-          "hash": "5590825350297061582"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-demo-box/go-demo-box.tsx",
-          "hash": "12319234733218853188"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-demo-box/readme.md",
-          "hash": "14155226860536331712"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-playground/consts.ts",
-          "hash": "975858359949786852"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-playground/go-playground-header.tsx",
-          "hash": "4190675304150211478"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-playground/go-playground.scss",
-          "hash": "1696326277785009084"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-playground/go-playground.tsx",
-          "hash": "8034829655029212383"
-        },
-        {
-          "file": "packages/demo-frame/src/components/go-playground/readme.md",
-          "hash": "6491629961759129040"
-        },
-        {
-          "file": "packages/demo-frame/src/index.html",
-          "hash": "16673618372891061486"
-        },
-        {
-          "file": "packages/demo-frame/src/index.ts",
-          "hash": "1595832445444187531"
-        },
-        {
-          "file": "packages/demo-frame/stencil.config.ts",
-          "hash": "14670331811089057131"
-        },
-        {
-          "file": "packages/demo-frame/tsconfig.json",
-          "hash": "6080593252490745359"
-        }
-      ],
-      "@go-ui/docs": [
-        {
-          "file": "docs/.gitignore",
-          "hash": "7213099905102724621"
-        },
-        {
-          "file": "docs/README.md",
-          "hash": "11901635142956402208"
-        },
-        {
-          "file": "docs/app.vue",
-          "hash": "2536579291600998538"
-        },
-        {
-          "file": "docs/assets/colour-levels.png",
-          "hash": "12945116343088972049"
-        },
-        {
-          "file": "docs/assets/icon/favicon.ico",
-          "hash": "12369664874798910249"
-        },
-        {
-          "file": "docs/assets/icon/logo.svg",
-          "hash": "3620896993674722062"
-        },
-        {
-          "file": "docs/assets/img/docs/a11y-chatgpt.png",
-          "hash": "10575861679743106383"
-        },
-        {
-          "file": "docs/assets/img/docs/typography-scales.png",
-          "hash": "18257415439865154547"
-        },
-        {
-          "file": "docs/assets/img/favicon.ico",
-          "hash": "12369664874798910249"
-        },
-        {
-          "file": "docs/assets/img/logo-padded.png",
-          "hash": "13825303225407756223"
-        },
-        {
-          "file": "docs/assets/img/logo.svg",
-          "hash": "3620896993674722062"
-        },
-        {
-          "file": "docs/assets/img/puppy.png",
-          "hash": "9824539738936270909"
-        },
-        {
-          "file": "docs/assets/logo.svg",
-          "hash": "3620896993674722062"
-        },
-        {
-          "file": "docs/bin/build-ia.js",
-          "hash": "1777415172699270615"
-        },
-        {
-          "file": "docs/components/AppHeader.vue",
-          "hash": "1401000694103229193"
-        },
-        {
-          "file": "docs/components/NotFound.vue",
-          "hash": "15195051601078318588"
-        },
-        {
-          "file": "docs/components/SidebarLayout.vue",
-          "hash": "11684833174390876485"
-        },
-        {
-          "file": "docs/components/tables/EventsTable.vue",
-          "hash": "6997085086899307419"
-        },
-        {
-          "file": "docs/components/tables/MethodsTable.vue",
-          "hash": "10907762064237428617"
-        },
-        {
-          "file": "docs/components/tables/PropsTable.vue",
-          "hash": "10255225482240932933"
-        },
-        {
-          "file": "docs/components/tables/SlotsTable.vue",
-          "hash": "5790750533144555961"
-        },
-        {
-          "file": "docs/components/tables/useCompApi.ts",
-          "hash": "3977791238552519095"
-        },
-        {
-          "file": "docs/content/docs/components/index.md",
-          "hash": "15834486744474933010"
-        },
-        {
-          "file": "docs/content/docs/patterns/global-styles/colours.md",
-          "hash": "8157501529306956611"
-        },
-        {
-          "file": "docs/content/docs/patterns/global-styles/grid.md",
-          "hash": "17390588395056761048"
-        },
-        {
-          "file": "docs/content/docs/patterns/global-styles/index.md",
-          "hash": "16187350175466213135"
-        },
-        {
-          "file": "docs/content/docs/patterns/global-styles/typography.md",
-          "hash": "3541101180652503397"
-        },
-        {
-          "file": "docs/content/docs/patterns/index.md",
-          "hash": "4166186104442127958"
-        },
-        {
-          "file": "docs/content/get-involved/bug-report.md",
-          "hash": "7309547338239223593"
-        },
-        {
-          "file": "docs/content/get-involved/development-guide.md",
-          "hash": "16803481342105297426"
-        },
-        {
-          "file": "docs/content/get-involved/feature-request.md",
-          "hash": "8027223397135861569"
-        },
-        {
-          "file": "docs/content/get-involved/index.md",
-          "hash": "13541577229269153494"
-        },
-        {
-          "file": "docs/content/guides/accessibility.md",
-          "hash": "14025476134597261285"
-        },
-        {
-          "file": "docs/content/guides/getting-started.md",
-          "hash": "17589066780181006311"
-        },
-        {
-          "file": "docs/content/guides/integration/index.md",
-          "hash": "3868911364420341184"
-        },
-        {
-          "file": "docs/content/guides/integration/react.md",
-          "hash": "7529621437821483280"
-        },
-        {
-          "file": "docs/content/guides/integration/vue.md",
-          "hash": "5652765459574246170"
-        },
-        {
-          "file": "docs/content/guides/theming/css-variables.md",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "docs/content/guides/theming/introduction.md",
-          "hash": "3761029217197618569"
-        },
-        {
-          "file": "docs/content/guides/theming/sass.md",
-          "hash": "12211967347886328394"
-        },
-        {
-          "file": "docs/content/guides/web-components.md",
-          "hash": "11978922907555125459"
-        },
-        {
-          "file": "docs/ia/ia.interface.ts",
-          "hash": "7536189765853634644"
-        },
-        {
-          "file": "docs/nuxt.config.ts",
-          "hash": "17766844706196861597"
-        },
-        {
-          "file": "docs/package-lock.json",
-          "hash": "4206682057931869394"
-        },
-        {
-          "file": "docs/package.json",
-          "hash": "16339096239240059909",
-          "deps": [
-            "@go-ui/core",
-            "npm:@nuxt/devtools",
-            "npm:@types/lodash-es",
-            "npm:chalk",
-            "npm:chokidar",
-            "npm:concurrently",
-            "npm:directory-tree",
-            "npm:lodash-es",
-            "npm:markdown-it@14.1.0",
-            "npm:markdown-it-meta",
-            "npm:markdown-it-title",
-            "npm:nanospinner",
-            "npm:nuxt",
-            "npm:nuxt-gtag",
-            "npm:sass",
-            "npm:typescript@5.9.3",
-            "npm:vue",
-            "npm:vue-router",
-            "npm:vue-tsc",
-            "@go-ui/vue"
-          ]
-        },
-        {
-          "file": "docs/pages/[...slug].vue",
-          "hash": "17005476892310892169"
-        },
-        {
-          "file": "docs/pages/docs/[...slug].vue",
-          "hash": "1538474954770953011"
-        },
-        {
-          "file": "docs/pages/index.vue",
-          "hash": "13598161160917616269"
-        },
-        {
-          "file": "docs/pages/playground.vue",
-          "hash": "15001457580872424766"
-        },
-        {
-          "file": "docs/plugins/go-ui.client.ts",
-          "hash": "10338001316655556625"
-        },
-        {
-          "file": "docs/public/colour-levels.png",
-          "hash": "12945116343088972049"
-        },
-        {
-          "file": "docs/public/favicon.svg",
-          "hash": "3620896993674722062"
-        },
-        {
-          "file": "docs/public/img/hero/a11y.png",
-          "hash": "2473649759773573823"
-        },
-        {
-          "file": "docs/public/img/hero/adaptive.png",
-          "hash": "13811008200623204472"
-        },
-        {
-          "file": "docs/public/img/hero/dev.png",
-          "hash": "10482174353351690312"
-        },
-        {
-          "file": "docs/public/img/hero/patterns.png",
-          "hash": "18165961324472789006"
-        },
-        {
-          "file": "docs/public/img/hero/piece.png",
-          "hash": "1188851910798681096"
-        },
-        {
-          "file": "docs/public/img/logo-padded.png",
-          "hash": "13825303225407756223"
-        },
-        {
-          "file": "docs/public/img/logo.svg",
-          "hash": "3620896993674722062"
-        },
-        {
-          "file": "docs/public/img/puppy.png",
-          "hash": "9824539738936270909"
-        },
-        {
-          "file": "docs/public/logo.svg",
-          "hash": "3620896993674722062"
-        },
-        {
-          "file": "docs/server/tsconfig.json",
-          "hash": "4871039080285373764"
-        },
-        {
-          "file": "docs/tsconfig.json",
-          "hash": "14215126198570747938"
-        },
-        {
-          "file": "docs/utils/constants.ts",
-          "hash": "3107721292304128788"
-        },
-        {
-          "file": "docs/utils/helpers.ts",
-          "hash": "1414904174540058522"
-        },
-        {
-          "file": "docs/utils/sortIA.ts",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "docs/vercel.json",
-          "hash": "16144915970327677516"
-        }
-      ],
       "@go-ui/core": [
         {
           "file": "packages/core/.release-it.json",
@@ -695,12 +267,24 @@
           "hash": "8893735988335640395"
         },
         {
+          "file": "packages/core/COMPLETION_SUMMARY.md",
+          "hash": "4640009925139301699"
+        },
+        {
           "file": "packages/core/CONTRIBUTING.md",
           "hash": "10322716865105309990"
         },
         {
           "file": "packages/core/LICENSE",
           "hash": "11412324058383946070"
+        },
+        {
+          "file": "packages/core/LOOP_BASED_APPROACH.md",
+          "hash": "70256978265600788"
+        },
+        {
+          "file": "packages/core/MIGRATION_NOTES.md",
+          "hash": "8457886511948038586"
         },
         {
           "file": "packages/core/config/jest.setup.js",
@@ -712,11 +296,11 @@
         },
         {
           "file": "packages/core/docs/go-ui.json",
-          "hash": "3446555658628305038"
+          "hash": "15336803753314151499"
         },
         {
           "file": "packages/core/package.json",
-          "hash": "15790326298485105974",
+          "hash": "6890466537808296537",
           "deps": [
             "npm:@axe-core/puppeteer",
             "npm:@commitlint/cli",
@@ -727,10 +311,10 @@
             "npm:@stencil/react-output-target",
             "npm:@stencil/sass@3.2.2",
             "npm:@stencil/vue-output-target",
-            "npm:@types/jest",
+            "npm:@types/jest@29.5.14",
             "npm:@types/markdown-it",
             "npm:@types/node@22.18.12",
-            "npm:@types/react",
+            "npm:@types/react@18.3.26",
             "npm:autoprefixer",
             "npm:axe-core",
             "npm:chalk",
@@ -738,14 +322,21 @@
             "npm:concurrently",
             "npm:cssnano@5.1.14",
             "npm:esm",
-            "npm:jest",
+            "npm:jest@29.7.0",
             "npm:jest-circus",
-            "npm:jest-cli",
+            "npm:jest-cli@29.7.0",
             "npm:lodash",
             "npm:lodash.camelcase",
             "npm:minimist@1.2.7",
             "npm:postcss@8.4.49",
+            "npm:postcss-custom-properties",
+            "npm:postcss-each",
+            "npm:postcss-for",
+            "npm:postcss-import",
+            "npm:postcss-mixins",
+            "npm:postcss-nested",
             "npm:postcss-pxtorem",
+            "npm:postcss-simple-vars@7.0.1",
             "npm:prompts",
             "npm:puppeteer",
             "npm:release-it",
@@ -761,7 +352,7 @@
             "npm:body-scroll-lock",
             "npm:dayjs",
             "npm:dompurify@3.3.0",
-            "npm:json5",
+            "npm:json5@2.2.3",
             "npm:lodash-es",
             "npm:markdown-it@14.1.0",
             "npm:markdown-it-container",
@@ -1758,6 +1349,58 @@
           "hash": "12101009181003662169"
         },
         {
+          "file": "packages/core/src/global/css/base.css",
+          "hash": "9809545458074290153"
+        },
+        {
+          "file": "packages/core/src/global/css/breakpoint_sync.css",
+          "hash": "457630807571623597"
+        },
+        {
+          "file": "packages/core/src/global/css/colors.css",
+          "hash": "245160931385481730"
+        },
+        {
+          "file": "packages/core/src/global/css/css_variables.css",
+          "hash": "13083420373551457750"
+        },
+        {
+          "file": "packages/core/src/global/css/display.css",
+          "hash": "3063414939353251518"
+        },
+        {
+          "file": "packages/core/src/global/css/flex.css",
+          "hash": "9029685582612927534"
+        },
+        {
+          "file": "packages/core/src/global/css/grid.css",
+          "hash": "4903953192367597886"
+        },
+        {
+          "file": "packages/core/src/global/css/misc.css",
+          "hash": "7595356740577272319"
+        },
+        {
+          "file": "packages/core/src/global/css/normalize.css",
+          "hash": "17556914812183174038"
+        },
+        {
+          "file": "packages/core/src/global/css/spacing.css",
+          "hash": "4714195880127655971"
+        },
+        {
+          "file": "packages/core/src/global/css/themes/tokens.css",
+          "hash": "12880878117993047473"
+        },
+        {
+          "file": "packages/core/src/global/css/typography.css",
+          "hash": "12260085643391093896"
+        },
+        {
+          "file": "packages/core/src/global/css/utils/mixins.css",
+          "hash": "17225214376287546343"
+        },
+        {
           "file": "packages/core/src/global/scss/_animation.scss",
           "hash": "10423518407892981917"
         },
@@ -1846,8 +1489,12 @@
           "hash": "8522552160566915839"
         },
         {
+          "file": "packages/core/src/global/styles.css",
+          "hash": "12538628448764502926"
+        },
+        {
           "file": "packages/core/src/global/styles.scss",
-          "hash": "18285245294533562525"
+          "hash": "9352553902928385841"
         },
         {
           "file": "packages/core/src/index.html",
@@ -2143,11 +1790,303 @@
         },
         {
           "file": "packages/core/stencil.config.ts",
-          "hash": "7881517566662731881"
+          "hash": "13772721049427577386"
         },
         {
           "file": "packages/core/tsconfig.json",
           "hash": "14818301918684885250"
+        }
+      ],
+      "@go-ui/docs": [
+        {
+          "file": "docs/.gitignore",
+          "hash": "7213099905102724621"
+        },
+        {
+          "file": "docs/README.md",
+          "hash": "11901635142956402208"
+        },
+        {
+          "file": "docs/app.vue",
+          "hash": "2536579291600998538"
+        },
+        {
+          "file": "docs/assets/colour-levels.png",
+          "hash": "12945116343088972049"
+        },
+        {
+          "file": "docs/assets/icon/favicon.ico",
+          "hash": "12369664874798910249"
+        },
+        {
+          "file": "docs/assets/icon/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/assets/img/docs/a11y-chatgpt.png",
+          "hash": "10575861679743106383"
+        },
+        {
+          "file": "docs/assets/img/docs/typography-scales.png",
+          "hash": "18257415439865154547"
+        },
+        {
+          "file": "docs/assets/img/favicon.ico",
+          "hash": "12369664874798910249"
+        },
+        {
+          "file": "docs/assets/img/logo-padded.png",
+          "hash": "13825303225407756223"
+        },
+        {
+          "file": "docs/assets/img/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/assets/img/puppy.png",
+          "hash": "9824539738936270909"
+        },
+        {
+          "file": "docs/assets/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/bin/build-ia.js",
+          "hash": "1777415172699270615"
+        },
+        {
+          "file": "docs/components/AppHeader.vue",
+          "hash": "1401000694103229193"
+        },
+        {
+          "file": "docs/components/NotFound.vue",
+          "hash": "15195051601078318588"
+        },
+        {
+          "file": "docs/components/SidebarLayout.vue",
+          "hash": "11684833174390876485"
+        },
+        {
+          "file": "docs/components/tables/EventsTable.vue",
+          "hash": "6997085086899307419"
+        },
+        {
+          "file": "docs/components/tables/MethodsTable.vue",
+          "hash": "10907762064237428617"
+        },
+        {
+          "file": "docs/components/tables/PropsTable.vue",
+          "hash": "10255225482240932933"
+        },
+        {
+          "file": "docs/components/tables/SlotsTable.vue",
+          "hash": "5790750533144555961"
+        },
+        {
+          "file": "docs/components/tables/useCompApi.ts",
+          "hash": "3977791238552519095"
+        },
+        {
+          "file": "docs/content/docs/components/index.md",
+          "hash": "15834486744474933010"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/colours.md",
+          "hash": "8157501529306956611"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/grid.md",
+          "hash": "17390588395056761048"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/index.md",
+          "hash": "16187350175466213135"
+        },
+        {
+          "file": "docs/content/docs/patterns/global-styles/typography.md",
+          "hash": "3541101180652503397"
+        },
+        {
+          "file": "docs/content/docs/patterns/index.md",
+          "hash": "4166186104442127958"
+        },
+        {
+          "file": "docs/content/get-involved/bug-report.md",
+          "hash": "7309547338239223593"
+        },
+        {
+          "file": "docs/content/get-involved/development-guide.md",
+          "hash": "16803481342105297426"
+        },
+        {
+          "file": "docs/content/get-involved/feature-request.md",
+          "hash": "8027223397135861569"
+        },
+        {
+          "file": "docs/content/get-involved/index.md",
+          "hash": "13541577229269153494"
+        },
+        {
+          "file": "docs/content/guides/accessibility.md",
+          "hash": "14025476134597261285"
+        },
+        {
+          "file": "docs/content/guides/getting-started.md",
+          "hash": "17589066780181006311"
+        },
+        {
+          "file": "docs/content/guides/integration/index.md",
+          "hash": "3868911364420341184"
+        },
+        {
+          "file": "docs/content/guides/integration/react.md",
+          "hash": "7529621437821483280"
+        },
+        {
+          "file": "docs/content/guides/integration/vue.md",
+          "hash": "5652765459574246170"
+        },
+        {
+          "file": "docs/content/guides/theming/css-variables.md",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "docs/content/guides/theming/introduction.md",
+          "hash": "3761029217197618569"
+        },
+        {
+          "file": "docs/content/guides/theming/sass.md",
+          "hash": "12211967347886328394"
+        },
+        {
+          "file": "docs/content/guides/web-components.md",
+          "hash": "11978922907555125459"
+        },
+        {
+          "file": "docs/ia/ia.interface.ts",
+          "hash": "7536189765853634644"
+        },
+        {
+          "file": "docs/nuxt.config.ts",
+          "hash": "17766844706196861597"
+        },
+        {
+          "file": "docs/package-lock.json",
+          "hash": "4206682057931869394"
+        },
+        {
+          "file": "docs/package.json",
+          "hash": "16339096239240059909",
+          "deps": [
+            "@go-ui/core",
+            "npm:@nuxt/devtools",
+            "npm:@types/lodash-es",
+            "npm:chalk",
+            "npm:chokidar",
+            "npm:concurrently",
+            "npm:directory-tree",
+            "npm:lodash-es",
+            "npm:markdown-it@14.1.0",
+            "npm:markdown-it-meta",
+            "npm:markdown-it-title",
+            "npm:nanospinner",
+            "npm:nuxt",
+            "npm:nuxt-gtag",
+            "npm:sass",
+            "npm:typescript@5.9.3",
+            "npm:vue",
+            "npm:vue-router",
+            "npm:vue-tsc",
+            "@go-ui/vue"
+          ]
+        },
+        {
+          "file": "docs/pages/[...slug].vue",
+          "hash": "17005476892310892169"
+        },
+        {
+          "file": "docs/pages/docs/[...slug].vue",
+          "hash": "1538474954770953011"
+        },
+        {
+          "file": "docs/pages/index.vue",
+          "hash": "13598161160917616269"
+        },
+        {
+          "file": "docs/pages/playground.vue",
+          "hash": "15001457580872424766"
+        },
+        {
+          "file": "docs/plugins/go-ui.client.ts",
+          "hash": "10338001316655556625"
+        },
+        {
+          "file": "docs/public/colour-levels.png",
+          "hash": "12945116343088972049"
+        },
+        {
+          "file": "docs/public/favicon.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/public/img/hero/a11y.png",
+          "hash": "2473649759773573823"
+        },
+        {
+          "file": "docs/public/img/hero/adaptive.png",
+          "hash": "13811008200623204472"
+        },
+        {
+          "file": "docs/public/img/hero/dev.png",
+          "hash": "10482174353351690312"
+        },
+        {
+          "file": "docs/public/img/hero/patterns.png",
+          "hash": "18165961324472789006"
+        },
+        {
+          "file": "docs/public/img/hero/piece.png",
+          "hash": "1188851910798681096"
+        },
+        {
+          "file": "docs/public/img/logo-padded.png",
+          "hash": "13825303225407756223"
+        },
+        {
+          "file": "docs/public/img/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/public/img/puppy.png",
+          "hash": "9824539738936270909"
+        },
+        {
+          "file": "docs/public/logo.svg",
+          "hash": "3620896993674722062"
+        },
+        {
+          "file": "docs/server/tsconfig.json",
+          "hash": "4871039080285373764"
+        },
+        {
+          "file": "docs/tsconfig.json",
+          "hash": "14215126198570747938"
+        },
+        {
+          "file": "docs/utils/constants.ts",
+          "hash": "3107721292304128788"
+        },
+        {
+          "file": "docs/utils/helpers.ts",
+          "hash": "1414904174540058522"
+        },
+        {
+          "file": "docs/utils/sortIA.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "docs/vercel.json",
+          "hash": "16144915970327677516"
         }
       ],
       "@go-ui/react": [
@@ -2250,6 +2189,185 @@
           "hash": "8087798939241994290"
         }
       ],
+      "@go-ui/demo-frame": [
+        {
+          "file": "packages/demo-frame/.editorconfig",
+          "hash": "10872272122097428313"
+        },
+        {
+          "file": "packages/demo-frame/.gitignore",
+          "hash": "341628938604786727"
+        },
+        {
+          "file": "packages/demo-frame/.prettierrc.json",
+          "hash": "9623169049348014528"
+        },
+        {
+          "file": "packages/demo-frame/LICENSE",
+          "hash": "16469975179465296534"
+        },
+        {
+          "file": "packages/demo-frame/package.json",
+          "hash": "1343220117933514795",
+          "deps": [
+            "npm:@rollup/plugin-typescript",
+            "npm:@stencil/core@4.13.0",
+            "npm:@stencil/sass@3.0.11",
+            "npm:@types/node@16.18.95",
+            "npm:rollup-plugin-node-polyfills",
+            "npm:@codemirror/commands",
+            "npm:@codemirror/lang-html",
+            "npm:@codemirror/language",
+            "npm:@codemirror/state@6.4.1",
+            "npm:@codemirror/view@6.26.1",
+            "@go-ui/core",
+            "npm:@replit/codemirror-vscode-keymap",
+            "npm:codemirror",
+            "npm:copy-text-to-clipboard",
+            "npm:highlight.js",
+            "npm:json5",
+            "npm:lodash-es",
+            "npm:pretty",
+            "npm:thememirror"
+          ]
+        },
+        {
+          "file": "packages/demo-frame/pnpm-lock.yaml",
+          "hash": "16926322887914055691"
+        },
+        {
+          "file": "packages/demo-frame/readme.md",
+          "hash": "7987417709199979499"
+        },
+        {
+          "file": "packages/demo-frame/src/components.d.ts",
+          "hash": "860531465495871055"
+        },
+        {
+          "file": "packages/demo-frame/src/components/code-block/code-block.scss",
+          "hash": "5160593146436699585"
+        },
+        {
+          "file": "packages/demo-frame/src/components/code-block/code-block.tsx",
+          "hash": "17162566014111744168"
+        },
+        {
+          "file": "packages/demo-frame/src/components/code-block/readme.md",
+          "hash": "4558631917783194358"
+        },
+        {
+          "file": "packages/demo-frame/src/components/copy-code-btn/copy-code-btn.scss",
+          "hash": "8805456208513246754"
+        },
+        {
+          "file": "packages/demo-frame/src/components/copy-code-btn/copy-code-btn.tsx",
+          "hash": "11270747495017214647"
+        },
+        {
+          "file": "packages/demo-frame/src/components/copy-code-btn/readme.md",
+          "hash": "6287257584220305312"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-frame/demo-frame.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-frame/demo-frame.tsx",
+          "hash": "16701575803078339976"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-frame/readme.md",
+          "hash": "1562609696491125880"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/prop.type.ts",
+          "hash": "12456970399303515239"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/props-item",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/props-panel.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/props-panel.tsx",
+          "hash": "10957251481817336834"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/readme.md",
+          "hash": "3067137532977648576"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/slot.type.ts",
+          "hash": "16304619231104613735"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/slots-panel.tsx",
+          "hash": "15120402545604709547"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/wc-output.tsx",
+          "hash": "8077326415946549905"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/wc-playground.scss",
+          "hash": "9464489252863407085"
+        },
+        {
+          "file": "packages/demo-frame/src/components/demo-playground/wc-playground.tsx",
+          "hash": "1687681753348257550"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-demo-box/go-demo-box.scss",
+          "hash": "5590825350297061582"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-demo-box/go-demo-box.tsx",
+          "hash": "12319234733218853188"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-demo-box/readme.md",
+          "hash": "14155226860536331712"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/consts.ts",
+          "hash": "975858359949786852"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/go-playground-header.tsx",
+          "hash": "4190675304150211478"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/go-playground.scss",
+          "hash": "1696326277785009084"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/go-playground.tsx",
+          "hash": "8034829655029212383"
+        },
+        {
+          "file": "packages/demo-frame/src/components/go-playground/readme.md",
+          "hash": "6491629961759129040"
+        },
+        {
+          "file": "packages/demo-frame/src/index.html",
+          "hash": "16673618372891061486"
+        },
+        {
+          "file": "packages/demo-frame/src/index.ts",
+          "hash": "1595832445444187531"
+        },
+        {
+          "file": "packages/demo-frame/stencil.config.ts",
+          "hash": "14670331811089057131"
+        },
+        {
+          "file": "packages/demo-frame/tsconfig.json",
+          "hash": "6080593252490745359"
+        }
+      ],
       "@go-ui/vue": [
         {
           "file": "packages/vue/LICENSE",
@@ -2323,49 +2441,6 @@
         {
           "file": "packages/vue/vite.demo.config.ts",
           "hash": "9332827278099743661"
-        }
-      ],
-      "@go-ui/react-starter": [
-        {
-          "file": "apps/react-starter/.gitignore",
-          "hash": "987422939859577920"
-        },
-        {
-          "file": "apps/react-starter/index.html",
-          "hash": "14990405884860688880"
-        },
-        {
-          "file": "apps/react-starter/package.json",
-          "hash": "2625337611158459646",
-          "deps": [
-            "npm:@types/react",
-            "npm:@types/react-dom",
-            "npm:@vitejs/plugin-react",
-            "npm:vite@6.4.1",
-            "@go-ui/react",
-            "npm:react@18.2.0",
-            "npm:react-dom@18.2.0"
-          ]
-        },
-        {
-          "file": "apps/react-starter/public/vite.svg",
-          "hash": "16046085400642193116"
-        },
-        {
-          "file": "apps/react-starter/src/App.jsx",
-          "hash": "15201360558779873130"
-        },
-        {
-          "file": "apps/react-starter/src/assets/react.svg",
-          "hash": "16069471864800376455"
-        },
-        {
-          "file": "apps/react-starter/src/main.jsx",
-          "hash": "1056179013193230073"
-        },
-        {
-          "file": "apps/react-starter/vite.config.js",
-          "hash": "8126085396849891533"
         }
       ],
       "@go-ui/vue-starter": [

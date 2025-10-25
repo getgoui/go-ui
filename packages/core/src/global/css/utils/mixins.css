@@ -1,0 +1,120 @@
+/* PostCSS mixins to replace Sass mixins */
+
+/* min-width media query */
+@define-mixin min-query $device {
+  @media (min-width: $device) {
+    @mixin-content;
+  }
+}
+
+/* Shorthand for tablet media query */
+@define-mixin tablet {
+  @media (min-width: 600px) {
+    @mixin-content;
+  }
+}
+
+/* Shorthand for desktop media query */
+@define-mixin desktop {
+  @media (min-width: 1024px) {
+    @mixin-content;
+  }
+}
+
+/* Reset button style */
+@define-mixin reset-btn {
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Reduced motion media query */
+@define-mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @mixin-content;
+  }
+}
+
+@define-mixin prefer-light {
+  @media (prefers-color-scheme: light) {
+    @mixin-content;
+  }
+}
+
+@define-mixin prefer-dark {
+  @media (prefers-color-scheme: dark) {
+    @mixin-content;
+  }
+}
+
+@define-mixin theme-light {
+  :where([color-scheme='light'], [data-theme='light']) {
+    @mixin-content;
+  }
+}
+
+@define-mixin theme-dark {
+  :where([color-scheme='dark'], [data-theme='dark']) {
+    @mixin-content;
+  }
+}
+
+@define-mixin focus-outline $has-offset: true {
+  outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
+  @if $has-offset {
+    outline-offset: var(--go-focus-outline-offset);
+  }
+}
+
+@define-mixin underline {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@define-mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@define-mixin text-size $scale {
+  font-size: var(--go-size-$(scale));
+}
+
+@define-mixin clickable {
+  cursor: pointer;
+  transition: background-color var(--go-duration-normal) var(--go-timing-function),
+              color var(--go-duration-normal) var(--go-timing-function),
+              outline-offset var(--go-duration-fast) var(--go-timing-function);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0s;
+  }
+
+  &:focus-visible {
+    outline: var(--go-focus-outline-width, 2px) solid var(--go-focus-outline-color, #000);
+    outline-offset: var(--go-focus-outline-offset);
+  }
+
+  &:active {
+    --go-focus-outline-offset: 0;
+    box-shadow: var(--inner-shadow-3);
+  }
+}
+
+@define-mixin unstyled-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  & li {
+    margin: 0;
+  }
+}

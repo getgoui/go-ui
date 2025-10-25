@@ -1,0 +1,63 @@
+/* CSS variables for default token scheme */
+:root {
+  /* primary */
+  --go-token-primary-100: 239, 239, 251;
+  --go-token-primary-200: 190, 189, 241;
+  --go-token-primary-300: 141, 140, 230;
+  --go-token-primary-400: 92, 90, 220;
+  --go-token-primary-500: 46, 44, 206;
+  --go-token-primary-600: 35, 33, 157;
+  --go-token-primary-700: 24, 23, 107;
+  --go-token-primary-800: 13, 12, 58;
+  --go-token-primary-900: 2, 2, 8;
+
+  /* secondary */
+  --go-token-secondary-100: 218, 220, 232;
+  --go-token-secondary-200: 189, 193, 214;
+  --go-token-secondary-300: 160, 165, 196;
+  --go-token-secondary-400: 131, 138, 178;
+  --go-token-secondary-500: 102, 110, 160;
+  --go-token-secondary-600: 82, 89, 133;
+  --go-token-secondary-700: 64, 70, 103;
+  --go-token-secondary-800: 46, 50, 74;
+  --go-token-secondary-900: 28, 30, 45;
+
+  /* success */
+  --go-token-success-100: 167, 222, 163;
+  --go-token-success-200: 139, 212, 133;
+  --go-token-success-300: 110, 201, 104;
+  --go-token-success-400: 82, 190, 74;
+  --go-token-success-500: 66, 165, 59;
+  --go-token-success-600: 54, 135, 48;
+  --go-token-success-700: 42, 106, 38;
+  --go-token-success-800: 30, 76, 27;
+  --go-token-success-900: 18, 46, 17;
+
+  /* critical */
+  --go-token-critical-100: 250, 204, 204;
+  --go-token-critical-200: 246, 167, 167;
+  --go-token-critical-300: 243, 130, 130;
+  --go-token-critical-400: 239, 93, 93;
+  --go-token-critical-500: 235, 55, 55;
+  --go-token-critical-600: 227, 22, 22;
+  --go-token-critical-700: 176, 17, 17;
+  --go-token-critical-800: 125, 12, 12;
+  --go-token-critical-900: 74, 7, 7;
+
+  /* neutral */
+  --go-token-neutral-100: 248, 248, 248;
+  --go-token-neutral-200: 222, 222, 222;
+  --go-token-neutral-300: 196, 196, 196;
+  --go-token-neutral-400: 170, 170, 170;
+  --go-token-neutral-500: 144, 144, 144;
+  --go-token-neutral-600: 118, 118, 118;
+  --go-token-neutral-700: 92, 92, 92;
+  --go-token-neutral-800: 66, 66, 66;
+  --go-token-neutral-900: 20, 20, 20;
+
+  /* darkest */
+  --go-token-darkest: 0, 0, 0;
+
+  /* lightest */
+  --go-token-lightest: 255, 255, 255;
+}

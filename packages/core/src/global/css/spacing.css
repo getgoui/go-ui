@@ -1,0 +1,47 @@
+/* Spacing (margin + padding) utilities - Using PostCSS loops */
+
+$spacer: 0.5rem;
+$spacers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$breakpoints: tablet 600px, desktop 1024px, large 1440px;
+
+/* Mobile (default) */
+@each $i in $spacers {
+  .pt-$(i) { padding-top: calc($(i) * $spacer) !important; }
+  .pl-$(i) { padding-left: calc($(i) * $spacer) !important; }
+  .pr-$(i) { padding-right: calc($(i) * $spacer) !important; }
+  .pb-$(i) { padding-bottom: calc($(i) * $spacer) !important; }
+  .p-$(i) { padding: calc($(i) * $spacer) !important; }
+  
+  .mt-$(i) { margin-top: calc($(i) * $spacer) !important; }
+  .ml-$(i) { margin-left: calc($(i) * $spacer) !important; }
+  .mr-$(i) { margin-right: calc($(i) * $spacer) !important; }
+  .mb-$(i) { margin-bottom: calc($(i) * $spacer) !important; }
+  .m-$(i) { margin: calc($(i) * $spacer) !important; }
+  
+  .gap-$(i) { gap: calc($(i) * $spacer); }
+  .gap-row-$(i) { row-gap: calc($(i) * $spacer); }
+  .gap-col-$(i) { column-gap: calc($(i) * $spacer); }
+}
+
+/* Responsive breakpoints */
+@each $bp, $size in $breakpoints {
+  @media (min-width: $size) {
+    @each $i in $spacers {
+      .pt-$(i)-$(bp) { padding-top: calc($(i) * $spacer) !important; }
+      .pl-$(i)-$(bp) { padding-left: calc($(i) * $spacer) !important; }
+      .pr-$(i)-$(bp) { padding-right: calc($(i) * $spacer) !important; }
+      .pb-$(i)-$(bp) { padding-bottom: calc($(i) * $spacer) !important; }
+      .p-$(i)-$(bp) { padding: calc($(i) * $spacer) !important; }
+      
+      .mt-$(i)-$(bp) { margin-top: calc($(i) * $spacer) !important; }
+      .ml-$(i)-$(bp) { margin-left: calc($(i) * $spacer) !important; }
+      .mr-$(i)-$(bp) { margin-right: calc($(i) * $spacer) !important; }
+      .mb-$(i)-$(bp) { margin-bottom: calc($(i) * $spacer) !important; }
+      .m-$(i)-$(bp) { margin: calc($(i) * $spacer) !important; }
+      
+      .gap-$(i)-$(bp) { gap: calc($(i) * $spacer); }
+      .gap-row-$(i)-$(bp) { row-gap: calc($(i) * $spacer); }
+      .gap-col-$(i)-$(bp) { column-gap: calc($(i) * $spacer); }
+    }
+  }
+}

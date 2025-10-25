@@ -1,0 +1,12 @@
+
+> @go-ui/core@1.37.6 build C:\dev\go-ui\packages\core
+> pnpm clean && stencil build "--watch"
+
+
+> @go-ui/core@1.37.6 clean C:\dev\go-ui\packages\core
+> rm -rf dist
+
+'rm' is not recognized as an internal or external command,
+operable program or batch file.
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

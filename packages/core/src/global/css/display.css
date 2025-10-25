@@ -1,0 +1,65 @@
+/* Display utilities - inspired by Bootstrap 4 */
+
+/* Mobile (default) */
+.d-none { display: none !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-block { display: block !important; }
+.d-table { display: table !important; }
+.d-table-row { display: table-row !important; }
+.d-table-cell { display: table-cell !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+
+/* Tablet breakpoint (600px+) */
+@media (min-width: 600px) {
+  .d-none-tablet { display: none !important; }
+  .d-inline-tablet { display: inline !important; }
+  .d-inline-block-tablet { display: inline-block !important; }
+  .d-block-tablet { display: block !important; }
+  .d-table-tablet { display: table !important; }
+  .d-table-row-tablet { display: table-row !important; }
+  .d-table-cell-tablet { display: table-cell !important; }
+  .d-flex-tablet { display: flex !important; }
+  .d-inline-flex-tablet { display: inline-flex !important; }
+}
+
+/* Desktop breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .d-none-desktop { display: none !important; }
+  .d-inline-desktop { display: inline !important; }
+  .d-inline-block-desktop { display: inline-block !important; }
+  .d-block-desktop { display: block !important; }
+  .d-table-desktop { display: table !important; }
+  .d-table-row-desktop { display: table-row !important; }
+  .d-table-cell-desktop { display: table-cell !important; }
+  .d-flex-desktop { display: flex !important; }
+  .d-inline-flex-desktop { display: inline-flex !important; }
+}
+
+/* Large breakpoint (1440px+) */
+@media (min-width: 1440px) {
+  .d-none-large { display: none !important; }
+  .d-inline-large { display: inline !important; }
+  .d-inline-block-large { display: inline-block !important; }
+  .d-block-large { display: block !important; }
+  .d-table-large { display: table !important; }
+  .d-table-row-large { display: table-row !important; }
+  .d-table-cell-large { display: table-cell !important; }
+  .d-flex-large { display: flex !important; }
+  .d-inline-flex-large { display: inline-flex !important; }
+}
+
+/* Visually hidden utilities */
+.visually-hidden,
+.visually-hidden-focusable:not(:focus-visible) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

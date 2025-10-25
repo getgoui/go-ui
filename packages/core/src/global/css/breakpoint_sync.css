@@ -1,0 +1,22 @@
+#sync-mq::before {
+  content: 'mobile';
+  display: none;
+}
+
+@media (min-width: 600px) {
+  #sync-mq::before {
+    content: 'tablet';
+  }
+}
+
+@media (min-width: 1024px) {
+  #sync-mq::before {
+    content: 'desktop';
+  }
+}
+
+@media (min-width: 1440px) {
+  #sync-mq::before {
+    content: 'large';
+  }
+}

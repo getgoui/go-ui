@@ -1,0 +1,26 @@
+@import './css/normalize.css';
+@import './css/css_variables.css';
+@import './css/colors.css';
+@import './css/base.css';
+@import './css/grid.css';
+@import './css/typography.css';
+@import './css/display.css';
+@import './css/flex.css';
+@import './css/spacing.css';
+@import './css/breakpoint_sync.css';
+@import './css/misc.css';
+
+/* Use Open props to define utility variables */
+/* https://open-props.style/#sizes */
+/* @import '~open-props/sizes.min.css'; */
+
+/* https://open-props.style/#borders */
+@import '~open-props/borders.min.css';
+
+/* https://open-props.style/#shadows */
+@import '~open-props/shadows.min.css';
+
+/* https://open-props.style/#z-index */
+@import '~open-props/zindex.min.css';
+
+/* @import './css/animation.css'; */
