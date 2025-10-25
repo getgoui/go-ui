@@ -1,0 +1,64 @@
+/* Flex alignments */
+
+/* Mobile (default) - align-items */
+.align-items-normal { align-items: normal !important; }
+.align-items-stretch { align-items: stretch !important; }
+.align-items-center { align-items: center !important; }
+.align-items-start { align-items: flex-start !important; }
+.align-items-end { align-items: flex-end !important; }
+.align-items-baseline { align-items: baseline !important; }
+
+/* Mobile (default) - justify-content */
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-end { justify-content: flex-end !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around { justify-content: space-around !important; }
+
+/* Tablet breakpoint (600px+) */
+@media (min-width: 600px) {
+  .align-items-normal-tablet { align-items: normal !important; }
+  .align-items-stretch-tablet { align-items: stretch !important; }
+  .align-items-center-tablet { align-items: center !important; }
+  .align-items-start-tablet { align-items: flex-start !important; }
+  .align-items-end-tablet { align-items: flex-end !important; }
+  .align-items-baseline-tablet { align-items: baseline !important; }
+
+  .justify-content-start-tablet { justify-content: flex-start !important; }
+  .justify-content-end-tablet { justify-content: flex-end !important; }
+  .justify-content-center-tablet { justify-content: center !important; }
+  .justify-content-between-tablet { justify-content: space-between !important; }
+  .justify-content-around-tablet { justify-content: space-around !important; }
+}
+
+/* Desktop breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .align-items-normal-desktop { align-items: normal !important; }
+  .align-items-stretch-desktop { align-items: stretch !important; }
+  .align-items-center-desktop { align-items: center !important; }
+  .align-items-start-desktop { align-items: flex-start !important; }
+  .align-items-end-desktop { align-items: flex-end !important; }
+  .align-items-baseline-desktop { align-items: baseline !important; }
+
+  .justify-content-start-desktop { justify-content: flex-start !important; }
+  .justify-content-end-desktop { justify-content: flex-end !important; }
+  .justify-content-center-desktop { justify-content: center !important; }
+  .justify-content-between-desktop { justify-content: space-between !important; }
+  .justify-content-around-desktop { justify-content: space-around !important; }
+}
+
+/* Large breakpoint (1440px+) */
+@media (min-width: 1440px) {
+  .align-items-normal-large { align-items: normal !important; }
+  .align-items-stretch-large { align-items: stretch !important; }
+  .align-items-center-large { align-items: center !important; }
+  .align-items-start-large { align-items: flex-start !important; }
+  .align-items-end-large { align-items: flex-end !important; }
+  .align-items-baseline-large { align-items: baseline !important; }
+
+  .justify-content-start-large { justify-content: flex-start !important; }
+  .justify-content-end-large { justify-content: flex-end !important; }
+  .justify-content-center-large { justify-content: center !important; }
+  .justify-content-between-large { justify-content: space-between !important; }
+  .justify-content-around-large { justify-content: space-around !important; }
+}

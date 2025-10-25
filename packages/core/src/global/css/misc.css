@@ -1,0 +1,20 @@
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  & thead {
+    border-bottom: var(--go-table-header-border);
+  }
+
+  & tr:not(:last-of-type) {
+    border-bottom: var(--go-table-border-width-thin) solid var(--go-color-table-border);
+  }
+
+  & th,
+  & td {
+    text-align: left;
+    padding: var(--go-table-cell-padding);
+    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+    overflow-wrap: break-word;
+  }
+}

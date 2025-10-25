@@ -1,0 +1,329 @@
+/* Generate colours from color tokens css variables */
+
+:root {
+  /* Light color scheme - primary */
+  --go-color-primary-100: rgb(var(--go-token-primary-100));
+  --go-color-primary-200: rgb(var(--go-token-primary-200));
+  --go-color-primary-300: rgb(var(--go-token-primary-300));
+  --go-color-primary-400: rgb(var(--go-token-primary-400));
+  --go-color-primary-500: rgb(var(--go-token-primary-500));
+  --go-color-primary-600: rgb(var(--go-token-primary-600));
+  --go-color-primary-700: rgb(var(--go-token-primary-700));
+  --go-color-primary-800: rgb(var(--go-token-primary-800));
+  --go-color-primary-900: rgb(var(--go-token-primary-900));
+
+  /* Light color scheme - secondary */
+  --go-color-secondary-100: rgb(var(--go-token-secondary-100));
+  --go-color-secondary-200: rgb(var(--go-token-secondary-200));
+  --go-color-secondary-300: rgb(var(--go-token-secondary-300));
+  --go-color-secondary-400: rgb(var(--go-token-secondary-400));
+  --go-color-secondary-500: rgb(var(--go-token-secondary-500));
+  --go-color-secondary-600: rgb(var(--go-token-secondary-600));
+  --go-color-secondary-700: rgb(var(--go-token-secondary-700));
+  --go-color-secondary-800: rgb(var(--go-token-secondary-800));
+  --go-color-secondary-900: rgb(var(--go-token-secondary-900));
+
+  /* Light color scheme - success */
+  --go-color-success-100: rgb(var(--go-token-success-100));
+  --go-color-success-200: rgb(var(--go-token-success-200));
+  --go-color-success-300: rgb(var(--go-token-success-300));
+  --go-color-success-400: rgb(var(--go-token-success-400));
+  --go-color-success-500: rgb(var(--go-token-success-500));
+  --go-color-success-600: rgb(var(--go-token-success-600));
+  --go-color-success-700: rgb(var(--go-token-success-700));
+  --go-color-success-800: rgb(var(--go-token-success-800));
+  --go-color-success-900: rgb(var(--go-token-success-900));
+
+  /* Light color scheme - critical */
+  --go-color-critical-100: rgb(var(--go-token-critical-100));
+  --go-color-critical-200: rgb(var(--go-token-critical-200));
+  --go-color-critical-300: rgb(var(--go-token-critical-300));
+  --go-color-critical-400: rgb(var(--go-token-critical-400));
+  --go-color-critical-500: rgb(var(--go-token-critical-500));
+  --go-color-critical-600: rgb(var(--go-token-critical-600));
+  --go-color-critical-700: rgb(var(--go-token-critical-700));
+  --go-color-critical-800: rgb(var(--go-token-critical-800));
+  --go-color-critical-900: rgb(var(--go-token-critical-900));
+
+  /* Light color scheme - neutral */
+  --go-color-neutral-100: rgb(var(--go-token-neutral-100));
+  --go-color-neutral-200: rgb(var(--go-token-neutral-200));
+  --go-color-neutral-300: rgb(var(--go-token-neutral-300));
+  --go-color-neutral-400: rgb(var(--go-token-neutral-400));
+  --go-color-neutral-500: rgb(var(--go-token-neutral-500));
+  --go-color-neutral-600: rgb(var(--go-token-neutral-600));
+  --go-color-neutral-700: rgb(var(--go-token-neutral-700));
+  --go-color-neutral-800: rgb(var(--go-token-neutral-800));
+  --go-color-neutral-900: rgb(var(--go-token-neutral-900));
+
+  /* Extreme colors */
+  --go-color-darkest: rgb(var(--go-token-darkest));
+  --go-color-lightest: rgb(var(--go-token-lightest));
+
+  /* Functional colors */
+  --go-color-bg: var(--go-color-lightest);
+  --go-focus-outline-color: var(--go-color-primary-600);
+  --go-color-link: var(--go-color-primary-900);
+  --go-color-link-hover: var(--go-color-primary-900);
+
+  /* Open props override */
+  --shadow-strength: 15%;
+
+  color-scheme: light;
+
+  & .dark-only {
+    display: none;
+  }
+
+  & .light-only {
+    display: block;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark color scheme - primary (reversed) */
+    --go-color-primary-100: rgb(var(--go-token-primary-900));
+    --go-color-primary-200: rgb(var(--go-token-primary-800));
+    --go-color-primary-300: rgb(var(--go-token-primary-700));
+    --go-color-primary-400: rgb(var(--go-token-primary-600));
+    --go-color-primary-500: rgb(var(--go-token-primary-500));
+    --go-color-primary-600: rgb(var(--go-token-primary-400));
+    --go-color-primary-700: rgb(var(--go-token-primary-300));
+    --go-color-primary-800: rgb(var(--go-token-primary-200));
+    --go-color-primary-900: rgb(var(--go-token-primary-100));
+
+    /* Dark color scheme - secondary (reversed) */
+    --go-color-secondary-100: rgb(var(--go-token-secondary-900));
+    --go-color-secondary-200: rgb(var(--go-token-secondary-800));
+    --go-color-secondary-300: rgb(var(--go-token-secondary-700));
+    --go-color-secondary-400: rgb(var(--go-token-secondary-600));
+    --go-color-secondary-500: rgb(var(--go-token-secondary-500));
+    --go-color-secondary-600: rgb(var(--go-token-secondary-400));
+    --go-color-secondary-700: rgb(var(--go-token-secondary-300));
+    --go-color-secondary-800: rgb(var(--go-token-secondary-200));
+    --go-color-secondary-900: rgb(var(--go-token-secondary-100));
+
+    /* Dark color scheme - success (reversed) */
+    --go-color-success-100: rgb(var(--go-token-success-900));
+    --go-color-success-200: rgb(var(--go-token-success-800));
+    --go-color-success-300: rgb(var(--go-token-success-700));
+    --go-color-success-400: rgb(var(--go-token-success-600));
+    --go-color-success-500: rgb(var(--go-token-success-500));
+    --go-color-success-600: rgb(var(--go-token-success-400));
+    --go-color-success-700: rgb(var(--go-token-success-300));
+    --go-color-success-800: rgb(var(--go-token-success-200));
+    --go-color-success-900: rgb(var(--go-token-success-100));
+
+    /* Dark color scheme - critical (reversed) */
+    --go-color-critical-100: rgb(var(--go-token-critical-900));
+    --go-color-critical-200: rgb(var(--go-token-critical-800));
+    --go-color-critical-300: rgb(var(--go-token-critical-700));
+    --go-color-critical-400: rgb(var(--go-token-critical-600));
+    --go-color-critical-500: rgb(var(--go-token-critical-500));
+    --go-color-critical-600: rgb(var(--go-token-critical-400));
+    --go-color-critical-700: rgb(var(--go-token-critical-300));
+    --go-color-critical-800: rgb(var(--go-token-critical-200));
+    --go-color-critical-900: rgb(var(--go-token-critical-100));
+
+    /* Dark color scheme - neutral (reversed) */
+    --go-color-neutral-100: rgb(var(--go-token-neutral-900));
+    --go-color-neutral-200: rgb(var(--go-token-neutral-800));
+    --go-color-neutral-300: rgb(var(--go-token-neutral-700));
+    --go-color-neutral-400: rgb(var(--go-token-neutral-600));
+    --go-color-neutral-500: rgb(var(--go-token-neutral-500));
+    --go-color-neutral-600: rgb(var(--go-token-neutral-400));
+    --go-color-neutral-700: rgb(var(--go-token-neutral-300));
+    --go-color-neutral-800: rgb(var(--go-token-neutral-200));
+    --go-color-neutral-900: rgb(var(--go-token-neutral-100));
+
+    /* Extreme colors (reversed) */
+    --go-color-darkest: rgb(var(--go-token-lightest));
+    --go-color-lightest: rgb(var(--go-token-darkest));
+
+    /* Dark shadows */
+    --shadow-strength: 30%;
+    --shadow-color: 220 40% 2%;
+    --go-color-bg: var(--go-color-neutral-100);
+    --go-focus-outline-color: var(--go-color-primary-600);
+    --go-color-link: var(--go-color-primary-900);
+    --go-color-link-hover: var(--go-color-primary-900);
+
+    color-scheme: dark;
+
+    & .light-only {
+      display: none;
+    }
+
+    & .dark-only {
+      display: block;
+    }
+  }
+}
+
+/* Theme overwrites */
+[color-scheme='light'],
+[data-theme='light'] {
+  /* Light color scheme - primary */
+  --go-color-primary-100: rgb(var(--go-token-primary-100));
+  --go-color-primary-200: rgb(var(--go-token-primary-200));
+  --go-color-primary-300: rgb(var(--go-token-primary-300));
+  --go-color-primary-400: rgb(var(--go-token-primary-400));
+  --go-color-primary-500: rgb(var(--go-token-primary-500));
+  --go-color-primary-600: rgb(var(--go-token-primary-600));
+  --go-color-primary-700: rgb(var(--go-token-primary-700));
+  --go-color-primary-800: rgb(var(--go-token-primary-800));
+  --go-color-primary-900: rgb(var(--go-token-primary-900));
+
+  /* Light color scheme - secondary */
+  --go-color-secondary-100: rgb(var(--go-token-secondary-100));
+  --go-color-secondary-200: rgb(var(--go-token-secondary-200));
+  --go-color-secondary-300: rgb(var(--go-token-secondary-300));
+  --go-color-secondary-400: rgb(var(--go-token-secondary-400));
+  --go-color-secondary-500: rgb(var(--go-token-secondary-500));
+  --go-color-secondary-600: rgb(var(--go-token-secondary-600));
+  --go-color-secondary-700: rgb(var(--go-token-secondary-700));
+  --go-color-secondary-800: rgb(var(--go-token-secondary-800));
+  --go-color-secondary-900: rgb(var(--go-token-secondary-900));
+
+  /* Light color scheme - success */
+  --go-color-success-100: rgb(var(--go-token-success-100));
+  --go-color-success-200: rgb(var(--go-token-success-200));
+  --go-color-success-300: rgb(var(--go-token-success-300));
+  --go-color-success-400: rgb(var(--go-token-success-400));
+  --go-color-success-500: rgb(var(--go-token-success-500));
+  --go-color-success-600: rgb(var(--go-token-success-600));
+  --go-color-success-700: rgb(var(--go-token-success-700));
+  --go-color-success-800: rgb(var(--go-token-success-800));
+  --go-color-success-900: rgb(var(--go-token-success-900));
+
+  /* Light color scheme - critical */
+  --go-color-critical-100: rgb(var(--go-token-critical-100));
+  --go-color-critical-200: rgb(var(--go-token-critical-200));
+  --go-color-critical-300: rgb(var(--go-token-critical-300));
+  --go-color-critical-400: rgb(var(--go-token-critical-400));
+  --go-color-critical-500: rgb(var(--go-token-critical-500));
+  --go-color-critical-600: rgb(var(--go-token-critical-600));
+  --go-color-critical-700: rgb(var(--go-token-critical-700));
+  --go-color-critical-800: rgb(var(--go-token-critical-800));
+  --go-color-critical-900: rgb(var(--go-token-critical-900));
+
+  /* Light color scheme - neutral */
+  --go-color-neutral-100: rgb(var(--go-token-neutral-100));
+  --go-color-neutral-200: rgb(var(--go-token-neutral-200));
+  --go-color-neutral-300: rgb(var(--go-token-neutral-300));
+  --go-color-neutral-400: rgb(var(--go-token-neutral-400));
+  --go-color-neutral-500: rgb(var(--go-token-neutral-500));
+  --go-color-neutral-600: rgb(var(--go-token-neutral-600));
+  --go-color-neutral-700: rgb(var(--go-token-neutral-700));
+  --go-color-neutral-800: rgb(var(--go-token-neutral-800));
+  --go-color-neutral-900: rgb(var(--go-token-neutral-900));
+
+  /* Extreme colors */
+  --go-color-darkest: rgb(var(--go-token-darkest));
+  --go-color-lightest: rgb(var(--go-token-lightest));
+
+  /* Functional colors */
+  --go-color-bg: var(--go-color-lightest);
+  --go-focus-outline-color: var(--go-color-primary-600);
+  --go-color-link: var(--go-color-primary-900);
+  --go-color-link-hover: var(--go-color-primary-900);
+
+  /* Open props override */
+  --shadow-strength: 15%;
+
+  color-scheme: light;
+
+  & .dark-only {
+    display: none;
+  }
+
+  & .light-only {
+    display: block;
+  }
+}
+
+[color-scheme='dark'],
+[data-theme='dark'] {
+  /* Dark color scheme - primary (reversed) */
+  --go-color-primary-100: rgb(var(--go-token-primary-900));
+  --go-color-primary-200: rgb(var(--go-token-primary-800));
+  --go-color-primary-300: rgb(var(--go-token-primary-700));
+  --go-color-primary-400: rgb(var(--go-token-primary-600));
+  --go-color-primary-500: rgb(var(--go-token-primary-500));
+  --go-color-primary-600: rgb(var(--go-token-primary-400));
+  --go-color-primary-700: rgb(var(--go-token-primary-300));
+  --go-color-primary-800: rgb(var(--go-token-primary-200));
+  --go-color-primary-900: rgb(var(--go-token-primary-100));
+
+  /* Dark color scheme - secondary (reversed) */
+  --go-color-secondary-100: rgb(var(--go-token-secondary-900));
+  --go-color-secondary-200: rgb(var(--go-token-secondary-800));
+  --go-color-secondary-300: rgb(var(--go-token-secondary-700));
+  --go-color-secondary-400: rgb(var(--go-token-secondary-600));
+  --go-color-secondary-500: rgb(var(--go-token-secondary-500));
+  --go-color-secondary-600: rgb(var(--go-token-secondary-400));
+  --go-color-secondary-700: rgb(var(--go-token-secondary-300));
+  --go-color-secondary-800: rgb(var(--go-token-secondary-200));
+  --go-color-secondary-900: rgb(var(--go-token-secondary-100));
+
+  /* Dark color scheme - success (reversed) */
+  --go-color-success-100: rgb(var(--go-token-success-900));
+  --go-color-success-200: rgb(var(--go-token-success-800));
+  --go-color-success-300: rgb(var(--go-token-success-700));
+  --go-color-success-400: rgb(var(--go-token-success-600));
+  --go-color-success-500: rgb(var(--go-token-success-500));
+  --go-color-success-600: rgb(var(--go-token-success-400));
+  --go-color-success-700: rgb(var(--go-token-success-300));
+  --go-color-success-800: rgb(var(--go-token-success-200));
+  --go-color-success-900: rgb(var(--go-token-success-100));
+
+  /* Dark color scheme - critical (reversed) */
+  --go-color-critical-100: rgb(var(--go-token-critical-900));
+  --go-color-critical-200: rgb(var(--go-token-critical-800));
+  --go-color-critical-300: rgb(var(--go-token-critical-700));
+  --go-color-critical-400: rgb(var(--go-token-critical-600));
+  --go-color-critical-500: rgb(var(--go-token-critical-500));
+  --go-color-critical-600: rgb(var(--go-token-critical-400));
+  --go-color-critical-700: rgb(var(--go-token-critical-300));
+  --go-color-critical-800: rgb(var(--go-token-critical-200));
+  --go-color-critical-900: rgb(var(--go-token-critical-100));
+
+  /* Dark color scheme - neutral (reversed) */
+  --go-color-neutral-100: rgb(var(--go-token-neutral-900));
+  --go-color-neutral-200: rgb(var(--go-token-neutral-800));
+  --go-color-neutral-300: rgb(var(--go-token-neutral-700));
+  --go-color-neutral-400: rgb(var(--go-token-neutral-600));
+  --go-color-neutral-500: rgb(var(--go-token-neutral-500));
+  --go-color-neutral-600: rgb(var(--go-token-neutral-400));
+  --go-color-neutral-700: rgb(var(--go-token-neutral-300));
+  --go-color-neutral-800: rgb(var(--go-token-neutral-200));
+  --go-color-neutral-900: rgb(var(--go-token-neutral-100));
+
+  /* Extreme colors (reversed) */
+  --go-color-darkest: rgb(var(--go-token-lightest));
+  --go-color-lightest: rgb(var(--go-token-darkest));
+
+  /* Dark shadows */
+  --shadow-strength: 30%;
+  --shadow-color: 220 40% 2%;
+  --go-color-bg: var(--go-color-neutral-100);
+  --go-focus-outline-color: var(--go-color-primary-600);
+  --go-color-link: var(--go-color-primary-900);
+  --go-color-link-hover: var(--go-color-primary-900);
+
+  color-scheme: dark;
+
+  & .light-only {
+    display: none;
+  }
+
+  & .dark-only {
+    display: block;
+  }
+}
+
+html {
+  color: var(--go-color-text);
+  background: var(--go-color-bg);
+}

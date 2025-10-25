@@ -1,0 +1,16 @@
+html,
+body {
+  scroll-behavior: smooth;
+  
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:not(:defined):not(slot-fb) {
+  visibility: hidden;
+}

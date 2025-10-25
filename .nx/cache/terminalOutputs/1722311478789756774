@@ -1,0 +1,49 @@
+
+> @go-ui/docs@ dev C:\dev\go-ui\docs
+> pnpm run preparebuild && concurrently --kill-others -n ia,docsite "pnpm run watch.ia" "nuxt dev"
+
+
+> @go-ui/docs@ preparebuild C:\dev\go-ui\docs
+> cd .. && pnpm run build.core && pnpm run build.vue
+
+
+> @ build.core C:\dev\go-ui
+> nx build @go-ui/core
+
+
+[0m[7m[1m[33m NX [39m[22m[27m[0m  [33mCustom task runners will no longer be supported in Nx 21.[39m
+
+Use Nx Cloud or the Nx Powerpack caches instead.
+For more information, see https://nx.dev/nx-enterprise/powerpack/custom-caching
+
+
+[0m[7m[1m[33m NX [39m[22m[27m[0m  [33mCustom task runners will no longer be supported in Nx 21.[39m
+
+Use Nx Cloud or the Nx Powerpack caches instead.
+For more information, see https://nx.dev/nx-enterprise/powerpack/custom-caching
+
+
+[2m> [22m[2mnx run[22m @go-ui/core:build
+
+> @go-ui/core@1.37.6 build C:\dev\go-ui\packages\core
+> pnpm clean && stencil build
+> @go-ui/core@1.37.6 clean C:\dev\go-ui\packages\core
+> rm -rf dist
+'rm' is not recognized as an internal or external command,
+operable program or batch file.
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
+
+
+
+[0m[7m[1m[31m NX [39m[22m[27m[0m  [31mRunning target [1mbuild[22m for project @go-ui/core failed[39m
+
+[2mFailed tasks:[22m
+
+[2m-[22m @go-ui/core:build
+
+[2mHint: run the command with[22m --verbose [2mfor more details.[22m
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
