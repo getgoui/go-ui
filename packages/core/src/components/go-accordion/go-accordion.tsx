@@ -26,7 +26,7 @@ export class GoAccordion {
   componentDidLoad() {
     // if there's any active accordion item, show them by default and close the rest.
     if (!this.multiple) {
-      this.activeItem = selectDirectChildren(this.el, 'go-accordion-item[active]')[0] as HTMLGoAccordionItemElement;
+      this.activeItem = selectDirectChildren(this.el, 'go-accordion-item[active]')[0] as unknown as HTMLGoAccordionItemElement;
       if (this.activeItem) {
         this.activeItem.open();
       }

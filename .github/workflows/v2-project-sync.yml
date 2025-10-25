@@ -1,0 +1,188 @@
+name: Sync v2 issues to Project 4 Backlog and manage Epic field
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+      actions: write
+      checks: write
+      pull-requests: write
+      # Note: GITHUB_TOKEN may not have org project permissions; see README below.
+    steps:
+      - name: Add issue to Project 4 Backlog when labeled v2
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const core = require('@actions/core');
+            const labelAdded = context.payload.label && context.payload.label.name;
+            if (labelAdded !== 'v2') {
+              core.info(`Label ${labelAdded} is not v2; exiting`);
+              return;
+            }
+            const org = context.repo.owner;
+            const projectNumber = 4;
+            const issueNodeId = context.payload.issue.node_id;
+
+            const projectQuery = `
+              query($org:String!, $number:Int!) {
+                organization(login:$org) {
+                  projectV2(number:$number) {
+                    id
+                    title
+                    fields(first:50) {
+                      nodes {
+                        id
+                        name
+                        dataType
+                        settings
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const project = await github.graphql(projectQuery, {org, number: projectNumber});
+            if (!project.organization || !project.organization.projectV2) {
+              core.setFailed('Project not found');
+              return;
+            }
+            const projectId = project.organization.projectV2.id;
+
+            // Find a SINGLE_SELECT field which has an option named 'Backlog'
+            let fieldId = null;
+            let optionId = null;
+            for (const f of project.organization.projectV2.fields.nodes) {
+              if (f.dataType === 'SINGLE_SELECT' && f.settings) {
+                try {
+                  const settings = JSON.parse(f.settings);
+                  if (settings && settings.options) {
+                    const opt = settings.options.find(o => o.name === 'Backlog');
+                    if (opt) {
+                      fieldId = f.id;
+                      optionId = opt.id;
+                      break;
+                    }
+                  }
+                } catch (e) {
+                  // ignore parse errors
+                }
+              }
+            }
+
+            // Add the issue to the project
+            const addRes = await github.graphql(
+              `mutation($projectId:ID!,$contentId:ID!){ addProjectV2ItemById(input:{projectId:$projectId, contentId:$contentId}){ item{ id } } }`,
+              {projectId, contentId: issueNodeId}
+            );
+            const itemId = addRes.addProjectV2ItemById.item.id;
+            core.info(`Added item ${itemId} to project ${projectId}`);
+
+            if (fieldId && optionId) {
+              await github.graphql(
+                `mutation($projectId:ID!,$itemId:ID!,$fieldId:ID!,$optionId:String!){ updateProjectV2ItemFieldValue(input:{projectId:$projectId,itemId:$itemId,fieldId:$fieldId,value:{singleSelectOptionId:$optionId}}){ projectV2Item{ id } } }`,
+                {projectId, itemId, fieldId, optionId}
+              );
+              core.info(`Set field ${fieldId} to option ${optionId}`);
+            } else {
+              core.info('Backlog option not found; item added without setting column.');
+            }
+
+      - name: Ensure Epic field exists and populate for existing v2 issues (manual run)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const core = require('@actions/core');
+            const org = context.repo.owner;
+            const projectNumber = 4;
+
+            const projectQuery = `query($org:String!,$number:Int!){ organization(login:$org){ projectV2(number:$number){ id title fields(first:100){ nodes{ id name dataType settings } } items(first:500){ nodes{ id content{ ... on Issue{ number } } } } } } }`;
+            const project = await github.graphql(projectQuery, {org, number: projectNumber});
+            if (!project.organization || !project.organization.projectV2) { core.setFailed('Project not found'); return; }
+            const projectId = project.organization.projectV2.id;
+
+            let epicField = project.organization.projectV2.fields.nodes.find(f=> f.name === 'Epic');
+            if (!epicField) {
+              core.info('Creating Epic field (SINGLE_SELECT)');
+              const createField = await github.graphql(
+                `mutation($projectId:ID!,$name:String!,$dataType:ProjectV2FieldDataType!){ addProjectV2Field(input:{projectId:$projectId,name:$name,dataType:$dataType}){ projectV2Field{ id name } } }`,
+                {projectId, name: 'Epic', dataType: 'SINGLE_SELECT'}
+              );
+              epicField = { id: createField.addProjectV2Field.projectV2Field.id, name: 'Epic', dataType: 'SINGLE_SELECT', settings: null };
+            }
+
+            // List v2 issues in the repo
+            const listIssues = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'v2', per_page: 100 });
+            const issues = listIssues.data;
+
+            // Heuristic: treat issues that look like parents (titles without leading [v2][) as Epics/parents
+            const parents = issues.filter(i=> !/^\[v2\]\[/.test(i.title));
+            core.info(`Found ${parents.length} parent candidates and ${issues.length} total v2 issues`);
+
+            // Create options for each parent if missing
+            let currentSettings = epicField.settings ? JSON.parse(epicField.settings) : { options: [] };
+            for (const p of parents) {
+              if (!currentSettings.options.find(o=> o.name === p.title)) {
+                core.info(`Adding Epic option for parent: ${p.number} ${p.title}`);
+                await github.graphql(
+                  `mutation($projectId:ID!,$fieldId:ID!,$name:String!){ addProjectV2FieldValue(input:{projectId:$projectId,fieldId:$fieldId,value:{name:$name}}){ projectV2FieldValue{ id } } }`,
+                  { projectId, fieldId: epicField.id, name: p.title }
+                );
+              }
+            }
+
+            // Refresh project data to read option ids
+            const refreshed = await github.graphql(`query($org:String!,$number:Int!){ organization(login:$org){ projectV2(number:$number){ fields(first:100){ nodes{ id name dataType settings } } items(first:500){ nodes{ id content{ ... on Issue{ number } } } } } } }`, {org, number: projectNumber});
+            epicField = refreshed.organization.projectV2.fields.nodes.find(f=> f.name === 'Epic');
+            const options = epicField.settings ? JSON.parse(epicField.settings).options : [];
+
+            // Find sub-issues (heuristic: titles that start with [v2][ ) and attempt to detect parent via timeline cross-references.
+            const subs = issues.filter(i=> /^\[v2\]\[/.test(i.title));
+            for (const s of subs) {
+              // fetch timeline to locate cross-reference/connected events
+              let parentNumber = null;
+              try {
+                const events = await github.request('GET /repos/{owner}/{repo}/issues/{issue_number}/timeline', { owner: context.repo.owner, repo: context.repo.repo, issue_number: s.number, per_page: 100 });
+                for (const ev of events.data) {
+                  if (ev.event === 'connected' && ev.subject && ev.subject.type === 'Issue' && ev.subject.issue) {
+                    parentNumber = ev.subject.issue.number;
+                    break;
+                  }
+                  if (ev.event === 'cross-referenced' && ev.source && ev.source.issue) {
+                    parentNumber = ev.source.issue.number;
+                    break;
+                  }
+                }
+              } catch (e) {
+                core.info(`Could not fetch timeline for ${s.number}: ${e.message}`);
+              }
+              if (!parentNumber) { core.info(`Parent not found for ${s.number}; skipping`); continue; }
+
+              // find option id for parent
+              const parentIssue = issues.find(i=> i.number === parentNumber) || (await github.rest.issues.get({ owner: context.repo.owner, repo: context.repo.repo, issue_number: parentNumber })).data;
+              const opt = options.find(o=> o.name === parentIssue.title);
+              if (!opt) { core.info(`Option for parent ${parentNumber} not found; skipping`); continue; }
+
+              // find project item id for this issue (look in refreshed items)
+              const itemNode = refreshed.organization.projectV2.items.nodes.find(n=> n.content && n.content.number === s.number);
+              if (!itemNode) { core.info(`Project item for issue ${s.number} not present in project; consider running the label->project step first.`); continue; }
+              const itemId = itemNode.id;
+
+              // update field value
+              await github.graphql(
+                `mutation($projectId:ID!,$itemId:ID!,$fieldId:ID!,$optionId:String!){ updateProjectV2ItemFieldValue(input:{projectId:$projectId,itemId:$itemId,fieldId:$fieldId,value:{singleSelectOptionId:$optionId}}){ projectV2Item{ id } } }`,
+                { projectId, itemId, fieldId: epicField.id, optionId: opt.id }
+              );
+              core.info(`Set Epic for issue ${s.number} to parent ${parentNumber}`);
+            }
+
+            core.info('Epic population run completed.');

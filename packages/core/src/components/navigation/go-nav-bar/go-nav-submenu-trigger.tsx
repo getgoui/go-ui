@@ -15,7 +15,7 @@ export class GoNavSubmenuTrigger {
 
   loadSubmenuEl() {
     if (this.controls) {
-      this.submenuEl = document.getElementById(this.controls) as HTMLGoNavSubmenuElement;
+      this.submenuEl = document.getElementById(this.controls) as unknown as HTMLGoNavSubmenuElement;
       if (!this.submenuEl) {
         warning('<go-nav-submenu-trigger> is missing <go-nav-submenu> with id: ' + this.controls, this.el);
       }

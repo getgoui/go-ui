@@ -1,0 +1,31 @@
+
+> @go-ui/core@1.37.6 build C:\dev\go-ui\packages\core
+> pnpm clean && stencil build
+
+
+> @go-ui/core@1.37.6 clean C:\dev\go-ui\packages\core
+> rm -rf dist
+
+[2m[16:59.9][22m  [36m@stencil/core[39m
+[2m[17:00.7][22m  [36mv4.38.2[39m
+[2m[17:07.6][22m  build, go-ui, prod mode, started [2m...[22m
+[2m[17:07.6][22m  transpile started [2m...[22m
+[2m[17:14.7][22m  transpile finished [2min 7.09 s[22m
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36m../../node_modules/.pnpm/@stencil+core@4.38.2/node_modules/@stencil/core/compiler/lib.dom.d.ts[39m[2m:[22m[33m13706[39m[2m:[22m[33m5[39m
+           All declarations of 'autocorrect' must have identical modifiers.
+
+[2m  L13705:  [22m */
+[2m  L13706:  [22m[41ma[49m[41mu[49m[41mt[49m[41mo[49m[41mc[49m[41mo[49m[41mr[49m[41mr[49m[41me[49m[41mc[49m[41mt[49m: boolean;
+[2m  L13707:  [22m/**
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/global.d.ts[39m[2m:[22m[33m8[39m[2m:[22m[33m5[39m
+           All declarations of 'autocorrect' must have identical modifiers.
+
+[2m      L7:  [22minterface HTMLElement {
+[2m      L8:  [22m  [41ma[49m[41mu[49m[41mt[49m[41mo[49m[41mc[49m[41mo[49m[41mr[49m[41mr[49m[41me[49m[41mc[49m[41mt[49m?: boolean;
+[2m      L9:  [22m}
+
+[2m[17:14.7][22m  [1m[31mbuild failed[39m[22m [2min 7.14 s[22m
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

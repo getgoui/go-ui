@@ -137,6 +137,7 @@ export const createOverlayComponent = <OverlayComponent extends object, OverlayT
   }
 
   return React.forwardRef<OverlayType, Props>((props, ref) => {
+    // @ts-ignore - React 18 type compatibility issue with Stencil output target
     return <Overlay {...props} forwardedRef={ref} />;
   });
 };

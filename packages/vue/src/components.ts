@@ -188,7 +188,7 @@ export const GoDatepicker = /*@__PURE__*/ defineContainer<JSX.GoDatepicker, JSX.
   'format',
   'gochange'
 ],
-'value', 'gochange', 'gochange');
+'value', 'gochange');
 
 
 export const GoDialog = /*@__PURE__*/ defineContainer<JSX.GoDialog>('go-dialog', undefined, [
@@ -438,7 +438,7 @@ export const GoSelect = /*@__PURE__*/ defineContainer<JSX.GoSelect, JSX.GoSelect
   'options',
   'gochange'
 ],
-'value', 'gochange', 'gochange');
+'value', 'gochange');
 
 
 export const GoSkipLink = /*@__PURE__*/ defineContainer<JSX.GoSkipLink>('go-skip-link', undefined, [

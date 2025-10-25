@@ -1,0 +1,27 @@
+
+> @go-ui/core@1.37.6 build C:\dev\go-ui\packages\core
+> pnpm clean && stencil build
+
+
+> @go-ui/core@1.37.6 clean C:\dev\go-ui\packages\core
+> rm -rf dist
+
+[2m[39:50.7][22m  [36m@stencil/core[39m
+[2m[39:52.9][22m  [36mv4.38.2[39m
+
+[1m[31m[ ERROR ][39m[22m  Error: The 'outDir' option is required. at Object.validate
+           (C:\dev\go-ui\node_modules\.pnpm\@stencil+react-output-targe_b34bd2e7fcb6510aa5ce1227a3a68e10\node_modules\@stencil\react-output-target\dist\react-output-target.cjs:40:2109)
+           at
+           C:\dev\go-ui\node_modules\.pnpm\@stencil+core@4.38.2\node_modules\@stencil\core\compiler\stencil.js:261717:11
+           at Array.map (<anonymous>) at validateCustomOutput
+           (C:\dev\go-ui\node_modules\.pnpm\@stencil+core@4.38.2\node_modules\@stencil\core\compiler\stencil.js:261713:51)
+           at validateOutputTargets
+           (C:\dev\go-ui\node_modules\.pnpm\@stencil+core@4.38.2\node_modules\@stencil\core\compiler\stencil.js:262201:8)
+           at validateConfig
+           (C:\dev\go-ui\node_modules\.pnpm\@stencil+core@4.38.2\node_modules\@stencil\core\compiler\stencil.js:262993:3)
+           at Object.loadConfig
+           (C:\dev\go-ui\node_modules\.pnpm\@stencil+core@4.38.2\node_modules\@stencil\core\compiler\stencil.js:273073:23)
+           at async Object.run
+           (C:\dev\go-ui\node_modules\.pnpm\@stencil+core@4.38.2\node_modules\@stencil\core\cli\index.cjs:4172:23)
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

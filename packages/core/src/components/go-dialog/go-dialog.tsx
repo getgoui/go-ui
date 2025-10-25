@@ -67,7 +67,7 @@ export class GoDialog {
         aria-labelledby={headingId}
         active={active}
         aria-hidden={active ? 'false' : 'true'}
-        ref={(el) => (this.overlayEl = el)}
+        ref={(el) => (this.overlayEl = el as unknown as HTMLElement)}
         onOverlayClose={() => this.handleOverlayClose()}>
         <div class="overlay-heading" id={headingId}>
           <slot name="heading">

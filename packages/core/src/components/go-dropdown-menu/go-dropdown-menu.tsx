@@ -100,7 +100,7 @@ export class GoDropdownMenu implements DropdownProps {
 
   addMenuItemEventListeners() {
     if (!this.menuItemEls) {
-      this.menuItemEls = Array.from(this.menuEl.querySelectorAll('go-dropdown-item'));
+      this.menuItemEls = Array.from(this.menuEl.querySelectorAll('go-dropdown-item')) as unknown as HTMLElement[];
     }
     if (!this.menuItemEls.length) {
       // no `go-dropdown-item` found
@@ -135,11 +135,12 @@ export class GoDropdownMenu implements DropdownProps {
   }
 
   focusMenuItem() {
-    this.menuItemEls.forEach((dropdownItem: HTMLGoDropdownItemElement, i) => {
+    this.menuItemEls.forEach((dropdownItem: HTMLElement, i) => {
+      const item = dropdownItem as unknown as HTMLGoDropdownItemElement;
       if (i === this.focusedMenuItemIndex) {
-        dropdownItem.focusInControl();
+        item.focusInControl();
       } else {
-        dropdownItem.focusOutControl();
+        item.focusOutControl();
       }
     });
   }

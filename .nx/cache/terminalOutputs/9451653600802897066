@@ -1,0 +1,86 @@
+
+> @go-ui/core@1.37.6 build C:\dev\go-ui\packages\core
+> pnpm clean && stencil build
+
+
+> @go-ui/core@1.37.6 clean C:\dev\go-ui\packages\core
+> rm -rf dist
+
+[2m[21:11.3][22m  [36m@stencil/core[39m
+[2m[21:12.1][22m  [36mv4.38.2[39m
+[2m[21:19.1][22m  build, go-ui, prod mode, started [2m...[22m
+[2m[21:19.1][22m  transpile started [2m...[22m
+[2m[21:25.7][22m  transpile finished [2min 6.58 s[22m
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/react-runtime.d.ts[39m[2m:[22m[33m4[39m[2m:[22m[33m12[39m
+           Module '"@go-ui/core"' has no exported member 'Components'.
+
+[2m      L3:  [22m[36mdeclare[39m [36mmodule[39m '@stencil/react-output-target/runtime' {
+[2m      L4:  [22m  [36mimport[39m { [41mC[49m[41mo[49m[41mm[49m[41mp[49m[41mo[49m[41mn[49m[41me[49m[41mn[49m[41mt[49m[41ms[49m } [36mfrom[39m '@go-ui/core';
+[2m      L5:  [22m  [36mimport[39m { JSX } [36mfrom[39m '@go-ui/core';
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/react-runtime.d.ts[39m[2m:[22m[33m5[39m[2m:[22m[33m12[39m
+           Module '"@go-ui/core"' has no exported member 'JSX'.
+
+[2m      L4:  [22m  [36mimport[39m { Components } [36mfrom[39m '@go-ui/core';
+[2m      L5:  [22m  [36mimport[39m { [41mJ[49m[41mS[49m[41mX[49m } [36mfrom[39m '@go-ui/core';
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/react-runtime.d.ts[39m[2m:[22m[33m21[39m[2m:[22m[33m3[39m
+           Import or export declaration in an ambient module declaration cannot
+           reference module through relative module name.
+
+[2m     L20:  [22m[36mdeclare[39m [36mmodule[39m '@go-ui/core' {
+[2m     L21:  [22m  [41me[49m[41mx[49m[41mp[49m[41mo[49m[41mr[49m[41mt[49m[41m [49m[41m*[49m[41m [49m[41mf[49m[41mr[49m[41mo[49m[41mm[49m[41m [49m[41m'[49m[41m.[49m[41m/[49m[41mi[49m[41mn[49m[41mt[49m[41me[49m[41mr[49m[41mf[49m[41ma[49m[41mc[49m[41me[49m[41ms[49m[41m'[49m[41m;[49m
+[2m     L22:  [22m  [36mexport[39m * [36mfrom[39m './components/go-tabs/tabs.type';
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/react-runtime.d.ts[39m[2m:[22m[33m21[39m[2m:[22m[33m17[39m
+           Cannot find module './interfaces' or its corresponding type
+           declarations.
+
+[2m     L20:  [22m[36mdeclare[39m [36mmodule[39m '@go-ui/core' {
+[2m     L21:  [22m  [36mexport[39m * [36mfrom[39m [41m'[49m[41m.[49m[41m/[49m[41mi[49m[41mn[49m[41mt[49m[41me[49m[41mr[49m[41mf[49m[41ma[49m[41mc[49m[41me[49m[41ms[49m[41m'[49m;
+[2m     L22:  [22m  [36mexport[39m * [36mfrom[39m './components/go-tabs/tabs.type';
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/react-runtime.d.ts[39m[2m:[22m[33m22[39m[2m:[22m[33m17[39m
+           Cannot find module './components/go-tabs/tabs.type' or its
+           corresponding type declarations.
+
+[2m     L21:  [22m[36mexport[39m * [36mfrom[39m './interfaces';
+[2m     L22:  [22m[36mexport[39m * [36mfrom[39m [41m'[49m[41m.[49m[41m/[49m[41mc[49m[41mo[49m[41mm[49m[41mp[49m[41mo[49m[41mn[49m[41me[49m[41mn[49m[41mt[49m[41ms[49m[41m/[49m[41mg[49m[41mo[49m[41m-[49m[41mt[49m[41ma[49m[41mb[49m[41ms[49m[41m/[49m[41mt[49m[41ma[49m[41mb[49m[41ms[49m[41m.[49m[41mt[49m[41my[49m[41mp[49m[41me[49m[41m'[49m;
+[2m     L23:  [22m[36mexport[39m * [36mfrom[39m './utils';
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/react-runtime.d.ts[39m[2m:[22m[33m23[39m[2m:[22m[33m17[39m
+           Cannot find module './utils' or its corresponding type declarations.
+
+[2m     L22:  [22m[36mexport[39m * [36mfrom[39m './components/go-tabs/tabs.type';
+[2m     L23:  [22m[36mexport[39m * [36mfrom[39m [41m'[49m[41m.[49m[41m/[49m[41mu[49m[41mt[49m[41mi[49m[41ml[49m[41ms[49m[41m'[49m;
+[2m     L24:  [22m[36mexport[39m * [36mfrom[39m './components';
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/react-runtime.d.ts[39m[2m:[22m[33m24[39m[2m:[22m[33m17[39m
+           Cannot find module './components' or its corresponding type
+           declarations.
+
+[2m     L23:  [22m[36mexport[39m * [36mfrom[39m './utils';
+[2m     L24:  [22m[36mexport[39m * [36mfrom[39m [41m'[49m[41m.[49m[41m/[49m[41mc[49m[41mo[49m[41mm[49m[41mp[49m[41mo[49m[41mn[49m[41me[49m[41mn[49m[41mt[49m[41ms[49m[41m'[49m;
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/shims-stencil.d.ts[39m[2m:[22m[33m27[39m[2m:[22m[33m5[39m
+           Subsequent property declarations must have the same type. Property
+           ''go-accordion'' must be of type 'HTMLGoAccordionElement', but here
+           has type 'GoAccordion'.
+
+[2m     L26:  [22m[2m// Add all Go components from the Components namespace[22m
+[2m     L27:  [22m[41m'[49m[41mg[49m[41mo[49m[41m-[49m[41ma[49m[41mc[49m[41mc[49m[41mo[49m[41mr[49m[41md[49m[41mi[49m[41mo[49m[41mn[49m[41m'[49m: Components.GoAccordion;
+[2m     L28:  [22m'go-accordion-item': Components.GoAccordionItem;
+
+[1m[31m[ ERROR ][39m[22m  TypeScript: [36msrc/shims-stencil.d.ts[39m[2m:[22m[33m28[39m[2m:[22m[33m5[39m
+           Subsequent property declarations must have the same type. Property
+           ''go-accordion-item'' must be of type 'HTMLGoAccordionItemElement',
+           but here has type 'GoAccordionItem'.
+
+[2m     L27:  [22m'go-accordion': Components.GoAccordion;
+[2m     L28:  [22m[41m'[49m[41mg[49m[41mo[49m[41m-[49m[41ma[49m[41mc[49m[41mc[49m[41mo[49m[41mr[49m[41md[49m[41mi[49m[41mo[49m[41mn[49m[41m-[49m[41mi[49m[41mt[49m[41me[49m[41mm[49m[41m'[49m: Components.GoAccordionItem;
+[2m     L29:  [22m[2m// etc...[22m
+
+[2m[21:25.7][22m  [1m[31mbuild failed[39m[22m [2min 6.62 s[22m
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
