@@ -19201,6 +19201,11 @@
       },
       {
         "source": "@go-ui/docs",
+        "target": "npm:@nuxt/devtools",
+        "type": "static"
+      },
+      {
+        "source": "@go-ui/docs",
         "target": "npm:@types/lodash-es",
         "type": "static"
       },
